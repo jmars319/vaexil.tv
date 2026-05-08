@@ -18,14 +18,14 @@ const guideCards = [
   },
   {
     title: "Mods / Setup",
-    href: "#mods-setup",
+    href: "/guides/mods-setup",
     description:
       "Reserved for installation notes, compatibility reminders, and stream setup references once verified.",
     icon: Wrench,
   },
   {
     title: "Tools mentioned on stream",
-    href: "#stream-tools",
+    href: "/guides/stream-tools",
     description:
       "A future index for utilities discussed live, kept separate from official guide facts.",
     icon: Boxes,

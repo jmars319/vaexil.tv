@@ -5,6 +5,8 @@ const routes = [
   "",
   "/guides",
   "/guides/freelancer-free-items",
+  "/guides/mods-setup",
+  "/guides/stream-tools",
   "/suggest",
   "/suggestions",
   "/vaexcore",

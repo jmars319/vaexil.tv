@@ -1,4 +1,5 @@
 import { ensureDb, getDb } from "@/lib/db";
+import { suggestionReadyVoteThreshold } from "@/lib/config";
 import type {
   CommunitySuggestion,
   OfficialGuideItem,
@@ -181,7 +182,10 @@ export async function addVote(suggestionId: string, voterKey: string) {
 
   const voteCount = await countVotes(suggestionId);
 
-  if (voteCount >= 5 && currentStatus === "pending") {
+  if (
+    voteCount >= suggestionReadyVoteThreshold &&
+    currentStatus === "pending"
+  ) {
     await db.execute({
       sql: `
         UPDATE community_suggestions

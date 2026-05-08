@@ -1,5 +1,6 @@
 import { voteForSuggestion } from "@/app/actions";
 import { EmptyState, PrimaryLink, Section, SectionHeading, StatusBadge } from "@/components/ui";
+import { suggestionReadyVoteThreshold } from "@/lib/config";
 import { listSuggestions } from "@/lib/repository";
 import { formatDate } from "@/lib/utils";
 import { ArrowUp, ExternalLink } from "lucide-react";
@@ -22,7 +23,7 @@ export default async function SuggestionsPage() {
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
             title="Community suggestions"
-            description="Vote on additions or corrections that should be reviewed. Five votes marks a suggestion ready for review, but publishing still requires admin verification."
+            description={`Vote on additions or corrections that should be reviewed. ${suggestionReadyVoteThreshold} votes marks a suggestion ready for review, but publishing still requires admin verification.`}
           />
           <PrimaryLink href="/suggest">Submit suggestion</PrimaryLink>
         </div>
@@ -38,7 +39,8 @@ export default async function SuggestionsPage() {
           <div className="grid gap-4">
             {suggestions.map((suggestion) => {
               const status =
-                suggestion.status === "pending" && suggestion.voteCount >= 5
+                suggestion.status === "pending" &&
+                suggestion.voteCount >= suggestionReadyVoteThreshold
                   ? "ready_for_review"
                   : suggestion.status;
 

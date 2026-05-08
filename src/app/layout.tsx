@@ -31,11 +31,20 @@ export const metadata: Metadata = {
     url: siteConfig.url,
     siteName: "Vaexil.tv",
     type: "website",
+    images: [
+      {
+        url: "/brand/vaexil-og.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Vaexil neon wordmark",
+      },
+    ],
   },
   twitter: {
-    card: "summary",
+    card: "summary_large_image",
     title: siteConfig.title,
     description: siteConfig.description,
+    images: ["/brand/vaexil-og.jpg"],
   },
   icons: {
     icon: "/brand/vaexil-v.png",

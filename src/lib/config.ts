@@ -17,10 +17,9 @@ export const siteConfig = {
   },
 };
 
-export const guideCategories = [
-  "Fictional sample",
-  "Tool",
-  "Route note",
-  "Setup note",
-  "Stream tool",
-];
+const parsedThreshold = Number(process.env.SUGGESTION_READY_VOTE_THRESHOLD);
+
+export const suggestionReadyVoteThreshold =
+  Number.isInteger(parsedThreshold) && parsedThreshold > 0
+    ? parsedThreshold
+    : 5;

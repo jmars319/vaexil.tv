@@ -30,6 +30,7 @@ Local development defaults to `.data/vaexil.db`, which is ignored by git. The ap
 ```bash
 ADMIN_PASSWORD="change-this-before-deploy"
 ADMIN_SESSION_SECRET="replace-with-a-long-random-string"
+SUGGESTION_READY_VOTE_THRESHOLD="5"
 LIBSQL_URL="file:.data/vaexil.db"
 LIBSQL_AUTH_TOKEN=""
 NEXT_PUBLIC_SITE_URL="https://vaexil.tv"
@@ -45,7 +46,7 @@ For production, set `LIBSQL_URL` and `LIBSQL_AUTH_TOKEN` to a hosted libSQL/Turs
 
 Community guide suggestions follow this path:
 
-`Submitted -> Pending -> Ready for Review at 5 votes -> Verified by admin -> Published by admin`
+`Submitted -> Pending -> Ready for Review at configured vote threshold -> Verified by admin -> Published by admin`
 
 Publishing is never automatic. Admin verification and admin publishing are separate actions.
 
@@ -61,10 +62,13 @@ npm run db:seed
 
 ## Deployment Notes
 
-Vercel is the intended first deployment target.
+Vercel is the recommended first deployment target because this is a Next.js
+App Router project with server actions and dynamic DB-backed pages. A comparable
+Git-based Node hosting platform can also work if it supports environment
+variables, production builds, and a persistent hosted database connection.
 
 1. Create a hosted libSQL/Turso database.
-2. Add the environment variables above in Vercel.
+2. Add the environment variables above in the hosting provider.
 3. Deploy with the default Next.js settings.
 4. Visit `/admin`, sign in with `ADMIN_PASSWORD`, and review the suggestion queue.
 

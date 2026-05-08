@@ -1,16 +1,21 @@
 # Vaexil.tv Deployment Checklist
 
-This project is set up for Vercel plus a hosted libSQL/Turso database.
+This project is set up for a modern Git-based Node hosting platform plus a
+hosted libSQL/Turso database. Vercel is the recommended first target because it
+has first-class Next.js App Router support, automatic preview deployments, and
+simple custom-domain management.
 
 ## Before First Production Deploy
 
-1. Create or select the Vercel project. Recommended project name: `vaexil-tv`.
+1. Create or select the hosting project. Recommended Vercel project name:
+   `vaexil-tv`.
 2. Create a hosted libSQL/Turso database.
-3. Add these Vercel environment variables for Production and Preview:
+3. Add these environment variables for Production and Preview:
 
 ```bash
 ADMIN_PASSWORD="use-a-real-password"
 ADMIN_SESSION_SECRET="use-a-long-random-string"
+SUGGESTION_READY_VOTE_THRESHOLD="5"
 LIBSQL_URL="libsql://..."
 LIBSQL_AUTH_TOKEN="..."
 NEXT_PUBLIC_SITE_URL="https://vaexil.tv"
@@ -20,11 +25,14 @@ NEXT_PUBLIC_DISCORD_URL=""
 NEXT_PUBLIC_GITHUB_URL=""
 ```
 
-`LIBSQL_URL` must not be `file:.data/vaexil.db` on Vercel. The app intentionally throws an error on Vercel if a file database is configured, because Vercel filesystem storage is not persistent production storage.
+`LIBSQL_URL` must not be `file:.data/vaexil.db` on serverless production
+hosting. The app intentionally throws an error on Vercel if a file database is
+configured, because Vercel filesystem storage is not persistent production
+storage.
 
 ## Domain Setup
 
-Add both hostnames to the Vercel project:
+On Vercel, add both hostnames to the project:
 
 - `vaexil.tv`
 - `www.vaexil.tv`

@@ -1,5 +1,6 @@
 import { SuggestionForm } from "@/components/suggestion-form";
 import { Section, SectionHeading } from "@/components/ui";
+import { suggestionReadyVoteThreshold } from "@/lib/config";
 
 export const metadata = {
   title: "Suggest an Update",
@@ -19,7 +20,7 @@ export default function SuggestPage() {
         />
       </Section>
       <Section className="pt-4">
-        <SuggestionForm />
+        <SuggestionForm readyVoteThreshold={suggestionReadyVoteThreshold} />
       </Section>
     </>
   );

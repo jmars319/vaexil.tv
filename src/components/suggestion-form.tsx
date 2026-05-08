@@ -52,7 +52,11 @@ function SubmitButton() {
   );
 }
 
-export function SuggestionForm() {
+export function SuggestionForm({
+  readyVoteThreshold,
+}: {
+  readyVoteThreshold: number;
+}) {
   const [state, formAction] = useActionState(submitSuggestion, initialState);
 
   return (
@@ -126,8 +130,9 @@ export function SuggestionForm() {
 
       <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <p className="max-w-2xl text-sm leading-6 text-slate-400">
-          Suggestions are saved as pending. Five votes marks them ready for
-          review, but only an admin can verify and publish them.
+          Suggestions are saved as pending. {readyVoteThreshold} votes
+          marks them ready for review, but only an admin can verify and publish
+          them.
         </p>
         <SubmitButton />
       </div>
