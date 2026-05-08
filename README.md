@@ -69,7 +69,7 @@ LIBSQL_URL="file:.data/vaexil.db"
 LIBSQL_AUTH_TOKEN=""
 NEXT_PUBLIC_SITE_URL="https://vaexil.tv"
 NEXT_PUBLIC_TWITCH_URL="https://www.twitch.tv/vaexil"
-NEXT_PUBLIC_YOUTUBE_URL="https://www.youtube.com/@vaexil"
+NEXT_PUBLIC_YOUTUBE_URL="https://www.youtube.com/@Vaexil-Twitch"
 NEXT_PUBLIC_DISCORD_URL=""
 NEXT_PUBLIC_GITHUB_URL=""
 ```

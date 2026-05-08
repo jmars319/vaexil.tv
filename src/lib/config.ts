@@ -11,7 +11,7 @@ export const siteConfig = {
   links: {
     twitch: process.env.NEXT_PUBLIC_TWITCH_URL || "https://www.twitch.tv/vaexil",
     youtube:
-      process.env.NEXT_PUBLIC_YOUTUBE_URL || "https://www.youtube.com/@vaexil",
+      process.env.NEXT_PUBLIC_YOUTUBE_URL || "https://www.youtube.com/@Vaexil-Twitch",
     discord: process.env.NEXT_PUBLIC_DISCORD_URL || "",
     github: process.env.NEXT_PUBLIC_GITHUB_URL || "",
   },
