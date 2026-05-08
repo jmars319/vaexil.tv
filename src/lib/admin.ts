@@ -148,8 +148,8 @@ export async function assertAdmin() {
 
 export async function passwordMatches(value: string) {
   const storedHash = await getStoredAdminPasswordHash();
-  if (storedHash) {
-    return verifyPasswordHash(value, storedHash);
+  if (storedHash && verifyPasswordHash(value, storedHash)) {
+    return true;
   }
 
   const configuredPassword = getAdminPassword();
