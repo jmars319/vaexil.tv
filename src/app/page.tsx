@@ -48,7 +48,15 @@ export default function Home() {
   return (
     <>
       <section className="relative overflow-hidden border-b border-white/10">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(34,211,238,0.16),transparent_32%),radial-gradient(circle_at_78%_24%,rgba(217,70,239,0.16),transparent_28%),linear-gradient(180deg,#080b14_0%,#05070d_100%)]" />
+        <Image
+          src="/brand/vaexil-v-grid.webp"
+          alt=""
+          fill
+          sizes="100vw"
+          className="absolute inset-0 object-cover opacity-35"
+          priority
+        />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(34,211,238,0.22),transparent_34%),radial-gradient(circle_at_78%_24%,rgba(217,70,239,0.2),transparent_30%),linear-gradient(90deg,rgba(5,7,13,0.98)_0%,rgba(5,7,13,0.9)_38%,rgba(5,7,13,0.62)_100%),linear-gradient(180deg,rgba(8,11,20,0.78)_0%,#05070d_100%)]" />
         <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-cyan-300/40 to-transparent" />
         <Section className="relative grid min-h-[calc(100vh-4rem)] items-center gap-12 py-20 lg:grid-cols-[1.02fr_0.98fr]">
           <div className="max-w-3xl">
@@ -90,12 +98,11 @@ export default function Home() {
               <div className="flex items-center justify-between border-b border-white/10 pb-4">
                 <div className="flex items-center gap-3">
                   <Image
-                    src="/brand/vaexil-v.png"
+                    src="/brand/vaexil-v-grid.webp"
                     alt="Vaexil V mark"
                     width={56}
                     height={56}
-                    className="rounded-2xl"
-                    priority
+                    className="size-14 rounded-2xl object-cover"
                   />
                   <div>
                     <p className="font-semibold text-white">Stream hub</p>

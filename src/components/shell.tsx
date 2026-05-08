@@ -54,11 +54,11 @@ export function SiteHeader() {
           className="flex w-fit items-center gap-3 rounded-full outline-none ring-cyan-300/60 transition focus-visible:ring-2"
         >
           <Image
-            src="/brand/vaexil-v.png"
+            src="/brand/vaexil-v-grid.webp"
             alt=""
             width={42}
             height={42}
-            className="size-10 rounded-2xl shadow-[0_0_28px_rgba(0,213,255,0.28)]"
+            className="size-10 rounded-2xl object-cover shadow-[0_0_28px_rgba(0,213,255,0.28)]"
             priority
           />
           <span className="text-base font-semibold tracking-[0.18em] text-white">

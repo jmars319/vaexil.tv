@@ -47,8 +47,8 @@ export const metadata: Metadata = {
     images: ["/brand/vaexil-og.jpg"],
   },
   icons: {
-    icon: "/brand/vaexil-v.png",
-    apple: "/brand/vaexil-v.png",
+    icon: "/brand/vaexil-v-grid.png",
+    apple: "/brand/vaexil-v-grid.png",
   },
   manifest: "/manifest.webmanifest",
 };
