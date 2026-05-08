@@ -46,7 +46,21 @@ declare global {
 
 export function getDb() {
   if (!globalThis.vaexilDbClient) {
-    const url = process.env.LIBSQL_URL || "file:.data/vaexil.db";
+    const url =
+      process.env.LIBSQL_URL ||
+      (process.env.NODE_ENV === "production" ? "" : "file:.data/vaexil.db");
+
+    if (!url) {
+      throw new Error(
+        "LIBSQL_URL is required in production. Use a hosted libSQL/Turso database for deployed environments.",
+      );
+    }
+
+    if (process.env.VERCEL && url.startsWith("file:")) {
+      throw new Error(
+        "Vercel deployments require a hosted database. Set LIBSQL_URL to a libSQL/Turso URL instead of a local file path.",
+      );
+    }
 
     if (url.startsWith("file:")) {
       mkdirSync(localDataDir, { recursive: true });

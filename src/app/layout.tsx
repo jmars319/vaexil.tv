@@ -41,6 +41,7 @@ export const metadata: Metadata = {
     icon: "/brand/vaexil-v.png",
     apple: "/brand/vaexil-v.png",
   },
+  manifest: "/manifest.webmanifest",
 };
 
 export default function RootLayout({

@@ -68,6 +68,8 @@ Vercel is the intended first deployment target.
 3. Deploy with the default Next.js settings.
 4. Visit `/admin`, sign in with `ADMIN_PASSWORD`, and review the suggestion queue.
 
+See [docs/deployment.md](docs/deployment.md) for the full domain, DNS, environment variable, and post-deploy checklist.
+
 ## Current Deferred Items
 
 - Real guide content is intentionally not included. Seed rows are fictional placeholders only.

@@ -16,6 +16,8 @@ export const metadata = {
   description: "Lightweight Vaexil.tv admin queue for suggestions.",
 };
 
+export const runtime = "nodejs";
+
 type AdminPageProps = {
   searchParams: Promise<{ error?: string | string[] }>;
 };

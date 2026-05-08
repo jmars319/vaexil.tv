@@ -7,6 +7,8 @@ export const metadata = {
     "Submit Vaexil guide additions or corrections for community votes and admin review.",
 };
 
+export const runtime = "nodejs";
+
 export default function SuggestPage() {
   return (
     <>
