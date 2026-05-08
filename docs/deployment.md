@@ -13,7 +13,7 @@ simple custom-domain management.
 3. Add these environment variables for Production and Preview:
 
 ```bash
-ADMIN_PASSWORD="use-a-real-password"
+ADMIN_PASSWORD="use-a-real-bootstrap-password"
 ADMIN_SESSION_SECRET="use-a-long-random-string"
 SUGGESTION_READY_VOTE_THRESHOLD="5"
 LIBSQL_URL="libsql://..."
@@ -60,6 +60,7 @@ Confirm:
 - `/suggest` accepts a test suggestion.
 - `/suggestions` shows the submitted suggestion.
 - `/admin` accepts `ADMIN_PASSWORD`.
+- Admin can change the password after signing in.
 - Admin can verify and publish a test suggestion.
 - Security headers are present, including `strict-transport-security`, `x-frame-options`, and `x-content-type-options`.
 
@@ -68,3 +69,4 @@ Confirm:
 - Do not enable static export for this project. Server actions and the DB-backed pages require the Next.js server runtime.
 - Real guide content should be entered only after verification. The initial rows are fictional seed data.
 - Changing any Vercel environment variable requires a new deployment before the change applies.
+- `ADMIN_PASSWORD` is the bootstrap/fallback password. In-app password changes are stored as hashes in the configured database.

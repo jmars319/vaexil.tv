@@ -5,6 +5,7 @@ import {
   clearAdminSession,
   passwordMatches,
   setAdminSession,
+  setStoredAdminPassword,
 } from "@/lib/admin";
 import {
   addVote,
@@ -16,6 +17,7 @@ import {
 import type { ActionState } from "@/lib/types";
 import {
   adminLoginSchema,
+  adminPasswordChangeSchema,
   formDataToObject,
   suggestionSchema,
 } from "@/lib/validation";
@@ -88,7 +90,7 @@ export async function voteForSuggestion(formData: FormData) {
 
 export async function loginAdmin(formData: FormData) {
   const parsed = adminLoginSchema.safeParse(formDataToObject(formData));
-  if (!parsed.success || !passwordMatches(parsed.data.password)) {
+  if (!parsed.success || !(await passwordMatches(parsed.data.password))) {
     redirect("/admin?error=invalid");
   }
 
@@ -99,6 +101,41 @@ export async function loginAdmin(formData: FormData) {
 export async function logoutAdmin() {
   await clearAdminSession();
   redirect("/admin");
+}
+
+export async function changeAdminPassword(
+  _previousState: ActionState,
+  formData: FormData,
+): Promise<ActionState> {
+  await assertAdmin();
+
+  const parsed = adminPasswordChangeSchema.safeParse(formDataToObject(formData));
+  if (!parsed.success) {
+    return {
+      ok: false,
+      message: "Please fix the highlighted fields.",
+      fieldErrors: parsed.error.flatten().fieldErrors,
+    };
+  }
+
+  if (!(await passwordMatches(parsed.data.currentPassword))) {
+    return {
+      ok: false,
+      message: "Current password is incorrect.",
+      fieldErrors: {
+        currentPassword: ["Current password is incorrect."],
+      },
+    };
+  }
+
+  await setStoredAdminPassword(parsed.data.newPassword);
+  await setAdminSession();
+  revalidatePath("/admin");
+
+  return {
+    ok: true,
+    message: "Admin password changed.",
+  };
 }
 
 export async function rejectSuggestion(formData: FormData) {

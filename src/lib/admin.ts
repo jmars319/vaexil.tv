@@ -1,8 +1,16 @@
 import { cookies } from "next/headers";
-import { createHmac, timingSafeEqual } from "node:crypto";
+import {
+  createHmac,
+  randomBytes,
+  scryptSync,
+  timingSafeEqual,
+} from "node:crypto";
+import { ensureDb, getDb } from "@/lib/db";
 
 const adminCookieName = "vaexil_admin";
 const maxAgeSeconds = 60 * 60 * 24 * 7;
+const adminPasswordHashKey = "admin_password_hash";
+const passwordHashPrefix = "scrypt";
 
 function getAdminPassword() {
   return process.env.ADMIN_PASSWORD || "";
@@ -27,8 +35,62 @@ function safeCompare(left: string, right: string) {
   return timingSafeEqual(leftBuffer, rightBuffer);
 }
 
-export function adminPasswordIsConfigured() {
-  return getAdminPassword().length > 0;
+async function getStoredAdminPasswordHash() {
+  await ensureDb();
+
+  const result = await getDb().execute({
+    sql: "SELECT value FROM admin_settings WHERE key = ? LIMIT 1;",
+    args: [adminPasswordHashKey],
+  });
+
+  const value = result.rows[0]?.value;
+  return typeof value === "string" ? value : "";
+}
+
+export async function adminPasswordIsUsable() {
+  return (
+    getAdminPassword().length > 0 ||
+    (await getStoredAdminPasswordHash()).length > 0
+  );
+}
+
+function hashPassword(password: string) {
+  const salt = randomBytes(16).toString("hex");
+  const hash = scryptSync(password, salt, 64).toString("hex");
+
+  return `${passwordHashPrefix}$${salt}$${hash}`;
+}
+
+function verifyPasswordHash(password: string, storedHash: string) {
+  const [prefix, salt, expectedHash] = storedHash.split("$");
+
+  if (prefix !== passwordHashPrefix || !salt || !expectedHash) {
+    return false;
+  }
+
+  const actual = scryptSync(password, salt, 64);
+  const expected = Buffer.from(expectedHash, "hex");
+
+  if (actual.length !== expected.length) {
+    return false;
+  }
+
+  return timingSafeEqual(actual, expected);
+}
+
+export async function setStoredAdminPassword(password: string) {
+  await ensureDb();
+
+  await getDb().execute({
+    sql: `
+      INSERT INTO admin_settings (key, value, updated_at)
+      VALUES (?, ?, CURRENT_TIMESTAMP)
+      ON CONFLICT(key) DO UPDATE SET
+        value = excluded.value,
+        updated_at = CURRENT_TIMESTAMP;
+    `,
+    args: [adminPasswordHashKey, hashPassword(password)],
+  });
 }
 
 export async function isAdminAuthenticated() {
@@ -84,7 +146,12 @@ export async function assertAdmin() {
   }
 }
 
-export function passwordMatches(value: string) {
+export async function passwordMatches(value: string) {
+  const storedHash = await getStoredAdminPasswordHash();
+  if (storedHash) {
+    return verifyPasswordHash(value, storedHash);
+  }
+
   const configuredPassword = getAdminPassword();
   if (!configuredPassword) {
     return false;

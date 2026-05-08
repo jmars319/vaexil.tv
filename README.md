@@ -74,7 +74,7 @@ NEXT_PUBLIC_DISCORD_URL=""
 NEXT_PUBLIC_GITHUB_URL=""
 ```
 
-For production, set `LIBSQL_URL` and `LIBSQL_AUTH_TOKEN` to a hosted libSQL/Turso database. Do not use the local file database on Vercel for persistent production data.
+For production, set `LIBSQL_URL` and `LIBSQL_AUTH_TOKEN` to a hosted libSQL/Turso database. Do not use the local file database on Vercel for persistent production data. `ADMIN_PASSWORD` is the bootstrap/fallback password; after signing in, the admin UI can replace it with a database-stored password hash.
 
 ## Data Workflow
 
@@ -105,3 +105,4 @@ See [docs/deployment.md](docs/deployment.md) for the full domain, DNS, environme
 - No full user accounts or OAuth. Admin auth is intentionally lightweight for v1.
 - Clips and schedule are structural placeholders until real media or schedule data is ready.
 - Official guide rows must come from admin publishing, not automatic community vote thresholds.
+- Admin password changes are stored as hashes in the configured database. Keep `ADMIN_SESSION_SECRET` set in production so sessions are not tied to the bootstrap password.

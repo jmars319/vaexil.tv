@@ -40,6 +40,33 @@ export const adminLoginSchema = z.object({
   password: z.string().min(1, "Password is required."),
 });
 
+export const adminPasswordChangeSchema = z
+  .object({
+    currentPassword: z.string().min(1, "Current password is required."),
+    newPassword: z
+      .string()
+      .min(12, "New password must be at least 12 characters.")
+      .max(128, "New password must be 128 characters or less."),
+    confirmPassword: z.string().min(1, "Confirm the new password."),
+  })
+  .superRefine((value, ctx) => {
+    if (value.newPassword !== value.confirmPassword) {
+      ctx.addIssue({
+        code: "custom",
+        message: "Passwords do not match.",
+        path: ["confirmPassword"],
+      });
+    }
+
+    if (value.currentPassword === value.newPassword) {
+      ctx.addIssue({
+        code: "custom",
+        message: "Choose a password that is different from the current one.",
+        path: ["newPassword"],
+      });
+    }
+  });
+
 export function formDataToObject(formData: FormData) {
   return Object.fromEntries(formData.entries());
 }

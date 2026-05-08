@@ -136,6 +136,16 @@ async function migrateAndSeed() {
     },
     {
       sql: `
+        CREATE TABLE IF NOT EXISTS admin_settings (
+          key TEXT PRIMARY KEY,
+          value TEXT NOT NULL,
+          updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+        );
+      `,
+      args: [],
+    },
+    {
+      sql: `
         CREATE INDEX IF NOT EXISTS idx_suggestions_status
         ON community_suggestions(status);
       `,

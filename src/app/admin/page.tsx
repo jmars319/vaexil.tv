@@ -5,11 +5,12 @@ import {
   rejectSuggestion,
   verifySuggestion,
 } from "@/app/actions";
+import { ChangeAdminPasswordForm } from "@/components/admin-password-form";
 import { Section, SectionHeading, StatusBadge } from "@/components/ui";
-import { adminPasswordIsConfigured, isAdminAuthenticated } from "@/lib/admin";
+import { adminPasswordIsUsable, isAdminAuthenticated } from "@/lib/admin";
 import { listSuggestions } from "@/lib/repository";
 import { formatDate } from "@/lib/utils";
-import { ExternalLink, LogOut } from "lucide-react";
+import { ExternalLink, KeyRound, LogOut } from "lucide-react";
 
 export const metadata = {
   title: "Admin",
@@ -27,7 +28,10 @@ export default async function AdminPage({ searchParams }: AdminPageProps) {
   const params = await searchParams;
 
   if (!authenticated) {
-    return <AdminLogin hasError={params.error === "invalid"} />;
+    const configured = await adminPasswordIsUsable();
+    return (
+      <AdminLogin configured={configured} hasError={params.error === "invalid"} />
+    );
   }
 
   const suggestions = await listSuggestions({ includeClosed: true });
@@ -49,6 +53,20 @@ export default async function AdminPage({ searchParams }: AdminPageProps) {
               Sign out
             </button>
           </form>
+        </div>
+      </Section>
+
+      <Section className="pt-4">
+        <div className="grid gap-5 lg:grid-cols-[0.8fr_1.2fr] lg:items-start">
+          <div className="rounded-2xl border border-white/10 bg-white/[0.035] p-5">
+            <KeyRound className="size-6 text-cyan-200" aria-hidden="true" />
+            <h2 className="mt-4 text-xl font-semibold text-white">Security</h2>
+            <p className="mt-3 text-sm leading-6 text-slate-400">
+              The environment password is the bootstrap fallback. Password
+              changes made here are stored as a hash in the production database.
+            </p>
+          </div>
+          <ChangeAdminPasswordForm />
         </div>
       </Section>
 
@@ -148,15 +166,19 @@ export default async function AdminPage({ searchParams }: AdminPageProps) {
   );
 }
 
-function AdminLogin({ hasError }: { hasError: boolean }) {
-  const configured = adminPasswordIsConfigured();
-
+function AdminLogin({
+  configured,
+  hasError,
+}: {
+  configured: boolean;
+  hasError: boolean;
+}) {
   return (
     <>
       <Section className="pb-8 pt-16">
         <SectionHeading
           title="Admin"
-          description="This first version uses a single environment variable password and a signed session cookie. It is intentionally lightweight for early deployment."
+          description="This first version uses a bootstrap password, an optional database-stored password, and a signed session cookie. It is intentionally lightweight for early deployment."
         />
       </Section>
       <Section className="pt-4">
