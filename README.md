@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Vaexil.tv
 
-## Getting Started
+Vaexil.tv is the first version of a creator hub for Vaexil: stream references, verified guide entries, community suggestions, and a future VaexCore product surface.
 
-First, run the development server:
+## Stack
+
+- Next.js App Router with TypeScript for a Vercel-friendly full-stack React app.
+- Tailwind CSS for fast, maintainable styling without a large component framework.
+- libSQL via `@libsql/client` for local file-based development now and a clean path to hosted Turso/libSQL later.
+- Zod for server-side validation on public form input.
+- Lightweight admin auth using `ADMIN_PASSWORD` and a signed HTTP-only cookie.
+
+This keeps the first version deployable and maintainable without introducing a separate API service or heavyweight auth system.
+
+## Local Setup
+
+```bash
+npm install
+cp .env.example .env.local
+npm run db:seed
+npm run dev
+```
+
+Open `http://localhost:3000`.
+
+Local development defaults to `.data/vaexil.db`, which is ignored by git. The app also creates and seeds the database automatically on first access if needed.
+
+## Environment Variables
+
+```bash
+ADMIN_PASSWORD="change-this-before-deploy"
+ADMIN_SESSION_SECRET="replace-with-a-long-random-string"
+LIBSQL_URL="file:.data/vaexil.db"
+LIBSQL_AUTH_TOKEN=""
+NEXT_PUBLIC_SITE_URL="https://vaexil.tv"
+NEXT_PUBLIC_TWITCH_URL="https://www.twitch.tv/vaexil"
+NEXT_PUBLIC_YOUTUBE_URL="https://www.youtube.com/@vaexil"
+NEXT_PUBLIC_DISCORD_URL=""
+NEXT_PUBLIC_GITHUB_URL=""
+```
+
+For production, set `LIBSQL_URL` and `LIBSQL_AUTH_TOKEN` to a hosted libSQL/Turso database. Do not use the local file database on Vercel for persistent production data.
+
+## Core Workflow
+
+Community guide suggestions follow this path:
+
+`Submitted -> Pending -> Ready for Review at 5 votes -> Verified by admin -> Published by admin`
+
+Publishing is never automatic. Admin verification and admin publishing are separate actions.
+
+## Commands
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run lint
+npm run typecheck
+npm run build
+npm run db:seed
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Deployment Notes
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Vercel is the intended first deployment target.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Create a hosted libSQL/Turso database.
+2. Add the environment variables above in Vercel.
+3. Deploy with the default Next.js settings.
+4. Visit `/admin`, sign in with `ADMIN_PASSWORD`, and review the suggestion queue.
 
-## Learn More
+## Current Deferred Items
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- Real guide content is intentionally not included. Seed rows are fictional placeholders only.
+- Discord and GitHub links are configurable placeholders until final URLs exist.
+- No full user accounts or OAuth. Admin auth is intentionally lightweight for v1.
+- Clips and schedule are structural placeholders until real media or schedule data is ready.
