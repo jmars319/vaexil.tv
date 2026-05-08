@@ -1,18 +1,37 @@
 # Vaexil.tv
 
-Vaexil.tv is the first version of a creator hub for Vaexil: stream references, verified guide entries, community suggestions, and a future VaexCore product surface.
+Vaexil.tv is the creator hub for Vaexil. It collects stream references, guide archives, community-submitted corrections, and the future VaexCore product surface in one deployable Next.js app.
 
-## Stack
+## Current Reality
 
-- Next.js App Router with TypeScript for a Vercel-friendly full-stack React app.
-- Tailwind CSS for fast, maintainable styling without a large component framework.
-- libSQL via `@libsql/client` for local file-based development now and a clean path to hosted Turso/libSQL later.
-- Zod for server-side validation on public form input.
-- Lightweight admin auth using `ADMIN_PASSWORD` and a signed HTTP-only cookie.
+This is an early production-ready build, not a placeholder. Public routes cover the home hub, guide landing pages, the Freelancer Free Items table, suggestion submission, community suggestions with vote thresholds, and VaexCore placeholder product cards. Admin routes are intentionally lightweight and password-protected for reviewing, verifying, rejecting, and publishing guide suggestions.
 
-This keeps the first version deployable and maintainable without introducing a separate API service or heavyweight auth system.
+Guide content is seeded with fictional placeholder rows only. Real Hitman or stream-guide data should be entered after verification through the admin workflow.
 
-## Local Setup
+## What This Repo Contains
+
+- Public creator/stream hub
+- Guides and knowledge-base surfaces
+- Community suggestion form and voting flow
+- Admin review/publishing surface
+- libSQL-backed local data layer with hosted libSQL/Turso deployment path
+- Deployment notes for Vercel or a comparable Git-based Node host
+
+## Tech Stack
+
+- Next.js App Router
+- TypeScript
+- Tailwind CSS v4
+- libSQL via `@libsql/client`
+- Zod validation
+- Lightweight password-based admin session
+
+## Documentation
+
+Start here:
+- `docs/deployment.md`
+
+## Local Development
 
 ```bash
 npm install
@@ -24,6 +43,21 @@ npm run dev
 Open `http://localhost:3000`.
 
 Local development defaults to `.data/vaexil.db`, which is ignored by git. The app also creates and seeds the database automatically on first access if needed.
+
+## Commands
+
+```bash
+npm run dev
+npm run lint
+npm run typecheck
+npm run build
+npm run doctor
+npm run verify
+npm run db:seed
+npm run dev:start
+npm run dev:stop
+npm run dev:status
+```
 
 ## Environment Variables
 
@@ -42,7 +76,7 @@ NEXT_PUBLIC_GITHUB_URL=""
 
 For production, set `LIBSQL_URL` and `LIBSQL_AUTH_TOKEN` to a hosted libSQL/Turso database. Do not use the local file database on Vercel for persistent production data.
 
-## Core Workflow
+## Data Workflow
 
 Community guide suggestions follow this path:
 
@@ -50,17 +84,7 @@ Community guide suggestions follow this path:
 
 Publishing is never automatic. Admin verification and admin publishing are separate actions.
 
-## Commands
-
-```bash
-npm run dev
-npm run lint
-npm run typecheck
-npm run build
-npm run db:seed
-```
-
-## Deployment Notes
+## Deployment
 
 Vercel is the recommended first deployment target because this is a Next.js
 App Router project with server actions and dynamic DB-backed pages. A comparable
@@ -74,9 +98,10 @@ variables, production builds, and a persistent hosted database connection.
 
 See [docs/deployment.md](docs/deployment.md) for the full domain, DNS, environment variable, and post-deploy checklist.
 
-## Current Deferred Items
+## Guardrails
 
 - Real guide content is intentionally not included. Seed rows are fictional placeholders only.
 - Discord and GitHub links are configurable placeholders until final URLs exist.
 - No full user accounts or OAuth. Admin auth is intentionally lightweight for v1.
 - Clips and schedule are structural placeholders until real media or schedule data is ready.
+- Official guide rows must come from admin publishing, not automatic community vote thresholds.
