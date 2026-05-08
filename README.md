@@ -14,6 +14,7 @@ Guide content is seeded with fictional placeholder rows only. Real Hitman or str
 - Guides and knowledge-base surfaces
 - Community suggestion form and voting flow
 - Admin review/publishing surface
+- Footer links into the JAMARQ/Tenra/Vaexil site family, with admin access kept unobtrusive in the footer
 - libSQL-backed local data layer with hosted libSQL/Turso deployment path
 - Deployment notes for Vercel or a comparable Git-based Node host
 

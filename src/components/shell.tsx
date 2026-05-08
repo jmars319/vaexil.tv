@@ -7,7 +7,19 @@ const navigation = [
   { label: "Guides", href: "/guides" },
   { label: "Suggestions", href: "/suggestions" },
   { label: "VaexCore", href: "/vaexcore" },
-  { label: "Admin", href: "/admin" },
+];
+
+const suiteLinks = [
+  {
+    label: "JAMARQ Digital",
+    href: "https://jamarq.digital",
+    description: "Websites, rebuilds, online presence, and web systems.",
+  },
+  {
+    label: "Tenra.dev",
+    href: "https://tenra.dev",
+    description: "Software products, internal tools, and local-first systems.",
+  },
 ];
 
 const social = [
@@ -75,7 +87,7 @@ export function SiteHeader() {
 export function SiteFooter() {
   return (
     <footer className="border-t border-white/10 bg-[#05070d]">
-      <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 py-10 text-sm text-slate-400 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+      <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 py-10 text-sm text-slate-400 sm:px-6 lg:grid-cols-[1.2fr_0.9fr_1fr] lg:px-8">
         <div>
           <p className="font-medium text-slate-200">Vaexil.tv</p>
           <p className="mt-1 max-w-2xl">
@@ -83,6 +95,35 @@ export function SiteFooter() {
             product notes. Guide entries should be treated as official only
             after admin verification and publishing.
           </p>
+          <Link
+            href="/admin"
+            className="mt-3 inline-flex text-[0.7rem] text-slate-500 transition hover:text-cyan-200"
+          >
+            Admin
+          </Link>
+        </div>
+        <div>
+          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-500">
+            Suite
+          </p>
+          <div className="mt-3 space-y-3">
+            {suiteLinks.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block transition hover:text-cyan-200"
+              >
+                <span className="block font-medium text-slate-300">
+                  {item.label}
+                </span>
+                <span className="block max-w-xs text-xs leading-5 text-slate-500">
+                  {item.description}
+                </span>
+              </a>
+            ))}
+          </div>
         </div>
         <div className="flex flex-wrap gap-2">
           {social.map(({ label, href, icon: Icon }) =>
