@@ -88,81 +88,118 @@ export function SiteHeader() {
 }
 
 export function SiteFooter() {
+  const currentYear = new Date().getFullYear();
+
   return (
     <footer className="border-t border-white/10 bg-[#05070d]">
-      <div className="mx-auto grid w-full max-w-7xl gap-8 px-4 py-10 text-sm text-slate-400 sm:px-6 lg:grid-cols-[1.2fr_0.9fr_1fr] lg:px-8">
-        <div>
-          <p className="font-medium text-slate-200">Vaexil.tv</p>
-          <p className="mt-1 max-w-2xl">
-            Stream references, community suggestions, and future VaexCore
-            product notes. Guide entries should be treated as official only
-            after admin verification and publishing.
-          </p>
-          <Link
-            href="/admin"
-            className="mt-3 inline-flex text-[0.7rem] text-slate-500 transition hover:text-cyan-200"
-          >
-            Admin
-          </Link>
-          <Link
-            href="/privacy"
-            className="ml-4 mt-3 inline-flex text-[0.7rem] text-slate-500 transition hover:text-cyan-200"
-          >
-            Privacy
-          </Link>
-          <Link
-            href="/contact"
-            className="ml-4 mt-3 inline-flex text-[0.7rem] text-slate-500 transition hover:text-cyan-200"
-          >
-            Contact
-          </Link>
-        </div>
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-500">
-            Suite
-          </p>
-          <div className="mt-3 space-y-3">
-            {suiteLinks.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block transition hover:text-cyan-200"
-              >
-                <span className="block font-medium text-slate-300">
+      <div className="mx-auto w-full max-w-7xl px-4 text-sm text-slate-400 sm:px-6 lg:px-8">
+        <div className="grid gap-8 py-10 lg:grid-cols-[1.2fr_0.7fr_1fr_1fr]">
+          <div>
+            <p className="font-medium text-slate-200">Vaexil.tv</p>
+            <p className="mt-1 max-w-2xl">
+              Stream references, community suggestions, and future VaexCore
+              product notes. Guide entries should be treated as official only
+              after admin verification and publishing.
+            </p>
+          </div>
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-500">
+              Explore
+            </p>
+            <nav className="mt-3 space-y-2" aria-label="Vaexil footer navigation">
+              {navigation.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="block transition hover:text-cyan-200"
+                >
                   {item.label}
-                </span>
-                <span className="block max-w-xs text-xs leading-5 text-slate-500">
-                  {item.description}
-                </span>
-              </a>
-            ))}
+                </Link>
+              ))}
+            </nav>
+          </div>
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-500">
+              Suite
+            </p>
+            <nav className="mt-3 space-y-3" aria-label="Vaexil suite links">
+              {suiteLinks.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block transition hover:text-cyan-200"
+                >
+                  <span className="block font-medium text-slate-300">
+                    {item.label}
+                  </span>
+                  <span className="block max-w-xs text-xs leading-5 text-slate-500">
+                    {item.description}
+                  </span>
+                </a>
+              ))}
+            </nav>
+          </div>
+          <div>
+            <p className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-500">
+              Connect
+            </p>
+            <p className="mt-3 text-xs leading-5 text-slate-500">
+              Contact goes through the site form, with stream and creator links
+              kept separate.
+            </p>
+            <Link
+              href="/contact"
+              className="mt-3 inline-flex text-slate-300 transition hover:text-cyan-200"
+            >
+              Contact Vaexil
+            </Link>
+            <div className="mt-4 flex flex-wrap gap-2">
+              {social.map(({ label, href, icon: Icon }) =>
+                href ? (
+                  <a
+                    key={label}
+                    href={href}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="inline-flex items-center gap-2 rounded-full border border-white/10 px-3 py-2 text-slate-300 transition hover:border-cyan-300/50 hover:text-white"
+                  >
+                    <Icon className="size-4" aria-hidden="true" />
+                    {label}
+                  </a>
+                ) : (
+                  <span
+                    key={label}
+                    className="inline-flex items-center gap-2 rounded-full border border-white/[0.08] px-3 py-2 text-slate-500"
+                  >
+                    <Icon className="size-4" aria-hidden="true" />
+                    {label}
+                  </span>
+                ),
+              )}
+            </div>
           </div>
         </div>
-        <div className="flex flex-wrap gap-2">
-          {social.map(({ label, href, icon: Icon }) =>
-            href ? (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-white/10 px-3 py-2 text-slate-300 transition hover:border-cyan-300/50 hover:text-white"
-              >
-                <Icon className="size-4" aria-hidden="true" />
-                {label}
-              </a>
-            ) : (
-              <span
-                key={label}
-                className="inline-flex items-center gap-2 rounded-full border border-white/[0.08] px-3 py-2 text-slate-500"
-              >
-                <Icon className="size-4" aria-hidden="true" />
-                {label}
-              </span>
-            ),
-          )}
+        <div className="flex flex-col gap-3 border-t border-white/10 py-5 text-xs text-slate-500 md:flex-row md:items-center md:justify-between">
+          <p>&copy; {currentYear} Vaexil.tv. All rights reserved.</p>
+          <nav
+            className="flex flex-wrap gap-4"
+            aria-label="Vaexil legal and admin links"
+          >
+            <Link
+              href="/privacy"
+              className="text-[0.72rem] text-slate-400 transition hover:text-cyan-200"
+            >
+              Privacy
+            </Link>
+            <Link
+              href="/admin"
+              className="text-[0.72rem] text-slate-500 transition hover:text-cyan-200"
+            >
+              Admin
+            </Link>
+          </nav>
         </div>
       </div>
     </footer>
