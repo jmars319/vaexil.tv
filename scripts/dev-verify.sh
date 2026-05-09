@@ -9,6 +9,7 @@ source "${SCRIPT_DIR}/dev-common.sh"
 
 log_info "Running dev stack smoke test."
 
+export DEV_BROWSER_OPEN="${DEV_BROWSER_OPEN:-0}"
 "${SCRIPT_DIR}/dev-start.sh"
 
 if has_command curl; then

@@ -6,11 +6,14 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 source "${SCRIPT_DIR}/script-utils.sh"
 # shellcheck source=/dev/null
 source "${SCRIPT_DIR}/dev-common.sh"
+# shellcheck source=/dev/null
+source "${SCRIPT_DIR}/dev-browser.sh"
 
 if [[ -f "${PIDFILE}" ]]; then
   existing_pid="$(cat "${PIDFILE}" 2>/dev/null || true)"
   if [[ -n "${existing_pid}" ]] && kill -0 "${existing_pid}" >/dev/null 2>&1; then
     log_warn "Dev server already running (pid ${existing_pid})."
+    open_dev_browser "${BASE_URL}"
     exit 0
   fi
 fi
@@ -40,3 +43,4 @@ elif [[ "${wait_result}" -ne 0 ]]; then
 fi
 
 log_success "Dev server ready at ${BASE_URL} (pid ${server_pid})."
+open_dev_browser "${BASE_URL}"
