@@ -12,8 +12,8 @@ export default function manifest(): MetadataRoute.Manifest {
     theme_color: "#05070d",
     icons: [
       {
-        src: "/brand/vaexil-v-grid.png",
-        sizes: "512x512",
+        src: "/icon.png",
+        sizes: "150x150",
         type: "image/png",
       },
     ],
