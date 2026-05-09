@@ -33,6 +33,9 @@ export default function ModsSetupPage() {
             <h2 className="mt-3 text-2xl font-semibold text-white">
               {modFramework.title}
             </h2>
+            <p className="mt-1 text-xs font-medium uppercase tracking-[0.16em] text-cyan-100/75">
+              By {modFramework.creator}
+            </p>
             <p className="mt-3 text-sm leading-6 text-slate-300">
               {modFramework.summary}
             </p>
@@ -53,8 +56,8 @@ export default function ModsSetupPage() {
             </p>
             <p className="mt-3 text-sm leading-6 text-slate-300">
               The list below is shown top to bottom exactly as used. Short
-              summaries are intentionally plain until official descriptions are
-              added and cleaned up.
+              summaries are condensed from the NexusMods source text so the
+              page stays usable during setup.
             </p>
           </div>
         </div>
@@ -114,6 +117,9 @@ function LoadOrderCard({ mod }: { mod: HitmanLoadOrderEntry }) {
           <h2 className="mt-4 text-xl font-semibold leading-tight text-white">
             {mod.title}
           </h2>
+          <p className="mt-1 text-xs font-medium uppercase tracking-[0.16em] text-slate-500">
+            By {mod.creator}
+          </p>
           <p className="mt-3 text-sm leading-6 text-slate-400">{mod.summary}</p>
           {mod.note ? (
             <p className="mt-2 text-sm leading-6 text-amber-100/85">
@@ -134,6 +140,9 @@ function ProblematicModCard({ mod }: { mod: HitmanModEntry }) {
         {mod.category}
       </span>
       <h3 className="mt-4 text-lg font-semibold text-white">{mod.title}</h3>
+      <p className="mt-1 text-xs font-medium uppercase tracking-[0.16em] text-rose-100/60">
+        By {mod.creator}
+      </p>
       <p className="mt-2 text-sm leading-6 text-slate-300">{mod.summary}</p>
       {mod.note ? (
         <p className="mt-2 text-sm leading-6 text-rose-100/85">{mod.note}</p>
