@@ -27,6 +27,7 @@ export function ContactForm() {
   );
   const [message, setMessage] = useState("");
   const [fieldErrors, setFieldErrors] = useState<FieldErrors>({});
+  const [startedAt, setStartedAt] = useState(() => Date.now());
 
   async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -54,6 +55,7 @@ export function ContactForm() {
       }
 
       form.reset();
+      setStartedAt(Date.now());
       setStatus("success");
       setMessage(
         payload.message ||
@@ -74,6 +76,15 @@ export function ContactForm() {
       onSubmit={handleSubmit}
       className="rounded-2xl border border-white/10 bg-white/[0.035] p-5 sm:p-6"
     >
+      <input type="hidden" name="startedAt" value={startedAt} />
+      <input
+        type="text"
+        name="website"
+        autoComplete="off"
+        tabIndex={-1}
+        className="hidden"
+        aria-hidden="true"
+      />
       {message ? (
         <div
           className={

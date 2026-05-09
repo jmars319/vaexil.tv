@@ -26,6 +26,11 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 const voterCookieName = "vaexil_voter";
+const FAILED_LOGIN_DELAY_MS = 500;
+
+function delayFailedLogin() {
+  return new Promise((resolve) => setTimeout(resolve, FAILED_LOGIN_DELAY_MS));
+}
 
 function getSuggestionId(formData: FormData) {
   const value = formData.get("suggestionId");
@@ -91,6 +96,7 @@ export async function voteForSuggestion(formData: FormData) {
 export async function loginAdmin(formData: FormData) {
   const parsed = adminLoginSchema.safeParse(formDataToObject(formData));
   if (!parsed.success || !(await passwordMatches(parsed.data.password))) {
+    await delayFailedLogin();
     redirect("/admin?error=invalid");
   }
 

@@ -105,6 +105,12 @@ export function SiteFooter() {
             Admin
           </Link>
           <Link
+            href="/privacy"
+            className="ml-4 mt-3 inline-flex text-[0.7rem] text-slate-500 transition hover:text-cyan-200"
+          >
+            Privacy
+          </Link>
+          <Link
             href="/contact"
             className="ml-4 mt-3 inline-flex text-[0.7rem] text-slate-500 transition hover:text-cyan-200"
           >
@@ -166,8 +172,11 @@ export function SiteFooter() {
 export function PageShell({ children }: { children: React.ReactNode }) {
   return (
     <div className="min-h-screen bg-[#05070d] text-slate-100">
+      <a href="#main-content" className="skip-link">
+        Skip to content
+      </a>
       <SiteHeader />
-      <main>{children}</main>
+      <main id="main-content">{children}</main>
       <SiteFooter />
     </div>
   );

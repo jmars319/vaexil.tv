@@ -59,12 +59,38 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const structuredData = [
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      name: siteConfig.name,
+      url: siteConfig.url,
+      description: siteConfig.description,
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: "Vaexil.tv",
+      url: siteConfig.url,
+      logo: `${siteConfig.url}/brand/vaexil-v-grid.webp`,
+      description: siteConfig.description,
+      sameAs: [
+        siteConfig.links.twitch,
+        siteConfig.links.youtube,
+      ].filter(Boolean),
+    },
+  ];
+
   return (
     <html
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+        />
         <PageViewTracker />
         <PageShell>{children}</PageShell>
       </body>

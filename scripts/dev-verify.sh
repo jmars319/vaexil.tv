@@ -26,4 +26,11 @@ fi
 
 "${SCRIPT_DIR}/dev-stop.sh"
 
+if has_command npx; then
+  log_info "Refreshing route types after dev smoke test."
+  npx --no-install next typegen >/dev/null
+else
+  log_warn "npx not found; skipping route type refresh."
+fi
+
 log_success "Dev smoke test complete."

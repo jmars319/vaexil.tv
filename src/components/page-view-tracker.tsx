@@ -9,6 +9,10 @@ export function PageViewTracker() {
   const pathname = usePathname();
 
   useEffect(() => {
+    if (navigator.doNotTrack === "1") {
+      return;
+    }
+
     if (!pathname || ignoredPrefixes.some((prefix) => pathname.startsWith(prefix))) {
       return;
     }

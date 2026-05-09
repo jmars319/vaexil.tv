@@ -11,15 +11,16 @@ const routes = [
   "/suggestions",
   "/vaexcore",
   "/contact",
+  "/privacy",
 ];
 
-export default function sitemap(): MetadataRoute.Sitemap {
-  const now = new Date();
+const contentRefreshDate = new Date("2026-05-09");
 
+export default function sitemap(): MetadataRoute.Sitemap {
   return routes.map((route) => ({
     url: `${siteConfig.url}${route}`,
-    lastModified: now,
+    lastModified: contentRefreshDate,
     changeFrequency: "weekly",
-    priority: route === "" ? 1 : 0.7,
+    priority: route === "" ? 1 : route === "/privacy" ? 0.4 : 0.7,
   }));
 }

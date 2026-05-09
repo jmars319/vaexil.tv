@@ -12,14 +12,51 @@ const sendgridApiKey = process.env.SENDGRID_API_KEY ?? "";
 const sendgridToEmail = process.env.SENDGRID_TO_EMAIL ?? "vaexiltv@gmail.com";
 const sendgridFromEmail =
   process.env.SENDGRID_FROM_EMAIL ?? process.env.SENDGRID_TO_EMAIL ?? "";
+const MAX_PAYLOAD_BYTES = 16_000;
+const MIN_SUBMIT_MS = 800;
 
 if (sendgridApiKey) {
   sgMail.setApiKey(sendgridApiKey);
 }
 
+function readContentLength(request: Request) {
+  const value = Number(request.headers.get("content-length") || 0);
+  return Number.isFinite(value) ? value : 0;
+}
+
+function readText(body: Record<string, unknown>, key: string, maxLength: number) {
+  const value = body[key];
+  return typeof value === "string" ? value.trim().slice(0, maxLength) : "";
+}
+
+function isSpamTrap(body: Record<string, unknown>) {
+  const startedAt = Number(body.startedAt);
+
+  return (
+    readText(body, "website", 200).length > 0 ||
+    (Number.isFinite(startedAt) && Date.now() - startedAt < MIN_SUBMIT_MS)
+  );
+}
+
 export async function POST(request: Request) {
+  if (readContentLength(request) > MAX_PAYLOAD_BYTES) {
+    return NextResponse.json({ error: "Payload too large." }, { status: 413 });
+  }
+
   const body = await request.json().catch(() => null);
-  const parsed = contactSchema.safeParse(body);
+  if (!body || typeof body !== "object" || Array.isArray(body)) {
+    return NextResponse.json({ error: "Invalid JSON payload." }, { status: 400 });
+  }
+
+  const payload = body as Record<string, unknown>;
+  if (isSpamTrap(payload)) {
+    return NextResponse.json(
+      { success: true, message: "Message recorded. Thanks for reaching out." },
+      { status: 202 },
+    );
+  }
+
+  const parsed = contactSchema.safeParse(payload);
 
   if (!parsed.success) {
     return NextResponse.json(

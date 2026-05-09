@@ -20,6 +20,10 @@ import { ExternalLink, KeyRound, LogOut } from "lucide-react";
 export const metadata = {
   title: "Admin",
   description: "Lightweight Vaexil.tv admin queue for suggestions.",
+  robots: {
+    index: false,
+    follow: false,
+  },
 };
 
 export const runtime = "nodejs";
