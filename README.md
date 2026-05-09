@@ -4,14 +4,14 @@ Vaexil.tv is the creator hub for Vaexil. It collects stream references, guide ar
 
 ## Current Reality
 
-This is an early production-ready build, not a placeholder. Public routes cover the home hub, guide landing pages, the Freelancer Free Items table, suggestion submission, community suggestions with vote thresholds, and VaexCore placeholder product cards. Admin routes are intentionally lightweight and password-protected for reviewing, verifying, rejecting, and publishing guide suggestions.
+This is an early production-ready build, not a placeholder. Public routes cover the home hub, guide landing pages, the verified Freelancer Free Items table, Hitman mods/setup notes, suggestion submission, community suggestions with vote thresholds, and VaexCore placeholder product cards. Admin routes are intentionally lightweight and password-protected for reviewing, verifying, rejecting, and publishing guide suggestions.
 
-Guide content is seeded with fictional placeholder rows only. Real Hitman or stream-guide data should be entered after verification through the admin workflow.
+The Freelancer Free Items guide is seeded from a verified Vaexil source list. The mods/setup guide tracks the current SMF-based load order and marks known-bad mods separately. Future guide additions should still go through review before they become official site content.
 
 ## What This Repo Contains
 
 - Public creator/stream hub
-- Guides and knowledge-base surfaces
+- Guides and knowledge-base surfaces, including verified Freelancer item data and the current Hitman mod load order
 - Community suggestion form and voting flow
 - Admin review/publishing surface
 - Footer links into the JAMARQ/Tenra/Vaexil site family, with admin access kept unobtrusive in the footer
@@ -43,7 +43,7 @@ npm run dev
 
 Open `http://localhost:3000`.
 
-Local development defaults to `.data/vaexil.db`, which is ignored by git. The app also creates and seeds the database automatically on first access if needed.
+Local development defaults to `.data/vaexil.db`, which is ignored by git. The app also creates and seeds the database automatically on first access if needed. Seeding removes the old fictional sample rows and upserts the verified Freelancer item list.
 
 ## Commands
 
@@ -101,7 +101,7 @@ See [docs/deployment.md](docs/deployment.md) for the full domain, DNS, environme
 
 ## Guardrails
 
-- Real guide content is intentionally not included. Seed rows are fictional placeholders only.
+- The current official Freelancer guide rows are verified seed data; keep future official additions reviewed before publishing.
 - Discord and GitHub links are configurable placeholders until final URLs exist.
 - No full user accounts or OAuth. Admin auth is intentionally lightweight for v1.
 - Clips and schedule are structural placeholders until real media or schedule data is ready.

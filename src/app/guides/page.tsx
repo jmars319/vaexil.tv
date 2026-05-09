@@ -13,14 +13,14 @@ const guideCards = [
     title: "Hitman Freelancer Free Items",
     href: "/guides/freelancer-free-items",
     description:
-      "A searchable table structure for verified item notes. Current rows are intentionally fictional seed data.",
+      "A verified searchable table of free Freelancer item locations, categories, rarity notes, and map-specific grabs.",
     icon: BookOpenText,
   },
   {
     title: "Mods / Setup",
     href: "/guides/mods-setup",
     description:
-      "Reserved for installation notes, compatibility reminders, and stream setup references once verified.",
+      "Current SMF-based Hitman mod stack, load order, Nexus links, and confirmed problematic mods to avoid.",
     icon: Wrench,
   },
   {
@@ -65,13 +65,14 @@ export default function GuidesPage() {
           <div>
             <h2 className="text-2xl font-semibold text-white">Mods / Setup</h2>
             <p className="mt-3 text-sm leading-6 text-slate-400">
-              This section is intentionally placeholder-only until real setup
-              notes are approved. It exists so the IA is ready without
-              pretending to know the final recommendations.
+              The mod setup page now tracks the current stream load order,
+              Simple Mod Framework requirement, and known-bad audio mods that
+              should stay out of the stack.
             </p>
           </div>
-          <div className="rounded-2xl border border-dashed border-white/15 p-6 text-sm text-slate-400">
-            No verified setup entries yet.
+          <div className="rounded-2xl border border-white/10 bg-white/[0.035] p-6 text-sm text-slate-300">
+            SMF plus the current 12-mod load order are listed with NexusMods
+            reference links.
           </div>
         </div>
       </Section>

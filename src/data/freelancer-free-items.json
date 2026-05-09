@@ -1,0 +1,1478 @@
+[
+  {
+    "id": "freelancer-free-ambrose-island-dak-x2-covert",
+    "itemName": "Dak X2 Covert",
+    "category": "SMG",
+    "mapName": "Ambrose Island",
+    "locationDescription": "Noel Crest; drop banana in his path",
+    "notes": "Rarity: Rare.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-ambrose-island-bartoli-12g-short-h",
+    "itemName": "Bartoli 12G Short H",
+    "category": "Shotgun",
+    "mapName": "Ambrose Island",
+    "locationDescription": "Pirate",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-ambrose-island-bartoli-75r",
+    "itemName": "Bartoli 75R",
+    "category": "Pistol",
+    "mapName": "Ambrose Island",
+    "locationDescription": "Pirate; Militia Soldier",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-ambrose-island-dak-x2",
+    "itemName": "DAK-X2",
+    "category": "SMG",
+    "mapName": "Ambrose Island",
+    "locationDescription": "Pirate with binoculars in lookout near bridge",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-ambrose-island-folding-knife",
+    "itemName": "Folding Knife",
+    "category": "Melee",
+    "mapName": "Ambrose Island",
+    "locationDescription": "Shrine level 3 and Militia Cave level 0",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-ambrose-island-fusil-g1-4-c",
+    "itemName": "Fusil G1-4/C",
+    "category": "Assault Rifle",
+    "mapName": "Ambrose Island",
+    "locationDescription": "Militia Soldier",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-ambrose-island-hx-10",
+    "itemName": "HX-10",
+    "category": "SMG",
+    "mapName": "Ambrose Island",
+    "locationDescription": "Militia Soldier",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-ambrose-island-oil-canister",
+    "itemName": "Oil Canister",
+    "category": "Tool",
+    "mapName": "Ambrose Island",
+    "locationDescription": "Workshop under bench",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-ambrose-island-shashka-a33",
+    "itemName": "Shashka A33",
+    "category": "Assault Rifle",
+    "mapName": "Ambrose Island",
+    "locationDescription": "Pirate",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-ambrose-island-tactical-bartoli-12g",
+    "itemName": "Tactical Bartoli 12G",
+    "category": "Shotgun",
+    "mapName": "Ambrose Island",
+    "locationDescription": "Militia Soldier",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-bangkok-tanto",
+    "itemName": "Tanto",
+    "category": "Melee",
+    "mapName": "Bangkok",
+    "locationDescription": "Cross' Roof Garden southeast room",
+    "notes": "Rarity: Rare.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-bangkok-bartoli-75r",
+    "itemName": "Bartoli 75R",
+    "category": "Pistol",
+    "mapName": "Bangkok",
+    "locationDescription": "Jordan Cross' Bodyguard",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-bangkok-bartoli-75s",
+    "itemName": "Bartoli 75S",
+    "category": "Pistol",
+    "mapName": "Bangkok",
+    "locationDescription": "Hotel Security",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-bangkok-baseball-bat",
+    "itemName": "Baseball Bat",
+    "category": "Melee",
+    "mapName": "Bangkok",
+    "locationDescription": "Cross' Office level 4",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-bangkok-fusil-g2",
+    "itemName": "Fusil G2",
+    "category": "Assault Rifle",
+    "mapName": "Bangkok",
+    "locationDescription": "Security room",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-bangkok-police-baton",
+    "itemName": "Police Baton",
+    "category": "Melee",
+    "mapName": "Bangkok",
+    "locationDescription": "North wing first floor Security Room",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-bangkok-tactical-bartoli-12g",
+    "itemName": "Tactical Bartoli 12G",
+    "category": "Shotgun",
+    "mapName": "Bangkok",
+    "locationDescription": "North wing first floor Security Room",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-berlin-sawed-off-bartoli-12g",
+    "itemName": "Sawed Off Bartoli 12G",
+    "category": "Shotgun",
+    "mapName": "Berlin",
+    "locationDescription": "Hirschmuller's office under desk",
+    "notes": "Rarity: Rare. Original prompt has exact crouch/pan tip.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-berlin-bartoli-75r",
+    "itemName": "Bartoli 75R",
+    "category": "Pistol",
+    "mapName": "Berlin",
+    "locationDescription": "Club Security",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-berlin-baseball-bat",
+    "itemName": "Baseball Bat",
+    "category": "Melee",
+    "mapName": "Berlin",
+    "locationDescription": "South of Wardrobe level 0 and Hirschmuller office level -2",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-berlin-hackl-9r",
+    "itemName": "Hackl 9R",
+    "category": "Pistol",
+    "mapName": "Berlin",
+    "locationDescription": "Biker",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-berlin-modern-sedative-syringe",
+    "itemName": "Modern Sedative Syringe",
+    "category": "Tool",
+    "mapName": "Berlin",
+    "locationDescription": "Cabinet north of DJ booth level -2",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-berlin-shashka-a33",
+    "itemName": "Shashka A33",
+    "category": "Assault Rifle",
+    "mapName": "Berlin",
+    "locationDescription": "Biker",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-berlin-tactical-bartoli-12g",
+    "itemName": "Tactical Bartoli 12G",
+    "category": "Shotgun",
+    "mapName": "Berlin",
+    "locationDescription": "Biker",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-chongqing-bartoli-75r",
+    "itemName": "Bartoli 75R",
+    "category": "Pistol",
+    "mapName": "Chongqing",
+    "locationDescription": "Tier 2 security Armory level -2",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-chongqing-bartoli-75s",
+    "itemName": "Bartoli 75S",
+    "category": "Pistol",
+    "mapName": "Chongqing",
+    "locationDescription": "Block Guard",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-chongqing-chloroform-flask",
+    "itemName": "Chloroform Flask",
+    "category": "Tool",
+    "mapName": "Chongqing",
+    "locationDescription": "Locker room of Tier 1 Security of ICA Facility level -1",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-chongqing-fusil-g2",
+    "itemName": "Fusil G2",
+    "category": "Assault Rifle",
+    "mapName": "Chongqing",
+    "locationDescription": "Southeastern rooftop on street Guard level 5",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-chongqing-hackl-9r",
+    "itemName": "Hackl 9R",
+    "category": "Pistol",
+    "mapName": "Chongqing",
+    "locationDescription": "Hush's bodyguard; Hush's Private Lab levels 4 and 5",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-chongqing-hackl-9s",
+    "itemName": "Hackl 9S",
+    "category": "Pistol",
+    "mapName": "Chongqing",
+    "locationDescription": "Street Guard",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-chongqing-ica-smg-raptor",
+    "itemName": "ICA SMG Raptor",
+    "category": "SMG",
+    "mapName": "Chongqing",
+    "locationDescription": "Facility Guard",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-chongqing-tactical-bartoli-12g",
+    "itemName": "Tactical Bartoli 12G",
+    "category": "Shotgun",
+    "mapName": "Chongqing",
+    "locationDescription": "Tier 2 security Armory level -2",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-colorado-bartoli-12g",
+    "itemName": "Bartoli 12G",
+    "category": "Shotgun",
+    "mapName": "Colorado",
+    "locationDescription": "Mansion server room",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-colorado-baseball-bat",
+    "itemName": "Baseball Bat",
+    "category": "Melee",
+    "mapName": "Colorado",
+    "locationDescription": "Mansion level 2",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-colorado-fusil-g1-4",
+    "itemName": "Fusil G1-4",
+    "category": "Assault Rifle",
+    "mapName": "Colorado",
+    "locationDescription": "Militia soldier",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-colorado-fusil-g2",
+    "itemName": "Fusil G2",
+    "category": "Assault Rifle",
+    "mapName": "Colorado",
+    "locationDescription": "Misc guards; barn level 1",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-colorado-hx-10",
+    "itemName": "HX-10",
+    "category": "SMG",
+    "mapName": "Colorado",
+    "locationDescription": "Militia Elite; barn level 1",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-colorado-hx-7",
+    "itemName": "HX-7",
+    "category": "SMG",
+    "mapName": "Colorado",
+    "locationDescription": "Misc guards; barn level 1",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-colorado-modern-lethal-syringe",
+    "itemName": "Modern Lethal Syringe",
+    "category": "Tool",
+    "mapName": "Colorado",
+    "locationDescription": "Mansion basement",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-colorado-tactical-bartoli-12g",
+    "itemName": "Tactical Bartoli 12G",
+    "category": "Shotgun",
+    "mapName": "Colorado",
+    "locationDescription": "Misc guards; barn level 1",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-dartmoor-bartoli-75r",
+    "itemName": "Bartoli 75R",
+    "category": "Pistol",
+    "mapName": "Dartmoor",
+    "locationDescription": "Mansion Guard; Bodyguard",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-dartmoor-bartoli-hunting-shotgun",
+    "itemName": "Bartoli Hunting Shotgun",
+    "category": "Shotgun",
+    "mapName": "Dartmoor",
+    "locationDescription": "Hallway east of Foyer level 0",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-dartmoor-hx-10",
+    "itemName": "HX-10",
+    "category": "SMG",
+    "mapName": "Dartmoor",
+    "locationDescription": "Bodyguard standing northeast of Foyer and another at top of stairs",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-dartmoor-tactical-bartoli-12g",
+    "itemName": "Tactical Bartoli 12G",
+    "category": "Shotgun",
+    "mapName": "Dartmoor",
+    "locationDescription": "Mansion Guard",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-dubai-dak-dti",
+    "itemName": "Dak DTI",
+    "category": "SMG",
+    "mapName": "Dubai",
+    "locationDescription": "Penthouse Guard",
+    "notes": "Rarity: Rare.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-dubai-emetic-pills",
+    "itemName": "Emetic Pills",
+    "category": "Tool",
+    "mapName": "Dubai",
+    "locationDescription": "Locker room off Kitchen level 0",
+    "notes": "Rarity: Rare.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-dubai-shashka-a33-covert",
+    "itemName": "Shashka A33 Covert",
+    "category": "Assault Rifle",
+    "mapName": "Dubai",
+    "locationDescription": "Penthouse Guard",
+    "notes": "Rarity: Rare.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-dubai-bartoli-75r",
+    "itemName": "Bartoli 75R",
+    "category": "Pistol",
+    "mapName": "Dubai",
+    "locationDescription": "Event Security",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-haven-island-bartoli-75r",
+    "itemName": "Bartoli 75R",
+    "category": "Pistol",
+    "mapName": "Haven Island",
+    "locationDescription": "Villa Guard; resort guard",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-haven-island-bartoli-75s",
+    "itemName": "Bartoli 75S",
+    "category": "Pistol",
+    "mapName": "Haven Island",
+    "locationDescription": "Security Outpost",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-haven-island-baseball-bat",
+    "itemName": "Baseball Bat",
+    "category": "Melee",
+    "mapName": "Haven Island",
+    "locationDescription": "Turtle hut",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-haven-island-folding-knife",
+    "itemName": "Folding Knife",
+    "category": "Melee",
+    "mapName": "Haven Island",
+    "locationDescription": "Locker room in security Farm level -3",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-haven-island-fusil-g1-4-c",
+    "itemName": "Fusil G1-4/C",
+    "category": "Assault Rifle",
+    "mapName": "Haven Island",
+    "locationDescription": "Villa Guard in Home Theater of Villa level 2",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-haven-island-fusil-g2",
+    "itemName": "Fusil G2",
+    "category": "Assault Rifle",
+    "mapName": "Haven Island",
+    "locationDescription": "Secret Office in Villa level 1",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-haven-island-hx-10",
+    "itemName": "HX-10",
+    "category": "SMG",
+    "mapName": "Haven Island",
+    "locationDescription": "Secret Office in Villa level 1",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-haven-island-modern-emetic-syringe",
+    "itemName": "Modern Emetic Syringe",
+    "category": "Tool",
+    "mapName": "Haven Island",
+    "locationDescription": "Med Clinic",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-haven-island-police-baton",
+    "itemName": "Police Baton",
+    "category": "Melee",
+    "mapName": "Haven Island",
+    "locationDescription": "Security Outpost",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-haven-island-remote-explosive",
+    "itemName": "Remote Explosive",
+    "category": "Tool",
+    "mapName": "Haven Island",
+    "locationDescription": "Security Room in Villa level 1",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-haven-island-tactical-bartoli-12g",
+    "itemName": "Tactical Bartoli 12G",
+    "category": "Shotgun",
+    "mapName": "Haven Island",
+    "locationDescription": "Villa guards patrolling Private Island",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-hokkaido-tanto",
+    "itemName": "Tanto",
+    "category": "Melee",
+    "mapName": "Hokkaido",
+    "locationDescription": "Near northern cliff top exit level 3 and Yuki's room",
+    "notes": "Rarity: Rare.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-hokkaido-bartoli-75r",
+    "itemName": "Bartoli 75R",
+    "category": "Pistol",
+    "mapName": "Hokkaido",
+    "locationDescription": "Resort Security; Bodyguard",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-hokkaido-baseball-bat",
+    "itemName": "Baseball Bat",
+    "category": "Melee",
+    "mapName": "Hokkaido",
+    "locationDescription": "Director's Office level 3",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-hokkaido-disposable-scrambler",
+    "itemName": "Disposable Scrambler",
+    "category": "Tool",
+    "mapName": "Hokkaido",
+    "locationDescription": "Cabinet in Security Room near Foyer",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-hokkaido-hx-10",
+    "itemName": "HX-10",
+    "category": "SMG",
+    "mapName": "Hokkaido",
+    "locationDescription": "Resort Security",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-hokkaido-hx-7",
+    "itemName": "HX-7",
+    "category": "SMG",
+    "mapName": "Hokkaido",
+    "locationDescription": "Bodyguard",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-hokkaido-police-baton",
+    "itemName": "Police Baton",
+    "category": "Melee",
+    "mapName": "Hokkaido",
+    "locationDescription": "Security Room near Foyer",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-isle-of-sgail-burial-dagger",
+    "itemName": "Burial Dagger",
+    "category": "Melee",
+    "mapName": "Isle of Sgail",
+    "locationDescription": "Warehouse crate level 3; use crowbar",
+    "notes": "Rarity: Epic.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-isle-of-sgail-katana",
+    "itemName": "Katana",
+    "category": "Melee",
+    "mapName": "Isle of Sgail",
+    "locationDescription": "Gallery and Warehouse crate level 3; use crowbar",
+    "notes": "Rarity: Epic.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-isle-of-sgail-circumcision-knife",
+    "itemName": "Circumcision Knife",
+    "category": "Melee",
+    "mapName": "Isle of Sgail",
+    "locationDescription": "Warehouse crate level 3; use crowbar",
+    "notes": "Rarity: Rare.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-isle-of-sgail-hackl-9s-covert",
+    "itemName": "Hackl 9S Covert",
+    "category": "Pistol",
+    "mapName": "Isle of Sgail",
+    "locationDescription": "Cave level 1 directly below VIP Lounge; use shovel from Morgue level 3",
+    "notes": "Rarity: Rare.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-isle-of-sgail-mace",
+    "itemName": "Mace",
+    "category": "Melee",
+    "mapName": "Isle of Sgail",
+    "locationDescription": "Catacombs level 1 and Gallery storage southwest",
+    "notes": "Rarity: Rare.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-isle-of-sgail-saber",
+    "itemName": "Saber",
+    "category": "Melee",
+    "mapName": "Isle of Sgail",
+    "locationDescription": "Constant's office level 6",
+    "notes": "Rarity: Rare.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-isle-of-sgail-sappers-axe",
+    "itemName": "Sappers Axe",
+    "category": "Melee",
+    "mapName": "Isle of Sgail",
+    "locationDescription": "Penthouse",
+    "notes": "Rarity: Rare.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-isle-of-sgail-bartoli-12g",
+    "itemName": "Bartoli 12G",
+    "category": "Shotgun",
+    "mapName": "Isle of Sgail",
+    "locationDescription": "Elite Guard",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-isle-of-sgail-bartoli-75r",
+    "itemName": "Bartoli 75R",
+    "category": "Pistol",
+    "mapName": "Isle of Sgail",
+    "locationDescription": "Guard",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-isle-of-sgail-baseball-bat",
+    "itemName": "Baseball Bat",
+    "category": "Melee",
+    "mapName": "Isle of Sgail",
+    "locationDescription": "Tower Storage level 4",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-isle-of-sgail-chloroform-flask",
+    "itemName": "Chloroform Flask",
+    "category": "Tool",
+    "mapName": "Isle of Sgail",
+    "locationDescription": "Morgue level 3",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-isle-of-sgail-fusil-g1-4",
+    "itemName": "Fusil G1-4",
+    "category": "Assault Rifle",
+    "mapName": "Isle of Sgail",
+    "locationDescription": "Some Raiders and Elite Guards",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-isle-of-sgail-fusil-g2",
+    "itemName": "Fusil G2",
+    "category": "Assault Rifle",
+    "mapName": "Isle of Sgail",
+    "locationDescription": "Elite Guard",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-isle-of-sgail-hx-10",
+    "itemName": "HX-10",
+    "category": "SMG",
+    "mapName": "Isle of Sgail",
+    "locationDescription": "Raider",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-isle-of-sgail-hx-7",
+    "itemName": "HX-7",
+    "category": "SMG",
+    "mapName": "Isle of Sgail",
+    "locationDescription": "Guard",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-isle-of-sgail-tactical-bartoli-12g",
+    "itemName": "Tactical Bartoli 12G",
+    "category": "Shotgun",
+    "mapName": "Isle of Sgail",
+    "locationDescription": "Raider",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-marrakesh-saber",
+    "itemName": "Saber",
+    "category": "Melee",
+    "mapName": "Marrakesh",
+    "locationDescription": "Shoe Shop and Director's Office",
+    "notes": "Rarity: Rare.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-marrakesh-bartoli-75r",
+    "itemName": "Bartoli 75R",
+    "category": "Pistol",
+    "mapName": "Marrakesh",
+    "locationDescription": "Military Soldier; Consulate security",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-marrakesh-fusil-g1-4",
+    "itemName": "Fusil G1-4",
+    "category": "Assault Rifle",
+    "mapName": "Marrakesh",
+    "locationDescription": "School armory",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-marrakesh-fusil-g2",
+    "itemName": "Fusil G2",
+    "category": "Assault Rifle",
+    "mapName": "Marrakesh",
+    "locationDescription": "Bodyguard",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-marrakesh-hx-10",
+    "itemName": "HX-10",
+    "category": "SMG",
+    "mapName": "Marrakesh",
+    "locationDescription": "Military Soldier",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-marrakesh-remote-explosive",
+    "itemName": "Remote Explosive",
+    "category": "Tool",
+    "mapName": "Marrakesh",
+    "locationDescription": "Middle of tunnel level 0; school armory",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-marrakesh-shashka-a33",
+    "itemName": "Shashka A33",
+    "category": "Assault Rifle",
+    "mapName": "Marrakesh",
+    "locationDescription": "Elite Soldier; Elite Officer; school armory",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-marrakesh-tactical-bartoli-12g",
+    "itemName": "Tactical Bartoli 12G",
+    "category": "Shotgun",
+    "mapName": "Marrakesh",
+    "locationDescription": "Garage; tunnel level 0",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-mendoza-hx-7-covert",
+    "itemName": "HX-7 Covert",
+    "category": "SMG",
+    "mapName": "Mendoza",
+    "locationDescription": "Villa living room level 4, on mercenary if safe is there",
+    "notes": "Rarity: Rare. Original lookup flagged this as a safe-related or special-spawn item.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-mendoza-hackl-9s-covert",
+    "itemName": "Hackl 9S Covert",
+    "category": "Pistol",
+    "mapName": "Mendoza",
+    "locationDescription": "Extra mercenary in corridor to Armory if he is target",
+    "notes": "Rarity: Rare. Original lookup flagged this as a safe-related or special-spawn item. Originally flagged for extra checking; included here as verified from the current Vaexil source list.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-mendoza-dak-x2-covert",
+    "itemName": "Dak X2 Covert",
+    "category": "SMG",
+    "mapName": "Mendoza",
+    "locationDescription": "Bodyguard around Asado level 3; leaning on railing on the right",
+    "notes": "Rarity: Rare.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-mendoza-sappers-axe",
+    "itemName": "Sappers Axe",
+    "category": "Melee",
+    "mapName": "Mendoza",
+    "locationDescription": "Villa Office level 5 on wall",
+    "notes": "Rarity: Rare.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-mendoza-bartoli-75s",
+    "itemName": "Bartoli 75S",
+    "category": "Pistol",
+    "mapName": "Mendoza",
+    "locationDescription": "Gaucho",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-mendoza-bartoli-hunting-shotgun",
+    "itemName": "Bartoli Hunting Shotgun",
+    "category": "Shotgun",
+    "mapName": "Mendoza",
+    "locationDescription": "Gaucho; Armory level 2",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-mendoza-bartoli-woodsman-hunting-rifle",
+    "itemName": "Bartoli Woodsman Hunting Rifle",
+    "category": "Sniper Rifle",
+    "mapName": "Mendoza",
+    "locationDescription": "Silo level 5 on tripod",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-mendoza-hackl-9r",
+    "itemName": "Hackl 9R",
+    "category": "Pistol",
+    "mapName": "Mendoza",
+    "locationDescription": "Bodyguard",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-mendoza-seiger-ar552-tactical",
+    "itemName": "Seiger AR552 Tactical",
+    "category": "Assault Rifle",
+    "mapName": "Mendoza",
+    "locationDescription": "Mercenary",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-mendoza-1k-merces",
+    "itemName": "~1k Merces",
+    "category": "Currency",
+    "mapName": "Mendoza",
+    "locationDescription": "Villa basement safe code 2006",
+    "notes": "Rarity: N/A.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-miami-amputation-knife",
+    "itemName": "Amputation Knife",
+    "category": "Melee",
+    "mapName": "Miami",
+    "locationDescription": "Emergency Bay northeast corner",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-miami-baseball-bat",
+    "itemName": "Baseball Bat",
+    "category": "Melee",
+    "mapName": "Miami",
+    "locationDescription": "Building at pier and alley next to Hotel",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-miami-hx-10",
+    "itemName": "HX-10",
+    "category": "SMG",
+    "mapName": "Miami",
+    "locationDescription": "Bodyguard in Android Showroom level 2",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-miami-hackl-9r",
+    "itemName": "Hackl 9R",
+    "category": "Pistol",
+    "mapName": "Miami",
+    "locationDescription": "Kronstadt Security",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-miami-hackl-9s",
+    "itemName": "Hackl 9S",
+    "category": "Pistol",
+    "mapName": "Miami",
+    "locationDescription": "Event Security",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-miami-modern-sedative-syringe",
+    "itemName": "Modern Sedative Syringe",
+    "category": "Tool",
+    "mapName": "Miami",
+    "locationDescription": "Medical hut cabinets north east of Stands South; Emergency Bay southeast room",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-miami-tactical-bartoli-12g",
+    "itemName": "Tactical Bartoli 12G",
+    "category": "Shotgun",
+    "mapName": "Miami",
+    "locationDescription": "Security Area near Event Entrance; above Kronstadt garage",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-mumbai-amputation-knife",
+    "itemName": "Amputation Knife",
+    "category": "Melee",
+    "mapName": "Mumbai",
+    "locationDescription": "Train yard; train car north of Steam Pool",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-mumbai-bartoli-75r",
+    "itemName": "Bartoli 75R",
+    "category": "Pistol",
+    "mapName": "Mumbai",
+    "locationDescription": "Local Security; Thug",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-mumbai-bartoli-woodsman-hunting-rifle",
+    "itemName": "Bartoli Woodsman Hunting Rifle",
+    "category": "Sniper Rifle",
+    "mapName": "Mumbai",
+    "locationDescription": "Kashmerian's sniper nest level 3",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-mumbai-baseball-bat",
+    "itemName": "Baseball Bat",
+    "category": "Melee",
+    "mapName": "Mumbai",
+    "locationDescription": "Top floor of tower level 7; Beach level -1",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-mumbai-dak-x2",
+    "itemName": "DAK-X2",
+    "category": "SMG",
+    "mapName": "Mumbai",
+    "locationDescription": "Bollywood Bodyguard; Elite Thug",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-mumbai-folding-knife",
+    "itemName": "Folding Knife",
+    "category": "Melee",
+    "mapName": "Mumbai",
+    "locationDescription": "Outside Kashmerian's apartment level 2",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-mumbai-fusil-g1-4",
+    "itemName": "Fusil G1-4",
+    "category": "Assault Rifle",
+    "mapName": "Mumbai",
+    "locationDescription": "Bollywood Bodyguard",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-mumbai-hx-10",
+    "itemName": "HX-10",
+    "category": "SMG",
+    "mapName": "Mumbai",
+    "locationDescription": "Thug; Elite Thug; Queens Guard",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-mumbai-shashka-a33",
+    "itemName": "Shashka A33",
+    "category": "Assault Rifle",
+    "mapName": "Mumbai",
+    "locationDescription": "Thug; Elite Thug; Queens Guard",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-mumbai-tactical-bartoli-12g",
+    "itemName": "Tactical Bartoli 12G",
+    "category": "Shotgun",
+    "mapName": "Mumbai",
+    "locationDescription": "Thug; Elite Thug; Queens Guard",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-new-york-golden-sawed-off-bartoli-12g",
+    "itemName": "Golden Sawed Off Bartoli 12G",
+    "category": "Shotgun",
+    "mapName": "New York",
+    "locationDescription": "Safe room; loot 7 gold bars disguised as bank robber while alarm is off",
+    "notes": "Rarity: Legendary.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-new-york-tanto",
+    "itemName": "Tanto",
+    "category": "Melee",
+    "mapName": "New York",
+    "locationDescription": "Boss room with one-way glass, level 2",
+    "notes": "Rarity: Rare.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-new-york-bartoli-75r",
+    "itemName": "Bartoli 75R",
+    "category": "Pistol",
+    "mapName": "New York",
+    "locationDescription": "Security guard",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-new-york-chloroform-flask",
+    "itemName": "Chloroform Flask",
+    "category": "Tool",
+    "mapName": "New York",
+    "locationDescription": "Cabinet in security room level -1; deposit box near wet floor",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-new-york-claw-hammer",
+    "itemName": "Claw Hammer",
+    "category": "Melee",
+    "mapName": "New York",
+    "locationDescription": "Basement carpark, level -1",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-new-york-dak-x2",
+    "itemName": "DAK-X2",
+    "category": "SMG",
+    "mapName": "New York",
+    "locationDescription": "Bank robber toilets, level 0 lobby",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-new-york-folding-knife",
+    "itemName": "Folding Knife",
+    "category": "Melee",
+    "mapName": "New York",
+    "locationDescription": "Bank robber toilets, level 0 lobby",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-new-york-hx-7",
+    "itemName": "HX-7",
+    "category": "SMG",
+    "mapName": "New York",
+    "locationDescription": "High security guard",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-new-york-police-baton",
+    "itemName": "Police Baton",
+    "category": "Melee",
+    "mapName": "New York",
+    "locationDescription": "Guard TV room, level 0",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-new-york-tactical-bartoli-12g",
+    "itemName": "Tactical Bartoli 12G",
+    "category": "Shotgun",
+    "mapName": "New York",
+    "locationDescription": "High security guard",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-new-york-5k-10k-merces",
+    "itemName": "5k-10k Merces",
+    "category": "Currency",
+    "mapName": "New York",
+    "locationDescription": "Vault and 2 north deposit boxes",
+    "notes": "Rarity: N/A. Master key on high security guard watching camera recorder.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-paris-saber",
+    "itemName": "Saber",
+    "category": "Melee",
+    "mapName": "Paris",
+    "locationDescription": "Museum and Dressing room",
+    "notes": "Rarity: Rare.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-paris-bartoli-75r",
+    "itemName": "Bartoli 75R",
+    "category": "Pistol",
+    "mapName": "Paris",
+    "locationDescription": "Security Guard; Cicada Bodyguard",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-paris-fusil-g2",
+    "itemName": "Fusil G2",
+    "category": "Assault Rifle",
+    "mapName": "Paris",
+    "locationDescription": "Cicada Bodyguard",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-paris-hx-10",
+    "itemName": "HX-10",
+    "category": "SMG",
+    "mapName": "Paris",
+    "locationDescription": "Cicada Bodyguard",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-paris-tactical-bartoli-12g",
+    "itemName": "Tactical Bartoli 12G",
+    "category": "Shotgun",
+    "mapName": "Paris",
+    "locationDescription": "Basement security room southeast corner, level 0",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-safehouse-modern-emetic-syringe",
+    "itemName": "Modern Emetic Syringe",
+    "category": "Tool",
+    "mapName": "Safehouse",
+    "locationDescription": "Pick mushroom, then take to infirmary and use bench",
+    "notes": "Rarity: Common. Crafted in safehouse.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-safehouse-modern-lethal-syringe",
+    "itemName": "Modern Lethal Syringe",
+    "category": "Tool",
+    "mapName": "Safehouse",
+    "locationDescription": "Pick mushroom, refine in shed at level 32, then take to infirmary and use bench",
+    "notes": "Rarity: Common. Crafted in safehouse.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-safehouse-modern-sedative-syringe",
+    "itemName": "Modern Sedative Syringe",
+    "category": "Tool",
+    "mapName": "Safehouse",
+    "locationDescription": "Catch fish, fillet in kitchen, then take to infirmary and use bench",
+    "notes": "Rarity: Common. Crafted in safehouse.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-safehouse-deluxe-pack-ica19-silverballer",
+    "itemName": "ICA19 Silverballer",
+    "category": "Pistol",
+    "mapName": "Safehouse Deluxe Pack",
+    "locationDescription": "Inside crate up path through shed window",
+    "notes": "Rarity: Legendary. One-time only; Deluxe Pack; Mastery 76 premium shed.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-safehouse-deluxe-pack-fiber-wire",
+    "itemName": "Fiber Wire",
+    "category": "Melee",
+    "mapName": "Safehouse Deluxe Pack",
+    "locationDescription": "Inside crate up path through shed window",
+    "notes": "Rarity: Epic. One-time only; Deluxe Pack; Mastery 76 premium shed.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-safehouse-deluxe-pack-30-000-merces",
+    "itemName": "30,000 Merces",
+    "category": "Currency",
+    "mapName": "Safehouse Deluxe Pack",
+    "locationDescription": "Inside crate up path through shed window",
+    "notes": "Rarity: N/A. One-time only; Deluxe Pack; Mastery 76 premium shed.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-santa-fortuna-bartoli-75r",
+    "itemName": "Bartoli 75R",
+    "category": "Pistol",
+    "mapName": "Santa Fortuna",
+    "locationDescription": "Street Soldier; Mansion Guard",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-santa-fortuna-claw-hammer",
+    "itemName": "Claw Hammer",
+    "category": "Melee",
+    "mapName": "Santa Fortuna",
+    "locationDescription": "Northwest corner of Burial Site",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-santa-fortuna-dak-x2",
+    "itemName": "DAK-X2",
+    "category": "SMG",
+    "mapName": "Santa Fortuna",
+    "locationDescription": "Elite Guard",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-santa-fortuna-hx-10",
+    "itemName": "HX-10",
+    "category": "SMG",
+    "mapName": "Santa Fortuna",
+    "locationDescription": "Mansion Guard",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-santa-fortuna-shashka-a33",
+    "itemName": "Shashka A33",
+    "category": "Assault Rifle",
+    "mapName": "Santa Fortuna",
+    "locationDescription": "Mansion Guard",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-santa-fortuna-tactical-bartoli-12g",
+    "itemName": "Tactical Bartoli 12G",
+    "category": "Shotgun",
+    "mapName": "Santa Fortuna",
+    "locationDescription": "Elite Guard",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-santa-fortuna-1000-merces",
+    "itemName": "~1000 Merces",
+    "category": "Currency",
+    "mapName": "Santa Fortuna",
+    "locationDescription": "Rico's Office safe level 2",
+    "notes": "Rarity: N/A. Blow open or return Hector's Love Letter from guard with limp.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-sapienza-bartoli-12g",
+    "itemName": "Bartoli 12G",
+    "category": "Shotgun",
+    "mapName": "Sapienza",
+    "locationDescription": "Tower Ruin at top level 7",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-sapienza-bartoli-75s",
+    "itemName": "Bartoli 75S",
+    "category": "Pistol",
+    "mapName": "Sapienza",
+    "locationDescription": "Mansion Security",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-sapienza-baseball-bat",
+    "itemName": "Baseball Bat",
+    "category": "Melee",
+    "mapName": "Sapienza",
+    "locationDescription": "Locked corner shop north of Ice Cream Shop level 3",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-sapienza-folding-knife",
+    "itemName": "Folding Knife",
+    "category": "Melee",
+    "mapName": "Sapienza",
+    "locationDescription": "South balcony overlooking beach level 2",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-sapienza-hx-10",
+    "itemName": "HX-10",
+    "category": "SMG",
+    "mapName": "Sapienza",
+    "locationDescription": "Two Biolab Security at ramp in southwest cave, level 0",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-sapienza-tactical-bartoli-12g",
+    "itemName": "Tactical Bartoli 12G",
+    "category": "Shotgun",
+    "mapName": "Sapienza",
+    "locationDescription": "Biolab Security",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-showdowns-assassins-hwk21-covert",
+    "itemName": "Assassins HWK21 Covert",
+    "category": "Pistol",
+    "mapName": "Showdowns",
+    "locationDescription": "Suspect assassins",
+    "notes": "Rarity: Rare. Showdown-only source.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-whittleton-creek-hackl-9s-covert",
+    "itemName": "Hackl 9S Covert",
+    "category": "Pistol",
+    "mapName": "Whittleton Creek",
+    "locationDescription": "Garbageman at safe if at Griswold property",
+    "notes": "Rarity: Rare. Original lookup flagged this as a safe-related or special-spawn item.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-whittleton-creek-emetic-pills",
+    "itemName": "Emetic Pills",
+    "category": "Tool",
+    "mapName": "Whittleton Creek",
+    "locationDescription": "West Property basement",
+    "notes": "Rarity: Rare.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-whittleton-creek-hx-7-covert",
+    "itemName": "HX-7 Covert",
+    "category": "SMG",
+    "mapName": "Whittleton Creek",
+    "locationDescription": "Cassidy Bodyguard",
+    "notes": "Rarity: Rare.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-whittleton-creek-bartoli-75r",
+    "itemName": "Bartoli 75R",
+    "category": "Pistol",
+    "mapName": "Whittleton Creek",
+    "locationDescription": "Various locations",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-whittleton-creek-baseball-bat",
+    "itemName": "Baseball Bat",
+    "category": "Melee",
+    "mapName": "Whittleton Creek",
+    "locationDescription": "Wilson Property northeast room upstairs level 1",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-whittleton-creek-dak-x2",
+    "itemName": "DAK-X2",
+    "category": "SMG",
+    "mapName": "Whittleton Creek",
+    "locationDescription": "Janus bodyguard",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-whittleton-creek-fusil-g1-4-c",
+    "itemName": "Fusil G1-4/C",
+    "category": "Assault Rifle",
+    "mapName": "Whittleton Creek",
+    "locationDescription": "Cassidy Bodyguard",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-whittleton-creek-hackl-9r",
+    "itemName": "Hackl 9R",
+    "category": "Pistol",
+    "mapName": "Whittleton Creek",
+    "locationDescription": "Police Deputy",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-whittleton-creek-hackl-9s",
+    "itemName": "Hackl 9S",
+    "category": "Pistol",
+    "mapName": "Whittleton Creek",
+    "locationDescription": "Undercover Guards; Janus guard",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-whittleton-creek-tac-4-ar-auto",
+    "itemName": "TAC-4 AR Auto",
+    "category": "Assault Rifle",
+    "mapName": "Whittleton Creek",
+    "locationDescription": "Cassidy Property Gun Room",
+    "notes": "Rarity: Common.",
+    "verified": true
+  },
+  {
+    "id": "freelancer-free-whittleton-creek-tactical-bartoli-12g",
+    "itemName": "Tactical Bartoli 12G",
+    "category": "Shotgun",
+    "mapName": "Whittleton Creek",
+    "locationDescription": "Spencer \"the Hammer\" Green",
+    "notes": "Rarity: Common.",
+    "verified": true
+  }
+]

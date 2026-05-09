@@ -1,4 +1,5 @@
 import { createClient } from "@libsql/client";
+import { readFile } from "node:fs/promises";
 import { mkdirSync } from "node:fs";
 import { join } from "node:path";
 
@@ -13,35 +14,12 @@ const db = createClient({
   authToken: process.env.LIBSQL_AUTH_TOKEN || undefined,
 });
 
-const seedItems = [
-  [
-    "seed-sample-alpha",
-    "Sample Item Alpha",
-    "Fictional sample",
-    "Example Map One",
-    "Placeholder location description for layout and filtering only.",
-    "Seed data only. Replace with verified stream/community findings before treating this as guide content.",
-    0,
-  ],
-  [
-    "seed-sample-beta",
-    "Sample Item Beta",
-    "Fictional sample",
-    "Example Map Two",
-    "Another fictional row used to confirm the table reads well on mobile.",
-    "This is not real Hitman Freelancer data and should not be published as fact.",
-    0,
-  ],
-  [
-    "seed-sample-gamma",
-    "Sample Item Gamma",
-    "Fictional sample",
-    "Example Map Three",
-    "Short placeholder location text for testing the search experience.",
-    "Seeded placeholder. Awaiting verified guide entries.",
-    0,
-  ],
-];
+const seedItems = JSON.parse(
+  await readFile(
+    new URL("../src/data/freelancer-free-items.json", import.meta.url),
+    "utf8",
+  ),
+);
 
 await db.batch([
   {
@@ -93,6 +71,16 @@ await db.batch([
   },
   {
     sql: `
+      CREATE TABLE IF NOT EXISTS admin_settings (
+        key TEXT PRIMARY KEY,
+        value TEXT NOT NULL,
+        updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+      );
+    `,
+    args: [],
+  },
+  {
+    sql: `
       CREATE UNIQUE INDEX IF NOT EXISTS idx_official_source_suggestion
       ON official_items(source_suggestion_id)
       WHERE source_suggestion_id IS NOT NULL;
@@ -100,6 +88,8 @@ await db.batch([
     args: [],
   },
 ]);
+
+await db.execute("DELETE FROM official_items WHERE id LIKE 'seed-sample-%';");
 
 for (const item of seedItems) {
   await db.execute({
@@ -113,10 +103,25 @@ for (const item of seedItems) {
         notes,
         verified
       )
-      VALUES (?, ?, ?, ?, ?, ?, ?);
+      VALUES (?, ?, ?, ?, ?, ?, ?)
+      ON CONFLICT(id) DO UPDATE SET
+        item_name = excluded.item_name,
+        category = excluded.category,
+        map_name = excluded.map_name,
+        location_description = excluded.location_description,
+        notes = excluded.notes,
+        verified = excluded.verified;
     `,
-    args: item,
+    args: [
+      item.id,
+      item.itemName,
+      item.category,
+      item.mapName,
+      item.locationDescription,
+      item.notes,
+      item.verified ? 1 : 0,
+    ],
   });
 }
 
-console.log("Seeded Vaexil.tv placeholder guide data.");
+console.log(`Seeded ${seedItems.length} verified Vaexil.tv guide items.`);

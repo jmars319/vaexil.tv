@@ -56,7 +56,8 @@ Confirm:
 
 - `https://vaexil.tv` loads without certificate warnings.
 - `www.vaexil.tv` redirects to the canonical domain.
-- `/guides/freelancer-free-items` loads seeded guide rows from the hosted database.
+- `/guides/freelancer-free-items` loads the verified guide rows from the hosted database.
+- `/guides/mods-setup` shows the SMF requirement, current load order, Nexus links, and known-bad mods.
 - `/suggest` accepts a test suggestion.
 - `/suggestions` shows the submitted suggestion.
 - `/admin` accepts `ADMIN_PASSWORD`.
@@ -67,6 +68,6 @@ Confirm:
 ## Notes
 
 - Do not enable static export for this project. Server actions and the DB-backed pages require the Next.js server runtime.
-- Real guide content should be entered only after verification. The initial rows are fictional seed data.
+- Official guide content should be entered only after verification. The current Freelancer rows are verified seed data and replace the old fictional samples during DB seeding.
 - Changing any Vercel environment variable requires a new deployment before the change applies.
 - `ADMIN_PASSWORD` is the bootstrap/fallback password. In-app password changes are stored as hashes in the configured database.

@@ -1,43 +1,9 @@
 import { createClient, type Client } from "@libsql/client";
+import officialSeedItems from "@/data/freelancer-free-items.json";
 import { mkdirSync } from "node:fs";
 import { join } from "node:path";
 
 const localDataDir = join(process.cwd(), ".data");
-
-const officialSeedItems = [
-  {
-    id: "seed-sample-alpha",
-    itemName: "Sample Item Alpha",
-    category: "Fictional sample",
-    mapName: "Example Map One",
-    locationDescription:
-      "Placeholder location description for layout and filtering only.",
-    notes:
-      "Seed data only. Replace with verified stream/community findings before treating this as guide content.",
-    verified: 0,
-  },
-  {
-    id: "seed-sample-beta",
-    itemName: "Sample Item Beta",
-    category: "Fictional sample",
-    mapName: "Example Map Two",
-    locationDescription:
-      "Another fictional row used to confirm the table reads well on mobile.",
-    notes:
-      "This is not real Hitman Freelancer data and should not be published as fact.",
-    verified: 0,
-  },
-  {
-    id: "seed-sample-gamma",
-    itemName: "Sample Item Gamma",
-    category: "Fictional sample",
-    mapName: "Example Map Three",
-    locationDescription:
-      "Short placeholder location text for testing the search experience.",
-    notes: "Seeded placeholder. Awaiting verified guide entries.",
-    verified: 0,
-  },
-];
 
 declare global {
   var vaexilDbClient: Client | undefined;
@@ -168,34 +134,38 @@ async function migrateAndSeed() {
     },
   ]);
 
-  const existing = await db.execute("SELECT COUNT(*) AS count FROM official_items;");
-  const count = Number(existing.rows[0]?.count || 0);
+  await db.execute("DELETE FROM official_items WHERE id LIKE 'seed-sample-%';");
 
-  if (count === 0) {
-    await db.batch(
-      officialSeedItems.map((item) => ({
-        sql: `
-          INSERT INTO official_items (
-            id,
-            item_name,
-            category,
-            map_name,
-            location_description,
-            notes,
-            verified
-          )
-          VALUES (?, ?, ?, ?, ?, ?, ?);
-        `,
-        args: [
-          item.id,
-          item.itemName,
-          item.category,
-          item.mapName,
-          item.locationDescription,
-          item.notes,
-          item.verified,
-        ],
-      })),
-    );
-  }
+  await db.batch(
+    officialSeedItems.map((item) => ({
+      sql: `
+        INSERT INTO official_items (
+          id,
+          item_name,
+          category,
+          map_name,
+          location_description,
+          notes,
+          verified
+        )
+        VALUES (?, ?, ?, ?, ?, ?, ?)
+        ON CONFLICT(id) DO UPDATE SET
+          item_name = excluded.item_name,
+          category = excluded.category,
+          map_name = excluded.map_name,
+          location_description = excluded.location_description,
+          notes = excluded.notes,
+          verified = excluded.verified;
+      `,
+      args: [
+        item.id,
+        item.itemName,
+        item.category,
+        item.mapName,
+        item.locationDescription,
+        item.notes,
+        item.verified ? 1 : 0,
+      ],
+    })),
+  );
 }

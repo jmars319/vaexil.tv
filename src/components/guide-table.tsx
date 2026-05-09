@@ -90,6 +90,10 @@ export function GuideTable({ items }: { items: OfficialGuideItem[] }) {
         </label>
       </div>
 
+      <div className="border-b border-white/10 px-4 py-3 text-xs font-medium uppercase tracking-[0.14em] text-slate-500">
+        Showing {filteredItems.length} of {items.length} verified entries
+      </div>
+
       {filteredItems.length === 0 ? (
         <div className="p-8 text-center text-sm text-slate-400">
           No guide items match the current filters.
@@ -133,7 +137,7 @@ export function GuideTable({ items }: { items: OfficialGuideItem[] }) {
                           : "rounded-full border border-white/10 bg-white/5 px-2.5 py-1 text-xs font-medium text-slate-400"
                       }
                     >
-                      {item.verified ? "Verified" : "Seed"}
+                      {item.verified ? "Verified" : "Unverified"}
                     </span>
                   </td>
                 </tr>
