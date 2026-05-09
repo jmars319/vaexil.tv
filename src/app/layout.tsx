@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { PageViewTracker } from "@/components/page-view-tracker";
 import { PageShell } from "@/components/shell";
 import { siteConfig } from "@/lib/config";
 import "./globals.css";
@@ -64,6 +65,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
+        <PageViewTracker />
         <PageShell>{children}</PageShell>
       </body>
     </html>

@@ -10,6 +10,7 @@ const routes = [
   "/suggest",
   "/suggestions",
   "/vaexcore",
+  "/contact",
 ];
 
 export default function sitemap(): MetadataRoute.Sitemap {

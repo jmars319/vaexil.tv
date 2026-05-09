@@ -36,6 +36,35 @@ export const suggestionSchema = z.object({
   sourceUrl: optionalUrl,
 });
 
+export const contactSchema = z.object({
+  name: z
+    .string()
+    .trim()
+    .min(2, "Name must be at least 2 characters.")
+    .max(100, "Name must be 100 characters or less."),
+  email: z
+    .string()
+    .trim()
+    .email("Enter a valid email address.")
+    .max(160, "Email must be 160 characters or less."),
+  organization: z
+    .string()
+    .trim()
+    .max(120, "Organization must be 120 characters or less.")
+    .optional()
+    .transform((value) => value || ""),
+  inquiryType: z
+    .string()
+    .trim()
+    .min(2, "Choose an inquiry type.")
+    .max(80, "Inquiry type must be 80 characters or less."),
+  message: z
+    .string()
+    .trim()
+    .min(12, "Message must be at least 12 characters.")
+    .max(1400, "Message must be 1400 characters or less."),
+});
+
 export const adminLoginSchema = z.object({
   password: z.string().min(1, "Password is required."),
 });

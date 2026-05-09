@@ -7,6 +7,7 @@ const navigation = [
   { label: "Guides", href: "/guides" },
   { label: "Suggestions", href: "/suggestions" },
   { label: "VaexCore", href: "/vaexcore" },
+  { label: "Contact", href: "/contact" },
 ];
 
 const suiteLinks = [
@@ -100,6 +101,12 @@ export function SiteFooter() {
             className="mt-3 inline-flex text-[0.7rem] text-slate-500 transition hover:text-cyan-200"
           >
             Admin
+          </Link>
+          <Link
+            href="/contact"
+            className="ml-4 mt-3 inline-flex text-[0.7rem] text-slate-500 transition hover:text-cyan-200"
+          >
+            Contact
           </Link>
         </div>
         <div>

@@ -30,6 +30,31 @@ export type CommunitySuggestion = {
   updatedAt: string;
 };
 
+export type ContactSubmission = {
+  id: string;
+  name: string;
+  email: string;
+  organization: string;
+  inquiryType: string;
+  message: string;
+  status: string;
+  emailStatus: string;
+  createdAt: string;
+};
+
+export type AnalyticsSummary = {
+  viewsLast7Days: number;
+  viewsLast30Days: number;
+  topPaths: {
+    path: string;
+    views: number;
+  }[];
+  recentDays: {
+    day: string;
+    views: number;
+  }[];
+};
+
 export type ActionState = {
   ok: boolean;
   message: string;

@@ -8,7 +8,12 @@ import {
 import { ChangeAdminPasswordForm } from "@/components/admin-password-form";
 import { Section, SectionHeading, StatusBadge } from "@/components/ui";
 import { adminPasswordIsUsable, isAdminAuthenticated } from "@/lib/admin";
-import { listSuggestions } from "@/lib/repository";
+import {
+  getAnalyticsSummary,
+  listRecentContactSubmissions,
+  listSuggestions,
+} from "@/lib/repository";
+import type { AnalyticsSummary, ContactSubmission } from "@/lib/types";
 import { formatDate } from "@/lib/utils";
 import { ExternalLink, KeyRound, LogOut } from "lucide-react";
 
@@ -34,7 +39,11 @@ export default async function AdminPage({ searchParams }: AdminPageProps) {
     );
   }
 
-  const suggestions = await listSuggestions({ includeClosed: true });
+  const [suggestions, recentContacts, analyticsSummary] = await Promise.all([
+    listSuggestions({ includeClosed: true }),
+    listRecentContactSubmissions(),
+    getAnalyticsSummary(),
+  ]);
 
   return (
     <>
@@ -67,6 +76,13 @@ export default async function AdminPage({ searchParams }: AdminPageProps) {
             </p>
           </div>
           <ChangeAdminPasswordForm />
+        </div>
+      </Section>
+
+      <Section className="pt-4">
+        <div className="grid gap-5 lg:grid-cols-2">
+          <AnalyticsPanel summary={analyticsSummary} />
+          <ContactPanel contacts={recentContacts} />
         </div>
       </Section>
 
@@ -163,6 +179,106 @@ export default async function AdminPage({ searchParams }: AdminPageProps) {
         )}
       </Section>
     </>
+  );
+}
+
+function AnalyticsPanel({ summary }: { summary: AnalyticsSummary }) {
+  return (
+    <div className="rounded-2xl border border-white/10 bg-white/[0.035] p-5">
+      <p className="text-sm font-semibold uppercase tracking-[0.16em] text-cyan-200">
+        Light analytics
+      </p>
+      <h2 className="mt-4 text-xl font-semibold text-white">
+        Public page views
+      </h2>
+      <p className="mt-3 text-sm leading-6 text-slate-400">
+        A small first-party snapshot for public route traffic. Admin, API, and
+        framework asset routes are excluded.
+      </p>
+      <div className="mt-5 grid gap-3 sm:grid-cols-2">
+        <div className="rounded-xl border border-white/10 bg-slate-950/50 p-4">
+          <p className="text-2xl font-semibold text-white">
+            {summary.viewsLast7Days}
+          </p>
+          <p className="mt-1 text-sm text-slate-400">Last 7 days</p>
+        </div>
+        <div className="rounded-xl border border-white/10 bg-slate-950/50 p-4">
+          <p className="text-2xl font-semibold text-white">
+            {summary.viewsLast30Days}
+          </p>
+          <p className="mt-1 text-sm text-slate-400">Last 30 days</p>
+        </div>
+      </div>
+      {summary.topPaths.length === 0 ? (
+        <div className="mt-5 rounded-xl border border-white/10 bg-slate-950/50 p-4 text-sm text-slate-400">
+          No page views have been recorded yet.
+        </div>
+      ) : (
+        <div className="mt-5 space-y-2">
+          {summary.topPaths.map((item) => (
+            <div
+              key={item.path}
+              className="flex items-center justify-between gap-4 rounded-xl border border-white/10 bg-slate-950/50 px-3 py-2 text-sm text-slate-400"
+            >
+              <span className="truncate">{item.path}</span>
+              <span className="font-semibold text-slate-100">{item.views}</span>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function ContactPanel({ contacts }: { contacts: ContactSubmission[] }) {
+  return (
+    <div className="rounded-2xl border border-white/10 bg-white/[0.035] p-5">
+      <p className="text-sm font-semibold uppercase tracking-[0.16em] text-cyan-200">
+        Contact intake
+      </p>
+      <h2 className="mt-4 text-xl font-semibold text-white">
+        Recent messages
+      </h2>
+      <p className="mt-3 text-sm leading-6 text-slate-400">
+        Vaexil contact form submissions are recorded before email delivery is
+        marked as sent, failed, or disabled.
+      </p>
+      {contacts.length === 0 ? (
+        <div className="mt-5 rounded-xl border border-white/10 bg-slate-950/50 p-4 text-sm text-slate-400">
+          No contact messages have been recorded yet.
+        </div>
+      ) : (
+        <div className="mt-5 grid gap-3">
+          {contacts.map((contact) => (
+            <article
+              key={contact.id}
+              className="rounded-xl border border-white/10 bg-slate-950/50 p-4"
+            >
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
+                <div>
+                  <p className="text-sm font-semibold text-white">
+                    {contact.name}
+                  </p>
+                  <p className="mt-1 text-xs text-slate-500">
+                    {contact.email}
+                    {contact.organization ? ` / ${contact.organization}` : ""}
+                  </p>
+                </div>
+                <span className="w-fit rounded-full border border-white/10 px-2 py-1 text-[0.7rem] font-semibold uppercase tracking-[0.12em] text-slate-400">
+                  email {contact.emailStatus}
+                </span>
+              </div>
+              <p className="mt-3 text-xs font-medium uppercase tracking-wide text-slate-500">
+                {contact.inquiryType} / {formatDate(contact.createdAt)}
+              </p>
+              <p className="mt-2 line-clamp-2 text-sm leading-6 text-slate-300">
+                {contact.message}
+              </p>
+            </article>
+          ))}
+        </div>
+      )}
+    </div>
   );
 }
 

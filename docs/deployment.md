@@ -18,6 +18,9 @@ ADMIN_SESSION_SECRET="use-a-long-random-string"
 SUGGESTION_READY_VOTE_THRESHOLD="5"
 LIBSQL_URL="libsql://..."
 LIBSQL_AUTH_TOKEN="..."
+SENDGRID_API_KEY=""
+SENDGRID_TO_EMAIL="vaexiltv@gmail.com"
+SENDGRID_FROM_EMAIL=""
 NEXT_PUBLIC_SITE_URL="https://vaexil.tv"
 NEXT_PUBLIC_TWITCH_URL="https://www.twitch.tv/vaexil"
 NEXT_PUBLIC_YOUTUBE_URL="https://www.youtube.com/@Vaexil-Twitch"
@@ -29,6 +32,10 @@ NEXT_PUBLIC_GITHUB_URL=""
 hosting. The app intentionally throws an error on Vercel if a file database is
 configured, because Vercel filesystem storage is not persistent production
 storage.
+
+Contact form submissions are saved to the database even when SendGrid is not
+configured. Add `SENDGRID_API_KEY`, `SENDGRID_TO_EMAIL`, and a verified
+`SENDGRID_FROM_EMAIL` before relying on email delivery from production.
 
 ## Domain Setup
 
@@ -60,8 +67,10 @@ Confirm:
 - `/guides/mods-setup` shows the SMF requirement, current load order, Nexus links, and known-bad mods.
 - `/suggest` accepts a test suggestion.
 - `/suggestions` shows the submitted suggestion.
+- `/contact` records a test message and sends email after SendGrid is configured.
 - `/admin` accepts `ADMIN_PASSWORD`.
 - Admin can change the password after signing in.
+- Admin shows recent contact submissions and a light page-view snapshot.
 - Admin can verify and publish a test suggestion.
 - Security headers are present, including `strict-transport-security`, `x-frame-options`, and `x-content-type-options`.
 

@@ -112,6 +112,34 @@ async function migrateAndSeed() {
     },
     {
       sql: `
+        CREATE TABLE IF NOT EXISTS contact_submissions (
+          id TEXT PRIMARY KEY,
+          name TEXT NOT NULL,
+          email TEXT NOT NULL,
+          organization TEXT,
+          inquiry_type TEXT NOT NULL,
+          message TEXT NOT NULL,
+          status TEXT NOT NULL DEFAULT 'received',
+          email_status TEXT NOT NULL DEFAULT 'pending',
+          created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+          updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+        );
+      `,
+      args: [],
+    },
+    {
+      sql: `
+        CREATE TABLE IF NOT EXISTS page_views (
+          id TEXT PRIMARY KEY,
+          path TEXT NOT NULL,
+          referrer TEXT,
+          created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP
+        );
+      `,
+      args: [],
+    },
+    {
+      sql: `
         CREATE INDEX IF NOT EXISTS idx_suggestions_status
         ON community_suggestions(status);
       `,
@@ -129,6 +157,27 @@ async function migrateAndSeed() {
         CREATE UNIQUE INDEX IF NOT EXISTS idx_official_source_suggestion
         ON official_items(source_suggestion_id)
         WHERE source_suggestion_id IS NOT NULL;
+      `,
+      args: [],
+    },
+    {
+      sql: `
+        CREATE INDEX IF NOT EXISTS idx_contact_submissions_created_at
+        ON contact_submissions(created_at);
+      `,
+      args: [],
+    },
+    {
+      sql: `
+        CREATE INDEX IF NOT EXISTS idx_page_views_created_at
+        ON page_views(created_at);
+      `,
+      args: [],
+    },
+    {
+      sql: `
+        CREATE INDEX IF NOT EXISTS idx_page_views_path_created_at
+        ON page_views(path, created_at);
       `,
       args: [],
     },

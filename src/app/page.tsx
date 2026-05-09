@@ -71,6 +71,7 @@ export default function Home() {
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <PrimaryLink href="/guides">Browse guides</PrimaryLink>
               <SecondaryLink href="/suggest">Suggest an update</SecondaryLink>
+              <SecondaryLink href="/contact">Contact</SecondaryLink>
             </div>
             <div className="mt-7 flex flex-wrap gap-3">
               <ExternalButton href={siteConfig.links.twitch}>

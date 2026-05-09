@@ -1,15 +1,18 @@
 import { ensureDb, getDb } from "@/lib/db";
 import { suggestionReadyVoteThreshold } from "@/lib/config";
 import type {
+  AnalyticsSummary,
   CommunitySuggestion,
+  ContactSubmission,
   OfficialGuideItem,
   SuggestionStatus,
 } from "@/lib/types";
-import type { suggestionSchema } from "@/lib/validation";
+import type { contactSchema, suggestionSchema } from "@/lib/validation";
 import type { Row } from "@libsql/client";
 import type { z } from "zod";
 
 type SuggestionInput = z.infer<typeof suggestionSchema>;
+type ContactInput = z.infer<typeof contactSchema>;
 
 const publicSuggestionStatuses: SuggestionStatus[] = [
   "pending",
@@ -68,6 +71,20 @@ function mapSuggestion(row: Row): CommunitySuggestion {
     voteCount: Number(row.vote_count || 0),
     createdAt: readString(row, "created_at"),
     updatedAt: readString(row, "updated_at"),
+  };
+}
+
+function mapContactSubmission(row: Row): ContactSubmission {
+  return {
+    id: readString(row, "id"),
+    name: readString(row, "name"),
+    email: readString(row, "email"),
+    organization: readString(row, "organization"),
+    inquiryType: readString(row, "inquiry_type"),
+    message: readString(row, "message"),
+    status: readString(row, "status"),
+    emailStatus: readString(row, "email_status"),
+    createdAt: readString(row, "created_at"),
   };
 }
 
@@ -288,4 +305,166 @@ export async function publishSuggestionById(suggestionId: string) {
       args: [officialId, suggestionId],
     },
   ]);
+}
+
+export async function recordContactSubmission(input: ContactInput) {
+  await ensureDb();
+  const id = crypto.randomUUID();
+
+  await getDb().execute({
+    sql: `
+      INSERT INTO contact_submissions (
+        id,
+        name,
+        email,
+        organization,
+        inquiry_type,
+        message
+      )
+      VALUES (?, ?, ?, ?, ?, ?);
+    `,
+    args: [
+      id,
+      input.name,
+      input.email,
+      input.organization,
+      input.inquiryType,
+      input.message,
+    ],
+  });
+
+  return id;
+}
+
+export async function updateContactSubmissionEmailStatus(
+  id: string,
+  emailStatus: "sent" | "failed" | "disabled",
+) {
+  if (!id) {
+    return;
+  }
+
+  await ensureDb();
+  await getDb().execute({
+    sql: `
+      UPDATE contact_submissions
+      SET email_status = ?, updated_at = CURRENT_TIMESTAMP
+      WHERE id = ?;
+    `,
+    args: [emailStatus, id],
+  });
+}
+
+export async function listRecentContactSubmissions(limit = 5) {
+  await ensureDb();
+
+  const result = await getDb().execute({
+    sql: `
+      SELECT *
+      FROM contact_submissions
+      ORDER BY created_at DESC
+      LIMIT ?;
+    `,
+    args: [limit],
+  });
+
+  return result.rows.map(mapContactSubmission);
+}
+
+export async function recordPageView(input: {
+  path: string;
+  referrer?: string;
+}) {
+  const path = input.path.trim().slice(0, 500);
+
+  if (
+    !path ||
+    path.startsWith("/admin") ||
+    path.startsWith("/api") ||
+    path.startsWith("/_next")
+  ) {
+    return;
+  }
+
+  await ensureDb();
+  await getDb().execute({
+    sql: `
+      INSERT INTO page_views (id, path, referrer)
+      VALUES (?, ?, ?);
+    `,
+    args: [
+      crypto.randomUUID(),
+      path,
+      input.referrer?.trim().slice(0, 500) || null,
+    ],
+  });
+}
+
+export async function getAnalyticsSummary(): Promise<AnalyticsSummary> {
+  const empty: AnalyticsSummary = {
+    viewsLast7Days: 0,
+    viewsLast30Days: 0,
+    topPaths: [],
+    recentDays: [],
+  };
+
+  try {
+    await ensureDb();
+
+    const [sevenDays, thirtyDays, topPaths, recentDays] = await Promise.all([
+      getDb().execute({
+        sql: `
+          SELECT COUNT(*) AS count
+          FROM page_views
+          WHERE created_at >= datetime('now', '-7 days');
+        `,
+        args: [],
+      }),
+      getDb().execute({
+        sql: `
+          SELECT COUNT(*) AS count
+          FROM page_views
+          WHERE created_at >= datetime('now', '-30 days');
+        `,
+        args: [],
+      }),
+      getDb().execute({
+        sql: `
+          SELECT path, COUNT(*) AS views
+          FROM page_views
+          WHERE created_at >= datetime('now', '-30 days')
+          GROUP BY path
+          ORDER BY views DESC, path ASC
+          LIMIT 6;
+        `,
+        args: [],
+      }),
+      getDb().execute({
+        sql: `
+          SELECT date(created_at) AS day, COUNT(*) AS views
+          FROM page_views
+          WHERE created_at >= datetime('now', '-7 days')
+          GROUP BY date(created_at)
+          ORDER BY day ASC;
+        `,
+        args: [],
+      }),
+    ]);
+
+    return {
+      viewsLast7Days: Number(sevenDays.rows[0]?.count || 0),
+      viewsLast30Days: Number(thirtyDays.rows[0]?.count || 0),
+      topPaths: topPaths.rows.map((row) => ({
+        path: readString(row, "path"),
+        views: Number(row.views || 0),
+      })),
+      recentDays: recentDays.rows.map((row) => ({
+        day: readString(row, "day"),
+        views: Number(row.views || 0),
+      })),
+    };
+  } catch (error) {
+    console.error("Failed to load Vaexil analytics summary.", error);
+    return empty;
+  }
 }

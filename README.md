@@ -4,7 +4,7 @@ Vaexil.tv is the creator hub for Vaexil. It collects stream references, guide ar
 
 ## Current Reality
 
-This is an early production-ready build, not a placeholder. Public routes cover the home hub, guide landing pages, the verified Freelancer Free Items table, Hitman mods/setup notes, suggestion submission, community suggestions with vote thresholds, and VaexCore placeholder product cards. Admin routes are intentionally lightweight and password-protected for reviewing, verifying, rejecting, and publishing guide suggestions.
+This is an early production-ready build, not a placeholder. Public routes cover the home hub, guide landing pages, the verified Freelancer Free Items table, Hitman mods/setup notes, contact intake, suggestion submission, community suggestions with vote thresholds, and VaexCore placeholder product cards. Admin routes are intentionally lightweight and password-protected for reviewing contact intake, checking light page-view analytics, and verifying, rejecting, or publishing guide suggestions.
 
 The Freelancer Free Items guide is seeded from a verified Vaexil source list. The mods/setup guide tracks the current SMF-based load order and marks known-bad mods separately. Future guide additions should still go through review before they become official site content.
 
@@ -12,8 +12,9 @@ The Freelancer Free Items guide is seeded from a verified Vaexil source list. Th
 
 - Public creator/stream hub
 - Guides and knowledge-base surfaces, including verified Freelancer item data and the current Hitman mod load order
+- Public contact form for collaboration, promotion, stream, and VaexCore inquiries
 - Community suggestion form and voting flow
-- Admin review/publishing surface
+- Admin review/publishing surface with recent contact submissions and a small first-party analytics snapshot
 - Footer links into the JAMARQ/Tenra/Vaexil site family, with admin access kept unobtrusive in the footer
 - libSQL-backed local data layer with hosted libSQL/Turso deployment path
 - Deployment notes for Vercel or a comparable Git-based Node host
@@ -24,6 +25,7 @@ The Freelancer Free Items guide is seeded from a verified Vaexil source list. Th
 - TypeScript
 - Tailwind CSS v4
 - libSQL via `@libsql/client`
+- SendGrid contact delivery hook
 - Zod validation
 - Lightweight password-based admin session
 
@@ -68,6 +70,9 @@ ADMIN_SESSION_SECRET="replace-with-a-long-random-string"
 SUGGESTION_READY_VOTE_THRESHOLD="5"
 LIBSQL_URL="file:.data/vaexil.db"
 LIBSQL_AUTH_TOKEN=""
+SENDGRID_API_KEY=""
+SENDGRID_TO_EMAIL="vaexiltv@gmail.com"
+SENDGRID_FROM_EMAIL=""
 NEXT_PUBLIC_SITE_URL="https://vaexil.tv"
 NEXT_PUBLIC_TWITCH_URL="https://www.twitch.tv/vaexil"
 NEXT_PUBLIC_YOUTUBE_URL="https://www.youtube.com/@Vaexil-Twitch"
@@ -75,7 +80,7 @@ NEXT_PUBLIC_DISCORD_URL=""
 NEXT_PUBLIC_GITHUB_URL=""
 ```
 
-For production, set `LIBSQL_URL` and `LIBSQL_AUTH_TOKEN` to a hosted libSQL/Turso database. Do not use the local file database on Vercel for persistent production data. `ADMIN_PASSWORD` is the bootstrap/fallback password; after signing in, the admin UI can replace it with a database-stored password hash.
+For production, set `LIBSQL_URL` and `LIBSQL_AUTH_TOKEN` to a hosted libSQL/Turso database. Do not use the local file database on Vercel for persistent production data. Contact form submissions are recorded even if SendGrid is not configured; set `SENDGRID_API_KEY`, `SENDGRID_TO_EMAIL`, and a verified `SENDGRID_FROM_EMAIL` when email delivery should go live. `ADMIN_PASSWORD` is the bootstrap/fallback password; after signing in, the admin UI can replace it with a database-stored password hash.
 
 ## Data Workflow
 
@@ -96,6 +101,7 @@ variables, production builds, and a persistent hosted database connection.
 2. Add the environment variables above in the hosting provider.
 3. Deploy with the default Next.js settings.
 4. Visit `/admin`, sign in with `ADMIN_PASSWORD`, and review the suggestion queue.
+5. Submit a test contact form after SendGrid is configured and confirm email delivery plus admin logging.
 
 See [docs/deployment.md](docs/deployment.md) for the full domain, DNS, environment variable, and post-deploy checklist.
 
