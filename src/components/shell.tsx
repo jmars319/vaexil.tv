@@ -4,7 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 const navigation = [
+  { label: "Home", href: "/" },
   { label: "Guides", href: "/guides" },
+  { label: "Suggest", href: "/suggest" },
   { label: "Suggestions", href: "/suggestions" },
   { label: "VaexCore", href: "/vaexcore" },
   { label: "Contact", href: "/contact" },
