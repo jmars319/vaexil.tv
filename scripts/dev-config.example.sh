@@ -2,7 +2,7 @@
 set -euo pipefail
 
 # Copy to scripts/dev-config.sh to override defaults.
-# PORT=3000
+# PORT=3203
 # BASE_URL="http://localhost:${PORT}"
 # PIDFILE="${PWD}/.dev-server.pid"
 # LOGFILE="${PWD}/.dev-server.log"

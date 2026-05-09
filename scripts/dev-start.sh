@@ -19,7 +19,7 @@ log_info "Starting dev server with: ${START_CMD}"
 
 (
   cd "${ROOT_DIR}"
-  nohup ${START_CMD} >"${LOGFILE}" 2>&1 &
+  PORT="${PORT}" nohup ${START_CMD} >"${LOGFILE}" 2>&1 &
   echo $! >"${PIDFILE}"
 )
 

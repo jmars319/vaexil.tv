@@ -12,7 +12,7 @@ if [[ -f "${CONFIG_FILE}" ]]; then
   source "${CONFIG_FILE}"
 fi
 
-PORT="${PORT:-3000}"
+PORT="${PORT:-3203}"
 BASE_URL="${BASE_URL:-http://localhost:${PORT}}"
 PIDFILE="${PIDFILE:-${ROOT_DIR}/.dev-server.pid}"
 LOGFILE="${LOGFILE:-${ROOT_DIR}/.dev-server.log}"
