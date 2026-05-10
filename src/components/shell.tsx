@@ -194,6 +194,12 @@ export function SiteFooter() {
               Privacy
             </Link>
             <Link
+              href="/terms"
+              className="text-[0.72rem] text-slate-400 transition hover:text-cyan-200"
+            >
+              Terms
+            </Link>
+            <Link
               href="/admin"
               className="text-[0.72rem] text-slate-500 transition hover:text-cyan-200"
             >

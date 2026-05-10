@@ -12,6 +12,7 @@ const routes = [
   "/vaexcore",
   "/contact",
   "/privacy",
+  "/terms",
 ];
 
 const contentRefreshDate = new Date("2026-05-09");
@@ -21,6 +22,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     url: `${siteConfig.url}${route}`,
     lastModified: contentRefreshDate,
     changeFrequency: "weekly",
-    priority: route === "" ? 1 : route === "/privacy" ? 0.4 : 0.7,
+    priority: route === "" ? 1 : route === "/privacy" || route === "/terms" ? 0.4 : 0.7,
   }));
 }
