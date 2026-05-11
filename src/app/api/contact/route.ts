@@ -33,6 +33,7 @@ function isSpamTrap(body: Record<string, unknown>) {
   const startedAt = Number(body.startedAt);
 
   return (
+    readText(body, "vaexil_hp", 200).length > 0 ||
     readText(body, "website", 200).length > 0 ||
     (Number.isFinite(startedAt) && Date.now() - startedAt < MIN_SUBMIT_MS)
   );
