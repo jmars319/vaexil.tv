@@ -15,7 +15,8 @@ import {
 } from "@/lib/repository";
 import type { AnalyticsSummary, ContactSubmission } from "@/lib/types";
 import { formatDate } from "@/lib/utils";
-import { ExternalLink, KeyRound, LogOut } from "lucide-react";
+import { Crosshair, ExternalLink, KeyRound, LogOut } from "lucide-react";
+import Link from "next/link";
 
 export const metadata = {
   title: "Admin",
@@ -81,6 +82,25 @@ export default async function AdminPage({ searchParams }: AdminPageProps) {
           </div>
           <ChangeAdminPasswordForm />
         </div>
+      </Section>
+
+      <Section className="pt-4">
+        <Link
+          href="/admin/recon"
+          className="flex flex-col gap-4 rounded-2xl border border-cyan-300/20 bg-cyan-300/[0.06] p-5 transition hover:border-cyan-300/50 hover:bg-cyan-300/[0.09] sm:flex-row sm:items-center sm:justify-between"
+        >
+          <span>
+            <span className="flex items-center gap-3 text-lg font-semibold text-white">
+              <Crosshair className="size-6 text-cyan-200" aria-hidden="true" />
+              Recon coordinate capture
+            </span>
+            <span className="mt-2 block text-sm leading-6 text-slate-400">
+              Review draft map records and save private normalized marker
+              captures for later verification.
+            </span>
+          </span>
+          <span className="text-sm font-semibold text-cyan-100">Open Recon</span>
+        </Link>
       </Section>
 
       <Section className="pt-4">

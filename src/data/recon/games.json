@@ -1,0 +1,20 @@
+[
+  {
+    "id": "hitman-woa",
+    "slug": "hitman",
+    "title": "HITMAN World of Assassination",
+    "shortTitle": "HITMAN",
+    "description": "Curated Recon map layers for HITMAN locations covered on stream.",
+    "enabled": true,
+    "sortOrder": 10
+  },
+  {
+    "id": "sniper-elite-5",
+    "slug": "sniper-elite-5",
+    "title": "Sniper Elite 5",
+    "shortTitle": "Sniper Elite 5",
+    "description": "Curated Recon map layers for Sniper Elite 5 missions covered on stream.",
+    "enabled": true,
+    "sortOrder": 20
+  }
+]

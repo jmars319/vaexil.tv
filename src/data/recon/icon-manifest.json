@@ -1,0 +1,134 @@
+[
+  {
+    "key": "poi",
+    "label": "Point of interest",
+    "path": "/recon/icons/common/poi.svg",
+    "source": "Vaexil.tv custom neutral icon",
+    "license": "Vaexil-created",
+    "attribution": "Vaexil.tv",
+    "isPlaceholder": true,
+    "applicableGames": ["hitman-woa", "sniper-elite-5"],
+    "applicableCategories": ["poi"]
+  },
+  {
+    "key": "item",
+    "label": "Item",
+    "path": "/recon/icons/common/item.svg",
+    "source": "Vaexil.tv custom neutral icon",
+    "license": "Vaexil-created",
+    "attribution": "Vaexil.tv",
+    "isPlaceholder": true,
+    "applicableGames": ["hitman-woa", "sniper-elite-5"],
+    "applicableCategories": ["item_spawn", "free_freelancer_item", "hidden_item"]
+  },
+  {
+    "key": "target",
+    "label": "Target",
+    "path": "/recon/icons/common/target.svg",
+    "source": "Vaexil.tv custom neutral icon",
+    "license": "Vaexil-created",
+    "attribution": "Vaexil.tv",
+    "isPlaceholder": true,
+    "applicableGames": ["hitman-woa", "sniper-elite-5"],
+    "applicableCategories": ["target_spawn", "suspect_spawn", "kill_list_target"]
+  },
+  {
+    "key": "route-point",
+    "label": "Route point",
+    "path": "/recon/icons/common/route-point.svg",
+    "source": "Vaexil.tv custom neutral icon",
+    "license": "Vaexil-created",
+    "attribution": "Vaexil.tv",
+    "isPlaceholder": true,
+    "applicableGames": ["hitman-woa"],
+    "applicableCategories": ["target_path_point", "suspect_zone"]
+  },
+  {
+    "key": "exit",
+    "label": "Exit",
+    "path": "/recon/icons/common/exit.svg",
+    "source": "Vaexil.tv custom neutral icon",
+    "license": "Vaexil-created",
+    "attribution": "Vaexil.tv",
+    "isPlaceholder": true,
+    "applicableGames": ["hitman-woa", "sniper-elite-5"],
+    "applicableCategories": ["exit", "exfiltration"]
+  },
+  {
+    "key": "entrance",
+    "label": "Entrance",
+    "path": "/recon/icons/common/entrance.svg",
+    "source": "Vaexil.tv custom neutral icon",
+    "license": "Vaexil-created",
+    "attribution": "Vaexil.tv",
+    "isPlaceholder": true,
+    "applicableGames": ["hitman-woa"],
+    "applicableCategories": ["entrance", "starting_location"]
+  },
+  {
+    "key": "tool",
+    "label": "Tool",
+    "path": "/recon/icons/common/tool.svg",
+    "source": "Vaexil.tv custom neutral icon",
+    "license": "Vaexil-created",
+    "attribution": "Vaexil.tv",
+    "isPlaceholder": true,
+    "applicableGames": ["hitman-woa", "sniper-elite-5"],
+    "applicableCategories": ["tool", "satchel_charge", "bolt_cutters", "crowbar"]
+  },
+  {
+    "key": "weapon",
+    "label": "Weapon",
+    "path": "/recon/icons/common/weapon.svg",
+    "source": "Vaexil.tv custom neutral icon",
+    "license": "Vaexil-created",
+    "attribution": "Vaexil.tv",
+    "isPlaceholder": true,
+    "applicableGames": ["hitman-woa", "sniper-elite-5"],
+    "applicableCategories": ["weapon", "sniper"]
+  },
+  {
+    "key": "key",
+    "label": "Key or code",
+    "path": "/recon/icons/common/key.svg",
+    "source": "Vaexil.tv custom neutral icon",
+    "license": "Vaexil-created",
+    "attribution": "Vaexil.tv",
+    "isPlaceholder": true,
+    "applicableGames": ["hitman-woa", "sniper-elite-5"],
+    "applicableCategories": ["key", "key_or_code"]
+  },
+  {
+    "key": "workbench",
+    "label": "Workbench",
+    "path": "/recon/icons/common/workbench.svg",
+    "source": "Vaexil.tv custom neutral icon",
+    "license": "Vaexil-created",
+    "attribution": "Vaexil.tv",
+    "isPlaceholder": true,
+    "applicableGames": ["sniper-elite-5"],
+    "applicableCategories": ["workbench", "rifle_workbench", "smg_workbench", "pistol_workbench"]
+  },
+  {
+    "key": "document",
+    "label": "Document",
+    "path": "/recon/icons/common/document.svg",
+    "source": "Vaexil.tv custom neutral icon",
+    "license": "Vaexil-created",
+    "attribution": "Vaexil.tv",
+    "isPlaceholder": true,
+    "applicableGames": ["sniper-elite-5"],
+    "applicableCategories": ["personal_letter", "classified_document"]
+  },
+  {
+    "key": "objective",
+    "label": "Objective",
+    "path": "/recon/icons/common/objective.svg",
+    "source": "Vaexil.tv custom neutral icon",
+    "license": "Vaexil-created",
+    "attribution": "Vaexil.tv",
+    "isPlaceholder": true,
+    "applicableGames": ["sniper-elite-5"],
+    "applicableCategories": ["main_objective", "optional_objective"]
+  }
+]

@@ -12,6 +12,7 @@ The Freelancer Free Items guide is seeded from a verified Vaexil source list. Th
 
 - Public creator/stream hub
 - Guides and knowledge-base surfaces, including verified Freelancer item data and the current Hitman mod load order
+- Recon, an experimental curated interactive map/guide foundation for games covered on stream
 - Public contact form for collaboration, promotion, stream, and VaexCore inquiries
 - Community suggestion form and voting flow
 - Admin review/publishing surface with recent contact submissions and a small first-party analytics snapshot
@@ -33,6 +34,24 @@ The Freelancer Free Items guide is seeded from a verified Vaexil source list. Th
 
 Start here:
 - `docs/deployment.md`
+- `docs/recon/RECON_ARCHITECTURE.md`
+- `docs/recon/ASSET_SOURCING.md`
+- `docs/recon/DATA_ENTRY_GUIDE.md`
+
+## Recon
+
+Recon is available at `/recon` with initial public game pages for `/recon/hitman`
+and `/recon/sniper-elite-5`. It is a curated static map and guide layer for
+games covered on stream, not AI, prediction, or a copied reference-site data
+set.
+
+Individual map pages stay hidden until a map is marked `published` and backed by
+an approved public asset. Draft map assets live outside `public/` and are served
+only through protected admin routes for coordinate capture.
+
+Recon v1 imports no third-party map images, API data, marker coordinates, icons,
+or copied guide text. Final maps should be Vaexil-authored schematic maps and
+must be documented in `src/data/recon/asset-manifest.json` before publication.
 
 ## Local Development
 

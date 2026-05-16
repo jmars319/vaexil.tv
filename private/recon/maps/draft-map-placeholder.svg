@@ -1,0 +1,16 @@
+<svg width="2048" height="1280" viewBox="0 0 2048 1280" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Recon private draft map placeholder</title>
+  <desc id="desc">A neutral drafting grid used only for admin coordinate capture before Vaexil-authored map art is ready.</desc>
+  <rect width="2048" height="1280" fill="#070B13"/>
+  <path d="M0 160H2048M0 320H2048M0 480H2048M0 640H2048M0 800H2048M0 960H2048M0 1120H2048M256 0V1280M512 0V1280M768 0V1280M1024 0V1280M1280 0V1280M1536 0V1280M1792 0V1280" stroke="#1E2A3F" stroke-width="2"/>
+  <path d="M0 80H2048M0 240H2048M0 400H2048M0 560H2048M0 720H2048M0 880H2048M0 1040H2048M0 1200H2048M128 0V1280M384 0V1280M640 0V1280M896 0V1280M1152 0V1280M1408 0V1280M1664 0V1280M1920 0V1280" stroke="#101827" stroke-width="1"/>
+  <rect x="128" y="128" width="1792" height="1024" rx="24" stroke="#2DD4BF" stroke-width="4" stroke-dasharray="18 18"/>
+  <path d="M512 320H928V512H1216V384H1536V800H1328V960H768V736H512V320Z" fill="#0D1524" stroke="#38BDF8" stroke-width="5"/>
+  <path d="M768 512H1328M928 320V736M1216 384V960M512 736H768M1536 800H1328" stroke="#38506F" stroke-width="4"/>
+  <circle cx="512" cy="320" r="16" fill="#22D3EE"/>
+  <circle cx="1536" cy="800" r="16" fill="#22D3EE"/>
+  <circle cx="768" cy="960" r="16" fill="#22D3EE"/>
+  <text x="160" y="206" fill="#94A3B8" font-family="Arial, Helvetica, sans-serif" font-size="40" font-weight="700" letter-spacing="6">RECON DRAFT ONLY</text>
+  <text x="160" y="264" fill="#64748B" font-family="Arial, Helvetica, sans-serif" font-size="28">Private neutral admin placeholder. Replace with Vaexil-authored schematic map before publishing.</text>
+  <text x="1570" y="1110" fill="#64748B" font-family="Arial, Helvetica, sans-serif" font-size="24">0,0 top-left / 100,100 bottom-right</text>
+</svg>

@@ -1,0 +1,53 @@
+[
+  {
+    "id": "hitman-dubai",
+    "gameId": "hitman-woa",
+    "slug": "dubai",
+    "title": "Dubai",
+    "subtitle": "On Top of the World",
+    "description": "Draft Recon structure for future Vaexil-authored schematic map work.",
+    "imageAssetId": "draft-placeholder-hitman-dubai",
+    "width": 2048,
+    "height": 1280,
+    "minZoom": 0.5,
+    "maxZoom": 3,
+    "floorSupport": true,
+    "enabled": true,
+    "status": "draft",
+    "sortOrder": 10
+  },
+  {
+    "id": "hitman-berlin",
+    "gameId": "hitman-woa",
+    "slug": "berlin",
+    "title": "Berlin",
+    "subtitle": "Apex Predator",
+    "description": "Draft Recon structure for future Vaexil-authored schematic map work.",
+    "imageAssetId": "draft-placeholder-hitman-berlin",
+    "width": 2048,
+    "height": 1280,
+    "minZoom": 0.5,
+    "maxZoom": 3,
+    "floorSupport": true,
+    "enabled": true,
+    "status": "draft",
+    "sortOrder": 20
+  },
+  {
+    "id": "se5-atlantic-wall",
+    "gameId": "sniper-elite-5",
+    "slug": "the-atlantic-wall",
+    "title": "The Atlantic Wall",
+    "subtitle": "Mission 1",
+    "description": "Draft Recon structure for future Vaexil-authored schematic map work.",
+    "imageAssetId": "draft-placeholder-se5-atlantic-wall",
+    "width": 2048,
+    "height": 1280,
+    "minZoom": 0.5,
+    "maxZoom": 3,
+    "floorSupport": false,
+    "enabled": true,
+    "status": "draft",
+    "sortOrder": 10
+  }
+]

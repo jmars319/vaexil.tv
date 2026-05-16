@@ -96,6 +96,57 @@ export const adminPasswordChangeSchema = z
     }
   });
 
+export const reconMarkerSuggestionSchema = z.object({
+  gameId: z.string().trim().min(1, "Choose a game."),
+  mapId: z.string().trim().min(1, "Choose a map."),
+  mode: z
+    .string()
+    .trim()
+    .min(2, "Choose a mode.")
+    .max(40, "Mode must be 40 characters or less."),
+  variant: z
+    .string()
+    .trim()
+    .min(2, "Choose a variant.")
+    .max(40, "Variant must be 40 characters or less."),
+  category: z
+    .string()
+    .trim()
+    .min(2, "Choose a category.")
+    .max(80, "Category must be 80 characters or less."),
+  label: z
+    .string()
+    .trim()
+    .min(2, "Label must be at least 2 characters.")
+    .max(120, "Label must be 120 characters or less."),
+  description: z
+    .string()
+    .trim()
+    .max(700, "Description must be 700 characters or less.")
+    .optional()
+    .transform((value) => value || ""),
+  x: z.coerce
+    .number({ error: "Click the map to capture an X coordinate." })
+    .min(0, "X must be 0 or higher.")
+    .max(100, "X must be 100 or lower."),
+  y: z.coerce
+    .number({ error: "Click the map to capture a Y coordinate." })
+    .min(0, "Y must be 0 or higher.")
+    .max(100, "Y must be 100 or lower."),
+  floor: z
+    .string()
+    .trim()
+    .max(40, "Floor must be 40 characters or less.")
+    .optional()
+    .transform((value) => value || ""),
+  iconKey: z
+    .string()
+    .trim()
+    .min(2, "Choose an icon.")
+    .max(80, "Icon key must be 80 characters or less."),
+  sourceUrl: optionalUrl,
+});
+
 export function formDataToObject(formData: FormData) {
   return Object.fromEntries(formData.entries());
 }

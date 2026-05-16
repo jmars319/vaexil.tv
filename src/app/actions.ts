@@ -9,6 +9,7 @@ import {
 } from "@/lib/admin";
 import {
   addVote,
+  createReconMarkerSuggestion,
   createSuggestion,
   publishSuggestionById,
   rejectSuggestionById,
@@ -19,6 +20,7 @@ import {
   adminLoginSchema,
   adminPasswordChangeSchema,
   formDataToObject,
+  reconMarkerSuggestionSchema,
   suggestionSchema,
 } from "@/lib/validation";
 import { revalidatePath } from "next/cache";
@@ -79,6 +81,35 @@ export async function submitSuggestion(
     ok: true,
     message:
       "Suggestion submitted. It is pending community votes and admin review.",
+  };
+}
+
+export async function submitReconMarkerSuggestion(
+  _previousState: ActionState,
+  formData: FormData,
+): Promise<ActionState> {
+  await assertAdmin();
+
+  const parsed = reconMarkerSuggestionSchema.safeParse(
+    formDataToObject(formData),
+  );
+
+  if (!parsed.success) {
+    return {
+      ok: false,
+      message: "Please fix the highlighted fields.",
+      fieldErrors: parsed.error.flatten().fieldErrors,
+    };
+  }
+
+  await createReconMarkerSuggestion(parsed.data);
+  revalidatePath("/admin");
+  revalidatePath("/admin/recon");
+
+  return {
+    ok: true,
+    message:
+      "Recon marker capture saved as pending review. It is not public.",
   };
 }
 

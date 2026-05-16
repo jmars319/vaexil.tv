@@ -24,8 +24,16 @@ export default async function FreelancerFreeItemsPage() {
           />
           <div className="flex flex-col gap-3 sm:flex-row">
             <PrimaryLink href="/suggest">Suggest an item</PrimaryLink>
+            <SecondaryLink href="/recon/hitman">Recon preview</SecondaryLink>
             <SecondaryLink href="/suggestions">Community suggestions</SecondaryLink>
           </div>
+        </div>
+      </Section>
+      <Section className="pt-4">
+        <div className="rounded-2xl border border-cyan-300/20 bg-cyan-300/[0.06] p-5 text-sm leading-6 text-slate-300">
+          Recon is the experimental interactive map layer for future curated
+          HITMAN guide work. This table remains the current stable guide until
+          Recon maps are accurate, effortless to maintain, and admin-reviewed.
         </div>
       </Section>
       <Section className="pt-4">

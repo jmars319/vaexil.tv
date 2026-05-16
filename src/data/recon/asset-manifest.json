@@ -1,0 +1,53 @@
+[
+  {
+    "id": "draft-placeholder-hitman-dubai",
+    "gameId": "hitman-woa",
+    "mapId": "hitman-dubai",
+    "type": "base_map",
+    "path": "private/recon/maps/draft-map-placeholder.svg",
+    "width": 2048,
+    "height": 1280,
+    "sourceName": "Vaexil.tv",
+    "sourceUrl": "",
+    "license": "Vaexil-created placeholder",
+    "attribution": "Vaexil.tv",
+    "imported": false,
+    "status": "placeholder",
+    "visibility": "private",
+    "notes": "Private neutral draft placeholder only. Not a game map and not public static content."
+  },
+  {
+    "id": "draft-placeholder-hitman-berlin",
+    "gameId": "hitman-woa",
+    "mapId": "hitman-berlin",
+    "type": "base_map",
+    "path": "private/recon/maps/draft-map-placeholder.svg",
+    "width": 2048,
+    "height": 1280,
+    "sourceName": "Vaexil.tv",
+    "sourceUrl": "",
+    "license": "Vaexil-created placeholder",
+    "attribution": "Vaexil.tv",
+    "imported": false,
+    "status": "placeholder",
+    "visibility": "private",
+    "notes": "Private neutral draft placeholder only. Not a game map and not public static content."
+  },
+  {
+    "id": "draft-placeholder-se5-atlantic-wall",
+    "gameId": "sniper-elite-5",
+    "mapId": "se5-atlantic-wall",
+    "type": "base_map",
+    "path": "private/recon/maps/draft-map-placeholder.svg",
+    "width": 2048,
+    "height": 1280,
+    "sourceName": "Vaexil.tv",
+    "sourceUrl": "",
+    "license": "Vaexil-created placeholder",
+    "attribution": "Vaexil.tv",
+    "imported": false,
+    "status": "placeholder",
+    "visibility": "private",
+    "notes": "Private neutral draft placeholder only. Not a game map and not public static content."
+  }
+]
