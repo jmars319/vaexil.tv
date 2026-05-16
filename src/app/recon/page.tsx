@@ -1,4 +1,11 @@
-import { EmptyState, PrimaryLink, Section, SectionHeading, SecondaryLink } from "@/components/ui";
+import {
+  EmptyState,
+  PrimaryLink,
+  Section,
+  SectionHeading,
+  SecondaryLink,
+} from "@/components/ui";
+import { isAdminAuthenticated } from "@/lib/admin";
 import { listPublicReconMapsForGame, listReconGames } from "@/lib/repository";
 import { Map as MapIcon, Radar, ShieldCheck } from "lucide-react";
 import Link from "next/link";
@@ -13,6 +20,7 @@ export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
 export default async function ReconPage() {
+  const isAdmin = await isAdminAuthenticated();
   const games = await listReconGames();
   const mapCountEntries = await Promise.all(
     games.map(
@@ -44,6 +52,9 @@ export default async function ReconPage() {
                 Current guide
               </PrimaryLink>
               <SecondaryLink href="/suggest">Suggest a correction</SecondaryLink>
+              {isAdmin ? (
+                <SecondaryLink href="/admin/recon">Recon admin</SecondaryLink>
+              ) : null}
             </div>
           </div>
         </div>

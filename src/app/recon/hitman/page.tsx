@@ -1,4 +1,11 @@
-import { EmptyState, PrimaryLink, Section, SectionHeading, SecondaryLink } from "@/components/ui";
+import {
+  EmptyState,
+  PrimaryLink,
+  Section,
+  SectionHeading,
+  SecondaryLink,
+} from "@/components/ui";
+import { isAdminAuthenticated } from "@/lib/admin";
 import {
   getReconGameBySlug,
   listPublicReconMapsForGame,
@@ -23,6 +30,7 @@ export default async function HitmanReconPage() {
   }
 
   const maps = await listPublicReconMapsForGame(game.id);
+  const isAdmin = await isAdminAuthenticated();
 
   return (
     <>
@@ -37,6 +45,9 @@ export default async function HitmanReconPage() {
               Current guide
             </PrimaryLink>
             <SecondaryLink href="/recon">Recon overview</SecondaryLink>
+            {isAdmin ? (
+              <SecondaryLink href="/admin/recon">Recon admin</SecondaryLink>
+            ) : null}
           </div>
         </div>
       </Section>

@@ -8,7 +8,6 @@ const navigation = [
   { label: "Guides", href: "/guides" },
   { label: "Recon", href: "/recon" },
   { label: "Suggest", href: "/suggest" },
-  { label: "Suggestions", href: "/suggestions" },
   { label: "VaexCore", href: "/vaexcore" },
   { label: "Contact", href: "/contact" },
 ];

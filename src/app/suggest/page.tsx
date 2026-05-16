@@ -1,5 +1,5 @@
 import { SuggestionForm } from "@/components/suggestion-form";
-import { Section, SectionHeading } from "@/components/ui";
+import { SecondaryLink, Section, SectionHeading } from "@/components/ui";
 import { suggestionReadyVoteThreshold } from "@/lib/config";
 
 export const metadata = {
@@ -18,6 +18,11 @@ export default function SuggestPage() {
           title="Suggest an addition or correction"
           description="Viewer notes are useful, but they do not become official guide entries automatically. Submissions enter the pending queue and remain separate from published guide data until admin review."
         />
+        <div className="mt-6">
+          <SecondaryLink href="/suggestions">
+            View community suggestions
+          </SecondaryLink>
+        </div>
       </Section>
       <Section className="pt-4">
         <SuggestionForm readyVoteThreshold={suggestionReadyVoteThreshold} />

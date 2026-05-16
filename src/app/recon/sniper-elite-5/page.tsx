@@ -1,4 +1,10 @@
-import { EmptyState, Section, SectionHeading, SecondaryLink } from "@/components/ui";
+import {
+  EmptyState,
+  Section,
+  SectionHeading,
+  SecondaryLink,
+} from "@/components/ui";
+import { isAdminAuthenticated } from "@/lib/admin";
 import {
   getReconGameBySlug,
   listPublicReconMapsForGame,
@@ -22,6 +28,7 @@ export default async function SniperEliteReconPage() {
   }
 
   const maps = await listPublicReconMapsForGame(game.id);
+  const isAdmin = await isAdminAuthenticated();
 
   return (
     <>
@@ -31,7 +38,12 @@ export default async function SniperEliteReconPage() {
             title="Sniper Elite 5 Recon"
             description="Curated interactive guide layers for Sniper Elite 5. Mission maps stay hidden until their custom schematic maps and marker data are ready."
           />
-          <SecondaryLink href="/recon">Recon overview</SecondaryLink>
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <SecondaryLink href="/recon">Recon overview</SecondaryLink>
+            {isAdmin ? (
+              <SecondaryLink href="/admin/recon">Recon admin</SecondaryLink>
+            ) : null}
+          </div>
         </div>
       </Section>
 
