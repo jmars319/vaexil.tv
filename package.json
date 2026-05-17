@@ -8,6 +8,11 @@
     "start": "next start",
     "lint": "eslint",
     "typecheck": "rm -rf .next/dev && next typegen && tsc --noEmit",
+    "test:static": "bash scripts/test-static.sh",
+    "test:unit": "node scripts/test-recon-invariants.mjs",
+    "test:e2e": "env -u NO_COLOR FORCE_COLOR=0 playwright test",
+    "test:deploy": "npm run lint && npm run typecheck && npm run build",
+    "test:all": "bash scripts/test-all.sh",
     "doctor": "bash scripts/doctor.sh",
     "verify": "npm run lint && npm run typecheck && npm run build && bash scripts/dev-verify.sh",
     "dev:start": "bash scripts/dev-start.sh",
@@ -27,6 +32,7 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@playwright/test": "^1.60.0",
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
