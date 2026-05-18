@@ -12,6 +12,9 @@ const routes = [
   "/terms",
   "/admin",
   "/admin/recon",
+  "/status/access-denied",
+  "/status/server-error",
+  "/status/maintenance",
   "/robots.txt",
   "/sitemap.xml",
 ];
@@ -32,6 +35,13 @@ for (const route of routes) {
 test("draft Recon map remains public 404", async ({ request }) => {
   const response = await request.get("/recon/hitman/dubai");
   expect(response.status()).toBe(404);
+});
+
+test("unknown routes render branded 404", async ({ page }) => {
+  const response = await page.goto("/missing-page-check", { waitUntil: "domcontentloaded" });
+  expect(response?.status()).toBe(404);
+  await expect(page.locator("body")).toContainText(/Vaexil\.tv|Page not found/i);
+  await expect(page.locator("[data-nextjs-dialog-overlay]")).toHaveCount(0);
 });
 
 test("private Recon asset is gated when logged out", async ({ request }) => {
