@@ -81,6 +81,13 @@ npm run dev:stop
 npm run dev:status
 ```
 
+## Local Tooling
+
+- Use `vercel` for Vercel environment, deployment, and log diagnostics.
+- Use `pa11y` and Lighthouse for public-page accessibility and performance checks when guide, admin, or public landing pages change.
+- Use `actionlint` after editing GitHub Actions workflows.
+- Use `osv-scanner` for advisory checks across dependency manifests and lockfiles.
+
 ## Environment Variables
 
 ```bash
