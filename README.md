@@ -33,6 +33,8 @@ The Freelancer Free Items guide is seeded from a verified Vaexil source list. Th
 ## Documentation
 
 Start here:
+- `docs/README.md`
+- `docs/MAINTAINER_GUIDE.md`
 - `docs/deployment.md`
 - `docs/recon/RECON_ARCHITECTURE.md`
 - `docs/recon/ASSET_SOURCING.md`
