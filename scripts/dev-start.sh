@@ -20,11 +20,9 @@ fi
 
 log_info "Starting dev server with: ${START_CMD}"
 
-(
-  cd "${ROOT_DIR}"
-  PORT="${PORT}" nohup ${START_CMD} >"${LOGFILE}" 2>&1 &
-  echo $! >"${PIDFILE}"
-)
+if ! start_detached_server; then
+  die "Failed to start detached dev server."
+fi
 
 server_pid="$(cat "${PIDFILE}" 2>/dev/null || true)"
 if [[ -z "${server_pid}" ]]; then

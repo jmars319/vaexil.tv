@@ -30,6 +30,7 @@ kill "${server_pid}" >/dev/null 2>&1 || true
 
 for _ in {1..15}; do
   if ! kill -0 "${server_pid}" >/dev/null 2>&1; then
+    stop_detached_session
     rm -f "${PIDFILE}"
     log_success "Dev server stopped."
     exit 0
@@ -39,5 +40,6 @@ done
 
 log_warn "Dev server still running; sending SIGKILL."
 kill -9 "${server_pid}" >/dev/null 2>&1 || true
+stop_detached_session
 rm -f "${PIDFILE}"
 log_success "Dev server force-stopped."
