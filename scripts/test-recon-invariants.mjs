@@ -165,6 +165,46 @@ for (const marker of markerSeeds) {
   assert.match(marker.sourceUrl, /^https:\/\/guides4gamers\.com\//, `${marker.id} should record Guides4Gamers as its source`);
 }
 
+const atlanticWallMarkers = markerSeeds.filter((marker) => marker.mapId === "se5-atlantic-wall");
+const atlanticWallMarkerBySourceId = new Map(
+  atlanticWallMarkers.map((marker) => [marker.sourceMarkerId, marker]),
+);
+const expectedAtlanticWallIcons = new Map([
+  ["satchel_charge", "satchel-charge"],
+  ["bolt_cutters", "bolt-cutters"],
+  ["crowbar", "crowbar"],
+  ["fuse_box", "fuse-box"],
+  ["medal_related", "medal"],
+]);
+
+for (const [category, expectedIcon] of expectedAtlanticWallIcons) {
+  const categoryMarkers = atlanticWallMarkers.filter((marker) => marker.category === category);
+  assert.ok(categoryMarkers.length > 0, `Atlantic Wall should include ${category} draft markers`);
+  for (const marker of categoryMarkers) {
+    assert.equal(marker.iconKey, expectedIcon, `${marker.id} should use the ${expectedIcon} icon`);
+  }
+}
+
+assert.equal(
+  atlanticWallMarkerBySourceId.get("37590")?.x,
+  78.4,
+  "Atlantic Wall Beach objective should be manually anchored to the southeast shoreline",
+);
+assert.ok(
+  (atlanticWallMarkerBySourceId.get("37590")?.y ?? 100) < 80,
+  "Atlantic Wall Beach objective should not drift into the southeast water margin",
+);
+assert.ok(
+  (atlanticWallMarkerBySourceId.get("37260")?.y ?? 100) <= 81,
+  "Atlantic Wall Submarine Deck start should be represented near the beach landing lane, not in open water",
+);
+
+const longShot = atlanticWallMarkerBySourceId.get("37964");
+assert.ok(longShot, "Atlantic Wall should keep the long-shot medal marker");
+assert.match(longShot.description, /600 m/i, "Long-shot medal marker should explain the required distance");
+assert.match(longShot.description, /northeast/i, "Long-shot medal marker should explain the firing direction");
+assert.match(longShot.description, /radar/i, "Long-shot medal marker should explain the target area");
+
 for (const packet of sourcePackets) {
   assert.ok(requiredDraftMapIds.has(packet.mapId), `${packet.mapId} source packet should be tied to a tracked draft target`);
   assert.ok(packet.lastReviewed, `${packet.mapId} should record lastReviewed`);

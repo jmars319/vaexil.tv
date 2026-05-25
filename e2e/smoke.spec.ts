@@ -1,4 +1,4 @@
-import { expect, test } from "@playwright/test";
+import { expect, test, type Page } from "@playwright/test";
 
 const routes = [
   "/",
@@ -19,6 +19,22 @@ const routes = [
   "/robots.txt",
   "/sitemap.xml",
 ];
+
+async function loginAdmin(page: Page) {
+  await page.goto("/admin", { waitUntil: "domcontentloaded" });
+  const passwordInput = page.getByLabel("Admin password");
+  if ((await passwordInput.count()) > 0) {
+    await passwordInput.fill("playwright-admin-password");
+    await page.getByRole("button", { name: "Sign in" }).click();
+  }
+
+  const adminQueue = page.getByRole("heading", { name: "Admin queue" });
+  await adminQueue.waitFor({ state: "visible", timeout: 5_000 }).catch(() => {});
+  if (!(await adminQueue.isVisible().catch(() => false))) {
+    test.skip(true, "Admin Recon smoke requires the Playwright test admin env.");
+  }
+  await expect(adminQueue).toBeVisible();
+}
 
 for (const route of routes) {
   test(`renders ${route}`, async ({ page }) => {
@@ -66,19 +82,7 @@ test("private imported Berlin Recon asset is gated when logged out", async ({ re
 });
 
 test("admin Recon map supports wheel and touchpad-style zoom", async ({ page }) => {
-  await page.goto("/admin", { waitUntil: "domcontentloaded" });
-  const passwordInput = page.getByLabel("Admin password");
-  if ((await passwordInput.count()) > 0) {
-    await passwordInput.fill("playwright-admin-password");
-    await page.getByRole("button", { name: "Sign in" }).click();
-  }
-
-  const adminQueue = page.getByRole("heading", { name: "Admin queue" });
-  await adminQueue.waitFor({ state: "visible", timeout: 5_000 }).catch(() => {});
-  if (!(await adminQueue.isVisible().catch(() => false))) {
-    test.skip(true, "Recon zoom smoke requires the Playwright test admin env.");
-  }
-  await expect(adminQueue).toBeVisible();
+  await loginAdmin(page);
 
   await page.goto("/admin/recon/maps/the-atlantic-wall", {
     waitUntil: "domcontentloaded",
@@ -102,6 +106,46 @@ test("admin Recon map supports wheel and touchpad-style zoom", async ({ page }) 
   await expect
     .poll(async () => Number(await viewport.getAttribute("data-scale")))
     .toBeLessThan(zoomedIn);
+});
+
+test("admin Atlantic Wall markers keep corrected positions and readable icons", async ({ page }) => {
+  await loginAdmin(page);
+
+  await page.goto("/admin/recon/maps/the-atlantic-wall", {
+    waitUntil: "domcontentloaded",
+  });
+
+  const viewport = page.getByTestId("recon-map-viewport");
+  await expect(viewport).toBeVisible();
+
+  await expect(page.getByRole("button", { exact: true, name: "Beach" })).toHaveAttribute(
+    "style",
+    /left:\s*78\.4%;\s*top:\s*77\.2%;?/,
+  );
+
+  await expect(
+    page
+      .getByRole("button", { exact: true, name: "Mission 1 Long Shot Gold Medal" })
+      .locator("img"),
+  ).toHaveAttribute("src", "/recon/icons/common/medal.svg");
+  await expect(
+    page.getByRole("button", { exact: true, name: "Bolt Cutters" }).first().locator("img"),
+  ).toHaveAttribute("src", "/recon/icons/common/bolt-cutters.svg");
+  await expect(
+    page.getByRole("button", { exact: true, name: "Crowbar" }).first().locator("img"),
+  ).toHaveAttribute("src", "/recon/icons/common/crowbar.svg");
+  await expect(
+    page.getByRole("button", { exact: true, name: "Satchel Charge" }).first().locator("img"),
+  ).toHaveAttribute("src", "/recon/icons/common/satchel-charge.svg");
+
+  await page.getByPlaceholder("Search markers").fill("medal");
+  await page
+    .getByRole("button", {
+      exact: true,
+      name: "Mission 1 Long Shot Gold Medal Medal-related",
+    })
+    .click();
+  await expect(page.getByText(/600 m rifle shot toward the northeast/i)).toBeVisible();
 });
 
 test("contact API rejects invalid payload without leaking internals", async ({ request }) => {

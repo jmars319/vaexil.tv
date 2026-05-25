@@ -175,6 +175,11 @@
         "note": "Cross-check only for broad zones such as beach, processing plant, radar hill, resistance safehouse, tunnel, and trenches."
       },
       {
+        "label": "GamerGuides - Atlantic Wall interactive map",
+        "url": "https://www.gamerguides.com/sniper-elite-5/maps/atlantic-wall",
+        "note": "Cross-check only for independent marker scale, named POI positions, and community-reported tool locations; do not copy proprietary icons, screenshots, or guide prose."
+      },
+      {
         "label": "Push Square - The Atlantic Wall collectibles",
         "url": "https://www.pushsquare.com/guides/sniper-elite-5-the-atlantic-wall-all-collectibles-personal-letters-classified-documents-hidden-items-stone-eagles-workbenches",
         "note": "Cross-check only for collectible categories and review targets; do not copy coordinates, screenshots, or prose."
@@ -214,6 +219,7 @@
       }
     ],
     "uncertaintyNotes": [
+      "The first Guides4Gamers draft import used a plate-scale assumption that pushed lower and right-side markers too far southeast. Named Atlantic Wall points were corrected against GamerGuides' independent map coordinates, then the Submarine Deck and Beach anchors were manually moved onto readable shoreline/entry positions pending gameplay validation.",
       "The draft schematic is source-derived but still zone-based; it should not be treated as a true map plate.",
       "The Atlantic Wall should keep an underground/interior view for tunnels, bunker interiors, safehouse interiors, and workbench-access paths instead of flattening every marker onto the surface plate.",
       "Guides4Gamers map imagery and marker coordinates are imported only as private draft review data for The Atlantic Wall.",

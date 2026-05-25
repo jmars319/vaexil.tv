@@ -74,7 +74,51 @@
     "attribution": "Vaexil.tv",
     "isPlaceholder": true,
     "applicableGames": ["hitman-woa", "sniper-elite-5", "sniper-elite-resistance"],
-    "applicableCategories": ["tool", "satchel_charge", "bolt_cutters", "crowbar", "fuse_box"]
+    "applicableCategories": ["tool"]
+  },
+  {
+    "key": "satchel-charge",
+    "label": "Satchel charge",
+    "path": "/recon/icons/common/satchel-charge.svg",
+    "source": "Vaexil.tv custom neutral icon",
+    "license": "Vaexil-created",
+    "attribution": "Vaexil.tv",
+    "isPlaceholder": false,
+    "applicableGames": ["sniper-elite-5", "sniper-elite-resistance"],
+    "applicableCategories": ["satchel_charge"]
+  },
+  {
+    "key": "bolt-cutters",
+    "label": "Bolt cutters",
+    "path": "/recon/icons/common/bolt-cutters.svg",
+    "source": "Vaexil.tv custom neutral icon",
+    "license": "Vaexil-created",
+    "attribution": "Vaexil.tv",
+    "isPlaceholder": false,
+    "applicableGames": ["sniper-elite-5", "sniper-elite-resistance"],
+    "applicableCategories": ["bolt_cutters"]
+  },
+  {
+    "key": "crowbar",
+    "label": "Crowbar",
+    "path": "/recon/icons/common/crowbar.svg",
+    "source": "Vaexil.tv custom neutral icon",
+    "license": "Vaexil-created",
+    "attribution": "Vaexil.tv",
+    "isPlaceholder": false,
+    "applicableGames": ["sniper-elite-5", "sniper-elite-resistance"],
+    "applicableCategories": ["crowbar"]
+  },
+  {
+    "key": "fuse-box",
+    "label": "Fuse box",
+    "path": "/recon/icons/common/fuse-box.svg",
+    "source": "Vaexil.tv custom neutral icon",
+    "license": "Vaexil-created",
+    "attribution": "Vaexil.tv",
+    "isPlaceholder": false,
+    "applicableGames": ["sniper-elite-5", "sniper-elite-resistance"],
+    "applicableCategories": ["fuse_box"]
   },
   {
     "key": "weapon",
@@ -129,7 +173,18 @@
     "attribution": "Vaexil.tv",
     "isPlaceholder": true,
     "applicableGames": ["sniper-elite-5", "sniper-elite-resistance"],
-    "applicableCategories": ["main_objective", "optional_objective", "medal_related"]
+    "applicableCategories": ["main_objective", "optional_objective"]
+  },
+  {
+    "key": "medal",
+    "label": "Medal",
+    "path": "/recon/icons/common/medal.svg",
+    "source": "Vaexil.tv custom neutral icon",
+    "license": "Vaexil-created",
+    "attribution": "Vaexil.tv",
+    "isPlaceholder": false,
+    "applicableGames": ["sniper-elite-5", "sniper-elite-resistance"],
+    "applicableCategories": ["medal_related"]
   },
   {
     "key": "poster",
