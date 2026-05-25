@@ -2,9 +2,11 @@ import {
   ReconMapViewer,
   type ReconViewerMarker,
 } from "@/components/recon-map-viewer";
+import { ReconSourceNotes } from "@/components/recon-source-notes";
 import { Section, SectionHeading, SecondaryLink } from "@/components/ui";
 import iconManifest from "@/data/recon/icon-manifest.json";
 import { getReconCategoriesForGame } from "@/data/recon/category-registry";
+import { getReconSourcePacket } from "@/data/recon/source-packets";
 import {
   getPublicReconMap,
   listPublishedReconMarkers,
@@ -85,6 +87,9 @@ export default async function HitmanReconMapPage({
           markers={viewerMarkers}
           categories={getReconCategoriesForGame(map.gameId)}
         />
+      </Section>
+      <Section className="pt-4">
+        <ReconSourceNotes packet={getReconSourcePacket(map.id)} publicMode />
       </Section>
     </>
   );

@@ -1,7 +1,9 @@
 import { ReconCoordinateCapture } from "@/components/recon-coordinate-capture";
+import { ReconSourceNotes } from "@/components/recon-source-notes";
 import { Section, SectionHeading, StatusBadge } from "@/components/ui";
 import iconManifest from "@/data/recon/icon-manifest.json";
 import { getReconCategoriesForGame } from "@/data/recon/category-registry";
+import { getReconSourcePacket } from "@/data/recon/source-packets";
 import { isAdminAuthenticated } from "@/lib/admin";
 import {
   getAdminReconMapBySlug,
@@ -79,6 +81,9 @@ export default async function ReconMapAdminPage({
           }))}
           suggestions={suggestions}
         />
+      </Section>
+      <Section className="pt-4">
+        <ReconSourceNotes packet={getReconSourcePacket(map.id)} />
       </Section>
     </>
   );

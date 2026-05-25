@@ -1,0 +1,16 @@
+<svg width="2048" height="1280" viewBox="0 0 2048 1280" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="2048" height="1280" fill="#08111A"/>
+  <path d="M120 880C380 760 544 742 780 790C1030 842 1210 778 1464 650C1658 552 1778 540 1932 596V1156H120V880Z" fill="#0D2B3A" stroke="#38BDF8" stroke-width="8"/>
+  <path d="M186 268C402 230 612 286 760 388C902 486 1022 508 1180 438C1338 368 1534 286 1846 350" stroke="#A7F3D0" stroke-width="12" stroke-linecap="round" stroke-dasharray="34 28"/>
+  <rect x="320" y="468" width="352" height="206" rx="26" fill="#142617" stroke="#86EFAC" stroke-width="7"/>
+  <rect x="1304" y="292" width="328" height="208" rx="26" fill="#252018" stroke="#FDBA74" stroke-width="7"/>
+  <rect x="930" y="584" width="280" height="180" rx="26" fill="#211A2F" stroke="#C4B5FD" stroke-width="7"/>
+  <circle cx="1504" cy="396" r="54" fill="#0F172A" stroke="#FDE68A" stroke-width="8"/>
+  <circle cx="498" cy="570" r="54" fill="#0F172A" stroke="#93C5FD" stroke-width="8"/>
+  <circle cx="1070" cy="674" r="54" fill="#0F172A" stroke="#D9F99D" stroke-width="8"/>
+  <text x="1024" y="112" fill="#BAE6FD" font-family="Arial, sans-serif" font-size="42" text-anchor="middle">Vaexil Recon Draft - The Atlantic Wall</text>
+  <text x="1024" y="1240" fill="#64748B" font-family="Arial, sans-serif" font-size="28" text-anchor="middle">Private approximate schematic for coordinate capture. Not copied from game or third-party map art.</text>
+  <text x="1504" y="410" fill="#FEF3C7" font-family="Arial, sans-serif" font-size="31" text-anchor="middle">objective</text>
+  <text x="498" y="584" fill="#DBEAFE" font-family="Arial, sans-serif" font-size="31" text-anchor="middle">safehouse</text>
+  <text x="1070" y="688" fill="#ECFCCB" font-family="Arial, sans-serif" font-size="31" text-anchor="middle">review hub</text>
+</svg>

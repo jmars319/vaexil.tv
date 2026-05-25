@@ -43,17 +43,20 @@ Start here:
 ## Recon
 
 Recon is available at `/recon` with initial public game pages for `/recon/hitman`
-and `/recon/sniper-elite-5`. It is a curated static map and guide layer for
-games covered on stream, not AI, prediction, or a copied reference-site data
-set.
+`/recon/sniper-elite-5`, and `/recon/sniper-elite-resistance`. It is a curated
+static map and guide layer for games covered on stream, not AI, prediction, or a
+copied reference-site data set.
 
 Individual map pages stay hidden until a map is marked `published` and backed by
 an approved public asset. Draft map assets live outside `public/` and are served
 only through protected admin routes for coordinate capture.
 
 Recon v1 imports no third-party map images, API data, marker coordinates, icons,
-or copied guide text. Final maps should be Vaexil-authored schematic maps and
-must be documented in `src/data/recon/asset-manifest.json` before publication.
+or copied guide text. Draft source packets live in
+`src/data/recon/source-packets.json` for HITMAN Dubai, Sniper Elite 5 The
+Atlantic Wall, and Sniper Elite: Resistance Behind Enemy Lines. Final maps
+should be Vaexil-authored schematic maps and must be documented in
+`src/data/recon/asset-manifest.json` before publication.
 
 ## Local Development
 

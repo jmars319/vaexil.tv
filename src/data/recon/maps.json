@@ -49,5 +49,22 @@
     "enabled": true,
     "status": "draft",
     "sortOrder": 10
+  },
+  {
+    "id": "ser-behind-enemy-lines",
+    "gameId": "sniper-elite-resistance",
+    "slug": "behind-enemy-lines",
+    "title": "Behind Enemy Lines",
+    "subtitle": "Mission 1",
+    "description": "Draft Recon structure for future Vaexil-authored Sniper Elite: Resistance schematic map work.",
+    "imageAssetId": "draft-schematic-ser-behind-enemy-lines",
+    "width": 2048,
+    "height": 1280,
+    "minZoom": 0.5,
+    "maxZoom": 3,
+    "floorSupport": false,
+    "enabled": true,
+    "status": "draft",
+    "sortOrder": 10
   }
 ]

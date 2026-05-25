@@ -2,7 +2,7 @@
 
 Recon v1 imports no third-party map images, API data, marker coordinates, icons,
 or guide text. The only committed Recon visual assets are Vaexil-created neutral
-placeholder/icon assets.
+draft schematic and icon assets.
 
 ## Reviewed Sources
 
@@ -16,11 +16,18 @@ placeholder/icon assets.
 | Sniper Elite 5 Maps | https://sniperelite5maps.de/ | Interactive Sniper Elite 5 maps and markers | Third-party site | Depends on license | No | Recon must not copy map images, marker coordinates, UI, or guide data. |
 | Sniper Elite 5 Maps GitHub repo | https://github.com/lordfiSh/sniperelite5maps | Code/assets/data | CC BY-NC-SA posture is not suitable for unconstrained Vaexil.tv reuse | Attribution, non-commercial, share-alike if used | No | Non-commercial/share-alike obligations do not fit the independence goal. |
 | Guides4Gamers Sniper Elite 5 | https://guides4gamers.com/sniper-elite-5/maps/campaign-maps/ | Maps, guide text, marker lists | Site terms restrict copying/reuse/scraping | Permission required | No | No copied guide text, maps, marker lists, or scraping. |
+| IO Interactive HITMAN World of Assassination | https://ioi.dk/hitman | Official product/location context | Official source for facts, not reusable assets | Not used for assets | No | Source-packet citation only; no screenshots, art, or UI assets are imported. |
+| Rebellion Sniper Elite 5 | https://shop.rebellion.com/products/sniper-elite-5 | Official product/feature context | Official source for facts, not reusable assets | Not used for assets | No | Source-packet citation only; no screenshots, art, or UI assets are imported. |
+| Rebellion Sniper Elite: Resistance | https://shop.rebellion.com/products/sniper-elite-resistance | Official product/feature context | Official source for facts, not reusable assets | Not used for assets | No | Source-packet citation only; no screenshots, art, or UI assets are imported. |
+| Push Square Sniper Elite guides | https://www.pushsquare.com/guides | Guide text, screenshots, collectible lists | Third-party editorial content | Not used for assets | No | Cross-check source only; do not copy screenshots, prose, marker coordinates, or guide routes. |
 
 ## Imported Assets
 
 | Asset | Path | Source | License/status | Imported |
 | --- | --- | --- | --- | --- |
+| HITMAN Dubai draft schematic | `private/recon/maps/hitman-dubai-draft.svg` | Vaexil.tv-created neutral draft asset | Vaexil-created draft schematic | Yes |
+| Sniper Elite 5 The Atlantic Wall draft schematic | `private/recon/maps/se5-atlantic-wall-draft.svg` | Vaexil.tv-created neutral draft asset | Vaexil-created draft schematic | Yes |
+| Sniper Elite: Resistance Behind Enemy Lines draft schematic | `private/recon/maps/ser-behind-enemy-lines-draft.svg` | Vaexil.tv-created neutral draft asset | Vaexil-created draft schematic | Yes |
 | Draft map placeholder | `private/recon/maps/draft-map-placeholder.svg` | Vaexil.tv-created neutral draft asset | Vaexil-created placeholder | Yes |
 | Neutral common icons | `public/recon/icons/common/` | Vaexil.tv-created neutral icons | Vaexil-created placeholders | Yes |
 
@@ -46,5 +53,7 @@ were imported.
 2. Create each real map plate from first-hand gameplay review, not from copied
    reference-site maps.
 3. Record every final asset in `src/data/recon/asset-manifest.json`.
-4. Update `public/recon/ATTRIBUTIONS.md` before any third-party licensed asset
+4. Keep `src/data/recon/source-packets.json` current before moving a map toward
+   publication.
+5. Update `public/recon/ATTRIBUTIONS.md` before any third-party licensed asset
    is approved.

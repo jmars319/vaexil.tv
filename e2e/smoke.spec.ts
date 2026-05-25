@@ -5,6 +5,7 @@ const routes = [
   "/recon",
   "/recon/hitman",
   "/recon/sniper-elite-5",
+  "/recon/sniper-elite-resistance",
   "/suggest",
   "/guides",
   "/contact",
@@ -34,6 +35,11 @@ for (const route of routes) {
 
 test("draft Recon map remains public 404", async ({ request }) => {
   const response = await request.get("/recon/hitman/dubai");
+  expect(response.status()).toBe(404);
+});
+
+test("draft Sniper Elite Resistance Recon map remains public 404", async ({ request }) => {
+  const response = await request.get("/recon/sniper-elite-resistance/behind-enemy-lines");
   expect(response.status()).toBe(404);
 });
 

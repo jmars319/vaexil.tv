@@ -5,7 +5,7 @@ official game icons, or guide text.
 
 Current Recon assets:
 
-- Neutral placeholder map: Vaexil.tv-created.
+- Private draft schematic maps: Vaexil.tv-created.
 - Neutral common icons: Vaexil.tv-created.
 
 Future third-party assets must be listed here before publication with source,

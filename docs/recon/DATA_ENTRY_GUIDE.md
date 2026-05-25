@@ -9,9 +9,11 @@ guide facts to make a map feel complete.
 2. Add a draft map record to `src/data/recon/maps.json`.
 3. Add a matching private placeholder or draft asset record to
    `src/data/recon/asset-manifest.json`.
-4. Keep the map status as `draft`.
-5. Keep the asset visibility as `private` until it is approved for public use.
-6. Run the seed flow or load the app so the database upserts the seed records.
+4. Add or update the map's source packet in
+   `src/data/recon/source-packets.json`.
+5. Keep the map status as `draft`.
+6. Keep the asset visibility as `private` until it is approved for public use.
+7. Run the seed flow or load the app so the database upserts the seed records.
 
 Public map pages do not render until the map is `published` and the map asset is
 `approved` plus `public`.
@@ -61,6 +63,10 @@ Before publishing a marker:
 - confirm mode and variant
 - ensure notes describe uncertainty instead of hiding it
 - set the marker status to `published` only after review
+
+Source packets should be reviewed before publication. Each published map needs
+official source context, reference source context, uncertainty notes, and a clear
+list of source material that was not copied.
 
 Full marker publishing UI is intentionally deferred. Until that exists, direct
 database edits should be done carefully and only after review.

@@ -1,0 +1,16 @@
+<svg width="2048" height="1280" viewBox="0 0 2048 1280" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="2048" height="1280" fill="#07111F"/>
+  <rect x="144" y="120" width="1760" height="1040" rx="40" fill="#0C1C2D" stroke="#7DD3FC" stroke-width="10"/>
+  <rect x="432" y="208" width="1184" height="260" rx="28" fill="#122C42" stroke="#38BDF8" stroke-width="6"/>
+  <rect x="544" y="556" width="960" height="220" rx="28" fill="#102538" stroke="#22D3EE" stroke-width="6"/>
+  <rect x="704" y="860" width="640" height="190" rx="28" fill="#17203A" stroke="#A78BFA" stroke-width="6"/>
+  <path d="M1024 468V556M1024 776V860" stroke="#E0F2FE" stroke-width="8" stroke-linecap="round" stroke-dasharray="24 24"/>
+  <circle cx="1024" cy="338" r="54" fill="#0F172A" stroke="#67E8F9" stroke-width="8"/>
+  <circle cx="1024" cy="666" r="54" fill="#0F172A" stroke="#67E8F9" stroke-width="8"/>
+  <circle cx="1024" cy="955" r="54" fill="#0F172A" stroke="#C4B5FD" stroke-width="8"/>
+  <text x="1024" y="112" fill="#BAE6FD" font-family="Arial, sans-serif" font-size="42" text-anchor="middle">Vaexil Recon Draft - Dubai</text>
+  <text x="1024" y="1240" fill="#64748B" font-family="Arial, sans-serif" font-size="28" text-anchor="middle">Private approximate schematic for coordinate capture. Not copied from game or third-party map art.</text>
+  <text x="1024" y="352" fill="#E0F2FE" font-family="Arial, sans-serif" font-size="32" text-anchor="middle">entry / atrium study</text>
+  <text x="1024" y="680" fill="#E0F2FE" font-family="Arial, sans-serif" font-size="32" text-anchor="middle">public event floors</text>
+  <text x="1024" y="969" fill="#EDE9FE" font-family="Arial, sans-serif" font-size="32" text-anchor="middle">upper access study</text>
+</svg>

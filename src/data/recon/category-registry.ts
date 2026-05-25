@@ -10,6 +10,8 @@ export type ReconCategory = {
 
 const hitmanGame = "hitman-woa";
 const sniperEliteGame = "sniper-elite-5";
+const sniperEliteResistanceGame = "sniper-elite-resistance";
+const sniperEliteGames = [sniperEliteGame, sniperEliteResistanceGame];
 
 export const reconCategories: ReconCategory[] = [
   {
@@ -171,7 +173,7 @@ export const reconCategories: ReconCategory[] = [
     description: "Weapon pickup or useful weapon location.",
     defaultIconKey: "weapon",
     defaultVisible: true,
-    applicableGames: [hitmanGame, sniperEliteGame],
+    applicableGames: [hitmanGame, ...sniperEliteGames],
     applicableModes: ["campaign", "freelancer"],
   },
   {
@@ -180,7 +182,7 @@ export const reconCategories: ReconCategory[] = [
     description: "Tool pickup or utility location.",
     defaultIconKey: "tool",
     defaultVisible: true,
-    applicableGames: [hitmanGame, sniperEliteGame],
+    applicableGames: [hitmanGame, ...sniperEliteGames],
     applicableModes: ["campaign", "freelancer"],
   },
   {
@@ -207,7 +209,7 @@ export const reconCategories: ReconCategory[] = [
     description: "Weapon workbench.",
     defaultIconKey: "workbench",
     defaultVisible: true,
-    applicableGames: [sniperEliteGame],
+    applicableGames: sniperEliteGames,
     applicableModes: ["campaign"],
   },
   {
@@ -216,7 +218,7 @@ export const reconCategories: ReconCategory[] = [
     description: "Rifle workbench.",
     defaultIconKey: "workbench",
     defaultVisible: true,
-    applicableGames: [sniperEliteGame],
+    applicableGames: sniperEliteGames,
     applicableModes: ["campaign"],
   },
   {
@@ -225,7 +227,7 @@ export const reconCategories: ReconCategory[] = [
     description: "SMG workbench.",
     defaultIconKey: "workbench",
     defaultVisible: true,
-    applicableGames: [sniperEliteGame],
+    applicableGames: sniperEliteGames,
     applicableModes: ["campaign"],
   },
   {
@@ -234,7 +236,7 @@ export const reconCategories: ReconCategory[] = [
     description: "Pistol workbench.",
     defaultIconKey: "workbench",
     defaultVisible: true,
-    applicableGames: [sniperEliteGame],
+    applicableGames: sniperEliteGames,
     applicableModes: ["campaign"],
   },
   {
@@ -243,7 +245,7 @@ export const reconCategories: ReconCategory[] = [
     description: "Personal letter collectible.",
     defaultIconKey: "document",
     defaultVisible: true,
-    applicableGames: [sniperEliteGame],
+    applicableGames: sniperEliteGames,
     applicableModes: ["campaign"],
   },
   {
@@ -252,7 +254,7 @@ export const reconCategories: ReconCategory[] = [
     description: "Classified document collectible.",
     defaultIconKey: "document",
     defaultVisible: true,
-    applicableGames: [sniperEliteGame],
+    applicableGames: sniperEliteGames,
     applicableModes: ["campaign"],
   },
   {
@@ -261,7 +263,7 @@ export const reconCategories: ReconCategory[] = [
     description: "Hidden item collectible.",
     defaultIconKey: "item",
     defaultVisible: true,
-    applicableGames: [sniperEliteGame],
+    applicableGames: sniperEliteGames,
     applicableModes: ["campaign"],
   },
   {
@@ -270,7 +272,7 @@ export const reconCategories: ReconCategory[] = [
     description: "Stone eagle collectible.",
     defaultIconKey: "target",
     defaultVisible: true,
-    applicableGames: [sniperEliteGame],
+    applicableGames: sniperEliteGames,
     applicableModes: ["campaign"],
   },
   {
@@ -279,7 +281,7 @@ export const reconCategories: ReconCategory[] = [
     description: "Kill list target.",
     defaultIconKey: "target",
     defaultVisible: true,
-    applicableGames: [sniperEliteGame],
+    applicableGames: sniperEliteGames,
     applicableModes: ["campaign"],
   },
   {
@@ -288,7 +290,7 @@ export const reconCategories: ReconCategory[] = [
     description: "Sniper position.",
     defaultIconKey: "weapon",
     defaultVisible: true,
-    applicableGames: [sniperEliteGame],
+    applicableGames: sniperEliteGames,
     applicableModes: ["campaign"],
   },
   {
@@ -297,7 +299,7 @@ export const reconCategories: ReconCategory[] = [
     description: "Officer or important NPC position.",
     defaultIconKey: "target",
     defaultVisible: true,
-    applicableGames: [sniperEliteGame],
+    applicableGames: sniperEliteGames,
     applicableModes: ["campaign"],
   },
   {
@@ -306,7 +308,7 @@ export const reconCategories: ReconCategory[] = [
     description: "Mission starting location.",
     defaultIconKey: "entrance",
     defaultVisible: true,
-    applicableGames: [sniperEliteGame],
+    applicableGames: sniperEliteGames,
     applicableModes: ["campaign"],
   },
   {
@@ -315,7 +317,7 @@ export const reconCategories: ReconCategory[] = [
     description: "Mission exfiltration point.",
     defaultIconKey: "exit",
     defaultVisible: true,
-    applicableGames: [sniperEliteGame],
+    applicableGames: sniperEliteGames,
     applicableModes: ["campaign"],
   },
   {
@@ -324,7 +326,7 @@ export const reconCategories: ReconCategory[] = [
     description: "Main objective location.",
     defaultIconKey: "objective",
     defaultVisible: true,
-    applicableGames: [sniperEliteGame],
+    applicableGames: sniperEliteGames,
     applicableModes: ["campaign"],
   },
   {
@@ -333,7 +335,7 @@ export const reconCategories: ReconCategory[] = [
     description: "Optional objective location.",
     defaultIconKey: "objective",
     defaultVisible: true,
-    applicableGames: [sniperEliteGame],
+    applicableGames: sniperEliteGames,
     applicableModes: ["campaign"],
   },
   {
@@ -342,7 +344,7 @@ export const reconCategories: ReconCategory[] = [
     description: "Satchel charge pickup.",
     defaultIconKey: "tool",
     defaultVisible: true,
-    applicableGames: [sniperEliteGame],
+    applicableGames: sniperEliteGames,
     applicableModes: ["campaign"],
   },
   {
@@ -351,7 +353,7 @@ export const reconCategories: ReconCategory[] = [
     description: "Bolt cutter pickup.",
     defaultIconKey: "tool",
     defaultVisible: true,
-    applicableGames: [sniperEliteGame],
+    applicableGames: sniperEliteGames,
     applicableModes: ["campaign"],
   },
   {
@@ -360,7 +362,16 @@ export const reconCategories: ReconCategory[] = [
     description: "Crowbar pickup.",
     defaultIconKey: "tool",
     defaultVisible: true,
-    applicableGames: [sniperEliteGame],
+    applicableGames: sniperEliteGames,
+    applicableModes: ["campaign"],
+  },
+  {
+    key: "propaganda_poster",
+    label: "Propaganda poster",
+    description: "Propaganda poster collectible or unlock note.",
+    defaultIconKey: "poster",
+    defaultVisible: true,
+    applicableGames: [sniperEliteResistanceGame],
     applicableModes: ["campaign"],
   },
   {
@@ -369,7 +380,7 @@ export const reconCategories: ReconCategory[] = [
     description: "Alarm system or control point.",
     defaultIconKey: "poi",
     defaultVisible: true,
-    applicableGames: [sniperEliteGame],
+    applicableGames: sniperEliteGames,
     applicableModes: ["campaign"],
   },
   {
@@ -378,7 +389,7 @@ export const reconCategories: ReconCategory[] = [
     description: "Alarm siren position.",
     defaultIconKey: "poi",
     defaultVisible: true,
-    applicableGames: [sniperEliteGame],
+    applicableGames: sniperEliteGames,
     applicableModes: ["campaign"],
   },
   {
@@ -387,7 +398,7 @@ export const reconCategories: ReconCategory[] = [
     description: "Key, code, or lock access note.",
     defaultIconKey: "key",
     defaultVisible: true,
-    applicableGames: [sniperEliteGame],
+    applicableGames: sniperEliteGames,
     applicableModes: ["campaign"],
   },
   {
@@ -396,7 +407,7 @@ export const reconCategories: ReconCategory[] = [
     description: "Useful landmark, route note, or local callout.",
     defaultIconKey: "poi",
     defaultVisible: true,
-    applicableGames: [hitmanGame, sniperEliteGame],
+    applicableGames: [hitmanGame, ...sniperEliteGames],
     applicableModes: ["campaign", "freelancer"],
   },
 ];

@@ -16,19 +16,19 @@ import { notFound } from "next/navigation";
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
-type SniperEliteReconMapPageProps = {
+type SniperEliteResistanceReconMapPageProps = {
   params: Promise<{ missionSlug: string }>;
 };
 
 export async function generateMetadata({
   params,
-}: SniperEliteReconMapPageProps) {
+}: SniperEliteResistanceReconMapPageProps) {
   const { missionSlug } = await params;
-  const map = await getPublicReconMap("sniper-elite-5", missionSlug);
+  const map = await getPublicReconMap("sniper-elite-resistance", missionSlug);
 
   if (!map) {
     return {
-      title: "Sniper Elite 5 Recon map",
+      title: "Sniper Elite: Resistance Recon map",
       robots: { index: false, follow: false },
     };
   }
@@ -39,11 +39,11 @@ export async function generateMetadata({
   };
 }
 
-export default async function SniperEliteReconMapPage({
+export default async function SniperEliteResistanceReconMapPage({
   params,
-}: SniperEliteReconMapPageProps) {
+}: SniperEliteResistanceReconMapPageProps) {
   const { missionSlug } = await params;
-  const map = await getPublicReconMap("sniper-elite-5", missionSlug);
+  const map = await getPublicReconMap("sniper-elite-resistance", missionSlug);
   if (!map || !map.imageAsset || map.imageAsset.visibility !== "public") {
     notFound();
   }
@@ -74,8 +74,8 @@ export default async function SniperEliteReconMapPage({
                 : "Published Recon markers only."
             }
           />
-          <SecondaryLink href="/recon/sniper-elite-5">
-            Sniper Elite 5 Recon
+          <SecondaryLink href="/recon/sniper-elite-resistance">
+            Sniper Elite: Resistance Recon
           </SecondaryLink>
         </div>
       </Section>
@@ -93,7 +93,10 @@ export default async function SniperEliteReconMapPage({
         />
       </Section>
       <Section className="pt-4">
-        <ReconSourceNotes packet={getReconSourcePacket(map.id)} publicMode />
+        <ReconSourceNotes
+          packet={getReconSourcePacket(map.id)}
+          publicMode
+        />
       </Section>
     </>
   );

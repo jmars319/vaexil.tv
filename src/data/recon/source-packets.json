@@ -1,0 +1,188 @@
+[
+  {
+    "mapId": "hitman-dubai",
+    "gameId": "hitman-woa",
+    "status": "research_draft",
+    "lastReviewed": "2026-05-25",
+    "officialSources": [
+      {
+        "label": "IO Interactive - HITMAN World of Assassination",
+        "url": "https://ioi.dk/hitman",
+        "note": "Official product and location context for World of Assassination."
+      }
+    ],
+    "referenceSources": [
+      {
+        "label": "First-hand Vaexil gameplay review",
+        "url": "",
+        "note": "Required before any Dubai marker becomes verified or published."
+      }
+    ],
+    "verifiedNamedAreas": [],
+    "approximateAreas": [
+      "Entry and atrium route",
+      "Public event floors",
+      "Security and staff circulation",
+      "Penthouse approach",
+      "Extraction routes"
+    ],
+    "poiCandidates": [
+      {
+        "label": "Initial entrance and public floor flow",
+        "category": "entrance",
+        "confidence": "approximate",
+        "notes": "Draft only; convert to markers after Vaexil gameplay review."
+      },
+      {
+        "label": "Security-room review target",
+        "category": "security_room",
+        "confidence": "approximate",
+        "notes": "Candidate POI for future camera-recorder and access-route validation."
+      },
+      {
+        "label": "Penthouse access study",
+        "category": "poi",
+        "confidence": "approximate",
+        "notes": "Use for route planning notes, not a published objective marker."
+      }
+    ],
+    "uncertaintyNotes": [
+      "Multi-floor geometry is intentionally schematic until the map plate is reviewed floor by floor.",
+      "No HITMAPS map image, API data, guide text, or marker coordinate data is used."
+    ],
+    "avoidCopying": [
+      "Official screenshots, map art, UI icons, and marketing images.",
+      "HITMAPS assets, API nodes, marker coordinates, and labels.",
+      "Third-party guide prose or annotated screenshots."
+    ]
+  },
+  {
+    "mapId": "se5-atlantic-wall",
+    "gameId": "sniper-elite-5",
+    "status": "research_draft",
+    "lastReviewed": "2026-05-25",
+    "officialSources": [
+      {
+        "label": "Rebellion - Sniper Elite 5",
+        "url": "https://shop.rebellion.com/products/sniper-elite-5",
+        "note": "Official product context for campaign maps, infiltration/extraction points, kill list targets, traversal, and workbenches."
+      }
+    ],
+    "referenceSources": [
+      {
+        "label": "Push Square - The Atlantic Wall collectibles",
+        "url": "https://www.pushsquare.com/guides/sniper-elite-5-the-atlantic-wall-all-collectibles-personal-letters-classified-documents-hidden-items-stone-eagles-workbenches",
+        "note": "Cross-check only for collectible categories and review targets; do not copy coordinates, screenshots, or prose."
+      },
+      {
+        "label": "First-hand Vaexil gameplay review",
+        "url": "",
+        "note": "Required before any Atlantic Wall marker becomes verified or published."
+      }
+    ],
+    "verifiedNamedAreas": [],
+    "approximateAreas": [
+      "Coastal insertion area",
+      "Village approach",
+      "Radar objective area",
+      "Resistance safehouse area",
+      "Exfiltration route"
+    ],
+    "poiCandidates": [
+      {
+        "label": "Radar objective review",
+        "category": "main_objective",
+        "confidence": "approximate",
+        "notes": "Use as a draft objective anchor after first-hand validation."
+      },
+      {
+        "label": "Workbench review set",
+        "category": "workbench",
+        "confidence": "approximate",
+        "notes": "Track rifle, SMG, and pistol workbench candidates separately during gameplay review."
+      },
+      {
+        "label": "Collectible sweep route",
+        "category": "poi",
+        "confidence": "approximate",
+        "notes": "Planning note for future marker capture, not a copied guide route."
+      }
+    ],
+    "uncertaintyNotes": [
+      "The draft schematic is intentionally zone-based and should not be treated as a true map plate.",
+      "Collectible categories are known, but exact markers remain unpublished until first-hand review."
+    ],
+    "avoidCopying": [
+      "Rebellion screenshots and in-game map art.",
+      "Sniper Elite Maps, Guides4Gamers, Push Square screenshots, guide prose, and marker coordinates.",
+      "Third-party annotated map images."
+    ]
+  },
+  {
+    "mapId": "ser-behind-enemy-lines",
+    "gameId": "sniper-elite-resistance",
+    "status": "research_draft",
+    "lastReviewed": "2026-05-25",
+    "officialSources": [
+      {
+        "label": "Rebellion - Sniper Elite: Resistance",
+        "url": "https://shop.rebellion.com/products/sniper-elite-resistance",
+        "note": "Official product context for the Resistance campaign, Harry Hawker, co-op, infiltration/extraction, kill list targets, and propaganda missions."
+      },
+      {
+        "label": "Rebellion Help Centre - Sniper Elite: Resistance",
+        "url": "https://support.rebellion.com/hc/en-gb/sections/19011334307357-Sniper-Elite-Resistance",
+        "note": "Official support context for current Resistance platform and feature references."
+      }
+    ],
+    "referenceSources": [
+      {
+        "label": "Push Square - Sniper Elite Resistance guide",
+        "url": "https://www.pushsquare.com/guides/sniper-elite-resistance-guide-100percent-collectibles-walkthrough",
+        "note": "Cross-check only for mission list and collectible category coverage; do not copy coordinates, screenshots, or prose."
+      },
+      {
+        "label": "First-hand Vaexil gameplay review",
+        "url": "",
+        "note": "Required before any Behind Enemy Lines marker becomes verified or published."
+      }
+    ],
+    "verifiedNamedAreas": [],
+    "approximateAreas": [
+      "Initial insertion route",
+      "Primary objective area",
+      "Resistance support route",
+      "Propaganda poster review path",
+      "Extraction path"
+    ],
+    "poiCandidates": [
+      {
+        "label": "Mission entry review",
+        "category": "starting_location",
+        "confidence": "approximate",
+        "notes": "Draft anchor for first-hand coordinate capture."
+      },
+      {
+        "label": "Propaganda poster candidate",
+        "category": "propaganda_poster",
+        "confidence": "approximate",
+        "notes": "Use only after gameplay validation; do not copy guide coordinates."
+      },
+      {
+        "label": "Extraction review",
+        "category": "exfiltration",
+        "confidence": "approximate",
+        "notes": "Draft route endpoint candidate."
+      }
+    ],
+    "uncertaintyNotes": [
+      "Sniper Elite: Resistance support and guide sources are current as of 2026-05-25, but markers remain draft-only.",
+      "Exact mission geometry and collectible placement require first-hand capture."
+    ],
+    "avoidCopying": [
+      "Rebellion screenshots, marketing images, and in-game map art.",
+      "Push Square screenshots, guide prose, and marker coordinates.",
+      "MapMaster or other third-party interactive map assets and marker data."
+    ]
+  }
+]

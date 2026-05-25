@@ -10,6 +10,7 @@ const routes = [
   "/recon",
   "/recon/hitman",
   "/recon/sniper-elite-5",
+  "/recon/sniper-elite-resistance",
   "/suggest",
   "/suggestions",
   "/vaexcore",

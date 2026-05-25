@@ -1,0 +1,15 @@
+<svg width="2048" height="1280" viewBox="0 0 2048 1280" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="2048" height="1280" fill="#071018"/>
+  <path d="M192 1000C390 760 476 564 618 364C748 184 914 168 1062 314C1198 450 1294 622 1456 680C1616 738 1760 686 1884 556" stroke="#67E8F9" stroke-width="18" stroke-linecap="round"/>
+  <rect x="314" y="752" width="316" height="190" rx="24" fill="#12251F" stroke="#86EFAC" stroke-width="7"/>
+  <rect x="842" y="334" width="350" height="220" rx="24" fill="#1A2336" stroke="#93C5FD" stroke-width="7"/>
+  <rect x="1368" y="644" width="306" height="196" rx="24" fill="#2A1E2C" stroke="#F5D0FE" stroke-width="7"/>
+  <circle cx="472" cy="848" r="54" fill="#0F172A" stroke="#BAE6FD" stroke-width="8"/>
+  <circle cx="1018" cy="444" r="54" fill="#0F172A" stroke="#FDE68A" stroke-width="8"/>
+  <circle cx="1520" cy="742" r="54" fill="#0F172A" stroke="#F0ABFC" stroke-width="8"/>
+  <text x="1024" y="112" fill="#BAE6FD" font-family="Arial, sans-serif" font-size="42" text-anchor="middle">Vaexil Recon Draft - Behind Enemy Lines</text>
+  <text x="1024" y="1240" fill="#64748B" font-family="Arial, sans-serif" font-size="28" text-anchor="middle">Private approximate schematic for coordinate capture. Not copied from game or third-party map art.</text>
+  <text x="472" y="862" fill="#E0F2FE" font-family="Arial, sans-serif" font-size="31" text-anchor="middle">entry</text>
+  <text x="1018" y="458" fill="#FEF3C7" font-family="Arial, sans-serif" font-size="31" text-anchor="middle">objective</text>
+  <text x="1520" y="756" fill="#FAE8FF" font-family="Arial, sans-serif" font-size="31" text-anchor="middle">poster</text>
+</svg>

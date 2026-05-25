@@ -12,10 +12,14 @@ of HITMAPS, Sniper Elite Maps, Guides4Gamers, or any other map project.
 - `/recon` is the public Recon landing page.
 - `/recon/hitman` is the public HITMAN Recon game page.
 - `/recon/sniper-elite-5` is the public Sniper Elite 5 Recon game page.
+- `/recon/sniper-elite-resistance` is the public Sniper Elite: Resistance Recon
+  game page.
 - `/recon/hitman/[mapSlug]` only renders published maps with approved public
   assets.
 - `/recon/sniper-elite-5/[missionSlug]` only renders published maps with
   approved public assets.
+- `/recon/sniper-elite-resistance/[missionSlug]` only renders published maps
+  with approved public assets.
 - `/admin/recon` is the protected Recon admin index.
 - `/admin/recon/maps/[mapSlug]` is the protected coordinate capture surface.
 - `/admin/recon/assets/[assetId]` serves private draft assets only after admin
@@ -46,6 +50,12 @@ Marker coordinates are normalized:
 
 The viewer calculates pixel positions from map dimensions at render time. Do not
 store only raw pixels.
+
+Source packets live in `src/data/recon/source-packets.json`. They are
+reviewable research records for map-level official sources, reference sources,
+approximate areas, candidate POIs, uncertainty, and copyright-sensitive material
+to avoid. They are not marker data and should not be treated as verified
+coordinates.
 
 ## Publishing Rules
 
@@ -88,6 +98,11 @@ The first Recon admin pass is coordinate capture, not a full CMS.
 
 Publishing markers and maps remains an explicit future admin workflow. Nothing
 from coordinate capture publishes automatically.
+
+The current draft targets are HITMAN Dubai, Sniper Elite 5 The Atlantic Wall,
+and Sniper Elite: Resistance Behind Enemy Lines. Their private draft schematic
+assets are approximate Vaexil-authored working plates for capture and review
+only.
 
 ## Freelancer Guide Bridge
 

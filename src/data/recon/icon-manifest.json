@@ -7,7 +7,7 @@
     "license": "Vaexil-created",
     "attribution": "Vaexil.tv",
     "isPlaceholder": true,
-    "applicableGames": ["hitman-woa", "sniper-elite-5"],
+    "applicableGames": ["hitman-woa", "sniper-elite-5", "sniper-elite-resistance"],
     "applicableCategories": ["poi"]
   },
   {
@@ -18,7 +18,7 @@
     "license": "Vaexil-created",
     "attribution": "Vaexil.tv",
     "isPlaceholder": true,
-    "applicableGames": ["hitman-woa", "sniper-elite-5"],
+    "applicableGames": ["hitman-woa", "sniper-elite-5", "sniper-elite-resistance"],
     "applicableCategories": ["item_spawn", "free_freelancer_item", "hidden_item"]
   },
   {
@@ -29,7 +29,7 @@
     "license": "Vaexil-created",
     "attribution": "Vaexil.tv",
     "isPlaceholder": true,
-    "applicableGames": ["hitman-woa", "sniper-elite-5"],
+    "applicableGames": ["hitman-woa", "sniper-elite-5", "sniper-elite-resistance"],
     "applicableCategories": ["target_spawn", "suspect_spawn", "kill_list_target"]
   },
   {
@@ -40,7 +40,7 @@
     "license": "Vaexil-created",
     "attribution": "Vaexil.tv",
     "isPlaceholder": true,
-    "applicableGames": ["hitman-woa"],
+    "applicableGames": ["hitman-woa", "sniper-elite-5", "sniper-elite-resistance"],
     "applicableCategories": ["target_path_point", "suspect_zone"]
   },
   {
@@ -51,7 +51,7 @@
     "license": "Vaexil-created",
     "attribution": "Vaexil.tv",
     "isPlaceholder": true,
-    "applicableGames": ["hitman-woa", "sniper-elite-5"],
+    "applicableGames": ["hitman-woa", "sniper-elite-5", "sniper-elite-resistance"],
     "applicableCategories": ["exit", "exfiltration"]
   },
   {
@@ -62,7 +62,7 @@
     "license": "Vaexil-created",
     "attribution": "Vaexil.tv",
     "isPlaceholder": true,
-    "applicableGames": ["hitman-woa"],
+    "applicableGames": ["hitman-woa", "sniper-elite-5", "sniper-elite-resistance"],
     "applicableCategories": ["entrance", "starting_location"]
   },
   {
@@ -73,7 +73,7 @@
     "license": "Vaexil-created",
     "attribution": "Vaexil.tv",
     "isPlaceholder": true,
-    "applicableGames": ["hitman-woa", "sniper-elite-5"],
+    "applicableGames": ["hitman-woa", "sniper-elite-5", "sniper-elite-resistance"],
     "applicableCategories": ["tool", "satchel_charge", "bolt_cutters", "crowbar"]
   },
   {
@@ -84,7 +84,7 @@
     "license": "Vaexil-created",
     "attribution": "Vaexil.tv",
     "isPlaceholder": true,
-    "applicableGames": ["hitman-woa", "sniper-elite-5"],
+    "applicableGames": ["hitman-woa", "sniper-elite-5", "sniper-elite-resistance"],
     "applicableCategories": ["weapon", "sniper"]
   },
   {
@@ -95,7 +95,7 @@
     "license": "Vaexil-created",
     "attribution": "Vaexil.tv",
     "isPlaceholder": true,
-    "applicableGames": ["hitman-woa", "sniper-elite-5"],
+    "applicableGames": ["hitman-woa", "sniper-elite-5", "sniper-elite-resistance"],
     "applicableCategories": ["key", "key_or_code"]
   },
   {
@@ -106,7 +106,7 @@
     "license": "Vaexil-created",
     "attribution": "Vaexil.tv",
     "isPlaceholder": true,
-    "applicableGames": ["sniper-elite-5"],
+    "applicableGames": ["sniper-elite-5", "sniper-elite-resistance"],
     "applicableCategories": ["workbench", "rifle_workbench", "smg_workbench", "pistol_workbench"]
   },
   {
@@ -117,7 +117,7 @@
     "license": "Vaexil-created",
     "attribution": "Vaexil.tv",
     "isPlaceholder": true,
-    "applicableGames": ["sniper-elite-5"],
+    "applicableGames": ["sniper-elite-5", "sniper-elite-resistance"],
     "applicableCategories": ["personal_letter", "classified_document"]
   },
   {
@@ -128,7 +128,18 @@
     "license": "Vaexil-created",
     "attribution": "Vaexil.tv",
     "isPlaceholder": true,
-    "applicableGames": ["sniper-elite-5"],
+    "applicableGames": ["sniper-elite-5", "sniper-elite-resistance"],
     "applicableCategories": ["main_objective", "optional_objective"]
+  },
+  {
+    "key": "poster",
+    "label": "Poster",
+    "path": "/recon/icons/common/poster.svg",
+    "source": "Vaexil.tv custom neutral icon",
+    "license": "Vaexil-created",
+    "attribution": "Vaexil.tv",
+    "isPlaceholder": true,
+    "applicableGames": ["sniper-elite-resistance"],
+    "applicableCategories": ["propaganda_poster"]
   }
 ]

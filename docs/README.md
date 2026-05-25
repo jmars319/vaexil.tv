@@ -10,6 +10,9 @@ Start here for Vaexil.tv system, deployment, Recon, and maintenance guidance.
 - `docs/recon/ASSET_SOURCING.md` - Recon asset sourcing rules.
 - `docs/recon/DATA_ENTRY_GUIDE.md` - Recon data-entry workflow.
 
+Recon source packets for draft map research live in
+`src/data/recon/source-packets.json`.
+
 ## Current Production State
 
 Vaexil.tv is a production creator hub with guide surfaces, contact intake, community suggestions, Recon groundwork, and a protected admin review surface. Publishing remains admin-controlled.
