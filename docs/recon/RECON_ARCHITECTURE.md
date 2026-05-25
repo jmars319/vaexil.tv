@@ -60,8 +60,9 @@ coordinates.
 Draft view metadata lives in `src/data/recon/map-views.json`. Views map a
 logical selector such as `B1`, `1F`, `2F`, `surface`, or `underground` to a
 private asset. HITMAN maps should not flatten multi-floor spaces into one plate;
-Dubai currently keeps private floor views from Level -1 through Level 5. Sniper
-Elite maps may be mostly surface-level, but underground, bunker, dam, tunnel, or
+Dubai currently keeps private floor views from Level -1 through Level 5, and
+Berlin keeps private floor views from Level -2 through Level 4. Sniper Elite
+maps may be mostly surface-level, but underground, bunker, dam, tunnel, or
 interior spaces should get separate views when they affect marker review.
 
 ## Publishing Rules
@@ -121,10 +122,11 @@ The first Recon admin pass is coordinate capture, not a full CMS.
 Publishing markers and maps remains an explicit future admin workflow. Nothing
 from coordinate capture publishes automatically.
 
-The current draft targets are HITMAN Dubai, Sniper Elite 5 The Atlantic Wall,
-and Sniper Elite: Resistance Behind Enemy Lines. Dubai has private floor source
-maps for admin review. The Sniper Elite targets have private surface source maps
-plus separate approximate Vaexil-authored interior/underground review plates.
+The current draft targets are HITMAN Dubai, HITMAN Berlin, Sniper Elite 5 The
+Atlantic Wall, and Sniper Elite: Resistance Behind Enemy Lines. The HITMAN
+targets have private floor source maps for admin review. The Sniper Elite
+targets have private surface source maps plus separate approximate
+Vaexil-authored interior/underground review plates.
 
 ## Freelancer Guide Bridge
 

@@ -79,6 +79,79 @@
     ]
   },
   {
+    "mapId": "hitman-berlin",
+    "gameId": "hitman-woa",
+    "status": "research_draft",
+    "lastReviewed": "2026-05-25",
+    "officialSources": [
+      {
+        "label": "IO Interactive - HITMAN World of Assassination",
+        "url": "https://ioi.dk/hitman",
+        "note": "Official product and location context for World of Assassination."
+      }
+    ],
+    "referenceSources": [
+      {
+        "label": "HITMAPS - Apex Predator floor maps",
+        "url": "https://www.hitmaps.com/games/hitman3/berlin/apex-predator/",
+        "note": "Private source-map imagery imported for admin-only floor review; do not copy marker coordinates, checklist data, labels, public UI, API nodes, or guide prose."
+      },
+      {
+        "label": "Gamepressure - Hitman 3 Berlin map and mission information",
+        "url": "https://www.gamepressure.com/hitman-iii/apex-predator-berlin-map-mission-information/zfe08b",
+        "note": "Cross-check only for broad mission structure, multi-level club context, adjacent biker area, forest/radio tower context, and shortcut concepts; do not copy map images, numbering, or prose."
+      },
+      {
+        "label": "PowerPyx - Berlin undiscovered areas",
+        "url": "https://www.powerpyx.com/hitman-3-berlin-germany-all-undiscovered-areas-locations/",
+        "note": "Cross-check only for floor-level area categories and traversal context; do not copy screenshots, numbered lists, coordinates, or prose."
+      },
+      {
+        "label": "First-hand Vaexil gameplay review",
+        "url": "",
+        "note": "Required before any Berlin marker becomes verified or published."
+      }
+    ],
+    "verifiedNamedAreas": [],
+    "approximateAreas": [
+      "Forest approach, gas-station edge, and exterior approach routes",
+      "Club entrance, outdoor queues, chill-out spaces, and ground-level circulation",
+      "Basement club floors, dance-floor circulation, and service passages",
+      "Biker building, overpass, garage, and adjacent back-of-house circulation",
+      "Roof, radio-tower, and vertical shortcut review routes"
+    ],
+    "poiCandidates": [
+      {
+        "label": "Club entry flow",
+        "category": "entrance",
+        "confidence": "approximate",
+        "notes": "Draft only; convert to markers after Vaexil gameplay review."
+      },
+      {
+        "label": "Lower club floor study",
+        "category": "poi",
+        "confidence": "approximate",
+        "notes": "Use the B2/B1 floor views to separate underground markers from ground-level circulation."
+      },
+      {
+        "label": "Radio tower route study",
+        "category": "sniper_nest",
+        "confidence": "approximate",
+        "notes": "Candidate POI for future line-of-sight and route validation."
+      }
+    ],
+    "uncertaintyNotes": [
+      "Berlin has strong vertical and interior layering; B2 through tower views must be reviewed separately before any marker is published.",
+      "HITMAPS floor map imagery is imported as private admin-only source assets for review; it is not public, and markers still require first-hand Vaexil validation.",
+      "No HITMAPS API data, guide text, UI data, labels, or marker coordinate data is used."
+    ],
+    "avoidCopying": [
+      "Official screenshots, map art, UI icons, and marketing images.",
+      "HITMAPS API nodes, marker coordinates, labels, guide prose, and UI data.",
+      "Third-party guide prose, numbered POI lists, annotated screenshots, and route instructions."
+    ]
+  },
+  {
     "mapId": "se5-atlantic-wall",
     "gameId": "sniper-elite-5",
     "status": "research_draft",

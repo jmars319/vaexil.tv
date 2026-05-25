@@ -38,6 +38,11 @@ test("draft Recon map remains public 404", async ({ request }) => {
   expect(response.status()).toBe(404);
 });
 
+test("draft Berlin Recon map remains public 404", async ({ request }) => {
+  const response = await request.get("/recon/hitman/berlin");
+  expect(response.status()).toBe(404);
+});
+
 test("draft Sniper Elite Resistance Recon map remains public 404", async ({ request }) => {
   const response = await request.get("/recon/sniper-elite-resistance/behind-enemy-lines");
   expect(response.status()).toBe(404);
@@ -52,6 +57,11 @@ test("unknown routes render branded 404", async ({ page }) => {
 
 test("private Recon asset is gated when logged out", async ({ request }) => {
   const response = await request.get("/admin/recon/assets/draft-placeholder-hitman-dubai");
+  expect(response.status()).toBe(404);
+});
+
+test("private imported Berlin Recon asset is gated when logged out", async ({ request }) => {
+  const response = await request.get("/admin/recon/assets/hitmaps-hitman-berlin-level-0");
   expect(response.status()).toBe(404);
 });
 

@@ -29,6 +29,7 @@ const sourcePacketsByMapId = new Map(sourcePackets.map((packet) => [packet.mapId
 const routeKeys = new Set();
 const requiredDraftMapIds = new Set([
   "hitman-dubai",
+  "hitman-berlin",
   "se5-atlantic-wall",
   "ser-behind-enemy-lines",
 ]);
@@ -124,6 +125,13 @@ const expectedImportedReviewAssets = new Map([
   ["hitman-dubai-4f", "hitmaps-hitman-dubai-level-3"],
   ["hitman-dubai-5f", "hitmaps-hitman-dubai-level-4"],
   ["hitman-dubai-roof", "hitmaps-hitman-dubai-level-5"],
+  ["hitman-berlin-b2", "hitmaps-hitman-berlin-level-minus-2"],
+  ["hitman-berlin-b1", "hitmaps-hitman-berlin-level-minus-1"],
+  ["hitman-berlin-1f", "hitmaps-hitman-berlin-level-0"],
+  ["hitman-berlin-2f", "hitmaps-hitman-berlin-level-1"],
+  ["hitman-berlin-3f", "hitmaps-hitman-berlin-level-2"],
+  ["hitman-berlin-4f", "hitmaps-hitman-berlin-level-3"],
+  ["hitman-berlin-tower", "hitmaps-hitman-berlin-level-4"],
   ["se5-atlantic-wall-surface", "guides4gamers-se5-atlantic-wall-surface"],
   ["ser-behind-enemy-lines-surface", "guides4gamers-ser-behind-enemy-lines-surface"],
 ]);
