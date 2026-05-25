@@ -61,12 +61,12 @@ Coordinate rules:
 
 ## Private Source Maps And Temporary References
 
-Wand and Guides4Gamers source maps may be committed only when they are explicit
-private review assets in `src/data/recon/asset-manifest.json` with
+HITMAPS and Guides4Gamers source maps may be committed only when they are
+explicit private review assets in `src/data/recon/asset-manifest.json` with
 `imported: true`, `visibility: private`, and `status: candidate`. They are for
 admin coordinate capture and map review only. They are not public map plates and
 they do not make third-party marker coordinates, labels, guide prose, checklist
-data, or icons reusable.
+data, UI, API nodes, or icons reusable.
 
 Guides4Gamers, HITMAPS, publisher screenshots, and other map images may still be
 opened or briefly stored in scratch space as draw-under references. Scratch

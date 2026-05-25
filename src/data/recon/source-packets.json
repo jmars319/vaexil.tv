@@ -23,14 +23,14 @@
         "note": "Cross-check only for named floor zones such as atrium, bar, art gallery, server room, helipad, and penthouse areas."
       },
       {
-        "label": "Wand - HITMAN 3 Dubai floor maps",
-        "url": "https://wand.com/maps/hitman-3/dubai-level-1-2nd-floor",
-        "note": "Private source-map tiles imported for admin-only floor review; do not copy marker coordinates, labels, checklist data, or public UI."
+        "label": "HITMAPS - On Top Of The World floor maps",
+        "url": "https://www.hitmaps.com/games/hitman3/dubai/on-top-of-the-world/",
+        "note": "Private source-map imagery imported for admin-only floor review; do not copy marker coordinates, checklist data, labels, public UI, or guide prose."
       },
       {
         "label": "HITMAPS - On Top Of The World",
         "url": "https://www.hitmaps.com/games/hitman3/dubai/on-top-of-the-world",
-        "note": "Temporary visual reference only for floor structure and broad orientation; do not keep images, copy marker coordinates, copy UI labels, or depend on the API."
+        "note": "Cross-check only for mission floor structure and broad orientation; no HITMAPS marker coordinates, labels, API nodes, or UI data are copied."
       },
       {
         "label": "First-hand Vaexil gameplay review",
@@ -69,12 +69,12 @@
     "uncertaintyNotes": [
       "Multi-floor geometry is source-derived but intentionally schematic until the map plate is reviewed floor by floor in Vaexil gameplay.",
       "Dubai needs floor-specific review views because public, staff, security, server-room, penthouse, and roof spaces stack vertically.",
-      "Wand floor map imagery is imported as private admin-only source assets for review; it is not public, and markers still require first-hand Vaexil validation.",
-      "No HITMAPS map image, API data, guide text, or marker coordinate data is used."
+      "HITMAPS floor map imagery is imported as private admin-only source assets for review; it is not public, and markers still require first-hand Vaexil validation.",
+      "No HITMAPS API data, guide text, UI data, labels, or marker coordinate data is used."
     ],
     "avoidCopying": [
       "Official screenshots, map art, UI icons, and marketing images.",
-      "HITMAPS assets, API nodes, marker coordinates, and labels.",
+      "HITMAPS API nodes, marker coordinates, labels, guide prose, and UI data.",
       "Third-party guide prose or annotated screenshots."
     ]
   },

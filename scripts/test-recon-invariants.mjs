@@ -117,13 +117,13 @@ for (const mapId of ["se5-atlantic-wall", "ser-behind-enemy-lines"]) {
 }
 
 const expectedImportedReviewAssets = new Map([
-  ["hitman-dubai-b1", "wand-hitman-dubai-level-minus-1"],
-  ["hitman-dubai-1f", "wand-hitman-dubai-level-0"],
-  ["hitman-dubai-2f", "wand-hitman-dubai-level-1"],
-  ["hitman-dubai-3f", "wand-hitman-dubai-level-2"],
-  ["hitman-dubai-4f", "wand-hitman-dubai-level-3"],
-  ["hitman-dubai-5f", "wand-hitman-dubai-level-4"],
-  ["hitman-dubai-roof", "wand-hitman-dubai-level-5"],
+  ["hitman-dubai-b1", "hitmaps-hitman-dubai-level-minus-1"],
+  ["hitman-dubai-1f", "hitmaps-hitman-dubai-level-0"],
+  ["hitman-dubai-2f", "hitmaps-hitman-dubai-level-1"],
+  ["hitman-dubai-3f", "hitmaps-hitman-dubai-level-2"],
+  ["hitman-dubai-4f", "hitmaps-hitman-dubai-level-3"],
+  ["hitman-dubai-5f", "hitmaps-hitman-dubai-level-4"],
+  ["hitman-dubai-roof", "hitmaps-hitman-dubai-level-5"],
   ["se5-atlantic-wall-surface", "guides4gamers-se5-atlantic-wall-surface"],
   ["ser-behind-enemy-lines-surface", "guides4gamers-ser-behind-enemy-lines-surface"],
 ]);

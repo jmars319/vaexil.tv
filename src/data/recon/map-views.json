@@ -6,9 +6,9 @@
     "shortLabel": "B1",
     "kind": "floor",
     "floor": "B1",
-    "assetId": "wand-hitman-dubai-level-minus-1",
+    "assetId": "hitmaps-hitman-dubai-level-minus-1",
     "sortOrder": 10,
-    "notes": "Actual private Wand floor map for Level -1/service review. Use only for admin coordinate capture and first-hand validation."
+    "notes": "Actual private HITMAPS floor map for Level -1/service review. Use only for admin coordinate capture and first-hand validation."
   },
   {
     "id": "hitman-dubai-1f",
@@ -17,9 +17,9 @@
     "shortLabel": "1F",
     "kind": "floor",
     "floor": "1F",
-    "assetId": "wand-hitman-dubai-level-0",
+    "assetId": "hitmaps-hitman-dubai-level-0",
     "sortOrder": 20,
-    "notes": "Actual private Wand floor map for Level 0/lobby review. Use only for admin coordinate capture and first-hand validation."
+    "notes": "Actual private HITMAPS floor map for Level 0/lobby review. Use only for admin coordinate capture and first-hand validation."
   },
   {
     "id": "hitman-dubai-2f",
@@ -28,9 +28,9 @@
     "shortLabel": "2F",
     "kind": "floor",
     "floor": "2F",
-    "assetId": "wand-hitman-dubai-level-1",
+    "assetId": "hitmaps-hitman-dubai-level-1",
     "sortOrder": 30,
-    "notes": "Actual private Wand floor map for Level 1 / 2nd Floor review. Use only for admin coordinate capture and first-hand validation."
+    "notes": "Actual private HITMAPS floor map for Level 1 / 2nd Floor review. Use only for admin coordinate capture and first-hand validation."
   },
   {
     "id": "hitman-dubai-3f",
@@ -39,9 +39,9 @@
     "shortLabel": "3F",
     "kind": "floor",
     "floor": "3F",
-    "assetId": "wand-hitman-dubai-level-2",
+    "assetId": "hitmaps-hitman-dubai-level-2",
     "sortOrder": 40,
-    "notes": "Actual private Wand floor map for Level 2/gallery review. Use only for admin coordinate capture and first-hand validation."
+    "notes": "Actual private HITMAPS floor map for Level 2/gallery review. Use only for admin coordinate capture and first-hand validation."
   },
   {
     "id": "hitman-dubai-4f",
@@ -50,9 +50,9 @@
     "shortLabel": "4F",
     "kind": "floor",
     "floor": "4F",
-    "assetId": "wand-hitman-dubai-level-3",
+    "assetId": "hitmaps-hitman-dubai-level-3",
     "sortOrder": 50,
-    "notes": "Actual private Wand floor map for Level 3/staff and security review. Use only for admin coordinate capture and first-hand validation."
+    "notes": "Actual private HITMAPS floor map for Level 3/staff and security review. Use only for admin coordinate capture and first-hand validation."
   },
   {
     "id": "hitman-dubai-5f",
@@ -61,9 +61,9 @@
     "shortLabel": "5F",
     "kind": "floor",
     "floor": "5F",
-    "assetId": "wand-hitman-dubai-level-4",
+    "assetId": "hitmaps-hitman-dubai-level-4",
     "sortOrder": 60,
-    "notes": "Actual private Wand floor map for Level 4/penthouse review. Use only for admin coordinate capture and first-hand validation."
+    "notes": "Actual private HITMAPS floor map for Level 4/penthouse review. Use only for admin coordinate capture and first-hand validation."
   },
   {
     "id": "hitman-dubai-roof",
@@ -72,9 +72,9 @@
     "shortLabel": "Roof",
     "kind": "floor",
     "floor": "Roof",
-    "assetId": "wand-hitman-dubai-level-5",
+    "assetId": "hitmaps-hitman-dubai-level-5",
     "sortOrder": 70,
-    "notes": "Actual private Wand floor map for Level 5/roof review. Use only for admin coordinate capture and first-hand validation."
+    "notes": "Actual private HITMAPS floor map for Level 5/roof review. Use only for admin coordinate capture and first-hand validation."
   },
   {
     "id": "se5-atlantic-wall-surface",

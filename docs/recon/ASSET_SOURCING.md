@@ -21,12 +21,12 @@ Git.
 
 | Candidate source | URL | Asset type | License/status | Attribution requirement | Imported | Reason |
 | --- | --- | --- | --- | --- | --- | --- |
-| Wand HITMAN 3 Dubai maps | https://wand.com/maps/hitman-3 | Interactive HITMAN floor maps and markers | Owner-approved private review use only; public publication not approved | Record source in manifest/docs | Private only | Floor tile images are committed only as protected admin source maps for Dubai Level -1 through Level 5. No marker data, checklist data, public UI, or prose is copied. |
-| HITMAPS website | https://www.hitmaps.com/ | Interactive HITMAN maps and markers | Third-party site; not a source for independent Recon data | Not used | No | Recon must not copy or depend on HITMAPS maps, marker coordinates, UI, or guide data. |
+| HITMAPS HITMAN 3 Dubai floor maps | https://www.hitmaps.com/games/hitman3/dubai/on-top-of-the-world/ | Interactive HITMAN floor maps and markers | Owner-approved private review use only; public publication not approved | Record source in manifest/docs | Private only | Floor map images are committed only as protected admin source maps for Dubai Level -1 through Level 5. No marker data, checklist data, public UI, labels, API nodes, or prose is copied. |
+| HITMAPS website | https://www.hitmaps.com/ | Interactive HITMAN maps and markers | Third-party site; private source-map imagery approved for admin review only | Record source for imported private maps | Private only for approved Dubai floor plates | Recon must not copy or depend on HITMAPS marker coordinates, UI, guide data, labels, or API nodes. |
 | HITMAPS API docs | https://hitmaps.readme.io/ | API/data access | Requires visible attribution when using API/services | Required if used | No | User requirement is no HITMAPS API or data dependency. |
 | HITMAPS nodes API | https://hitmaps.readme.io/reference/v2gamesgamelocationslocationmissionsmissionnodes | Marker/node data | API data with attribution/service terms | Required if used | No | Marker coordinates/data are excluded to keep Recon independent. |
 | HITMAPS GitHub repo | https://github.com/hitmaps/hitmaps | Code and project assets | Code license is separate from game images/text; repo notes HITMAN assets belong to IO Interactive | Depends on asset | No | A code license does not make proprietary game map imagery or marker data safe to import. |
-| HITMAPS media browser | https://mediabrowser.hitmaps.com/images/ | Images | No independent Vaexil permission | Unknown/unsafe | No | No hotlinking, scraping, or importing third-party map media. |
+| HITMAPS media browser | https://mediabrowser.hitmaps.com/images/ | Images | No independent Vaexil permission beyond owner-approved Dubai floor source maps | Unknown/unsafe | No general import | No hotlinking or broad media scraping. Only the documented Dubai floor plates are imported as private candidate assets. |
 | Sniper Elite 5 Maps | https://sniperelite5maps.de/ | Interactive Sniper Elite 5 maps and markers | Third-party site | Depends on license | No | Recon must not copy map images, marker coordinates, UI, or guide data. |
 | Sniper Elite 5 Maps GitHub repo | https://github.com/lordfiSh/sniperelite5maps | Code/assets/data | CC BY-NC-SA posture is not suitable for unconstrained Vaexil.tv reuse | Attribution, non-commercial, share-alike if used | No | Non-commercial/share-alike obligations do not fit the independence goal. |
 | Guides4Gamers Sniper Elite 5 | https://guides4gamers.com/sniper-elite-5/maps/campaign-maps/ | Maps, guide text, marker lists | Owner-approved private review use only; public publication not approved | Record source in manifest/docs | Private only | The Atlantic Wall surface map is committed only as a protected admin source map. No marker lists, coordinates, icons, or guide prose are copied. |
@@ -40,7 +40,7 @@ Git.
 
 | Asset | Path | Source | License/status | Imported |
 | --- | --- | --- | --- | --- |
-| HITMAN Dubai Level -1 through Level 5 floor maps | `private/recon/maps/hitman-dubai/` | Wand / WeMod | Third-party source map; private draft review use approved by owner | Yes, private only |
+| HITMAN Dubai Level -1 through Level 5 floor maps | `private/recon/maps/hitman-dubai/` | HITMAPS | Third-party source map; private draft review use approved by owner | Yes, private only |
 | Sniper Elite 5 The Atlantic Wall surface map | `private/recon/maps/sniper-elite-5/atlantic-wall-guides4gamers-surface.jpg` | Guides4Gamers | Third-party source map; private draft review use approved by owner | Yes, private only |
 | Sniper Elite: Resistance Behind Enemy Lines surface map | `private/recon/maps/sniper-elite-resistance/behind-enemy-lines-guides4gamers-surface.jpg` | Guides4Gamers | Third-party source map; private draft review use approved by owner | Yes, private only |
 | HITMAN Dubai draft schematic | `private/recon/maps/hitman-dubai-draft.svg` | Vaexil.tv-created neutral draft asset | Vaexil-created draft schematic | No |

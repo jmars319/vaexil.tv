@@ -7,7 +7,7 @@ Current Recon assets:
 
 - Private draft schematic maps: Vaexil.tv-created.
 - Private admin-only source maps:
-  - HITMAN Dubai floor maps: Wand / WeMod.
+  - HITMAN Dubai floor maps: HITMAPS.
   - Sniper Elite 5 The Atlantic Wall surface map: Guides4Gamers.
   - Sniper Elite: Resistance Behind Enemy Lines surface map: Guides4Gamers.
 - Neutral common icons: Vaexil.tv-created.

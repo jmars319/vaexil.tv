@@ -86,11 +86,11 @@ Future public game map plates should still go through a separate publication
 review and may be Vaexil-authored schematic maps created from first-hand gameplay
 review and manual validation.
 
-Private source maps from Wand or Guides4Gamers may be committed only under
+Private source maps from HITMAPS or Guides4Gamers may be committed only under
 `private/recon/` with `imported: true`, `visibility = private`, and
 `status = candidate`. They are admin-only review surfaces for coordinate capture,
 not public assets. Do not use them to copy marker coordinates, marker labels,
-guide prose, checklist data, icons, or UI.
+guide prose, checklist data, icons, UI, or API nodes.
 
 Reference images from HITMAPS, Guides4Gamers, publisher screenshots, or other
 guide sites may also be used temporarily as draw-under material while authoring a
