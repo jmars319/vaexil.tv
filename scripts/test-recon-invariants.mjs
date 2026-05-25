@@ -67,11 +67,20 @@ for (const map of maps) {
 }
 
 for (const asset of assets) {
-  assert.equal(asset.imported, false, `${asset.id} should not be marked as imported third-party content`);
-  assert.doesNotMatch(`${asset.sourceName} ${asset.sourceUrl}`, /hitmaps|guides4gamers|sniper\s*elite\s*maps/i, `${asset.id} should not reference third-party map sources`);
   if (asset.visibility === "private") {
     assert.match(asset.path, /^private\/recon\//, `${asset.id} private asset path should not be public`);
     await access(new URL(asset.path, root));
+  }
+
+  if (asset.imported) {
+    assert.equal(asset.visibility, "private", `${asset.id} imported source assets must stay private`);
+    assert.equal(asset.status, "candidate", `${asset.id} imported source assets must stay candidate-only`);
+    assert.ok(asset.sourceName, `${asset.id} imported source assets must name their source`);
+    assert.ok(asset.sourceUrl, `${asset.id} imported source assets must include a source URL`);
+    assert.match(asset.license, /private draft review use approved by owner/i, `${asset.id} imported source asset license/status should be explicit`);
+    assert.match(asset.notes, /Not approved for public publication/i, `${asset.id} imported source assets must be publication-gated`);
+  } else {
+    assert.doesNotMatch(`${asset.sourceName} ${asset.sourceUrl}`, /hitmaps|guides4gamers|sniper\s*elite\s*maps|wand|wemod/i, `${asset.id} Vaexil-created assets should not reference third-party map sources`);
   }
 }
 
@@ -84,8 +93,10 @@ for (const view of mapViews) {
   const asset = assetsById.get(view.assetId);
   assert.ok(asset, `${view.id} should reference a known asset`);
   assert.equal(asset.mapId, view.mapId, `${view.id} asset should point back to the same map`);
-  assert.equal(asset.imported, false, `${view.id} asset should stay Vaexil-authored`);
   assert.equal(asset.visibility, "private", `${view.id} draft asset should stay private`);
+  if (asset.imported) {
+    assert.equal(asset.status, "candidate", `${view.id} imported source asset should stay candidate-only`);
+  }
   await access(new URL(asset.path, root));
 
   const views = viewsByMapId.get(view.mapId) || [];
@@ -105,6 +116,28 @@ for (const mapId of ["se5-atlantic-wall", "ser-behind-enemy-lines"]) {
   assert.ok(views.some((view) => view.kind === "underground"), `${mapId} should define an underground/interior view`);
 }
 
+const expectedImportedReviewAssets = new Map([
+  ["hitman-dubai-b1", "wand-hitman-dubai-level-minus-1"],
+  ["hitman-dubai-1f", "wand-hitman-dubai-level-0"],
+  ["hitman-dubai-2f", "wand-hitman-dubai-level-1"],
+  ["hitman-dubai-3f", "wand-hitman-dubai-level-2"],
+  ["hitman-dubai-4f", "wand-hitman-dubai-level-3"],
+  ["hitman-dubai-5f", "wand-hitman-dubai-level-4"],
+  ["hitman-dubai-roof", "wand-hitman-dubai-level-5"],
+  ["se5-atlantic-wall-surface", "guides4gamers-se5-atlantic-wall-surface"],
+  ["ser-behind-enemy-lines-surface", "guides4gamers-ser-behind-enemy-lines-surface"],
+]);
+
+for (const [viewId, assetId] of expectedImportedReviewAssets) {
+  const view = mapViews.find((item) => item.id === viewId);
+  const asset = assetsById.get(assetId);
+  assert.ok(view, `${viewId} should exist as a private source-map review view`);
+  assert.ok(asset, `${assetId} should exist as a private source-map review asset`);
+  assert.equal(view.assetId, assetId, `${viewId} should use ${assetId}`);
+  assert.equal(asset.imported, true, `${assetId} should be recorded as an imported source asset`);
+  assert.equal(asset.visibility, "private", `${assetId} should not be public`);
+}
+
 for (const icon of icons) {
   assert.match(icon.path, /^\/recon\/icons\//, `${icon.key} icon should resolve from public Recon icons`);
 }
@@ -115,7 +148,7 @@ for (const packet of sourcePackets) {
   assert.ok(packet.officialSources.length >= 1, `${packet.mapId} should list official sources`);
   assert.ok(packet.referenceSources.length >= 1, `${packet.mapId} should list reference sources`);
   assert.ok(packet.avoidCopying.length >= 1, `${packet.mapId} should record copyright-sensitive material to avoid`);
-  assert.doesNotMatch(JSON.stringify(packet), /copied from|scraped coordinates|imported map/i, `${packet.mapId} should not claim copied source use`);
+  assert.doesNotMatch(JSON.stringify(packet), /copied from|scraped coordinates/i, `${packet.mapId} should not claim copied source use`);
 }
 
 const repository = await text("src/lib/repository.ts");

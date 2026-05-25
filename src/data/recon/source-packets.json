@@ -23,6 +23,11 @@
         "note": "Cross-check only for named floor zones such as atrium, bar, art gallery, server room, helipad, and penthouse areas."
       },
       {
+        "label": "Wand - HITMAN 3 Dubai floor maps",
+        "url": "https://wand.com/maps/hitman-3/dubai-level-1-2nd-floor",
+        "note": "Private source-map tiles imported for admin-only floor review; do not copy marker coordinates, labels, checklist data, or public UI."
+      },
+      {
         "label": "HITMAPS - On Top Of The World",
         "url": "https://www.hitmaps.com/games/hitman3/dubai/on-top-of-the-world",
         "note": "Temporary visual reference only for floor structure and broad orientation; do not keep images, copy marker coordinates, copy UI labels, or depend on the API."
@@ -64,7 +69,7 @@
     "uncertaintyNotes": [
       "Multi-floor geometry is source-derived but intentionally schematic until the map plate is reviewed floor by floor in Vaexil gameplay.",
       "Dubai needs floor-specific review views because public, staff, security, server-room, penthouse, and roof spaces stack vertically.",
-      "Reference images may be used as temporary draw-under layers while authoring Vaexil plates, but no third-party image layer remains in the saved asset.",
+      "Wand floor map imagery is imported as private admin-only source assets for review; it is not public, and markers still require first-hand Vaexil validation.",
       "No HITMAPS map image, API data, guide text, or marker coordinate data is used."
     ],
     "avoidCopying": [
@@ -89,7 +94,7 @@
       {
         "label": "Guides4Gamers - Sniper Elite 5 Mission Maps",
         "url": "https://guides4gamers.com/sniper-elite-5/maps/campaign-maps/",
-        "note": "Cross-check only for mission coverage, POI categories, and starting-location names; do not copy interactive map imagery, marker coordinates, or marker text."
+        "note": "Private source-map imagery is used for admin-only surface review; do not copy marker coordinates, marker text, guide prose, or public UI."
       },
       {
         "label": "Gamepressure - Atlantic Wall map and location description",
@@ -138,7 +143,7 @@
     "uncertaintyNotes": [
       "The draft schematic is source-derived but still zone-based; it should not be treated as a true map plate.",
       "The Atlantic Wall should keep an underground/interior view for tunnels, bunker interiors, safehouse interiors, and workbench-access paths instead of flattening every marker onto the surface plate.",
-      "Guides4Gamers preview/map imagery may be used as temporary draw-under reference only; no image layer, marker list, marker coordinate, or guide prose remains in the committed asset.",
+      "Guides4Gamers map imagery is imported as a private admin-only surface source asset; marker lists, marker coordinates, and guide prose are still excluded.",
       "Collectible categories are known, but exact markers remain unpublished until first-hand review."
     ],
     "avoidCopying": [
@@ -168,7 +173,7 @@
       {
         "label": "Guides4Gamers - Sniper Elite: Resistance Mission Maps",
         "url": "https://guides4gamers.com/sniper-elite-resistance/maps/campaign-maps/",
-        "note": "Cross-check only for mission list, POI categories, starting/exfiltration categories, and hidden-item/poster category conventions; do not copy interactive map imagery or marker coordinates."
+        "note": "Private source-map imagery is used for admin-only surface review; do not copy marker coordinates, marker text, guide prose, or public UI."
       },
       {
         "label": "TheReviewGeek - Behind Enemy Lines walkthrough",
@@ -217,7 +222,7 @@
     "uncertaintyNotes": [
       "Sniper Elite: Resistance support, Guides4Gamers, and guide sources are current as of 2026-05-25, but markers remain draft-only.",
       "Behind Enemy Lines should keep a dam/interior view for pipe panels, bunker routes, and workbench-access review instead of flattening every marker onto the surface plate.",
-      "Guides4Gamers preview/map imagery may be used as temporary draw-under reference only; no image layer, marker list, marker coordinate, or guide prose remains in the committed asset.",
+      "Guides4Gamers map imagery is imported as a private admin-only surface source asset; marker lists, marker coordinates, and guide prose are still excluded.",
       "Exact mission geometry and collectible placement require first-hand capture."
     ],
     "avoidCopying": [

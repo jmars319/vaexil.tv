@@ -43,7 +43,7 @@ Add or replace icons through `src/data/recon/icon-manifest.json` and
 3. Choose a draft map.
 4. Choose the correct map view before clicking:
    - HITMAN maps should use floor views such as `B1`, `1F`, `2F`, `3F`,
-     `4F`, or `Roof` instead of flattening all markers onto one plate.
+     `4F`, `5F`, or `Roof` instead of flattening all markers onto one plate.
    - Sniper Elite maps should separate `surface` from underground, bunker,
      dam, tunnel, or interior review layers when those spaces matter.
 5. Click the map to capture `x` and `y`.
@@ -59,13 +59,19 @@ Coordinate rules:
 - Floor/layer values should match the selected `map-views.json` `floor`
   value unless first-hand review proves a more precise label is needed.
 
-## Temporary Reference Images
+## Private Source Maps And Temporary References
 
-Guides4Gamers, HITMAPS, publisher screenshots, and other map images may be
-opened or briefly stored in scratch space as draw-under references. They must
-not be committed, hotlinked, traced exactly, or used for copied marker
-coordinates/text. Remove the reference layer before saving the Vaexil-authored
-plate.
+Wand and Guides4Gamers source maps may be committed only when they are explicit
+private review assets in `src/data/recon/asset-manifest.json` with
+`imported: true`, `visibility: private`, and `status: candidate`. They are for
+admin coordinate capture and map review only. They are not public map plates and
+they do not make third-party marker coordinates, labels, guide prose, checklist
+data, or icons reusable.
+
+Guides4Gamers, HITMAPS, publisher screenshots, and other map images may still be
+opened or briefly stored in scratch space as draw-under references. Scratch
+references that are not recorded in the asset manifest must not be committed,
+hotlinked, traced exactly, or used for copied marker coordinates/text.
 
 ## Verify And Publish
 

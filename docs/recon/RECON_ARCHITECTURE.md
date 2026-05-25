@@ -59,10 +59,10 @@ coordinates.
 
 Draft view metadata lives in `src/data/recon/map-views.json`. Views map a
 logical selector such as `B1`, `1F`, `2F`, `surface`, or `underground` to a
-private asset. HITMAN maps should not flatten multi-floor spaces into one plate.
-Sniper Elite maps may be mostly surface-level, but underground, bunker, dam,
-tunnel, or interior spaces should get separate views when they affect marker
-review.
+private asset. HITMAN maps should not flatten multi-floor spaces into one plate;
+Dubai currently keeps private floor views from Level -1 through Level 5. Sniper
+Elite maps may be mostly surface-level, but underground, bunker, dam, tunnel, or
+interior spaces should get separate views when they affect marker review.
 
 ## Publishing Rules
 
@@ -80,23 +80,31 @@ or rejected markers are not public.
 
 ## Asset Workflow
 
-Initial Recon assets are neutral Vaexil-created placeholders and custom neutral
-icons. Future game map plates should be Vaexil-authored schematic maps created
-from first-hand gameplay review and manual validation.
+Recon assets include neutral Vaexil-created placeholders, custom neutral icons,
+and private candidate source maps that the owner has approved for admin review.
+Future public game map plates should still go through a separate publication
+review and may be Vaexil-authored schematic maps created from first-hand gameplay
+review and manual validation.
+
+Private source maps from Wand or Guides4Gamers may be committed only under
+`private/recon/` with `imported: true`, `visibility = private`, and
+`status = candidate`. They are admin-only review surfaces for coordinate capture,
+not public assets. Do not use them to copy marker coordinates, marker labels,
+guide prose, checklist data, icons, or UI.
 
 Reference images from HITMAPS, Guides4Gamers, publisher screenshots, or other
-guide sites may be used temporarily as draw-under material while authoring a
-Vaexil plate. They must remain outside Git, must be removed before saving the
-committed plate, and must not be traced exactly or used to copy marker
-coordinates, marker labels, guide prose, or UI.
+guide sites may also be used temporarily as draw-under material while authoring a
+Vaexil plate. Temporary references that are not recorded in the asset manifest
+must remain outside Git.
 
 Draft assets belong outside `public/`, currently under `private/recon/`. The
 admin asset route is authenticated and no-store. Before a map becomes public,
 move the approved public-ready asset to `public/recon/maps/`, update the asset
 record to `visibility = public` and `status = approved`, then publish the map.
 
-Do not import or copy third-party maps, icons, marker coordinates, guide text, or
-API data unless a compatible license or explicit permission is recorded first.
+Do not publish third-party maps or import/copy third-party icons, marker
+coordinates, guide text, or API data unless a compatible license or explicit
+permission is recorded first.
 
 ## Admin Workflow
 
@@ -114,9 +122,9 @@ Publishing markers and maps remains an explicit future admin workflow. Nothing
 from coordinate capture publishes automatically.
 
 The current draft targets are HITMAN Dubai, Sniper Elite 5 The Atlantic Wall,
-and Sniper Elite: Resistance Behind Enemy Lines. Their private draft schematic
-assets are approximate Vaexil-authored working plates for capture and review
-only.
+and Sniper Elite: Resistance Behind Enemy Lines. Dubai has private floor source
+maps for admin review. The Sniper Elite targets have private surface source maps
+plus separate approximate Vaexil-authored interior/underground review plates.
 
 ## Freelancer Guide Bridge
 
