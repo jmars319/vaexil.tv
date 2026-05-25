@@ -4,6 +4,11 @@ Recon v1 imports no third-party map images, API data, marker coordinates, icons,
 or guide text. The only committed Recon visual assets are Vaexil-created neutral
 draft schematic and icon assets.
 
+Third-party map images may be used as temporary visual references while drawing
+Vaexil-authored plates. Treat them like a removable draw-under layer: store them
+only in scratch space, keep them out of Git, do not trace exact geometry or copy
+marker positions/text, and delete them after the Vaexil plate is drawn.
+
 ## Reviewed Sources
 
 | Candidate source | URL | Asset type | License/status | Attribution requirement | Imported | Reason |
@@ -16,6 +21,7 @@ draft schematic and icon assets.
 | Sniper Elite 5 Maps | https://sniperelite5maps.de/ | Interactive Sniper Elite 5 maps and markers | Third-party site | Depends on license | No | Recon must not copy map images, marker coordinates, UI, or guide data. |
 | Sniper Elite 5 Maps GitHub repo | https://github.com/lordfiSh/sniperelite5maps | Code/assets/data | CC BY-NC-SA posture is not suitable for unconstrained Vaexil.tv reuse | Attribution, non-commercial, share-alike if used | No | Non-commercial/share-alike obligations do not fit the independence goal. |
 | Guides4Gamers Sniper Elite 5 | https://guides4gamers.com/sniper-elite-5/maps/campaign-maps/ | Maps, guide text, marker lists | Site terms restrict copying/reuse/scraping | Permission required | No | No copied guide text, maps, marker lists, or scraping. |
+| Guides4Gamers Sniper Elite: Resistance | https://guides4gamers.com/sniper-elite-resistance/maps/campaign-maps/ | Maps, guide text, marker lists | Site terms restrict copying/reuse/scraping | Permission required | No | Temporary visual reference only; no committed images, marker lists, marker coordinates, or copied guide text. |
 | IO Interactive HITMAN World of Assassination | https://ioi.dk/hitman | Official product/location context | Official source for facts, not reusable assets | Not used for assets | No | Source-packet citation only; no screenshots, art, or UI assets are imported. |
 | Rebellion Sniper Elite 5 | https://shop.rebellion.com/products/sniper-elite-5 | Official product/feature context | Official source for facts, not reusable assets | Not used for assets | No | Source-packet citation only; no screenshots, art, or UI assets are imported. |
 | Rebellion Sniper Elite: Resistance | https://shop.rebellion.com/products/sniper-elite-resistance | Official product/feature context | Official source for facts, not reusable assets | Not used for assets | No | Source-packet citation only; no screenshots, art, or UI assets are imported. |
@@ -50,10 +56,11 @@ were imported.
 
 1. Keep using private placeholders for coordinate tooling until a real
    Vaexil-authored schematic map is ready.
-2. Create each real map plate from first-hand gameplay review, not from copied
-   reference-site maps.
+2. Create each real map plate from first-hand gameplay review plus temporary
+   reference-overlay review, not from committed or copied reference-site maps.
 3. Record every final asset in `src/data/recon/asset-manifest.json`.
-4. Keep `src/data/recon/source-packets.json` current before moving a map toward
+4. Record floor/interior view coverage in `src/data/recon/map-views.json`.
+5. Keep `src/data/recon/source-packets.json` current before moving a map toward
    publication.
-5. Update `public/recon/ATTRIBUTIONS.md` before any third-party licensed asset
+6. Update `public/recon/ATTRIBUTIONS.md` before any third-party licensed asset
    is approved.

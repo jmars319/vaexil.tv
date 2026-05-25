@@ -57,6 +57,13 @@ approximate areas, candidate POIs, uncertainty, and copyright-sensitive material
 to avoid. They are not marker data and should not be treated as verified
 coordinates.
 
+Draft view metadata lives in `src/data/recon/map-views.json`. Views map a
+logical selector such as `B1`, `1F`, `2F`, `surface`, or `underground` to a
+private asset. HITMAN maps should not flatten multi-floor spaces into one plate.
+Sniper Elite maps may be mostly surface-level, but underground, bunker, dam,
+tunnel, or interior spaces should get separate views when they affect marker
+review.
+
 ## Publishing Rules
 
 Public map pages require all of the following:
@@ -77,6 +84,12 @@ Initial Recon assets are neutral Vaexil-created placeholders and custom neutral
 icons. Future game map plates should be Vaexil-authored schematic maps created
 from first-hand gameplay review and manual validation.
 
+Reference images from HITMAPS, Guides4Gamers, publisher screenshots, or other
+guide sites may be used temporarily as draw-under material while authoring a
+Vaexil plate. They must remain outside Git, must be removed before saving the
+committed plate, and must not be traced exactly or used to copy marker
+coordinates, marker labels, guide prose, or UI.
+
 Draft assets belong outside `public/`, currently under `private/recon/`. The
 admin asset route is authenticated and no-store. Before a map becomes public,
 move the approved public-ready asset to `public/recon/maps/`, update the asset
@@ -91,10 +104,11 @@ The first Recon admin pass is coordinate capture, not a full CMS.
 
 1. Open `/admin/recon`.
 2. Choose a draft map.
-3. Click the private draft map to capture normalized coordinates.
-4. Add label, category, mode, variant, optional floor, and factual notes.
-5. Save as a pending marker suggestion.
-6. Verify separately before converting any suggestion into a published marker.
+3. Choose the correct floor/surface/interior view.
+4. Click the private draft map to capture normalized coordinates.
+5. Add label, category, mode, variant, optional floor, and factual notes.
+6. Save as a pending marker suggestion.
+7. Verify separately before converting any suggestion into a published marker.
 
 Publishing markers and maps remains an explicit future admin workflow. Nothing
 from coordinate capture publishes automatically.

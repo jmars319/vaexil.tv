@@ -1,0 +1,18 @@
+<svg width="2048" height="1280" viewBox="0 0 2048 1280" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>.title{fill:#bae6fd;font:700 42px Arial,sans-serif;text-anchor:middle}.note{fill:#94a3b8;font:26px Arial,sans-serif;text-anchor:middle}.label{fill:#e0f2fe;font:700 30px Arial,sans-serif;text-anchor:middle}.small{fill:#cbd5e1;font:23px Arial,sans-serif;text-anchor:middle}</style>
+  <rect width="2048" height="1280" fill="#050B14"/>
+  <path d="M338 862C398 474 646 262 1024 262C1402 262 1650 474 1710 862C1516 956 1288 1004 1024 1004C760 1004 532 956 338 862Z" fill="#08111F" stroke="#38BDF8" stroke-width="8"/>
+  <path d="M562 650C692 496 852 420 1024 420C1196 420 1356 496 1486 650C1356 746 1196 794 1024 794C852 794 692 746 562 650Z" fill="#122C42" stroke="#67E8F9" stroke-width="8"/>
+  <rect x="618" y="336" width="356" height="152" rx="28" fill="#231A14" stroke="#FDBA74" stroke-width="7"/>
+  <rect x="1074" y="336" width="356" height="152" rx="28" fill="#142617" stroke="#86EFAC" stroke-width="7"/>
+  <path d="M484 824C690 846 872 860 1024 860C1176 860 1358 846 1564 824" stroke="#E0F2FE" stroke-width="12" stroke-linecap="round" stroke-dasharray="30 22"/>
+  <circle cx="796" cy="420" r="50" fill="#0F172A" stroke="#FDBA74" stroke-width="8"/>
+  <circle cx="1252" cy="420" r="50" fill="#0F172A" stroke="#86EFAC" stroke-width="8"/>
+  <circle cx="1024" cy="648" r="56" fill="#0F172A" stroke="#67E8F9" stroke-width="8"/>
+  <text x="1024" y="96" class="title">Vaexil Recon Draft - Dubai 2F / Event</text>
+  <text x="796" y="430" class="label">bar</text>
+  <text x="1252" y="430" class="label">garden</text>
+  <text x="1024" y="658" class="label">event floor</text>
+  <text x="1024" y="1148" class="note">Private floor plate. Drawn from temporary reference review, then abstracted and cleaned.</text>
+  <text x="1024" y="1190" class="note">No reference image, exact geometry, marker coordinate, or third-party label is embedded.</text>
+</svg>

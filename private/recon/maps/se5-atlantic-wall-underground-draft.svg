@@ -1,0 +1,20 @@
+<svg width="2048" height="1280" viewBox="0 0 2048 1280" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>.title{fill:#bae6fd;font:700 42px Arial,sans-serif;text-anchor:middle}.note{fill:#94a3b8;font:26px Arial,sans-serif;text-anchor:middle}.label{fill:#e0f2fe;font:700 30px Arial,sans-serif;text-anchor:middle}.small{fill:#cbd5e1;font:23px Arial,sans-serif;text-anchor:middle}</style>
+  <rect width="2048" height="1280" fill="#071018"/>
+  <path d="M350 920C590 738 760 692 1014 706C1226 718 1374 646 1582 462" stroke="#A16207" stroke-width="58" stroke-linecap="round"/>
+  <path d="M350 920C590 738 760 692 1014 706C1226 718 1374 646 1582 462" stroke="#FDE68A" stroke-width="9" stroke-linecap="round" stroke-dasharray="28 24"/>
+  <rect x="412" y="786" width="330" height="166" rx="28" fill="#142617" stroke="#86EFAC" stroke-width="7"/>
+  <rect x="850" y="584" width="356" height="174" rx="28" fill="#1B2536" stroke="#C4B5FD" stroke-width="7"/>
+  <rect x="1326" y="374" width="364" height="190" rx="28" fill="#231A14" stroke="#FDBA74" stroke-width="7"/>
+  <path d="M1260 520L1488 820" stroke="#FCA5A5" stroke-width="9" stroke-linecap="round" stroke-dasharray="24 20"/>
+  <circle cx="577" cy="870" r="52" fill="#0F172A" stroke="#86EFAC" stroke-width="8"/>
+  <circle cx="1028" cy="672" r="52" fill="#0F172A" stroke="#C4B5FD" stroke-width="8"/>
+  <circle cx="1508" cy="470" r="52" fill="#0F172A" stroke="#FDBA74" stroke-width="8"/>
+  <text x="1024" y="96" class="title">Vaexil Recon Draft - Atlantic Wall Underground</text>
+  <text x="577" y="880" class="label">safehouse</text>
+  <text x="1028" y="682" class="label">tunnel</text>
+  <text x="1508" y="480" class="label">bunker</text>
+  <text x="1488" y="856" class="small">trench link</text>
+  <text x="1024" y="1148" class="note">Private underground/interior plate. Drawn from temporary reference review, then abstracted and cleaned.</text>
+  <text x="1024" y="1190" class="note">Most public Sniper Elite maps flatten these spaces; Vaexil tracks them as a separate review layer.</text>
+</svg>

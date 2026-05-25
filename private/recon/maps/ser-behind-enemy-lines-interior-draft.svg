@@ -1,0 +1,22 @@
+<svg width="2048" height="1280" viewBox="0 0 2048 1280" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>.title{fill:#bae6fd;font:700 42px Arial,sans-serif;text-anchor:middle}.note{fill:#94a3b8;font:26px Arial,sans-serif;text-anchor:middle}.label{fill:#e0f2fe;font:700 30px Arial,sans-serif;text-anchor:middle}.small{fill:#cbd5e1;font:23px Arial,sans-serif;text-anchor:middle}</style>
+  <rect width="2048" height="1280" fill="#061018"/>
+  <path d="M532 324H1516V504H532V324Z" fill="#102538" stroke="#67E8F9" stroke-width="8"/>
+  <path d="M620 504C674 642 780 736 938 786C1104 838 1220 930 1328 1016" stroke="#155E75" stroke-width="66" stroke-linecap="round"/>
+  <path d="M620 504C674 642 780 736 938 786C1104 838 1220 930 1328 1016" stroke="#67E8F9" stroke-width="10" stroke-linecap="round" stroke-dasharray="28 24"/>
+  <rect x="728" y="612" width="330" height="164" rx="28" fill="#142617" stroke="#86EFAC" stroke-width="7"/>
+  <rect x="1124" y="808" width="346" height="172" rx="28" fill="#2A1E2C" stroke="#F5D0FE" stroke-width="7"/>
+  <path d="M990 416L990 612" stroke="#FDE68A" stroke-width="10" stroke-linecap="round"/>
+  <path d="M1214 416L1214 808" stroke="#FDE68A" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="990" cy="416" r="50" fill="#0F172A" stroke="#FDE68A" stroke-width="8"/>
+  <circle cx="1214" cy="416" r="50" fill="#0F172A" stroke="#FDE68A" stroke-width="8"/>
+  <circle cx="893" cy="694" r="52" fill="#0F172A" stroke="#86EFAC" stroke-width="8"/>
+  <circle cx="1297" cy="894" r="52" fill="#0F172A" stroke="#F5D0FE" stroke-width="8"/>
+  <text x="1024" y="96" class="title">Vaexil Recon Draft - Behind Enemy Lines Interior</text>
+  <text x="990" y="426" class="label">pipe A</text>
+  <text x="1214" y="426" class="label">pipe B</text>
+  <text x="893" y="704" class="label">workbench</text>
+  <text x="1297" y="904" class="label">bunker</text>
+  <text x="1024" y="1148" class="note">Private dam/interior plate. Drawn from temporary reference review, then abstracted and cleaned.</text>
+  <text x="1024" y="1190" class="note">Most public Sniper Elite maps flatten these spaces; Vaexil tracks them as a separate review layer.</text>
+</svg>

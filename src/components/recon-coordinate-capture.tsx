@@ -33,6 +33,20 @@ type ReconCoordinateCaptureProps = {
   categories: ReconViewerCategory[];
   icons: IconOption[];
   suggestions: ReconMarkerSuggestion[];
+  mapViews?: MapViewOption[];
+};
+
+type MapViewOption = {
+  id: string;
+  label: string;
+  shortLabel: string;
+  kind: string;
+  floor: string;
+  assetId: string;
+  imageSrc: string | null;
+  width: number;
+  height: number;
+  notes: string;
 };
 
 const initialState: ActionState = {
@@ -73,13 +87,34 @@ export function ReconCoordinateCapture({
   categories,
   icons,
   suggestions,
+  mapViews = [],
 }: ReconCoordinateCaptureProps) {
   const [state, formAction] = useActionState(
     submitReconMarkerSuggestion,
     initialState,
   );
+  const views =
+    mapViews.length > 0
+      ? mapViews
+      : [
+          {
+            id: "default",
+            label: "Default",
+            shortLabel: "Default",
+            kind: "overview",
+            floor: "",
+            assetId: "",
+            imageSrc,
+            width: map.width,
+            height: map.height,
+            notes: "",
+          },
+        ];
+  const [activeViewId, setActiveViewId] = useState(views[0]?.id || "default");
+  const activeView = views.find((view) => view.id === activeViewId) || views[0];
   const [coordinate, setCoordinate] = useState<ReconCoordinate | null>(null);
   const [category, setCategory] = useState(categories[0]?.key || "poi");
+  const [floor, setFloor] = useState(activeView?.floor || "");
   const activeCategory =
     categories.find((item) => item.key === category) || categories[0];
   const [iconKey, setIconKey] = useState(activeCategory?.defaultIconKey || "poi");
@@ -89,27 +124,76 @@ export function ReconCoordinateCapture({
     [icons],
   );
 
-  const suggestionMarkers: ReconViewerMarker[] = suggestions.map(
-    (suggestion) => ({
+  const activeFloor = (activeView?.floor || "").trim().toLowerCase();
+  const suggestionMarkers: ReconViewerMarker[] = suggestions
+    .filter((suggestion) => {
+      if (!activeFloor) {
+        return true;
+      }
+
+      const suggestionFloor = (suggestion.floor || "").trim().toLowerCase();
+      return !suggestionFloor || suggestionFloor === activeFloor;
+    })
+    .map((suggestion) => ({
       id: suggestion.id,
       label: suggestion.label,
       description: suggestion.description,
       category: suggestion.category,
       x: suggestion.x,
       y: suggestion.y,
+      floor: suggestion.floor,
       iconKey: suggestion.iconKey,
       iconPath: iconByKey.get(suggestion.iconKey)?.path,
-    }),
-  );
+    }));
 
   return (
     <div className="grid gap-5">
+      {views.length > 1 ? (
+        <div className="rounded-2xl border border-white/10 bg-white/[0.035] p-4">
+          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+                Map view
+              </p>
+              <p className="mt-1 text-sm text-slate-300">
+                Select the floor or interior layer before capturing a marker.
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {views.map((view) => (
+                <button
+                  key={view.id}
+                  type="button"
+                  aria-pressed={view.id === activeView?.id}
+                  onClick={() => {
+                    setActiveViewId(view.id);
+                    setFloor(view.floor);
+                    setCoordinate(null);
+                  }}
+                  className={
+                    view.id === activeView?.id
+                      ? "rounded-full bg-cyan-300 px-4 py-2 text-sm font-semibold text-slate-950"
+                      : "rounded-full border border-white/10 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-300/50 hover:bg-white/[0.06]"
+                  }
+                >
+                  {view.shortLabel}
+                </button>
+              ))}
+            </div>
+          </div>
+          {activeView?.notes ? (
+            <p className="mt-3 text-sm leading-6 text-slate-400">
+              {activeView.notes}
+            </p>
+          ) : null}
+        </div>
+      ) : null}
       <ReconMapViewer
         title={`${map.title} coordinate capture`}
-        imageSrc={imageSrc}
-        imageAlt={`${map.title} draft Recon map`}
-        width={map.width}
-        height={map.height}
+        imageSrc={activeView?.imageSrc ?? imageSrc}
+        imageAlt={`${map.title} ${activeView?.label || "draft"} Recon map`}
+        width={activeView?.width || map.width}
+        height={activeView?.height || map.height}
         minZoom={map.minZoom}
         maxZoom={map.maxZoom}
         markers={suggestionMarkers}
@@ -225,6 +309,8 @@ export function ReconCoordinateCapture({
             <span className="text-sm font-medium text-slate-200">Floor</span>
             <input
               name="floor"
+              value={floor}
+              onChange={(event) => setFloor(event.target.value)}
               placeholder="Optional"
               className="mt-2 h-11 w-full rounded-xl border border-white/10 bg-slate-950/70 px-3 text-sm text-white outline-none transition placeholder:text-slate-500 focus:border-cyan-300/60 focus:ring-2 focus:ring-cyan-300/20"
             />

@@ -1,0 +1,18 @@
+<svg width="2048" height="1280" viewBox="0 0 2048 1280" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>.title{fill:#bae6fd;font:700 42px Arial,sans-serif;text-anchor:middle}.note{fill:#94a3b8;font:26px Arial,sans-serif;text-anchor:middle}.label{fill:#e0f2fe;font:700 30px Arial,sans-serif;text-anchor:middle}.small{fill:#cbd5e1;font:23px Arial,sans-serif;text-anchor:middle}</style>
+  <rect width="2048" height="1280" fill="#050B14"/>
+  <path d="M650 956L726 270H1322L1398 956H650Z" fill="#08111F" stroke="#38BDF8" stroke-width="8"/>
+  <rect x="810" y="402" width="428" height="250" rx="34" fill="#2A1E2C" stroke="#F5D0FE" stroke-width="8"/>
+  <path d="M596 760C736 710 874 686 1024 686C1174 686 1312 710 1452 760" stroke="#E0F2FE" stroke-width="12" stroke-linecap="round" stroke-dasharray="30 24"/>
+  <ellipse cx="522" cy="458" rx="170" ry="86" fill="#102538" stroke="#67E8F9" stroke-width="7"/>
+  <rect x="1318" y="462" width="264" height="140" rx="28" fill="#231A14" stroke="#FDBA74" stroke-width="7"/>
+  <circle cx="1024" cy="528" r="56" fill="#0F172A" stroke="#F5D0FE" stroke-width="8"/>
+  <circle cx="522" cy="458" r="48" fill="#0F172A" stroke="#67E8F9" stroke-width="8"/>
+  <circle cx="1450" cy="532" r="48" fill="#0F172A" stroke="#FDBA74" stroke-width="8"/>
+  <text x="1024" y="96" class="title">Vaexil Recon Draft - Dubai Roof / Penthouse</text>
+  <text x="1024" y="538" class="label">penthouse</text>
+  <text x="522" y="468" class="label">helipad</text>
+  <text x="1450" y="542" class="label">terrace</text>
+  <text x="1024" y="1148" class="note">Private floor plate. Drawn from temporary reference review, then abstracted and cleaned.</text>
+  <text x="1024" y="1190" class="note">No reference image, exact geometry, marker coordinate, or third-party label is embedded.</text>
+</svg>

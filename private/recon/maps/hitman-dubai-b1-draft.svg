@@ -1,0 +1,19 @@
+<svg width="2048" height="1280" viewBox="0 0 2048 1280" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <style>.title{fill:#bae6fd;font:700 42px Arial,sans-serif;text-anchor:middle}.note{fill:#94a3b8;font:26px Arial,sans-serif;text-anchor:middle}.label{fill:#e0f2fe;font:700 30px Arial,sans-serif;text-anchor:middle}.small{fill:#cbd5e1;font:23px Arial,sans-serif;text-anchor:middle}</style>
+  <rect width="2048" height="1280" fill="#050B14"/>
+  <rect x="234" y="190" width="1580" height="870" rx="42" fill="#08111F" stroke="#38BDF8" stroke-width="8"/>
+  <path d="M360 880H1680V980H360V880Z" fill="#102538" stroke="#67E8F9" stroke-width="6"/>
+  <path d="M410 390H894V770H410V390Z" fill="#13261F" stroke="#86EFAC" stroke-width="7"/>
+  <path d="M1110 380H1608V752H1110V380Z" fill="#221A2E" stroke="#C4B5FD" stroke-width="7"/>
+  <path d="M894 584H1110" stroke="#E0F2FE" stroke-width="14" stroke-linecap="round" stroke-dasharray="32 26"/>
+  <path d="M1024 770V880" stroke="#E0F2FE" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="560" cy="580" r="54" fill="#0F172A" stroke="#86EFAC" stroke-width="8"/>
+  <circle cx="1328" cy="574" r="54" fill="#0F172A" stroke="#C4B5FD" stroke-width="8"/>
+  <circle cx="1024" cy="930" r="54" fill="#0F172A" stroke="#67E8F9" stroke-width="8"/>
+  <text x="1024" y="96" class="title">Vaexil Recon Draft - Dubai B1 / Service</text>
+  <text x="560" y="590" class="label">loading</text>
+  <text x="1328" y="584" class="label">staff access</text>
+  <text x="1024" y="940" class="label">service spine</text>
+  <text x="1024" y="1148" class="note">Private floor plate. Drawn from temporary reference review, then abstracted and cleaned.</text>
+  <text x="1024" y="1190" class="note">No reference image, exact geometry, marker coordinate, or third-party label is embedded.</text>
+</svg>

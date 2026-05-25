@@ -23,6 +23,11 @@
         "note": "Cross-check only for named floor zones such as atrium, bar, art gallery, server room, helipad, and penthouse areas."
       },
       {
+        "label": "HITMAPS - On Top Of The World",
+        "url": "https://www.hitmaps.com/games/hitman3/dubai/on-top-of-the-world",
+        "note": "Temporary visual reference only for floor structure and broad orientation; do not keep images, copy marker coordinates, copy UI labels, or depend on the API."
+      },
+      {
         "label": "First-hand Vaexil gameplay review",
         "url": "",
         "note": "Required before any Dubai marker becomes verified or published."
@@ -58,6 +63,8 @@
     ],
     "uncertaintyNotes": [
       "Multi-floor geometry is source-derived but intentionally schematic until the map plate is reviewed floor by floor in Vaexil gameplay.",
+      "Dubai needs floor-specific review views because public, staff, security, server-room, penthouse, and roof spaces stack vertically.",
+      "Reference images may be used as temporary draw-under layers while authoring Vaexil plates, but no third-party image layer remains in the saved asset.",
       "No HITMAPS map image, API data, guide text, or marker coordinate data is used."
     ],
     "avoidCopying": [
@@ -130,6 +137,8 @@
     ],
     "uncertaintyNotes": [
       "The draft schematic is source-derived but still zone-based; it should not be treated as a true map plate.",
+      "The Atlantic Wall should keep an underground/interior view for tunnels, bunker interiors, safehouse interiors, and workbench-access paths instead of flattening every marker onto the surface plate.",
+      "Guides4Gamers preview/map imagery may be used as temporary draw-under reference only; no image layer, marker list, marker coordinate, or guide prose remains in the committed asset.",
       "Collectible categories are known, but exact markers remain unpublished until first-hand review."
     ],
     "avoidCopying": [
@@ -207,6 +216,8 @@
     ],
     "uncertaintyNotes": [
       "Sniper Elite: Resistance support, Guides4Gamers, and guide sources are current as of 2026-05-25, but markers remain draft-only.",
+      "Behind Enemy Lines should keep a dam/interior view for pipe panels, bunker routes, and workbench-access review instead of flattening every marker onto the surface plate.",
+      "Guides4Gamers preview/map imagery may be used as temporary draw-under reference only; no image layer, marker list, marker coordinate, or guide prose remains in the committed asset.",
       "Exact mission geometry and collectible placement require first-hand capture."
     ],
     "avoidCopying": [

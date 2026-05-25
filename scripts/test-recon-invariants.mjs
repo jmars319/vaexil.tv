@@ -14,6 +14,7 @@ async function text(path) {
 const games = await readJson("src/data/recon/games.json");
 const maps = await readJson("src/data/recon/maps.json");
 const assets = await readJson("src/data/recon/asset-manifest.json");
+const mapViews = await readJson("src/data/recon/map-views.json");
 const icons = await readJson("src/data/recon/icon-manifest.json");
 const sourcePackets = await readJson("src/data/recon/source-packets.json");
 
@@ -21,7 +22,9 @@ assert.ok(games.length >= 3, "Recon should keep the initial three games");
 assert.equal(new Set(games.map((game) => game.slug)).size, games.length, "Recon game slugs should be unique");
 
 const gameIds = new Set(games.map((game) => game.id));
+const mapsById = new Map(maps.map((map) => [map.id, map]));
 const assetsById = new Map(assets.map((asset) => [asset.id, asset]));
+const viewsByMapId = new Map();
 const sourcePacketsByMapId = new Map(sourcePackets.map((packet) => [packet.mapId, packet]));
 const routeKeys = new Set();
 const requiredDraftMapIds = new Set([
@@ -70,6 +73,36 @@ for (const asset of assets) {
     assert.match(asset.path, /^private\/recon\//, `${asset.id} private asset path should not be public`);
     await access(new URL(asset.path, root));
   }
+}
+
+for (const view of mapViews) {
+  const map = mapsById.get(view.mapId);
+  assert.ok(map, `${view.id} should point to a known map`);
+  assert.ok(view.label && view.shortLabel, `${view.id} should have labels`);
+  assert.ok(["overview", "floor", "surface", "underground"].includes(view.kind), `${view.id} should use a known view kind`);
+
+  const asset = assetsById.get(view.assetId);
+  assert.ok(asset, `${view.id} should reference a known asset`);
+  assert.equal(asset.mapId, view.mapId, `${view.id} asset should point back to the same map`);
+  assert.equal(asset.imported, false, `${view.id} asset should stay Vaexil-authored`);
+  assert.equal(asset.visibility, "private", `${view.id} draft asset should stay private`);
+  await access(new URL(asset.path, root));
+
+  const views = viewsByMapId.get(view.mapId) || [];
+  views.push(view);
+  viewsByMapId.set(view.mapId, views);
+}
+
+for (const map of maps) {
+  const views = viewsByMapId.get(map.id) || [];
+  if (map.floorSupport && requiredDraftMapIds.has(map.id)) {
+    assert.ok(views.some((view) => view.kind === "floor"), `${map.id} should define floor views`);
+  }
+}
+
+for (const mapId of ["se5-atlantic-wall", "ser-behind-enemy-lines"]) {
+  const views = viewsByMapId.get(mapId) || [];
+  assert.ok(views.some((view) => view.kind === "underground"), `${mapId} should define an underground/interior view`);
 }
 
 for (const icon of icons) {

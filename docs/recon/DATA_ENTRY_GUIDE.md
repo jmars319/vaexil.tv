@@ -9,11 +9,12 @@ guide facts to make a map feel complete.
 2. Add a draft map record to `src/data/recon/maps.json`.
 3. Add a matching private placeholder or draft asset record to
    `src/data/recon/asset-manifest.json`.
-4. Add or update the map's source packet in
+4. Add floor, surface, or interior views to `src/data/recon/map-views.json`.
+5. Add or update the map's source packet in
    `src/data/recon/source-packets.json`.
-5. Keep the map status as `draft`.
-6. Keep the asset visibility as `private` until it is approved for public use.
-7. Run the seed flow or load the app so the database upserts the seed records.
+6. Keep the map status as `draft`.
+7. Keep the asset visibility as `private` until it is approved for public use.
+8. Run the seed flow or load the app so the database upserts the seed records.
 
 Public map pages do not render until the map is `published` and the map asset is
 `approved` plus `public`.
@@ -40,16 +41,31 @@ Add or replace icons through `src/data/recon/icon-manifest.json` and
 1. Sign in to `/admin`.
 2. Open `/admin/recon`.
 3. Choose a draft map.
-4. Click the map to capture `x` and `y`.
-5. Confirm the normalized coordinates shown under the form.
-6. Add label, category, mode, variant, and notes.
-7. Save the marker as pending review.
+4. Choose the correct map view before clicking:
+   - HITMAN maps should use floor views such as `B1`, `1F`, `2F`, `3F`,
+     `4F`, or `Roof` instead of flattening all markers onto one plate.
+   - Sniper Elite maps should separate `surface` from underground, bunker,
+     dam, tunnel, or interior review layers when those spaces matter.
+5. Click the map to capture `x` and `y`.
+6. Confirm the normalized coordinates and floor/layer shown under the form.
+7. Add label, category, mode, variant, and notes.
+8. Save the marker as pending review.
 
 Coordinate rules:
 
 - `x = 0` is the left edge, `x = 100` is the right edge.
 - `y = 0` is the top edge, `y = 100` is the bottom edge.
 - Do not enter raw pixels as canonical marker data.
+- Floor/layer values should match the selected `map-views.json` `floor`
+  value unless first-hand review proves a more precise label is needed.
+
+## Temporary Reference Images
+
+Guides4Gamers, HITMAPS, publisher screenshots, and other map images may be
+opened or briefly stored in scratch space as draw-under references. They must
+not be committed, hotlinked, traced exactly, or used for copied marker
+coordinates/text. Remove the reference layer before saving the Vaexil-authored
+plate.
 
 ## Verify And Publish
 

@@ -26,6 +26,7 @@ export type ReconViewerMarker = {
   category: string;
   x: number;
   y: number;
+  floor?: string | null;
   iconKey: string;
   iconPath?: string;
   hiddenByDefault?: boolean;
@@ -447,6 +448,7 @@ export function ReconMapViewer({
             <p className="mt-5 rounded-xl border border-white/10 bg-slate-950/50 px-3 py-2 text-xs text-slate-400">
               x {formatCoordinate(selectedMarker.x)} / y{" "}
               {formatCoordinate(selectedMarker.y)}
+              {selectedMarker.floor ? ` / ${selectedMarker.floor}` : ""}
             </p>
           </div>
         ) : (

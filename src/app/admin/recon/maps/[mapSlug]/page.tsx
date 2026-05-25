@@ -1,8 +1,10 @@
 import { ReconCoordinateCapture } from "@/components/recon-coordinate-capture";
 import { ReconSourceNotes } from "@/components/recon-source-notes";
 import { Section, SectionHeading, StatusBadge } from "@/components/ui";
+import assetManifest from "@/data/recon/asset-manifest.json";
 import iconManifest from "@/data/recon/icon-manifest.json";
 import { getReconCategoriesForGame } from "@/data/recon/category-registry";
+import { getReconMapViews } from "@/data/recon/map-views";
 import { getReconSourcePacket } from "@/data/recon/source-packets";
 import { isAdminAuthenticated } from "@/lib/admin";
 import {
@@ -45,6 +47,20 @@ export default async function ReconMapAdminPage({
     map.imageAsset?.visibility === "private"
       ? `/admin/recon/assets/${map.imageAsset.id}`
       : null;
+  const assetById = new Map(assetManifest.map((asset) => [asset.id, asset]));
+  const mapViews = getReconMapViews(map.id).map((view) => {
+    const asset = assetById.get(view.assetId);
+
+    return {
+      ...view,
+      imageSrc:
+        asset?.visibility === "private"
+          ? `/admin/recon/assets/${asset.id}`
+          : null,
+      width: asset?.width || map.width,
+      height: asset?.height || map.height,
+    };
+  });
 
   return (
     <>
@@ -80,6 +96,7 @@ export default async function ReconMapAdminPage({
             path: icon.path,
           }))}
           suggestions={suggestions}
+          mapViews={mapViews}
         />
       </Section>
       <Section className="pt-4">
