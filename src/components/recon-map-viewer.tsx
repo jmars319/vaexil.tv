@@ -54,6 +54,12 @@ type ReconMapViewerProps = {
   className?: string;
 };
 
+type GestureZoomEvent = Event & {
+  clientX?: number;
+  clientY?: number;
+  scale?: number;
+};
+
 function clamp(value: number, min: number, max: number) {
   return Math.min(max, Math.max(min, value));
 }
@@ -79,6 +85,9 @@ export function ReconMapViewer({
   className,
 }: ReconMapViewerProps) {
   const viewportRef = useRef<HTMLDivElement | null>(null);
+  const scaleRef = useRef(1);
+  const offsetRef = useRef({ x: 0, y: 0 });
+  const gestureStartScaleRef = useRef<number | null>(null);
   const dragRef = useRef<{
     pointerId: number;
     startX: number;
@@ -100,6 +109,16 @@ export function ReconMapViewer({
       ),
   );
 
+  const syncViewState = useCallback(
+    (nextScale: number, nextOffset: { x: number; y: number }) => {
+      scaleRef.current = nextScale;
+      offsetRef.current = nextOffset;
+      setScale(nextScale);
+      setOffset(nextOffset);
+    },
+    [],
+  );
+
   const resetView = useCallback(() => {
     const viewport = viewportRef.current;
     if (!viewport) {
@@ -113,12 +132,11 @@ export function ReconMapViewer({
       maxZoom ?? 3,
     );
 
-    setScale(nextScale);
-    setOffset({
+    syncViewState(nextScale, {
       x: (rect.width - width * nextScale) / 2,
       y: (rect.height - height * nextScale) / 2,
     });
-  }, [height, maxZoom, minZoom, width]);
+  }, [height, maxZoom, minZoom, syncViewState, width]);
 
   useEffect(() => {
     resetView();
@@ -162,25 +180,132 @@ export function ReconMapViewer({
   const selectedMarker =
     filteredMarkers.find((marker) => marker.id === selectedId) || null;
 
-  function zoomBy(multiplier: number) {
+  const zoomToPoint = useCallback(
+    (nextScaleValue: number, point: { x: number; y: number }) => {
+      const currentScale = scaleRef.current;
+      const currentOffset = offsetRef.current;
+      const nextScale = clamp(
+        nextScaleValue,
+        minZoom ?? 0.5,
+        maxZoom ?? 3,
+      );
+
+      if (Math.abs(nextScale - currentScale) < 0.001) {
+        return;
+      }
+
+      const mapX = (point.x - currentOffset.x) / currentScale;
+      const mapY = (point.y - currentOffset.y) / currentScale;
+
+      syncViewState(nextScale, {
+        x: point.x - mapX * nextScale,
+        y: point.y - mapY * nextScale,
+      });
+    },
+    [maxZoom, minZoom, syncViewState],
+  );
+
+  const zoomBy = useCallback(
+    (multiplier: number, point?: { x: number; y: number }) => {
+      const viewport = viewportRef.current;
+      if (!viewport) {
+        return;
+      }
+
+      const rect = viewport.getBoundingClientRect();
+      const focalPoint = point || {
+        x: rect.width / 2,
+        y: rect.height / 2,
+      };
+
+      zoomToPoint(scaleRef.current * multiplier, focalPoint);
+    },
+    [zoomToPoint],
+  );
+
+  useEffect(() => {
     const viewport = viewportRef.current;
     if (!viewport) {
       return;
     }
+    const activeViewport = viewport;
 
-    const rect = viewport.getBoundingClientRect();
-    const nextScale = clamp(scale * multiplier, minZoom ?? 0.5, maxZoom ?? 3);
-    const centerX = rect.width / 2;
-    const centerY = rect.height / 2;
-    const mapX = (centerX - offset.x) / scale;
-    const mapY = (centerY - offset.y) / scale;
+    function getViewportPoint(event: WheelEvent | GestureZoomEvent) {
+      const rect = activeViewport.getBoundingClientRect();
+      const hasClientPoint =
+        typeof event.clientX === "number" && typeof event.clientY === "number";
 
-    setScale(nextScale);
-    setOffset({
-      x: centerX - mapX * nextScale,
-      y: centerY - mapY * nextScale,
+      return hasClientPoint
+        ? {
+            x: event.clientX - rect.left,
+            y: event.clientY - rect.top,
+          }
+        : {
+            x: rect.width / 2,
+            y: rect.height / 2,
+          };
+    }
+
+    function normalizeWheelDelta(event: WheelEvent) {
+      if (event.deltaMode === WheelEvent.DOM_DELTA_LINE) {
+        return event.deltaY * 16;
+      }
+
+      if (event.deltaMode === WheelEvent.DOM_DELTA_PAGE) {
+        return event.deltaY * activeViewport.clientHeight;
+      }
+
+      return event.deltaY;
+    }
+
+    function handleWheel(event: WheelEvent) {
+      event.preventDefault();
+      const deltaY = normalizeWheelDelta(event);
+      const intensity = event.ctrlKey || event.metaKey ? 0.006 : 0.0022;
+      zoomBy(Math.exp(-deltaY * intensity), getViewportPoint(event));
+    }
+
+    function handleGestureStart(event: Event) {
+      event.preventDefault();
+      gestureStartScaleRef.current = scaleRef.current;
+    }
+
+    function handleGestureChange(event: Event) {
+      event.preventDefault();
+      const gestureEvent = event as GestureZoomEvent;
+      const gestureScale =
+        typeof gestureEvent.scale === "number" ? gestureEvent.scale : 1;
+      const baseScale = gestureStartScaleRef.current ?? scaleRef.current;
+
+      zoomToPoint(
+        baseScale * gestureScale,
+        getViewportPoint(gestureEvent),
+      );
+    }
+
+    function handleGestureEnd(event: Event) {
+      event.preventDefault();
+      gestureStartScaleRef.current = null;
+    }
+
+    activeViewport.addEventListener("wheel", handleWheel, { passive: false });
+    activeViewport.addEventListener("gesturestart", handleGestureStart, {
+      passive: false,
     });
-  }
+    activeViewport.addEventListener("gesturechange", handleGestureChange, {
+      passive: false,
+    });
+    activeViewport.addEventListener("gestureend", handleGestureEnd, {
+      passive: false,
+    });
+
+    return () => {
+      activeViewport.removeEventListener("wheel", handleWheel);
+      activeViewport.removeEventListener("gesturestart", handleGestureStart);
+      activeViewport.removeEventListener("gesturechange", handleGestureChange);
+      activeViewport.removeEventListener("gestureend", handleGestureEnd);
+    };
+  }, [zoomBy, zoomToPoint]);
 
   function getCoordinateFromPointer(clientX: number, clientY: number) {
     const viewport = viewportRef.current;
@@ -189,8 +314,10 @@ export function ReconMapViewer({
     }
 
     const rect = viewport.getBoundingClientRect();
-    const mapX = (clientX - rect.left - offset.x) / scale;
-    const mapY = (clientY - rect.top - offset.y) / scale;
+    const currentOffset = offsetRef.current;
+    const currentScale = scaleRef.current;
+    const mapX = (clientX - rect.left - currentOffset.x) / currentScale;
+    const mapY = (clientY - rect.top - currentOffset.y) / currentScale;
 
     return {
       x: clamp((mapX / width) * 100, 0, 100),
@@ -293,11 +420,9 @@ export function ReconMapViewer({
 
         <div
           ref={viewportRef}
-          className="relative h-[60vh] min-h-[420px] touch-none overflow-hidden bg-[#070b13]"
-          onWheel={(event) => {
-            event.preventDefault();
-            zoomBy(event.deltaY > 0 ? 0.9 : 1.1);
-          }}
+          className="relative h-[60vh] min-h-[420px] touch-none overflow-hidden overscroll-contain bg-[#070b13]"
+          data-testid="recon-map-viewport"
+          data-scale={scale.toFixed(4)}
           onPointerDown={(event) => {
             if ((event.target as Element).closest("[data-marker-button]")) {
               return;
@@ -332,10 +457,11 @@ export function ReconMapViewer({
 
             drag.lastX = event.clientX;
             drag.lastY = event.clientY;
-            setOffset((current) => ({
-              x: current.x + deltaX,
-              y: current.y + deltaY,
-            }));
+            const currentOffset = offsetRef.current;
+            syncViewState(scaleRef.current, {
+              x: currentOffset.x + deltaX,
+              y: currentOffset.y + deltaY,
+            });
           }}
           onPointerUp={(event) => {
             const drag = dragRef.current;

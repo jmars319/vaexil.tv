@@ -65,6 +65,45 @@ test("private imported Berlin Recon asset is gated when logged out", async ({ re
   expect(response.status()).toBe(404);
 });
 
+test("admin Recon map supports wheel and touchpad-style zoom", async ({ page }) => {
+  await page.goto("/admin", { waitUntil: "domcontentloaded" });
+  const passwordInput = page.getByLabel("Admin password");
+  if ((await passwordInput.count()) > 0) {
+    await passwordInput.fill("playwright-admin-password");
+    await page.getByRole("button", { name: "Sign in" }).click();
+  }
+
+  const adminQueue = page.getByRole("heading", { name: "Admin queue" });
+  await adminQueue.waitFor({ state: "visible", timeout: 5_000 }).catch(() => {});
+  if (!(await adminQueue.isVisible().catch(() => false))) {
+    test.skip(true, "Recon zoom smoke requires the Playwright test admin env.");
+  }
+  await expect(adminQueue).toBeVisible();
+
+  await page.goto("/admin/recon/maps/the-atlantic-wall", {
+    waitUntil: "domcontentloaded",
+  });
+  const viewport = page.getByTestId("recon-map-viewport");
+  await expect(viewport).toBeVisible();
+  await viewport.scrollIntoViewIfNeeded();
+
+  const beforeZoom = Number(await viewport.getAttribute("data-scale"));
+  const box = await viewport.boundingBox();
+  expect(box).not.toBeNull();
+
+  await page.mouse.move(box!.x + box!.width / 2, box!.y + box!.height / 2);
+  await page.mouse.wheel(0, -480);
+  await expect
+    .poll(async () => Number(await viewport.getAttribute("data-scale")))
+    .toBeGreaterThan(beforeZoom);
+
+  const zoomedIn = Number(await viewport.getAttribute("data-scale"));
+  await page.mouse.wheel(0, 360);
+  await expect
+    .poll(async () => Number(await viewport.getAttribute("data-scale")))
+    .toBeLessThan(zoomedIn);
+});
+
 test("contact API rejects invalid payload without leaking internals", async ({ request }) => {
   const response = await request.post("/api/contact", { data: {} });
   expect(response.status()).toBe(400);

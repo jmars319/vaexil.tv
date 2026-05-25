@@ -12,7 +12,7 @@ export default defineConfig({
   fullyParallel: true,
   reporter: [["list"]],
   webServer: {
-    command: `PORT=${port} npm run dev`,
+    command: `ADMIN_PASSWORD=playwright-admin-password ADMIN_SESSION_SECRET=playwright-admin-secret PORT=${port} npm run dev`,
     url: baseURL,
     reuseExistingServer: !process.env.CI,
     timeout: 120_000,
