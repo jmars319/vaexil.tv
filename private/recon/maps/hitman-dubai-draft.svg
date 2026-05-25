@@ -1,16 +1,44 @@
 <svg width="2048" height="1280" viewBox="0 0 2048 1280" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="2048" height="1280" fill="#07111F"/>
-  <rect x="144" y="120" width="1760" height="1040" rx="40" fill="#0C1C2D" stroke="#7DD3FC" stroke-width="10"/>
-  <rect x="432" y="208" width="1184" height="260" rx="28" fill="#122C42" stroke="#38BDF8" stroke-width="6"/>
-  <rect x="544" y="556" width="960" height="220" rx="28" fill="#102538" stroke="#22D3EE" stroke-width="6"/>
-  <rect x="704" y="860" width="640" height="190" rx="28" fill="#17203A" stroke="#A78BFA" stroke-width="6"/>
-  <path d="M1024 468V556M1024 776V860" stroke="#E0F2FE" stroke-width="8" stroke-linecap="round" stroke-dasharray="24 24"/>
-  <circle cx="1024" cy="338" r="54" fill="#0F172A" stroke="#67E8F9" stroke-width="8"/>
-  <circle cx="1024" cy="666" r="54" fill="#0F172A" stroke="#67E8F9" stroke-width="8"/>
-  <circle cx="1024" cy="955" r="54" fill="#0F172A" stroke="#C4B5FD" stroke-width="8"/>
-  <text x="1024" y="112" fill="#BAE6FD" font-family="Arial, sans-serif" font-size="42" text-anchor="middle">Vaexil Recon Draft - Dubai</text>
-  <text x="1024" y="1240" fill="#64748B" font-family="Arial, sans-serif" font-size="28" text-anchor="middle">Private approximate schematic for coordinate capture. Not copied from game or third-party map art.</text>
-  <text x="1024" y="352" fill="#E0F2FE" font-family="Arial, sans-serif" font-size="32" text-anchor="middle">entry / atrium study</text>
-  <text x="1024" y="680" fill="#E0F2FE" font-family="Arial, sans-serif" font-size="32" text-anchor="middle">public event floors</text>
-  <text x="1024" y="969" fill="#EDE9FE" font-family="Arial, sans-serif" font-size="32" text-anchor="middle">upper access study</text>
+  <style>
+    .title { fill: #bae6fd; font: 700 42px Arial, sans-serif; text-anchor: middle; }
+    .note { fill: #94a3b8; font: 26px Arial, sans-serif; text-anchor: middle; }
+    .label { fill: #e0f2fe; font: 700 30px Arial, sans-serif; text-anchor: middle; }
+    .small { fill: #cbd5e1; font: 23px Arial, sans-serif; text-anchor: middle; }
+    .level { fill: #08111f; stroke-width: 6; }
+  </style>
+  <rect width="2048" height="1280" fill="#050B14"/>
+  <path d="M724 1106L596 370C580 274 650 190 748 190H1300C1398 190 1468 274 1452 370L1324 1106H724Z" fill="#0A1D2E" stroke="#38BDF8" stroke-width="10"/>
+  <path d="M680 1078H1368L1336 988H712L680 1078Z" class="level" stroke="#67E8F9"/>
+  <path d="M706 944H1342L1314 848H734L706 944Z" class="level" stroke="#22D3EE"/>
+  <path d="M742 806H1306L1280 710H768L742 806Z" class="level" stroke="#A78BFA"/>
+  <path d="M782 668H1266L1244 574H804L782 668Z" class="level" stroke="#FBBF24"/>
+  <path d="M824 532H1224L1204 438H844L824 532Z" class="level" stroke="#86EFAC"/>
+  <path d="M872 396H1176L1160 296H888L872 396Z" class="level" stroke="#F0ABFC"/>
+  <path d="M1024 1090V294" stroke="#E0F2FE" stroke-width="8" stroke-dasharray="24 24" stroke-linecap="round"/>
+  <path d="M630 970C520 876 506 720 592 614C648 546 722 506 808 478" stroke="#7DD3FC" stroke-width="9" stroke-linecap="round" stroke-dasharray="28 24"/>
+  <path d="M1418 432C1554 488 1606 612 1568 720C1538 806 1468 872 1342 928" stroke="#C4B5FD" stroke-width="9" stroke-linecap="round" stroke-dasharray="28 24"/>
+  <rect x="410" y="870" width="250" height="114" rx="24" fill="#0F2437" stroke="#38BDF8" stroke-width="6"/>
+  <rect x="1388" y="728" width="254" height="116" rx="24" fill="#231D3B" stroke="#C4B5FD" stroke-width="6"/>
+  <rect x="1384" y="360" width="250" height="116" rx="24" fill="#2A1831" stroke="#F0ABFC" stroke-width="6"/>
+  <circle cx="1024" cy="1034" r="44" fill="#0F172A" stroke="#67E8F9" stroke-width="7"/>
+  <circle cx="1024" cy="896" r="44" fill="#0F172A" stroke="#22D3EE" stroke-width="7"/>
+  <circle cx="1024" cy="758" r="44" fill="#0F172A" stroke="#A78BFA" stroke-width="7"/>
+  <circle cx="1024" cy="620" r="44" fill="#0F172A" stroke="#FBBF24" stroke-width="7"/>
+  <circle cx="1024" cy="484" r="44" fill="#0F172A" stroke="#86EFAC" stroke-width="7"/>
+  <circle cx="1024" cy="346" r="44" fill="#0F172A" stroke="#F0ABFC" stroke-width="7"/>
+  <text x="1024" y="96" class="title">Vaexil Recon Draft - Dubai</text>
+  <text x="1024" y="1039" class="label">atrium / entry</text>
+  <text x="1024" y="901" class="label">public event</text>
+  <text x="1024" y="763" class="label">bar + garden</text>
+  <text x="1024" y="625" class="label">art gallery</text>
+  <text x="1024" y="489" class="label">staff + security</text>
+  <text x="1024" y="351" class="label">server / penthouse</text>
+  <text x="535" y="914" class="small">facade climb</text>
+  <text x="535" y="944" class="small">and lobby door</text>
+  <text x="1515" y="774" class="small">outer windows</text>
+  <text x="1515" y="804" class="small">shortcuts</text>
+  <text x="1509" y="407" class="small">helipad +</text>
+  <text x="1509" y="437" class="small">terrace</text>
+  <text x="1024" y="1194" class="note">Private approximate source-derived schematic for first-hand coordinate capture.</text>
+  <text x="1024" y="1232" class="note">Vaexil-authored abstraction. Not copied from game art, HITMAPS, screenshots, or guide maps.</text>
 </svg>

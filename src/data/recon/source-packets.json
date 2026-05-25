@@ -13,6 +13,16 @@
     ],
     "referenceSources": [
       {
+        "label": "Gamepressure - Hitman 3 Dubai map and mission information",
+        "url": "https://www.gamepressure.com/hitman-iii/on-top-of-the-world-dubai-map-mission-information/z4e087",
+        "note": "Cross-check only for multi-floor mission structure, target areas, shortcuts, and major zone names; do not copy map images, numbering, or prose."
+      },
+      {
+        "label": "PowerPyx - Dubai undiscovered areas",
+        "url": "https://www.powerpyx.com/hitman-3-dubai-uae-all-undiscovered-areas-locations/",
+        "note": "Cross-check only for named floor zones such as atrium, bar, art gallery, server room, helipad, and penthouse areas."
+      },
+      {
         "label": "First-hand Vaexil gameplay review",
         "url": "",
         "note": "Required before any Dubai marker becomes verified or published."
@@ -20,11 +30,11 @@
     ],
     "verifiedNamedAreas": [],
     "approximateAreas": [
-      "Entry and atrium route",
-      "Public event floors",
-      "Security and staff circulation",
-      "Penthouse approach",
-      "Extraction routes"
+      "Facade climb, lobby, and atrium route",
+      "Public event floor, Black Gold Bar, garden, and art-gallery circulation",
+      "Staff, security, control-room, and server-room circulation",
+      "Helipad, terrace, ventilation, and penthouse approach",
+      "Shortcut and exterior-window traversal routes"
     ],
     "poiCandidates": [
       {
@@ -47,7 +57,7 @@
       }
     ],
     "uncertaintyNotes": [
-      "Multi-floor geometry is intentionally schematic until the map plate is reviewed floor by floor.",
+      "Multi-floor geometry is source-derived but intentionally schematic until the map plate is reviewed floor by floor in Vaexil gameplay.",
       "No HITMAPS map image, API data, guide text, or marker coordinate data is used."
     ],
     "avoidCopying": [
@@ -70,6 +80,16 @@
     ],
     "referenceSources": [
       {
+        "label": "Guides4Gamers - Sniper Elite 5 Mission Maps",
+        "url": "https://guides4gamers.com/sniper-elite-5/maps/campaign-maps/",
+        "note": "Cross-check only for mission coverage, POI categories, and starting-location names; do not copy interactive map imagery, marker coordinates, or marker text."
+      },
+      {
+        "label": "Gamepressure - Atlantic Wall map and location description",
+        "url": "https://www.gamepressure.com/sniper-elite-5/mission-1-map-and-location-description/z5fd47",
+        "note": "Cross-check only for broad zones such as beach, processing plant, radar hill, resistance safehouse, tunnel, and trenches."
+      },
+      {
         "label": "Push Square - The Atlantic Wall collectibles",
         "url": "https://www.pushsquare.com/guides/sniper-elite-5-the-atlantic-wall-all-collectibles-personal-letters-classified-documents-hidden-items-stone-eagles-workbenches",
         "note": "Cross-check only for collectible categories and review targets; do not copy coordinates, screenshots, or prose."
@@ -82,11 +102,11 @@
     ],
     "verifiedNamedAreas": [],
     "approximateAreas": [
-      "Coastal insertion area",
-      "Village approach",
-      "Radar objective area",
-      "Resistance safehouse area",
-      "Exfiltration route"
+      "Submarine deck and beach insertion route",
+      "Western town, promenade, safehouse, and hotel-side review area",
+      "Central farm and countryside connector",
+      "Eastern radar hill, bunker, tunnel, and trench approach",
+      "Exfiltration and alternate starting-location review routes"
     ],
     "poiCandidates": [
       {
@@ -109,7 +129,7 @@
       }
     ],
     "uncertaintyNotes": [
-      "The draft schematic is intentionally zone-based and should not be treated as a true map plate.",
+      "The draft schematic is source-derived but still zone-based; it should not be treated as a true map plate.",
       "Collectible categories are known, but exact markers remain unpublished until first-hand review."
     ],
     "avoidCopying": [
@@ -137,6 +157,16 @@
     ],
     "referenceSources": [
       {
+        "label": "Guides4Gamers - Sniper Elite: Resistance Mission Maps",
+        "url": "https://guides4gamers.com/sniper-elite-resistance/maps/campaign-maps/",
+        "note": "Cross-check only for mission list, POI categories, starting/exfiltration categories, and hidden-item/poster category conventions; do not copy interactive map imagery or marker coordinates."
+      },
+      {
+        "label": "TheReviewGeek - Behind Enemy Lines walkthrough",
+        "url": "https://www.thereviewgeek.com/snipereliteresistance-behindenemylines-walkthrough/",
+        "note": "Cross-check only for broad mission flow: observation tower, dam bridge, pipe panels, house/workbench area, flak batteries, zipline, and exfil vehicle."
+      },
+      {
         "label": "Push Square - Sniper Elite Resistance guide",
         "url": "https://www.pushsquare.com/guides/sniper-elite-resistance-guide-100percent-collectibles-walkthrough",
         "note": "Cross-check only for mission list and collectible category coverage; do not copy coordinates, screenshots, or prose."
@@ -149,11 +179,11 @@
     ],
     "verifiedNamedAreas": [],
     "approximateAreas": [
-      "Initial insertion route",
-      "Primary objective area",
-      "Resistance support route",
-      "Propaganda poster review path",
-      "Extraction path"
+      "Observation-tower insertion and first descent route",
+      "Dam bridge, lower pipe-panel objective, and two anti-air gun objective areas",
+      "House, workbench, bunker, and upper-route review area",
+      "Zipline, propaganda-poster review path, and route-return options",
+      "Dam-end exfiltration vehicle path"
     ],
     "poiCandidates": [
       {
@@ -176,7 +206,7 @@
       }
     ],
     "uncertaintyNotes": [
-      "Sniper Elite: Resistance support and guide sources are current as of 2026-05-25, but markers remain draft-only.",
+      "Sniper Elite: Resistance support, Guides4Gamers, and guide sources are current as of 2026-05-25, but markers remain draft-only.",
       "Exact mission geometry and collectible placement require first-hand capture."
     ],
     "avoidCopying": [

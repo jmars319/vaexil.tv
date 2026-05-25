@@ -1,15 +1,37 @@
 <svg width="2048" height="1280" viewBox="0 0 2048 1280" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="2048" height="1280" fill="#071018"/>
-  <path d="M192 1000C390 760 476 564 618 364C748 184 914 168 1062 314C1198 450 1294 622 1456 680C1616 738 1760 686 1884 556" stroke="#67E8F9" stroke-width="18" stroke-linecap="round"/>
-  <rect x="314" y="752" width="316" height="190" rx="24" fill="#12251F" stroke="#86EFAC" stroke-width="7"/>
-  <rect x="842" y="334" width="350" height="220" rx="24" fill="#1A2336" stroke="#93C5FD" stroke-width="7"/>
-  <rect x="1368" y="644" width="306" height="196" rx="24" fill="#2A1E2C" stroke="#F5D0FE" stroke-width="7"/>
-  <circle cx="472" cy="848" r="54" fill="#0F172A" stroke="#BAE6FD" stroke-width="8"/>
-  <circle cx="1018" cy="444" r="54" fill="#0F172A" stroke="#FDE68A" stroke-width="8"/>
-  <circle cx="1520" cy="742" r="54" fill="#0F172A" stroke="#F0ABFC" stroke-width="8"/>
-  <text x="1024" y="112" fill="#BAE6FD" font-family="Arial, sans-serif" font-size="42" text-anchor="middle">Vaexil Recon Draft - Behind Enemy Lines</text>
-  <text x="1024" y="1240" fill="#64748B" font-family="Arial, sans-serif" font-size="28" text-anchor="middle">Private approximate schematic for coordinate capture. Not copied from game or third-party map art.</text>
-  <text x="472" y="862" fill="#E0F2FE" font-family="Arial, sans-serif" font-size="31" text-anchor="middle">entry</text>
-  <text x="1018" y="458" fill="#FEF3C7" font-family="Arial, sans-serif" font-size="31" text-anchor="middle">objective</text>
-  <text x="1520" y="756" fill="#FAE8FF" font-family="Arial, sans-serif" font-size="31" text-anchor="middle">poster</text>
+  <style>
+    .title { fill: #bae6fd; font: 700 42px Arial, sans-serif; text-anchor: middle; }
+    .note { fill: #94a3b8; font: 26px Arial, sans-serif; text-anchor: middle; }
+    .label { fill: #e0f2fe; font: 700 30px Arial, sans-serif; text-anchor: middle; }
+    .small { fill: #cbd5e1; font: 23px Arial, sans-serif; text-anchor: middle; }
+  </style>
+  <rect width="2048" height="1280" fill="#061018"/>
+  <path d="M152 1018C332 848 420 650 536 430C650 216 800 160 958 304C1108 440 1178 654 1348 736C1520 818 1712 760 1892 578" stroke="#155E75" stroke-width="180" stroke-linecap="round"/>
+  <path d="M170 1018C350 850 438 652 552 436C658 238 790 194 938 326C1080 454 1152 668 1338 762C1514 850 1720 786 1900 596" stroke="#67E8F9" stroke-width="18" stroke-linecap="round"/>
+  <path d="M614 378L1532 752" stroke="#6B4F2A" stroke-width="54" stroke-linecap="round"/>
+  <path d="M620 378L1526 752" stroke="#FDE68A" stroke-width="8" stroke-linecap="round" stroke-dasharray="28 26"/>
+  <path d="M672 296C760 238 874 238 968 302C952 374 872 424 756 438C688 408 660 356 672 296Z" fill="#152033" stroke="#93C5FD" stroke-width="7"/>
+  <path d="M872 660C992 602 1134 626 1228 724C1166 800 1044 838 898 814C834 768 822 708 872 660Z" fill="#15251F" stroke="#86EFAC" stroke-width="7"/>
+  <path d="M1224 510C1346 488 1468 532 1544 630C1480 696 1368 722 1244 680C1188 628 1182 562 1224 510Z" fill="#2A1E2C" stroke="#F5D0FE" stroke-width="7"/>
+  <path d="M1540 790C1642 748 1764 778 1838 868C1762 930 1646 944 1536 890C1488 852 1490 816 1540 790Z" fill="#1F2937" stroke="#CBD5E1" stroke-width="7"/>
+  <path d="M980 790C1138 700 1288 662 1444 676" stroke="#A7F3D0" stroke-width="8" stroke-linecap="round" stroke-dasharray="26 20"/>
+  <path d="M1472 720L1286 888" stroke="#C4B5FD" stroke-width="8" stroke-linecap="round" stroke-dasharray="24 18"/>
+  <circle cx="774" cy="348" r="52" fill="#0F172A" stroke="#93C5FD" stroke-width="8"/>
+  <circle cx="1040" cy="738" r="52" fill="#0F172A" stroke="#BBF7D0" stroke-width="8"/>
+  <circle cx="1286" cy="604" r="52" fill="#0F172A" stroke="#FDE68A" stroke-width="8"/>
+  <circle cx="1468" cy="630" r="52" fill="#0F172A" stroke="#FDE68A" stroke-width="8"/>
+  <circle cx="1358" cy="874" r="52" fill="#0F172A" stroke="#F0ABFC" stroke-width="8"/>
+  <circle cx="1684" cy="860" r="52" fill="#0F172A" stroke="#CBD5E1" stroke-width="8"/>
+  <text x="1024" y="96" class="title">Vaexil Recon Draft - Behind Enemy Lines</text>
+  <text x="774" y="358" class="label">start tower</text>
+  <text x="1040" y="748" class="label">house</text>
+  <text x="1286" y="614" class="label">flak A</text>
+  <text x="1468" y="640" class="label">flak B</text>
+  <text x="1358" y="884" class="label">poster</text>
+  <text x="1684" y="870" class="label">exfil</text>
+  <text x="1040" y="820" class="small">workbench review</text>
+  <text x="1142" y="558" class="small">pipe panels below dam</text>
+  <text x="1480" y="750" class="small">zipline / upper route</text>
+  <text x="1024" y="1194" class="note">Private approximate source-derived schematic for first-hand coordinate capture.</text>
+  <text x="1024" y="1232" class="note">Vaexil-authored abstraction. Not copied from Rebellion art, screenshots, guide maps, or marker coordinates.</text>
 </svg>

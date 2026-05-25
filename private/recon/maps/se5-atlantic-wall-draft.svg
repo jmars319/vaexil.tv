@@ -1,16 +1,37 @@
 <svg width="2048" height="1280" viewBox="0 0 2048 1280" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <rect width="2048" height="1280" fill="#08111A"/>
-  <path d="M120 880C380 760 544 742 780 790C1030 842 1210 778 1464 650C1658 552 1778 540 1932 596V1156H120V880Z" fill="#0D2B3A" stroke="#38BDF8" stroke-width="8"/>
-  <path d="M186 268C402 230 612 286 760 388C902 486 1022 508 1180 438C1338 368 1534 286 1846 350" stroke="#A7F3D0" stroke-width="12" stroke-linecap="round" stroke-dasharray="34 28"/>
-  <rect x="320" y="468" width="352" height="206" rx="26" fill="#142617" stroke="#86EFAC" stroke-width="7"/>
-  <rect x="1304" y="292" width="328" height="208" rx="26" fill="#252018" stroke="#FDBA74" stroke-width="7"/>
-  <rect x="930" y="584" width="280" height="180" rx="26" fill="#211A2F" stroke="#C4B5FD" stroke-width="7"/>
-  <circle cx="1504" cy="396" r="54" fill="#0F172A" stroke="#FDE68A" stroke-width="8"/>
-  <circle cx="498" cy="570" r="54" fill="#0F172A" stroke="#93C5FD" stroke-width="8"/>
-  <circle cx="1070" cy="674" r="54" fill="#0F172A" stroke="#D9F99D" stroke-width="8"/>
-  <text x="1024" y="112" fill="#BAE6FD" font-family="Arial, sans-serif" font-size="42" text-anchor="middle">Vaexil Recon Draft - The Atlantic Wall</text>
-  <text x="1024" y="1240" fill="#64748B" font-family="Arial, sans-serif" font-size="28" text-anchor="middle">Private approximate schematic for coordinate capture. Not copied from game or third-party map art.</text>
-  <text x="1504" y="410" fill="#FEF3C7" font-family="Arial, sans-serif" font-size="31" text-anchor="middle">objective</text>
-  <text x="498" y="584" fill="#DBEAFE" font-family="Arial, sans-serif" font-size="31" text-anchor="middle">safehouse</text>
-  <text x="1070" y="688" fill="#ECFCCB" font-family="Arial, sans-serif" font-size="31" text-anchor="middle">review hub</text>
+  <style>
+    .title { fill: #bae6fd; font: 700 42px Arial, sans-serif; text-anchor: middle; }
+    .note { fill: #94a3b8; font: 26px Arial, sans-serif; text-anchor: middle; }
+    .label { fill: #e0f2fe; font: 700 30px Arial, sans-serif; text-anchor: middle; }
+    .small { fill: #cbd5e1; font: 23px Arial, sans-serif; text-anchor: middle; }
+  </style>
+  <rect width="2048" height="1280" fill="#071018"/>
+  <path d="M92 878C322 778 472 790 664 842C884 902 1080 856 1322 752C1548 656 1718 642 1956 730V1160H92V878Z" fill="#0A3142" stroke="#38BDF8" stroke-width="8"/>
+  <path d="M122 806C360 696 574 706 760 768C994 846 1198 786 1438 662C1626 566 1784 548 1942 608" stroke="#7DD3FC" stroke-width="10" stroke-linecap="round" stroke-dasharray="30 24"/>
+  <path d="M216 220C438 188 640 254 814 370C998 492 1166 516 1350 426C1510 348 1702 300 1888 340V820C1688 764 1528 790 1332 880C1114 980 896 1024 664 944C464 874 302 884 150 950L216 220Z" fill="#17231A" stroke="#86EFAC" stroke-width="8"/>
+  <path d="M392 922C520 806 642 714 790 636C938 558 1080 540 1242 556C1398 572 1508 510 1644 394" stroke="#FDE68A" stroke-width="8" stroke-linecap="round" stroke-dasharray="26 22"/>
+  <path d="M1302 520C1410 502 1512 528 1598 596C1518 626 1414 648 1290 642C1230 608 1238 548 1302 520Z" fill="#231A14" stroke="#FDBA74" stroke-width="7"/>
+  <path d="M1420 366C1532 314 1652 292 1780 320C1836 398 1840 494 1786 574C1662 560 1534 582 1418 640C1346 546 1352 432 1420 366Z" fill="#2A2014" stroke="#FBBF24" stroke-width="7"/>
+  <path d="M502 512C650 458 812 486 926 590C832 660 706 692 560 668C492 626 470 572 502 512Z" fill="#12251F" stroke="#86EFAC" stroke-width="7"/>
+  <path d="M272 654C408 620 550 646 650 730C584 800 470 838 334 824C244 780 218 710 272 654Z" fill="#16263A" stroke="#93C5FD" stroke-width="7"/>
+  <path d="M920 424C1040 366 1174 370 1288 452C1238 518 1138 552 1008 542C934 514 902 474 920 424Z" fill="#1B2536" stroke="#C4B5FD" stroke-width="7"/>
+  <path d="M1468 708C1556 684 1640 702 1704 760" stroke="#FCA5A5" stroke-width="8" stroke-linecap="round"/>
+  <path d="M1446 760C1550 736 1644 758 1726 832" stroke="#FCA5A5" stroke-width="8" stroke-linecap="round"/>
+  <path d="M620 980L720 1058L596 1080" stroke="#E0F2FE" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="1598" cy="436" r="52" fill="#0F172A" stroke="#FDE68A" stroke-width="8"/>
+  <circle cx="494" cy="736" r="50" fill="#0F172A" stroke="#93C5FD" stroke-width="8"/>
+  <circle cx="686" cy="586" r="50" fill="#0F172A" stroke="#BBF7D0" stroke-width="8"/>
+  <circle cx="1086" cy="486" r="50" fill="#0F172A" stroke="#C4B5FD" stroke-width="8"/>
+  <circle cx="1548" cy="760" r="50" fill="#0F172A" stroke="#FCA5A5" stroke-width="8"/>
+  <text x="1024" y="96" class="title">Vaexil Recon Draft - The Atlantic Wall</text>
+  <text x="1598" y="446" class="label">radar hill</text>
+  <text x="494" y="746" class="label">safehouse</text>
+  <text x="686" y="596" class="label">town</text>
+  <text x="1086" y="496" class="label">farm</text>
+  <text x="1548" y="770" class="label">trenches</text>
+  <text x="590" y="1100" class="small">beach insertion</text>
+  <text x="1498" y="622" class="small">bunker / objective slope</text>
+  <text x="330" y="866" class="small">pier + exfil side</text>
+  <text x="1024" y="1194" class="note">Private approximate source-derived schematic for first-hand coordinate capture.</text>
+  <text x="1024" y="1232" class="note">Vaexil-authored abstraction. Not copied from Rebellion art, screenshots, guide maps, or marker coordinates.</text>
 </svg>
