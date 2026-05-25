@@ -9,8 +9,9 @@ from public publication.
 Private source maps are working assets, not final Vaexil public map plates. They
 exist to make coordinate capture and floor/layer review practical. Do not copy
 marker coordinates, marker labels, guide prose, checklist data, UI, or icons from
-them. Do not move them to `public/` without a separate publication decision,
-attribution review, and asset record update.
+them unless a specific owner-approved private draft import is recorded in this
+document and source packet. Do not move them to `public/` without a separate
+publication decision, attribution review, and asset record update.
 
 Third-party map images can still be used as temporary draw-under references
 while producing Vaexil-authored plates. Temporary references that are not
@@ -29,7 +30,7 @@ Git.
 | HITMAPS media browser | https://mediabrowser.hitmaps.com/images/ | Images | No independent Vaexil permission beyond owner-approved HITMAN floor source maps | Unknown/unsafe | No general import | No hotlinking or broad media scraping. Only documented floor plates are imported as private candidate assets. |
 | Sniper Elite 5 Maps | https://sniperelite5maps.de/ | Interactive Sniper Elite 5 maps and markers | Third-party site | Depends on license | No | Recon must not copy map images, marker coordinates, UI, or guide data. |
 | Sniper Elite 5 Maps GitHub repo | https://github.com/lordfiSh/sniperelite5maps | Code/assets/data | CC BY-NC-SA posture is not suitable for unconstrained Vaexil.tv reuse | Attribution, non-commercial, share-alike if used | No | Non-commercial/share-alike obligations do not fit the independence goal. |
-| Guides4Gamers Sniper Elite 5 | https://guides4gamers.com/sniper-elite-5/maps/campaign-maps/ | Maps, guide text, marker lists | Owner-approved private review use only; public publication not approved | Record source in manifest/docs | Private only | The Atlantic Wall surface map is committed only as a protected admin source map. No marker lists, coordinates, icons, or guide prose are copied. |
+| Guides4Gamers Sniper Elite 5 | https://guides4gamers.com/sniper-elite-5/maps/campaign-maps/ | Maps, guide text, marker lists | Owner-approved private review use only; public publication not approved | Record source in manifest/docs | Private only | The Atlantic Wall surface map and Atlantic Wall marker coordinates/labels are committed only as protected admin draft data. Guide prose, screenshots, icons, public UI, and non-approved mission marker data are not copied. |
 | Guides4Gamers Sniper Elite: Resistance | https://guides4gamers.com/sniper-elite-resistance/maps/campaign-maps/ | Maps, guide text, marker lists | Owner-approved private review use only; public publication not approved | Record source in manifest/docs | Private only | Behind Enemy Lines surface map is committed only as a protected admin source map. No marker lists, coordinates, icons, or guide prose are copied. |
 | IO Interactive HITMAN World of Assassination | https://ioi.dk/hitman | Official product/location context | Official source for facts, not reusable assets | Not used for assets | No | Source-packet citation only; no screenshots, art, or UI assets are imported. |
 | Rebellion Sniper Elite 5 | https://shop.rebellion.com/products/sniper-elite-5 | Official product/feature context | Official source for facts, not reusable assets | Not used for assets | No | Source-packet citation only; no screenshots, art, or UI assets are imported. |
@@ -50,8 +51,10 @@ Git.
 | Draft map placeholder | `private/recon/maps/draft-map-placeholder.svg` | Vaexil.tv-created neutral draft asset | Vaexil-created placeholder | No |
 | Neutral common icons | `public/recon/icons/common/` | Vaexil.tv-created neutral icons | Vaexil-created placeholders | No |
 
-No official game icons, screenshots, publisher map art, third-party marker
-coordinates, third-party guide text, or third-party API data were imported.
+No official game icons, screenshots, publisher map art, third-party guide text,
+or third-party API data were imported. The only third-party marker-coordinate
+import currently approved is the private Atlantic Wall Guides4Gamers draft marker
+seed in `src/data/recon/marker-seeds.json`; it is not public content.
 
 ## Owner Decisions Remaining
 
@@ -71,7 +74,7 @@ coordinates, third-party guide text, or third-party API data were imported.
 1. Use the private source maps for admin coordinate tooling and first-hand review
    only.
 2. Keep exact marker placement unpublished until it is validated through Vaexil
-   gameplay or permitted source material.
+   gameplay or explicitly approved private draft source material.
 3. Create final public plates as a separate asset review step.
 4. Record every final asset in `src/data/recon/asset-manifest.json`.
 5. Record floor/interior view coverage in `src/data/recon/map-views.json`.

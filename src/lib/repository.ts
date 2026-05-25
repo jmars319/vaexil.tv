@@ -184,6 +184,22 @@ export async function listPublishedReconMarkers(mapId: string) {
   return result.rows.map(mapReconMarker);
 }
 
+export async function listAdminReconMarkers(mapId: string) {
+  await ensureDb();
+  const result = await getDb().execute({
+    sql: `
+      SELECT *
+      FROM recon_markers
+      WHERE map_id = ?
+        AND status IN ('draft', 'pending', 'ready_for_review', 'verified', 'published')
+      ORDER BY category ASC, label ASC;
+    `,
+    args: [mapId],
+  });
+
+  return result.rows.map(mapReconMarker);
+}
+
 export async function listReconMarkerSuggestions(mapId?: string) {
   await ensureDb();
   const result = await getDb().execute({
@@ -197,7 +213,7 @@ export async function listReconMarkerSuggestions(mapId?: string) {
       INNER JOIN recon_maps m ON m.id = s.map_id
       ${mapId ? "WHERE s.map_id = ?" : ""}
       ORDER BY s.created_at DESC
-      LIMIT 50;
+      LIMIT ${mapId ? 250 : 50};
     `,
     args: mapId ? [mapId] : [],
   });

@@ -15,6 +15,7 @@ const games = await readJson("src/data/recon/games.json");
 const maps = await readJson("src/data/recon/maps.json");
 const assets = await readJson("src/data/recon/asset-manifest.json");
 const mapViews = await readJson("src/data/recon/map-views.json");
+const markerSeeds = await readJson("src/data/recon/marker-seeds.json");
 const icons = await readJson("src/data/recon/icon-manifest.json");
 const sourcePackets = await readJson("src/data/recon/source-packets.json");
 
@@ -24,6 +25,7 @@ assert.equal(new Set(games.map((game) => game.slug)).size, games.length, "Recon 
 const gameIds = new Set(games.map((game) => game.id));
 const mapsById = new Map(maps.map((map) => [map.id, map]));
 const assetsById = new Map(assets.map((asset) => [asset.id, asset]));
+const iconsByKey = new Map(icons.map((icon) => [icon.key, icon]));
 const viewsByMapId = new Map();
 const sourcePacketsByMapId = new Map(sourcePackets.map((packet) => [packet.mapId, packet]));
 const routeKeys = new Set();
@@ -148,6 +150,19 @@ for (const [viewId, assetId] of expectedImportedReviewAssets) {
 
 for (const icon of icons) {
   assert.match(icon.path, /^\/recon\/icons\//, `${icon.key} icon should resolve from public Recon icons`);
+}
+
+assert.ok(markerSeeds.length >= 79, "Atlantic Wall should include the first draft marker import");
+for (const marker of markerSeeds) {
+  const map = mapsById.get(marker.mapId);
+  assert.ok(map, `${marker.id} should point to a known map`);
+  assert.equal(marker.gameId, map.gameId, `${marker.id} should match its map game`);
+  assert.equal(marker.status, "draft", `${marker.id} should remain a draft marker`);
+  assert.equal(marker.confidence, "unverified", `${marker.id} should require gameplay verification`);
+  assert.ok(marker.x >= 0 && marker.x <= 100, `${marker.id} should use normalized x`);
+  assert.ok(marker.y >= 0 && marker.y <= 100, `${marker.id} should use normalized y`);
+  assert.ok(iconsByKey.has(marker.iconKey), `${marker.id} should use a known icon`);
+  assert.match(marker.sourceUrl, /^https:\/\/guides4gamers\.com\//, `${marker.id} should record Guides4Gamers as its source`);
 }
 
 for (const packet of sourcePackets) {

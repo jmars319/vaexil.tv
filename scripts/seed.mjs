@@ -26,6 +26,12 @@ const reconSeedGames = JSON.parse(
 const reconSeedMaps = JSON.parse(
   await readFile(new URL("../src/data/recon/maps.json", import.meta.url), "utf8"),
 );
+const reconSeedMarkers = JSON.parse(
+  await readFile(
+    new URL("../src/data/recon/marker-seeds.json", import.meta.url),
+    "utf8",
+  ),
+);
 const reconSeedAssets = JSON.parse(
   await readFile(
     new URL("../src/data/recon/asset-manifest.json", import.meta.url),
@@ -517,6 +523,77 @@ for (const asset of reconSeedAssets) {
   });
 }
 
+for (const marker of reconSeedMarkers) {
+  await db.execute({
+    sql: `
+      INSERT INTO recon_markers (
+        id,
+        game_id,
+        map_id,
+        mode,
+        variant,
+        category,
+        subcategory,
+        label,
+        description,
+        x,
+        y,
+        floor,
+        icon_key,
+        tags_json,
+        source_name,
+        source_url,
+        confidence,
+        status,
+        hidden_by_default,
+        updated_at
+      )
+      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+      ON CONFLICT(id) DO UPDATE SET
+        game_id = excluded.game_id,
+        map_id = excluded.map_id,
+        mode = excluded.mode,
+        variant = excluded.variant,
+        category = excluded.category,
+        subcategory = excluded.subcategory,
+        label = excluded.label,
+        description = excluded.description,
+        x = excluded.x,
+        y = excluded.y,
+        floor = excluded.floor,
+        icon_key = excluded.icon_key,
+        tags_json = excluded.tags_json,
+        source_name = excluded.source_name,
+        source_url = excluded.source_url,
+        confidence = excluded.confidence,
+        status = excluded.status,
+        hidden_by_default = excluded.hidden_by_default,
+        updated_at = CURRENT_TIMESTAMP;
+    `,
+    args: [
+      marker.id,
+      marker.gameId,
+      marker.mapId,
+      marker.mode,
+      marker.variant,
+      marker.category,
+      marker.subcategory || null,
+      marker.label,
+      marker.description || null,
+      marker.x,
+      marker.y,
+      marker.floor || null,
+      marker.iconKey,
+      JSON.stringify(marker.tags || []),
+      marker.sourceName || null,
+      marker.sourceUrl || null,
+      marker.confidence,
+      marker.status,
+      marker.hiddenByDefault ? 1 : 0,
+    ],
+  });
+}
+
 console.log(
-  `Seeded ${seedItems.length} guide items, ${reconSeedGames.length} Recon games, ${reconSeedMaps.length} Recon draft maps, and ${reconSeedAssets.length} Recon assets.`,
+  `Seeded ${seedItems.length} guide items, ${reconSeedGames.length} Recon games, ${reconSeedMaps.length} Recon draft maps, ${reconSeedAssets.length} Recon assets, and ${reconSeedMarkers.length} Recon draft markers.`,
 );

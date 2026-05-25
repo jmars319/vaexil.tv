@@ -9,6 +9,7 @@ import { getReconSourcePacket } from "@/data/recon/source-packets";
 import { isAdminAuthenticated } from "@/lib/admin";
 import {
   getAdminReconMapBySlug,
+  listAdminReconMarkers,
   listReconMarkerSuggestions,
 } from "@/lib/repository";
 import { notFound, redirect } from "next/navigation";
@@ -42,7 +43,10 @@ export default async function ReconMapAdminPage({
     notFound();
   }
 
-  const suggestions = await listReconMarkerSuggestions(map.id);
+  const [markers, suggestions] = await Promise.all([
+    listAdminReconMarkers(map.id),
+    listReconMarkerSuggestions(map.id),
+  ]);
   const privateImageSrc =
     map.imageAsset?.visibility === "private"
       ? `/admin/recon/assets/${map.imageAsset.id}`
@@ -96,6 +100,22 @@ export default async function ReconMapAdminPage({
             path: icon.path,
           }))}
           suggestions={suggestions}
+          markers={markers.map((marker) => {
+            const icon = iconManifest.find((item) => item.key === marker.iconKey);
+
+            return {
+              id: marker.id,
+              label: marker.label,
+              description: marker.description,
+              category: marker.category,
+              x: marker.x,
+              y: marker.y,
+              floor: marker.floor,
+              iconKey: marker.iconKey,
+              iconPath: icon?.path,
+              hiddenByDefault: marker.hiddenByDefault,
+            };
+          })}
           mapViews={mapViews}
         />
       </Section>

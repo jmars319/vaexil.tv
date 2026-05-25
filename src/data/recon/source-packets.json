@@ -167,7 +167,7 @@
       {
         "label": "Guides4Gamers - Sniper Elite 5 Mission Maps",
         "url": "https://guides4gamers.com/sniper-elite-5/maps/campaign-maps/",
-        "note": "Private source-map imagery is used for admin-only surface review; do not copy marker coordinates, marker text, guide prose, or public UI."
+        "note": "Private source-map imagery and the Atlantic Wall marker payload are used for admin-only draft review with owner approval; public publication still requires Vaexil verification."
       },
       {
         "label": "Gamepressure - Atlantic Wall map and location description",
@@ -216,12 +216,13 @@
     "uncertaintyNotes": [
       "The draft schematic is source-derived but still zone-based; it should not be treated as a true map plate.",
       "The Atlantic Wall should keep an underground/interior view for tunnels, bunker interiors, safehouse interiors, and workbench-access paths instead of flattening every marker onto the surface plate.",
-      "Guides4Gamers map imagery is imported as a private admin-only surface source asset; marker lists, marker coordinates, and guide prose are still excluded.",
-      "Collectible categories are known, but exact markers remain unpublished until first-hand review."
+      "Guides4Gamers map imagery and marker coordinates are imported only as private draft review data for The Atlantic Wall.",
+      "Exact markers remain unpublished until first-hand Vaexil review."
     ],
     "avoidCopying": [
       "Rebellion screenshots and in-game map art.",
-      "Sniper Elite Maps, Guides4Gamers, Push Square screenshots, guide prose, and marker coordinates.",
+      "Sniper Elite Maps, Push Square screenshots, guide prose, and marker coordinates.",
+      "Guides4Gamers guide prose, screenshots, icons, public UI, and marker data for maps not explicitly approved for private draft import.",
       "Third-party annotated map images."
     ]
   },

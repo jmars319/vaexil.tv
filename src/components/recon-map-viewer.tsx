@@ -49,6 +49,7 @@ type ReconMapViewerProps = {
   categories: ReconViewerCategory[];
   onCoordinateCapture?: (coordinate: ReconCoordinate) => void;
   capturedCoordinate?: ReconCoordinate | null;
+  markerSummaryLabel?: string;
   emptyState?: string;
   className?: string;
 };
@@ -73,6 +74,7 @@ export function ReconMapViewer({
   categories,
   onCoordinateCapture,
   capturedCoordinate,
+  markerSummaryLabel = "published markers",
   emptyState = "No map asset is available yet.",
   className,
 }: ReconMapViewerProps) {
@@ -258,7 +260,7 @@ export function ReconMapViewer({
           <div>
             <h2 className="text-sm font-semibold text-white">{title}</h2>
             <p className="mt-1 text-xs text-slate-500">
-              {markers.length} published markers / {filteredMarkers.length} visible
+              {markers.length} {markerSummaryLabel} / {filteredMarkers.length} visible
             </p>
           </div>
           <div className="flex items-center gap-2">

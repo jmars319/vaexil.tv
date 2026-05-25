@@ -32,6 +32,7 @@ type ReconCoordinateCaptureProps = {
   imageSrc: string | null;
   categories: ReconViewerCategory[];
   icons: IconOption[];
+  markers?: ReconViewerMarker[];
   suggestions: ReconMarkerSuggestion[];
   mapViews?: MapViewOption[];
 };
@@ -86,6 +87,7 @@ export function ReconCoordinateCapture({
   imageSrc,
   categories,
   icons,
+  markers = [],
   suggestions,
   mapViews = [],
 }: ReconCoordinateCaptureProps) {
@@ -125,6 +127,14 @@ export function ReconCoordinateCapture({
   );
 
   const activeFloor = (activeView?.floor || "").trim().toLowerCase();
+  const draftMarkers = markers.filter((marker) => {
+    if (!activeFloor) {
+      return true;
+    }
+
+    const markerFloor = (marker.floor || "").trim().toLowerCase();
+    return !markerFloor || markerFloor === activeFloor;
+  });
   const suggestionMarkers: ReconViewerMarker[] = suggestions
     .filter((suggestion) => {
       if (!activeFloor) {
@@ -145,6 +155,7 @@ export function ReconCoordinateCapture({
       iconKey: suggestion.iconKey,
       iconPath: iconByKey.get(suggestion.iconKey)?.path,
     }));
+  const viewerMarkers = [...draftMarkers, ...suggestionMarkers];
 
   return (
     <div className="grid gap-5">
@@ -196,10 +207,11 @@ export function ReconCoordinateCapture({
         height={activeView?.height || map.height}
         minZoom={map.minZoom}
         maxZoom={map.maxZoom}
-        markers={suggestionMarkers}
+        markers={viewerMarkers}
         categories={categories}
         onCoordinateCapture={setCoordinate}
         capturedCoordinate={coordinate}
+        markerSummaryLabel="draft/review markers"
         emptyState="No private draft asset is available for this map yet."
       />
 

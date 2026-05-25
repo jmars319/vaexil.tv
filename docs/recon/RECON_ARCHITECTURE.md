@@ -91,7 +91,10 @@ Private source maps from HITMAPS or Guides4Gamers may be committed only under
 `private/recon/` with `imported: true`, `visibility = private`, and
 `status = candidate`. They are admin-only review surfaces for coordinate capture,
 not public assets. Do not use them to copy marker coordinates, marker labels,
-guide prose, checklist data, icons, UI, or API nodes.
+guide prose, checklist data, icons, UI, or API nodes unless the source packet and
+asset-sourcing notes record a specific owner-approved private draft import. The
+Atlantic Wall Guides4Gamers marker seed is currently the only approved private
+third-party marker-coordinate import, and it remains `draft`/`unverified`.
 
 Reference images from HITMAPS, Guides4Gamers, publisher screenshots, or other
 guide sites may also be used temporarily as draw-under material while authoring a
@@ -110,6 +113,10 @@ permission is recorded first.
 ## Admin Workflow
 
 The first Recon admin pass is coordinate capture, not a full CMS.
+
+Draft marker seeds may also populate the admin viewer when a private import is
+explicitly approved. They stay in `recon_markers` with `status = draft` and do
+not publish to public map pages.
 
 1. Open `/admin/recon`.
 2. Choose a draft map.

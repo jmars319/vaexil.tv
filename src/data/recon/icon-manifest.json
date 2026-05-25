@@ -74,7 +74,7 @@
     "attribution": "Vaexil.tv",
     "isPlaceholder": true,
     "applicableGames": ["hitman-woa", "sniper-elite-5", "sniper-elite-resistance"],
-    "applicableCategories": ["tool", "satchel_charge", "bolt_cutters", "crowbar"]
+    "applicableCategories": ["tool", "satchel_charge", "bolt_cutters", "crowbar", "fuse_box"]
   },
   {
     "key": "weapon",
@@ -129,7 +129,7 @@
     "attribution": "Vaexil.tv",
     "isPlaceholder": true,
     "applicableGames": ["sniper-elite-5", "sniper-elite-resistance"],
-    "applicableCategories": ["main_objective", "optional_objective"]
+    "applicableCategories": ["main_objective", "optional_objective", "medal_related"]
   },
   {
     "key": "poster",
