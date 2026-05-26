@@ -83,9 +83,9 @@ export default async function SniperEliteResistanceReconPage() {
         <div className="rounded-2xl border border-cyan-300/20 bg-cyan-300/[0.06] p-5">
           <ShieldCheck className="size-6 text-cyan-200" aria-hidden="true" />
           <p className="mt-4 text-sm leading-6 text-slate-300">
-            Recon does not use publisher screenshots, in-game map art,
+            Public Recon does not expose publisher screenshots, in-game map art,
             third-party map assets, marker coordinates, or copied guide text.
-            Published entries must be Vaexil-curated.
+            Private Guides4Gamers drafts remain admin-only until Vaexil review.
           </p>
         </div>
       </Section>

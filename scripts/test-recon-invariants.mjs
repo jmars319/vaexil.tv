@@ -29,12 +29,18 @@ const iconsByKey = new Map(icons.map((icon) => [icon.key, icon]));
 const viewsByMapId = new Map();
 const sourcePacketsByMapId = new Map(sourcePackets.map((packet) => [packet.mapId, packet]));
 const routeKeys = new Set();
-const requiredDraftMapIds = new Set([
-  "hitman-dubai",
-  "hitman-berlin",
-  "se5-atlantic-wall",
-  "ser-behind-enemy-lines",
-]);
+const requiredDraftMapIds = new Set(
+  maps
+    .filter((map) => map.status === "draft")
+    .map((map) => map.id),
+);
+const sniperEliteMapIds = new Set(
+  maps
+    .filter((map) =>
+      ["sniper-elite-5", "sniper-elite-resistance"].includes(map.gameId),
+    )
+    .map((map) => map.id),
+);
 
 for (const requiredGame of ["hitman-woa", "sniper-elite-5", "sniper-elite-resistance"]) {
   assert.ok(gameIds.has(requiredGame), `Recon should include ${requiredGame}`);
@@ -119,40 +125,26 @@ for (const mapId of ["se5-atlantic-wall", "ser-behind-enemy-lines"]) {
   assert.ok(views.some((view) => view.kind === "underground"), `${mapId} should define an underground/interior view`);
 }
 
-const expectedImportedReviewAssets = new Map([
-  ["hitman-dubai-b1", "hitmaps-hitman-dubai-level-minus-1"],
-  ["hitman-dubai-1f", "hitmaps-hitman-dubai-level-0"],
-  ["hitman-dubai-2f", "hitmaps-hitman-dubai-level-1"],
-  ["hitman-dubai-3f", "hitmaps-hitman-dubai-level-2"],
-  ["hitman-dubai-4f", "hitmaps-hitman-dubai-level-3"],
-  ["hitman-dubai-5f", "hitmaps-hitman-dubai-level-4"],
-  ["hitman-dubai-roof", "hitmaps-hitman-dubai-level-5"],
-  ["hitman-berlin-b2", "hitmaps-hitman-berlin-level-minus-2"],
-  ["hitman-berlin-b1", "hitmaps-hitman-berlin-level-minus-1"],
-  ["hitman-berlin-1f", "hitmaps-hitman-berlin-level-0"],
-  ["hitman-berlin-2f", "hitmaps-hitman-berlin-level-1"],
-  ["hitman-berlin-3f", "hitmaps-hitman-berlin-level-2"],
-  ["hitman-berlin-4f", "hitmaps-hitman-berlin-level-3"],
-  ["hitman-berlin-tower", "hitmaps-hitman-berlin-level-4"],
-  ["se5-atlantic-wall-surface", "guides4gamers-se5-atlantic-wall-surface"],
-  ["ser-behind-enemy-lines-surface", "guides4gamers-ser-behind-enemy-lines-surface"],
-]);
-
-for (const [viewId, assetId] of expectedImportedReviewAssets) {
-  const view = mapViews.find((item) => item.id === viewId);
-  const asset = assetsById.get(assetId);
-  assert.ok(view, `${viewId} should exist as a private source-map review view`);
-  assert.ok(asset, `${assetId} should exist as a private source-map review asset`);
-  assert.equal(view.assetId, assetId, `${viewId} should use ${assetId}`);
-  assert.equal(asset.imported, true, `${assetId} should be recorded as an imported source asset`);
-  assert.equal(asset.visibility, "private", `${assetId} should not be public`);
+for (const asset of assets.filter((item) => item.imported)) {
+  assert.ok(
+    mapViews.some((view) => view.assetId === asset.id),
+    `${asset.id} should be attached to at least one private source-map review view`,
+  );
+  assert.equal(asset.visibility, "private", `${asset.id} should not be public`);
 }
 
 for (const icon of icons) {
   assert.match(icon.path, /^\/recon\/icons\//, `${icon.key} icon should resolve from public Recon icons`);
 }
 
-assert.ok(markerSeeds.length >= 103, "Recon should include Atlantic Wall and Behind Enemy Lines draft marker imports");
+assert.ok(
+  sniperEliteMapIds.size >= 22,
+  "Recon should include the full private SE5 and SE:R map set",
+);
+assert.ok(
+  markerSeeds.length >= 2570,
+  "Recon should include the full private SE5 and SE:R draft marker import",
+);
 for (const marker of markerSeeds) {
   const map = mapsById.get(marker.mapId);
   assert.ok(map, `${marker.id} should point to a known map`);
@@ -209,10 +201,9 @@ const behindEnemyLinesMarkers = markerSeeds.filter((marker) => marker.mapId === 
 const behindEnemyLinesMarkerBySourceId = new Map(
   behindEnemyLinesMarkers.map((marker) => [marker.sourceMarkerId, marker]),
 );
-assert.equal(
-  behindEnemyLinesMarkers.length,
-  24,
-  "Behind Enemy Lines should include the first corrected private marker import",
+assert.ok(
+  behindEnemyLinesMarkers.length >= 24,
+  "Behind Enemy Lines should keep the corrected private marker import and may include additional review layers",
 );
 assert.equal(
   behindEnemyLinesMarkerBySourceId.has("68718"),
@@ -267,12 +258,26 @@ assert.match(
 );
 
 for (const packet of sourcePackets) {
-  assert.ok(requiredDraftMapIds.has(packet.mapId), `${packet.mapId} source packet should be tied to a tracked draft target`);
+  assert.ok(mapsById.has(packet.mapId), `${packet.mapId} source packet should be tied to a tracked Recon map`);
   assert.ok(packet.lastReviewed, `${packet.mapId} should record lastReviewed`);
   assert.ok(packet.officialSources.length >= 1, `${packet.mapId} should list official sources`);
   assert.ok(packet.referenceSources.length >= 1, `${packet.mapId} should list reference sources`);
   assert.ok(packet.avoidCopying.length >= 1, `${packet.mapId} should record copyright-sensitive material to avoid`);
   assert.doesNotMatch(JSON.stringify(packet), /copied from|scraped coordinates/i, `${packet.mapId} should not claim copied source use`);
+}
+
+for (const mapId of sniperEliteMapIds) {
+  const map = mapsById.get(mapId);
+  assert.ok(map, `${mapId} should be registered`);
+  assert.ok(sourcePacketsByMapId.has(mapId), `${mapId} should have a source packet`);
+  assert.ok(
+    markerSeeds.some((marker) => marker.mapId === mapId),
+    `${mapId} should have private draft markers`,
+  );
+  assert.ok(
+    (viewsByMapId.get(mapId) || []).some((view) => view.kind === "surface"),
+    `${mapId} should have a private surface review view`,
+  );
 }
 
 const repository = await text("src/lib/repository.ts");

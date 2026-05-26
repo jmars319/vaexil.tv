@@ -93,11 +93,10 @@ Private source maps from HITMAPS or Guides4Gamers may be committed only under
 not public assets. Do not use them to copy marker coordinates, marker labels,
 guide prose, checklist data, icons, UI, or API nodes unless the source packet and
 asset-sourcing notes record a specific owner-approved private draft import. The
-Atlantic Wall and Behind Enemy Lines Guides4Gamers marker seeds are the only
-approved private third-party marker-coordinate imports, and they remain
-`draft`/`unverified`. Behind Enemy Lines uses the Guides4Gamers campaign map's
-top-left mission cell transform rather than the full 3x3 campaign composite
-coordinates.
+Sniper Elite 5 and Sniper Elite: Resistance Guides4Gamers campaign imports are
+approved only as private draft source plates and marker seeds. They remain
+`draft`/`unverified` and use the corrected 3x3 campaign-cell transform rather
+than full campaign-composite coordinates.
 
 Reference images from HITMAPS, Guides4Gamers, publisher screenshots, or other
 guide sites may also be used temporarily as draw-under material while authoring a
@@ -132,11 +131,12 @@ not publish to public map pages.
 Publishing markers and maps remains an explicit future admin workflow. Nothing
 from coordinate capture publishes automatically.
 
-The current draft targets are HITMAN Dubai, HITMAN Berlin, Sniper Elite 5 The
-Atlantic Wall, and Sniper Elite: Resistance Behind Enemy Lines. The HITMAN
-targets have private floor source maps for admin review. The Sniper Elite
-targets have private surface source maps plus separate approximate
-Vaexil-authored interior/underground review plates.
+The current draft targets are HITMAN Dubai, HITMAN Berlin, all thirteen Sniper
+Elite 5 main-campaign/DLC maps, and all nine Sniper Elite: Resistance campaign
+maps. The HITMAN targets have private floor source maps for admin review. The
+Sniper Elite targets have private surface source maps, with separate approximate
+Vaexil-authored interior/underground review plates only where those have been
+explicitly modeled.
 
 ## Freelancer Guide Bridge
 

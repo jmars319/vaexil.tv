@@ -23,8 +23,8 @@ This guide consolidates Vaexil.tv guardrails into normal maintainer documentatio
 
 ## Recon Guardrails
 
-- Recon v1 imports no third-party map images, API data, marker coordinates, icons, or copied guide text.
-- Draft map assets live outside `public/` and are served only through protected admin routes.
+- Public Recon imports no third-party map images, API data, marker coordinates, icons, or copied guide text.
+- Approved private Recon drafts may use source-map plates and marker seeds only when they stay under `private/recon/`, remain `draft`/`unverified`, and are served only through protected admin routes.
 - Final maps should be Vaexil-authored schematic maps and documented in `src/data/recon/asset-manifest.json` before publication.
 
 ## Retired Assumptions

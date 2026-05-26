@@ -59,10 +59,37 @@ test("draft Berlin Recon map remains public 404", async ({ request }) => {
   expect(response.status()).toBe(404);
 });
 
-test("draft Sniper Elite Resistance Recon map remains public 404", async ({ request }) => {
-  const response = await request.get("/recon/sniper-elite-resistance/behind-enemy-lines");
-  expect(response.status()).toBe(404);
-});
+const privateSniperEliteRoutes = [
+  "/recon/sniper-elite-5/the-atlantic-wall",
+  "/recon/sniper-elite-5/occupied-residence",
+  "/recon/sniper-elite-5/spy-academy",
+  "/recon/sniper-elite-5/war-factory",
+  "/recon/sniper-elite-5/festung-guernsey",
+  "/recon/sniper-elite-5/liberation",
+  "/recon/sniper-elite-5/secret-weapons",
+  "/recon/sniper-elite-5/rubble-and-ruin",
+  "/recon/sniper-elite-5/wolf-mountain",
+  "/recon/sniper-elite-5/landing-force",
+  "/recon/sniper-elite-5/conqueror",
+  "/recon/sniper-elite-5/rough-landing",
+  "/recon/sniper-elite-5/kraken-awakes",
+  "/recon/sniper-elite-resistance/behind-enemy-lines",
+  "/recon/sniper-elite-resistance/dead-drop",
+  "/recon/sniper-elite-resistance/sonderzuge-sabotage",
+  "/recon/sniper-elite-resistance/collision-course",
+  "/recon/sniper-elite-resistance/devils-cauldron",
+  "/recon/sniper-elite-resistance/assault-on-fort-rouge",
+  "/recon/sniper-elite-resistance/lock-stock-and-barrels",
+  "/recon/sniper-elite-resistance/end-of-the-line",
+  "/recon/sniper-elite-resistance/all-or-nothing",
+];
+
+for (const route of privateSniperEliteRoutes) {
+  test(`draft ${route} remains public 404`, async ({ request }) => {
+    const response = await request.get(route);
+    expect(response.status()).toBe(404);
+  });
+}
 
 test("unknown routes render branded 404", async ({ page }) => {
   const response = await page.goto("/missing-page-check", { waitUntil: "domcontentloaded" });
@@ -181,6 +208,33 @@ test("admin Behind Enemy Lines markers keep corrected campaign-cell positions", 
     })
     .click();
   await expect(page.getByText(/single Behind Enemy Lines collectible\/workbench/i)).toBeVisible();
+});
+
+test("admin Sniper Elite expansion maps are privately reviewable", async ({ page }) => {
+  await loginAdmin(page);
+
+  await page.goto("/admin/recon/maps/spy-academy", {
+    waitUntil: "domcontentloaded",
+  });
+  await expect(page.getByRole("heading", { name: "Spy Academy capture" })).toBeVisible();
+  await expect(page.getByTestId("recon-map-viewport")).toBeVisible();
+  await page.getByPlaceholder("Search markers").fill("Mission 3 Long Shot");
+  await expect(
+    page.getByRole("button", {
+      exact: true,
+      name: "Mission 3 Long Shot Gold Medal Medal-related",
+    }),
+  ).toBeVisible();
+
+  await page.goto("/admin/recon/maps/dead-drop", {
+    waitUntil: "domcontentloaded",
+  });
+  await expect(page.getByRole("heading", { name: "Dead Drop capture" })).toBeVisible();
+  await expect(page.getByTestId("recon-map-viewport")).toBeVisible();
+
+  await page.getByRole("checkbox", { name: /Ammunition pickup/ }).check();
+  await page.getByPlaceholder("Search markers").fill("ammunition");
+  await expect(page.getByRole("button", { name: /Ammunition/ }).first()).toBeVisible();
 });
 
 test("contact API rejects invalid payload without leaking internals", async ({ request }) => {

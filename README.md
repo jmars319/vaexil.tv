@@ -51,12 +51,13 @@ Individual map pages stay hidden until a map is marked `published` and backed by
 an approved public asset. Draft map assets live outside `public/` and are served
 only through protected admin routes for coordinate capture.
 
-Recon v1 imports no third-party map images, API data, marker coordinates, icons,
-or copied guide text. Draft source packets live in
-`src/data/recon/source-packets.json` for HITMAN Dubai, Sniper Elite 5 The
-Atlantic Wall, and Sniper Elite: Resistance Behind Enemy Lines. Final maps
-should be Vaexil-authored schematic maps and must be documented in
-`src/data/recon/asset-manifest.json` before publication.
+Public Recon imports no third-party map images, API data, marker coordinates,
+icons, or copied guide text. Approved private admin drafts may use HITMAPS and
+Guides4Gamers source-map plates and marker seeds only under `private/recon/`,
+with `draft`/`unverified` status and no public publication. Draft source packets
+live in `src/data/recon/source-packets.json` for the current HITMAN, Sniper
+Elite 5, and Sniper Elite: Resistance private review targets. Final public maps
+must be separately approved and documented in `src/data/recon/asset-manifest.json`.
 
 ## Local Development
 

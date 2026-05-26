@@ -64,9 +64,10 @@ Coordinate rules:
 HITMAPS and Guides4Gamers source maps may be committed only when they are
 explicit private review assets in `src/data/recon/asset-manifest.json` with
 `imported: true`, `visibility: private`, and `status: candidate`. They are for
-admin coordinate capture and map review only. They are not public map plates and
-they do not make third-party marker coordinates, labels, guide prose, checklist
-data, UI, API nodes, or icons reusable.
+admin coordinate capture and map review only. They are not public map plates.
+Owner-approved private draft imports may seed coordinates and short factual
+labels for admin review, but they do not make guide prose, checklist data, UI,
+API nodes, icons, screenshots, or public publication rights reusable.
 
 Source-derived marker seeds may be committed only when `docs/recon/ASSET_SOURCING.md`
 and `src/data/recon/source-packets.json` record a specific owner-approved
@@ -102,8 +103,10 @@ database edits should be done carefully and only after review.
 ## Avoid Unverified Facts
 
 - Do not copy coordinates from HITMAPS, Sniper Elite Maps, Guides4Gamers, or
-  other reference sites.
-- Do not copy guide text or labels from third-party maps.
+  other reference sites unless a specific owner-approved private draft import is
+  documented in the asset-sourcing notes and source packet.
+- Do not copy guide text, walkthrough prose, screenshots, icons, or public UI
+  from third-party maps.
 - Do not mark a point verified because it seems plausible.
 - Use `pending` or `draft` until the location has been checked.
 - Prefer short factual notes over confident but untested claims.

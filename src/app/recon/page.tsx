@@ -38,14 +38,14 @@ export default async function ReconPage() {
         <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
           <SectionHeading
             title="Recon"
-            description="Interactive maps, field notes, and guide layers for games covered on stream. Recon is curated static knowledge, not AI, prediction, or copied map data."
+            description="Interactive maps, field notes, and guide layers for games covered on stream. Public Recon is curated static knowledge, not AI, prediction, or exposed draft source data."
           />
           <div className="rounded-2xl border border-cyan-300/20 bg-cyan-300/[0.06] p-5">
             <ShieldCheck className="size-6 text-cyan-200" aria-hidden="true" />
             <p className="mt-4 text-sm leading-6 text-slate-300">
-              Map pages stay hidden until their Vaexil-authored schematic maps
-              and marker data are ready for public use. The current Freelancer
-              guide remains the stable reference.
+              Map pages stay hidden until their assets and marker data are
+              ready for public use. Private source-map drafts remain admin-only.
+              The current Freelancer guide remains the stable reference.
             </p>
             <div className="mt-5 flex flex-col gap-3 sm:flex-row">
               <PrimaryLink href="/guides/freelancer-free-items">
