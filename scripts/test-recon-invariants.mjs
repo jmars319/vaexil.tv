@@ -18,6 +18,7 @@ const mapViews = await readJson("src/data/recon/map-views.json");
 const markerSeeds = await readJson("src/data/recon/marker-seeds.json");
 const icons = await readJson("src/data/recon/icon-manifest.json");
 const sourcePackets = await readJson("src/data/recon/source-packets.json");
+const sourceCrossChecks = await readJson("src/data/recon/source-cross-checks.json");
 
 assert.ok(games.length >= 3, "Recon should keep the initial three games");
 assert.equal(new Set(games.map((game) => game.slug)).size, games.length, "Recon game slugs should be unique");
@@ -28,6 +29,7 @@ const assetsById = new Map(assets.map((asset) => [asset.id, asset]));
 const iconsByKey = new Map(icons.map((icon) => [icon.key, icon]));
 const viewsByMapId = new Map();
 const sourcePacketsByMapId = new Map(sourcePackets.map((packet) => [packet.mapId, packet]));
+const sourceCrossChecksByMapId = new Map(sourceCrossChecks.map((check) => [check.mapId, check]));
 const routeKeys = new Set();
 const requiredDraftMapIds = new Set(
   maps
@@ -155,6 +157,11 @@ for (const marker of markerSeeds) {
   assert.ok(marker.y >= 0 && marker.y <= 100, `${marker.id} should use normalized y`);
   assert.ok(iconsByKey.has(marker.iconKey), `${marker.id} should use a known icon`);
   assert.match(marker.sourceUrl, /^https:\/\/guides4gamers\.com\//, `${marker.id} should record Guides4Gamers as its source`);
+
+  if (/workbench/i.test(`${marker.category} ${marker.subcategory} ${marker.label}`)) {
+    assert.equal(marker.category, "workbench", `${marker.id} workbench marker should use the workbench category`);
+    assert.equal(marker.iconKey, "workbench", `${marker.id} workbench marker should use the workbench icon`);
+  }
 }
 
 const atlanticWallMarkers = markerSeeds.filter((marker) => marker.mapId === "se5-atlantic-wall");
@@ -266,6 +273,51 @@ for (const packet of sourcePackets) {
   assert.doesNotMatch(JSON.stringify(packet), /copied from|scraped coordinates/i, `${packet.mapId} should not claim copied source use`);
 }
 
+const sourceCrossCheckStatuses = new Set([
+  "position_cross_checked",
+  "needs_manual_position_review",
+  "source_gap",
+]);
+const sourceCrossCheckResultStatuses = new Set([
+  "match",
+  "mismatch",
+  "scope_delta",
+  "pending",
+  "source_gap",
+]);
+
+for (const check of sourceCrossChecks) {
+  assert.ok(mapsById.has(check.mapId), `${check.mapId} source cross-check should be tied to a tracked Recon map`);
+  assert.ok(gameIds.has(check.gameId), `${check.mapId} source cross-check should reference a known game`);
+  assert.ok(sourceCrossCheckStatuses.has(check.status), `${check.mapId} source cross-check should use a known status`);
+  assert.ok(check.lastReviewed, `${check.mapId} source cross-check should record lastReviewed`);
+  assert.ok(check.localMarkerCount >= 0, `${check.mapId} source cross-check should record localMarkerCount`);
+  assert.ok(check.localWorkbenchCount >= 0, `${check.mapId} source cross-check should record localWorkbenchCount`);
+  assert.ok(check.summary, `${check.mapId} source cross-check should summarize the review status`);
+  assert.ok(check.sources.length >= 1, `${check.mapId} source cross-check should list source coverage`);
+  assert.ok(check.checks.length >= 1, `${check.mapId} source cross-check should list check results`);
+  assert.ok(check.nextSteps.length >= 1, `${check.mapId} source cross-check should list next steps`);
+
+  for (const source of check.sources) {
+    assert.match(source.url, /^https:\/\//, `${check.mapId} cross-check source should use an HTTPS URL`);
+    assert.ok(source.label, `${check.mapId} cross-check source should include a label`);
+    assert.ok(source.coverage, `${check.mapId} cross-check source should include coverage`);
+    assert.ok(source.notes, `${check.mapId} cross-check source should include notes`);
+  }
+
+  for (const result of check.checks) {
+    assert.ok(sourceCrossCheckResultStatuses.has(result.status), `${check.mapId} source cross-check result should use a known status`);
+    assert.ok(result.label, `${check.mapId} source cross-check result should include a label`);
+    assert.ok(result.notes, `${check.mapId} source cross-check result should include notes`);
+  }
+
+  assert.doesNotMatch(
+    JSON.stringify(check),
+    /copied coordinates|scraped coordinates|wand coordinates/i,
+    `${check.mapId} source cross-check should not claim copied third-party coordinates`,
+  );
+}
+
 for (const mapId of sniperEliteMapIds) {
   const map = mapsById.get(mapId);
   assert.ok(map, `${mapId} should be registered`);
@@ -273,6 +325,10 @@ for (const mapId of sniperEliteMapIds) {
   assert.ok(
     markerSeeds.some((marker) => marker.mapId === mapId),
     `${mapId} should have private draft markers`,
+  );
+  assert.ok(
+    sourceCrossChecksByMapId.has(mapId),
+    `${mapId} should have a source cross-check record`,
   );
   assert.ok(
     (viewsByMapId.get(mapId) || []).some((view) => view.kind === "surface"),

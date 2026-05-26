@@ -32,6 +32,9 @@ Git.
 | Sniper Elite 5 Maps GitHub repo | https://github.com/lordfiSh/sniperelite5maps | Code/assets/data | CC BY-NC-SA posture is not suitable for unconstrained Vaexil.tv reuse | Attribution, non-commercial, share-alike if used | No | Non-commercial/share-alike obligations do not fit the independence goal. |
 | Guides4Gamers Sniper Elite 5 | https://guides4gamers.com/sniper-elite-5/maps/campaign-maps/ and DLC map pages | Maps, guide text, marker lists | Owner-approved private review use only; public publication not approved | Record source in manifest/docs | Private only | All eight main-campaign maps plus Wolf Mountain, Landing Force, Conqueror, Rough Landing, and Kraken Awakes are committed as protected admin draft source plates with draft/unverified marker seeds. Guide prose, screenshots, icons, and public UI are not copied. |
 | Guides4Gamers Sniper Elite: Resistance | https://guides4gamers.com/sniper-elite-resistance/maps/campaign-maps/ and DLC map pages | Maps, guide text, marker lists | Owner-approved private review use only; public publication not approved | Record source in manifest/docs | Private only | All nine Sniper Elite: Resistance campaign cells plus Lights, Camera, Achtung!, Vercors Vendetta, Striking Range, and Mud and Thunder are committed as protected admin draft source plates with draft/unverified marker seeds. Guide prose, screenshots, icons, and public UI are not copied. |
+| Gamer Guides Sniper Elite 5 | https://www.gamerguides.com/sniper-elite-5/maps | Interactive map index, marker counts, guide text, screenshots | Third-party editorial/map content | Not used for assets | No | Cross-check source for map-count/category coverage only. Do not copy screenshots, marker coordinates, guide prose, or marker detail text. |
+| Wand Sniper Elite: Resistance | https://wand.com/maps/sniper-elite-resistance | Interactive map/checklist index and app-backed map data | Third-party map/checklist content | Not used for assets | No | Cross-check source for Resistance map/checklist coverage only. Do not copy app data, coordinates, screenshots, icons, or route prose. |
+| GameSpot Sniper Elite: Resistance workbench guide | https://www.gamespot.com/gallery/sniper-elite-resistance-workbench-locations-weapon-workbenches-guide/2900-6153/ | Editorial guide, screenshots, workbench notes | Third-party editorial content | Not used for assets | No | Cross-check source for Resistance workbench count/location plausibility only. Do not copy screenshots, guide prose, or map images. |
 | IO Interactive HITMAN World of Assassination | https://ioi.dk/hitman | Official product/location context | Official source for facts, not reusable assets | Not used for assets | No | Source-packet citation only; no screenshots, art, or UI assets are imported. |
 | Rebellion Sniper Elite 5 | https://shop.rebellion.com/products/sniper-elite-5 | Official product/feature context | Official source for facts, not reusable assets | Not used for assets | No | Source-packet citation only; no screenshots, art, or UI assets are imported. |
 | Rebellion Sniper Elite: Resistance | https://shop.rebellion.com/products/sniper-elite-resistance | Official product/feature context | Official source for facts, not reusable assets | Not used for assets | No | Source-packet citation only; no screenshots, art, or UI assets are imported. |
@@ -56,6 +59,12 @@ or third-party API data were imported. The only third-party marker-coordinate
 imports currently approved are the private Sniper Elite 5 and Sniper Elite:
 Resistance Guides4Gamers draft marker seeds in
 `src/data/recon/marker-seeds.json`; they are not public content.
+
+Cross-check records in `src/data/recon/source-cross-checks.json` may cite
+Gamer Guides, Wand, GameSpot, Push Square, and similar guides as secondary
+review sources. Those records are review metadata only: they may store source
+labels, URLs, count comparisons, source gaps, and next steps, but not copied
+coordinates, route prose, screenshots, icons, or guide-specific descriptions.
 
 ## Owner Decisions Remaining
 

@@ -56,8 +56,11 @@ icons, or copied guide text. Approved private admin drafts may use HITMAPS and
 Guides4Gamers source-map plates and marker seeds only under `private/recon/`,
 with `draft`/`unverified` status and no public publication. Draft source packets
 live in `src/data/recon/source-packets.json` for the current HITMAN, Sniper
-Elite 5, and Sniper Elite: Resistance private review targets. Final public maps
-must be separately approved and documented in `src/data/recon/asset-manifest.json`.
+Elite 5, and Sniper Elite: Resistance private review targets. Sniper Elite
+source cross-check status lives in `src/data/recon/source-cross-checks.json` so
+admin review can track secondary sources, source gaps, and manual position
+passes without copying third-party coordinates. Final public maps must be
+separately approved and documented in `src/data/recon/asset-manifest.json`.
 
 ## Local Development
 

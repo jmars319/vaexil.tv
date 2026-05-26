@@ -1,0 +1,1378 @@
+[
+  {
+    "mapId": "se5-atlantic-wall",
+    "gameId": "sniper-elite-5",
+    "status": "position_cross_checked",
+    "lastReviewed": "2026-05-26",
+    "localMarkerCount": 79,
+    "localWorkbenchCount": 3,
+    "summary": "The Atlantic Wall has a recorded manual position review. Keep using the source list for regression checks before publication.",
+    "sources": [
+      {
+        "label": "Guides4Gamers Sniper Elite 5 Campaign Maps",
+        "url": "https://guides4gamers.com/sniper-elite-5/maps/campaign-maps/",
+        "coverage": "private_source_import",
+        "notes": "The Atlantic Wall private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
+      },
+      {
+        "label": "Gamer Guides Sniper Elite 5 map index",
+        "url": "https://www.gamerguides.com/sniper-elite-5/maps",
+        "coverage": "marker_counts_and_categories",
+        "notes": "Used as an independent marker-count and category-scope check for the base missions and Wolf Mountain; coordinates and guide prose are not copied."
+      },
+      {
+        "label": "Push Square Sniper Elite 5 workbench guide",
+        "url": "https://www.pushsquare.com/guides/sniper-elite-5-all-workbenches-locations",
+        "coverage": "workbench_counts_and_named_types",
+        "notes": "Used to confirm three workbench types per covered mission; route prose and screenshots are not copied."
+      }
+    ],
+    "checks": [
+      {
+        "label": "Workbench count",
+        "status": "match",
+        "localValue": "3",
+        "sourceValue": "3",
+        "notes": "Local draft data matches the independent workbench-count expectation."
+      },
+      {
+        "label": "Independent marker-count scope",
+        "status": "scope_delta",
+        "localValue": "79",
+        "sourceValue": "66",
+        "notes": "Local draft marker import intentionally includes a broader admin review layer than the independent Gamer Guides index count; review high-noise utility/supply layers before publishing."
+      },
+      {
+        "label": "Position review",
+        "status": "match",
+        "localValue": "manual pass recorded",
+        "sourceValue": "secondary source available",
+        "notes": "Atlantic Wall has received a manual plate-alignment pass, including shoreline drift checks and long-shot medal descriptions. Keep later changes draft-only until each marker is checked again in-game."
+      }
+    ],
+    "warnings": [],
+    "nextSteps": [
+      "Re-run the manual cross-source pass after any source import or marker-coordinate change.",
+      "Verify exact marker placement in-game before changing marker confidence."
+    ]
+  },
+  {
+    "mapId": "se5-conqueror",
+    "gameId": "sniper-elite-5",
+    "status": "source_gap",
+    "lastReviewed": "2026-05-26",
+    "localMarkerCount": 86,
+    "localWorkbenchCount": 3,
+    "summary": "Conqueror needs another reliable source or first-hand gameplay pass before position accuracy can be called reviewed.",
+    "sources": [
+      {
+        "label": "Guides4Gamers Sniper Elite 5 Campaign Maps - Conqueror",
+        "url": "https://guides4gamers.com/sniper-elite-5/maps/conqueror/",
+        "coverage": "private_source_import",
+        "notes": "Conqueror private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
+      }
+    ],
+    "checks": [
+      {
+        "label": "Workbench count",
+        "status": "source_gap",
+        "localValue": "3",
+        "sourceValue": "unknown",
+        "notes": "No reliable independent workbench-count source has been recorded for this map yet."
+      },
+      {
+        "label": "Position review",
+        "status": "source_gap",
+        "localValue": "draft positions only",
+        "sourceValue": "none recorded",
+        "notes": "Exact marker positions still need a manual source comparison plus first-hand gameplay review. Do not treat the imported draft points as verified guide data."
+      }
+    ],
+    "warnings": [
+      "Independent source coverage is incomplete for this target; use gameplay review before changing marker confidence."
+    ],
+    "nextSteps": [
+      "Compare core objective, collectible, workbench, tool, and route markers against the recorded secondary sources.",
+      "Record any manual coordinate adjustment in marker descriptions or source-check notes.",
+      "Verify exact placement in-game before changing marker confidence."
+    ]
+  },
+  {
+    "mapId": "se5-festung-guernsey",
+    "gameId": "sniper-elite-5",
+    "status": "needs_manual_position_review",
+    "lastReviewed": "2026-05-26",
+    "localMarkerCount": 86,
+    "localWorkbenchCount": 3,
+    "summary": "Festung Guernsey has independent count/category coverage, but individual marker positions still need manual cross-checking.",
+    "sources": [
+      {
+        "label": "Guides4Gamers Sniper Elite 5 Campaign Maps",
+        "url": "https://guides4gamers.com/sniper-elite-5/maps/campaign-maps/",
+        "coverage": "private_source_import",
+        "notes": "Festung Guernsey private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
+      },
+      {
+        "label": "Gamer Guides Sniper Elite 5 map index",
+        "url": "https://www.gamerguides.com/sniper-elite-5/maps",
+        "coverage": "marker_counts_and_categories",
+        "notes": "Used as an independent marker-count and category-scope check for the base missions and Wolf Mountain; coordinates and guide prose are not copied."
+      },
+      {
+        "label": "Push Square Sniper Elite 5 workbench guide",
+        "url": "https://www.pushsquare.com/guides/sniper-elite-5-all-workbenches-locations",
+        "coverage": "workbench_counts_and_named_types",
+        "notes": "Used to confirm three workbench types per covered mission; route prose and screenshots are not copied."
+      }
+    ],
+    "checks": [
+      {
+        "label": "Workbench count",
+        "status": "match",
+        "localValue": "3",
+        "sourceValue": "3",
+        "notes": "Local draft data matches the independent workbench-count expectation."
+      },
+      {
+        "label": "Independent marker-count scope",
+        "status": "scope_delta",
+        "localValue": "86",
+        "sourceValue": "63",
+        "notes": "Local draft marker import intentionally includes a broader admin review layer than the independent Gamer Guides index count; review high-noise utility/supply layers before publishing."
+      },
+      {
+        "label": "Position review",
+        "status": "pending",
+        "localValue": "draft positions only",
+        "sourceValue": "secondary source available",
+        "notes": "Exact marker positions still need a manual source comparison plus first-hand gameplay review. Do not treat the imported draft points as verified guide data."
+      }
+    ],
+    "warnings": [],
+    "nextSteps": [
+      "Compare core objective, collectible, workbench, tool, and route markers against the recorded secondary sources.",
+      "Record any manual coordinate adjustment in marker descriptions or source-check notes.",
+      "Verify exact placement in-game before changing marker confidence."
+    ]
+  },
+  {
+    "mapId": "se5-kraken-awakes",
+    "gameId": "sniper-elite-5",
+    "status": "source_gap",
+    "lastReviewed": "2026-05-26",
+    "localMarkerCount": 80,
+    "localWorkbenchCount": 3,
+    "summary": "Kraken Awakes needs another reliable source or first-hand gameplay pass before position accuracy can be called reviewed.",
+    "sources": [
+      {
+        "label": "Guides4Gamers Sniper Elite 5 Campaign Maps - Kraken Awakes",
+        "url": "https://guides4gamers.com/sniper-elite-5/maps/kraken-awakes/",
+        "coverage": "private_source_import",
+        "notes": "Kraken Awakes private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
+      }
+    ],
+    "checks": [
+      {
+        "label": "Workbench count",
+        "status": "source_gap",
+        "localValue": "3",
+        "sourceValue": "unknown",
+        "notes": "No reliable independent workbench-count source has been recorded for this map yet."
+      },
+      {
+        "label": "Position review",
+        "status": "source_gap",
+        "localValue": "draft positions only",
+        "sourceValue": "none recorded",
+        "notes": "Exact marker positions still need a manual source comparison plus first-hand gameplay review. Do not treat the imported draft points as verified guide data."
+      }
+    ],
+    "warnings": [
+      "Independent source coverage is incomplete for this target; use gameplay review before changing marker confidence."
+    ],
+    "nextSteps": [
+      "Compare core objective, collectible, workbench, tool, and route markers against the recorded secondary sources.",
+      "Record any manual coordinate adjustment in marker descriptions or source-check notes.",
+      "Verify exact placement in-game before changing marker confidence."
+    ]
+  },
+  {
+    "mapId": "se5-landing-force",
+    "gameId": "sniper-elite-5",
+    "status": "source_gap",
+    "lastReviewed": "2026-05-26",
+    "localMarkerCount": 73,
+    "localWorkbenchCount": 3,
+    "summary": "Landing Force needs another reliable source or first-hand gameplay pass before position accuracy can be called reviewed.",
+    "sources": [
+      {
+        "label": "Guides4Gamers Sniper Elite 5 Campaign Maps - Landing Force",
+        "url": "https://guides4gamers.com/sniper-elite-5/maps/landing-force/",
+        "coverage": "private_source_import",
+        "notes": "Landing Force private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
+      }
+    ],
+    "checks": [
+      {
+        "label": "Workbench count",
+        "status": "source_gap",
+        "localValue": "3",
+        "sourceValue": "unknown",
+        "notes": "No reliable independent workbench-count source has been recorded for this map yet."
+      },
+      {
+        "label": "Position review",
+        "status": "source_gap",
+        "localValue": "draft positions only",
+        "sourceValue": "none recorded",
+        "notes": "Exact marker positions still need a manual source comparison plus first-hand gameplay review. Do not treat the imported draft points as verified guide data."
+      }
+    ],
+    "warnings": [
+      "Independent source coverage is incomplete for this target; use gameplay review before changing marker confidence."
+    ],
+    "nextSteps": [
+      "Compare core objective, collectible, workbench, tool, and route markers against the recorded secondary sources.",
+      "Record any manual coordinate adjustment in marker descriptions or source-check notes.",
+      "Verify exact placement in-game before changing marker confidence."
+    ]
+  },
+  {
+    "mapId": "se5-liberation",
+    "gameId": "sniper-elite-5",
+    "status": "needs_manual_position_review",
+    "lastReviewed": "2026-05-26",
+    "localMarkerCount": 72,
+    "localWorkbenchCount": 3,
+    "summary": "Liberation has independent count/category coverage, but individual marker positions still need manual cross-checking.",
+    "sources": [
+      {
+        "label": "Guides4Gamers Sniper Elite 5 Campaign Maps",
+        "url": "https://guides4gamers.com/sniper-elite-5/maps/campaign-maps/",
+        "coverage": "private_source_import",
+        "notes": "Liberation private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
+      },
+      {
+        "label": "Gamer Guides Sniper Elite 5 map index",
+        "url": "https://www.gamerguides.com/sniper-elite-5/maps",
+        "coverage": "marker_counts_and_categories",
+        "notes": "Used as an independent marker-count and category-scope check for the base missions and Wolf Mountain; coordinates and guide prose are not copied."
+      },
+      {
+        "label": "Push Square Sniper Elite 5 workbench guide",
+        "url": "https://www.pushsquare.com/guides/sniper-elite-5-all-workbenches-locations",
+        "coverage": "workbench_counts_and_named_types",
+        "notes": "Used to confirm three workbench types per covered mission; route prose and screenshots are not copied."
+      }
+    ],
+    "checks": [
+      {
+        "label": "Workbench count",
+        "status": "match",
+        "localValue": "3",
+        "sourceValue": "3",
+        "notes": "Local draft data matches the independent workbench-count expectation."
+      },
+      {
+        "label": "Independent marker-count scope",
+        "status": "scope_delta",
+        "localValue": "72",
+        "sourceValue": "42",
+        "notes": "Local draft marker import intentionally includes a broader admin review layer than the independent Gamer Guides index count; review high-noise utility/supply layers before publishing."
+      },
+      {
+        "label": "Position review",
+        "status": "pending",
+        "localValue": "draft positions only",
+        "sourceValue": "secondary source available",
+        "notes": "Exact marker positions still need a manual source comparison plus first-hand gameplay review. Do not treat the imported draft points as verified guide data."
+      }
+    ],
+    "warnings": [],
+    "nextSteps": [
+      "Compare core objective, collectible, workbench, tool, and route markers against the recorded secondary sources.",
+      "Record any manual coordinate adjustment in marker descriptions or source-check notes.",
+      "Verify exact placement in-game before changing marker confidence."
+    ]
+  },
+  {
+    "mapId": "se5-occupied-residence",
+    "gameId": "sniper-elite-5",
+    "status": "needs_manual_position_review",
+    "lastReviewed": "2026-05-26",
+    "localMarkerCount": 62,
+    "localWorkbenchCount": 3,
+    "summary": "Occupied Residence has independent count/category coverage, but individual marker positions still need manual cross-checking.",
+    "sources": [
+      {
+        "label": "Guides4Gamers Sniper Elite 5 Campaign Maps",
+        "url": "https://guides4gamers.com/sniper-elite-5/maps/campaign-maps/",
+        "coverage": "private_source_import",
+        "notes": "Occupied Residence private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
+      },
+      {
+        "label": "Gamer Guides Sniper Elite 5 map index",
+        "url": "https://www.gamerguides.com/sniper-elite-5/maps",
+        "coverage": "marker_counts_and_categories",
+        "notes": "Used as an independent marker-count and category-scope check for the base missions and Wolf Mountain; coordinates and guide prose are not copied."
+      },
+      {
+        "label": "Push Square Sniper Elite 5 workbench guide",
+        "url": "https://www.pushsquare.com/guides/sniper-elite-5-all-workbenches-locations",
+        "coverage": "workbench_counts_and_named_types",
+        "notes": "Used to confirm three workbench types per covered mission; route prose and screenshots are not copied."
+      }
+    ],
+    "checks": [
+      {
+        "label": "Workbench count",
+        "status": "match",
+        "localValue": "3",
+        "sourceValue": "3",
+        "notes": "Local draft data matches the independent workbench-count expectation."
+      },
+      {
+        "label": "Independent marker-count scope",
+        "status": "scope_delta",
+        "localValue": "62",
+        "sourceValue": "49",
+        "notes": "Local draft marker import intentionally includes a broader admin review layer than the independent Gamer Guides index count; review high-noise utility/supply layers before publishing."
+      },
+      {
+        "label": "Position review",
+        "status": "pending",
+        "localValue": "draft positions only",
+        "sourceValue": "secondary source available",
+        "notes": "Exact marker positions still need a manual source comparison plus first-hand gameplay review. Do not treat the imported draft points as verified guide data."
+      }
+    ],
+    "warnings": [],
+    "nextSteps": [
+      "Compare core objective, collectible, workbench, tool, and route markers against the recorded secondary sources.",
+      "Record any manual coordinate adjustment in marker descriptions or source-check notes.",
+      "Verify exact placement in-game before changing marker confidence."
+    ]
+  },
+  {
+    "mapId": "se5-rough-landing",
+    "gameId": "sniper-elite-5",
+    "status": "source_gap",
+    "lastReviewed": "2026-05-26",
+    "localMarkerCount": 62,
+    "localWorkbenchCount": 3,
+    "summary": "Rough Landing needs another reliable source or first-hand gameplay pass before position accuracy can be called reviewed.",
+    "sources": [
+      {
+        "label": "Guides4Gamers Sniper Elite 5 Campaign Maps - Rough Landing",
+        "url": "https://guides4gamers.com/sniper-elite-5/maps/rough-landing/",
+        "coverage": "private_source_import",
+        "notes": "Rough Landing private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
+      }
+    ],
+    "checks": [
+      {
+        "label": "Workbench count",
+        "status": "source_gap",
+        "localValue": "3",
+        "sourceValue": "unknown",
+        "notes": "No reliable independent workbench-count source has been recorded for this map yet."
+      },
+      {
+        "label": "Position review",
+        "status": "source_gap",
+        "localValue": "draft positions only",
+        "sourceValue": "none recorded",
+        "notes": "Exact marker positions still need a manual source comparison plus first-hand gameplay review. Do not treat the imported draft points as verified guide data."
+      }
+    ],
+    "warnings": [
+      "Independent source coverage is incomplete for this target; use gameplay review before changing marker confidence."
+    ],
+    "nextSteps": [
+      "Compare core objective, collectible, workbench, tool, and route markers against the recorded secondary sources.",
+      "Record any manual coordinate adjustment in marker descriptions or source-check notes.",
+      "Verify exact placement in-game before changing marker confidence."
+    ]
+  },
+  {
+    "mapId": "se5-rubble-and-ruin",
+    "gameId": "sniper-elite-5",
+    "status": "needs_manual_position_review",
+    "lastReviewed": "2026-05-26",
+    "localMarkerCount": 76,
+    "localWorkbenchCount": 3,
+    "summary": "Rubble and Ruin has independent count/category coverage, but individual marker positions still need manual cross-checking.",
+    "sources": [
+      {
+        "label": "Guides4Gamers Sniper Elite 5 Campaign Maps",
+        "url": "https://guides4gamers.com/sniper-elite-5/maps/campaign-maps/",
+        "coverage": "private_source_import",
+        "notes": "Rubble and Ruin private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
+      },
+      {
+        "label": "Gamer Guides Sniper Elite 5 map index",
+        "url": "https://www.gamerguides.com/sniper-elite-5/maps",
+        "coverage": "marker_counts_and_categories",
+        "notes": "Used as an independent marker-count and category-scope check for the base missions and Wolf Mountain; coordinates and guide prose are not copied."
+      },
+      {
+        "label": "Push Square Sniper Elite 5 workbench guide",
+        "url": "https://www.pushsquare.com/guides/sniper-elite-5-all-workbenches-locations",
+        "coverage": "workbench_counts_and_named_types",
+        "notes": "Used to confirm three workbench types per covered mission; route prose and screenshots are not copied."
+      }
+    ],
+    "checks": [
+      {
+        "label": "Workbench count",
+        "status": "match",
+        "localValue": "3",
+        "sourceValue": "3",
+        "notes": "Local draft data matches the independent workbench-count expectation."
+      },
+      {
+        "label": "Independent marker-count scope",
+        "status": "scope_delta",
+        "localValue": "76",
+        "sourceValue": "51",
+        "notes": "Local draft marker import intentionally includes a broader admin review layer than the independent Gamer Guides index count; review high-noise utility/supply layers before publishing."
+      },
+      {
+        "label": "Position review",
+        "status": "pending",
+        "localValue": "draft positions only",
+        "sourceValue": "secondary source available",
+        "notes": "Exact marker positions still need a manual source comparison plus first-hand gameplay review. Do not treat the imported draft points as verified guide data."
+      }
+    ],
+    "warnings": [],
+    "nextSteps": [
+      "Compare core objective, collectible, workbench, tool, and route markers against the recorded secondary sources.",
+      "Record any manual coordinate adjustment in marker descriptions or source-check notes.",
+      "Verify exact placement in-game before changing marker confidence."
+    ]
+  },
+  {
+    "mapId": "se5-secret-weapons",
+    "gameId": "sniper-elite-5",
+    "status": "needs_manual_position_review",
+    "lastReviewed": "2026-05-26",
+    "localMarkerCount": 100,
+    "localWorkbenchCount": 3,
+    "summary": "Secret Weapons has independent count/category coverage, but individual marker positions still need manual cross-checking.",
+    "sources": [
+      {
+        "label": "Guides4Gamers Sniper Elite 5 Campaign Maps",
+        "url": "https://guides4gamers.com/sniper-elite-5/maps/campaign-maps/",
+        "coverage": "private_source_import",
+        "notes": "Secret Weapons private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
+      },
+      {
+        "label": "Gamer Guides Sniper Elite 5 map index",
+        "url": "https://www.gamerguides.com/sniper-elite-5/maps",
+        "coverage": "marker_counts_and_categories",
+        "notes": "Used as an independent marker-count and category-scope check for the base missions and Wolf Mountain; coordinates and guide prose are not copied."
+      },
+      {
+        "label": "Push Square Sniper Elite 5 workbench guide",
+        "url": "https://www.pushsquare.com/guides/sniper-elite-5-all-workbenches-locations",
+        "coverage": "workbench_counts_and_named_types",
+        "notes": "Used to confirm three workbench types per covered mission; route prose and screenshots are not copied."
+      }
+    ],
+    "checks": [
+      {
+        "label": "Workbench count",
+        "status": "match",
+        "localValue": "3",
+        "sourceValue": "3",
+        "notes": "Local draft data matches the independent workbench-count expectation."
+      },
+      {
+        "label": "Independent marker-count scope",
+        "status": "scope_delta",
+        "localValue": "100",
+        "sourceValue": "36",
+        "notes": "Local draft marker import intentionally includes a broader admin review layer than the independent Gamer Guides index count; review high-noise utility/supply layers before publishing."
+      },
+      {
+        "label": "Position review",
+        "status": "pending",
+        "localValue": "draft positions only",
+        "sourceValue": "secondary source available",
+        "notes": "Exact marker positions still need a manual source comparison plus first-hand gameplay review. Do not treat the imported draft points as verified guide data."
+      }
+    ],
+    "warnings": [],
+    "nextSteps": [
+      "Compare core objective, collectible, workbench, tool, and route markers against the recorded secondary sources.",
+      "Record any manual coordinate adjustment in marker descriptions or source-check notes.",
+      "Verify exact placement in-game before changing marker confidence."
+    ]
+  },
+  {
+    "mapId": "se5-spy-academy",
+    "gameId": "sniper-elite-5",
+    "status": "needs_manual_position_review",
+    "lastReviewed": "2026-05-26",
+    "localMarkerCount": 78,
+    "localWorkbenchCount": 3,
+    "summary": "Spy Academy has independent count/category coverage, but individual marker positions still need manual cross-checking.",
+    "sources": [
+      {
+        "label": "Guides4Gamers Sniper Elite 5 Campaign Maps",
+        "url": "https://guides4gamers.com/sniper-elite-5/maps/campaign-maps/",
+        "coverage": "private_source_import",
+        "notes": "Spy Academy private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
+      },
+      {
+        "label": "Gamer Guides Sniper Elite 5 map index",
+        "url": "https://www.gamerguides.com/sniper-elite-5/maps",
+        "coverage": "marker_counts_and_categories",
+        "notes": "Used as an independent marker-count and category-scope check for the base missions and Wolf Mountain; coordinates and guide prose are not copied."
+      },
+      {
+        "label": "Push Square Sniper Elite 5 workbench guide",
+        "url": "https://www.pushsquare.com/guides/sniper-elite-5-all-workbenches-locations",
+        "coverage": "workbench_counts_and_named_types",
+        "notes": "Used to confirm three workbench types per covered mission; route prose and screenshots are not copied."
+      }
+    ],
+    "checks": [
+      {
+        "label": "Workbench count",
+        "status": "match",
+        "localValue": "3",
+        "sourceValue": "3",
+        "notes": "Local draft data matches the independent workbench-count expectation."
+      },
+      {
+        "label": "Independent marker-count scope",
+        "status": "scope_delta",
+        "localValue": "78",
+        "sourceValue": "54",
+        "notes": "Local draft marker import intentionally includes a broader admin review layer than the independent Gamer Guides index count; review high-noise utility/supply layers before publishing."
+      },
+      {
+        "label": "Position review",
+        "status": "pending",
+        "localValue": "draft positions only",
+        "sourceValue": "secondary source available",
+        "notes": "Exact marker positions still need a manual source comparison plus first-hand gameplay review. Do not treat the imported draft points as verified guide data."
+      }
+    ],
+    "warnings": [],
+    "nextSteps": [
+      "Compare core objective, collectible, workbench, tool, and route markers against the recorded secondary sources.",
+      "Record any manual coordinate adjustment in marker descriptions or source-check notes.",
+      "Verify exact placement in-game before changing marker confidence."
+    ]
+  },
+  {
+    "mapId": "se5-war-factory",
+    "gameId": "sniper-elite-5",
+    "status": "needs_manual_position_review",
+    "lastReviewed": "2026-05-26",
+    "localMarkerCount": 74,
+    "localWorkbenchCount": 3,
+    "summary": "War Factory has independent count/category coverage, but individual marker positions still need manual cross-checking.",
+    "sources": [
+      {
+        "label": "Guides4Gamers Sniper Elite 5 Campaign Maps",
+        "url": "https://guides4gamers.com/sniper-elite-5/maps/campaign-maps/",
+        "coverage": "private_source_import",
+        "notes": "War Factory private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
+      },
+      {
+        "label": "Gamer Guides Sniper Elite 5 map index",
+        "url": "https://www.gamerguides.com/sniper-elite-5/maps",
+        "coverage": "marker_counts_and_categories",
+        "notes": "Used as an independent marker-count and category-scope check for the base missions and Wolf Mountain; coordinates and guide prose are not copied."
+      },
+      {
+        "label": "Push Square Sniper Elite 5 workbench guide",
+        "url": "https://www.pushsquare.com/guides/sniper-elite-5-all-workbenches-locations",
+        "coverage": "workbench_counts_and_named_types",
+        "notes": "Used to confirm three workbench types per covered mission; route prose and screenshots are not copied."
+      }
+    ],
+    "checks": [
+      {
+        "label": "Workbench count",
+        "status": "match",
+        "localValue": "3",
+        "sourceValue": "3",
+        "notes": "Local draft data matches the independent workbench-count expectation."
+      },
+      {
+        "label": "Independent marker-count scope",
+        "status": "scope_delta",
+        "localValue": "74",
+        "sourceValue": "45",
+        "notes": "Local draft marker import intentionally includes a broader admin review layer than the independent Gamer Guides index count; review high-noise utility/supply layers before publishing."
+      },
+      {
+        "label": "Position review",
+        "status": "pending",
+        "localValue": "draft positions only",
+        "sourceValue": "secondary source available",
+        "notes": "Exact marker positions still need a manual source comparison plus first-hand gameplay review. Do not treat the imported draft points as verified guide data."
+      }
+    ],
+    "warnings": [],
+    "nextSteps": [
+      "Compare core objective, collectible, workbench, tool, and route markers against the recorded secondary sources.",
+      "Record any manual coordinate adjustment in marker descriptions or source-check notes.",
+      "Verify exact placement in-game before changing marker confidence."
+    ]
+  },
+  {
+    "mapId": "se5-wolf-mountain",
+    "gameId": "sniper-elite-5",
+    "status": "needs_manual_position_review",
+    "lastReviewed": "2026-05-26",
+    "localMarkerCount": 65,
+    "localWorkbenchCount": 3,
+    "summary": "Wolf Mountain has independent count/category coverage, but individual marker positions still need manual cross-checking.",
+    "sources": [
+      {
+        "label": "Guides4Gamers Sniper Elite 5 Campaign Maps - Wolf Mountain",
+        "url": "https://guides4gamers.com/sniper-elite-5/maps/wolf-mountain/",
+        "coverage": "private_source_import",
+        "notes": "Wolf Mountain private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
+      },
+      {
+        "label": "Gamer Guides Sniper Elite 5 map index",
+        "url": "https://www.gamerguides.com/sniper-elite-5/maps",
+        "coverage": "marker_counts_and_categories",
+        "notes": "Used as an independent marker-count and category-scope check for the base missions and Wolf Mountain; coordinates and guide prose are not copied."
+      },
+      {
+        "label": "Push Square Sniper Elite 5 workbench guide",
+        "url": "https://www.pushsquare.com/guides/sniper-elite-5-all-workbenches-locations",
+        "coverage": "workbench_counts_and_named_types",
+        "notes": "Used to confirm three workbench types per covered mission; route prose and screenshots are not copied."
+      }
+    ],
+    "checks": [
+      {
+        "label": "Workbench count",
+        "status": "match",
+        "localValue": "3",
+        "sourceValue": "3",
+        "notes": "Local draft data matches the independent workbench-count expectation."
+      },
+      {
+        "label": "Independent marker-count scope",
+        "status": "scope_delta",
+        "localValue": "65",
+        "sourceValue": "59",
+        "notes": "Local draft marker import intentionally includes a broader admin review layer than the independent Gamer Guides index count; review high-noise utility/supply layers before publishing."
+      },
+      {
+        "label": "Position review",
+        "status": "pending",
+        "localValue": "draft positions only",
+        "sourceValue": "secondary source available",
+        "notes": "Exact marker positions still need a manual source comparison plus first-hand gameplay review. Do not treat the imported draft points as verified guide data."
+      }
+    ],
+    "warnings": [],
+    "nextSteps": [
+      "Compare core objective, collectible, workbench, tool, and route markers against the recorded secondary sources.",
+      "Record any manual coordinate adjustment in marker descriptions or source-check notes.",
+      "Verify exact placement in-game before changing marker confidence."
+    ]
+  },
+  {
+    "mapId": "ser-all-or-nothing",
+    "gameId": "sniper-elite-resistance",
+    "status": "source_gap",
+    "lastReviewed": "2026-05-26",
+    "localMarkerCount": 1,
+    "localWorkbenchCount": 0,
+    "summary": "All or Nothing needs another reliable source or first-hand gameplay pass before position accuracy can be called reviewed.",
+    "sources": [
+      {
+        "label": "Guides4Gamers Sniper Elite: Resistance Campaign Maps",
+        "url": "https://guides4gamers.com/sniper-elite-resistance/maps/campaign-maps/",
+        "coverage": "private_source_import",
+        "notes": "All or Nothing private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
+      },
+      {
+        "label": "Push Square Sniper Elite: Resistance workbench guide",
+        "url": "https://www.pushsquare.com/guides/sniper-elite-resistance-all-workbenches-locations",
+        "coverage": "workbench_counts_and_named_types",
+        "notes": "Used to confirm campaign workbench count expectations and Vercors Vendetta workbench names; prose and screenshots are not copied."
+      }
+    ],
+    "checks": [
+      {
+        "label": "Workbench count",
+        "status": "match",
+        "localValue": "0",
+        "sourceValue": "0",
+        "notes": "Local draft data matches the independent workbench-count expectation."
+      },
+      {
+        "label": "Position review",
+        "status": "pending",
+        "localValue": "draft positions only",
+        "sourceValue": "secondary source available",
+        "notes": "Exact marker positions still need a manual source comparison plus first-hand gameplay review. Do not treat the imported draft points as verified guide data."
+      }
+    ],
+    "warnings": [
+      "Independent source coverage is incomplete for this target; use gameplay review before changing marker confidence.",
+      "All or Nothing currently has minimal imported marker coverage; confirm whether it needs a guide surface, a campaign note, or no Recon map."
+    ],
+    "nextSteps": [
+      "Compare core objective, collectible, workbench, tool, and route markers against the recorded secondary sources.",
+      "Record any manual coordinate adjustment in marker descriptions or source-check notes.",
+      "Verify exact placement in-game before changing marker confidence."
+    ]
+  },
+  {
+    "mapId": "ser-assault-on-fort-rouge",
+    "gameId": "sniper-elite-resistance",
+    "status": "needs_manual_position_review",
+    "lastReviewed": "2026-05-26",
+    "localMarkerCount": 235,
+    "localWorkbenchCount": 3,
+    "summary": "Assault on Fort Rouge has secondary Resistance map/checklist coverage available through Wand, but local marker positions are still draft until manually compared.",
+    "sources": [
+      {
+        "label": "Guides4Gamers Sniper Elite: Resistance Campaign Maps",
+        "url": "https://guides4gamers.com/sniper-elite-resistance/maps/campaign-maps/",
+        "coverage": "private_source_import",
+        "notes": "Assault on Fort Rouge private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
+      },
+      {
+        "label": "Wand Sniper Elite: Resistance map index",
+        "url": "https://wand.com/maps/sniper-elite-resistance",
+        "coverage": "map_availability_and_checklist_coverage",
+        "notes": "Used as a secondary map/checklist reference for covered Resistance regions; exact coordinates and app data are not copied into Recon."
+      },
+      {
+        "label": "GameSpot Sniper Elite: Resistance workbench guide",
+        "url": "https://www.gamespot.com/gallery/sniper-elite-resistance-workbench-locations-weapon-workbenches-guide/2900-6153/",
+        "coverage": "workbench_locations_by_mission",
+        "notes": "Used as a second workbench-location reference for campaign missions one through eight; prose and images are not copied."
+      },
+      {
+        "label": "Push Square Sniper Elite: Resistance workbench guide",
+        "url": "https://www.pushsquare.com/guides/sniper-elite-resistance-all-workbenches-locations",
+        "coverage": "workbench_counts_and_named_types",
+        "notes": "Used to confirm campaign workbench count expectations and Vercors Vendetta workbench names; prose and screenshots are not copied."
+      }
+    ],
+    "checks": [
+      {
+        "label": "Workbench count",
+        "status": "match",
+        "localValue": "3",
+        "sourceValue": "3",
+        "notes": "Local draft data matches the independent workbench-count expectation."
+      },
+      {
+        "label": "Position review",
+        "status": "pending",
+        "localValue": "draft positions only",
+        "sourceValue": "secondary source available",
+        "notes": "Exact marker positions still need a manual source comparison plus first-hand gameplay review. Do not treat the imported draft points as verified guide data."
+      }
+    ],
+    "warnings": [
+      "High marker density: review by category and hide noisy supply/ammo layers while checking core collectibles."
+    ],
+    "nextSteps": [
+      "Compare core objective, collectible, workbench, tool, and route markers against the recorded secondary sources.",
+      "Record any manual coordinate adjustment in marker descriptions or source-check notes.",
+      "Verify exact placement in-game before changing marker confidence."
+    ]
+  },
+  {
+    "mapId": "ser-behind-enemy-lines",
+    "gameId": "sniper-elite-resistance",
+    "status": "position_cross_checked",
+    "lastReviewed": "2026-05-26",
+    "localMarkerCount": 36,
+    "localWorkbenchCount": 1,
+    "summary": "Behind Enemy Lines has a recorded manual position review. Keep using the source list for regression checks before publication.",
+    "sources": [
+      {
+        "label": "Guides4Gamers Sniper Elite: Resistance Campaign Maps",
+        "url": "https://guides4gamers.com/sniper-elite-resistance/maps/campaign-maps/",
+        "coverage": "private_source_import",
+        "notes": "Behind Enemy Lines private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
+      },
+      {
+        "label": "Wand Sniper Elite: Resistance map index",
+        "url": "https://wand.com/maps/sniper-elite-resistance",
+        "coverage": "map_availability_and_checklist_coverage",
+        "notes": "Used as a secondary map/checklist reference for covered Resistance regions; exact coordinates and app data are not copied into Recon."
+      },
+      {
+        "label": "GameSpot Sniper Elite: Resistance workbench guide",
+        "url": "https://www.gamespot.com/gallery/sniper-elite-resistance-workbench-locations-weapon-workbenches-guide/2900-6153/",
+        "coverage": "workbench_locations_by_mission",
+        "notes": "Used as a second workbench-location reference for campaign missions one through eight; prose and images are not copied."
+      },
+      {
+        "label": "Push Square Sniper Elite: Resistance workbench guide",
+        "url": "https://www.pushsquare.com/guides/sniper-elite-resistance-all-workbenches-locations",
+        "coverage": "workbench_counts_and_named_types",
+        "notes": "Used to confirm campaign workbench count expectations and Vercors Vendetta workbench names; prose and screenshots are not copied."
+      }
+    ],
+    "checks": [
+      {
+        "label": "Workbench count",
+        "status": "match",
+        "localValue": "1",
+        "sourceValue": "1",
+        "notes": "Local draft data matches the independent workbench-count expectation."
+      },
+      {
+        "label": "Position review",
+        "status": "match",
+        "localValue": "manual pass recorded",
+        "sourceValue": "secondary source available",
+        "notes": "Behind Enemy Lines has received a manual campaign-cell transform correction plus workbench/source review. Interior and underground detail still needs first-hand gameplay confirmation before publication."
+      }
+    ],
+    "warnings": [],
+    "nextSteps": [
+      "Re-run the manual cross-source pass after any source import or marker-coordinate change.",
+      "Verify exact marker placement in-game before changing marker confidence."
+    ]
+  },
+  {
+    "mapId": "ser-collision-course",
+    "gameId": "sniper-elite-resistance",
+    "status": "needs_manual_position_review",
+    "lastReviewed": "2026-05-26",
+    "localMarkerCount": 141,
+    "localWorkbenchCount": 3,
+    "summary": "Collision Course has secondary Resistance map/checklist coverage available through Wand, but local marker positions are still draft until manually compared.",
+    "sources": [
+      {
+        "label": "Guides4Gamers Sniper Elite: Resistance Campaign Maps",
+        "url": "https://guides4gamers.com/sniper-elite-resistance/maps/campaign-maps/",
+        "coverage": "private_source_import",
+        "notes": "Collision Course private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
+      },
+      {
+        "label": "Wand Sniper Elite: Resistance map index",
+        "url": "https://wand.com/maps/sniper-elite-resistance",
+        "coverage": "map_availability_and_checklist_coverage",
+        "notes": "Used as a secondary map/checklist reference for covered Resistance regions; exact coordinates and app data are not copied into Recon."
+      },
+      {
+        "label": "GameSpot Sniper Elite: Resistance workbench guide",
+        "url": "https://www.gamespot.com/gallery/sniper-elite-resistance-workbench-locations-weapon-workbenches-guide/2900-6153/",
+        "coverage": "workbench_locations_by_mission",
+        "notes": "Used as a second workbench-location reference for campaign missions one through eight; prose and images are not copied."
+      },
+      {
+        "label": "Push Square Sniper Elite: Resistance workbench guide",
+        "url": "https://www.pushsquare.com/guides/sniper-elite-resistance-all-workbenches-locations",
+        "coverage": "workbench_counts_and_named_types",
+        "notes": "Used to confirm campaign workbench count expectations and Vercors Vendetta workbench names; prose and screenshots are not copied."
+      }
+    ],
+    "checks": [
+      {
+        "label": "Workbench count",
+        "status": "match",
+        "localValue": "3",
+        "sourceValue": "3",
+        "notes": "Local draft data matches the independent workbench-count expectation."
+      },
+      {
+        "label": "Position review",
+        "status": "pending",
+        "localValue": "draft positions only",
+        "sourceValue": "secondary source available",
+        "notes": "Exact marker positions still need a manual source comparison plus first-hand gameplay review. Do not treat the imported draft points as verified guide data."
+      }
+    ],
+    "warnings": [
+      "High marker density: review by category and hide noisy supply/ammo layers while checking core collectibles."
+    ],
+    "nextSteps": [
+      "Compare core objective, collectible, workbench, tool, and route markers against the recorded secondary sources.",
+      "Record any manual coordinate adjustment in marker descriptions or source-check notes.",
+      "Verify exact placement in-game before changing marker confidence."
+    ]
+  },
+  {
+    "mapId": "ser-dead-drop",
+    "gameId": "sniper-elite-resistance",
+    "status": "needs_manual_position_review",
+    "lastReviewed": "2026-05-26",
+    "localMarkerCount": 236,
+    "localWorkbenchCount": 3,
+    "summary": "Dead Drop has secondary Resistance map/checklist coverage available through Wand, but local marker positions are still draft until manually compared.",
+    "sources": [
+      {
+        "label": "Guides4Gamers Sniper Elite: Resistance Campaign Maps",
+        "url": "https://guides4gamers.com/sniper-elite-resistance/maps/campaign-maps/",
+        "coverage": "private_source_import",
+        "notes": "Dead Drop private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
+      },
+      {
+        "label": "Wand Sniper Elite: Resistance map index",
+        "url": "https://wand.com/maps/sniper-elite-resistance",
+        "coverage": "map_availability_and_checklist_coverage",
+        "notes": "Used as a secondary map/checklist reference for covered Resistance regions; exact coordinates and app data are not copied into Recon."
+      },
+      {
+        "label": "GameSpot Sniper Elite: Resistance workbench guide",
+        "url": "https://www.gamespot.com/gallery/sniper-elite-resistance-workbench-locations-weapon-workbenches-guide/2900-6153/",
+        "coverage": "workbench_locations_by_mission",
+        "notes": "Used as a second workbench-location reference for campaign missions one through eight; prose and images are not copied."
+      },
+      {
+        "label": "Push Square Sniper Elite: Resistance workbench guide",
+        "url": "https://www.pushsquare.com/guides/sniper-elite-resistance-all-workbenches-locations",
+        "coverage": "workbench_counts_and_named_types",
+        "notes": "Used to confirm campaign workbench count expectations and Vercors Vendetta workbench names; prose and screenshots are not copied."
+      }
+    ],
+    "checks": [
+      {
+        "label": "Workbench count",
+        "status": "match",
+        "localValue": "3",
+        "sourceValue": "3",
+        "notes": "Local draft data matches the independent workbench-count expectation."
+      },
+      {
+        "label": "Position review",
+        "status": "pending",
+        "localValue": "draft positions only",
+        "sourceValue": "secondary source available",
+        "notes": "Exact marker positions still need a manual source comparison plus first-hand gameplay review. Do not treat the imported draft points as verified guide data."
+      }
+    ],
+    "warnings": [
+      "High marker density: review by category and hide noisy supply/ammo layers while checking core collectibles."
+    ],
+    "nextSteps": [
+      "Compare core objective, collectible, workbench, tool, and route markers against the recorded secondary sources.",
+      "Record any manual coordinate adjustment in marker descriptions or source-check notes.",
+      "Verify exact placement in-game before changing marker confidence."
+    ]
+  },
+  {
+    "mapId": "ser-devils-cauldron",
+    "gameId": "sniper-elite-resistance",
+    "status": "needs_manual_position_review",
+    "lastReviewed": "2026-05-26",
+    "localMarkerCount": 262,
+    "localWorkbenchCount": 3,
+    "summary": "Devil's Cauldron has secondary Resistance map/checklist coverage available through Wand, but local marker positions are still draft until manually compared.",
+    "sources": [
+      {
+        "label": "Guides4Gamers Sniper Elite: Resistance Campaign Maps",
+        "url": "https://guides4gamers.com/sniper-elite-resistance/maps/campaign-maps/",
+        "coverage": "private_source_import",
+        "notes": "Devil's Cauldron private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
+      },
+      {
+        "label": "Wand Sniper Elite: Resistance map index",
+        "url": "https://wand.com/maps/sniper-elite-resistance",
+        "coverage": "map_availability_and_checklist_coverage",
+        "notes": "Used as a secondary map/checklist reference for covered Resistance regions; exact coordinates and app data are not copied into Recon."
+      },
+      {
+        "label": "GameSpot Sniper Elite: Resistance workbench guide",
+        "url": "https://www.gamespot.com/gallery/sniper-elite-resistance-workbench-locations-weapon-workbenches-guide/2900-6153/",
+        "coverage": "workbench_locations_by_mission",
+        "notes": "Used as a second workbench-location reference for campaign missions one through eight; prose and images are not copied."
+      },
+      {
+        "label": "Push Square Sniper Elite: Resistance workbench guide",
+        "url": "https://www.pushsquare.com/guides/sniper-elite-resistance-all-workbenches-locations",
+        "coverage": "workbench_counts_and_named_types",
+        "notes": "Used to confirm campaign workbench count expectations and Vercors Vendetta workbench names; prose and screenshots are not copied."
+      }
+    ],
+    "checks": [
+      {
+        "label": "Workbench count",
+        "status": "match",
+        "localValue": "3",
+        "sourceValue": "3",
+        "notes": "Local draft data matches the independent workbench-count expectation."
+      },
+      {
+        "label": "Position review",
+        "status": "pending",
+        "localValue": "draft positions only",
+        "sourceValue": "secondary source available",
+        "notes": "Exact marker positions still need a manual source comparison plus first-hand gameplay review. Do not treat the imported draft points as verified guide data."
+      }
+    ],
+    "warnings": [
+      "High marker density: review by category and hide noisy supply/ammo layers while checking core collectibles."
+    ],
+    "nextSteps": [
+      "Compare core objective, collectible, workbench, tool, and route markers against the recorded secondary sources.",
+      "Record any manual coordinate adjustment in marker descriptions or source-check notes.",
+      "Verify exact placement in-game before changing marker confidence."
+    ]
+  },
+  {
+    "mapId": "ser-end-of-the-line",
+    "gameId": "sniper-elite-resistance",
+    "status": "needs_manual_position_review",
+    "lastReviewed": "2026-05-26",
+    "localMarkerCount": 95,
+    "localWorkbenchCount": 3,
+    "summary": "End of the Line has secondary Resistance map/checklist coverage available through Wand, but local marker positions are still draft until manually compared.",
+    "sources": [
+      {
+        "label": "Guides4Gamers Sniper Elite: Resistance Campaign Maps",
+        "url": "https://guides4gamers.com/sniper-elite-resistance/maps/campaign-maps/",
+        "coverage": "private_source_import",
+        "notes": "End of the Line private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
+      },
+      {
+        "label": "Wand Sniper Elite: Resistance map index",
+        "url": "https://wand.com/maps/sniper-elite-resistance",
+        "coverage": "map_availability_and_checklist_coverage",
+        "notes": "Used as a secondary map/checklist reference for covered Resistance regions; exact coordinates and app data are not copied into Recon."
+      },
+      {
+        "label": "GameSpot Sniper Elite: Resistance workbench guide",
+        "url": "https://www.gamespot.com/gallery/sniper-elite-resistance-workbench-locations-weapon-workbenches-guide/2900-6153/",
+        "coverage": "workbench_locations_by_mission",
+        "notes": "Used as a second workbench-location reference for campaign missions one through eight; prose and images are not copied."
+      },
+      {
+        "label": "Push Square Sniper Elite: Resistance workbench guide",
+        "url": "https://www.pushsquare.com/guides/sniper-elite-resistance-all-workbenches-locations",
+        "coverage": "workbench_counts_and_named_types",
+        "notes": "Used to confirm campaign workbench count expectations and Vercors Vendetta workbench names; prose and screenshots are not copied."
+      }
+    ],
+    "checks": [
+      {
+        "label": "Workbench count",
+        "status": "match",
+        "localValue": "3",
+        "sourceValue": "3",
+        "notes": "Local draft data matches the independent workbench-count expectation."
+      },
+      {
+        "label": "Position review",
+        "status": "pending",
+        "localValue": "draft positions only",
+        "sourceValue": "secondary source available",
+        "notes": "Exact marker positions still need a manual source comparison plus first-hand gameplay review. Do not treat the imported draft points as verified guide data."
+      }
+    ],
+    "warnings": [],
+    "nextSteps": [
+      "Compare core objective, collectible, workbench, tool, and route markers against the recorded secondary sources.",
+      "Record any manual coordinate adjustment in marker descriptions or source-check notes.",
+      "Verify exact placement in-game before changing marker confidence."
+    ]
+  },
+  {
+    "mapId": "ser-lights-camera-achtung",
+    "gameId": "sniper-elite-resistance",
+    "status": "needs_manual_position_review",
+    "lastReviewed": "2026-05-26",
+    "localMarkerCount": 251,
+    "localWorkbenchCount": 3,
+    "summary": "Lights, Camera, Achtung! has secondary Resistance map/checklist coverage available through Wand, but local marker positions are still draft until manually compared.",
+    "sources": [
+      {
+        "label": "Guides4Gamers Sniper Elite: Resistance Campaign Maps - Lights, Camera, Achtung!",
+        "url": "https://guides4gamers.com/sniper-elite-resistance/maps/lights-camera-achtung/",
+        "coverage": "private_source_import",
+        "notes": "Lights, Camera, Achtung! private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
+      },
+      {
+        "label": "Wand Sniper Elite: Resistance map index",
+        "url": "https://wand.com/maps/sniper-elite-resistance",
+        "coverage": "map_availability_and_checklist_coverage",
+        "notes": "Used as a secondary map/checklist reference for covered Resistance regions; exact coordinates and app data are not copied into Recon."
+      }
+    ],
+    "checks": [
+      {
+        "label": "Workbench count",
+        "status": "source_gap",
+        "localValue": "3",
+        "sourceValue": "unknown",
+        "notes": "No reliable independent workbench-count source has been recorded for this map yet."
+      },
+      {
+        "label": "Position review",
+        "status": "pending",
+        "localValue": "draft positions only",
+        "sourceValue": "secondary source available",
+        "notes": "Exact marker positions still need a manual source comparison plus first-hand gameplay review. Do not treat the imported draft points as verified guide data."
+      }
+    ],
+    "warnings": [
+      "High marker density: review by category and hide noisy supply/ammo layers while checking core collectibles."
+    ],
+    "nextSteps": [
+      "Compare core objective, collectible, workbench, tool, and route markers against the recorded secondary sources.",
+      "Record any manual coordinate adjustment in marker descriptions or source-check notes.",
+      "Verify exact placement in-game before changing marker confidence."
+    ]
+  },
+  {
+    "mapId": "ser-lock-stock-and-barrels",
+    "gameId": "sniper-elite-resistance",
+    "status": "needs_manual_position_review",
+    "lastReviewed": "2026-05-26",
+    "localMarkerCount": 229,
+    "localWorkbenchCount": 3,
+    "summary": "Lock, Stock and Barrels has secondary Resistance map/checklist coverage available through Wand, but local marker positions are still draft until manually compared.",
+    "sources": [
+      {
+        "label": "Guides4Gamers Sniper Elite: Resistance Campaign Maps",
+        "url": "https://guides4gamers.com/sniper-elite-resistance/maps/campaign-maps/",
+        "coverage": "private_source_import",
+        "notes": "Lock, Stock and Barrels private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
+      },
+      {
+        "label": "Wand Sniper Elite: Resistance map index",
+        "url": "https://wand.com/maps/sniper-elite-resistance",
+        "coverage": "map_availability_and_checklist_coverage",
+        "notes": "Used as a secondary map/checklist reference for covered Resistance regions; exact coordinates and app data are not copied into Recon."
+      },
+      {
+        "label": "GameSpot Sniper Elite: Resistance workbench guide",
+        "url": "https://www.gamespot.com/gallery/sniper-elite-resistance-workbench-locations-weapon-workbenches-guide/2900-6153/",
+        "coverage": "workbench_locations_by_mission",
+        "notes": "Used as a second workbench-location reference for campaign missions one through eight; prose and images are not copied."
+      },
+      {
+        "label": "Push Square Sniper Elite: Resistance workbench guide",
+        "url": "https://www.pushsquare.com/guides/sniper-elite-resistance-all-workbenches-locations",
+        "coverage": "workbench_counts_and_named_types",
+        "notes": "Used to confirm campaign workbench count expectations and Vercors Vendetta workbench names; prose and screenshots are not copied."
+      }
+    ],
+    "checks": [
+      {
+        "label": "Workbench count",
+        "status": "match",
+        "localValue": "3",
+        "sourceValue": "3",
+        "notes": "Local draft data matches the independent workbench-count expectation."
+      },
+      {
+        "label": "Position review",
+        "status": "pending",
+        "localValue": "draft positions only",
+        "sourceValue": "secondary source available",
+        "notes": "Exact marker positions still need a manual source comparison plus first-hand gameplay review. Do not treat the imported draft points as verified guide data."
+      }
+    ],
+    "warnings": [
+      "High marker density: review by category and hide noisy supply/ammo layers while checking core collectibles."
+    ],
+    "nextSteps": [
+      "Compare core objective, collectible, workbench, tool, and route markers against the recorded secondary sources.",
+      "Record any manual coordinate adjustment in marker descriptions or source-check notes.",
+      "Verify exact placement in-game before changing marker confidence."
+    ]
+  },
+  {
+    "mapId": "ser-mud-and-thunder",
+    "gameId": "sniper-elite-resistance",
+    "status": "source_gap",
+    "lastReviewed": "2026-05-26",
+    "localMarkerCount": 90,
+    "localWorkbenchCount": 3,
+    "summary": "Mud and Thunder needs another reliable source or first-hand gameplay pass before position accuracy can be called reviewed.",
+    "sources": [
+      {
+        "label": "Guides4Gamers Sniper Elite: Resistance Campaign Maps - Mud and Thunder",
+        "url": "https://guides4gamers.com/sniper-elite-resistance/maps/mud-and-thunder/",
+        "coverage": "private_source_import",
+        "notes": "Mud and Thunder private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
+      }
+    ],
+    "checks": [
+      {
+        "label": "Workbench count",
+        "status": "source_gap",
+        "localValue": "3",
+        "sourceValue": "unknown",
+        "notes": "No reliable independent workbench-count source has been recorded for this map yet."
+      },
+      {
+        "label": "Position review",
+        "status": "source_gap",
+        "localValue": "draft positions only",
+        "sourceValue": "none recorded",
+        "notes": "Exact marker positions still need a manual source comparison plus first-hand gameplay review. Do not treat the imported draft points as verified guide data."
+      }
+    ],
+    "warnings": [
+      "Independent source coverage is incomplete for this target; use gameplay review before changing marker confidence."
+    ],
+    "nextSteps": [
+      "Compare core objective, collectible, workbench, tool, and route markers against the recorded secondary sources.",
+      "Record any manual coordinate adjustment in marker descriptions or source-check notes.",
+      "Verify exact placement in-game before changing marker confidence."
+    ]
+  },
+  {
+    "mapId": "ser-sonderzuge-sabotage",
+    "gameId": "sniper-elite-resistance",
+    "status": "needs_manual_position_review",
+    "lastReviewed": "2026-05-26",
+    "localMarkerCount": 342,
+    "localWorkbenchCount": 3,
+    "summary": "Sonderzüge Sabotage has secondary Resistance map/checklist coverage available through Wand, but local marker positions are still draft until manually compared.",
+    "sources": [
+      {
+        "label": "Guides4Gamers Sniper Elite: Resistance Campaign Maps",
+        "url": "https://guides4gamers.com/sniper-elite-resistance/maps/campaign-maps/",
+        "coverage": "private_source_import",
+        "notes": "Sonderzüge Sabotage private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
+      },
+      {
+        "label": "Wand Sniper Elite: Resistance map index",
+        "url": "https://wand.com/maps/sniper-elite-resistance",
+        "coverage": "map_availability_and_checklist_coverage",
+        "notes": "Used as a secondary map/checklist reference for covered Resistance regions; exact coordinates and app data are not copied into Recon."
+      },
+      {
+        "label": "GameSpot Sniper Elite: Resistance workbench guide",
+        "url": "https://www.gamespot.com/gallery/sniper-elite-resistance-workbench-locations-weapon-workbenches-guide/2900-6153/",
+        "coverage": "workbench_locations_by_mission",
+        "notes": "Used as a second workbench-location reference for campaign missions one through eight; prose and images are not copied."
+      },
+      {
+        "label": "Push Square Sniper Elite: Resistance workbench guide",
+        "url": "https://www.pushsquare.com/guides/sniper-elite-resistance-all-workbenches-locations",
+        "coverage": "workbench_counts_and_named_types",
+        "notes": "Used to confirm campaign workbench count expectations and Vercors Vendetta workbench names; prose and screenshots are not copied."
+      }
+    ],
+    "checks": [
+      {
+        "label": "Workbench count",
+        "status": "match",
+        "localValue": "3",
+        "sourceValue": "3",
+        "notes": "Local draft data matches the independent workbench-count expectation."
+      },
+      {
+        "label": "Position review",
+        "status": "pending",
+        "localValue": "draft positions only",
+        "sourceValue": "secondary source available",
+        "notes": "Exact marker positions still need a manual source comparison plus first-hand gameplay review. Do not treat the imported draft points as verified guide data."
+      }
+    ],
+    "warnings": [
+      "High marker density: review by category and hide noisy supply/ammo layers while checking core collectibles."
+    ],
+    "nextSteps": [
+      "Compare core objective, collectible, workbench, tool, and route markers against the recorded secondary sources.",
+      "Record any manual coordinate adjustment in marker descriptions or source-check notes.",
+      "Verify exact placement in-game before changing marker confidence."
+    ]
+  },
+  {
+    "mapId": "ser-striking-range",
+    "gameId": "sniper-elite-resistance",
+    "status": "source_gap",
+    "lastReviewed": "2026-05-26",
+    "localMarkerCount": 62,
+    "localWorkbenchCount": 3,
+    "summary": "Striking Range needs another reliable source or first-hand gameplay pass before position accuracy can be called reviewed.",
+    "sources": [
+      {
+        "label": "Guides4Gamers Sniper Elite: Resistance Campaign Maps - Striking Range",
+        "url": "https://guides4gamers.com/sniper-elite-resistance/maps/striking-range/",
+        "coverage": "private_source_import",
+        "notes": "Striking Range private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
+      }
+    ],
+    "checks": [
+      {
+        "label": "Workbench count",
+        "status": "source_gap",
+        "localValue": "3",
+        "sourceValue": "unknown",
+        "notes": "No reliable independent workbench-count source has been recorded for this map yet."
+      },
+      {
+        "label": "Position review",
+        "status": "source_gap",
+        "localValue": "draft positions only",
+        "sourceValue": "none recorded",
+        "notes": "Exact marker positions still need a manual source comparison plus first-hand gameplay review. Do not treat the imported draft points as verified guide data."
+      }
+    ],
+    "warnings": [
+      "Independent source coverage is incomplete for this target; use gameplay review before changing marker confidence."
+    ],
+    "nextSteps": [
+      "Compare core objective, collectible, workbench, tool, and route markers against the recorded secondary sources.",
+      "Record any manual coordinate adjustment in marker descriptions or source-check notes.",
+      "Verify exact placement in-game before changing marker confidence."
+    ]
+  },
+  {
+    "mapId": "ser-vercors-vendetta",
+    "gameId": "sniper-elite-resistance",
+    "status": "needs_manual_position_review",
+    "lastReviewed": "2026-05-26",
+    "localMarkerCount": 216,
+    "localWorkbenchCount": 3,
+    "summary": "Vercors Vendetta has independent count/category coverage, but individual marker positions still need manual cross-checking.",
+    "sources": [
+      {
+        "label": "Guides4Gamers Sniper Elite: Resistance Campaign Maps - Vercors Vendetta",
+        "url": "https://guides4gamers.com/sniper-elite-resistance/maps/vercors-vendetta/",
+        "coverage": "private_source_import",
+        "notes": "Vercors Vendetta private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
+      },
+      {
+        "label": "Push Square Sniper Elite: Resistance workbench guide",
+        "url": "https://www.pushsquare.com/guides/sniper-elite-resistance-all-workbenches-locations",
+        "coverage": "workbench_counts_and_named_types",
+        "notes": "Used to confirm campaign workbench count expectations and Vercors Vendetta workbench names; prose and screenshots are not copied."
+      }
+    ],
+    "checks": [
+      {
+        "label": "Workbench count",
+        "status": "match",
+        "localValue": "3",
+        "sourceValue": "3",
+        "notes": "Local draft data matches the independent workbench-count expectation."
+      },
+      {
+        "label": "Position review",
+        "status": "pending",
+        "localValue": "draft positions only",
+        "sourceValue": "secondary source available",
+        "notes": "Exact marker positions still need a manual source comparison plus first-hand gameplay review. Do not treat the imported draft points as verified guide data."
+      }
+    ],
+    "warnings": [
+      "High marker density: review by category and hide noisy supply/ammo layers while checking core collectibles."
+    ],
+    "nextSteps": [
+      "Compare core objective, collectible, workbench, tool, and route markers against the recorded secondary sources.",
+      "Record any manual coordinate adjustment in marker descriptions or source-check notes.",
+      "Verify exact placement in-game before changing marker confidence."
+    ]
+  }
+]

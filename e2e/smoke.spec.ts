@@ -112,6 +112,27 @@ test("private imported Berlin Recon asset is gated when logged out", async ({ re
   expect(response.status()).toBe(404);
 });
 
+test("admin Recon index groups maps by game and shows source-check status", async ({ page }) => {
+  await loginAdmin(page);
+
+  await page.goto("/admin/recon", { waitUntil: "domcontentloaded" });
+
+  await expect(
+    page.getByRole("heading", { name: "HITMAN World of Assassination" }),
+  ).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Sniper Elite 5" })).toBeVisible();
+  await expect(
+    page.getByRole("heading", { name: "Sniper Elite: Resistance" }),
+  ).toBeVisible();
+
+  await expect(page.getByRole("link", { name: "Sniper Elite 5 / 13" })).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: "Sniper Elite: Resistance / 13" }),
+  ).toBeVisible();
+  await expect(page.getByText(/Source check: position cross checked/i).first()).toBeVisible();
+  await expect(page.getByText(/Source check: needs manual position review/i).first()).toBeVisible();
+});
+
 test("admin Recon map supports wheel and touchpad-style zoom", async ({ page }) => {
   await loginAdmin(page);
 
@@ -177,6 +198,9 @@ test("admin Atlantic Wall markers keep corrected positions and readable icons", 
     })
     .click();
   await expect(page.getByText(/600 m rifle shot toward the northeast/i)).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Source cross-check" })).toBeVisible();
+  await expect(page.getByText(/Gamer Guides Sniper Elite 5 map index/i)).toBeVisible();
+  await expect(page.getByText(/Workbench count/i).first()).toBeVisible();
 });
 
 test("admin Behind Enemy Lines markers keep corrected campaign-cell positions", async ({ page }) => {

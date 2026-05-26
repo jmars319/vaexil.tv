@@ -1,11 +1,13 @@
 import { Section, SectionHeading, StatusBadge } from "@/components/ui";
+import { getReconSourceCrossCheck } from "@/data/recon/source-cross-checks";
 import { isAdminAuthenticated } from "@/lib/admin";
 import {
   listAdminReconMaps,
   listReconMarkerSuggestions,
 } from "@/lib/repository";
+import type { ReconMap } from "@/lib/types";
 import { formatDate } from "@/lib/utils";
-import { Crosshair, Map, ShieldCheck } from "lucide-react";
+import { Crosshair, Map as MapIcon, ShieldCheck } from "lucide-react";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 
@@ -21,6 +23,50 @@ export const metadata = {
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
+type ReconMapGroup = {
+  id: string;
+  anchor: string;
+  title: string;
+  shortTitle: string;
+  maps: ReconMap[];
+};
+
+function anchorForGame(gameId: string) {
+  return `game-${gameId.replace(/[^a-z0-9]+/gi, "-").toLowerCase()}`;
+}
+
+function groupMapsByGame(maps: ReconMap[]) {
+  const groups: ReconMapGroup[] = [];
+  const groupsByGame = new Map<string, ReconMapGroup>();
+
+  for (const map of maps) {
+    let group = groupsByGame.get(map.gameId);
+    if (!group) {
+      group = {
+        id: map.gameId,
+        anchor: anchorForGame(map.gameId),
+        title: map.gameTitle,
+        shortTitle: map.gameShortTitle,
+        maps: [],
+      };
+      groups.push(group);
+      groupsByGame.set(map.gameId, group);
+    }
+
+    group.maps.push(map);
+  }
+
+  return groups;
+}
+
+function sourceCheckLabel(mapId: string) {
+  const check = getReconSourceCrossCheck(mapId);
+
+  if (!check) return "No source cross-check";
+
+  return check.status.replaceAll("_", " ");
+}
+
 export default async function ReconAdminPage() {
   if (!(await isAdminAuthenticated())) {
     redirect("/admin");
@@ -30,6 +76,7 @@ export default async function ReconAdminPage() {
     listAdminReconMaps(),
     listReconMarkerSuggestions(),
   ]);
+  const mapGroups = groupMapsByGame(maps);
 
   return (
     <>
@@ -59,31 +106,85 @@ export default async function ReconAdminPage() {
       </Section>
 
       <Section className="pt-4">
-        <div className="grid gap-4 lg:grid-cols-3">
-          {maps.map((map) => (
-            <Link
-              key={map.id}
-              href={`/admin/recon/maps/${map.slug}`}
-              className="rounded-2xl border border-white/10 bg-white/[0.035] p-5 transition hover:border-cyan-300/40 hover:bg-white/[0.06]"
+        <div className="flex flex-wrap gap-2">
+          {mapGroups.map((group) => (
+            <a
+              key={group.id}
+              href={`#${group.anchor}`}
+              className="rounded-full border border-white/10 bg-white/[0.035] px-4 py-2 text-sm font-medium text-slate-200 transition hover:border-cyan-300/40 hover:bg-white/[0.06]"
             >
-              <div className="flex items-center justify-between gap-3">
-                <Map className="size-7 text-cyan-200" aria-hidden="true" />
-                <StatusBadge status={map.status} />
-              </div>
-              <h2 className="mt-6 text-xl font-semibold text-white">
-                {map.title}
-              </h2>
-              <p className="mt-2 text-sm text-slate-500">
-                {map.gameShortTitle}
-                {map.subtitle ? ` / ${map.subtitle}` : ""}
-              </p>
-              <p className="mt-4 text-sm leading-6 text-slate-400">
-                {map.imageAsset?.visibility === "private"
-                  ? "Private draft asset"
-                  : "No private draft asset"}
-              </p>
-            </Link>
+              {group.shortTitle} / {group.maps.length}
+            </a>
           ))}
+        </div>
+
+        <div className="mt-6 grid gap-8">
+          {mapGroups.map((group) => {
+            const privateCount = group.maps.filter(
+              (map) => map.imageAsset?.visibility === "private",
+            ).length;
+            const reviewedCount = group.maps.filter(
+              (map) =>
+                getReconSourceCrossCheck(map.id)?.status ===
+                "position_cross_checked",
+            ).length;
+
+            return (
+              <section
+                key={group.id}
+                id={group.anchor}
+                className="scroll-mt-28"
+                aria-labelledby={`${group.anchor}-heading`}
+              >
+                <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+                  <div>
+                    <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-200">
+                      {group.shortTitle}
+                    </p>
+                    <h2
+                      id={`${group.anchor}-heading`}
+                      className="mt-2 text-2xl font-semibold text-white"
+                    >
+                      {group.title}
+                    </h2>
+                  </div>
+                  <p className="text-sm text-slate-500">
+                    {group.maps.length} maps / {privateCount} private assets /{" "}
+                    {reviewedCount} position-reviewed
+                  </p>
+                </div>
+
+                <div className="grid gap-4 lg:grid-cols-3">
+                  {group.maps.map((map) => (
+                    <Link
+                      key={map.id}
+                      href={`/admin/recon/maps/${map.slug}`}
+                      className="rounded-2xl border border-white/10 bg-white/[0.035] p-5 transition hover:border-cyan-300/40 hover:bg-white/[0.06]"
+                    >
+                      <div className="flex items-center justify-between gap-3">
+                        <MapIcon className="size-7 text-cyan-200" aria-hidden="true" />
+                        <StatusBadge status={map.status} />
+                      </div>
+                      <h3 className="mt-6 text-xl font-semibold text-white">
+                        {map.title}
+                      </h3>
+                      <p className="mt-2 text-sm text-slate-500">
+                        {map.subtitle || "Overview"}
+                      </p>
+                      <p className="mt-4 text-sm leading-6 text-slate-400">
+                        {map.imageAsset?.visibility === "private"
+                          ? "Private draft asset"
+                          : "No private draft asset"}
+                      </p>
+                      <p className="mt-2 text-xs font-medium uppercase tracking-[0.14em] text-slate-500">
+                        Source check: {sourceCheckLabel(map.id)}
+                      </p>
+                    </Link>
+                  ))}
+                </div>
+              </section>
+            );
+          })}
         </div>
       </Section>
 

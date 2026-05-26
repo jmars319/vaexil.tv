@@ -106,6 +106,7 @@ const categoryBySubcategory = new Map([
   ["Tool", ["tool", "tool"]],
   ["Transition", ["transition", "route-point"]],
   ["Weapon", ["weapon", "weapon"]],
+  ["Workbench", ["workbench", "workbench"]],
 ]);
 
 const medalNotes = new Map([
@@ -378,6 +379,30 @@ function markerCategoryAndIcon(poi) {
   return mapped;
 }
 
+const genericPoiDescription = "Point-of-interest draft marker. Verify exact purpose and placement in-game before publishing.";
+
+function mergeExistingMarker(existing, poi, sourceId, missionTitle) {
+  const [category, iconKey] = markerCategoryAndIcon(poi);
+
+  return {
+    ...existing,
+    category:
+      existing.category === "poi" && category !== "poi"
+        ? category
+        : existing.category,
+    iconKey:
+      existing.iconKey === "poi" && iconKey !== "poi"
+        ? iconKey
+        : existing.iconKey,
+    description:
+      existing.description === genericPoiDescription && category !== "poi"
+        ? markerDescription(sourceId, poi, missionTitle)
+        : existing.description,
+    subcategory: existing.subcategory || poi.name_sub || null,
+    hiddenByDefault: false,
+  };
+}
+
 function markerLabel(poi) {
   if (poi.name) return String(poi.name).replace(/^M\d{2}:\s*/i, "").trim();
   return poi.name_sub || "Draft marker";
@@ -407,7 +432,7 @@ function generateMarkers(config, payload, existingMarkers) {
     for (const [sourceId, poi] of pois) {
       const id = `g4g-${config.gameShort}-${mission[0]}-${sourceId}`;
       if (existingById.has(id)) {
-        output.push({ ...existingById.get(id), hiddenByDefault: false });
+        output.push(mergeExistingMarker(existingById.get(id), poi, sourceId, mission[1]));
         continue;
       }
 
@@ -458,7 +483,7 @@ function generateSingleMarkers(config, mission, payload, existingMarkers) {
     .map(([sourceId, poi]) => {
       const id = `g4g-${config.gameShort}-${mission[0]}-${sourceId}`;
       if (existingById.has(id)) {
-        return { ...existingById.get(id), hiddenByDefault: false };
+        return mergeExistingMarker(existingById.get(id), poi, sourceId, mission[1]);
       }
 
       const [category, iconKey] = markerCategoryAndIcon(poi);

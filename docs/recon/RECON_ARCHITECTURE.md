@@ -57,6 +57,12 @@ approximate areas, candidate POIs, uncertainty, and copyright-sensitive material
 to avoid. They are not marker data and should not be treated as verified
 coordinates.
 
+Sniper Elite source cross-check records live in
+`src/data/recon/source-cross-checks.json`. They summarize secondary source
+coverage, count checks, source gaps, and manual position-review state for each
+private draft Sniper Elite map. They are admin review metadata, not copied
+third-party marker data.
+
 Draft view metadata lives in `src/data/recon/map-views.json`. Views map a
 logical selector such as `B1`, `1F`, `2F`, `surface`, or `underground` to a
 private asset. HITMAN maps should not flatten multi-floor spaces into one plate;
@@ -122,12 +128,14 @@ explicitly approved. They stay in `recon_markers` with `status = draft` and do
 not publish to public map pages.
 
 1. Open `/admin/recon`.
-2. Choose a draft map.
-3. Choose the correct floor/surface/interior view.
-4. Click the private draft map to capture normalized coordinates.
-5. Add label, category, mode, variant, optional floor, and factual notes.
-6. Save as a pending marker suggestion.
-7. Verify separately before converting any suggestion into a published marker.
+2. Use the game-grouped index to choose the correct title and check its source
+   cross-check status.
+3. Choose a draft map.
+4. Choose the correct floor/surface/interior view.
+5. Click the private draft map to capture normalized coordinates.
+6. Add label, category, mode, variant, optional floor, and factual notes.
+7. Save as a pending marker suggestion.
+8. Verify separately before converting any suggestion into a published marker.
 
 Publishing markers and maps remains an explicit future admin workflow. Nothing
 from coordinate capture publishes automatically.

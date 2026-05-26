@@ -11,7 +11,8 @@ Start here for Vaexil.tv system, deployment, Recon, and maintenance guidance.
 - `docs/recon/DATA_ENTRY_GUIDE.md` - Recon data-entry workflow.
 
 Recon source packets for draft map research live in
-`src/data/recon/source-packets.json`.
+`src/data/recon/source-packets.json`. Sniper Elite source cross-check records
+live in `src/data/recon/source-cross-checks.json`.
 
 ## Current Production State
 

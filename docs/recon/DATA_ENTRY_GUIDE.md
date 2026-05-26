@@ -12,9 +12,11 @@ guide facts to make a map feel complete.
 4. Add floor, surface, or interior views to `src/data/recon/map-views.json`.
 5. Add or update the map's source packet in
    `src/data/recon/source-packets.json`.
-6. Keep the map status as `draft`.
-7. Keep the asset visibility as `private` until it is approved for public use.
-8. Run the seed flow or load the app so the database upserts the seed records.
+6. Add or update source cross-check status in
+   `src/data/recon/source-cross-checks.json` for Sniper Elite maps.
+7. Keep the map status as `draft`.
+8. Keep the asset visibility as `private` until it is approved for public use.
+9. Run the seed flow or load the app so the database upserts the seed records.
 
 Public map pages do not render until the map is `published` and the map asset is
 `approved` plus `public`.
@@ -75,6 +77,14 @@ private draft import. Keep those markers `draft`/`unverified`, record the
 coordinate transform in tags or notes, and cross-check obvious placement drift
 with an overlay before using them in admin review.
 
+For Sniper Elite maps, source cross-check records live in
+`src/data/recon/source-cross-checks.json`. They record which secondary sources
+were checked, local marker/workbench counts, known gaps, and next review steps.
+They must not store copied third-party coordinates or guide prose. Rebuild the
+records with `node scripts/build-recon-source-cross-checks.mjs --write` after
+marker import/category changes, then manually update any map-specific review
+notes that came from a real position pass.
+
 Guides4Gamers, HITMAPS, publisher screenshots, and other map images may still be
 opened or briefly stored in scratch space as draw-under references. Scratch
 references that are not recorded in the asset manifest must not be committed,
@@ -91,6 +101,8 @@ Before publishing a marker:
 - confirm the map plate is the correct version
 - confirm mode and variant
 - ensure notes describe uncertainty instead of hiding it
+- confirm the map's source cross-check does not show an unresolved source gap
+  for the marker category being published
 - set the marker status to `published` only after review
 
 Source packets should be reviewed before publication. Each published map needs
