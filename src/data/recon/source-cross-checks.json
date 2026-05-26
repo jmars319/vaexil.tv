@@ -15,6 +15,12 @@
         "notes": "The Atlantic Wall private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
       },
       {
+        "label": "Sniper Elite 5 Maps reference site",
+        "url": "https://sniperelite5maps.de/",
+        "coverage": "independent_visual_map_reference",
+        "notes": "Used as a visual map-shape, coastline/building-block, and category sanity check only. Map tiles, marker coordinates, marker text, and UI are not copied."
+      },
+      {
         "label": "Gamer Guides Sniper Elite 5 map index",
         "url": "https://www.gamerguides.com/sniper-elite-5/maps",
         "coverage": "marker_counts_and_categories",
@@ -25,8 +31,28 @@
         "url": "https://www.pushsquare.com/guides/sniper-elite-5-all-workbenches-locations",
         "coverage": "workbench_counts_and_named_types",
         "notes": "Used to confirm three workbench types per covered mission; route prose and screenshots are not copied."
+      },
+      {
+        "label": "eXputer Sniper Elite 5 interactive-map article",
+        "url": "https://exputer.com/guides/sniper-elite-5-interactive-map/",
+        "coverage": "secondary_visual_map_and_collectible_counts",
+        "notes": "Used as a secondary visual/count reference for base missions and Wolf Mountain. Article images, captions, and prose are not copied."
       }
     ],
+    "visualReview": {
+      "status": "visual_sources_compared",
+      "lastCompared": "2026-05-26",
+      "summary": "The Atlantic Wall has been visually compared against at least one independent map/reference surface plus a count or category guide. Exact marker positions remain draft until first-hand gameplay review.",
+      "findings": [
+        "Private Guides4Gamers review plates remain the working source map; secondary sources are used only to compare silhouette, orientation, major landmarks, category coverage, and obvious placement drift.",
+        "No third-party marker coordinates, guide prose, screenshots, icons, or app data are copied into public Recon.",
+        "SniperElite5Maps provides a second full-map visual reference across the base missions and DLC, useful for checking coastline, road, building, and objective-area alignment."
+      ],
+      "manualReviewFocus": [
+        "Check every workbench, starting point, exfiltration point, and medal-related marker first.",
+        "Then review high-density utility layers such as satchels, crowbars, bolt cutters, keys, alarms, and medical items by region."
+      ]
+    },
     "checks": [
       {
         "label": "Workbench count",
@@ -59,19 +85,45 @@
   {
     "mapId": "se5-conqueror",
     "gameId": "sniper-elite-5",
-    "status": "source_gap",
+    "status": "needs_manual_position_review",
     "lastReviewed": "2026-05-26",
     "localMarkerCount": 86,
     "localWorkbenchCount": 3,
-    "summary": "Conqueror needs another reliable source or first-hand gameplay pass before position accuracy can be called reviewed.",
+    "summary": "Conqueror has independent count/category coverage, but individual marker positions still need manual cross-checking.",
     "sources": [
       {
         "label": "Guides4Gamers Sniper Elite 5 Campaign Maps - Conqueror",
         "url": "https://guides4gamers.com/sniper-elite-5/maps/conqueror/",
         "coverage": "private_source_import",
         "notes": "Conqueror private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
+      },
+      {
+        "label": "Sniper Elite 5 Maps reference site",
+        "url": "https://sniperelite5maps.de/",
+        "coverage": "independent_visual_map_reference",
+        "notes": "Used as a visual map-shape, coastline/building-block, and category sanity check only. Map tiles, marker coordinates, marker text, and UI are not copied."
+      },
+      {
+        "label": "DLC collectible guide spot check",
+        "url": "https://www.powerpyx.com/sniper-elite-5-mission-12-conqueror-all-collectible-locations/",
+        "coverage": "dlc_collectible_count_and_area_spot_check",
+        "notes": "Used to spot-check DLC collectible and workbench expectations against the private map plate. Guide prose and screenshots are not copied."
       }
     ],
+    "visualReview": {
+      "status": "visual_sources_compared",
+      "lastCompared": "2026-05-26",
+      "summary": "Conqueror has been visually compared against at least one independent map/reference surface plus a count or category guide. Exact marker positions remain draft until first-hand gameplay review.",
+      "findings": [
+        "Private Guides4Gamers review plates remain the working source map; secondary sources are used only to compare silhouette, orientation, major landmarks, category coverage, and obvious placement drift.",
+        "No third-party marker coordinates, guide prose, screenshots, icons, or app data are copied into public Recon.",
+        "SniperElite5Maps provides a second full-map visual reference across the base missions and DLC, useful for checking coastline, road, building, and objective-area alignment."
+      ],
+      "manualReviewFocus": [
+        "Check every workbench, starting point, exfiltration point, and medal-related marker first.",
+        "Then review high-density utility layers such as satchels, crowbars, bolt cutters, keys, alarms, and medical items by region."
+      ]
+    },
     "checks": [
       {
         "label": "Workbench count",
@@ -82,15 +134,13 @@
       },
       {
         "label": "Position review",
-        "status": "source_gap",
+        "status": "pending",
         "localValue": "draft positions only",
-        "sourceValue": "none recorded",
+        "sourceValue": "secondary source available",
         "notes": "Exact marker positions still need a manual source comparison plus first-hand gameplay review. Do not treat the imported draft points as verified guide data."
       }
     ],
-    "warnings": [
-      "Independent source coverage is incomplete for this target; use gameplay review before changing marker confidence."
-    ],
+    "warnings": [],
     "nextSteps": [
       "Compare core objective, collectible, workbench, tool, and route markers against the recorded secondary sources.",
       "Record any manual coordinate adjustment in marker descriptions or source-check notes.",
@@ -113,6 +163,12 @@
         "notes": "Festung Guernsey private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
       },
       {
+        "label": "Sniper Elite 5 Maps reference site",
+        "url": "https://sniperelite5maps.de/",
+        "coverage": "independent_visual_map_reference",
+        "notes": "Used as a visual map-shape, coastline/building-block, and category sanity check only. Map tiles, marker coordinates, marker text, and UI are not copied."
+      },
+      {
         "label": "Gamer Guides Sniper Elite 5 map index",
         "url": "https://www.gamerguides.com/sniper-elite-5/maps",
         "coverage": "marker_counts_and_categories",
@@ -123,8 +179,28 @@
         "url": "https://www.pushsquare.com/guides/sniper-elite-5-all-workbenches-locations",
         "coverage": "workbench_counts_and_named_types",
         "notes": "Used to confirm three workbench types per covered mission; route prose and screenshots are not copied."
+      },
+      {
+        "label": "eXputer Sniper Elite 5 interactive-map article",
+        "url": "https://exputer.com/guides/sniper-elite-5-interactive-map/",
+        "coverage": "secondary_visual_map_and_collectible_counts",
+        "notes": "Used as a secondary visual/count reference for base missions and Wolf Mountain. Article images, captions, and prose are not copied."
       }
     ],
+    "visualReview": {
+      "status": "visual_sources_compared",
+      "lastCompared": "2026-05-26",
+      "summary": "Festung Guernsey has been visually compared against at least one independent map/reference surface plus a count or category guide. Exact marker positions remain draft until first-hand gameplay review.",
+      "findings": [
+        "Private Guides4Gamers review plates remain the working source map; secondary sources are used only to compare silhouette, orientation, major landmarks, category coverage, and obvious placement drift.",
+        "No third-party marker coordinates, guide prose, screenshots, icons, or app data are copied into public Recon.",
+        "SniperElite5Maps provides a second full-map visual reference across the base missions and DLC, useful for checking coastline, road, building, and objective-area alignment."
+      ],
+      "manualReviewFocus": [
+        "Check every workbench, starting point, exfiltration point, and medal-related marker first.",
+        "Then review high-density utility layers such as satchels, crowbars, bolt cutters, keys, alarms, and medical items by region."
+      ]
+    },
     "checks": [
       {
         "label": "Workbench count",
@@ -158,19 +234,45 @@
   {
     "mapId": "se5-kraken-awakes",
     "gameId": "sniper-elite-5",
-    "status": "source_gap",
+    "status": "needs_manual_position_review",
     "lastReviewed": "2026-05-26",
     "localMarkerCount": 80,
     "localWorkbenchCount": 3,
-    "summary": "Kraken Awakes needs another reliable source or first-hand gameplay pass before position accuracy can be called reviewed.",
+    "summary": "Kraken Awakes has independent count/category coverage, but individual marker positions still need manual cross-checking.",
     "sources": [
       {
         "label": "Guides4Gamers Sniper Elite 5 Campaign Maps - Kraken Awakes",
         "url": "https://guides4gamers.com/sniper-elite-5/maps/kraken-awakes/",
         "coverage": "private_source_import",
         "notes": "Kraken Awakes private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
+      },
+      {
+        "label": "Sniper Elite 5 Maps reference site",
+        "url": "https://sniperelite5maps.de/",
+        "coverage": "independent_visual_map_reference",
+        "notes": "Used as a visual map-shape, coastline/building-block, and category sanity check only. Map tiles, marker coordinates, marker text, and UI are not copied."
+      },
+      {
+        "label": "DLC collectible guide spot check",
+        "url": "https://itemlevel.net/sniper-elite-5-kraken-awakes-all-collectible-locations/",
+        "coverage": "dlc_collectible_count_and_area_spot_check",
+        "notes": "Used to spot-check DLC collectible and workbench expectations against the private map plate. Guide prose and screenshots are not copied."
       }
     ],
+    "visualReview": {
+      "status": "visual_sources_compared",
+      "lastCompared": "2026-05-26",
+      "summary": "Kraken Awakes has been visually compared against at least one independent map/reference surface plus a count or category guide. Exact marker positions remain draft until first-hand gameplay review.",
+      "findings": [
+        "Private Guides4Gamers review plates remain the working source map; secondary sources are used only to compare silhouette, orientation, major landmarks, category coverage, and obvious placement drift.",
+        "No third-party marker coordinates, guide prose, screenshots, icons, or app data are copied into public Recon.",
+        "SniperElite5Maps provides a second full-map visual reference across the base missions and DLC, useful for checking coastline, road, building, and objective-area alignment."
+      ],
+      "manualReviewFocus": [
+        "Check every workbench, starting point, exfiltration point, and medal-related marker first.",
+        "Then review high-density utility layers such as satchels, crowbars, bolt cutters, keys, alarms, and medical items by region."
+      ]
+    },
     "checks": [
       {
         "label": "Workbench count",
@@ -181,15 +283,13 @@
       },
       {
         "label": "Position review",
-        "status": "source_gap",
+        "status": "pending",
         "localValue": "draft positions only",
-        "sourceValue": "none recorded",
+        "sourceValue": "secondary source available",
         "notes": "Exact marker positions still need a manual source comparison plus first-hand gameplay review. Do not treat the imported draft points as verified guide data."
       }
     ],
-    "warnings": [
-      "Independent source coverage is incomplete for this target; use gameplay review before changing marker confidence."
-    ],
+    "warnings": [],
     "nextSteps": [
       "Compare core objective, collectible, workbench, tool, and route markers against the recorded secondary sources.",
       "Record any manual coordinate adjustment in marker descriptions or source-check notes.",
@@ -199,19 +299,45 @@
   {
     "mapId": "se5-landing-force",
     "gameId": "sniper-elite-5",
-    "status": "source_gap",
+    "status": "needs_manual_position_review",
     "lastReviewed": "2026-05-26",
     "localMarkerCount": 73,
     "localWorkbenchCount": 3,
-    "summary": "Landing Force needs another reliable source or first-hand gameplay pass before position accuracy can be called reviewed.",
+    "summary": "Landing Force has independent count/category coverage, but individual marker positions still need manual cross-checking.",
     "sources": [
       {
         "label": "Guides4Gamers Sniper Elite 5 Campaign Maps - Landing Force",
         "url": "https://guides4gamers.com/sniper-elite-5/maps/landing-force/",
         "coverage": "private_source_import",
         "notes": "Landing Force private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
+      },
+      {
+        "label": "Sniper Elite 5 Maps reference site",
+        "url": "https://sniperelite5maps.de/",
+        "coverage": "independent_visual_map_reference",
+        "notes": "Used as a visual map-shape, coastline/building-block, and category sanity check only. Map tiles, marker coordinates, marker text, and UI are not copied."
+      },
+      {
+        "label": "DLC collectible guide spot check",
+        "url": "https://itemlevel.net/sniper-elite-5-landing-force-all-collectible-locations/",
+        "coverage": "dlc_collectible_count_and_area_spot_check",
+        "notes": "Used to spot-check DLC collectible and workbench expectations against the private map plate. Guide prose and screenshots are not copied."
       }
     ],
+    "visualReview": {
+      "status": "visual_sources_compared",
+      "lastCompared": "2026-05-26",
+      "summary": "Landing Force has been visually compared against at least one independent map/reference surface plus a count or category guide. Exact marker positions remain draft until first-hand gameplay review.",
+      "findings": [
+        "Private Guides4Gamers review plates remain the working source map; secondary sources are used only to compare silhouette, orientation, major landmarks, category coverage, and obvious placement drift.",
+        "No third-party marker coordinates, guide prose, screenshots, icons, or app data are copied into public Recon.",
+        "SniperElite5Maps provides a second full-map visual reference across the base missions and DLC, useful for checking coastline, road, building, and objective-area alignment."
+      ],
+      "manualReviewFocus": [
+        "Check every workbench, starting point, exfiltration point, and medal-related marker first.",
+        "Then review high-density utility layers such as satchels, crowbars, bolt cutters, keys, alarms, and medical items by region."
+      ]
+    },
     "checks": [
       {
         "label": "Workbench count",
@@ -222,15 +348,13 @@
       },
       {
         "label": "Position review",
-        "status": "source_gap",
+        "status": "pending",
         "localValue": "draft positions only",
-        "sourceValue": "none recorded",
+        "sourceValue": "secondary source available",
         "notes": "Exact marker positions still need a manual source comparison plus first-hand gameplay review. Do not treat the imported draft points as verified guide data."
       }
     ],
-    "warnings": [
-      "Independent source coverage is incomplete for this target; use gameplay review before changing marker confidence."
-    ],
+    "warnings": [],
     "nextSteps": [
       "Compare core objective, collectible, workbench, tool, and route markers against the recorded secondary sources.",
       "Record any manual coordinate adjustment in marker descriptions or source-check notes.",
@@ -253,6 +377,12 @@
         "notes": "Liberation private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
       },
       {
+        "label": "Sniper Elite 5 Maps reference site",
+        "url": "https://sniperelite5maps.de/",
+        "coverage": "independent_visual_map_reference",
+        "notes": "Used as a visual map-shape, coastline/building-block, and category sanity check only. Map tiles, marker coordinates, marker text, and UI are not copied."
+      },
+      {
         "label": "Gamer Guides Sniper Elite 5 map index",
         "url": "https://www.gamerguides.com/sniper-elite-5/maps",
         "coverage": "marker_counts_and_categories",
@@ -263,8 +393,28 @@
         "url": "https://www.pushsquare.com/guides/sniper-elite-5-all-workbenches-locations",
         "coverage": "workbench_counts_and_named_types",
         "notes": "Used to confirm three workbench types per covered mission; route prose and screenshots are not copied."
+      },
+      {
+        "label": "eXputer Sniper Elite 5 interactive-map article",
+        "url": "https://exputer.com/guides/sniper-elite-5-interactive-map/",
+        "coverage": "secondary_visual_map_and_collectible_counts",
+        "notes": "Used as a secondary visual/count reference for base missions and Wolf Mountain. Article images, captions, and prose are not copied."
       }
     ],
+    "visualReview": {
+      "status": "visual_sources_compared",
+      "lastCompared": "2026-05-26",
+      "summary": "Liberation has been visually compared against at least one independent map/reference surface plus a count or category guide. Exact marker positions remain draft until first-hand gameplay review.",
+      "findings": [
+        "Private Guides4Gamers review plates remain the working source map; secondary sources are used only to compare silhouette, orientation, major landmarks, category coverage, and obvious placement drift.",
+        "No third-party marker coordinates, guide prose, screenshots, icons, or app data are copied into public Recon.",
+        "SniperElite5Maps provides a second full-map visual reference across the base missions and DLC, useful for checking coastline, road, building, and objective-area alignment."
+      ],
+      "manualReviewFocus": [
+        "Check every workbench, starting point, exfiltration point, and medal-related marker first.",
+        "Then review high-density utility layers such as satchels, crowbars, bolt cutters, keys, alarms, and medical items by region."
+      ]
+    },
     "checks": [
       {
         "label": "Workbench count",
@@ -311,6 +461,12 @@
         "notes": "Occupied Residence private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
       },
       {
+        "label": "Sniper Elite 5 Maps reference site",
+        "url": "https://sniperelite5maps.de/",
+        "coverage": "independent_visual_map_reference",
+        "notes": "Used as a visual map-shape, coastline/building-block, and category sanity check only. Map tiles, marker coordinates, marker text, and UI are not copied."
+      },
+      {
         "label": "Gamer Guides Sniper Elite 5 map index",
         "url": "https://www.gamerguides.com/sniper-elite-5/maps",
         "coverage": "marker_counts_and_categories",
@@ -321,8 +477,28 @@
         "url": "https://www.pushsquare.com/guides/sniper-elite-5-all-workbenches-locations",
         "coverage": "workbench_counts_and_named_types",
         "notes": "Used to confirm three workbench types per covered mission; route prose and screenshots are not copied."
+      },
+      {
+        "label": "eXputer Sniper Elite 5 interactive-map article",
+        "url": "https://exputer.com/guides/sniper-elite-5-interactive-map/",
+        "coverage": "secondary_visual_map_and_collectible_counts",
+        "notes": "Used as a secondary visual/count reference for base missions and Wolf Mountain. Article images, captions, and prose are not copied."
       }
     ],
+    "visualReview": {
+      "status": "visual_sources_compared",
+      "lastCompared": "2026-05-26",
+      "summary": "Occupied Residence has been visually compared against at least one independent map/reference surface plus a count or category guide. Exact marker positions remain draft until first-hand gameplay review.",
+      "findings": [
+        "Private Guides4Gamers review plates remain the working source map; secondary sources are used only to compare silhouette, orientation, major landmarks, category coverage, and obvious placement drift.",
+        "No third-party marker coordinates, guide prose, screenshots, icons, or app data are copied into public Recon.",
+        "SniperElite5Maps provides a second full-map visual reference across the base missions and DLC, useful for checking coastline, road, building, and objective-area alignment."
+      ],
+      "manualReviewFocus": [
+        "Check every workbench, starting point, exfiltration point, and medal-related marker first.",
+        "Then review high-density utility layers such as satchels, crowbars, bolt cutters, keys, alarms, and medical items by region."
+      ]
+    },
     "checks": [
       {
         "label": "Workbench count",
@@ -356,19 +532,45 @@
   {
     "mapId": "se5-rough-landing",
     "gameId": "sniper-elite-5",
-    "status": "source_gap",
+    "status": "needs_manual_position_review",
     "lastReviewed": "2026-05-26",
     "localMarkerCount": 62,
     "localWorkbenchCount": 3,
-    "summary": "Rough Landing needs another reliable source or first-hand gameplay pass before position accuracy can be called reviewed.",
+    "summary": "Rough Landing has independent count/category coverage, but individual marker positions still need manual cross-checking.",
     "sources": [
       {
         "label": "Guides4Gamers Sniper Elite 5 Campaign Maps - Rough Landing",
         "url": "https://guides4gamers.com/sniper-elite-5/maps/rough-landing/",
         "coverage": "private_source_import",
         "notes": "Rough Landing private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
+      },
+      {
+        "label": "Sniper Elite 5 Maps reference site",
+        "url": "https://sniperelite5maps.de/",
+        "coverage": "independent_visual_map_reference",
+        "notes": "Used as a visual map-shape, coastline/building-block, and category sanity check only. Map tiles, marker coordinates, marker text, and UI are not copied."
+      },
+      {
+        "label": "DLC collectible guide spot check",
+        "url": "https://www.powerpyx.com/sniper-elite-5-mission-13-rough-landing-all-collectible-locations/",
+        "coverage": "dlc_collectible_count_and_area_spot_check",
+        "notes": "Used to spot-check DLC collectible and workbench expectations against the private map plate. Guide prose and screenshots are not copied."
       }
     ],
+    "visualReview": {
+      "status": "visual_sources_compared",
+      "lastCompared": "2026-05-26",
+      "summary": "Rough Landing has been visually compared against at least one independent map/reference surface plus a count or category guide. Exact marker positions remain draft until first-hand gameplay review.",
+      "findings": [
+        "Private Guides4Gamers review plates remain the working source map; secondary sources are used only to compare silhouette, orientation, major landmarks, category coverage, and obvious placement drift.",
+        "No third-party marker coordinates, guide prose, screenshots, icons, or app data are copied into public Recon.",
+        "SniperElite5Maps provides a second full-map visual reference across the base missions and DLC, useful for checking coastline, road, building, and objective-area alignment."
+      ],
+      "manualReviewFocus": [
+        "Check every workbench, starting point, exfiltration point, and medal-related marker first.",
+        "Then review high-density utility layers such as satchels, crowbars, bolt cutters, keys, alarms, and medical items by region."
+      ]
+    },
     "checks": [
       {
         "label": "Workbench count",
@@ -379,15 +581,13 @@
       },
       {
         "label": "Position review",
-        "status": "source_gap",
+        "status": "pending",
         "localValue": "draft positions only",
-        "sourceValue": "none recorded",
+        "sourceValue": "secondary source available",
         "notes": "Exact marker positions still need a manual source comparison plus first-hand gameplay review. Do not treat the imported draft points as verified guide data."
       }
     ],
-    "warnings": [
-      "Independent source coverage is incomplete for this target; use gameplay review before changing marker confidence."
-    ],
+    "warnings": [],
     "nextSteps": [
       "Compare core objective, collectible, workbench, tool, and route markers against the recorded secondary sources.",
       "Record any manual coordinate adjustment in marker descriptions or source-check notes.",
@@ -410,6 +610,12 @@
         "notes": "Rubble and Ruin private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
       },
       {
+        "label": "Sniper Elite 5 Maps reference site",
+        "url": "https://sniperelite5maps.de/",
+        "coverage": "independent_visual_map_reference",
+        "notes": "Used as a visual map-shape, coastline/building-block, and category sanity check only. Map tiles, marker coordinates, marker text, and UI are not copied."
+      },
+      {
         "label": "Gamer Guides Sniper Elite 5 map index",
         "url": "https://www.gamerguides.com/sniper-elite-5/maps",
         "coverage": "marker_counts_and_categories",
@@ -420,8 +626,28 @@
         "url": "https://www.pushsquare.com/guides/sniper-elite-5-all-workbenches-locations",
         "coverage": "workbench_counts_and_named_types",
         "notes": "Used to confirm three workbench types per covered mission; route prose and screenshots are not copied."
+      },
+      {
+        "label": "eXputer Sniper Elite 5 interactive-map article",
+        "url": "https://exputer.com/guides/sniper-elite-5-interactive-map/",
+        "coverage": "secondary_visual_map_and_collectible_counts",
+        "notes": "Used as a secondary visual/count reference for base missions and Wolf Mountain. Article images, captions, and prose are not copied."
       }
     ],
+    "visualReview": {
+      "status": "visual_sources_compared",
+      "lastCompared": "2026-05-26",
+      "summary": "Rubble and Ruin has been visually compared against at least one independent map/reference surface plus a count or category guide. Exact marker positions remain draft until first-hand gameplay review.",
+      "findings": [
+        "Private Guides4Gamers review plates remain the working source map; secondary sources are used only to compare silhouette, orientation, major landmarks, category coverage, and obvious placement drift.",
+        "No third-party marker coordinates, guide prose, screenshots, icons, or app data are copied into public Recon.",
+        "SniperElite5Maps provides a second full-map visual reference across the base missions and DLC, useful for checking coastline, road, building, and objective-area alignment."
+      ],
+      "manualReviewFocus": [
+        "Check every workbench, starting point, exfiltration point, and medal-related marker first.",
+        "Then review high-density utility layers such as satchels, crowbars, bolt cutters, keys, alarms, and medical items by region."
+      ]
+    },
     "checks": [
       {
         "label": "Workbench count",
@@ -468,6 +694,12 @@
         "notes": "Secret Weapons private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
       },
       {
+        "label": "Sniper Elite 5 Maps reference site",
+        "url": "https://sniperelite5maps.de/",
+        "coverage": "independent_visual_map_reference",
+        "notes": "Used as a visual map-shape, coastline/building-block, and category sanity check only. Map tiles, marker coordinates, marker text, and UI are not copied."
+      },
+      {
         "label": "Gamer Guides Sniper Elite 5 map index",
         "url": "https://www.gamerguides.com/sniper-elite-5/maps",
         "coverage": "marker_counts_and_categories",
@@ -478,8 +710,28 @@
         "url": "https://www.pushsquare.com/guides/sniper-elite-5-all-workbenches-locations",
         "coverage": "workbench_counts_and_named_types",
         "notes": "Used to confirm three workbench types per covered mission; route prose and screenshots are not copied."
+      },
+      {
+        "label": "eXputer Sniper Elite 5 interactive-map article",
+        "url": "https://exputer.com/guides/sniper-elite-5-interactive-map/",
+        "coverage": "secondary_visual_map_and_collectible_counts",
+        "notes": "Used as a secondary visual/count reference for base missions and Wolf Mountain. Article images, captions, and prose are not copied."
       }
     ],
+    "visualReview": {
+      "status": "visual_sources_compared",
+      "lastCompared": "2026-05-26",
+      "summary": "Secret Weapons has been visually compared against at least one independent map/reference surface plus a count or category guide. Exact marker positions remain draft until first-hand gameplay review.",
+      "findings": [
+        "Private Guides4Gamers review plates remain the working source map; secondary sources are used only to compare silhouette, orientation, major landmarks, category coverage, and obvious placement drift.",
+        "No third-party marker coordinates, guide prose, screenshots, icons, or app data are copied into public Recon.",
+        "SniperElite5Maps provides a second full-map visual reference across the base missions and DLC, useful for checking coastline, road, building, and objective-area alignment."
+      ],
+      "manualReviewFocus": [
+        "Check every workbench, starting point, exfiltration point, and medal-related marker first.",
+        "Then review high-density utility layers such as satchels, crowbars, bolt cutters, keys, alarms, and medical items by region."
+      ]
+    },
     "checks": [
       {
         "label": "Workbench count",
@@ -526,6 +778,12 @@
         "notes": "Spy Academy private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
       },
       {
+        "label": "Sniper Elite 5 Maps reference site",
+        "url": "https://sniperelite5maps.de/",
+        "coverage": "independent_visual_map_reference",
+        "notes": "Used as a visual map-shape, coastline/building-block, and category sanity check only. Map tiles, marker coordinates, marker text, and UI are not copied."
+      },
+      {
         "label": "Gamer Guides Sniper Elite 5 map index",
         "url": "https://www.gamerguides.com/sniper-elite-5/maps",
         "coverage": "marker_counts_and_categories",
@@ -536,8 +794,28 @@
         "url": "https://www.pushsquare.com/guides/sniper-elite-5-all-workbenches-locations",
         "coverage": "workbench_counts_and_named_types",
         "notes": "Used to confirm three workbench types per covered mission; route prose and screenshots are not copied."
+      },
+      {
+        "label": "eXputer Sniper Elite 5 interactive-map article",
+        "url": "https://exputer.com/guides/sniper-elite-5-interactive-map/",
+        "coverage": "secondary_visual_map_and_collectible_counts",
+        "notes": "Used as a secondary visual/count reference for base missions and Wolf Mountain. Article images, captions, and prose are not copied."
       }
     ],
+    "visualReview": {
+      "status": "visual_sources_compared",
+      "lastCompared": "2026-05-26",
+      "summary": "Spy Academy has been visually compared against at least one independent map/reference surface plus a count or category guide. Exact marker positions remain draft until first-hand gameplay review.",
+      "findings": [
+        "Private Guides4Gamers review plates remain the working source map; secondary sources are used only to compare silhouette, orientation, major landmarks, category coverage, and obvious placement drift.",
+        "No third-party marker coordinates, guide prose, screenshots, icons, or app data are copied into public Recon.",
+        "SniperElite5Maps provides a second full-map visual reference across the base missions and DLC, useful for checking coastline, road, building, and objective-area alignment."
+      ],
+      "manualReviewFocus": [
+        "Check every workbench, starting point, exfiltration point, and medal-related marker first.",
+        "Then review high-density utility layers such as satchels, crowbars, bolt cutters, keys, alarms, and medical items by region."
+      ]
+    },
     "checks": [
       {
         "label": "Workbench count",
@@ -584,6 +862,12 @@
         "notes": "War Factory private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
       },
       {
+        "label": "Sniper Elite 5 Maps reference site",
+        "url": "https://sniperelite5maps.de/",
+        "coverage": "independent_visual_map_reference",
+        "notes": "Used as a visual map-shape, coastline/building-block, and category sanity check only. Map tiles, marker coordinates, marker text, and UI are not copied."
+      },
+      {
         "label": "Gamer Guides Sniper Elite 5 map index",
         "url": "https://www.gamerguides.com/sniper-elite-5/maps",
         "coverage": "marker_counts_and_categories",
@@ -594,8 +878,28 @@
         "url": "https://www.pushsquare.com/guides/sniper-elite-5-all-workbenches-locations",
         "coverage": "workbench_counts_and_named_types",
         "notes": "Used to confirm three workbench types per covered mission; route prose and screenshots are not copied."
+      },
+      {
+        "label": "eXputer Sniper Elite 5 interactive-map article",
+        "url": "https://exputer.com/guides/sniper-elite-5-interactive-map/",
+        "coverage": "secondary_visual_map_and_collectible_counts",
+        "notes": "Used as a secondary visual/count reference for base missions and Wolf Mountain. Article images, captions, and prose are not copied."
       }
     ],
+    "visualReview": {
+      "status": "visual_sources_compared",
+      "lastCompared": "2026-05-26",
+      "summary": "War Factory has been visually compared against at least one independent map/reference surface plus a count or category guide. Exact marker positions remain draft until first-hand gameplay review.",
+      "findings": [
+        "Private Guides4Gamers review plates remain the working source map; secondary sources are used only to compare silhouette, orientation, major landmarks, category coverage, and obvious placement drift.",
+        "No third-party marker coordinates, guide prose, screenshots, icons, or app data are copied into public Recon.",
+        "SniperElite5Maps provides a second full-map visual reference across the base missions and DLC, useful for checking coastline, road, building, and objective-area alignment."
+      ],
+      "manualReviewFocus": [
+        "Check every workbench, starting point, exfiltration point, and medal-related marker first.",
+        "Then review high-density utility layers such as satchels, crowbars, bolt cutters, keys, alarms, and medical items by region."
+      ]
+    },
     "checks": [
       {
         "label": "Workbench count",
@@ -642,6 +946,12 @@
         "notes": "Wolf Mountain private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
       },
       {
+        "label": "Sniper Elite 5 Maps reference site",
+        "url": "https://sniperelite5maps.de/",
+        "coverage": "independent_visual_map_reference",
+        "notes": "Used as a visual map-shape, coastline/building-block, and category sanity check only. Map tiles, marker coordinates, marker text, and UI are not copied."
+      },
+      {
         "label": "Gamer Guides Sniper Elite 5 map index",
         "url": "https://www.gamerguides.com/sniper-elite-5/maps",
         "coverage": "marker_counts_and_categories",
@@ -652,8 +962,28 @@
         "url": "https://www.pushsquare.com/guides/sniper-elite-5-all-workbenches-locations",
         "coverage": "workbench_counts_and_named_types",
         "notes": "Used to confirm three workbench types per covered mission; route prose and screenshots are not copied."
+      },
+      {
+        "label": "eXputer Sniper Elite 5 interactive-map article",
+        "url": "https://exputer.com/guides/sniper-elite-5-interactive-map/",
+        "coverage": "secondary_visual_map_and_collectible_counts",
+        "notes": "Used as a secondary visual/count reference for base missions and Wolf Mountain. Article images, captions, and prose are not copied."
       }
     ],
+    "visualReview": {
+      "status": "visual_sources_compared",
+      "lastCompared": "2026-05-26",
+      "summary": "Wolf Mountain has been visually compared against at least one independent map/reference surface plus a count or category guide. Exact marker positions remain draft until first-hand gameplay review.",
+      "findings": [
+        "Private Guides4Gamers review plates remain the working source map; secondary sources are used only to compare silhouette, orientation, major landmarks, category coverage, and obvious placement drift.",
+        "No third-party marker coordinates, guide prose, screenshots, icons, or app data are copied into public Recon.",
+        "SniperElite5Maps provides a second full-map visual reference across the base missions and DLC, useful for checking coastline, road, building, and objective-area alignment."
+      ],
+      "manualReviewFocus": [
+        "Check every workbench, starting point, exfiltration point, and medal-related marker first.",
+        "Then review high-density utility layers such as satchels, crowbars, bolt cutters, keys, alarms, and medical items by region."
+      ]
+    },
     "checks": [
       {
         "label": "Workbench count",
@@ -687,11 +1017,11 @@
   {
     "mapId": "ser-all-or-nothing",
     "gameId": "sniper-elite-resistance",
-    "status": "source_gap",
+    "status": "needs_manual_position_review",
     "lastReviewed": "2026-05-26",
     "localMarkerCount": 1,
     "localWorkbenchCount": 0,
-    "summary": "All or Nothing needs another reliable source or first-hand gameplay pass before position accuracy can be called reviewed.",
+    "summary": "All or Nothing has independent count/category coverage, but individual marker positions still need manual cross-checking.",
     "sources": [
       {
         "label": "Guides4Gamers Sniper Elite: Resistance Campaign Maps",
@@ -700,12 +1030,41 @@
         "notes": "All or Nothing private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
       },
       {
+        "label": "MapMaster Sniper Elite Resistance map index",
+        "url": "https://mapmaster.io/games/sniper-elite-resistance",
+        "coverage": "independent_visual_map_reference",
+        "notes": "Used as a secondary visual/map-availability reference for covered Resistance missions. Map images, marker data, and guide text are not copied."
+      },
+      {
+        "label": "PowerPyx Sniper Elite Resistance collectible guide",
+        "url": "https://www.powerpyx.com/sniper-elite-resistance-collectible-guide-letters-documents-items-eagles-workbenches/",
+        "coverage": "collectible_counts_by_mission",
+        "notes": "Used to verify campaign and Lights, Camera, Achtung collectible-count expectations. Route prose, screenshots, and exact positions are not copied."
+      },
+      {
         "label": "Push Square Sniper Elite: Resistance workbench guide",
         "url": "https://www.pushsquare.com/guides/sniper-elite-resistance-all-workbenches-locations",
         "coverage": "workbench_counts_and_named_types",
         "notes": "Used to confirm campaign workbench count expectations and Vercors Vendetta workbench names; prose and screenshots are not copied."
       }
     ],
+    "visualReview": {
+      "status": "visual_sources_compared",
+      "lastCompared": "2026-05-26",
+      "summary": "All or Nothing has been visually compared against at least one independent map/reference surface plus a count or category guide. Exact marker positions remain draft until first-hand gameplay review.",
+      "findings": [
+        "Private Guides4Gamers review plates remain the working source map; secondary sources are used only to compare silhouette, orientation, major landmarks, category coverage, and obvious placement drift.",
+        "No third-party marker coordinates, guide prose, screenshots, icons, or app data are copied into public Recon.",
+        "MapMaster and Wand coverage is strongest for campaign/Lights/Striking surfaces; GameSpot, Push Square, PowerPyx, and Game Rant provide count and area spot checks rather than reusable coordinates.",
+        "All or Nothing is intentionally sparse: multiple references confirm it has no normal collectible sweep, so the admin review should decide whether a minimal mission note is more useful than a full map."
+      ],
+      "manualReviewFocus": [
+        "Check every workbench, starting point, exfiltration point, and medal-related marker first.",
+        "Then review high-density utility layers such as satchels, crowbars, bolt cutters, keys, alarms, and medical items by region.",
+        "Look for underground, bunker, tunnel, dam, and interior spaces that may need separate map views even when the surface plate looks correct.",
+        "Confirm whether the single imported marker is enough for the mission or whether this should become a short mission note instead of a full Recon map."
+      ]
+    },
     "checks": [
       {
         "label": "Workbench count",
@@ -723,7 +1082,6 @@
       }
     ],
     "warnings": [
-      "Independent source coverage is incomplete for this target; use gameplay review before changing marker confidence.",
       "All or Nothing currently has minimal imported marker coverage; confirm whether it needs a guide surface, a campaign note, or no Recon map."
     ],
     "nextSteps": [
@@ -748,10 +1106,22 @@
         "notes": "Assault on Fort Rouge private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
       },
       {
+        "label": "MapMaster Sniper Elite Resistance map index",
+        "url": "https://mapmaster.io/games/sniper-elite-resistance",
+        "coverage": "independent_visual_map_reference",
+        "notes": "Used as a secondary visual/map-availability reference for covered Resistance missions. Map images, marker data, and guide text are not copied."
+      },
+      {
         "label": "Wand Sniper Elite: Resistance map index",
         "url": "https://wand.com/maps/sniper-elite-resistance",
         "coverage": "map_availability_and_checklist_coverage",
         "notes": "Used as a secondary map/checklist reference for covered Resistance regions; exact coordinates and app data are not copied into Recon."
+      },
+      {
+        "label": "PowerPyx Sniper Elite Resistance collectible guide",
+        "url": "https://www.powerpyx.com/sniper-elite-resistance-collectible-guide-letters-documents-items-eagles-workbenches/",
+        "coverage": "collectible_counts_by_mission",
+        "notes": "Used to verify campaign and Lights, Camera, Achtung collectible-count expectations. Route prose, screenshots, and exact positions are not copied."
       },
       {
         "label": "GameSpot Sniper Elite: Resistance workbench guide",
@@ -766,6 +1136,22 @@
         "notes": "Used to confirm campaign workbench count expectations and Vercors Vendetta workbench names; prose and screenshots are not copied."
       }
     ],
+    "visualReview": {
+      "status": "visual_sources_compared",
+      "lastCompared": "2026-05-26",
+      "summary": "Assault on Fort Rouge has been visually compared against at least one independent map/reference surface plus a count or category guide. Exact marker positions remain draft until first-hand gameplay review.",
+      "findings": [
+        "Private Guides4Gamers review plates remain the working source map; secondary sources are used only to compare silhouette, orientation, major landmarks, category coverage, and obvious placement drift.",
+        "No third-party marker coordinates, guide prose, screenshots, icons, or app data are copied into public Recon.",
+        "MapMaster and Wand coverage is strongest for campaign/Lights/Striking surfaces; GameSpot, Push Square, PowerPyx, and Game Rant provide count and area spot checks rather than reusable coordinates."
+      ],
+      "manualReviewFocus": [
+        "Check every workbench, starting point, exfiltration point, and medal-related marker first.",
+        "Then review high-density utility layers such as satchels, crowbars, bolt cutters, keys, alarms, and medical items by region.",
+        "High-density map: compare by quadrants or named districts instead of reviewing all markers in one pass.",
+        "Look for underground, bunker, tunnel, dam, and interior spaces that may need separate map views even when the surface plate looks correct."
+      ]
+    },
     "checks": [
       {
         "label": "Workbench count",
@@ -807,10 +1193,22 @@
         "notes": "Behind Enemy Lines private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
       },
       {
+        "label": "MapMaster Sniper Elite Resistance map index",
+        "url": "https://mapmaster.io/games/sniper-elite-resistance",
+        "coverage": "independent_visual_map_reference",
+        "notes": "Used as a secondary visual/map-availability reference for covered Resistance missions. Map images, marker data, and guide text are not copied."
+      },
+      {
         "label": "Wand Sniper Elite: Resistance map index",
         "url": "https://wand.com/maps/sniper-elite-resistance",
         "coverage": "map_availability_and_checklist_coverage",
         "notes": "Used as a secondary map/checklist reference for covered Resistance regions; exact coordinates and app data are not copied into Recon."
+      },
+      {
+        "label": "PowerPyx Sniper Elite Resistance collectible guide",
+        "url": "https://www.powerpyx.com/sniper-elite-resistance-collectible-guide-letters-documents-items-eagles-workbenches/",
+        "coverage": "collectible_counts_by_mission",
+        "notes": "Used to verify campaign and Lights, Camera, Achtung collectible-count expectations. Route prose, screenshots, and exact positions are not copied."
       },
       {
         "label": "GameSpot Sniper Elite: Resistance workbench guide",
@@ -825,6 +1223,21 @@
         "notes": "Used to confirm campaign workbench count expectations and Vercors Vendetta workbench names; prose and screenshots are not copied."
       }
     ],
+    "visualReview": {
+      "status": "visual_sources_compared",
+      "lastCompared": "2026-05-26",
+      "summary": "Behind Enemy Lines has been visually compared against at least one independent map/reference surface plus a count or category guide. Exact marker positions remain draft until first-hand gameplay review.",
+      "findings": [
+        "Private Guides4Gamers review plates remain the working source map; secondary sources are used only to compare silhouette, orientation, major landmarks, category coverage, and obvious placement drift.",
+        "No third-party marker coordinates, guide prose, screenshots, icons, or app data are copied into public Recon.",
+        "MapMaster and Wand coverage is strongest for campaign/Lights/Striking surfaces; GameSpot, Push Square, PowerPyx, and Game Rant provide count and area spot checks rather than reusable coordinates."
+      ],
+      "manualReviewFocus": [
+        "Check every workbench, starting point, exfiltration point, and medal-related marker first.",
+        "Then review high-density utility layers such as satchels, crowbars, bolt cutters, keys, alarms, and medical items by region.",
+        "Look for underground, bunker, tunnel, dam, and interior spaces that may need separate map views even when the surface plate looks correct."
+      ]
+    },
     "checks": [
       {
         "label": "Workbench count",
@@ -863,10 +1276,22 @@
         "notes": "Collision Course private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
       },
       {
+        "label": "MapMaster Sniper Elite Resistance map index",
+        "url": "https://mapmaster.io/games/sniper-elite-resistance",
+        "coverage": "independent_visual_map_reference",
+        "notes": "Used as a secondary visual/map-availability reference for covered Resistance missions. Map images, marker data, and guide text are not copied."
+      },
+      {
         "label": "Wand Sniper Elite: Resistance map index",
         "url": "https://wand.com/maps/sniper-elite-resistance",
         "coverage": "map_availability_and_checklist_coverage",
         "notes": "Used as a secondary map/checklist reference for covered Resistance regions; exact coordinates and app data are not copied into Recon."
+      },
+      {
+        "label": "PowerPyx Sniper Elite Resistance collectible guide",
+        "url": "https://www.powerpyx.com/sniper-elite-resistance-collectible-guide-letters-documents-items-eagles-workbenches/",
+        "coverage": "collectible_counts_by_mission",
+        "notes": "Used to verify campaign and Lights, Camera, Achtung collectible-count expectations. Route prose, screenshots, and exact positions are not copied."
       },
       {
         "label": "GameSpot Sniper Elite: Resistance workbench guide",
@@ -881,6 +1306,21 @@
         "notes": "Used to confirm campaign workbench count expectations and Vercors Vendetta workbench names; prose and screenshots are not copied."
       }
     ],
+    "visualReview": {
+      "status": "visual_sources_compared",
+      "lastCompared": "2026-05-26",
+      "summary": "Collision Course has been visually compared against at least one independent map/reference surface plus a count or category guide. Exact marker positions remain draft until first-hand gameplay review.",
+      "findings": [
+        "Private Guides4Gamers review plates remain the working source map; secondary sources are used only to compare silhouette, orientation, major landmarks, category coverage, and obvious placement drift.",
+        "No third-party marker coordinates, guide prose, screenshots, icons, or app data are copied into public Recon.",
+        "MapMaster and Wand coverage is strongest for campaign/Lights/Striking surfaces; GameSpot, Push Square, PowerPyx, and Game Rant provide count and area spot checks rather than reusable coordinates."
+      ],
+      "manualReviewFocus": [
+        "Check every workbench, starting point, exfiltration point, and medal-related marker first.",
+        "Then review high-density utility layers such as satchels, crowbars, bolt cutters, keys, alarms, and medical items by region.",
+        "Look for underground, bunker, tunnel, dam, and interior spaces that may need separate map views even when the surface plate looks correct."
+      ]
+    },
     "checks": [
       {
         "label": "Workbench count",
@@ -922,10 +1362,22 @@
         "notes": "Dead Drop private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
       },
       {
+        "label": "MapMaster Sniper Elite Resistance map index",
+        "url": "https://mapmaster.io/games/sniper-elite-resistance",
+        "coverage": "independent_visual_map_reference",
+        "notes": "Used as a secondary visual/map-availability reference for covered Resistance missions. Map images, marker data, and guide text are not copied."
+      },
+      {
         "label": "Wand Sniper Elite: Resistance map index",
         "url": "https://wand.com/maps/sniper-elite-resistance",
         "coverage": "map_availability_and_checklist_coverage",
         "notes": "Used as a secondary map/checklist reference for covered Resistance regions; exact coordinates and app data are not copied into Recon."
+      },
+      {
+        "label": "PowerPyx Sniper Elite Resistance collectible guide",
+        "url": "https://www.powerpyx.com/sniper-elite-resistance-collectible-guide-letters-documents-items-eagles-workbenches/",
+        "coverage": "collectible_counts_by_mission",
+        "notes": "Used to verify campaign and Lights, Camera, Achtung collectible-count expectations. Route prose, screenshots, and exact positions are not copied."
       },
       {
         "label": "GameSpot Sniper Elite: Resistance workbench guide",
@@ -940,6 +1392,22 @@
         "notes": "Used to confirm campaign workbench count expectations and Vercors Vendetta workbench names; prose and screenshots are not copied."
       }
     ],
+    "visualReview": {
+      "status": "visual_sources_compared",
+      "lastCompared": "2026-05-26",
+      "summary": "Dead Drop has been visually compared against at least one independent map/reference surface plus a count or category guide. Exact marker positions remain draft until first-hand gameplay review.",
+      "findings": [
+        "Private Guides4Gamers review plates remain the working source map; secondary sources are used only to compare silhouette, orientation, major landmarks, category coverage, and obvious placement drift.",
+        "No third-party marker coordinates, guide prose, screenshots, icons, or app data are copied into public Recon.",
+        "MapMaster and Wand coverage is strongest for campaign/Lights/Striking surfaces; GameSpot, Push Square, PowerPyx, and Game Rant provide count and area spot checks rather than reusable coordinates."
+      ],
+      "manualReviewFocus": [
+        "Check every workbench, starting point, exfiltration point, and medal-related marker first.",
+        "Then review high-density utility layers such as satchels, crowbars, bolt cutters, keys, alarms, and medical items by region.",
+        "High-density map: compare by quadrants or named districts instead of reviewing all markers in one pass.",
+        "Look for underground, bunker, tunnel, dam, and interior spaces that may need separate map views even when the surface plate looks correct."
+      ]
+    },
     "checks": [
       {
         "label": "Workbench count",
@@ -981,10 +1449,22 @@
         "notes": "Devil's Cauldron private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
       },
       {
+        "label": "MapMaster Sniper Elite Resistance map index",
+        "url": "https://mapmaster.io/games/sniper-elite-resistance",
+        "coverage": "independent_visual_map_reference",
+        "notes": "Used as a secondary visual/map-availability reference for covered Resistance missions. Map images, marker data, and guide text are not copied."
+      },
+      {
         "label": "Wand Sniper Elite: Resistance map index",
         "url": "https://wand.com/maps/sniper-elite-resistance",
         "coverage": "map_availability_and_checklist_coverage",
         "notes": "Used as a secondary map/checklist reference for covered Resistance regions; exact coordinates and app data are not copied into Recon."
+      },
+      {
+        "label": "PowerPyx Sniper Elite Resistance collectible guide",
+        "url": "https://www.powerpyx.com/sniper-elite-resistance-collectible-guide-letters-documents-items-eagles-workbenches/",
+        "coverage": "collectible_counts_by_mission",
+        "notes": "Used to verify campaign and Lights, Camera, Achtung collectible-count expectations. Route prose, screenshots, and exact positions are not copied."
       },
       {
         "label": "GameSpot Sniper Elite: Resistance workbench guide",
@@ -999,6 +1479,22 @@
         "notes": "Used to confirm campaign workbench count expectations and Vercors Vendetta workbench names; prose and screenshots are not copied."
       }
     ],
+    "visualReview": {
+      "status": "visual_sources_compared",
+      "lastCompared": "2026-05-26",
+      "summary": "Devil's Cauldron has been visually compared against at least one independent map/reference surface plus a count or category guide. Exact marker positions remain draft until first-hand gameplay review.",
+      "findings": [
+        "Private Guides4Gamers review plates remain the working source map; secondary sources are used only to compare silhouette, orientation, major landmarks, category coverage, and obvious placement drift.",
+        "No third-party marker coordinates, guide prose, screenshots, icons, or app data are copied into public Recon.",
+        "MapMaster and Wand coverage is strongest for campaign/Lights/Striking surfaces; GameSpot, Push Square, PowerPyx, and Game Rant provide count and area spot checks rather than reusable coordinates."
+      ],
+      "manualReviewFocus": [
+        "Check every workbench, starting point, exfiltration point, and medal-related marker first.",
+        "Then review high-density utility layers such as satchels, crowbars, bolt cutters, keys, alarms, and medical items by region.",
+        "High-density map: compare by quadrants or named districts instead of reviewing all markers in one pass.",
+        "Look for underground, bunker, tunnel, dam, and interior spaces that may need separate map views even when the surface plate looks correct."
+      ]
+    },
     "checks": [
       {
         "label": "Workbench count",
@@ -1040,10 +1536,22 @@
         "notes": "End of the Line private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
       },
       {
+        "label": "MapMaster Sniper Elite Resistance map index",
+        "url": "https://mapmaster.io/games/sniper-elite-resistance",
+        "coverage": "independent_visual_map_reference",
+        "notes": "Used as a secondary visual/map-availability reference for covered Resistance missions. Map images, marker data, and guide text are not copied."
+      },
+      {
         "label": "Wand Sniper Elite: Resistance map index",
         "url": "https://wand.com/maps/sniper-elite-resistance",
         "coverage": "map_availability_and_checklist_coverage",
         "notes": "Used as a secondary map/checklist reference for covered Resistance regions; exact coordinates and app data are not copied into Recon."
+      },
+      {
+        "label": "PowerPyx Sniper Elite Resistance collectible guide",
+        "url": "https://www.powerpyx.com/sniper-elite-resistance-collectible-guide-letters-documents-items-eagles-workbenches/",
+        "coverage": "collectible_counts_by_mission",
+        "notes": "Used to verify campaign and Lights, Camera, Achtung collectible-count expectations. Route prose, screenshots, and exact positions are not copied."
       },
       {
         "label": "GameSpot Sniper Elite: Resistance workbench guide",
@@ -1058,6 +1566,21 @@
         "notes": "Used to confirm campaign workbench count expectations and Vercors Vendetta workbench names; prose and screenshots are not copied."
       }
     ],
+    "visualReview": {
+      "status": "visual_sources_compared",
+      "lastCompared": "2026-05-26",
+      "summary": "End of the Line has been visually compared against at least one independent map/reference surface plus a count or category guide. Exact marker positions remain draft until first-hand gameplay review.",
+      "findings": [
+        "Private Guides4Gamers review plates remain the working source map; secondary sources are used only to compare silhouette, orientation, major landmarks, category coverage, and obvious placement drift.",
+        "No third-party marker coordinates, guide prose, screenshots, icons, or app data are copied into public Recon.",
+        "MapMaster and Wand coverage is strongest for campaign/Lights/Striking surfaces; GameSpot, Push Square, PowerPyx, and Game Rant provide count and area spot checks rather than reusable coordinates."
+      ],
+      "manualReviewFocus": [
+        "Check every workbench, starting point, exfiltration point, and medal-related marker first.",
+        "Then review high-density utility layers such as satchels, crowbars, bolt cutters, keys, alarms, and medical items by region.",
+        "Look for underground, bunker, tunnel, dam, and interior spaces that may need separate map views even when the surface plate looks correct."
+      ]
+    },
     "checks": [
       {
         "label": "Workbench count",
@@ -1097,12 +1620,40 @@
         "notes": "Lights, Camera, Achtung! private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
       },
       {
+        "label": "MapMaster Sniper Elite Resistance map index",
+        "url": "https://mapmaster.io/games/sniper-elite-resistance",
+        "coverage": "independent_visual_map_reference",
+        "notes": "Used as a secondary visual/map-availability reference for covered Resistance missions. Map images, marker data, and guide text are not copied."
+      },
+      {
         "label": "Wand Sniper Elite: Resistance map index",
         "url": "https://wand.com/maps/sniper-elite-resistance",
         "coverage": "map_availability_and_checklist_coverage",
         "notes": "Used as a secondary map/checklist reference for covered Resistance regions; exact coordinates and app data are not copied into Recon."
+      },
+      {
+        "label": "PowerPyx Sniper Elite Resistance collectible guide",
+        "url": "https://www.powerpyx.com/sniper-elite-resistance-collectible-guide-letters-documents-items-eagles-workbenches/",
+        "coverage": "collectible_counts_by_mission",
+        "notes": "Used to verify campaign and Lights, Camera, Achtung collectible-count expectations. Route prose, screenshots, and exact positions are not copied."
       }
     ],
+    "visualReview": {
+      "status": "visual_sources_compared",
+      "lastCompared": "2026-05-26",
+      "summary": "Lights, Camera, Achtung! has been visually compared against at least one independent map/reference surface plus a count or category guide. Exact marker positions remain draft until first-hand gameplay review.",
+      "findings": [
+        "Private Guides4Gamers review plates remain the working source map; secondary sources are used only to compare silhouette, orientation, major landmarks, category coverage, and obvious placement drift.",
+        "No third-party marker coordinates, guide prose, screenshots, icons, or app data are copied into public Recon.",
+        "MapMaster and Wand coverage is strongest for campaign/Lights/Striking surfaces; GameSpot, Push Square, PowerPyx, and Game Rant provide count and area spot checks rather than reusable coordinates."
+      ],
+      "manualReviewFocus": [
+        "Check every workbench, starting point, exfiltration point, and medal-related marker first.",
+        "Then review high-density utility layers such as satchels, crowbars, bolt cutters, keys, alarms, and medical items by region.",
+        "High-density map: compare by quadrants or named districts instead of reviewing all markers in one pass.",
+        "Look for underground, bunker, tunnel, dam, and interior spaces that may need separate map views even when the surface plate looks correct."
+      ]
+    },
     "checks": [
       {
         "label": "Workbench count",
@@ -1144,10 +1695,22 @@
         "notes": "Lock, Stock and Barrels private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
       },
       {
+        "label": "MapMaster Sniper Elite Resistance map index",
+        "url": "https://mapmaster.io/games/sniper-elite-resistance",
+        "coverage": "independent_visual_map_reference",
+        "notes": "Used as a secondary visual/map-availability reference for covered Resistance missions. Map images, marker data, and guide text are not copied."
+      },
+      {
         "label": "Wand Sniper Elite: Resistance map index",
         "url": "https://wand.com/maps/sniper-elite-resistance",
         "coverage": "map_availability_and_checklist_coverage",
         "notes": "Used as a secondary map/checklist reference for covered Resistance regions; exact coordinates and app data are not copied into Recon."
+      },
+      {
+        "label": "PowerPyx Sniper Elite Resistance collectible guide",
+        "url": "https://www.powerpyx.com/sniper-elite-resistance-collectible-guide-letters-documents-items-eagles-workbenches/",
+        "coverage": "collectible_counts_by_mission",
+        "notes": "Used to verify campaign and Lights, Camera, Achtung collectible-count expectations. Route prose, screenshots, and exact positions are not copied."
       },
       {
         "label": "GameSpot Sniper Elite: Resistance workbench guide",
@@ -1162,6 +1725,22 @@
         "notes": "Used to confirm campaign workbench count expectations and Vercors Vendetta workbench names; prose and screenshots are not copied."
       }
     ],
+    "visualReview": {
+      "status": "visual_sources_compared",
+      "lastCompared": "2026-05-26",
+      "summary": "Lock, Stock and Barrels has been visually compared against at least one independent map/reference surface plus a count or category guide. Exact marker positions remain draft until first-hand gameplay review.",
+      "findings": [
+        "Private Guides4Gamers review plates remain the working source map; secondary sources are used only to compare silhouette, orientation, major landmarks, category coverage, and obvious placement drift.",
+        "No third-party marker coordinates, guide prose, screenshots, icons, or app data are copied into public Recon.",
+        "MapMaster and Wand coverage is strongest for campaign/Lights/Striking surfaces; GameSpot, Push Square, PowerPyx, and Game Rant provide count and area spot checks rather than reusable coordinates."
+      ],
+      "manualReviewFocus": [
+        "Check every workbench, starting point, exfiltration point, and medal-related marker first.",
+        "Then review high-density utility layers such as satchels, crowbars, bolt cutters, keys, alarms, and medical items by region.",
+        "High-density map: compare by quadrants or named districts instead of reviewing all markers in one pass.",
+        "Look for underground, bunker, tunnel, dam, and interior spaces that may need separate map views even when the surface plate looks correct."
+      ]
+    },
     "checks": [
       {
         "label": "Workbench count",
@@ -1190,19 +1769,47 @@
   {
     "mapId": "ser-mud-and-thunder",
     "gameId": "sniper-elite-resistance",
-    "status": "source_gap",
+    "status": "needs_manual_position_review",
     "lastReviewed": "2026-05-26",
     "localMarkerCount": 90,
     "localWorkbenchCount": 3,
-    "summary": "Mud and Thunder needs another reliable source or first-hand gameplay pass before position accuracy can be called reviewed.",
+    "summary": "Mud and Thunder has independent count/category coverage, but individual marker positions still need manual cross-checking.",
     "sources": [
       {
         "label": "Guides4Gamers Sniper Elite: Resistance Campaign Maps - Mud and Thunder",
         "url": "https://guides4gamers.com/sniper-elite-resistance/maps/mud-and-thunder/",
         "coverage": "private_source_import",
         "notes": "Mud and Thunder private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
+      },
+      {
+        "label": "Game Rant Resistance DLC collectible guide",
+        "url": "https://gamerant.com/sniper-elite-resistance-all-collectibles-in-mud-and-thunder-dlc/",
+        "coverage": "dlc_collectible_count_and_area_spot_check",
+        "notes": "Used as a DLC collectible/source plausibility check. Article images, prose, and marker positions are not copied."
+      },
+      {
+        "label": "Game Rant Resistance DLC workbench guide",
+        "url": "https://gamerant.com/sniper-elite-resistance-all-workbench-locations-in-mud-and-thunder-dlc/",
+        "coverage": "dlc_workbench_count_and_area_spot_check",
+        "notes": "Used as a DLC workbench source check. Article images, prose, and marker positions are not copied."
       }
     ],
+    "visualReview": {
+      "status": "partial_visual_sources_compared",
+      "lastCompared": "2026-05-26",
+      "summary": "Mud and Thunder has usable independent visual or count coverage, but the comparison is partial. Treat high-density marker placement as a manual review queue.",
+      "findings": [
+        "Private Guides4Gamers review plates remain the working source map; secondary sources are used only to compare silhouette, orientation, major landmarks, category coverage, and obvious placement drift.",
+        "No third-party marker coordinates, guide prose, screenshots, icons, or app data are copied into public Recon.",
+        "MapMaster and Wand coverage is strongest for campaign/Lights/Striking surfaces; GameSpot, Push Square, PowerPyx, and Game Rant provide count and area spot checks rather than reusable coordinates."
+      ],
+      "manualReviewFocus": [
+        "Check every workbench, starting point, exfiltration point, and medal-related marker first.",
+        "Then review high-density utility layers such as satchels, crowbars, bolt cutters, keys, alarms, and medical items by region.",
+        "Look for underground, bunker, tunnel, dam, and interior spaces that may need separate map views even when the surface plate looks correct.",
+        "Mud and Thunder needs extra manual attention because secondary checks are guide-based rather than a full independent map surface."
+      ]
+    },
     "checks": [
       {
         "label": "Workbench count",
@@ -1213,14 +1820,14 @@
       },
       {
         "label": "Position review",
-        "status": "source_gap",
+        "status": "pending",
         "localValue": "draft positions only",
-        "sourceValue": "none recorded",
+        "sourceValue": "secondary source available",
         "notes": "Exact marker positions still need a manual source comparison plus first-hand gameplay review. Do not treat the imported draft points as verified guide data."
       }
     ],
     "warnings": [
-      "Independent source coverage is incomplete for this target; use gameplay review before changing marker confidence."
+      "Mud and Thunder has secondary guide checks but no recorded full-map secondary visual surface; use gameplay review before changing marker confidence."
     ],
     "nextSteps": [
       "Compare core objective, collectible, workbench, tool, and route markers against the recorded secondary sources.",
@@ -1244,10 +1851,22 @@
         "notes": "Sonderzüge Sabotage private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
       },
       {
+        "label": "MapMaster Sniper Elite Resistance map index",
+        "url": "https://mapmaster.io/games/sniper-elite-resistance",
+        "coverage": "independent_visual_map_reference",
+        "notes": "Used as a secondary visual/map-availability reference for covered Resistance missions. Map images, marker data, and guide text are not copied."
+      },
+      {
         "label": "Wand Sniper Elite: Resistance map index",
         "url": "https://wand.com/maps/sniper-elite-resistance",
         "coverage": "map_availability_and_checklist_coverage",
         "notes": "Used as a secondary map/checklist reference for covered Resistance regions; exact coordinates and app data are not copied into Recon."
+      },
+      {
+        "label": "PowerPyx Sniper Elite Resistance collectible guide",
+        "url": "https://www.powerpyx.com/sniper-elite-resistance-collectible-guide-letters-documents-items-eagles-workbenches/",
+        "coverage": "collectible_counts_by_mission",
+        "notes": "Used to verify campaign and Lights, Camera, Achtung collectible-count expectations. Route prose, screenshots, and exact positions are not copied."
       },
       {
         "label": "GameSpot Sniper Elite: Resistance workbench guide",
@@ -1262,6 +1881,22 @@
         "notes": "Used to confirm campaign workbench count expectations and Vercors Vendetta workbench names; prose and screenshots are not copied."
       }
     ],
+    "visualReview": {
+      "status": "visual_sources_compared",
+      "lastCompared": "2026-05-26",
+      "summary": "Sonderzüge Sabotage has been visually compared against at least one independent map/reference surface plus a count or category guide. Exact marker positions remain draft until first-hand gameplay review.",
+      "findings": [
+        "Private Guides4Gamers review plates remain the working source map; secondary sources are used only to compare silhouette, orientation, major landmarks, category coverage, and obvious placement drift.",
+        "No third-party marker coordinates, guide prose, screenshots, icons, or app data are copied into public Recon.",
+        "MapMaster and Wand coverage is strongest for campaign/Lights/Striking surfaces; GameSpot, Push Square, PowerPyx, and Game Rant provide count and area spot checks rather than reusable coordinates."
+      ],
+      "manualReviewFocus": [
+        "Check every workbench, starting point, exfiltration point, and medal-related marker first.",
+        "Then review high-density utility layers such as satchels, crowbars, bolt cutters, keys, alarms, and medical items by region.",
+        "High-density map: compare by quadrants or named districts instead of reviewing all markers in one pass.",
+        "Look for underground, bunker, tunnel, dam, and interior spaces that may need separate map views even when the surface plate looks correct."
+      ]
+    },
     "checks": [
       {
         "label": "Workbench count",
@@ -1290,19 +1925,52 @@
   {
     "mapId": "ser-striking-range",
     "gameId": "sniper-elite-resistance",
-    "status": "source_gap",
+    "status": "needs_manual_position_review",
     "lastReviewed": "2026-05-26",
     "localMarkerCount": 62,
     "localWorkbenchCount": 3,
-    "summary": "Striking Range needs another reliable source or first-hand gameplay pass before position accuracy can be called reviewed.",
+    "summary": "Striking Range has independent count/category coverage, but individual marker positions still need manual cross-checking.",
     "sources": [
       {
         "label": "Guides4Gamers Sniper Elite: Resistance Campaign Maps - Striking Range",
         "url": "https://guides4gamers.com/sniper-elite-resistance/maps/striking-range/",
         "coverage": "private_source_import",
         "notes": "Striking Range private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
+      },
+      {
+        "label": "MapMaster Sniper Elite Resistance map index",
+        "url": "https://mapmaster.io/games/sniper-elite-resistance",
+        "coverage": "independent_visual_map_reference",
+        "notes": "Used as a secondary visual/map-availability reference for covered Resistance missions. Map images, marker data, and guide text are not copied."
+      },
+      {
+        "label": "Game Rant Resistance DLC collectible guide",
+        "url": "https://gamerant.com/sniper-elite-resistance-all-collectibles-for-striking-range/",
+        "coverage": "dlc_collectible_count_and_area_spot_check",
+        "notes": "Used as a DLC collectible/source plausibility check. Article images, prose, and marker positions are not copied."
+      },
+      {
+        "label": "Game Rant Resistance DLC workbench guide",
+        "url": "https://gamerant.com/sniper-elite-resistance-all-striking-range-workbenches/",
+        "coverage": "dlc_workbench_count_and_area_spot_check",
+        "notes": "Used as a DLC workbench source check. Article images, prose, and marker positions are not copied."
       }
     ],
+    "visualReview": {
+      "status": "visual_sources_compared",
+      "lastCompared": "2026-05-26",
+      "summary": "Striking Range has been visually compared against at least one independent map/reference surface plus a count or category guide. Exact marker positions remain draft until first-hand gameplay review.",
+      "findings": [
+        "Private Guides4Gamers review plates remain the working source map; secondary sources are used only to compare silhouette, orientation, major landmarks, category coverage, and obvious placement drift.",
+        "No third-party marker coordinates, guide prose, screenshots, icons, or app data are copied into public Recon.",
+        "MapMaster and Wand coverage is strongest for campaign/Lights/Striking surfaces; GameSpot, Push Square, PowerPyx, and Game Rant provide count and area spot checks rather than reusable coordinates."
+      ],
+      "manualReviewFocus": [
+        "Check every workbench, starting point, exfiltration point, and medal-related marker first.",
+        "Then review high-density utility layers such as satchels, crowbars, bolt cutters, keys, alarms, and medical items by region.",
+        "Look for underground, bunker, tunnel, dam, and interior spaces that may need separate map views even when the surface plate looks correct."
+      ]
+    },
     "checks": [
       {
         "label": "Workbench count",
@@ -1313,15 +1981,13 @@
       },
       {
         "label": "Position review",
-        "status": "source_gap",
+        "status": "pending",
         "localValue": "draft positions only",
-        "sourceValue": "none recorded",
+        "sourceValue": "secondary source available",
         "notes": "Exact marker positions still need a manual source comparison plus first-hand gameplay review. Do not treat the imported draft points as verified guide data."
       }
     ],
-    "warnings": [
-      "Independent source coverage is incomplete for this target; use gameplay review before changing marker confidence."
-    ],
+    "warnings": [],
     "nextSteps": [
       "Compare core objective, collectible, workbench, tool, and route markers against the recorded secondary sources.",
       "Record any manual coordinate adjustment in marker descriptions or source-check notes.",
@@ -1344,12 +2010,34 @@
         "notes": "Vercors Vendetta private map plate and draft markers remain owner-approved admin review inputs, not public publication data."
       },
       {
+        "label": "MapMaster Sniper Elite Resistance map index",
+        "url": "https://mapmaster.io/games/sniper-elite-resistance",
+        "coverage": "independent_visual_map_reference",
+        "notes": "Used as a secondary visual/map-availability reference for covered Resistance missions. Map images, marker data, and guide text are not copied."
+      },
+      {
         "label": "Push Square Sniper Elite: Resistance workbench guide",
         "url": "https://www.pushsquare.com/guides/sniper-elite-resistance-all-workbenches-locations",
         "coverage": "workbench_counts_and_named_types",
         "notes": "Used to confirm campaign workbench count expectations and Vercors Vendetta workbench names; prose and screenshots are not copied."
       }
     ],
+    "visualReview": {
+      "status": "visual_sources_compared",
+      "lastCompared": "2026-05-26",
+      "summary": "Vercors Vendetta has been visually compared against at least one independent map/reference surface plus a count or category guide. Exact marker positions remain draft until first-hand gameplay review.",
+      "findings": [
+        "Private Guides4Gamers review plates remain the working source map; secondary sources are used only to compare silhouette, orientation, major landmarks, category coverage, and obvious placement drift.",
+        "No third-party marker coordinates, guide prose, screenshots, icons, or app data are copied into public Recon.",
+        "MapMaster and Wand coverage is strongest for campaign/Lights/Striking surfaces; GameSpot, Push Square, PowerPyx, and Game Rant provide count and area spot checks rather than reusable coordinates."
+      ],
+      "manualReviewFocus": [
+        "Check every workbench, starting point, exfiltration point, and medal-related marker first.",
+        "Then review high-density utility layers such as satchels, crowbars, bolt cutters, keys, alarms, and medical items by region.",
+        "High-density map: compare by quadrants or named districts instead of reviewing all markers in one pass.",
+        "Look for underground, bunker, tunnel, dam, and interior spaces that may need separate map views even when the surface plate looks correct."
+      ]
+    },
     "checks": [
       {
         "label": "Workbench count",

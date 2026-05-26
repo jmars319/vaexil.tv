@@ -79,7 +79,8 @@ with an overlay before using them in admin review.
 
 For Sniper Elite maps, source cross-check records live in
 `src/data/recon/source-cross-checks.json`. They record which secondary sources
-were checked, local marker/workbench counts, known gaps, and next review steps.
+were checked, local marker/workbench counts, visual-review status, known gaps,
+and next review steps.
 They must not store copied third-party coordinates or guide prose. Rebuild the
 records with `node scripts/build-recon-source-cross-checks.mjs --write` after
 marker import/category changes, then manually update any map-specific review
@@ -89,6 +90,10 @@ Guides4Gamers, HITMAPS, publisher screenshots, and other map images may still be
 opened or briefly stored in scratch space as draw-under references. Scratch
 references that are not recorded in the asset manifest must not be committed,
 hotlinked, traced exactly, or used for copied marker coordinates/text.
+For Sniper Elite visual comparison, run
+`node scripts/build-recon-visual-review-pack.mjs` and follow
+`docs/recon/VISUAL_CROSS_CHECKS.md`. The generated pack is scratch-only and
+must stay out of Git.
 
 ## Verify And Publish
 

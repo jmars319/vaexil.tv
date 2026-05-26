@@ -140,6 +140,22 @@ export function ReconSourceNotes({
             </span>
           </div>
 
+          <div className="mt-4 rounded-lg border border-cyan-300/15 bg-cyan-300/[0.045] p-3">
+            <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
+              <div>
+                <h4 className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-100">
+                  Visual comparison
+                </h4>
+                <p className="mt-2 text-sm leading-6 text-slate-400">
+                  {crossCheck.visualReview.summary}
+                </p>
+              </div>
+              <span className="w-fit rounded-full border border-cyan-300/20 bg-slate-950/60 px-2 py-0.5 text-[0.68rem] font-semibold uppercase tracking-[0.14em] text-cyan-100">
+                {crossCheck.visualReview.status.replaceAll("_", " ")}
+              </span>
+            </div>
+          </div>
+
           <div className="mt-4 grid gap-4 lg:grid-cols-[1fr_1.2fr]">
             <div>
               <h4 className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
@@ -195,6 +211,17 @@ export function ReconSourceNotes({
                 ))}
               </ul>
             </div>
+          </div>
+
+          <div className="mt-4 grid gap-4 lg:grid-cols-2">
+            <BulletList
+              title="Visual findings"
+              items={crossCheck.visualReview.findings}
+            />
+            <BulletList
+              title="Manual review focus"
+              items={crossCheck.visualReview.manualReviewFocus}
+            />
           </div>
 
           {crossCheck.warnings.length > 0 ? (

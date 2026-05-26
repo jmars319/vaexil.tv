@@ -62,6 +62,10 @@ Sniper Elite source cross-check records live in
 coverage, count checks, source gaps, and manual position-review state for each
 private draft Sniper Elite map. They are admin review metadata, not copied
 third-party marker data.
+`docs/recon/VISUAL_CROSS_CHECKS.md` records the current visual comparison
+coverage and manual review queue, while
+`scripts/build-recon-visual-review-pack.mjs` creates scratch-only side-by-side
+reference sheets outside the repo.
 
 Draft view metadata lives in `src/data/recon/map-views.json`. Views map a
 logical selector such as `B1`, `1F`, `2F`, `surface`, or `underground` to a

@@ -131,6 +131,8 @@ test("admin Recon index groups maps by game and shows source-check status", asyn
   ).toBeVisible();
   await expect(page.getByText(/Source check: position cross checked/i).first()).toBeVisible();
   await expect(page.getByText(/Source check: needs manual position review/i).first()).toBeVisible();
+  await expect(page.getByText(/Visual: visual sources compared/i).first()).toBeVisible();
+  await expect(page.getByText(/Visual: partial visual sources compared/i).first()).toBeVisible();
 });
 
 test("admin Recon map supports wheel and touchpad-style zoom", async ({ page }) => {

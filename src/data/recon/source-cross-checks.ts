@@ -5,6 +5,11 @@ export type ReconSourceCrossCheckStatus =
   | "needs_manual_position_review"
   | "source_gap";
 
+export type ReconVisualReviewStatus =
+  | "visual_sources_compared"
+  | "partial_visual_sources_compared"
+  | "source_limited";
+
 export type ReconSourceCrossCheckResultStatus =
   | "match"
   | "mismatch"
@@ -27,6 +32,14 @@ export type ReconSourceCrossCheckResult = {
   notes: string;
 };
 
+export type ReconVisualReview = {
+  status: ReconVisualReviewStatus;
+  lastCompared: string;
+  summary: string;
+  findings: string[];
+  manualReviewFocus: string[];
+};
+
 export type ReconSourceCrossCheck = {
   mapId: string;
   gameId: string;
@@ -36,6 +49,7 @@ export type ReconSourceCrossCheck = {
   localWorkbenchCount: number;
   summary: string;
   sources: ReconSourceCrossCheckSource[];
+  visualReview: ReconVisualReview;
   checks: ReconSourceCrossCheckResult[];
   warnings: string[];
   nextSteps: string[];

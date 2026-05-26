@@ -285,6 +285,11 @@ const sourceCrossCheckResultStatuses = new Set([
   "pending",
   "source_gap",
 ]);
+const visualReviewStatuses = new Set([
+  "visual_sources_compared",
+  "partial_visual_sources_compared",
+  "source_limited",
+]);
 
 for (const check of sourceCrossChecks) {
   assert.ok(mapsById.has(check.mapId), `${check.mapId} source cross-check should be tied to a tracked Recon map`);
@@ -295,6 +300,18 @@ for (const check of sourceCrossChecks) {
   assert.ok(check.localWorkbenchCount >= 0, `${check.mapId} source cross-check should record localWorkbenchCount`);
   assert.ok(check.summary, `${check.mapId} source cross-check should summarize the review status`);
   assert.ok(check.sources.length >= 1, `${check.mapId} source cross-check should list source coverage`);
+  assert.ok(check.visualReview, `${check.mapId} source cross-check should include visual review metadata`);
+  assert.ok(
+    visualReviewStatuses.has(check.visualReview.status),
+    `${check.mapId} visual review should use a known status`,
+  );
+  assert.ok(check.visualReview.lastCompared, `${check.mapId} visual review should record lastCompared`);
+  assert.ok(check.visualReview.summary, `${check.mapId} visual review should include a summary`);
+  assert.ok(check.visualReview.findings.length >= 1, `${check.mapId} visual review should include findings`);
+  assert.ok(
+    check.visualReview.manualReviewFocus.length >= 1,
+    `${check.mapId} visual review should include manual review focus`,
+  );
   assert.ok(check.checks.length >= 1, `${check.mapId} source cross-check should list check results`);
   assert.ok(check.nextSteps.length >= 1, `${check.mapId} source cross-check should list next steps`);
 
@@ -313,7 +330,7 @@ for (const check of sourceCrossChecks) {
 
   assert.doesNotMatch(
     JSON.stringify(check),
-    /copied coordinates|scraped coordinates|wand coordinates/i,
+    /copied coordinates|scraped coordinates|wand coordinates|mapmaster coordinates|sniperelite5maps coordinates/i,
     `${check.mapId} source cross-check should not claim copied third-party coordinates`,
   );
 }

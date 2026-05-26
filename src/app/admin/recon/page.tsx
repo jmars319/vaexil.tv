@@ -67,6 +67,14 @@ function sourceCheckLabel(mapId: string) {
   return check.status.replaceAll("_", " ");
 }
 
+function visualReviewLabel(mapId: string) {
+  const check = getReconSourceCrossCheck(mapId);
+
+  if (!check) return "No visual review";
+
+  return check.visualReview.status.replaceAll("_", " ");
+}
+
 export default async function ReconAdminPage() {
   if (!(await isAdminAuthenticated())) {
     redirect("/admin");
@@ -128,6 +136,11 @@ export default async function ReconAdminPage() {
                 getReconSourceCrossCheck(map.id)?.status ===
                 "position_cross_checked",
             ).length;
+            const visualComparedCount = group.maps.filter((map) =>
+              ["visual_sources_compared", "partial_visual_sources_compared"].includes(
+                getReconSourceCrossCheck(map.id)?.visualReview.status || "",
+              ),
+            ).length;
 
             return (
               <section
@@ -150,7 +163,7 @@ export default async function ReconAdminPage() {
                   </div>
                   <p className="text-sm text-slate-500">
                     {group.maps.length} maps / {privateCount} private assets /{" "}
-                    {reviewedCount} position-reviewed
+                    {visualComparedCount} visual-reviewed / {reviewedCount} position-reviewed
                   </p>
                 </div>
 
@@ -178,6 +191,9 @@ export default async function ReconAdminPage() {
                       </p>
                       <p className="mt-2 text-xs font-medium uppercase tracking-[0.14em] text-slate-500">
                         Source check: {sourceCheckLabel(map.id)}
+                      </p>
+                      <p className="mt-1 text-xs font-medium uppercase tracking-[0.14em] text-cyan-200/80">
+                        Visual: {visualReviewLabel(map.id)}
                       </p>
                     </Link>
                   ))}

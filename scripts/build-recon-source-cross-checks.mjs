@@ -73,6 +73,75 @@ const serWandCoverage = new Set([
   "ser-lights-camera-achtung",
 ]);
 
+const serMapMasterCoverage = new Set([
+  "ser-behind-enemy-lines",
+  "ser-dead-drop",
+  "ser-sonderzuge-sabotage",
+  "ser-collision-course",
+  "ser-devils-cauldron",
+  "ser-assault-on-fort-rouge",
+  "ser-lock-stock-and-barrels",
+  "ser-end-of-the-line",
+  "ser-all-or-nothing",
+  "ser-lights-camera-achtung",
+  "ser-vercors-vendetta",
+  "ser-striking-range",
+]);
+
+const serPowerPyxCollectibleCoverage = new Set([
+  "ser-behind-enemy-lines",
+  "ser-dead-drop",
+  "ser-sonderzuge-sabotage",
+  "ser-collision-course",
+  "ser-devils-cauldron",
+  "ser-assault-on-fort-rouge",
+  "ser-lock-stock-and-barrels",
+  "ser-end-of-the-line",
+  "ser-all-or-nothing",
+  "ser-lights-camera-achtung",
+]);
+
+const se5DlcCollectibleGuideUrls = new Map([
+  [
+    "se5-landing-force",
+    "https://itemlevel.net/sniper-elite-5-landing-force-all-collectible-locations/",
+  ],
+  [
+    "se5-conqueror",
+    "https://www.powerpyx.com/sniper-elite-5-mission-12-conqueror-all-collectible-locations/",
+  ],
+  [
+    "se5-rough-landing",
+    "https://www.powerpyx.com/sniper-elite-5-mission-13-rough-landing-all-collectible-locations/",
+  ],
+  [
+    "se5-kraken-awakes",
+    "https://itemlevel.net/sniper-elite-5-kraken-awakes-all-collectible-locations/",
+  ],
+]);
+
+const serGameRantDlcCollectibleGuideUrls = new Map([
+  [
+    "ser-striking-range",
+    "https://gamerant.com/sniper-elite-resistance-all-collectibles-for-striking-range/",
+  ],
+  [
+    "ser-mud-and-thunder",
+    "https://gamerant.com/sniper-elite-resistance-all-collectibles-in-mud-and-thunder-dlc/",
+  ],
+]);
+
+const serGameRantDlcWorkbenchGuideUrls = new Map([
+  [
+    "ser-striking-range",
+    "https://gamerant.com/sniper-elite-resistance-all-striking-range-workbenches/",
+  ],
+  [
+    "ser-mud-and-thunder",
+    "https://gamerant.com/sniper-elite-resistance-all-workbench-locations-in-mud-and-thunder-dlc/",
+  ],
+]);
+
 const positionReviewed = new Map([
   [
     "se5-atlantic-wall",
@@ -84,20 +153,15 @@ const positionReviewed = new Map([
   ],
 ]);
 
-const knownSourceGaps = new Set([
-  "se5-landing-force",
-  "se5-conqueror",
-  "se5-rough-landing",
-  "se5-kraken-awakes",
-  "ser-all-or-nothing",
-  "ser-striking-range",
-  "ser-mud-and-thunder",
-]);
-
 const urls = {
   gamerGuidesSe5Maps: "https://www.gamerguides.com/sniper-elite-5/maps",
+  exputerSe5InteractiveMap: "https://exputer.com/guides/sniper-elite-5-interactive-map/",
+  sniperElite5Maps: "https://sniperelite5maps.de/",
   pushSquareSe5Workbenches: "https://www.pushsquare.com/guides/sniper-elite-5-all-workbenches-locations",
   wandSerMaps: "https://wand.com/maps/sniper-elite-resistance",
+  mapMasterSerMaps: "https://mapmaster.io/games/sniper-elite-resistance",
+  powerPyxSerCollectibles:
+    "https://www.powerpyx.com/sniper-elite-resistance-collectible-guide-letters-documents-items-eagles-workbenches/",
   gameSpotSerWorkbenches:
     "https://www.gamespot.com/gallery/sniper-elite-resistance-workbench-locations-weapon-workbenches-guide/2900-6153/",
   pushSquareSerWorkbenches:
@@ -129,6 +193,13 @@ function externalSourcesFor(map, packet) {
   if (packetSource) sources.push(packetSource);
 
   if (map.gameId === "sniper-elite-5") {
+    sources.push({
+      label: "Sniper Elite 5 Maps reference site",
+      url: urls.sniperElite5Maps,
+      coverage: "independent_visual_map_reference",
+      notes: "Used as a visual map-shape, coastline/building-block, and category sanity check only. Map tiles, marker coordinates, marker text, and UI are not copied.",
+    });
+
     if (se5GamerGuidesMarkerCounts.has(map.id)) {
       sources.push({
         label: "Gamer Guides Sniper Elite 5 map index",
@@ -146,15 +217,51 @@ function externalSourcesFor(map, packet) {
         notes: "Used to confirm three workbench types per covered mission; route prose and screenshots are not copied.",
       });
     }
+
+    if (se5GamerGuidesMarkerCounts.has(map.id)) {
+      sources.push({
+        label: "eXputer Sniper Elite 5 interactive-map article",
+        url: urls.exputerSe5InteractiveMap,
+        coverage: "secondary_visual_map_and_collectible_counts",
+        notes: "Used as a secondary visual/count reference for base missions and Wolf Mountain. Article images, captions, and prose are not copied.",
+      });
+    }
+
+    if (se5DlcCollectibleGuideUrls.has(map.id)) {
+      sources.push({
+        label: "DLC collectible guide spot check",
+        url: se5DlcCollectibleGuideUrls.get(map.id),
+        coverage: "dlc_collectible_count_and_area_spot_check",
+        notes: "Used to spot-check DLC collectible and workbench expectations against the private map plate. Guide prose and screenshots are not copied.",
+      });
+    }
   }
 
   if (map.gameId === "sniper-elite-resistance") {
+    if (serMapMasterCoverage.has(map.id)) {
+      sources.push({
+        label: "MapMaster Sniper Elite Resistance map index",
+        url: urls.mapMasterSerMaps,
+        coverage: "independent_visual_map_reference",
+        notes: "Used as a secondary visual/map-availability reference for covered Resistance missions. Map images, marker data, and guide text are not copied.",
+      });
+    }
+
     if (serWandCoverage.has(map.id)) {
       sources.push({
         label: "Wand Sniper Elite: Resistance map index",
         url: urls.wandSerMaps,
         coverage: "map_availability_and_checklist_coverage",
         notes: "Used as a secondary map/checklist reference for covered Resistance regions; exact coordinates and app data are not copied into Recon.",
+      });
+    }
+
+    if (serPowerPyxCollectibleCoverage.has(map.id)) {
+      sources.push({
+        label: "PowerPyx Sniper Elite Resistance collectible guide",
+        url: urls.powerPyxSerCollectibles,
+        coverage: "collectible_counts_by_mission",
+        notes: "Used to verify campaign and Lights, Camera, Achtung collectible-count expectations. Route prose, screenshots, and exact positions are not copied.",
       });
     }
 
@@ -175,9 +282,133 @@ function externalSourcesFor(map, packet) {
         notes: "Used to confirm campaign workbench count expectations and Vercors Vendetta workbench names; prose and screenshots are not copied.",
       });
     }
+
+    if (serGameRantDlcCollectibleGuideUrls.has(map.id)) {
+      sources.push({
+        label: "Game Rant Resistance DLC collectible guide",
+        url: serGameRantDlcCollectibleGuideUrls.get(map.id),
+        coverage: "dlc_collectible_count_and_area_spot_check",
+        notes: "Used as a DLC collectible/source plausibility check. Article images, prose, and marker positions are not copied.",
+      });
+    }
+
+    if (serGameRantDlcWorkbenchGuideUrls.has(map.id)) {
+      sources.push({
+        label: "Game Rant Resistance DLC workbench guide",
+        url: serGameRantDlcWorkbenchGuideUrls.get(map.id),
+        coverage: "dlc_workbench_count_and_area_spot_check",
+        notes: "Used as a DLC workbench source check. Article images, prose, and marker positions are not copied.",
+      });
+    }
   }
 
   return sources;
+}
+
+function visualReviewStatusFor(map, sources) {
+  const labels = sources.map((source) => source.label).join(" ");
+  const hasIndependentVisual =
+    /Sniper Elite 5 Maps|MapMaster|Wand|eXputer/.test(labels);
+  const hasCollectibleSpotCheck =
+    /PowerPyx|GameSpot|Push Square|Game Rant|DLC collectible guide/.test(labels);
+
+  if (hasIndependentVisual && hasCollectibleSpotCheck) {
+    return "visual_sources_compared";
+  }
+  if (hasIndependentVisual || sources.length > 1) {
+    return "partial_visual_sources_compared";
+  }
+  return "source_limited";
+}
+
+function visualReviewSummaryFor(map, status) {
+  if (status === "visual_sources_compared") {
+    return `${map.title} has been visually compared against at least one independent map/reference surface plus a count or category guide. Exact marker positions remain draft until first-hand gameplay review.`;
+  }
+
+  if (status === "partial_visual_sources_compared") {
+    return `${map.title} has usable independent visual or count coverage, but the comparison is partial. Treat high-density marker placement as a manual review queue.`;
+  }
+
+  return `${map.title} still has limited independent visual coverage. Keep all positions draft and prioritize first-hand gameplay review before publication.`;
+}
+
+function visualFindingsFor(map, status) {
+  const findings = [
+    "Private Guides4Gamers review plates remain the working source map; secondary sources are used only to compare silhouette, orientation, major landmarks, category coverage, and obvious placement drift.",
+    "No third-party marker coordinates, guide prose, screenshots, icons, or app data are copied into public Recon.",
+  ];
+
+  if (map.gameId === "sniper-elite-5") {
+    findings.push(
+      "SniperElite5Maps provides a second full-map visual reference across the base missions and DLC, useful for checking coastline, road, building, and objective-area alignment.",
+    );
+  }
+
+  if (map.gameId === "sniper-elite-resistance") {
+    findings.push(
+      "MapMaster and Wand coverage is strongest for campaign/Lights/Striking surfaces; GameSpot, Push Square, PowerPyx, and Game Rant provide count and area spot checks rather than reusable coordinates.",
+    );
+  }
+
+  if (map.id === "ser-all-or-nothing") {
+    findings.push(
+      "All or Nothing is intentionally sparse: multiple references confirm it has no normal collectible sweep, so the admin review should decide whether a minimal mission note is more useful than a full map.",
+    );
+  }
+
+  if (status === "source_limited") {
+    findings.push(
+      "This map has fewer independent visual references than the rest of the set; do not upgrade confidence based on the current source packet alone.",
+    );
+  }
+
+  return findings;
+}
+
+function manualReviewFocusFor(map, markers) {
+  const focus = [
+    "Check every workbench, starting point, exfiltration point, and medal-related marker first.",
+    "Then review high-density utility layers such as satchels, crowbars, bolt cutters, keys, alarms, and medical items by region.",
+  ];
+
+  if (markers.length > 200) {
+    focus.push(
+      "High-density map: compare by quadrants or named districts instead of reviewing all markers in one pass.",
+    );
+  }
+
+  if (map.gameId === "sniper-elite-resistance") {
+    focus.push(
+      "Look for underground, bunker, tunnel, dam, and interior spaces that may need separate map views even when the surface plate looks correct.",
+    );
+  }
+
+  if (map.id === "ser-mud-and-thunder") {
+    focus.push(
+      "Mud and Thunder needs extra manual attention because secondary checks are guide-based rather than a full independent map surface.",
+    );
+  }
+
+  if (map.id === "ser-all-or-nothing") {
+    focus.push(
+      "Confirm whether the single imported marker is enough for the mission or whether this should become a short mission note instead of a full Recon map.",
+    );
+  }
+
+  return focus;
+}
+
+function visualReviewFor(map, markers, sources) {
+  const status = visualReviewStatusFor(map, sources);
+
+  return {
+    status,
+    lastCompared: today,
+    summary: visualReviewSummaryFor(map, status),
+    findings: visualFindingsFor(map, status),
+    manualReviewFocus: manualReviewFocusFor(map, markers),
+  };
 }
 
 function expectedWorkbenchCount(mapId) {
@@ -254,7 +485,7 @@ function checksFor(map, markers, sources) {
 
 function statusFor(map, sources) {
   if (positionReviewed.has(map.id)) return "position_cross_checked";
-  if (knownSourceGaps.has(map.id) || sources.length <= 1) return "source_gap";
+  if (sources.length <= 1) return "source_gap";
   return "needs_manual_position_review";
 }
 
@@ -277,8 +508,8 @@ function summaryFor(status, map, sources) {
 function warningsFor(map, markers) {
   const warnings = [];
 
-  if (knownSourceGaps.has(map.id)) {
-    warnings.push("Independent source coverage is incomplete for this target; use gameplay review before changing marker confidence.");
+  if (map.id === "ser-mud-and-thunder") {
+    warnings.push("Mud and Thunder has secondary guide checks but no recorded full-map secondary visual surface; use gameplay review before changing marker confidence.");
   }
 
   if (markers.length > 100) {
@@ -311,6 +542,7 @@ const output = maps
     const packet = packetsByMapId.get(map.id);
     const sources = packet ? externalSourcesFor(map, packet) : [];
     const status = statusFor(map, sources);
+    const visualReview = visualReviewFor(map, mapMarkers, sources);
 
     return {
       mapId: map.id,
@@ -321,6 +553,7 @@ const output = maps
       localWorkbenchCount: workbenchCount(mapMarkers),
       summary: summaryFor(status, map, sources),
       sources,
+      visualReview,
       checks: checksFor(map, mapMarkers, sources),
       warnings: warningsFor(map, mapMarkers),
       nextSteps:

@@ -9,6 +9,8 @@ Start here for Vaexil.tv system, deployment, Recon, and maintenance guidance.
 - `docs/recon/RECON_ARCHITECTURE.md` - Recon architecture and data model.
 - `docs/recon/ASSET_SOURCING.md` - Recon asset sourcing rules.
 - `docs/recon/DATA_ENTRY_GUIDE.md` - Recon data-entry workflow.
+- `docs/recon/VISUAL_CROSS_CHECKS.md` - Sniper Elite visual source
+  comparison status and manual review queue.
 
 Recon source packets for draft map research live in
 `src/data/recon/source-packets.json`. Sniper Elite source cross-check records
