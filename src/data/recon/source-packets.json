@@ -1412,6 +1412,69 @@
     ]
   },
   {
+    "mapId": "ser-lights-camera-achtung",
+    "gameId": "sniper-elite-resistance",
+    "status": "research_draft",
+    "lastReviewed": "2026-05-26",
+    "officialSources": [
+      {
+        "label": "Rebellion - Sniper Elite: Resistance",
+        "url": "https://shop.rebellion.com/products/sniper-elite-resistance",
+        "note": "Official product context for campaign structure and game/platform context."
+      }
+    ],
+    "referenceSources": [
+      {
+        "label": "Guides4Gamers Sniper Elite: Resistance Campaign Maps - Lights, Camera, Achtung!",
+        "url": "https://guides4gamers.com/sniper-elite-resistance/maps/lights-camera-achtung/",
+        "note": "Private source-map imagery and marker payload are used for admin-only draft review with owner approval; public publication still requires Vaexil validation."
+      },
+      {
+        "label": "First-hand Vaexil gameplay review",
+        "url": "",
+        "note": "Required before any Lights, Camera, Achtung! marker becomes verified or published."
+      }
+    ],
+    "verifiedNamedAreas": [],
+    "approximateAreas": [
+      "Lights, Camera, Achtung! surface map plate",
+      "Starting and exfiltration review points",
+      "Objective, collectible, tool, and supply marker review points",
+      "Interior, bunker, tunnel, or underground candidates that may need separate review views"
+    ],
+    "poiCandidates": [
+      {
+        "label": "Lights, Camera, Achtung! objective review",
+        "category": "main_objective",
+        "confidence": "unverified",
+        "notes": "Draft-only source import; verify objective interaction and exact placement in-game."
+      },
+      {
+        "label": "Lights, Camera, Achtung! collectible sweep",
+        "category": "poi",
+        "confidence": "unverified",
+        "notes": "Use imported markers as a review checklist, not as public verified guide data."
+      },
+      {
+        "label": "Lights, Camera, Achtung! utility and route review",
+        "category": "tool",
+        "confidence": "unverified",
+        "notes": "Check tools, passages, and interior routes during first-hand gameplay review."
+      }
+    ],
+    "uncertaintyNotes": [
+      "The source map is a private admin-only candidate assembled from Guides4Gamers tiles and must not be published as a public map asset.",
+      "Marker positions use the corrected 3x3 campaign-cell transform from the 16,384 pixel source payload into the 2,048 pixel mission plate.",
+      "Exact markers remain draft/unverified until first-hand Vaexil gameplay review confirms placement and meaning.",
+      "Interior, bunker, underground, and route markers may need separate future views if the surface plate becomes hard to read."
+    ],
+    "avoidCopying": [
+      "Rebellion screenshots, in-game map art, UI icons, and marketing images.",
+      "Guides4Gamers guide prose, screenshots, icons, public UI, and full walkthrough text.",
+      "Third-party annotated map images, proprietary icons, and guide prose from other sources."
+    ]
+  },
+  {
     "mapId": "ser-lock-stock-and-barrels",
     "gameId": "sniper-elite-resistance",
     "status": "research_draft",
@@ -1475,6 +1538,69 @@
     ]
   },
   {
+    "mapId": "ser-mud-and-thunder",
+    "gameId": "sniper-elite-resistance",
+    "status": "research_draft",
+    "lastReviewed": "2026-05-26",
+    "officialSources": [
+      {
+        "label": "Rebellion - Sniper Elite: Resistance",
+        "url": "https://shop.rebellion.com/products/sniper-elite-resistance",
+        "note": "Official product context for campaign structure and game/platform context."
+      }
+    ],
+    "referenceSources": [
+      {
+        "label": "Guides4Gamers Sniper Elite: Resistance Campaign Maps - Mud and Thunder",
+        "url": "https://guides4gamers.com/sniper-elite-resistance/maps/mud-and-thunder/",
+        "note": "Private source-map imagery and marker payload are used for admin-only draft review with owner approval; public publication still requires Vaexil validation."
+      },
+      {
+        "label": "First-hand Vaexil gameplay review",
+        "url": "",
+        "note": "Required before any Mud and Thunder marker becomes verified or published."
+      }
+    ],
+    "verifiedNamedAreas": [],
+    "approximateAreas": [
+      "Mud and Thunder surface map plate",
+      "Starting and exfiltration review points",
+      "Objective, collectible, tool, and supply marker review points",
+      "Interior, bunker, tunnel, or underground candidates that may need separate review views"
+    ],
+    "poiCandidates": [
+      {
+        "label": "Mud and Thunder objective review",
+        "category": "main_objective",
+        "confidence": "unverified",
+        "notes": "Draft-only source import; verify objective interaction and exact placement in-game."
+      },
+      {
+        "label": "Mud and Thunder collectible sweep",
+        "category": "poi",
+        "confidence": "unverified",
+        "notes": "Use imported markers as a review checklist, not as public verified guide data."
+      },
+      {
+        "label": "Mud and Thunder utility and route review",
+        "category": "tool",
+        "confidence": "unverified",
+        "notes": "Check tools, passages, and interior routes during first-hand gameplay review."
+      }
+    ],
+    "uncertaintyNotes": [
+      "The source map is a private admin-only candidate assembled from Guides4Gamers tiles and must not be published as a public map asset.",
+      "Marker positions use the corrected 3x3 campaign-cell transform from the 16,384 pixel source payload into the 2,048 pixel mission plate.",
+      "Exact markers remain draft/unverified until first-hand Vaexil gameplay review confirms placement and meaning.",
+      "Interior, bunker, underground, and route markers may need separate future views if the surface plate becomes hard to read."
+    ],
+    "avoidCopying": [
+      "Rebellion screenshots, in-game map art, UI icons, and marketing images.",
+      "Guides4Gamers guide prose, screenshots, icons, public UI, and full walkthrough text.",
+      "Third-party annotated map images, proprietary icons, and guide prose from other sources."
+    ]
+  },
+  {
     "mapId": "ser-sonderzuge-sabotage",
     "gameId": "sniper-elite-resistance",
     "status": "research_draft",
@@ -1520,6 +1646,132 @@
       },
       {
         "label": "Sonderzüge Sabotage utility and route review",
+        "category": "tool",
+        "confidence": "unverified",
+        "notes": "Check tools, passages, and interior routes during first-hand gameplay review."
+      }
+    ],
+    "uncertaintyNotes": [
+      "The source map is a private admin-only candidate assembled from Guides4Gamers tiles and must not be published as a public map asset.",
+      "Marker positions use the corrected 3x3 campaign-cell transform from the 16,384 pixel source payload into the 2,048 pixel mission plate.",
+      "Exact markers remain draft/unverified until first-hand Vaexil gameplay review confirms placement and meaning.",
+      "Interior, bunker, underground, and route markers may need separate future views if the surface plate becomes hard to read."
+    ],
+    "avoidCopying": [
+      "Rebellion screenshots, in-game map art, UI icons, and marketing images.",
+      "Guides4Gamers guide prose, screenshots, icons, public UI, and full walkthrough text.",
+      "Third-party annotated map images, proprietary icons, and guide prose from other sources."
+    ]
+  },
+  {
+    "mapId": "ser-striking-range",
+    "gameId": "sniper-elite-resistance",
+    "status": "research_draft",
+    "lastReviewed": "2026-05-26",
+    "officialSources": [
+      {
+        "label": "Rebellion - Sniper Elite: Resistance",
+        "url": "https://shop.rebellion.com/products/sniper-elite-resistance",
+        "note": "Official product context for campaign structure and game/platform context."
+      }
+    ],
+    "referenceSources": [
+      {
+        "label": "Guides4Gamers Sniper Elite: Resistance Campaign Maps - Striking Range",
+        "url": "https://guides4gamers.com/sniper-elite-resistance/maps/striking-range/",
+        "note": "Private source-map imagery and marker payload are used for admin-only draft review with owner approval; public publication still requires Vaexil validation."
+      },
+      {
+        "label": "First-hand Vaexil gameplay review",
+        "url": "",
+        "note": "Required before any Striking Range marker becomes verified or published."
+      }
+    ],
+    "verifiedNamedAreas": [],
+    "approximateAreas": [
+      "Striking Range surface map plate",
+      "Starting and exfiltration review points",
+      "Objective, collectible, tool, and supply marker review points",
+      "Interior, bunker, tunnel, or underground candidates that may need separate review views"
+    ],
+    "poiCandidates": [
+      {
+        "label": "Striking Range objective review",
+        "category": "main_objective",
+        "confidence": "unverified",
+        "notes": "Draft-only source import; verify objective interaction and exact placement in-game."
+      },
+      {
+        "label": "Striking Range collectible sweep",
+        "category": "poi",
+        "confidence": "unverified",
+        "notes": "Use imported markers as a review checklist, not as public verified guide data."
+      },
+      {
+        "label": "Striking Range utility and route review",
+        "category": "tool",
+        "confidence": "unverified",
+        "notes": "Check tools, passages, and interior routes during first-hand gameplay review."
+      }
+    ],
+    "uncertaintyNotes": [
+      "The source map is a private admin-only candidate assembled from Guides4Gamers tiles and must not be published as a public map asset.",
+      "Marker positions use the corrected 3x3 campaign-cell transform from the 16,384 pixel source payload into the 2,048 pixel mission plate.",
+      "Exact markers remain draft/unverified until first-hand Vaexil gameplay review confirms placement and meaning.",
+      "Interior, bunker, underground, and route markers may need separate future views if the surface plate becomes hard to read."
+    ],
+    "avoidCopying": [
+      "Rebellion screenshots, in-game map art, UI icons, and marketing images.",
+      "Guides4Gamers guide prose, screenshots, icons, public UI, and full walkthrough text.",
+      "Third-party annotated map images, proprietary icons, and guide prose from other sources."
+    ]
+  },
+  {
+    "mapId": "ser-vercors-vendetta",
+    "gameId": "sniper-elite-resistance",
+    "status": "research_draft",
+    "lastReviewed": "2026-05-26",
+    "officialSources": [
+      {
+        "label": "Rebellion - Sniper Elite: Resistance",
+        "url": "https://shop.rebellion.com/products/sniper-elite-resistance",
+        "note": "Official product context for campaign structure and game/platform context."
+      }
+    ],
+    "referenceSources": [
+      {
+        "label": "Guides4Gamers Sniper Elite: Resistance Campaign Maps - Vercors Vendetta",
+        "url": "https://guides4gamers.com/sniper-elite-resistance/maps/vercors-vendetta/",
+        "note": "Private source-map imagery and marker payload are used for admin-only draft review with owner approval; public publication still requires Vaexil validation."
+      },
+      {
+        "label": "First-hand Vaexil gameplay review",
+        "url": "",
+        "note": "Required before any Vercors Vendetta marker becomes verified or published."
+      }
+    ],
+    "verifiedNamedAreas": [],
+    "approximateAreas": [
+      "Vercors Vendetta surface map plate",
+      "Starting and exfiltration review points",
+      "Objective, collectible, tool, and supply marker review points",
+      "Interior, bunker, tunnel, or underground candidates that may need separate review views"
+    ],
+    "poiCandidates": [
+      {
+        "label": "Vercors Vendetta objective review",
+        "category": "main_objective",
+        "confidence": "unverified",
+        "notes": "Draft-only source import; verify objective interaction and exact placement in-game."
+      },
+      {
+        "label": "Vercors Vendetta collectible sweep",
+        "category": "poi",
+        "confidence": "unverified",
+        "notes": "Use imported markers as a review checklist, not as public verified guide data."
+      },
+      {
+        "label": "Vercors Vendetta utility and route review",
         "category": "tool",
         "confidence": "unverified",
         "notes": "Check tools, passages, and interior routes during first-hand gameplay review."

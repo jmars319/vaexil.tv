@@ -59,6 +59,12 @@ const missionGrids = {
       ["end-of-the-line", "End of the Line", "Mission 8"],
       ["all-or-nothing", "All or Nothing", "Mission 9"],
     ],
+    singleMaps: [
+      ["lights-camera-achtung", "Lights, Camera, Achtung!", "Target Führer DLC", 238],
+      ["vercors-vendetta", "Vercors Vendetta", "DLC Mission", 247],
+      ["striking-range", "Striking Range", "DLC Mission", 250],
+      ["mud-and-thunder", "Mud and Thunder", "DLC Mission", 273],
+    ],
   },
 };
 

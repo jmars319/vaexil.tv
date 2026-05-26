@@ -544,6 +544,23 @@
     "notes": "Private imported End of the Line source map assembled from Guides4Gamers campaign-map tiles for Recon review. Not approved for public publication or marker-coordinate copying."
   },
   {
+    "id": "guides4gamers-ser-lights-camera-achtung-surface",
+    "gameId": "sniper-elite-resistance",
+    "mapId": "ser-lights-camera-achtung",
+    "type": "base_map",
+    "path": "private/recon/maps/sniper-elite-resistance/lights-camera-achtung-guides4gamers-surface.jpg",
+    "width": 2048,
+    "height": 2048,
+    "sourceName": "Guides4Gamers",
+    "sourceUrl": "https://guides4gamers.com/sniper-elite-resistance/maps/lights-camera-achtung/",
+    "license": "Third-party source map; private draft review use approved by owner",
+    "attribution": "Guides4Gamers",
+    "imported": true,
+    "status": "candidate",
+    "visibility": "private",
+    "notes": "Private imported Lights, Camera, Achtung! source map assembled from Guides4Gamers map tiles for Recon review. Not approved for public publication or marker-coordinate copying."
+  },
+  {
     "id": "guides4gamers-ser-lock-stock-and-barrels-surface",
     "gameId": "sniper-elite-resistance",
     "mapId": "ser-lock-stock-and-barrels",
@@ -561,6 +578,23 @@
     "notes": "Private imported Lock, Stock and Barrels source map assembled from Guides4Gamers campaign-map tiles for Recon review. Not approved for public publication or marker-coordinate copying."
   },
   {
+    "id": "guides4gamers-ser-mud-and-thunder-surface",
+    "gameId": "sniper-elite-resistance",
+    "mapId": "ser-mud-and-thunder",
+    "type": "base_map",
+    "path": "private/recon/maps/sniper-elite-resistance/mud-and-thunder-guides4gamers-surface.jpg",
+    "width": 2048,
+    "height": 2048,
+    "sourceName": "Guides4Gamers",
+    "sourceUrl": "https://guides4gamers.com/sniper-elite-resistance/maps/mud-and-thunder/",
+    "license": "Third-party source map; private draft review use approved by owner",
+    "attribution": "Guides4Gamers",
+    "imported": true,
+    "status": "candidate",
+    "visibility": "private",
+    "notes": "Private imported Mud and Thunder source map assembled from Guides4Gamers map tiles for Recon review. Not approved for public publication or marker-coordinate copying."
+  },
+  {
     "id": "guides4gamers-ser-sonderzuge-sabotage-surface",
     "gameId": "sniper-elite-resistance",
     "mapId": "ser-sonderzuge-sabotage",
@@ -576,6 +610,40 @@
     "status": "candidate",
     "visibility": "private",
     "notes": "Private imported Sonderzüge Sabotage source map assembled from Guides4Gamers campaign-map tiles for Recon review. Not approved for public publication or marker-coordinate copying."
+  },
+  {
+    "id": "guides4gamers-ser-striking-range-surface",
+    "gameId": "sniper-elite-resistance",
+    "mapId": "ser-striking-range",
+    "type": "base_map",
+    "path": "private/recon/maps/sniper-elite-resistance/striking-range-guides4gamers-surface.jpg",
+    "width": 2048,
+    "height": 2048,
+    "sourceName": "Guides4Gamers",
+    "sourceUrl": "https://guides4gamers.com/sniper-elite-resistance/maps/striking-range/",
+    "license": "Third-party source map; private draft review use approved by owner",
+    "attribution": "Guides4Gamers",
+    "imported": true,
+    "status": "candidate",
+    "visibility": "private",
+    "notes": "Private imported Striking Range source map assembled from Guides4Gamers map tiles for Recon review. Not approved for public publication or marker-coordinate copying."
+  },
+  {
+    "id": "guides4gamers-ser-vercors-vendetta-surface",
+    "gameId": "sniper-elite-resistance",
+    "mapId": "ser-vercors-vendetta",
+    "type": "base_map",
+    "path": "private/recon/maps/sniper-elite-resistance/vercors-vendetta-guides4gamers-surface.jpg",
+    "width": 2048,
+    "height": 2048,
+    "sourceName": "Guides4Gamers",
+    "sourceUrl": "https://guides4gamers.com/sniper-elite-resistance/maps/vercors-vendetta/",
+    "license": "Third-party source map; private draft review use approved by owner",
+    "attribution": "Guides4Gamers",
+    "imported": true,
+    "status": "candidate",
+    "visibility": "private",
+    "notes": "Private imported Vercors Vendetta source map assembled from Guides4Gamers map tiles for Recon review. Not approved for public publication or marker-coordinate copying."
   },
   {
     "id": "hitmaps-hitman-berlin-level-0",

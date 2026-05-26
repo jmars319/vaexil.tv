@@ -396,6 +396,17 @@
     "notes": "Actual private Guides4Gamers source map for surface review. Interior, bunker, tunnel, or underground detail still requires first-hand Vaexil validation before publication."
   },
   {
+    "id": "ser-lights-camera-achtung-surface",
+    "mapId": "ser-lights-camera-achtung",
+    "label": "Surface",
+    "shortLabel": "Surface",
+    "kind": "surface",
+    "floor": "surface",
+    "assetId": "guides4gamers-ser-lights-camera-achtung-surface",
+    "sortOrder": 10,
+    "notes": "Actual private Guides4Gamers source map for surface review. Interior, bunker, tunnel, or underground detail still requires first-hand Vaexil validation before publication."
+  },
+  {
     "id": "ser-lock-stock-and-barrels-surface",
     "mapId": "ser-lock-stock-and-barrels",
     "label": "Surface",
@@ -407,6 +418,17 @@
     "notes": "Actual private Guides4Gamers source map for surface review. Interior, bunker, tunnel, or underground detail still requires first-hand Vaexil validation before publication."
   },
   {
+    "id": "ser-mud-and-thunder-surface",
+    "mapId": "ser-mud-and-thunder",
+    "label": "Surface",
+    "shortLabel": "Surface",
+    "kind": "surface",
+    "floor": "surface",
+    "assetId": "guides4gamers-ser-mud-and-thunder-surface",
+    "sortOrder": 10,
+    "notes": "Actual private Guides4Gamers source map for surface review. Interior, bunker, tunnel, or underground detail still requires first-hand Vaexil validation before publication."
+  },
+  {
     "id": "ser-sonderzuge-sabotage-surface",
     "mapId": "ser-sonderzuge-sabotage",
     "label": "Surface",
@@ -414,6 +436,28 @@
     "kind": "surface",
     "floor": "surface",
     "assetId": "guides4gamers-ser-sonderzuge-sabotage-surface",
+    "sortOrder": 10,
+    "notes": "Actual private Guides4Gamers source map for surface review. Interior, bunker, tunnel, or underground detail still requires first-hand Vaexil validation before publication."
+  },
+  {
+    "id": "ser-striking-range-surface",
+    "mapId": "ser-striking-range",
+    "label": "Surface",
+    "shortLabel": "Surface",
+    "kind": "surface",
+    "floor": "surface",
+    "assetId": "guides4gamers-ser-striking-range-surface",
+    "sortOrder": 10,
+    "notes": "Actual private Guides4Gamers source map for surface review. Interior, bunker, tunnel, or underground detail still requires first-hand Vaexil validation before publication."
+  },
+  {
+    "id": "ser-vercors-vendetta-surface",
+    "mapId": "ser-vercors-vendetta",
+    "label": "Surface",
+    "shortLabel": "Surface",
+    "kind": "surface",
+    "floor": "surface",
+    "assetId": "guides4gamers-ser-vercors-vendetta-surface",
     "sortOrder": 10,
     "notes": "Actual private Guides4Gamers source map for surface review. Interior, bunker, tunnel, or underground detail still requires first-hand Vaexil validation before publication."
   }

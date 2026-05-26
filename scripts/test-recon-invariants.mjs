@@ -138,11 +138,11 @@ for (const icon of icons) {
 }
 
 assert.ok(
-  sniperEliteMapIds.size >= 22,
+  sniperEliteMapIds.size >= 26,
   "Recon should include the full private SE5 and SE:R map set",
 );
 assert.ok(
-  markerSeeds.length >= 2570,
+  markerSeeds.length >= 3189,
   "Recon should include the full private SE5 and SE:R draft marker import",
 );
 for (const marker of markerSeeds) {

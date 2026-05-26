@@ -31,7 +31,7 @@ Git.
 | Sniper Elite 5 Maps | https://sniperelite5maps.de/ | Interactive Sniper Elite 5 maps and markers | Third-party site | Depends on license | No | Recon must not copy map images, marker coordinates, UI, or guide data. |
 | Sniper Elite 5 Maps GitHub repo | https://github.com/lordfiSh/sniperelite5maps | Code/assets/data | CC BY-NC-SA posture is not suitable for unconstrained Vaexil.tv reuse | Attribution, non-commercial, share-alike if used | No | Non-commercial/share-alike obligations do not fit the independence goal. |
 | Guides4Gamers Sniper Elite 5 | https://guides4gamers.com/sniper-elite-5/maps/campaign-maps/ and DLC map pages | Maps, guide text, marker lists | Owner-approved private review use only; public publication not approved | Record source in manifest/docs | Private only | All eight main-campaign maps plus Wolf Mountain, Landing Force, Conqueror, Rough Landing, and Kraken Awakes are committed as protected admin draft source plates with draft/unverified marker seeds. Guide prose, screenshots, icons, and public UI are not copied. |
-| Guides4Gamers Sniper Elite: Resistance | https://guides4gamers.com/sniper-elite-resistance/maps/campaign-maps/ | Maps, guide text, marker lists | Owner-approved private review use only; public publication not approved | Record source in manifest/docs | Private only | All nine Sniper Elite: Resistance campaign cells are committed as protected admin draft source plates with draft/unverified marker seeds. Guide prose, screenshots, icons, and public UI are not copied. |
+| Guides4Gamers Sniper Elite: Resistance | https://guides4gamers.com/sniper-elite-resistance/maps/campaign-maps/ and DLC map pages | Maps, guide text, marker lists | Owner-approved private review use only; public publication not approved | Record source in manifest/docs | Private only | All nine Sniper Elite: Resistance campaign cells plus Lights, Camera, Achtung!, Vercors Vendetta, Striking Range, and Mud and Thunder are committed as protected admin draft source plates with draft/unverified marker seeds. Guide prose, screenshots, icons, and public UI are not copied. |
 | IO Interactive HITMAN World of Assassination | https://ioi.dk/hitman | Official product/location context | Official source for facts, not reusable assets | Not used for assets | No | Source-packet citation only; no screenshots, art, or UI assets are imported. |
 | Rebellion Sniper Elite 5 | https://shop.rebellion.com/products/sniper-elite-5 | Official product/feature context | Official source for facts, not reusable assets | Not used for assets | No | Source-packet citation only; no screenshots, art, or UI assets are imported. |
 | Rebellion Sniper Elite: Resistance | https://shop.rebellion.com/products/sniper-elite-resistance | Official product/feature context | Official source for facts, not reusable assets | Not used for assets | No | Source-packet citation only; no screenshots, art, or UI assets are imported. |
@@ -44,7 +44,7 @@ Git.
 | HITMAN Dubai Level -1 through Level 5 floor maps | `private/recon/maps/hitman-dubai/` | HITMAPS | Third-party source map; private draft review use approved by owner | Yes, private only |
 | HITMAN Berlin Level -2 through Level 4 floor maps | `private/recon/maps/hitman-berlin/` | HITMAPS | Third-party source map; private draft review use approved by owner | Yes, private only |
 | Sniper Elite 5 main-campaign and DLC surface maps | `private/recon/maps/sniper-elite-5/*-guides4gamers-surface.jpg` | Guides4Gamers | Third-party source map; private draft review use approved by owner | Yes, private only |
-| Sniper Elite: Resistance campaign surface maps | `private/recon/maps/sniper-elite-resistance/*-guides4gamers-surface.jpg` | Guides4Gamers | Third-party source map; private draft review use approved by owner | Yes, private only |
+| Sniper Elite: Resistance campaign and DLC surface maps | `private/recon/maps/sniper-elite-resistance/*-guides4gamers-surface.jpg` | Guides4Gamers | Third-party source map; private draft review use approved by owner | Yes, private only |
 | HITMAN Dubai draft schematic | `private/recon/maps/hitman-dubai-draft.svg` | Vaexil.tv-created neutral draft asset | Vaexil-created draft schematic | No |
 | Sniper Elite 5 The Atlantic Wall draft schematic | `private/recon/maps/se5-atlantic-wall-draft.svg` | Vaexil.tv-created neutral draft asset | Vaexil-created draft schematic | No |
 | Sniper Elite: Resistance Behind Enemy Lines draft schematic | `private/recon/maps/ser-behind-enemy-lines-draft.svg` | Vaexil.tv-created neutral draft asset | Vaexil-created draft schematic | No |
@@ -54,7 +54,7 @@ Git.
 No official game icons, screenshots, publisher map art, third-party guide text,
 or third-party API data were imported. The only third-party marker-coordinate
 imports currently approved are the private Sniper Elite 5 and Sniper Elite:
-Resistance Guides4Gamers campaign draft marker seeds in
+Resistance Guides4Gamers draft marker seeds in
 `src/data/recon/marker-seeds.json`; they are not public content.
 
 ## Owner Decisions Remaining

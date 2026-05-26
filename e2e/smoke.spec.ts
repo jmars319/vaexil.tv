@@ -82,6 +82,10 @@ const privateSniperEliteRoutes = [
   "/recon/sniper-elite-resistance/lock-stock-and-barrels",
   "/recon/sniper-elite-resistance/end-of-the-line",
   "/recon/sniper-elite-resistance/all-or-nothing",
+  "/recon/sniper-elite-resistance/lights-camera-achtung",
+  "/recon/sniper-elite-resistance/vercors-vendetta",
+  "/recon/sniper-elite-resistance/striking-range",
+  "/recon/sniper-elite-resistance/mud-and-thunder",
 ];
 
 for (const route of privateSniperEliteRoutes) {
@@ -235,6 +239,13 @@ test("admin Sniper Elite expansion maps are privately reviewable", async ({ page
   await page.getByRole("checkbox", { name: /Ammunition pickup/ }).check();
   await page.getByPlaceholder("Search markers").fill("ammunition");
   await expect(page.getByRole("button", { name: /Ammunition/ }).first()).toBeVisible();
+
+  await page.goto("/admin/recon/maps/vercors-vendetta", {
+    waitUntil: "domcontentloaded",
+  });
+  await expect(page.getByRole("heading", { name: "Vercors Vendetta capture" })).toBeVisible();
+  await expect(page.getByTestId("recon-map-viewport")).toBeVisible();
+  await expect(page.getByRole("button", { exact: true, name: "DLC2: Waterfalls" })).toBeVisible();
 });
 
 test("contact API rejects invalid payload without leaking internals", async ({ request }) => {
