@@ -172,6 +172,14 @@ test("admin Atlantic Wall markers keep corrected positions and readable icons", 
   const viewport = page.getByTestId("recon-map-viewport");
   await expect(viewport).toBeVisible();
 
+  await expect(page.getByText("Map navigator")).toBeVisible();
+  await expect(page.getByRole("link", { name: "All maps" })).toBeVisible();
+  await expect(page.getByRole("link", { name: "Occupied Residence" })).toBeVisible();
+  await expect(page.getByRole("button", { exact: true, name: "Core" })).toBeVisible();
+  await page.getByRole("button", { exact: true, name: "None" }).click();
+  await expect(page.getByText("No markers match the current filters.")).toBeVisible();
+  await page.getByRole("button", { exact: true, name: "Default" }).click();
+
   await expect(page.getByRole("button", { exact: true, name: "Beach" })).toHaveAttribute(
     "style",
     /left:\s*78\.4%;\s*top:\s*77\.2%;?/,
@@ -192,13 +200,24 @@ test("admin Atlantic Wall markers keep corrected positions and readable icons", 
     page.getByRole("button", { exact: true, name: "Satchel Charge" }).first().locator("img"),
   ).toHaveAttribute("src", "/recon/icons/common/satchel-charge.svg");
 
+  await page.getByRole("button", { exact: true, name: "Tools" }).click();
+  await expect(
+    page.getByRole("button", { exact: true, name: "Crowbar" }).first(),
+  ).toBeVisible();
+  await page.getByRole("button", { exact: true, name: "Core" }).click();
+
   await page.getByPlaceholder("Search markers").fill("medal");
+  const beforeFocus = Number(await viewport.getAttribute("data-scale"));
   await page
     .getByRole("button", {
       exact: true,
       name: "Mission 1 Long Shot Gold Medal Medal-related",
     })
     .click();
+  await expect
+    .poll(async () => Number(await viewport.getAttribute("data-scale")))
+    .toBeGreaterThan(beforeFocus);
+  await expect(page.getByRole("button", { name: "Center marker" })).toBeVisible();
   await expect(page.getByText(/600 m rifle shot toward the northeast/i)).toBeVisible();
   await expect(page.getByRole("heading", { name: "Source cross-check" })).toBeVisible();
   await expect(page.getByText(/Gamer Guides Sniper Elite 5 map index/i)).toBeVisible();

@@ -43,15 +43,19 @@ Add or replace icons through `src/data/recon/icon-manifest.json` and
 1. Sign in to `/admin`.
 2. Open `/admin/recon`.
 3. Choose a draft map.
-4. Choose the correct map view before clicking:
+4. Use the map navigator when moving through a same-game review pass.
+5. Choose the correct map view before clicking:
    - HITMAN maps should use floor views such as `B1`, `1F`, `2F`, `3F`,
      `4F`, `5F`, or `Roof` instead of flattening all markers onto one plate.
    - Sniper Elite maps should separate `surface` from underground, bunker,
      dam, tunnel, or interior review layers when those spaces matter.
-5. Click the map to capture `x` and `y`.
-6. Confirm the normalized coordinates and floor/layer shown under the form.
-7. Add label, category, mode, variant, and notes.
-8. Save the marker as pending review.
+6. Use layer groups and presets to isolate the marker category being checked.
+7. Use marker search or the visible-marker list to recenter existing markers
+   before correcting or comparing nearby positions.
+8. Click the map to capture `x` and `y`.
+9. Confirm the normalized coordinates and floor/layer shown under the form.
+10. Add label, category, mode, variant, and notes.
+11. Save the marker as pending review.
 
 Coordinate rules:
 

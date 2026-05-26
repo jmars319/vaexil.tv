@@ -2,11 +2,13 @@
 
 import { cn } from "@/lib/utils";
 import {
+  Layers,
   LocateFixed,
   Minus,
   Plus,
   RotateCcw,
   Search,
+  Target,
 } from "lucide-react";
 import Image from "next/image";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -59,6 +61,145 @@ type GestureZoomEvent = Event & {
   clientY?: number;
   scale?: number;
 };
+
+type LayerGroupDefinition = {
+  key: string;
+  label: string;
+  categoryKeys: string[];
+};
+
+const layerGroups: LayerGroupDefinition[] = [
+  {
+    key: "navigation",
+    label: "Navigation",
+    categoryKeys: [
+      "entrance",
+      "exit",
+      "starting_location",
+      "exfiltration",
+      "passage",
+      "transition",
+      "shortcut",
+    ],
+  },
+  {
+    key: "objectives",
+    label: "Objectives",
+    categoryKeys: [
+      "main_objective",
+      "optional_objective",
+      "target_spawn",
+      "target_path_point",
+      "suspect_spawn",
+      "suspect_zone",
+      "kill_list_target",
+      "medal_related",
+      "sniper",
+      "officer",
+      "poi",
+    ],
+  },
+  {
+    key: "collectibles",
+    label: "Collectibles",
+    categoryKeys: [
+      "personal_letter",
+      "classified_document",
+      "hidden_item",
+      "stone_eagle",
+      "cardboard_pigeon",
+      "gnome",
+      "propaganda_poster",
+    ],
+  },
+  {
+    key: "tools",
+    label: "Tools",
+    categoryKeys: [
+      "workbench",
+      "rifle_workbench",
+      "smg_workbench",
+      "pistol_workbench",
+      "weapon",
+      "tool",
+      "satchel_charge",
+      "bolt_cutters",
+      "crowbar",
+      "fuse_box",
+      "key",
+      "key_or_code",
+      "poison",
+      "poison_pickup",
+    ],
+  },
+  {
+    key: "systems",
+    label: "Systems",
+    categoryKeys: [
+      "camera_recorder",
+      "security_room",
+      "safe",
+      "supplier",
+      "courier",
+      "lookout",
+      "assassin",
+      "alarm",
+      "alarm_siren",
+      "vehicle",
+    ],
+  },
+  {
+    key: "supplies",
+    label: "Supplies",
+    categoryKeys: [
+      "ammunition",
+      "medical_item",
+      "supply_pouch",
+      "explosives",
+    ],
+  },
+];
+
+const coreLayerKeys = new Set([
+  "entrance",
+  "exit",
+  "starting_location",
+  "exfiltration",
+  "main_objective",
+  "optional_objective",
+  "target_spawn",
+  "kill_list_target",
+  "medal_related",
+  "workbench",
+  "rifle_workbench",
+  "smg_workbench",
+  "pistol_workbench",
+  "passage",
+  "transition",
+]);
+
+const collectibleLayerKeys = new Set([
+  "personal_letter",
+  "classified_document",
+  "hidden_item",
+  "stone_eagle",
+  "cardboard_pigeon",
+  "gnome",
+  "propaganda_poster",
+]);
+
+const toolLayerKeys = new Set([
+  "weapon",
+  "tool",
+  "satchel_charge",
+  "bolt_cutters",
+  "crowbar",
+  "fuse_box",
+  "key",
+  "key_or_code",
+  "poison",
+  "poison_pickup",
+]);
 
 function clamp(value: number, min: number, max: number) {
   return Math.min(max, Math.max(min, value));
@@ -156,6 +297,133 @@ export function ReconMapViewer({
     [categories],
   );
 
+  const markerCountsByCategory = useMemo(() => {
+    const counts = new Map<string, number>();
+
+    for (const marker of markers) {
+      if (marker.hiddenByDefault) {
+        continue;
+      }
+      counts.set(marker.category, (counts.get(marker.category) || 0) + 1);
+    }
+
+    return counts;
+  }, [markers]);
+
+  const availableCategories = useMemo(() => {
+    const withMarkers = categories.filter(
+      (category) => (markerCountsByCategory.get(category.key) || 0) > 0,
+    );
+
+    return withMarkers.length > 0 ? withMarkers : categories;
+  }, [categories, markerCountsByCategory]);
+
+  const defaultVisibleCategoryKeys = useMemo(
+    () =>
+      availableCategories
+        .filter((category) => category.defaultVisible)
+        .map((category) => category.key),
+    [availableCategories],
+  );
+
+  const availableCategoryKeys = useMemo(
+    () => availableCategories.map((category) => category.key),
+    [availableCategories],
+  );
+
+  const layerSections = useMemo(() => {
+    const usedCategoryKeys = new Set<string>();
+    const sections = layerGroups.flatMap((group) => {
+      const groupCategories = group.categoryKeys
+        .map((categoryKey) =>
+          availableCategories.find((category) => category.key === categoryKey),
+        )
+        .filter((category): category is ReconViewerCategory => Boolean(category));
+
+      if (groupCategories.length === 0) {
+        return [];
+      }
+
+      for (const category of groupCategories) {
+        usedCategoryKeys.add(category.key);
+      }
+
+      return [
+        {
+          key: group.key,
+          label: group.label,
+          categories: groupCategories,
+        },
+      ];
+    });
+
+    const remainingCategories = availableCategories.filter(
+      (category) => !usedCategoryKeys.has(category.key),
+    );
+
+    if (remainingCategories.length > 0) {
+      sections.push({
+        key: "other",
+        label: "Other",
+        categories: remainingCategories,
+      });
+    }
+
+    return sections;
+  }, [availableCategories]);
+
+  const setVisibleLayerKeys = useCallback(
+    (keys: Iterable<string>) => {
+      const availableKeys = new Set(availableCategoryKeys);
+      const next = new Set<string>();
+
+      for (const key of keys) {
+        if (availableKeys.has(key)) {
+          next.add(key);
+        }
+      }
+
+      setVisibleCategories(next);
+    },
+    [availableCategoryKeys],
+  );
+
+  const layerPresets = useMemo(
+    () => [
+      {
+        label: "Default",
+        keys: defaultVisibleCategoryKeys,
+      },
+      {
+        label: "Core",
+        keys: availableCategories
+          .filter((category) => coreLayerKeys.has(category.key))
+          .map((category) => category.key),
+      },
+      {
+        label: "Collectibles",
+        keys: availableCategories
+          .filter((category) => collectibleLayerKeys.has(category.key))
+          .map((category) => category.key),
+      },
+      {
+        label: "Tools",
+        keys: availableCategories
+          .filter((category) => toolLayerKeys.has(category.key))
+          .map((category) => category.key),
+      },
+      {
+        label: "All",
+        keys: availableCategoryKeys,
+      },
+      {
+        label: "None",
+        keys: [],
+      },
+    ],
+    [availableCategories, availableCategoryKeys, defaultVisibleCategoryKeys],
+  );
+
   const filteredMarkers = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
 
@@ -179,6 +447,32 @@ export function ReconMapViewer({
 
   const selectedMarker =
     filteredMarkers.find((marker) => marker.id === selectedId) || null;
+
+  const focusMarker = useCallback(
+    (marker: ReconViewerMarker, targetScale?: number) => {
+      setSelectedId(marker.id);
+
+      const viewport = viewportRef.current;
+      if (!viewport) {
+        return;
+      }
+
+      const rect = viewport.getBoundingClientRect();
+      const nextScale = clamp(
+        targetScale ?? Math.max(scaleRef.current, 1.35),
+        minZoom ?? 0.5,
+        maxZoom ?? 3,
+      );
+      const mapX = (marker.x / 100) * width;
+      const mapY = (marker.y / 100) * height;
+
+      syncViewState(nextScale, {
+        x: rect.width / 2 - mapX * nextScale,
+        y: rect.height / 2 - mapY * nextScale,
+      });
+    },
+    [height, maxZoom, minZoom, syncViewState, width],
+  );
 
   const zoomToPoint = useCallback(
     (nextScaleValue: number, point: { x: number; y: number }) => {
@@ -326,7 +620,12 @@ export function ReconMapViewer({
   }
 
   return (
-    <div className={cn("grid gap-4 xl:grid-cols-[260px_minmax(0,1fr)_280px]", className)}>
+    <div
+      className={cn(
+        "grid gap-4 xl:grid-cols-[300px_minmax(0,1fr)_300px]",
+        className,
+      )}
+    >
       <aside className="rounded-2xl border border-white/10 bg-white/[0.035] p-4">
         <label className="relative block">
           <span className="sr-only">Search Recon markers</span>
@@ -343,41 +642,107 @@ export function ReconMapViewer({
         </label>
 
         <div className="mt-5">
-          <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
-            Layers
-          </p>
-          <div className="mt-3 grid gap-2">
-            {categories.map((category) => (
-              <label
-                key={category.key}
-                className="flex cursor-pointer items-start gap-3 rounded-xl border border-white/10 bg-slate-950/40 p-3 text-sm text-slate-300 transition hover:border-cyan-300/30"
+          <div className="flex items-center justify-between gap-3">
+            <p className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+              <Layers className="size-3.5" aria-hidden="true" />
+              Layers
+            </p>
+            <span className="rounded-full border border-white/10 bg-slate-950/60 px-2.5 py-1 text-[11px] font-medium text-slate-400">
+              {visibleCategories.size}/{availableCategories.length}
+            </span>
+          </div>
+
+          <div className="mt-3 grid grid-cols-2 gap-2">
+            {layerPresets.map((preset) => (
+              <button
+                key={preset.label}
+                type="button"
+                onClick={() => setVisibleLayerKeys(preset.keys)}
+                className="inline-flex h-9 items-center justify-center rounded-lg border border-white/10 bg-slate-950/45 px-2 text-xs font-semibold text-slate-300 transition hover:border-cyan-300/40 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200/70"
               >
-                <input
-                  type="checkbox"
-                  checked={visibleCategories.has(category.key)}
-                  onChange={(event) => {
-                    setVisibleCategories((current) => {
-                      const next = new Set(current);
-                      if (event.target.checked) {
-                        next.add(category.key);
-                      } else {
-                        next.delete(category.key);
-                      }
-                      return next;
-                    });
-                  }}
-                  className="mt-1 size-4 accent-cyan-300"
-                />
-                <span>
-                  <span className="block font-medium text-slate-100">
-                    {category.label}
-                  </span>
-                  <span className="mt-1 block text-xs leading-5 text-slate-500">
-                    {category.description}
-                  </span>
-                </span>
-              </label>
+                {preset.label}
+              </button>
             ))}
+          </div>
+
+          <div className="mt-4 max-h-[48vh] overflow-y-auto pr-1">
+            {layerSections.length === 0 ? (
+              <div className="rounded-xl border border-dashed border-white/15 p-4 text-sm text-slate-400">
+                No marker layers are available for this map yet.
+              </div>
+            ) : (
+              <div className="grid gap-4">
+                {layerSections.map((section) => (
+                  <section key={section.key}>
+                    <div className="mb-2 flex items-center justify-between gap-3">
+                      <h3 className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">
+                        {section.label}
+                      </h3>
+                      <span className="text-[11px] text-slate-600">
+                        {section.categories.reduce(
+                          (total, category) =>
+                            total +
+                            (markerCountsByCategory.get(category.key) || 0),
+                          0,
+                        )}
+                      </span>
+                    </div>
+                    <div className="grid gap-2">
+                      {section.categories.map((category) => {
+                        const checked = visibleCategories.has(category.key);
+                        const markerCount =
+                          markerCountsByCategory.get(category.key) || 0;
+
+                        return (
+                          <label
+                            key={category.key}
+                            className={cn(
+                              "flex cursor-pointer items-start gap-3 rounded-xl border p-3 text-sm transition",
+                              checked
+                                ? "border-cyan-300/25 bg-cyan-300/[0.06] text-slate-200"
+                                : "border-white/10 bg-slate-950/40 text-slate-400 hover:border-cyan-300/30",
+                            )}
+                          >
+                            <input
+                              type="checkbox"
+                              checked={checked}
+                              onChange={(event) => {
+                                setVisibleCategories((current) => {
+                                  const next = new Set(current);
+                                  if (event.target.checked) {
+                                    next.add(category.key);
+                                  } else {
+                                    next.delete(category.key);
+                                  }
+                                  return next;
+                                });
+                              }}
+                              className="mt-1 size-4 shrink-0 accent-cyan-300"
+                            />
+                            <span className="min-w-0 flex-1">
+                              <span className="flex items-start justify-between gap-3">
+                                <span className="min-w-0 break-words font-medium text-slate-100">
+                                  {category.label}
+                                </span>
+                                <span
+                                  className="shrink-0 rounded-full border border-white/10 bg-slate-950/60 px-2 py-0.5 text-[11px] text-slate-400"
+                                  aria-hidden="true"
+                                >
+                                  {markerCount}
+                                </span>
+                              </span>
+                              <span className="mt-1 block text-xs leading-5 text-slate-500">
+                                {category.description}
+                              </span>
+                            </span>
+                          </label>
+                        );
+                      })}
+                    </div>
+                  </section>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </aside>
@@ -387,7 +752,8 @@ export function ReconMapViewer({
           <div>
             <h2 className="text-sm font-semibold text-white">{title}</h2>
             <p className="mt-1 text-xs text-slate-500">
-              {markers.length} {markerSummaryLabel} / {filteredMarkers.length} visible
+              {markers.length} {markerSummaryLabel} / {filteredMarkers.length} visible /{" "}
+              {Math.round(scale * 100)}% zoom
             </p>
           </div>
           <div className="flex items-center gap-2">
@@ -512,7 +878,7 @@ export function ReconMapViewer({
                 key={marker.id}
                 type="button"
                 data-marker-button
-                onClick={() => setSelectedId(marker.id)}
+                onClick={() => focusMarker(marker)}
                 className={cn(
                   "absolute flex size-9 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-cyan-100/80 bg-slate-950/90 text-xs font-semibold text-cyan-100 shadow-[0_0_18px_rgba(34,211,238,0.35)] transition hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-100",
                   selectedId === marker.id && "scale-110 border-white bg-cyan-300 text-slate-950",
@@ -578,6 +944,14 @@ export function ReconMapViewer({
               {formatCoordinate(selectedMarker.y)}
               {selectedMarker.floor ? ` / ${selectedMarker.floor}` : ""}
             </p>
+            <button
+              type="button"
+              onClick={() => focusMarker(selectedMarker, 1.65)}
+              className="mt-3 inline-flex h-10 w-full items-center justify-center gap-2 rounded-xl border border-cyan-300/25 bg-cyan-300/[0.08] px-3 text-sm font-semibold text-cyan-100 transition hover:border-cyan-200/60 hover:bg-cyan-300/[0.13] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200/70"
+            >
+              <Target className="size-4" aria-hidden="true" />
+              Center marker
+            </button>
           </div>
         ) : (
           <div className="mt-4 rounded-xl border border-dashed border-white/15 p-4 text-sm leading-6 text-slate-400">
@@ -600,10 +974,20 @@ export function ReconMapViewer({
                 <button
                   key={marker.id}
                   type="button"
-                  onClick={() => setSelectedId(marker.id)}
+                  onClick={() => focusMarker(marker)}
                   className="rounded-xl border border-white/10 bg-slate-950/40 px-3 py-2 text-left text-sm text-slate-300 transition hover:border-cyan-300/40 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200/70"
                 >
-                  <span className="block font-medium">{marker.label}</span>
+                  <span className="flex items-start justify-between gap-3">
+                    <span className="min-w-0 break-words font-medium">
+                      {marker.label}
+                    </span>
+                    <span
+                      className="shrink-0 text-[11px] text-slate-600"
+                      aria-hidden="true"
+                    >
+                      {formatCoordinate(marker.x)}, {formatCoordinate(marker.y)}
+                    </span>
+                  </span>
                   <span className="mt-1 block text-xs text-slate-500">
                     {categoryByKey.get(marker.category)?.label ||
                       marker.category}

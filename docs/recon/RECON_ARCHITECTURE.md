@@ -131,6 +131,24 @@ Draft marker seeds may also populate the admin viewer when a private import is
 explicitly approved. They stay in `recon_markers` with `status = draft` and do
 not publish to public map pages.
 
+The admin viewer includes navigation aids inspired by established interactive
+map patterns without copying their UI or data:
+
+- the admin map page has a same-game map navigator with previous/next controls
+  and a horizontal map rail
+- the map viewer keeps floor/surface/interior view tabs outside the layer
+  system so HITMAN floors and Sniper Elite underground/interior views stay
+  explicit
+- layer controls are grouped into navigation, objectives, collectibles, tools,
+  systems, supplies, and other categories with per-layer marker counts
+- presets switch quickly between default, core, collectible, tool, all, and no
+  layers
+- marker search filters the active layers, while marker-list or map-marker
+  selection recenters the map on the selected point
+
+These controls are intended to make review faster and clearer; they do not
+change marker verification or publication rules.
+
 1. Open `/admin/recon`.
 2. Use the game-grouped index to choose the correct title and check its source
    cross-check status.
