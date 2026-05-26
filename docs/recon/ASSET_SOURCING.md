@@ -31,7 +31,7 @@ Git.
 | Sniper Elite 5 Maps | https://sniperelite5maps.de/ | Interactive Sniper Elite 5 maps and markers | Third-party site | Depends on license | No | Recon must not copy map images, marker coordinates, UI, or guide data. |
 | Sniper Elite 5 Maps GitHub repo | https://github.com/lordfiSh/sniperelite5maps | Code/assets/data | CC BY-NC-SA posture is not suitable for unconstrained Vaexil.tv reuse | Attribution, non-commercial, share-alike if used | No | Non-commercial/share-alike obligations do not fit the independence goal. |
 | Guides4Gamers Sniper Elite 5 | https://guides4gamers.com/sniper-elite-5/maps/campaign-maps/ | Maps, guide text, marker lists | Owner-approved private review use only; public publication not approved | Record source in manifest/docs | Private only | The Atlantic Wall surface map and Atlantic Wall marker coordinates/labels are committed only as protected admin draft data. Guide prose, screenshots, icons, public UI, and non-approved mission marker data are not copied. |
-| Guides4Gamers Sniper Elite: Resistance | https://guides4gamers.com/sniper-elite-resistance/maps/campaign-maps/ | Maps, guide text, marker lists | Owner-approved private review use only; public publication not approved | Record source in manifest/docs | Private only | Behind Enemy Lines surface map is committed only as a protected admin source map. No marker lists, coordinates, icons, or guide prose are copied. |
+| Guides4Gamers Sniper Elite: Resistance | https://guides4gamers.com/sniper-elite-resistance/maps/campaign-maps/ | Maps, guide text, marker lists | Owner-approved private review use only; public publication not approved | Record source in manifest/docs | Private only | Behind Enemy Lines surface map and selected Behind Enemy Lines marker coordinates/labels are committed only as protected admin draft data. Guide prose, screenshots, icons, public UI, and non-approved mission marker data are not copied. |
 | IO Interactive HITMAN World of Assassination | https://ioi.dk/hitman | Official product/location context | Official source for facts, not reusable assets | Not used for assets | No | Source-packet citation only; no screenshots, art, or UI assets are imported. |
 | Rebellion Sniper Elite 5 | https://shop.rebellion.com/products/sniper-elite-5 | Official product/feature context | Official source for facts, not reusable assets | Not used for assets | No | Source-packet citation only; no screenshots, art, or UI assets are imported. |
 | Rebellion Sniper Elite: Resistance | https://shop.rebellion.com/products/sniper-elite-resistance | Official product/feature context | Official source for facts, not reusable assets | Not used for assets | No | Source-packet citation only; no screenshots, art, or UI assets are imported. |
@@ -53,8 +53,9 @@ Git.
 
 No official game icons, screenshots, publisher map art, third-party guide text,
 or third-party API data were imported. The only third-party marker-coordinate
-import currently approved is the private Atlantic Wall Guides4Gamers draft marker
-seed in `src/data/recon/marker-seeds.json`; it is not public content.
+imports currently approved are the private Atlantic Wall and Behind Enemy Lines
+Guides4Gamers draft marker seeds in `src/data/recon/marker-seeds.json`; they
+are not public content.
 
 ## Owner Decisions Remaining
 

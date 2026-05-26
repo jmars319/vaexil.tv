@@ -253,7 +253,7 @@
       {
         "label": "Guides4Gamers - Sniper Elite: Resistance Mission Maps",
         "url": "https://guides4gamers.com/sniper-elite-resistance/maps/campaign-maps/",
-        "note": "Private source-map imagery is used for admin-only surface review; do not copy marker coordinates, marker text, guide prose, or public UI."
+        "note": "Private source-map imagery plus selected Behind Enemy Lines marker coordinates/labels are used for admin-only draft review with owner approval; guide prose, screenshots, icons, public UI, and non-approved mission marker data remain excluded."
       },
       {
         "label": "TheReviewGeek - Behind Enemy Lines walkthrough",
@@ -261,9 +261,14 @@
         "note": "Cross-check only for broad mission flow: observation tower, dam bridge, pipe panels, house/workbench area, flak batteries, zipline, and exfil vehicle."
       },
       {
-        "label": "Push Square - Sniper Elite Resistance guide",
-        "url": "https://www.pushsquare.com/guides/sniper-elite-resistance-guide-100percent-collectibles-walkthrough",
-        "note": "Cross-check only for mission list and collectible category coverage; do not copy coordinates, screenshots, or prose."
+        "label": "Push Square - Behind Enemy Lines collectibles",
+        "url": "https://www.pushsquare.com/guides/sniper-elite-resistance-behind-enemy-lines-all-collectibles-workbenches",
+        "note": "Cross-check only for mission list and collectible/workbench category coverage; do not copy coordinates, screenshots, or prose."
+      },
+      {
+        "label": "PowerPyx - Sniper Elite Resistance Mission 1 collectibles",
+        "url": "https://www.powerpyx.com/sniper-elite-resistance-mission-1-all-collectibles-locations/",
+        "note": "Cross-check only for the single Behind Enemy Lines workbench/collectible count; do not copy screenshots, coordinates, or prose."
       },
       {
         "label": "First-hand Vaexil gameplay review",
@@ -274,9 +279,9 @@
     "verifiedNamedAreas": [],
     "approximateAreas": [
       "Observation-tower insertion and first descent route",
-      "Dam bridge, lower pipe-panel objective, and two anti-air gun objective areas",
+      "Dam bridge, lower pipe-panel objective, generator-room alternative, and two flak battery objective areas",
       "House, workbench, bunker, and upper-route review area",
-      "Zipline, propaganda-poster review path, and route-return options",
+      "Zipline, boarded passage, hatch, satchel, tool, and route-return options",
       "Dam-end exfiltration vehicle path"
     ],
     "poiCandidates": [
@@ -287,10 +292,22 @@
         "notes": "Draft anchor for first-hand coordinate capture."
       },
       {
-        "label": "Propaganda poster candidate",
-        "category": "propaganda_poster",
-        "confidence": "approximate",
-        "notes": "Use only after gameplay validation; do not copy guide coordinates."
+        "label": "Dam pressure and flak objectives",
+        "category": "main_objective",
+        "confidence": "unverified",
+        "notes": "Draft anchors are corrected from the Guides4Gamers top-left campaign cell; verify exact pipe, generator, and flak placements in-game."
+      },
+      {
+        "label": "Pistol workbench",
+        "category": "workbench",
+        "confidence": "unverified",
+        "notes": "Push Square and PowerPyx both cross-check this as the single Mission 1 collectible/workbench."
+      },
+      {
+        "label": "Tools and satchel pickups",
+        "category": "tool",
+        "confidence": "unverified",
+        "notes": "Use the draft markers to review crowbar, bolt cutter, and satchel utility around the dam and house routes."
       },
       {
         "label": "Extraction review",
@@ -302,12 +319,14 @@
     "uncertaintyNotes": [
       "Sniper Elite: Resistance support, Guides4Gamers, and guide sources are current as of 2026-05-25, but markers remain draft-only.",
       "Behind Enemy Lines should keep a dam/interior view for pipe panels, bunker routes, and workbench-access review instead of flattening every marker onto the surface plate.",
-      "Guides4Gamers map imagery is imported as a private admin-only surface source asset; marker lists, marker coordinates, and guide prose are still excluded.",
+      "Guides4Gamers map imagery and selected Behind Enemy Lines marker coordinates are imported as private admin-only draft review data. The imported source coordinates are corrected from the campaign map's top-left cell rather than the full 3x3 campaign composite.",
       "Exact mission geometry and collectible placement require first-hand capture."
     ],
     "avoidCopying": [
       "Rebellion screenshots, marketing images, and in-game map art.",
       "Push Square screenshots, guide prose, and marker coordinates.",
+      "PowerPyx screenshots, guide prose, and marker coordinates.",
+      "Guides4Gamers screenshots, guide prose, icons, public UI, and non-approved mission marker data.",
       "MapMaster or other third-party interactive map assets and marker data."
     ]
   }

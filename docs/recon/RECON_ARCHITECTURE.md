@@ -93,8 +93,11 @@ Private source maps from HITMAPS or Guides4Gamers may be committed only under
 not public assets. Do not use them to copy marker coordinates, marker labels,
 guide prose, checklist data, icons, UI, or API nodes unless the source packet and
 asset-sourcing notes record a specific owner-approved private draft import. The
-Atlantic Wall Guides4Gamers marker seed is currently the only approved private
-third-party marker-coordinate import, and it remains `draft`/`unverified`.
+Atlantic Wall and Behind Enemy Lines Guides4Gamers marker seeds are the only
+approved private third-party marker-coordinate imports, and they remain
+`draft`/`unverified`. Behind Enemy Lines uses the Guides4Gamers campaign map's
+top-left mission cell transform rather than the full 3x3 campaign composite
+coordinates.
 
 Reference images from HITMAPS, Guides4Gamers, publisher screenshots, or other
 guide sites may also be used temporarily as draw-under material while authoring a

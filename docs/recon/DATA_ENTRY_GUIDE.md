@@ -68,6 +68,12 @@ admin coordinate capture and map review only. They are not public map plates and
 they do not make third-party marker coordinates, labels, guide prose, checklist
 data, UI, API nodes, or icons reusable.
 
+Source-derived marker seeds may be committed only when `docs/recon/ASSET_SOURCING.md`
+and `src/data/recon/source-packets.json` record a specific owner-approved
+private draft import. Keep those markers `draft`/`unverified`, record the
+coordinate transform in tags or notes, and cross-check obvious placement drift
+with an overlay before using them in admin review.
+
 Guides4Gamers, HITMAPS, publisher screenshots, and other map images may still be
 opened or briefly stored in scratch space as draw-under references. Scratch
 references that are not recorded in the asset manifest must not be committed,

@@ -148,6 +148,41 @@ test("admin Atlantic Wall markers keep corrected positions and readable icons", 
   await expect(page.getByText(/600 m rifle shot toward the northeast/i)).toBeVisible();
 });
 
+test("admin Behind Enemy Lines markers keep corrected campaign-cell positions", async ({ page }) => {
+  await loginAdmin(page);
+
+  await page.goto("/admin/recon/maps/behind-enemy-lines", {
+    waitUntil: "domcontentloaded",
+  });
+
+  const viewport = page.getByTestId("recon-map-viewport");
+  await expect(viewport).toBeVisible();
+
+  await expect(page.getByRole("button", { exact: true, name: "Behind Enemy Lines" })).toHaveAttribute(
+    "style",
+    /left:\s*32\.8857%;\s*top:\s*28\.1433%;?/,
+  );
+
+  await expect(
+    page.getByRole("button", { exact: true, name: "Bolt Cutters" }).first().locator("img"),
+  ).toHaveAttribute("src", "/recon/icons/common/bolt-cutters.svg");
+  await expect(
+    page.getByRole("button", { exact: true, name: "Crowbar" }).first().locator("img"),
+  ).toHaveAttribute("src", "/recon/icons/common/crowbar.svg");
+  await expect(
+    page.getByRole("button", { exact: true, name: "Satchel Charge" }).first().locator("img"),
+  ).toHaveAttribute("src", "/recon/icons/common/satchel-charge.svg");
+
+  await page.getByPlaceholder("Search markers").fill("workbench");
+  await page
+    .getByRole("button", {
+      exact: true,
+      name: "Pistol Workbench Workbench",
+    })
+    .click();
+  await expect(page.getByText(/single Behind Enemy Lines collectible\/workbench/i)).toBeVisible();
+});
+
 test("contact API rejects invalid payload without leaking internals", async ({ request }) => {
   const response = await request.post("/api/contact", { data: {} });
   expect(response.status()).toBe(400);

@@ -152,7 +152,7 @@ for (const icon of icons) {
   assert.match(icon.path, /^\/recon\/icons\//, `${icon.key} icon should resolve from public Recon icons`);
 }
 
-assert.ok(markerSeeds.length >= 79, "Atlantic Wall should include the first draft marker import");
+assert.ok(markerSeeds.length >= 103, "Recon should include Atlantic Wall and Behind Enemy Lines draft marker imports");
 for (const marker of markerSeeds) {
   const map = mapsById.get(marker.mapId);
   assert.ok(map, `${marker.id} should point to a known map`);
@@ -204,6 +204,67 @@ assert.ok(longShot, "Atlantic Wall should keep the long-shot medal marker");
 assert.match(longShot.description, /600 m/i, "Long-shot medal marker should explain the required distance");
 assert.match(longShot.description, /northeast/i, "Long-shot medal marker should explain the firing direction");
 assert.match(longShot.description, /radar/i, "Long-shot medal marker should explain the target area");
+
+const behindEnemyLinesMarkers = markerSeeds.filter((marker) => marker.mapId === "ser-behind-enemy-lines");
+const behindEnemyLinesMarkerBySourceId = new Map(
+  behindEnemyLinesMarkers.map((marker) => [marker.sourceMarkerId, marker]),
+);
+assert.equal(
+  behindEnemyLinesMarkers.length,
+  24,
+  "Behind Enemy Lines should include the first corrected private marker import",
+);
+assert.equal(
+  behindEnemyLinesMarkerBySourceId.has("68718"),
+  false,
+  "Behind Enemy Lines should not import the gnome marker from another campaign cell",
+);
+for (const marker of behindEnemyLinesMarkers) {
+  assert.ok(
+    marker.tags.includes("campaign-cell-scale-corrected"),
+    `${marker.id} should record the corrected campaign-cell transform`,
+  );
+  assert.ok(
+    marker.x >= 30 && marker.x <= 82 && marker.y >= 23 && marker.y <= 70,
+    `${marker.id} should land on the Behind Enemy Lines map plate, not title/water margins`,
+  );
+}
+
+const expectedBehindEnemyLinesIcons = new Map([
+  ["satchel_charge", "satchel-charge"],
+  ["bolt_cutters", "bolt-cutters"],
+  ["crowbar", "crowbar"],
+  ["workbench", "workbench"],
+  ["main_objective", "objective"],
+]);
+
+for (const [category, expectedIcon] of expectedBehindEnemyLinesIcons) {
+  const categoryMarkers = behindEnemyLinesMarkers.filter((marker) => marker.category === category);
+  assert.ok(categoryMarkers.length > 0, `Behind Enemy Lines should include ${category} draft markers`);
+  for (const marker of categoryMarkers) {
+    assert.equal(marker.iconKey, expectedIcon, `${marker.id} should use the ${expectedIcon} icon`);
+  }
+}
+
+assert.equal(
+  behindEnemyLinesMarkerBySourceId.get("68130")?.x,
+  32.8857,
+  "Behind Enemy Lines exfil should be anchored to the west dam-end road",
+);
+assert.equal(
+  behindEnemyLinesMarkerBySourceId.get("68130")?.y,
+  28.1433,
+  "Behind Enemy Lines exfil should not drift into the lower water/title margin",
+);
+assert.ok(
+  (behindEnemyLinesMarkerBySourceId.get("68116")?.x ?? 0) > 80,
+  "Behind Enemy Lines start should remain near the observation-tower point",
+);
+assert.match(
+  behindEnemyLinesMarkerBySourceId.get("68138")?.description || "",
+  /Push Square and PowerPyx/i,
+  "Behind Enemy Lines workbench marker should record the cross-source collectible check",
+);
 
 for (const packet of sourcePackets) {
   assert.ok(requiredDraftMapIds.has(packet.mapId), `${packet.mapId} source packet should be tied to a tracked draft target`);
