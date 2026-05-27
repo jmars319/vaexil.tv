@@ -13,7 +13,7 @@ const args = new Set(process.argv.slice(2));
 const write = args.has("--write");
 const verify = args.has("--verify");
 const force = args.has("--force");
-const prefix = "private/recon/";
+const localPrefix = "private/recon/";
 const repoRoot = process.cwd();
 
 function parseEnvLine(line) {
@@ -96,10 +96,18 @@ function requiredEnv(name) {
   return value;
 }
 
+function normalizePrefix(prefix) {
+  const trimmed = prefix.trim().replace(/^\/+|\/+$/g, "");
+  return trimmed === "" ? "" : `${trimmed}/`;
+}
+
 await loadEnvFile(join(repoRoot, ".env.local"));
 await loadEnvFile(join(homedir(), ".config", "jamarq", "cloudflare.env"));
 
-const bucket = requiredEnv("R2_BUCKET");
+const bucket = process.env.R2_PRIVATE_BUCKET || requiredEnv("R2_BUCKET");
+const r2KeyPrefix = normalizePrefix(
+  process.env.R2_RECON_KEY_PREFIX || (process.env.R2_PRIVATE_BUCKET ? "recon/" : ""),
+);
 const endpoint =
   process.env.R2_ENDPOINT ||
   `https://${requiredEnv("CLOUDFLARE_ACCOUNT_ID")}.r2.cloudflarestorage.com`;
@@ -125,9 +133,10 @@ const summary = {
 
 for (const file of files) {
   const key = relative(repoRoot, file).split(sep).join("/");
-  if (!key.startsWith(prefix)) {
+  if (!key.startsWith(localPrefix)) {
     continue;
   }
+  const r2Key = `${r2KeyPrefix}${key}`;
 
   summary.scanned += 1;
   const fileStat = await stat(file);
@@ -137,7 +146,7 @@ for (const file of files) {
     existing = await client.send(
       new HeadObjectCommand({
         Bucket: bucket,
-        Key: key,
+        Key: r2Key,
       }),
     );
   } catch (error) {
@@ -160,7 +169,7 @@ for (const file of files) {
     await client.send(
       new PutObjectCommand({
         Bucket: bucket,
-        Key: key,
+        Key: r2Key,
         Body: createReadStream(file),
         ContentType: contentTypeForKey(key),
       }),
@@ -172,7 +181,7 @@ for (const file of files) {
     const read = await client.send(
       new GetObjectCommand({
         Bucket: bucket,
-        Key: key,
+        Key: r2Key,
         Range: "bytes=0-15",
       }),
     );
@@ -188,6 +197,7 @@ console.log(
   [
     `Recon R2 asset upload ${write ? "completed" : "dry run completed"}.`,
     `Bucket: ${bucket}`,
+    `R2 key prefix: ${r2KeyPrefix || "(none)"}`,
     `Scanned: ${summary.scanned}`,
     `Uploaded: ${summary.uploaded}`,
     `Skipped unchanged: ${summary.skipped}`,

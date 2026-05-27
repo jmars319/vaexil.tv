@@ -21,7 +21,8 @@
     "dev:restart": "bash scripts/dev-restart.sh",
     "dev:status": "bash scripts/dev-status.sh",
     "db:seed": "node scripts/seed.mjs",
-    "recon:upload-assets": "node scripts/upload-recon-assets-to-r2.mjs"
+    "recon:upload-assets": "node scripts/upload-recon-assets-to-r2.mjs",
+    "cdn:purge": "node scripts/purge-cdn-cache.mjs"
   },
   "dependencies": {
     "@aws-sdk/client-s3": "^3.1054.0",

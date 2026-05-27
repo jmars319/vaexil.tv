@@ -144,11 +144,14 @@ guide sites may also be used temporarily as draw-under material while authoring 
 Vaexil plate. Temporary references that are not recorded in the asset manifest
 must remain outside Git.
 
-Draft assets belong outside `public/`, currently under `private/recon/` locally
-and the matching `private/recon/` object prefix in Cloudflare R2. The admin
-asset route is authenticated and no-store; it reads from R2 when
-`RECON_ASSET_STORE=r2` and falls back to local files when unset. Before a map
-becomes public, create an approved public-ready asset under the reserved
+Draft assets belong outside `public/`, currently under `private/recon/` locally.
+In Cloudflare R2, the standard target is the private bucket
+`vaexil-tv-media-private` with `R2_RECON_KEY_PREFIX=recon/`, so the effective
+object keys are `recon/private/recon/...`. The legacy `vaexil-recon-assets`
+bucket remains a read fallback until the standardized bucket is manually
+verified. The admin asset route is authenticated and no-store; it reads from R2
+when `RECON_ASSET_STORE=r2` and falls back to local files in development. Before
+a map becomes public, create an approved public-ready asset under the reserved
 `public/recon/` prefix, update the asset record to `visibility = public` and
 `status = approved`, then publish the map.
 

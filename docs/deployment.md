@@ -20,10 +20,15 @@ LIBSQL_URL="libsql://..."
 LIBSQL_AUTH_TOKEN="..."
 RECON_ASSET_STORE="r2"
 CLOUDFLARE_ACCOUNT_ID="..."
-R2_BUCKET="vaexil-recon-assets"
 R2_ENDPOINT="https://<account-id>.r2.cloudflarestorage.com"
 R2_ACCESS_KEY_ID="..."
 R2_SECRET_ACCESS_KEY="..."
+R2_PUBLIC_BUCKET="vaexil-tv-media-public"
+R2_PRIVATE_BUCKET="vaexil-tv-media-private"
+R2_PUBLIC_BASE_URL="https://cdn.vaexil.tv"
+R2_RECON_KEY_PREFIX="recon/"
+# Legacy fallback only during manual verification:
+R2_BUCKET="vaexil-recon-assets"
 SENDGRID_API_KEY=""
 SENDGRID_TO_EMAIL="vaexiltv@gmail.com"
 SENDGRID_FROM_EMAIL=""
@@ -44,9 +49,15 @@ configured. Add `SENDGRID_API_KEY`, `SENDGRID_TO_EMAIL`, and a verified
 `SENDGRID_FROM_EMAIL` before relying on email delivery from production.
 
 Recon draft assets should use `RECON_ASSET_STORE=r2` in production so protected
-admin previews read from Cloudflare R2. Keep broad Cloudflare API tokens
-local-only; Vercel needs only the R2 S3-compatible key pair and bucket metadata
-shown above.
+admin previews read from Cloudflare R2. The standard Vaexil target is
+`vaexil-tv-media-private` with keys under `recon/`; old `vaexil-recon-assets`
+objects remain as fallback until the standardized bucket is manually verified.
+Keep broad Cloudflare API tokens local-only; Vercel needs only the R2
+S3-compatible key pair and bucket metadata shown above.
+
+Use `npm run cdn:purge -- https://cdn.vaexil.tv/path/to/file` only for exact
+public CDN URL replacement. Protected Recon assets are served through the admin
+route and should not expose private object keys directly.
 
 ## Domain Setup
 

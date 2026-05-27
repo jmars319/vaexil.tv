@@ -78,19 +78,68 @@ function getR2Client() {
   return r2Client;
 }
 
-async function readFromR2(path: string): Promise<ReconAssetRead> {
-  const bucket = process.env.R2_BUCKET;
+function normalizePrefix(prefix: string) {
+  const trimmed = prefix.trim().replace(/^\/+|\/+$/g, "");
+  return trimmed === "" ? "" : `${trimmed}/`;
+}
 
-  if (!bucket) {
-    throw new Error("R2_BUCKET is required for R2 asset storage.");
+function reconR2Key(path: string) {
+  const defaultPrefix = process.env.R2_PRIVATE_BUCKET ? "recon/" : "";
+  const prefix = normalizePrefix(process.env.R2_RECON_KEY_PREFIX ?? defaultPrefix);
+  return `${prefix}${path}`;
+}
+
+function reconR2ReadCandidates(path: string) {
+  const primaryBucket = process.env.R2_PRIVATE_BUCKET || process.env.R2_BUCKET;
+  if (!primaryBucket) {
+    throw new Error("R2_PRIVATE_BUCKET is required for R2 asset storage.");
   }
 
-  const result = await getR2Client().send(
-    new GetObjectCommand({
-      Bucket: bucket,
-      Key: path,
-    }),
+  const candidates = [
+    { bucket: primaryBucket, key: reconR2Key(path) },
+    { bucket: primaryBucket, key: path },
+  ];
+
+  if (process.env.R2_BUCKET && process.env.R2_BUCKET !== primaryBucket) {
+    candidates.push({ bucket: process.env.R2_BUCKET, key: path });
+  }
+
+  return candidates.filter(
+    (candidate, index, all) =>
+      all.findIndex(
+        (other) => other.bucket === candidate.bucket && other.key === candidate.key,
+      ) === index,
   );
+}
+
+async function readFromR2(path: string): Promise<ReconAssetRead> {
+  let result = null;
+  let lastError: unknown = null;
+
+  for (const candidate of reconR2ReadCandidates(path)) {
+    try {
+      result = await getR2Client().send(
+        new GetObjectCommand({
+          Bucket: candidate.bucket,
+          Key: candidate.key,
+        }),
+      );
+      break;
+    } catch (error) {
+      lastError = error;
+      const status = (error as { $metadata?: { httpStatusCode?: number } })
+        .$metadata?.httpStatusCode;
+      if (status !== 404 && (error as { name?: string }).name !== "NoSuchKey") {
+        throw error;
+      }
+    }
+  }
+
+  if (!result) {
+    throw lastError instanceof Error
+      ? lastError
+      : new Error("R2 asset object could not be read.");
+  }
 
   if (!result.Body) {
     throw new Error("R2 asset object did not include a response body.");

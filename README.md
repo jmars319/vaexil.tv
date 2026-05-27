@@ -110,10 +110,14 @@ LIBSQL_URL="file:.data/vaexil.db"
 LIBSQL_AUTH_TOKEN=""
 RECON_ASSET_STORE="local"
 CLOUDFLARE_ACCOUNT_ID=""
-R2_BUCKET=""
 R2_ENDPOINT=""
 R2_ACCESS_KEY_ID=""
 R2_SECRET_ACCESS_KEY=""
+R2_PUBLIC_BUCKET="vaexil-tv-media-public"
+R2_PRIVATE_BUCKET="vaexil-tv-media-private"
+R2_PUBLIC_BASE_URL="https://cdn.vaexil.tv"
+R2_RECON_KEY_PREFIX="recon/"
+R2_BUCKET=""
 SENDGRID_API_KEY=""
 SENDGRID_TO_EMAIL="vaexiltv@gmail.com"
 SENDGRID_FROM_EMAIL=""
@@ -124,7 +128,7 @@ NEXT_PUBLIC_DISCORD_URL=""
 NEXT_PUBLIC_GITHUB_URL=""
 ```
 
-For production, set `LIBSQL_URL` and `LIBSQL_AUTH_TOKEN` to a hosted libSQL/Turso database. Set `RECON_ASSET_STORE=r2` plus the R2 variables when protected Recon draft assets should read from Cloudflare R2. Do not use the local file database on Vercel for persistent production data. Contact form submissions are recorded even if SendGrid is not configured; set `SENDGRID_API_KEY`, `SENDGRID_TO_EMAIL`, and a verified `SENDGRID_FROM_EMAIL` when email delivery should go live. `ADMIN_PASSWORD` is the bootstrap/fallback password; after signing in, the admin UI can replace it with a database-stored password hash.
+For production, set `LIBSQL_URL` and `LIBSQL_AUTH_TOKEN` to a hosted libSQL/Turso database. Set `RECON_ASSET_STORE=r2` plus the R2 variables when protected Recon draft assets should read from Cloudflare R2. New Vaexil protected assets should use `R2_PRIVATE_BUCKET=vaexil-tv-media-private` with `R2_RECON_KEY_PREFIX=recon/`; the old `R2_BUCKET=vaexil-recon-assets` value remains a fallback only until the standardized bucket is manually verified. Do not use the local file database on Vercel for persistent production data. Contact form submissions are recorded even if SendGrid is not configured; set `SENDGRID_API_KEY`, `SENDGRID_TO_EMAIL`, and a verified `SENDGRID_FROM_EMAIL` when email delivery should go live. `ADMIN_PASSWORD` is the bootstrap/fallback password; after signing in, the admin UI can replace it with a database-stored password hash.
 
 ## Data Workflow
 
