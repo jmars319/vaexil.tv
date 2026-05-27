@@ -65,6 +65,8 @@ Use `/admin/recon/maps/[mapSlug]/preview` or the `Public preview` button on the
 capture page to check the simplified visitor-facing presentation before a map is
 published. The preview is admin-only: it may load private base maps through the
 protected asset route, but it filters marker media the same way public pages do.
+Source packets and cross-check notes stay out of this public-style view; add
+short marker-detail records when a map needs visitor-facing how-to guidance.
 
 Coordinate rules:
 

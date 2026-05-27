@@ -1,16 +1,12 @@
+import { ReconHowToGuides } from "@/components/recon-how-to-guides";
 import { ReconPublicMapPreview } from "@/components/recon-public-map-preview";
 import type { ReconViewerMarker } from "@/components/recon-map-viewer";
-import { ReconSourceNotes } from "@/components/recon-source-notes";
 import { Section, SectionHeading, StatusBadge } from "@/components/ui";
 import iconManifest from "@/data/recon/icon-manifest.json";
 import { getReconCategoriesForGame } from "@/data/recon/category-registry";
 import { getReconMapViews } from "@/data/recon/map-views";
 import { isAdminAuthenticated } from "@/lib/admin";
 import { listReconMarkerDetails } from "@/lib/recon-marker-details";
-import {
-  getReconSourceCrossCheck,
-  getReconSourcePacket,
-} from "@/lib/recon-review-metadata";
 import {
   buildReconViewerMarkers,
   collectReconMarkerDetailAssetIds,
@@ -68,13 +64,12 @@ export default async function ReconMapPublicPreviewPage({
   }
 
   const mapViewDefinitions = getReconMapViews(map.id);
-  const [markers, sourcePacket, sourceCrossCheck, markerDetails] =
+  const [markers, markerDetails] =
     await Promise.all([
       listAdminReconMarkers(map.id),
-      getReconSourcePacket(map.id),
-      getReconSourceCrossCheck(map.id),
       listReconMarkerDetails(map.id),
     ]);
+  const categories = getReconCategoriesForGame(map.gameId);
   const detailAssetIds = collectReconMarkerDetailAssetIds(markerDetails);
   const reconAssets = await listReconAssetsByIds([
     ...mapViewDefinitions.map((view) => view.assetId),
@@ -159,7 +154,7 @@ export default async function ReconMapPublicPreviewPage({
           minZoom={map.minZoom}
           maxZoom={map.maxZoom}
           markers={viewerMarkers}
-          categories={getReconCategoriesForGame(map.gameId)}
+          categories={categories}
           mapViews={mapViews}
           markerSummaryLabel="preview markers"
           emptyState="No draft map asset is available for preview yet."
@@ -167,10 +162,10 @@ export default async function ReconMapPublicPreviewPage({
       </Section>
 
       <Section className="pt-4">
-        <ReconSourceNotes
-          packet={sourcePacket}
-          crossCheck={sourceCrossCheck}
-          publicMode
+        <ReconHowToGuides
+          markers={viewerMarkers}
+          categories={categories}
+          emptyState
         />
       </Section>
     </>

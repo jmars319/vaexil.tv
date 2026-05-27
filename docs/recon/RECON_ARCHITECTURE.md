@@ -115,7 +115,9 @@ The protected public preview route is not a publication shortcut. It uses the
 same simplified public map component and public-safe media filtering, but it can
 load private base-map assets through the authenticated admin asset route and can
 show current review markers so the published presentation can be evaluated
-before status changes.
+before status changes. It intentionally does not show source packets or
+cross-check notes; those remain admin-review material. Public-style pages show
+concise how-to guide cards from reviewed marker-detail payloads instead.
 
 ## Asset Workflow
 
@@ -181,6 +183,8 @@ map patterns without copying their UI or data:
 - marker-detail media may point to `recon_assets`, but private media stays behind
   the authenticated admin asset route and public pages render only approved
   public assets
+- the public preview strips out source/cross-check notes and replaces them with
+  how-to guide cards for markers that have structured guide detail
 
 These controls are intended to make review faster and clearer; they do not
 change marker verification or publication rules.

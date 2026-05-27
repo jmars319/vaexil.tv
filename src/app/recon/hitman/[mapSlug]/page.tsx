@@ -1,14 +1,10 @@
+import { ReconHowToGuides } from "@/components/recon-how-to-guides";
 import { ReconPublicMapPreview } from "@/components/recon-public-map-preview";
 import type { ReconViewerMarker } from "@/components/recon-map-viewer";
-import { ReconSourceNotes } from "@/components/recon-source-notes";
 import { Section, SectionHeading, SecondaryLink } from "@/components/ui";
 import iconManifest from "@/data/recon/icon-manifest.json";
 import { getReconCategoriesForGame } from "@/data/recon/category-registry";
 import { getReconMapViews } from "@/data/recon/map-views";
-import {
-  getReconSourceCrossCheck,
-  getReconSourcePacket,
-} from "@/lib/recon-review-metadata";
 import { listReconMarkerDetails } from "@/lib/recon-marker-details";
 import {
   buildReconViewerMarkers,
@@ -55,12 +51,11 @@ export default async function HitmanReconMapPage({
   }
 
   const mapViewDefinitions = getReconMapViews(map.id);
-  const [markers, sourcePacket, sourceCrossCheck, markerDetails] = await Promise.all([
+  const [markers, markerDetails] = await Promise.all([
     listPublishedReconMarkers(map.id),
-    getReconSourcePacket(map.id),
-    getReconSourceCrossCheck(map.id),
     listReconMarkerDetails(map.id),
   ]);
+  const categories = getReconCategoriesForGame(map.gameId);
   const detailAssetIds = collectReconMarkerDetailAssetIds(markerDetails);
   const reconAssets = await listReconAssetsByIds([
     ...mapViewDefinitions.map((view) => view.assetId),
@@ -117,16 +112,12 @@ export default async function HitmanReconMapPage({
           minZoom={map.minZoom}
           maxZoom={map.maxZoom}
           markers={viewerMarkers}
-          categories={getReconCategoriesForGame(map.gameId)}
+          categories={categories}
           mapViews={mapViews}
         />
       </Section>
       <Section className="pt-4">
-        <ReconSourceNotes
-          packet={sourcePacket}
-          crossCheck={sourceCrossCheck}
-          publicMode
-        />
+        <ReconHowToGuides markers={viewerMarkers} categories={categories} />
       </Section>
     </>
   );

@@ -244,6 +244,9 @@ test("admin Atlantic Wall public preview uses simplified published layout", asyn
   await expect(page.getByRole("button", { exact: true, name: "Core" })).toHaveCount(0);
   await expect(page.getByLabel("Label")).toHaveCount(0);
   await expect(page.getByRole("button", { name: "Save pending marker" })).toHaveCount(0);
+  await expect(page.getByRole("heading", { name: "How-to guides" })).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Recon source notes" })).toHaveCount(0);
+  await expect(page.getByRole("heading", { name: "Source cross-check" })).toHaveCount(0);
 
   await page.getByPlaceholder("Search markers").fill("long shot");
   await page
