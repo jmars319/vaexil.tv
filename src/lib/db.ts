@@ -313,6 +313,22 @@ async function migrateDb() {
     },
     {
       sql: `
+        CREATE TABLE IF NOT EXISTS recon_marker_details (
+          marker_id TEXT PRIMARY KEY,
+          map_id TEXT NOT NULL,
+          payload_json TEXT NOT NULL,
+          status TEXT NOT NULL DEFAULT 'draft',
+          last_reviewed TEXT,
+          created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+          updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+          FOREIGN KEY(marker_id) REFERENCES recon_markers(id),
+          FOREIGN KEY(map_id) REFERENCES recon_maps(id)
+        );
+      `,
+      args: [],
+    },
+    {
+      sql: `
         CREATE INDEX IF NOT EXISTS idx_suggestions_status
         ON community_suggestions(status);
       `,
@@ -400,6 +416,13 @@ async function migrateDb() {
       sql: `
         CREATE INDEX IF NOT EXISTS idx_recon_source_cross_checks_game
         ON recon_source_cross_checks(game_id);
+      `,
+      args: [],
+    },
+    {
+      sql: `
+        CREATE INDEX IF NOT EXISTS idx_recon_marker_details_map
+        ON recon_marker_details(map_id);
       `,
       args: [],
     },

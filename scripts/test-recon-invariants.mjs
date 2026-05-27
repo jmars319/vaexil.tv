@@ -16,6 +16,7 @@ const maps = await readJson("src/data/recon/maps.json");
 const assets = await readJson("src/data/recon/asset-manifest.json");
 const mapViews = await readJson("src/data/recon/map-views.json");
 const markerSeeds = await readJson("src/data/recon/marker-seeds.json");
+const markerDetails = await readJson("src/data/recon/marker-details.json");
 const icons = await readJson("src/data/recon/icon-manifest.json");
 const sourcePackets = await readJson("src/data/recon/source-packets.json");
 const sourceCrossChecks = await readJson("src/data/recon/source-cross-checks.json");
@@ -161,6 +162,25 @@ for (const marker of markerSeeds) {
   if (/workbench/i.test(`${marker.category} ${marker.subcategory} ${marker.label}`)) {
     assert.equal(marker.category, "workbench", `${marker.id} workbench marker should use the workbench category`);
     assert.equal(marker.iconKey, "workbench", `${marker.id} workbench marker should use the workbench icon`);
+  }
+}
+
+for (const detail of markerDetails) {
+  const marker = markerSeeds.find((item) => item.id === detail.markerId);
+  assert.ok(marker, `${detail.markerId} marker detail should point to a known marker`);
+  assert.equal(detail.mapId, marker.mapId, `${detail.markerId} marker detail should match marker map`);
+  assert.ok(["draft", "pending", "ready_for_review", "verified", "published"].includes(detail.status), `${detail.markerId} marker detail should use an expected workflow status`);
+  assert.ok(
+    detail.locationHint || detail.howToSteps?.length || detail.notes?.length,
+    `${detail.markerId} marker detail should include at least one useful guide field`,
+  );
+  for (const assetId of detail.mediaAssetIds || []) {
+    const asset = assetsById.get(assetId);
+    assert.ok(asset, `${detail.markerId} marker detail media should reference a known asset`);
+    assert.ok(
+      asset.type.includes("marker") || asset.type.includes("media") || asset.type.includes("image"),
+      `${asset.id} marker detail media should use a media-oriented asset type`,
+    );
   }
 }
 

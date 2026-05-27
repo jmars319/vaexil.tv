@@ -9,6 +9,11 @@ import {
   getReconSourceCrossCheck,
   getReconSourcePacket,
 } from "@/lib/recon-review-metadata";
+import { listReconMarkerDetails } from "@/lib/recon-marker-details";
+import {
+  buildReconViewerMarkers,
+  collectReconMarkerDetailAssetIds,
+} from "@/lib/recon-viewer-data";
 import {
   getAdminReconMapBySlug,
   listAdminReconMaps,
@@ -50,15 +55,26 @@ export default async function ReconMapAdminPage({
   }
 
   const mapViewDefinitions = getReconMapViews(map.id);
-  const [markers, suggestions, allMaps, mapViewAssets, sourcePacket, sourceCrossCheck] =
-    await Promise.all([
+  const [
+    markers,
+    suggestions,
+    allMaps,
+    sourcePacket,
+    sourceCrossCheck,
+    markerDetails,
+  ] = await Promise.all([
     listAdminReconMarkers(map.id),
     listReconMarkerSuggestions(map.id),
     listAdminReconMaps(),
-      listReconAssetsByIds(mapViewDefinitions.map((view) => view.assetId)),
-      getReconSourcePacket(map.id),
-      getReconSourceCrossCheck(map.id),
-    ]);
+    getReconSourcePacket(map.id),
+    getReconSourceCrossCheck(map.id),
+    listReconMarkerDetails(map.id),
+  ]);
+  const detailAssetIds = collectReconMarkerDetailAssetIds(markerDetails);
+  const mapViewAssets = await listReconAssetsByIds([
+    ...mapViewDefinitions.map((view) => view.assetId),
+    ...detailAssetIds,
+  ]);
   const sameGameMaps = allMaps.filter((item) => item.gameId === map.gameId);
   const currentMapIndex = sameGameMaps.findIndex((item) => item.id === map.id);
   const previousMap =
@@ -72,6 +88,16 @@ export default async function ReconMapAdminPage({
       ? `/admin/recon/assets/${map.imageAsset.id}`
       : null;
   const assetById = new Map(mapViewAssets.map((asset) => [asset.id, asset]));
+  const iconByKey = new Map(iconManifest.map((icon) => [icon.key, icon.path]));
+  const viewerMarkers = buildReconViewerMarkers(
+    markers,
+    markerDetails,
+    mapViewAssets,
+    {
+      iconPaths: iconByKey,
+      adminMode: true,
+    },
+  );
   const mapViews = mapViewDefinitions.map((view) => {
     const asset = assetById.get(view.assetId);
 
@@ -197,22 +223,7 @@ export default async function ReconMapAdminPage({
             path: icon.path,
           }))}
           suggestions={suggestions}
-          markers={markers.map((marker) => {
-            const icon = iconManifest.find((item) => item.key === marker.iconKey);
-
-            return {
-              id: marker.id,
-              label: marker.label,
-              description: marker.description,
-              category: marker.category,
-              x: marker.x,
-              y: marker.y,
-              floor: marker.floor,
-              iconKey: marker.iconKey,
-              iconPath: icon?.path,
-              hiddenByDefault: marker.hiddenByDefault,
-            };
-          })}
+          markers={viewerMarkers}
           mapViews={mapViews}
         />
       </Section>

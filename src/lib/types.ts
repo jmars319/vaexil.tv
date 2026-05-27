@@ -153,6 +153,26 @@ export type ReconMarker = {
   updatedAt: string;
 };
 
+export type ReconMarkerDetailPayload = {
+  markerId: string;
+  mapId: string;
+  locationHint?: string;
+  howToSteps?: string[];
+  requirements?: string[];
+  notes?: string[];
+  mediaAssetIds?: string[];
+};
+
+export type ReconMarkerDetail = {
+  markerId: string;
+  mapId: string;
+  payload: ReconMarkerDetailPayload;
+  status: ReconStatus;
+  lastReviewed: string | null;
+  createdAt: string;
+  updatedAt: string;
+};
+
 export type ReconMarkerSuggestion = {
   id: string;
   gameId: string;

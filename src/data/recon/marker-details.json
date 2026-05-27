@@ -1,0 +1,100 @@
+[
+  {
+    "markerId": "g4g-se5-atlantic-wall-37964",
+    "mapId": "se5-atlantic-wall",
+    "status": "draft",
+    "lastReviewed": "2026-05-27",
+    "locationHint": "Use the west-side fence-line firing position and target the soldier near the northeast radar approach.",
+    "howToSteps": [
+      "Set up from the west-side fence-line sightline.",
+      "Line up a rifle shot toward the northeast radar approach.",
+      "Confirm the range reaches the required 600 m before publishing this marker."
+    ],
+    "requirements": [
+      "Rifle capable of the long-range shot",
+      "In-game confirmation of target patrol and stance"
+    ],
+    "notes": [
+      "Draft detail derived from the existing local marker description.",
+      "Do not publish until the exact shot angle and range are verified in-game."
+    ],
+    "mediaAssetIds": []
+  },
+  {
+    "markerId": "g4g-se5-atlantic-wall-37240",
+    "mapId": "se5-atlantic-wall",
+    "status": "draft",
+    "lastReviewed": "2026-05-27",
+    "locationHint": "Inside the boathouse objective route after obtaining the officer key during the beach approach.",
+    "howToSteps": [
+      "Approach the boathouse objective from the beach route.",
+      "Obtain the nearby officer key.",
+      "Verify the exact room and table placement in-game before publication."
+    ],
+    "requirements": [
+      "Officer key or equivalent access route"
+    ],
+    "notes": [
+      "Draft detail derived from the existing local marker description."
+    ],
+    "mediaAssetIds": []
+  },
+  {
+    "markerId": "g4g-se5-atlantic-wall-37243",
+    "mapId": "se5-atlantic-wall",
+    "status": "draft",
+    "lastReviewed": "2026-05-27",
+    "locationHint": "Shootable sightline target on a chimney outside the normal playable route on the far eastern side.",
+    "howToSteps": [
+      "Treat this as a sightline target, not a walkable point of interest.",
+      "Find a clear view of the far eastern chimney.",
+      "Verify the exact chimney sightline in-game before publication."
+    ],
+    "requirements": [
+      "Rifle sightline to the eastern chimney"
+    ],
+    "notes": [
+      "Draft detail derived from the existing local marker description."
+    ],
+    "mediaAssetIds": []
+  },
+  {
+    "markerId": "g4g-ser-behind-enemy-lines-68130",
+    "mapId": "ser-behind-enemy-lines",
+    "status": "draft",
+    "lastReviewed": "2026-05-27",
+    "locationHint": "Mission completion vehicle on the west dam-end road after the required objectives.",
+    "howToSteps": [
+      "Complete the required mission objectives.",
+      "Move to the visible west dam-end road endpoint.",
+      "Confirm the exfil vehicle position in-game before publication."
+    ],
+    "requirements": [
+      "Required mission objectives completed"
+    ],
+    "notes": [
+      "Draft detail uses the corrected local marker placement, which intentionally avoids the open-water/title-margin drift."
+    ],
+    "mediaAssetIds": []
+  },
+  {
+    "markerId": "g4g-ser-behind-enemy-lines-68138",
+    "mapId": "ser-behind-enemy-lines",
+    "status": "draft",
+    "lastReviewed": "2026-05-27",
+    "locationHint": "Basement pistol workbench behind the boarded passage.",
+    "howToSteps": [
+      "Enter the basement route.",
+      "Open or bypass the boarded passage.",
+      "Verify the final workbench placement in-game before publication."
+    ],
+    "requirements": [
+      "Access to the basement route",
+      "Crowbar or another valid boarded-passage method"
+    ],
+    "notes": [
+      "Draft detail derived from the existing local marker description and source cross-check notes."
+    ],
+    "mediaAssetIds": []
+  }
+]

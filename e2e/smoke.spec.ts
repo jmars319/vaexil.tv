@@ -135,7 +135,8 @@ test("admin Recon index groups maps by game and shows source-check status", asyn
   await expect(page.getByText(/Visual: partial visual sources compared/i).first()).toBeVisible();
 });
 
-test("admin Recon map supports wheel and touchpad-style zoom", async ({ page }) => {
+test("admin Recon map supports wheel and touchpad-style zoom", async ({ page, isMobile }) => {
+  test.skip(isMobile, "Wheel zoom is a desktop pointer/touchpad interaction.");
   await loginAdmin(page);
 
   await page.goto("/admin/recon/maps/the-atlantic-wall", {
@@ -162,7 +163,8 @@ test("admin Recon map supports wheel and touchpad-style zoom", async ({ page }) 
     .toBeLessThan(zoomedIn);
 });
 
-test("admin Atlantic Wall markers keep corrected positions and readable icons", async ({ page }) => {
+test("admin Atlantic Wall markers keep corrected positions and readable icons", async ({ page, isMobile }) => {
+  test.skip(isMobile, "Desktop map QA covers dense marker positioning and toolbar interactions.");
   await loginAdmin(page);
 
   await page.goto("/admin/recon/maps/the-atlantic-wall", {
@@ -217,14 +219,17 @@ test("admin Atlantic Wall markers keep corrected positions and readable icons", 
   await expect
     .poll(async () => Number(await viewport.getAttribute("data-scale")))
     .toBeGreaterThan(beforeFocus);
+  const detail = page.locator('[data-testid="recon-marker-detail"]:visible');
   await expect(page.getByRole("button", { name: "Center marker" })).toBeVisible();
-  await expect(page.getByText(/600 m rifle shot toward the northeast/i)).toBeVisible();
+  await expect(detail).toContainText(/600 m rifle shot toward the northeast/i);
+  await expect(detail).toContainText(/How to reach or complete/i);
   await expect(page.getByRole("heading", { name: "Source cross-check" })).toBeVisible();
   await expect(page.getByText(/Gamer Guides Sniper Elite 5 map index/i)).toBeVisible();
   await expect(page.getByText(/Workbench count/i).first()).toBeVisible();
 });
 
-test("admin Behind Enemy Lines markers keep corrected campaign-cell positions", async ({ page }) => {
+test("admin Behind Enemy Lines markers keep corrected campaign-cell positions", async ({ page, isMobile }) => {
+  test.skip(isMobile, "Desktop map QA covers dense marker positioning and toolbar interactions.");
   await loginAdmin(page);
 
   await page.goto("/admin/recon/maps/behind-enemy-lines", {
@@ -256,10 +261,13 @@ test("admin Behind Enemy Lines markers keep corrected campaign-cell positions", 
       name: "Pistol Workbench Workbench",
     })
     .click();
-  await expect(page.getByText(/single Behind Enemy Lines collectible\/workbench/i)).toBeVisible();
+  await expect(
+    page.locator('[data-testid="recon-marker-detail"]:visible'),
+  ).toContainText(/single Behind Enemy Lines collectible\/workbench/i);
 });
 
-test("admin Sniper Elite expansion maps are privately reviewable", async ({ page }) => {
+test("admin Sniper Elite expansion maps are privately reviewable", async ({ page, isMobile }) => {
+  test.skip(isMobile, "Desktop map QA covers dense marker positioning and toolbar interactions.");
   await loginAdmin(page);
 
   await page.goto("/admin/recon/maps/spy-academy", {
@@ -281,6 +289,7 @@ test("admin Sniper Elite expansion maps are privately reviewable", async ({ page
   await expect(page.getByRole("heading", { name: "Dead Drop capture" })).toBeVisible();
   await expect(page.getByTestId("recon-map-viewport")).toBeVisible();
 
+  await page.getByRole("button", { name: /^Layers/ }).click();
   await page.getByRole("checkbox", { name: /Ammunition pickup/ }).check();
   await page.getByPlaceholder("Search markers").fill("ammunition");
   await expect(page.getByRole("button", { name: /Ammunition/ }).first()).toBeVisible();
@@ -291,6 +300,28 @@ test("admin Sniper Elite expansion maps are privately reviewable", async ({ page
   await expect(page.getByRole("heading", { name: "Vercors Vendetta capture" })).toBeVisible();
   await expect(page.getByTestId("recon-map-viewport")).toBeVisible();
   await expect(page.getByRole("button", { exact: true, name: "DLC2: Waterfalls" })).toBeVisible();
+});
+
+test("mobile admin Recon marker detail opens as a bottom sheet", async ({ page, isMobile }) => {
+  test.skip(!isMobile, "Mobile bottom-sheet behavior is covered in the mobile project.");
+  await loginAdmin(page);
+
+  await page.goto("/admin/recon/maps/the-atlantic-wall", {
+    waitUntil: "domcontentloaded",
+  });
+
+  await page.getByPlaceholder("Search markers").fill("long shot");
+  await page
+    .getByRole("button", {
+      exact: true,
+      name: "Mission 1 Long Shot Gold Medal Medal-related",
+    })
+    .click({ force: true });
+
+  const detail = page.locator('[data-testid="recon-marker-detail"]:visible');
+  await expect(detail).toBeVisible();
+  await expect(detail).toContainText(/How to reach or complete/i);
+  await expect(page.getByRole("button", { name: "Close marker detail" })).toBeVisible();
 });
 
 test("contact API rejects invalid payload without leaking internals", async ({ request }) => {

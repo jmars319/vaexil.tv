@@ -50,6 +50,12 @@ const reconSourceCrossChecks = JSON.parse(
     "utf8",
   ),
 );
+const reconMarkerDetails = JSON.parse(
+  await readFile(
+    new URL("../src/data/recon/marker-details.json", import.meta.url),
+    "utf8",
+  ),
+);
 
 await db.batch([
   {
@@ -313,6 +319,22 @@ await db.batch([
   },
   {
     sql: `
+      CREATE TABLE IF NOT EXISTS recon_marker_details (
+        marker_id TEXT PRIMARY KEY,
+        map_id TEXT NOT NULL,
+        payload_json TEXT NOT NULL,
+        status TEXT NOT NULL DEFAULT 'draft',
+        last_reviewed TEXT,
+        created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY(marker_id) REFERENCES recon_markers(id),
+        FOREIGN KEY(map_id) REFERENCES recon_maps(id)
+      );
+    `,
+    args: [],
+  },
+  {
+    sql: `
       CREATE UNIQUE INDEX IF NOT EXISTS idx_official_source_suggestion
       ON official_items(source_suggestion_id)
       WHERE source_suggestion_id IS NOT NULL;
@@ -386,6 +408,13 @@ await db.batch([
     sql: `
       CREATE INDEX IF NOT EXISTS idx_recon_source_cross_checks_game
       ON recon_source_cross_checks(game_id);
+    `,
+    args: [],
+  },
+  {
+    sql: `
+      CREATE INDEX IF NOT EXISTS idx_recon_marker_details_map
+      ON recon_marker_details(map_id);
     `,
     args: [],
   },
@@ -708,6 +737,35 @@ for (const check of reconSourceCrossChecks) {
   });
 }
 
+for (const detail of reconMarkerDetails) {
+  await db.execute({
+    sql: `
+      INSERT INTO recon_marker_details (
+        marker_id,
+        map_id,
+        payload_json,
+        status,
+        last_reviewed,
+        updated_at
+      )
+      VALUES (?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+      ON CONFLICT(marker_id) DO UPDATE SET
+        map_id = excluded.map_id,
+        payload_json = excluded.payload_json,
+        status = excluded.status,
+        last_reviewed = excluded.last_reviewed,
+        updated_at = CURRENT_TIMESTAMP;
+    `,
+    args: [
+      detail.markerId,
+      detail.mapId,
+      JSON.stringify(detail),
+      detail.status,
+      detail.lastReviewed || null,
+    ],
+  });
+}
+
 console.log(
-  `Seeded ${seedItems.length} guide items, ${reconSeedGames.length} Recon games, ${reconSeedMaps.length} Recon draft maps, ${reconSeedAssets.length} Recon assets, ${reconSeedMarkers.length} Recon draft markers, ${reconSourcePackets.length} source packets, and ${reconSourceCrossChecks.length} source cross-checks.`,
+  `Seeded ${seedItems.length} guide items, ${reconSeedGames.length} Recon games, ${reconSeedMaps.length} Recon draft maps, ${reconSeedAssets.length} Recon assets, ${reconSeedMarkers.length} Recon draft markers, ${reconSourcePackets.length} source packets, ${reconSourceCrossChecks.length} source cross-checks, and ${reconMarkerDetails.length} marker details.`,
 );

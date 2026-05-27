@@ -160,15 +160,17 @@ export function ReconCoordinateCapture({
   return (
     <div className="grid gap-5">
       {views.length > 1 ? (
-        <div className="rounded-2xl border border-white/10 bg-white/[0.035] p-4">
-          <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
-            <div>
+        <div className="rounded-xl border border-white/10 bg-white/[0.035] p-3">
+          <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+            <div className="min-w-0">
               <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
                 Map view
               </p>
-              <p className="mt-1 text-sm text-slate-300">
-                Select the floor or interior layer before capturing a marker.
-              </p>
+              {activeView?.notes ? (
+                <p className="mt-1 truncate text-xs text-slate-400">
+                  {activeView.notes}
+                </p>
+              ) : null}
             </div>
             <div className="flex flex-wrap gap-2">
               {views.map((view) => (
@@ -183,8 +185,8 @@ export function ReconCoordinateCapture({
                   }}
                   className={
                     view.id === activeView?.id
-                      ? "rounded-full bg-cyan-300 px-4 py-2 text-sm font-semibold text-slate-950"
-                      : "rounded-full border border-white/10 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-300/50 hover:bg-white/[0.06]"
+                      ? "rounded-lg bg-cyan-300 px-3 py-1.5 text-xs font-semibold text-slate-950"
+                      : "rounded-lg border border-white/10 px-3 py-1.5 text-xs font-semibold text-slate-200 transition hover:border-cyan-300/50 hover:bg-white/[0.06]"
                   }
                 >
                   {view.shortLabel}
@@ -192,11 +194,6 @@ export function ReconCoordinateCapture({
               ))}
             </div>
           </div>
-          {activeView?.notes ? (
-            <p className="mt-3 text-sm leading-6 text-slate-400">
-              {activeView.notes}
-            </p>
-          ) : null}
         </div>
       ) : null}
       <ReconMapViewer

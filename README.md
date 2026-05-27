@@ -57,8 +57,11 @@ Guides4Gamers source-map plates and marker seeds only under `private/recon/`,
 with `draft`/`unverified` status and no public publication. Draft source packets
 and source cross-checks are imported into libSQL/Turso from
 `src/data/recon/source-packets.json` and
-`src/data/recon/source-cross-checks.json`; the JSON files remain temporary
-fallback sources while the migration settles. Final public maps must be
+`src/data/recon/source-cross-checks.json`. Optional marker-detail payloads are
+imported from `src/data/recon/marker-details.json` for location hints, how-to
+steps, requirements, notes, and approved media references; these records must not
+copy third-party guide prose. The JSON files remain temporary fallback sources
+while the migration settles. Final public maps must be
 separately approved and documented in `src/data/recon/asset-manifest.json`.
 
 ## Local Development

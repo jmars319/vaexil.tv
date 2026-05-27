@@ -46,6 +46,9 @@ Core tables:
   source-packet seed file.
 - `recon_source_cross_checks`: compact per-map JSON cross-check and visual review
   notes imported from the source cross-check seed file.
+- `recon_marker_details`: compact per-marker JSON guidance for location hints,
+  how-to steps, requirements, review notes, and optional approved media asset
+  links.
 
 Marker coordinates are normalized:
 
@@ -58,7 +61,7 @@ store only raw pixels.
 Runtime requests call `ensureDb()` only for schema migration. They do not import
 or upsert large Recon seed JSON. Use `npm run db:seed` as the explicit local or
 controlled migration step after changing games, maps, assets, markers, source
-packets, or source cross-check seed files.
+packets, source cross-checks, or marker-detail seed files.
 
 Source packets are served from `recon_source_packets` with a temporary JSON
 fallback in `src/data/recon/source-packets.json`. They are reviewable research
@@ -76,6 +79,13 @@ third-party marker data.
 coverage and manual review queue, while
 `scripts/build-recon-visual-review-pack.mjs` creates scratch-only side-by-side
 reference sheets outside the repo.
+
+Marker details are served from `recon_marker_details` with a temporary JSON
+fallback in `src/data/recon/marker-details.json`. The payload is intentionally
+small: `markerId`, `mapId`, `locationHint`, `howToSteps`, `requirements`,
+`notes`, and optional `mediaAssetIds`. Existing marker descriptions remain the
+fallback and should continue to carry uncertainty. Do not copy third-party guide
+prose or screenshots into marker-detail payloads.
 
 Draft view metadata lives in `src/data/recon/map-views.json`. Views map a
 logical selector such as `B1`, `1F`, `2F`, `surface`, or `underground` to a
@@ -158,6 +168,11 @@ map patterns without copying their UI or data:
   layers
 - marker search filters the active layers, while marker-list or map-marker
   selection recenters the map on the selected point
+- marker details open in a desktop popover or mobile bottom sheet instead of a
+  permanent sidebar, so the map remains the primary surface
+- marker-detail media may point to `recon_assets`, but private media stays behind
+  the authenticated admin asset route and public pages render only approved
+  public assets
 
 These controls are intended to make review faster and clearer; they do not
 change marker verification or publication rules.

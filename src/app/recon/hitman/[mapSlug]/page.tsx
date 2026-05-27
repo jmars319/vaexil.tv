@@ -10,8 +10,14 @@ import {
   getReconSourceCrossCheck,
   getReconSourcePacket,
 } from "@/lib/recon-review-metadata";
+import { listReconMarkerDetails } from "@/lib/recon-marker-details";
+import {
+  buildReconViewerMarkers,
+  collectReconMarkerDetailAssetIds,
+} from "@/lib/recon-viewer-data";
 import {
   getPublicReconMap,
+  listReconAssetsByIds,
   listPublishedReconMarkers,
 } from "@/lib/repository";
 import { notFound } from "next/navigation";
@@ -49,23 +55,23 @@ export default async function HitmanReconMapPage({
     notFound();
   }
 
-  const [markers, sourcePacket, sourceCrossCheck] = await Promise.all([
+  const [markers, sourcePacket, sourceCrossCheck, markerDetails] = await Promise.all([
     listPublishedReconMarkers(map.id),
     getReconSourcePacket(map.id),
     getReconSourceCrossCheck(map.id),
+    listReconMarkerDetails(map.id),
   ]);
-  const iconByKey = new Map(iconManifest.map((icon) => [icon.key, icon]));
-  const viewerMarkers: ReconViewerMarker[] = markers.map((marker) => ({
-    id: marker.id,
-    label: marker.label,
-    description: marker.description,
-    category: marker.category,
-    x: marker.x,
-    y: marker.y,
-    iconKey: marker.iconKey,
-    iconPath: iconByKey.get(marker.iconKey)?.path,
-    hiddenByDefault: marker.hiddenByDefault,
-  }));
+  const detailAssets = await listReconAssetsByIds(
+    collectReconMarkerDetailAssetIds(markerDetails),
+  );
+  const viewerMarkers: ReconViewerMarker[] = buildReconViewerMarkers(
+    markers,
+    markerDetails,
+    detailAssets,
+    {
+      iconPaths: new Map(iconManifest.map((icon) => [icon.key, icon.path])),
+    },
+  );
 
   return (
     <>

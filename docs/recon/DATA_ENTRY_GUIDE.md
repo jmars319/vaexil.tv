@@ -14,10 +14,12 @@ guide facts to make a map feel complete.
    `src/data/recon/source-packets.json`.
 6. Add or update source cross-check status in
    `src/data/recon/source-cross-checks.json` for Sniper Elite maps.
-7. Keep the map status as `draft`.
-8. Keep the asset visibility as `private` until it is approved for public use.
-9. Run `npm run db:seed` so libSQL/Turso receives the updated seed records.
-10. Run `npm run recon:upload-assets -- --write --verify` when private asset
+7. Add optional marker-detail seed records in
+   `src/data/recon/marker-details.json` only after the marker ids exist.
+8. Keep the map status as `draft`.
+9. Keep the asset visibility as `private` until it is approved for public use.
+10. Run `npm run db:seed` so libSQL/Turso receives the updated seed records.
+11. Run `npm run recon:upload-assets -- --write --verify` when private asset
     files under `private/recon/` need to be copied to R2.
 
 Public map pages do not render until the map is `published` and the map asset is
@@ -52,7 +54,7 @@ Add or replace icons through `src/data/recon/icon-manifest.json` and
    - Sniper Elite maps should separate `surface` from underground, bunker,
      dam, tunnel, or interior review layers when those spaces matter.
 6. Use layer groups and presets to isolate the marker category being checked.
-7. Use marker search or the visible-marker list to recenter existing markers
+7. Use marker search or the visible-marker results panel to recenter existing markers
    before correcting or comparing nearby positions.
 8. Click the map to capture `x` and `y`.
 9. Confirm the normalized coordinates and floor/layer shown under the form.
@@ -100,6 +102,20 @@ For Sniper Elite visual comparison, run
 `node scripts/build-recon-visual-review-pack.mjs` and follow
 `docs/recon/VISUAL_CROSS_CHECKS.md`. The generated pack is scratch-only and
 must stay out of Git.
+
+## Marker Detail Notes
+
+Marker detail records live in `src/data/recon/marker-details.json` and are
+seeded into `recon_marker_details`. Use them for short, reviewable location
+hints, how-to steps, requirements, uncertainty notes, and approved media asset
+ids. They should expand or structure existing marker descriptions; they should
+not copy guide prose from another site.
+
+The viewer shows marker details only after a marker is selected. Desktop uses an
+anchored popover and mobile uses a bottom sheet, so keep each detail concise and
+scannable. If a detail links media, private assets must remain under
+`private/recon/` and load through `/admin/recon/assets/[assetId]`; public pages
+must use only `public` plus `approved` assets.
 
 ## Verify And Publish
 
