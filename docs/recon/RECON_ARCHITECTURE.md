@@ -22,6 +22,8 @@ of HITMAPS, Sniper Elite Maps, Guides4Gamers, or any other map project.
   with approved public assets.
 - `/admin/recon` is the protected Recon admin index.
 - `/admin/recon/maps/[mapSlug]` is the protected coordinate capture surface.
+- `/admin/recon/maps/[mapSlug]/preview` is the protected public-style preview
+  for the simplified published map layout.
 - `/admin/recon/assets/[assetId]` serves private draft assets only after admin
   authentication.
 
@@ -109,6 +111,12 @@ Public map pages require all of the following:
 Marker visibility requires marker status `published`. Draft, pending, verified,
 or rejected markers are not public.
 
+The protected public preview route is not a publication shortcut. It uses the
+same simplified public map component and public-safe media filtering, but it can
+load private base-map assets through the authenticated admin asset route and can
+show current review markers so the published presentation can be evaluated
+before status changes.
+
 ## Asset Workflow
 
 Recon assets include neutral Vaexil-created placeholders, custom neutral icons,
@@ -181,11 +189,13 @@ change marker verification or publication rules.
 2. Use the game-grouped index to choose the correct title and check its source
    cross-check status.
 3. Choose a draft map.
-4. Choose the correct floor/surface/interior view.
-5. Click the private draft map to capture normalized coordinates.
-6. Add label, category, mode, variant, optional floor, and factual notes.
-7. Save as a pending marker suggestion.
-8. Verify separately before converting any suggestion into a published marker.
+4. Use `Public preview` when you need to review the simplified visitor-facing
+   map presentation without opening the draft map publicly.
+5. Choose the correct floor/surface/interior view.
+6. Click the private draft map to capture normalized coordinates.
+7. Add label, category, mode, variant, optional floor, and factual notes.
+8. Save as a pending marker suggestion.
+9. Verify separately before converting any suggestion into a published marker.
 
 Publishing markers and maps remains an explicit future admin workflow. Nothing
 from coordinate capture publishes automatically.

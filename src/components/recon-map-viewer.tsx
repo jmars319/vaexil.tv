@@ -87,6 +87,7 @@ type ReconMapViewerProps = {
   markerSummaryLabel?: string;
   emptyState?: string;
   className?: string;
+  viewerMode?: "admin" | "public";
 };
 
 type GestureZoomEvent = Event & {
@@ -248,12 +249,14 @@ function MarkerDetailPanel({
   onCenter,
   onClose,
   compact = false,
+  publicMode = false,
 }: {
   marker: ReconViewerMarker;
   categoryLabel: string;
   onCenter: () => void;
   onClose: () => void;
   compact?: boolean;
+  publicMode?: boolean;
 }) {
   const detail = marker.detail;
   const hasStructuredDetail = Boolean(
@@ -402,13 +405,19 @@ function MarkerDetailPanel({
       ) : null}
 
       <div className="mt-4 grid gap-2 rounded-xl border border-white/10 bg-slate-950/70 px-3 py-2 text-xs text-slate-400">
+        {!publicMode ? (
+          <p>
+            x {formatCoordinate(marker.x)} / y {formatCoordinate(marker.y)}
+            {marker.floor ? ` / ${marker.floor}` : ""}
+          </p>
+        ) : marker.floor ? (
+          <p>View: {marker.floor}</p>
+        ) : null}
         <p>
-          x {formatCoordinate(marker.x)} / y {formatCoordinate(marker.y)}
-          {marker.floor ? ` / ${marker.floor}` : ""}
-        </p>
-        <p>
-          Confidence: {marker.confidence || "unverified"}
-          {marker.detailStatus ? ` / Detail: ${marker.detailStatus}` : ""}
+          Placement confidence: {marker.confidence || "unverified"}
+          {!publicMode && marker.detailStatus
+            ? ` / Detail: ${marker.detailStatus}`
+            : ""}
         </p>
         {marker.sourceName || marker.sourceUrl ? (
           <p className="break-words">
@@ -456,6 +465,7 @@ export function ReconMapViewer({
   markerSummaryLabel = "published markers",
   emptyState = "No map asset is available yet.",
   className,
+  viewerMode = "admin",
 }: ReconMapViewerProps) {
   const viewportRef = useRef<HTMLDivElement | null>(null);
   const scaleRef = useRef(1);
@@ -484,6 +494,7 @@ export function ReconMapViewer({
           .map((category) => category.key),
       ),
   );
+  const publicMode = viewerMode === "public";
 
   const syncViewState = useCallback(
     (nextScale: number, nextOffset: { x: number; y: number }) => {
@@ -871,7 +882,12 @@ export function ReconMapViewer({
 
   return (
     <div className={cn("grid gap-3", className)}>
-      <section className="rounded-2xl border border-white/10 bg-white/[0.035] p-3">
+      <section
+        className={cn(
+          "rounded-2xl border border-white/10 bg-white/[0.035] p-3",
+          publicMode && "bg-slate-950/40",
+        )}
+      >
         <div className="grid gap-3 lg:grid-cols-[minmax(220px,1fr)_auto] lg:items-center">
           <label className="relative block">
             <span className="sr-only">Search Recon markers</span>
@@ -898,7 +914,7 @@ export function ReconMapViewer({
               className="inline-flex h-9 items-center gap-2 rounded-xl border border-white/10 px-3 text-xs font-semibold text-slate-200 transition hover:border-cyan-300/50 hover:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200/70"
             >
               <Layers className="size-4" aria-hidden="true" />
-              Layers
+              {publicMode ? "Filters" : "Layers"}
               <span className="text-slate-500">
                 {visibleCategories.size}/{availableCategories.length}
               </span>
@@ -926,18 +942,20 @@ export function ReconMapViewer({
                 aria-hidden="true"
               />
             </button>
-            <div className="flex flex-wrap gap-1.5">
-              {layerPresets.map((preset) => (
-                <button
-                  key={preset.label}
-                  type="button"
-                  onClick={() => setVisibleLayerKeys(preset.keys)}
-                  className="inline-flex h-9 items-center justify-center rounded-lg border border-white/10 bg-slate-950/45 px-2.5 text-xs font-semibold text-slate-300 transition hover:border-cyan-300/40 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200/70"
-                >
-                  {preset.label}
-                </button>
-              ))}
-            </div>
+            {!publicMode ? (
+              <div className="flex flex-wrap gap-1.5">
+                {layerPresets.map((preset) => (
+                  <button
+                    key={preset.label}
+                    type="button"
+                    onClick={() => setVisibleLayerKeys(preset.keys)}
+                    className="inline-flex h-9 items-center justify-center rounded-lg border border-white/10 bg-slate-950/45 px-2.5 text-xs font-semibold text-slate-300 transition hover:border-cyan-300/40 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200/70"
+                  >
+                    {preset.label}
+                  </button>
+                ))}
+              </div>
+            ) : null}
           </div>
         </div>
 
@@ -948,72 +966,88 @@ export function ReconMapViewer({
                 No marker layers are available for this map yet.
               </div>
             ) : (
-              <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
-                {layerSections.map((section) => (
-                  <section key={section.key}>
-                    <div className="mb-2 flex items-center justify-between gap-3">
-                      <h3 className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">
-                        {section.label}
-                      </h3>
-                      <span className="text-[11px] text-slate-600">
-                        {section.categories.reduce(
-                          (total, category) =>
-                            total +
-                            (markerCountsByCategory.get(category.key) || 0),
-                          0,
-                        )}
-                      </span>
-                    </div>
-                    <div className="grid gap-1.5">
-                      {section.categories.map((category) => {
-                        const checked = visibleCategories.has(category.key);
-                        const markerCount =
-                          markerCountsByCategory.get(category.key) || 0;
+              <div className="grid gap-3">
+                {publicMode ? (
+                  <div className="flex flex-wrap gap-1.5 border-b border-white/10 pb-3">
+                    {layerPresets.map((preset) => (
+                      <button
+                        key={preset.label}
+                        type="button"
+                        onClick={() => setVisibleLayerKeys(preset.keys)}
+                        className="inline-flex h-9 items-center justify-center rounded-lg border border-white/10 bg-slate-950/45 px-2.5 text-xs font-semibold text-slate-300 transition hover:border-cyan-300/40 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200/70"
+                      >
+                        {preset.label}
+                      </button>
+                    ))}
+                  </div>
+                ) : null}
+                <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+                  {layerSections.map((section) => (
+                    <section key={section.key}>
+                      <div className="mb-2 flex items-center justify-between gap-3">
+                        <h3 className="text-[11px] font-semibold uppercase tracking-[0.16em] text-slate-500">
+                          {section.label}
+                        </h3>
+                        <span className="text-[11px] text-slate-600">
+                          {section.categories.reduce(
+                            (total, category) =>
+                              total +
+                              (markerCountsByCategory.get(category.key) || 0),
+                            0,
+                          )}
+                        </span>
+                      </div>
+                      <div className="grid gap-1.5">
+                        {section.categories.map((category) => {
+                          const checked = visibleCategories.has(category.key);
+                          const markerCount =
+                            markerCountsByCategory.get(category.key) || 0;
 
-                        return (
-                          <label
-                            key={category.key}
-                            className={cn(
-                              "flex min-h-10 cursor-pointer items-center gap-2 rounded-lg border px-2.5 py-2 text-sm transition",
-                              checked
-                                ? "border-cyan-300/25 bg-cyan-300/[0.06] text-slate-200"
-                                : "border-white/10 bg-slate-950/40 text-slate-400 hover:border-cyan-300/30",
-                            )}
-                          >
-                            <input
-                              type="checkbox"
-                              checked={checked}
-                              onChange={(event) => {
-                                setVisibleCategories((current) => {
-                                  const next = new Set(current);
-                                  if (event.target.checked) {
-                                    next.add(category.key);
-                                  } else {
-                                    next.delete(category.key);
-                                  }
-                                  return next;
-                                });
-                              }}
-                              className="size-4 shrink-0 accent-cyan-300"
-                            />
-                            <span className="min-w-0 flex-1 truncate font-medium">
-                              {category.label}
-                            </span>
-                            <span className="sr-only">
-                              {category.description}
-                            </span>
-                            <span
-                              className="shrink-0 rounded-full border border-white/10 bg-slate-950/60 px-2 py-0.5 text-[11px] text-slate-400"
-                              aria-hidden="true"
+                          return (
+                            <label
+                              key={category.key}
+                              className={cn(
+                                "flex min-h-10 cursor-pointer items-center gap-2 rounded-lg border px-2.5 py-2 text-sm transition",
+                                checked
+                                  ? "border-cyan-300/25 bg-cyan-300/[0.06] text-slate-200"
+                                  : "border-white/10 bg-slate-950/40 text-slate-400 hover:border-cyan-300/30",
+                              )}
                             >
-                              {markerCount}
-                            </span>
-                          </label>
-                        );
-                      })}
-                    </div>
-                  </section>
-                ))}
+                              <input
+                                type="checkbox"
+                                checked={checked}
+                                onChange={(event) => {
+                                  setVisibleCategories((current) => {
+                                    const next = new Set(current);
+                                    if (event.target.checked) {
+                                      next.add(category.key);
+                                    } else {
+                                      next.delete(category.key);
+                                    }
+                                    return next;
+                                  });
+                                }}
+                                className="size-4 shrink-0 accent-cyan-300"
+                              />
+                              <span className="min-w-0 flex-1 truncate font-medium">
+                                {category.label}
+                              </span>
+                              <span className="sr-only">
+                                {category.description}
+                              </span>
+                              <span
+                                className="shrink-0 rounded-full border border-white/10 bg-slate-950/60 px-2 py-0.5 text-[11px] text-slate-400"
+                                aria-hidden="true"
+                              >
+                                {markerCount}
+                              </span>
+                            </label>
+                          );
+                        })}
+                      </div>
+                    </section>
+                  ))}
+                </div>
               </div>
             )}
           </div>
@@ -1106,7 +1140,12 @@ export function ReconMapViewer({
 
         <div
           ref={viewportRef}
-          className="relative h-[clamp(520px,72vh,900px)] touch-none overflow-hidden overscroll-contain bg-[#070b13]"
+          className={cn(
+            "relative touch-none overflow-hidden overscroll-contain bg-[#070b13]",
+            publicMode
+              ? "h-[clamp(560px,76vh,960px)]"
+              : "h-[clamp(520px,72vh,900px)]",
+          )}
           data-testid="recon-map-viewport"
           data-scale={scale.toFixed(4)}
           onPointerDown={(event) => {
@@ -1267,6 +1306,7 @@ export function ReconMapViewer({
                 }
                 onCenter={() => focusMarker(selectedMarker, 1.65)}
                 onClose={() => setSelectedId(null)}
+                publicMode={publicMode}
               />
             </div>
           ) : null}
@@ -1284,6 +1324,7 @@ export function ReconMapViewer({
             onCenter={() => focusMarker(selectedMarker, 1.65)}
             onClose={() => setSelectedId(null)}
             compact
+            publicMode={publicMode}
           />
         </div>
       ) : null}

@@ -1,11 +1,10 @@
-import {
-  ReconMapViewer,
-  type ReconViewerMarker,
-} from "@/components/recon-map-viewer";
+import { ReconPublicMapPreview } from "@/components/recon-public-map-preview";
+import type { ReconViewerMarker } from "@/components/recon-map-viewer";
 import { ReconSourceNotes } from "@/components/recon-source-notes";
 import { Section, SectionHeading, SecondaryLink } from "@/components/ui";
 import iconManifest from "@/data/recon/icon-manifest.json";
 import { getReconCategoriesForGame } from "@/data/recon/category-registry";
+import { getReconMapViews } from "@/data/recon/map-views";
 import {
   getReconSourceCrossCheck,
   getReconSourcePacket,
@@ -57,19 +56,39 @@ export default async function SniperEliteReconMapPage({
     notFound();
   }
 
+  const mapViewDefinitions = getReconMapViews(map.id);
   const [markers, sourcePacket, sourceCrossCheck, markerDetails] = await Promise.all([
     listPublishedReconMarkers(map.id),
     getReconSourcePacket(map.id),
     getReconSourceCrossCheck(map.id),
     listReconMarkerDetails(map.id),
   ]);
-  const detailAssets = await listReconAssetsByIds(
-    collectReconMarkerDetailAssetIds(markerDetails),
-  );
+  const detailAssetIds = collectReconMarkerDetailAssetIds(markerDetails);
+  const reconAssets = await listReconAssetsByIds([
+    ...mapViewDefinitions.map((view) => view.assetId),
+    ...detailAssetIds,
+  ]);
+  const assetById = new Map(reconAssets.map((asset) => [asset.id, asset]));
+  const mapViews = mapViewDefinitions.flatMap((view) => {
+    const asset = assetById.get(view.assetId);
+
+    if (!asset || asset.visibility !== "public" || asset.status !== "approved") {
+      return [];
+    }
+
+    return [
+      {
+        ...view,
+        imageSrc: asset.path,
+        width: asset.width || map.width,
+        height: asset.height || map.height,
+      },
+    ];
+  });
   const viewerMarkers: ReconViewerMarker[] = buildReconViewerMarkers(
     markers,
     markerDetails,
-    detailAssets,
+    reconAssets,
     {
       iconPaths: new Map(iconManifest.map((icon) => [icon.key, icon.path])),
     },
@@ -93,7 +112,7 @@ export default async function SniperEliteReconMapPage({
         </div>
       </Section>
       <Section className="pt-4">
-        <ReconMapViewer
+        <ReconPublicMapPreview
           title={map.title}
           imageSrc={map.imageAsset.path}
           imageAlt={`${map.title} Recon map`}
@@ -103,6 +122,7 @@ export default async function SniperEliteReconMapPage({
           maxZoom={map.maxZoom}
           markers={viewerMarkers}
           categories={getReconCategoriesForGame(map.gameId)}
+          mapViews={mapViews}
         />
       </Section>
       <Section className="pt-4">

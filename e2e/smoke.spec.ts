@@ -228,6 +228,37 @@ test("admin Atlantic Wall markers keep corrected positions and readable icons", 
   await expect(page.getByText(/Workbench count/i).first()).toBeVisible();
 });
 
+test("admin Atlantic Wall public preview uses simplified published layout", async ({ page, isMobile }) => {
+  test.skip(isMobile, "Desktop preview QA covers public-style controls and detail popovers.");
+  await loginAdmin(page);
+
+  await page.goto("/admin/recon/maps/the-atlantic-wall/preview", {
+    waitUntil: "domcontentloaded",
+  });
+
+  await expect(
+    page.getByRole("heading", { name: "The Atlantic Wall public preview" }),
+  ).toBeVisible();
+  await expect(page.getByRole("link", { name: "Capture view" })).toBeVisible();
+  await expect(page.getByRole("button", { name: /^Filters/ })).toBeVisible();
+  await expect(page.getByRole("button", { exact: true, name: "Core" })).toHaveCount(0);
+  await expect(page.getByLabel("Label")).toHaveCount(0);
+  await expect(page.getByRole("button", { name: "Save pending marker" })).toHaveCount(0);
+
+  await page.getByPlaceholder("Search markers").fill("long shot");
+  await page
+    .getByRole("button", {
+      exact: true,
+      name: "Mission 1 Long Shot Gold Medal Medal-related",
+    })
+    .click();
+
+  const detail = page.locator('[data-testid="recon-marker-detail"]:visible');
+  await expect(detail).toContainText(/How to reach or complete/i);
+  await expect(detail).toContainText(/Placement confidence/i);
+  await expect(detail).not.toContainText(/x 75\.20 \/ y 8\.40/i);
+});
+
 test("admin Behind Enemy Lines markers keep corrected campaign-cell positions", async ({ page, isMobile }) => {
   test.skip(isMobile, "Desktop map QA covers dense marker positioning and toolbar interactions.");
   await loginAdmin(page);

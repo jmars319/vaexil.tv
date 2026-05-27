@@ -21,7 +21,7 @@ import {
   listReconAssetsByIds,
   listReconMarkerSuggestions,
 } from "@/lib/repository";
-import { ChevronLeft, ChevronRight, List } from "lucide-react";
+import { ChevronLeft, ChevronRight, Eye, List } from "lucide-react";
 import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 
@@ -149,6 +149,13 @@ export default async function ReconMapAdminPage({
                 className="inline-flex min-h-10 items-center justify-center rounded-full border border-white/10 px-4 text-sm font-semibold text-slate-200 transition hover:border-cyan-300/50 hover:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200/70"
               >
                 All maps
+              </Link>
+              <Link
+                href={`/admin/recon/maps/${map.slug}/preview`}
+                className="inline-flex min-h-10 items-center justify-center gap-2 rounded-full border border-cyan-300/25 bg-cyan-300/[0.08] px-4 text-sm font-semibold text-cyan-100 transition hover:border-cyan-200/60 hover:bg-cyan-300/[0.13] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200/70"
+              >
+                <Eye className="size-4" aria-hidden="true" />
+                Public preview
               </Link>
               {previousMap ? (
                 <Link

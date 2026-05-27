@@ -54,12 +54,17 @@ Add or replace icons through `src/data/recon/icon-manifest.json` and
    - Sniper Elite maps should separate `surface` from underground, bunker,
      dam, tunnel, or interior review layers when those spaces matter.
 6. Use layer groups and presets to isolate the marker category being checked.
-7. Use marker search or the visible-marker results panel to recenter existing markers
-   before correcting or comparing nearby positions.
+7. Use marker search or the visible-marker results panel to recenter existing
+   markers before correcting or comparing nearby positions.
 8. Click the map to capture `x` and `y`.
 9. Confirm the normalized coordinates and floor/layer shown under the form.
 10. Add label, category, mode, variant, and notes.
 11. Save the marker as pending review.
+
+Use `/admin/recon/maps/[mapSlug]/preview` or the `Public preview` button on the
+capture page to check the simplified visitor-facing presentation before a map is
+published. The preview is admin-only: it may load private base maps through the
+protected asset route, but it filters marker media the same way public pages do.
 
 Coordinate rules:
 
