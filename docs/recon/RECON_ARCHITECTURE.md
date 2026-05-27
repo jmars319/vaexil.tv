@@ -42,6 +42,10 @@ Core tables:
 - `recon_guides`: future written guide entries linked to maps and markers.
 - `recon_marker_suggestions`: non-public coordinate captures and marker
   suggestions.
+- `recon_source_packets`: compact per-map JSON research notes imported from the
+  source-packet seed file.
+- `recon_source_cross_checks`: compact per-map JSON cross-check and visual review
+  notes imported from the source cross-check seed file.
 
 Marker coordinates are normalized:
 
@@ -51,13 +55,19 @@ Marker coordinates are normalized:
 The viewer calculates pixel positions from map dimensions at render time. Do not
 store only raw pixels.
 
-Source packets live in `src/data/recon/source-packets.json`. They are
-reviewable research records for map-level official sources, reference sources,
-approximate areas, candidate POIs, uncertainty, and copyright-sensitive material
-to avoid. They are not marker data and should not be treated as verified
-coordinates.
+Runtime requests call `ensureDb()` only for schema migration. They do not import
+or upsert large Recon seed JSON. Use `npm run db:seed` as the explicit local or
+controlled migration step after changing games, maps, assets, markers, source
+packets, or source cross-check seed files.
 
-Sniper Elite source cross-check records live in
+Source packets are served from `recon_source_packets` with a temporary JSON
+fallback in `src/data/recon/source-packets.json`. They are reviewable research
+records for map-level official sources, reference sources, approximate areas,
+candidate POIs, uncertainty, and copyright-sensitive material to avoid. They are
+not marker data and should not be treated as verified coordinates.
+
+Sniper Elite source cross-check records are served from
+`recon_source_cross_checks` with a temporary JSON fallback in
 `src/data/recon/source-cross-checks.json`. They summarize secondary source
 coverage, count checks, source gaps, and manual position-review state for each
 private draft Sniper Elite map. They are admin review metadata, not copied
@@ -114,10 +124,13 @@ guide sites may also be used temporarily as draw-under material while authoring 
 Vaexil plate. Temporary references that are not recorded in the asset manifest
 must remain outside Git.
 
-Draft assets belong outside `public/`, currently under `private/recon/`. The
-admin asset route is authenticated and no-store. Before a map becomes public,
-move the approved public-ready asset to `public/recon/maps/`, update the asset
-record to `visibility = public` and `status = approved`, then publish the map.
+Draft assets belong outside `public/`, currently under `private/recon/` locally
+and the matching `private/recon/` object prefix in Cloudflare R2. The admin
+asset route is authenticated and no-store; it reads from R2 when
+`RECON_ASSET_STORE=r2` and falls back to local files when unset. Before a map
+becomes public, create an approved public-ready asset under the reserved
+`public/recon/` prefix, update the asset record to `visibility = public` and
+`status = approved`, then publish the map.
 
 Do not publish third-party maps or import/copy third-party icons, marker
 coordinates, guide text, or API data unless a compatible license or explicit

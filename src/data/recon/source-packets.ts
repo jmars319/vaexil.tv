@@ -1,5 +1,3 @@
-import sourcePackets from "@/data/recon/source-packets.json";
-
 export type ReconSourceReference = {
   label: string;
   url: string;
@@ -27,12 +25,12 @@ export type ReconSourcePacket = {
   avoidCopying: string[];
 };
 
-const packets = sourcePackets as ReconSourcePacket[];
-
-export function listReconSourcePackets() {
-  return packets;
+export async function listStaticReconSourcePackets() {
+  const sourcePacketData = await import("@/data/recon/source-packets.json");
+  return sourcePacketData.default as ReconSourcePacket[];
 }
 
-export function getReconSourcePacket(mapId: string) {
+export async function getStaticReconSourcePacket(mapId: string) {
+  const packets = await listStaticReconSourcePackets();
   return packets.find((packet) => packet.mapId === mapId) || null;
 }

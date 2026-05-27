@@ -1,9 +1,10 @@
-import { getReconSourceCrossCheck } from "@/data/recon/source-cross-checks";
+import type { ReconSourceCrossCheck } from "@/data/recon/source-cross-checks";
 import type { ReconSourcePacket } from "@/data/recon/source-packets";
 import { ClipboardCheck, ExternalLink, ShieldCheck } from "lucide-react";
 
 type ReconSourceNotesProps = {
   packet: ReconSourcePacket | null;
+  crossCheck?: ReconSourceCrossCheck | null;
   publicMode?: boolean;
 };
 
@@ -64,13 +65,12 @@ function BulletList({ title, items }: { title: string; items: string[] }) {
 
 export function ReconSourceNotes({
   packet,
+  crossCheck,
   publicMode = false,
 }: ReconSourceNotesProps) {
   if (!packet) {
     return null;
   }
-
-  const crossCheck = getReconSourceCrossCheck(packet.mapId);
 
   return (
     <aside className="rounded-2xl border border-cyan-300/20 bg-cyan-300/[0.06] p-5">

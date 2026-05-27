@@ -18,6 +18,12 @@ ADMIN_SESSION_SECRET="use-a-long-random-string"
 SUGGESTION_READY_VOTE_THRESHOLD="5"
 LIBSQL_URL="libsql://..."
 LIBSQL_AUTH_TOKEN="..."
+RECON_ASSET_STORE="r2"
+CLOUDFLARE_ACCOUNT_ID="..."
+R2_BUCKET="vaexil-recon-assets"
+R2_ENDPOINT="https://<account-id>.r2.cloudflarestorage.com"
+R2_ACCESS_KEY_ID="..."
+R2_SECRET_ACCESS_KEY="..."
 SENDGRID_API_KEY=""
 SENDGRID_TO_EMAIL="vaexiltv@gmail.com"
 SENDGRID_FROM_EMAIL=""
@@ -36,6 +42,11 @@ storage.
 Contact form submissions are saved to the database even when SendGrid is not
 configured. Add `SENDGRID_API_KEY`, `SENDGRID_TO_EMAIL`, and a verified
 `SENDGRID_FROM_EMAIL` before relying on email delivery from production.
+
+Recon draft assets should use `RECON_ASSET_STORE=r2` in production so protected
+admin previews read from Cloudflare R2. Keep broad Cloudflare API tokens
+local-only; Vercel needs only the R2 S3-compatible key pair and bucket metadata
+shown above.
 
 ## Domain Setup
 
@@ -73,13 +84,13 @@ Confirm:
 - Admin can change the password after signing in.
 - Admin shows recent contact submissions and a light page-view snapshot.
 - Admin can verify and publish a test suggestion.
-- `/admin/recon` is available after admin sign-in, and protected Recon draft assets are not reachable without admin auth.
+- `/admin/recon` is available after admin sign-in, protected Recon draft assets load through the admin asset route, and the same assets are not reachable without admin auth.
 - Security headers are present, including `strict-transport-security`, `x-frame-options`, and `x-content-type-options`.
 
 ## Notes
 
 - Do not enable static export for this project. Server actions and the DB-backed pages require the Next.js server runtime.
 - Official guide content should be entered only after verification. The current Freelancer rows are verified seed data and replace the old fictional samples during DB seeding.
-- Recon draft maps are intentionally private to the app runtime. Do not put draft map assets under `public/`; only approved public map assets should move to public static delivery.
+- Recon draft maps are intentionally private to the app runtime and R2 `private/recon/` prefix. Do not put draft map assets under `public/`; only approved public map assets should move to `public/recon/`.
 - Changing any Vercel environment variable requires a new deployment before the change applies.
 - `ADMIN_PASSWORD` is the bootstrap/fallback password. In-app password changes are stored as hashes in the configured database.

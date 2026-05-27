@@ -16,7 +16,9 @@ guide facts to make a map feel complete.
    `src/data/recon/source-cross-checks.json` for Sniper Elite maps.
 7. Keep the map status as `draft`.
 8. Keep the asset visibility as `private` until it is approved for public use.
-9. Run the seed flow or load the app so the database upserts the seed records.
+9. Run `npm run db:seed` so libSQL/Turso receives the updated seed records.
+10. Run `npm run recon:upload-assets -- --write --verify` when private asset
+    files under `private/recon/` need to be copied to R2.
 
 Public map pages do not render until the map is `published` and the map asset is
 `approved` plus `public`.

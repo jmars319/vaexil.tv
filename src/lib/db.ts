@@ -1,9 +1,4 @@
 import { createClient, type Client } from "@libsql/client";
-import officialSeedItems from "@/data/freelancer-free-items.json";
-import reconSeedAssets from "@/data/recon/asset-manifest.json";
-import reconSeedGames from "@/data/recon/games.json";
-import reconSeedMarkers from "@/data/recon/marker-seeds.json";
-import reconSeedMaps from "@/data/recon/maps.json";
 import { mkdirSync } from "node:fs";
 import { join } from "node:path";
 
@@ -47,13 +42,13 @@ export function getDb() {
 
 export async function ensureDb() {
   if (!globalThis.vaexilDbReady) {
-    globalThis.vaexilDbReady = migrateAndSeed();
+    globalThis.vaexilDbReady = migrateDb();
   }
 
   return globalThis.vaexilDbReady;
 }
 
-async function migrateAndSeed() {
+async function migrateDb() {
   const db = getDb();
 
   await db.batch([
@@ -288,6 +283,36 @@ async function migrateAndSeed() {
     },
     {
       sql: `
+        CREATE TABLE IF NOT EXISTS recon_source_packets (
+          map_id TEXT PRIMARY KEY,
+          game_id TEXT NOT NULL,
+          status TEXT NOT NULL,
+          payload_json TEXT NOT NULL,
+          last_reviewed TEXT,
+          updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+          FOREIGN KEY(map_id) REFERENCES recon_maps(id),
+          FOREIGN KEY(game_id) REFERENCES recon_games(id)
+        );
+      `,
+      args: [],
+    },
+    {
+      sql: `
+        CREATE TABLE IF NOT EXISTS recon_source_cross_checks (
+          map_id TEXT PRIMARY KEY,
+          game_id TEXT NOT NULL,
+          status TEXT NOT NULL,
+          payload_json TEXT NOT NULL,
+          last_reviewed TEXT,
+          updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+          FOREIGN KEY(map_id) REFERENCES recon_maps(id),
+          FOREIGN KEY(game_id) REFERENCES recon_games(id)
+        );
+      `,
+      args: [],
+    },
+    {
+      sql: `
         CREATE INDEX IF NOT EXISTS idx_suggestions_status
         ON community_suggestions(status);
       `,
@@ -364,264 +389,19 @@ async function migrateAndSeed() {
       `,
       args: [],
     },
+    {
+      sql: `
+        CREATE INDEX IF NOT EXISTS idx_recon_source_packets_game
+        ON recon_source_packets(game_id);
+      `,
+      args: [],
+    },
+    {
+      sql: `
+        CREATE INDEX IF NOT EXISTS idx_recon_source_cross_checks_game
+        ON recon_source_cross_checks(game_id);
+      `,
+      args: [],
+    },
   ]);
-
-  await db.execute("DELETE FROM official_items WHERE id LIKE 'seed-sample-%';");
-
-  await db.batch(
-    officialSeedItems.map((item) => ({
-      sql: `
-        INSERT INTO official_items (
-          id,
-          item_name,
-          category,
-          map_name,
-          location_description,
-          notes,
-          verified
-        )
-        VALUES (?, ?, ?, ?, ?, ?, ?)
-        ON CONFLICT(id) DO UPDATE SET
-          item_name = excluded.item_name,
-          category = excluded.category,
-          map_name = excluded.map_name,
-          location_description = excluded.location_description,
-          notes = excluded.notes,
-          verified = excluded.verified;
-      `,
-      args: [
-        item.id,
-        item.itemName,
-        item.category,
-        item.mapName,
-        item.locationDescription,
-        item.notes,
-        item.verified ? 1 : 0,
-      ],
-    })),
-  );
-
-  await db.batch(
-    reconSeedGames.map((game) => ({
-      sql: `
-        INSERT INTO recon_games (
-          id,
-          slug,
-          title,
-          short_title,
-          description,
-          enabled,
-          sort_order,
-          updated_at
-        )
-        VALUES (?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
-        ON CONFLICT(id) DO UPDATE SET
-          slug = excluded.slug,
-          title = excluded.title,
-          short_title = excluded.short_title,
-          description = excluded.description,
-          enabled = excluded.enabled,
-          sort_order = excluded.sort_order,
-          updated_at = CURRENT_TIMESTAMP;
-      `,
-      args: [
-        game.id,
-        game.slug,
-        game.title,
-        game.shortTitle,
-        game.description,
-        game.enabled ? 1 : 0,
-        game.sortOrder,
-      ],
-    })),
-  );
-
-  await db.batch(
-    reconSeedMaps.map((map) => ({
-      sql: `
-        INSERT INTO recon_maps (
-          id,
-          game_id,
-          slug,
-          title,
-          subtitle,
-          description,
-          image_asset_id,
-          width,
-          height,
-          min_zoom,
-          max_zoom,
-          floor_support,
-          enabled,
-          status,
-          sort_order,
-          updated_at
-        )
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
-        ON CONFLICT(id) DO UPDATE SET
-          game_id = excluded.game_id,
-          slug = excluded.slug,
-          title = excluded.title,
-          subtitle = excluded.subtitle,
-          description = excluded.description,
-          image_asset_id = excluded.image_asset_id,
-          width = excluded.width,
-          height = excluded.height,
-          min_zoom = excluded.min_zoom,
-          max_zoom = excluded.max_zoom,
-          floor_support = excluded.floor_support,
-          enabled = excluded.enabled,
-          status = excluded.status,
-          sort_order = excluded.sort_order,
-          updated_at = CURRENT_TIMESTAMP;
-      `,
-      args: [
-        map.id,
-        map.gameId,
-        map.slug,
-        map.title,
-        map.subtitle || null,
-        map.description || null,
-        map.imageAssetId || null,
-        map.width,
-        map.height,
-        map.minZoom ?? null,
-        map.maxZoom ?? null,
-        map.floorSupport ? 1 : 0,
-        map.enabled ? 1 : 0,
-        map.status,
-        map.sortOrder,
-      ],
-    })),
-  );
-
-  await db.batch(
-    reconSeedAssets.map((asset) => ({
-      sql: `
-        INSERT INTO recon_assets (
-          id,
-          game_id,
-          map_id,
-          type,
-          path,
-          width,
-          height,
-          source_name,
-          source_url,
-          license,
-          attribution,
-          imported,
-          status,
-          visibility,
-          notes,
-          updated_at
-        )
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
-        ON CONFLICT(id) DO UPDATE SET
-          game_id = excluded.game_id,
-          map_id = excluded.map_id,
-          type = excluded.type,
-          path = excluded.path,
-          width = excluded.width,
-          height = excluded.height,
-          source_name = excluded.source_name,
-          source_url = excluded.source_url,
-          license = excluded.license,
-          attribution = excluded.attribution,
-          imported = excluded.imported,
-          status = excluded.status,
-          visibility = excluded.visibility,
-          notes = excluded.notes,
-          updated_at = CURRENT_TIMESTAMP;
-      `,
-      args: [
-        asset.id,
-        asset.gameId,
-        asset.mapId || null,
-        asset.type,
-        asset.path,
-        asset.width ?? null,
-        asset.height ?? null,
-        asset.sourceName || null,
-        asset.sourceUrl || null,
-        asset.license || null,
-        asset.attribution || null,
-        asset.imported ? 1 : 0,
-        asset.status,
-        asset.visibility,
-        asset.notes || null,
-      ],
-    })),
-  );
-
-  await db.batch(
-    reconSeedMarkers.map((marker) => ({
-      sql: `
-        INSERT INTO recon_markers (
-          id,
-          game_id,
-          map_id,
-          mode,
-          variant,
-          category,
-          subcategory,
-          label,
-          description,
-          x,
-          y,
-          floor,
-          icon_key,
-          tags_json,
-          source_name,
-          source_url,
-          confidence,
-          status,
-          hidden_by_default,
-          updated_at
-        )
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
-        ON CONFLICT(id) DO UPDATE SET
-          game_id = excluded.game_id,
-          map_id = excluded.map_id,
-          mode = excluded.mode,
-          variant = excluded.variant,
-          category = excluded.category,
-          subcategory = excluded.subcategory,
-          label = excluded.label,
-          description = excluded.description,
-          x = excluded.x,
-          y = excluded.y,
-          floor = excluded.floor,
-          icon_key = excluded.icon_key,
-          tags_json = excluded.tags_json,
-          source_name = excluded.source_name,
-          source_url = excluded.source_url,
-          confidence = excluded.confidence,
-          status = excluded.status,
-          hidden_by_default = excluded.hidden_by_default,
-          updated_at = CURRENT_TIMESTAMP;
-      `,
-      args: [
-        marker.id,
-        marker.gameId,
-        marker.mapId,
-        marker.mode,
-        marker.variant,
-        marker.category,
-        marker.subcategory || null,
-        marker.label,
-        marker.description || null,
-        marker.x,
-        marker.y,
-        marker.floor || null,
-        marker.iconKey,
-        JSON.stringify(marker.tags || []),
-        marker.sourceName || null,
-        marker.sourceUrl || null,
-        marker.confidence,
-        marker.status,
-        marker.hiddenByDefault ? 1 : 0,
-      ],
-    })),
-  );
 }

@@ -55,11 +55,10 @@ Public Recon imports no third-party map images, API data, marker coordinates,
 icons, or copied guide text. Approved private admin drafts may use HITMAPS and
 Guides4Gamers source-map plates and marker seeds only under `private/recon/`,
 with `draft`/`unverified` status and no public publication. Draft source packets
-live in `src/data/recon/source-packets.json` for the current HITMAN, Sniper
-Elite 5, and Sniper Elite: Resistance private review targets. Sniper Elite
-source cross-check status lives in `src/data/recon/source-cross-checks.json` so
-admin review can track secondary sources, source gaps, and manual position
-passes without copying third-party coordinates. Final public maps must be
+and source cross-checks are imported into libSQL/Turso from
+`src/data/recon/source-packets.json` and
+`src/data/recon/source-cross-checks.json`; the JSON files remain temporary
+fallback sources while the migration settles. Final public maps must be
 separately approved and documented in `src/data/recon/asset-manifest.json`.
 
 ## Local Development
@@ -71,9 +70,9 @@ npm run db:seed
 npm run dev
 ```
 
-Open `http://localhost:3000`.
+Open `http://localhost:3203`.
 
-Local development defaults to `.data/vaexil.db`, which is ignored by git. The app also creates and seeds the database automatically on first access if needed. Seeding removes the old fictional sample rows and upserts the verified Freelancer item list.
+Local development defaults to `.data/vaexil.db`, which is ignored by git. The app creates missing database tables on first access, but seed data is explicit: run `npm run db:seed` after changing guide or Recon seed JSON.
 
 ## Commands
 
@@ -88,6 +87,7 @@ npm run db:seed
 npm run dev:start
 npm run dev:stop
 npm run dev:status
+npm run recon:upload-assets -- --write --verify
 ```
 
 ## Local Tooling
@@ -105,6 +105,12 @@ ADMIN_SESSION_SECRET="replace-with-a-long-random-string"
 SUGGESTION_READY_VOTE_THRESHOLD="5"
 LIBSQL_URL="file:.data/vaexil.db"
 LIBSQL_AUTH_TOKEN=""
+RECON_ASSET_STORE="local"
+CLOUDFLARE_ACCOUNT_ID=""
+R2_BUCKET=""
+R2_ENDPOINT=""
+R2_ACCESS_KEY_ID=""
+R2_SECRET_ACCESS_KEY=""
 SENDGRID_API_KEY=""
 SENDGRID_TO_EMAIL="vaexiltv@gmail.com"
 SENDGRID_FROM_EMAIL=""
@@ -115,7 +121,7 @@ NEXT_PUBLIC_DISCORD_URL=""
 NEXT_PUBLIC_GITHUB_URL=""
 ```
 
-For production, set `LIBSQL_URL` and `LIBSQL_AUTH_TOKEN` to a hosted libSQL/Turso database. Do not use the local file database on Vercel for persistent production data. Contact form submissions are recorded even if SendGrid is not configured; set `SENDGRID_API_KEY`, `SENDGRID_TO_EMAIL`, and a verified `SENDGRID_FROM_EMAIL` when email delivery should go live. `ADMIN_PASSWORD` is the bootstrap/fallback password; after signing in, the admin UI can replace it with a database-stored password hash.
+For production, set `LIBSQL_URL` and `LIBSQL_AUTH_TOKEN` to a hosted libSQL/Turso database. Set `RECON_ASSET_STORE=r2` plus the R2 variables when protected Recon draft assets should read from Cloudflare R2. Do not use the local file database on Vercel for persistent production data. Contact form submissions are recorded even if SendGrid is not configured; set `SENDGRID_API_KEY`, `SENDGRID_TO_EMAIL`, and a verified `SENDGRID_FROM_EMAIL` when email delivery should go live. `ADMIN_PASSWORD` is the bootstrap/fallback password; after signing in, the admin UI can replace it with a database-stored password hash.
 
 ## Data Workflow
 

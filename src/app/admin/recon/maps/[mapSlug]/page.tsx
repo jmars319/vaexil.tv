@@ -1,16 +1,19 @@
 import { ReconCoordinateCapture } from "@/components/recon-coordinate-capture";
 import { ReconSourceNotes } from "@/components/recon-source-notes";
 import { Section, SectionHeading, StatusBadge } from "@/components/ui";
-import assetManifest from "@/data/recon/asset-manifest.json";
 import iconManifest from "@/data/recon/icon-manifest.json";
 import { getReconCategoriesForGame } from "@/data/recon/category-registry";
 import { getReconMapViews } from "@/data/recon/map-views";
-import { getReconSourcePacket } from "@/data/recon/source-packets";
 import { isAdminAuthenticated } from "@/lib/admin";
+import {
+  getReconSourceCrossCheck,
+  getReconSourcePacket,
+} from "@/lib/recon-review-metadata";
 import {
   getAdminReconMapBySlug,
   listAdminReconMaps,
   listAdminReconMarkers,
+  listReconAssetsByIds,
   listReconMarkerSuggestions,
 } from "@/lib/repository";
 import { ChevronLeft, ChevronRight, List } from "lucide-react";
@@ -46,11 +49,16 @@ export default async function ReconMapAdminPage({
     notFound();
   }
 
-  const [markers, suggestions, allMaps] = await Promise.all([
+  const mapViewDefinitions = getReconMapViews(map.id);
+  const [markers, suggestions, allMaps, mapViewAssets, sourcePacket, sourceCrossCheck] =
+    await Promise.all([
     listAdminReconMarkers(map.id),
     listReconMarkerSuggestions(map.id),
     listAdminReconMaps(),
-  ]);
+      listReconAssetsByIds(mapViewDefinitions.map((view) => view.assetId)),
+      getReconSourcePacket(map.id),
+      getReconSourceCrossCheck(map.id),
+    ]);
   const sameGameMaps = allMaps.filter((item) => item.gameId === map.gameId);
   const currentMapIndex = sameGameMaps.findIndex((item) => item.id === map.id);
   const previousMap =
@@ -63,8 +71,8 @@ export default async function ReconMapAdminPage({
     map.imageAsset?.visibility === "private"
       ? `/admin/recon/assets/${map.imageAsset.id}`
       : null;
-  const assetById = new Map(assetManifest.map((asset) => [asset.id, asset]));
-  const mapViews = getReconMapViews(map.id).map((view) => {
+  const assetById = new Map(mapViewAssets.map((asset) => [asset.id, asset]));
+  const mapViews = mapViewDefinitions.map((view) => {
     const asset = assetById.get(view.assetId);
 
     return {
@@ -89,6 +97,7 @@ export default async function ReconMapAdminPage({
           <div className="flex flex-wrap gap-2">
             <StatusBadge status={map.status} />
             <StatusBadge status={map.imageAsset?.visibility || "no_asset"} />
+            <StatusBadge status={map.imageAsset?.status || "missing_asset"} />
           </div>
         </div>
       </Section>
@@ -208,7 +217,7 @@ export default async function ReconMapAdminPage({
         />
       </Section>
       <Section className="pt-4">
-        <ReconSourceNotes packet={getReconSourcePacket(map.id)} />
+        <ReconSourceNotes packet={sourcePacket} crossCheck={sourceCrossCheck} />
       </Section>
     </>
   );

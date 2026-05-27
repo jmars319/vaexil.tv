@@ -169,6 +169,25 @@ export async function getReconAssetById(assetId: string) {
   return row ? mapReconAsset(row) : null;
 }
 
+export async function listReconAssetsByIds(assetIds: string[]) {
+  if (assetIds.length === 0) {
+    return [];
+  }
+
+  await ensureDb();
+  const placeholders = assetIds.map(() => "?").join(", ");
+  const result = await getDb().execute({
+    sql: `
+      SELECT *
+      FROM recon_assets
+      WHERE id IN (${placeholders});
+    `,
+    args: assetIds,
+  });
+
+  return result.rows.map((row) => mapReconAsset(row));
+}
+
 export async function listPublishedReconMarkers(mapId: string) {
   await ensureDb();
   const result = await getDb().execute({

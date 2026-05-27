@@ -8,6 +8,7 @@ This guide consolidates Vaexil.tv guardrails into normal maintainer documentatio
 - TypeScript
 - Tailwind CSS v4
 - Turso/libSQL for guide items, suggestions, votes, admin settings, and published data
+- Cloudflare R2 for protected Recon draft asset storage in production
 - Zod validation for public form input
 - SendGrid contact delivery hook
 - Vercel for production hosting
@@ -24,7 +25,8 @@ This guide consolidates Vaexil.tv guardrails into normal maintainer documentatio
 ## Recon Guardrails
 
 - Public Recon imports no third-party map images, API data, marker coordinates, icons, or copied guide text.
-- Approved private Recon drafts may use source-map plates and marker seeds only when they stay under `private/recon/`, remain `draft`/`unverified`, and are served only through protected admin routes.
+- Approved private Recon drafts may use source-map plates and marker seeds only when they stay under local/R2 `private/recon/`, remain `draft`/`unverified`, and are served only through protected admin routes.
+- Runtime requests migrate schema only. Run `npm run db:seed` for seed JSON imports and `npm run recon:upload-assets -- --write --verify` for R2 asset sync.
 - Final maps should be Vaexil-authored schematic maps and documented in `src/data/recon/asset-manifest.json` before publication.
 
 ## Retired Assumptions

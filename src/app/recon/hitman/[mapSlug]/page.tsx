@@ -6,7 +6,10 @@ import { ReconSourceNotes } from "@/components/recon-source-notes";
 import { Section, SectionHeading, SecondaryLink } from "@/components/ui";
 import iconManifest from "@/data/recon/icon-manifest.json";
 import { getReconCategoriesForGame } from "@/data/recon/category-registry";
-import { getReconSourcePacket } from "@/data/recon/source-packets";
+import {
+  getReconSourceCrossCheck,
+  getReconSourcePacket,
+} from "@/lib/recon-review-metadata";
 import {
   getPublicReconMap,
   listPublishedReconMarkers,
@@ -46,7 +49,11 @@ export default async function HitmanReconMapPage({
     notFound();
   }
 
-  const markers = await listPublishedReconMarkers(map.id);
+  const [markers, sourcePacket, sourceCrossCheck] = await Promise.all([
+    listPublishedReconMarkers(map.id),
+    getReconSourcePacket(map.id),
+    getReconSourceCrossCheck(map.id),
+  ]);
   const iconByKey = new Map(iconManifest.map((icon) => [icon.key, icon]));
   const viewerMarkers: ReconViewerMarker[] = markers.map((marker) => ({
     id: marker.id,
@@ -89,7 +96,11 @@ export default async function HitmanReconMapPage({
         />
       </Section>
       <Section className="pt-4">
-        <ReconSourceNotes packet={getReconSourcePacket(map.id)} publicMode />
+        <ReconSourceNotes
+          packet={sourcePacket}
+          crossCheck={sourceCrossCheck}
+          publicMode
+        />
       </Section>
     </>
   );

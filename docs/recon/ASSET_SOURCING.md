@@ -2,9 +2,10 @@
 
 Public Recon still publishes no third-party map images, marker coordinates, API
 data, official game icons, or guide text. Draft/admin Recon may now keep
-explicitly approved third-party source-map images under `private/recon/` when
-the owner has approved that private review use and the asset remains blocked
-from public publication.
+explicitly approved third-party source-map images under local `private/recon/`
+and the matching Cloudflare R2 `private/recon/` prefix when the owner has
+approved that private review use and the asset remains blocked from public
+publication.
 
 Private source maps are working assets, not final Vaexil public map plates. They
 exist to make coordinate capture and floor/layer review practical. Do not copy
@@ -80,7 +81,7 @@ summarized in `docs/recon/VISUAL_CROSS_CHECKS.md`.
 - Decide where final high-resolution Vaexil-authored schematic maps will be
   produced and reviewed.
 - Decide whether final public map assets should live in the repo under
-  `public/recon/maps/` or in configured storage/CDN.
+  `public/recon/maps/` or in the Cloudflare R2 `public/recon/` prefix.
 - Decide whether any publisher/community assets are worth requesting permission
   for later.
 - Decide the review threshold for moving a draft map from private admin preview

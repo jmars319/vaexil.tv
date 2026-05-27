@@ -1,6 +1,7 @@
 import { Section, SectionHeading, StatusBadge } from "@/components/ui";
-import { getReconSourceCrossCheck } from "@/data/recon/source-cross-checks";
+import type { ReconSourceCrossCheck } from "@/data/recon/source-cross-checks";
 import { isAdminAuthenticated } from "@/lib/admin";
+import { listReconSourceCrossChecks } from "@/lib/recon-review-metadata";
 import {
   listAdminReconMaps,
   listReconMarkerSuggestions,
@@ -59,16 +60,22 @@ function groupMapsByGame(maps: ReconMap[]) {
   return groups;
 }
 
-function sourceCheckLabel(mapId: string) {
-  const check = getReconSourceCrossCheck(mapId);
+function sourceCheckLabel(
+  mapId: string,
+  checksByMapId: Map<string, ReconSourceCrossCheck>,
+) {
+  const check = checksByMapId.get(mapId);
 
   if (!check) return "No source cross-check";
 
   return check.status.replaceAll("_", " ");
 }
 
-function visualReviewLabel(mapId: string) {
-  const check = getReconSourceCrossCheck(mapId);
+function visualReviewLabel(
+  mapId: string,
+  checksByMapId: Map<string, ReconSourceCrossCheck>,
+) {
+  const check = checksByMapId.get(mapId);
 
   if (!check) return "No visual review";
 
@@ -80,11 +87,15 @@ export default async function ReconAdminPage() {
     redirect("/admin");
   }
 
-  const [maps, suggestions] = await Promise.all([
+  const [maps, suggestions, sourceCrossChecks] = await Promise.all([
     listAdminReconMaps(),
     listReconMarkerSuggestions(),
+    listReconSourceCrossChecks(),
   ]);
   const mapGroups = groupMapsByGame(maps);
+  const sourceChecksByMapId = new Map(
+    sourceCrossChecks.map((check) => [check.mapId, check]),
+  );
 
   return (
     <>
@@ -133,12 +144,11 @@ export default async function ReconAdminPage() {
             ).length;
             const reviewedCount = group.maps.filter(
               (map) =>
-                getReconSourceCrossCheck(map.id)?.status ===
-                "position_cross_checked",
+                sourceChecksByMapId.get(map.id)?.status === "position_cross_checked",
             ).length;
             const visualComparedCount = group.maps.filter((map) =>
               ["visual_sources_compared", "partial_visual_sources_compared"].includes(
-                getReconSourceCrossCheck(map.id)?.visualReview.status || "",
+                sourceChecksByMapId.get(map.id)?.visualReview.status || "",
               ),
             ).length;
 
@@ -190,10 +200,10 @@ export default async function ReconAdminPage() {
                           : "No private draft asset"}
                       </p>
                       <p className="mt-2 text-xs font-medium uppercase tracking-[0.14em] text-slate-500">
-                        Source check: {sourceCheckLabel(map.id)}
+                        Source check: {sourceCheckLabel(map.id, sourceChecksByMapId)}
                       </p>
                       <p className="mt-1 text-xs font-medium uppercase tracking-[0.14em] text-cyan-200/80">
-                        Visual: {visualReviewLabel(map.id)}
+                        Visual: {visualReviewLabel(map.id, sourceChecksByMapId)}
                       </p>
                     </Link>
                   ))}

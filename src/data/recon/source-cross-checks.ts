@@ -1,5 +1,3 @@
-import sourceCrossChecks from "@/data/recon/source-cross-checks.json";
-
 export type ReconSourceCrossCheckStatus =
   | "position_cross_checked"
   | "needs_manual_position_review"
@@ -55,12 +53,14 @@ export type ReconSourceCrossCheck = {
   nextSteps: string[];
 };
 
-const checks = sourceCrossChecks as ReconSourceCrossCheck[];
-
-export function listReconSourceCrossChecks() {
-  return checks;
+export async function listStaticReconSourceCrossChecks() {
+  const sourceCrossCheckData = await import(
+    "@/data/recon/source-cross-checks.json"
+  );
+  return sourceCrossCheckData.default as ReconSourceCrossCheck[];
 }
 
-export function getReconSourceCrossCheck(mapId: string) {
+export async function getStaticReconSourceCrossCheck(mapId: string) {
+  const checks = await listStaticReconSourceCrossChecks();
   return checks.find((check) => check.mapId === mapId) || null;
 }

@@ -1,21 +1,12 @@
 import { isAdminAuthenticated } from "@/lib/admin";
+import { readReconAsset } from "@/lib/recon-asset-storage";
 import { getReconAssetById } from "@/lib/repository";
-import { readFile } from "node:fs/promises";
-import { extname, relative, resolve, sep } from "node:path";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
 
 type ReconAssetRouteContext = {
   params: Promise<{ assetId: string }>;
-};
-
-const contentTypes: Record<string, string> = {
-  ".svg": "image/svg+xml; charset=utf-8",
-  ".png": "image/png",
-  ".jpg": "image/jpeg",
-  ".jpeg": "image/jpeg",
-  ".webp": "image/webp",
 };
 
 export async function GET(_request: Request, context: ReconAssetRouteContext) {
@@ -33,28 +24,16 @@ export async function GET(_request: Request, context: ReconAssetRouteContext) {
     return new Response("Not found", { status: 404 });
   }
 
-  const privateRoot = resolve(process.cwd(), "private", "recon");
-  const assetPath = resolve(
-    privateRoot,
-    asset.path.replace(/^private\/recon\//, ""),
-  );
-  const relativeAssetPath = relative(privateRoot, assetPath);
-
-  if (
-    relativeAssetPath.startsWith("..") ||
-    relativeAssetPath.includes(`..${sep}`)
-  ) {
-    return new Response("Not found", { status: 404 });
-  }
-
   try {
-    const file = await readFile(assetPath);
-    return new Response(file, {
+    const assetObject = await readReconAsset(asset.path);
+    const body = new ArrayBuffer(assetObject.body.byteLength);
+    new Uint8Array(body).set(assetObject.body);
+
+    return new Response(body, {
       headers: {
         "Cache-Control": "no-store",
-        "Content-Type":
-          contentTypes[extname(assetPath).toLowerCase()] ||
-          "application/octet-stream",
+        "Content-Type": assetObject.contentType,
+        "X-Recon-Asset-Store": assetObject.source,
       },
     });
   } catch {

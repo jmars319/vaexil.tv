@@ -38,6 +38,18 @@ const reconSeedAssets = JSON.parse(
     "utf8",
   ),
 );
+const reconSourcePackets = JSON.parse(
+  await readFile(
+    new URL("../src/data/recon/source-packets.json", import.meta.url),
+    "utf8",
+  ),
+);
+const reconSourceCrossChecks = JSON.parse(
+  await readFile(
+    new URL("../src/data/recon/source-cross-checks.json", import.meta.url),
+    "utf8",
+  ),
+);
 
 await db.batch([
   {
@@ -271,6 +283,36 @@ await db.batch([
   },
   {
     sql: `
+      CREATE TABLE IF NOT EXISTS recon_source_packets (
+        map_id TEXT PRIMARY KEY,
+        game_id TEXT NOT NULL,
+        status TEXT NOT NULL,
+        payload_json TEXT NOT NULL,
+        last_reviewed TEXT,
+        updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY(map_id) REFERENCES recon_maps(id),
+        FOREIGN KEY(game_id) REFERENCES recon_games(id)
+      );
+    `,
+    args: [],
+  },
+  {
+    sql: `
+      CREATE TABLE IF NOT EXISTS recon_source_cross_checks (
+        map_id TEXT PRIMARY KEY,
+        game_id TEXT NOT NULL,
+        status TEXT NOT NULL,
+        payload_json TEXT NOT NULL,
+        last_reviewed TEXT,
+        updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        FOREIGN KEY(map_id) REFERENCES recon_maps(id),
+        FOREIGN KEY(game_id) REFERENCES recon_games(id)
+      );
+    `,
+    args: [],
+  },
+  {
+    sql: `
       CREATE UNIQUE INDEX IF NOT EXISTS idx_official_source_suggestion
       ON official_items(source_suggestion_id)
       WHERE source_suggestion_id IS NOT NULL;
@@ -330,6 +372,20 @@ await db.batch([
     sql: `
       CREATE INDEX IF NOT EXISTS idx_recon_marker_suggestions_map_status
       ON recon_marker_suggestions(map_id, status);
+    `,
+    args: [],
+  },
+  {
+    sql: `
+      CREATE INDEX IF NOT EXISTS idx_recon_source_packets_game
+      ON recon_source_packets(game_id);
+    `,
+    args: [],
+  },
+  {
+    sql: `
+      CREATE INDEX IF NOT EXISTS idx_recon_source_cross_checks_game
+      ON recon_source_cross_checks(game_id);
     `,
     args: [],
   },
@@ -594,6 +650,64 @@ for (const marker of reconSeedMarkers) {
   });
 }
 
+for (const packet of reconSourcePackets) {
+  await db.execute({
+    sql: `
+      INSERT INTO recon_source_packets (
+        map_id,
+        game_id,
+        status,
+        payload_json,
+        last_reviewed,
+        updated_at
+      )
+      VALUES (?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+      ON CONFLICT(map_id) DO UPDATE SET
+        game_id = excluded.game_id,
+        status = excluded.status,
+        payload_json = excluded.payload_json,
+        last_reviewed = excluded.last_reviewed,
+        updated_at = CURRENT_TIMESTAMP;
+    `,
+    args: [
+      packet.mapId,
+      packet.gameId,
+      packet.status,
+      JSON.stringify(packet),
+      packet.lastReviewed || null,
+    ],
+  });
+}
+
+for (const check of reconSourceCrossChecks) {
+  await db.execute({
+    sql: `
+      INSERT INTO recon_source_cross_checks (
+        map_id,
+        game_id,
+        status,
+        payload_json,
+        last_reviewed,
+        updated_at
+      )
+      VALUES (?, ?, ?, ?, ?, CURRENT_TIMESTAMP)
+      ON CONFLICT(map_id) DO UPDATE SET
+        game_id = excluded.game_id,
+        status = excluded.status,
+        payload_json = excluded.payload_json,
+        last_reviewed = excluded.last_reviewed,
+        updated_at = CURRENT_TIMESTAMP;
+    `,
+    args: [
+      check.mapId,
+      check.gameId,
+      check.status,
+      JSON.stringify(check),
+      check.lastReviewed || null,
+    ],
+  });
+}
+
 console.log(
-  `Seeded ${seedItems.length} guide items, ${reconSeedGames.length} Recon games, ${reconSeedMaps.length} Recon draft maps, ${reconSeedAssets.length} Recon assets, and ${reconSeedMarkers.length} Recon draft markers.`,
+  `Seeded ${seedItems.length} guide items, ${reconSeedGames.length} Recon games, ${reconSeedMaps.length} Recon draft maps, ${reconSeedAssets.length} Recon assets, ${reconSeedMarkers.length} Recon draft markers, ${reconSourcePackets.length} source packets, and ${reconSourceCrossChecks.length} source cross-checks.`,
 );
