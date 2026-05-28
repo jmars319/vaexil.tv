@@ -37,6 +37,7 @@ export default async function ReconPage() {
       <Section className="pb-8 pt-16">
         <div className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-end">
           <SectionHeading
+            level={1}
             title="Recon"
             description="Interactive maps, field notes, and guide layers for games covered on stream. Public Recon is curated static knowledge, not AI, prediction, or exposed draft source data."
           />

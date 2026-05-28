@@ -22,6 +22,7 @@ export default async function SuggestionsPage() {
       <Section className="pb-8 pt-16">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
+            level={1}
             title="Community suggestions"
             description={`Vote on additions or corrections that should be reviewed. ${suggestionReadyVoteThreshold} votes marks a suggestion ready for review, but publishing still requires admin verification.`}
           />

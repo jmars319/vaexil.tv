@@ -5,9 +5,11 @@ import Link from "next/link";
 
 const navigation = [
   { label: "Home", href: "/" },
+  { label: "Live", href: "/live" },
+  { label: "Schedule", href: "/schedule" },
+  { label: "Clips", href: "/clips" },
   { label: "Guides", href: "/guides" },
   { label: "Recon", href: "/recon" },
-  { label: "Suggest", href: "/suggest" },
   { label: "VaexCore", href: "/vaexcore" },
   { label: "Contact", href: "/contact" },
 ];

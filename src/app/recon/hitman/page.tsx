@@ -37,6 +37,7 @@ export default async function HitmanReconPage() {
       <Section className="pb-8 pt-16">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
+            level={1}
             title="HITMAN Recon"
             description="Curated interactive guide layers for HITMAN. Map pages stay hidden until their custom schematic maps and marker data are ready."
           />

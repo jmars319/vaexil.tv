@@ -15,6 +15,7 @@ export default function SuggestPage() {
     <>
       <Section className="pb-8 pt-16">
         <SectionHeading
+          level={1}
           title="Suggest an addition or correction"
           description="Viewer notes are useful, but they do not become official guide entries automatically. Submissions enter the pending queue and remain separate from published guide data until admin review."
         />

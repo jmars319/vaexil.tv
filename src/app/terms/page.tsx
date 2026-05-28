@@ -60,6 +60,7 @@ export default function TermsPage() {
     <>
       <Section className="pb-8 pt-16">
         <SectionHeading
+          level={1}
           title="Website terms"
           description="These terms cover use of the public Vaexil.tv site, including guides, suggestions, contact forms, and future VaexCore product notes. Product-specific licenses or written agreements control where they apply."
         />

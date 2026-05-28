@@ -37,6 +37,7 @@ export default function GuidesPage() {
     <>
       <Section className="pb-8 pt-16">
         <SectionHeading
+          level={1}
           title="Guide archive"
           description="A practical knowledge base for stream references. Official entries should stay narrow, searchable, and verified instead of becoming a pile of unreviewed notes."
         />

@@ -34,6 +34,7 @@ export default function VaexCorePage() {
       <Section className="pb-8 pt-16">
         <div className="grid gap-8 lg:grid-cols-[0.92fr_0.78fr] lg:items-center">
           <SectionHeading
+            level={1}
             title="VaexCore"
             description="VaexCore is a future product family inside Vaexil.tv. It supports the creator hub without replacing the stream identity."
           />

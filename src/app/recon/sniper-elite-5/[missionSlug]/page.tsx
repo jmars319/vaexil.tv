@@ -94,6 +94,7 @@ export default async function SniperEliteReconMapPage({
       <Section className="pb-8 pt-16">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
+            level={1}
             title={map.title}
             description={
               map.subtitle

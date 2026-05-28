@@ -19,6 +19,7 @@ export default function ModsSetupPage() {
     <>
       <Section className="pb-8 pt-16">
         <SectionHeading
+          level={1}
           title="Mods / Setup"
           description="Current Hitman World of Assassination mod stack used for the stream. Install with Simple Mod Framework, keep the load order intact, and avoid the confirmed problematic pistol-sound mods until they are re-tested."
         />

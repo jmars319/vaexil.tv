@@ -11,6 +11,7 @@ export default function StreamToolsPage() {
     <>
       <Section className="pb-8 pt-16">
         <SectionHeading
+          level={1}
           title="Tools mentioned on stream"
           description="A future index for utilities, references, and workflow tools discussed live. The page is ready for real entries without inventing a tool list."
         />

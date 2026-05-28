@@ -22,15 +22,19 @@ export function Section({
 export function SectionHeading({
   title,
   description,
+  level = 2,
 }: {
   title: string;
   description?: string;
+  level?: 1 | 2;
 }) {
+  const HeadingTag = level === 1 ? "h1" : "h2";
+
   return (
     <div className="max-w-3xl">
-      <h2 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+      <HeadingTag className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
         {title}
-      </h2>
+      </HeadingTag>
       {description ? (
         <p className="mt-4 text-base leading-7 text-slate-300">{description}</p>
       ) : null}

@@ -43,6 +43,7 @@ export default function ContactPage() {
     <>
       <Section className="pb-8 pt-16">
         <SectionHeading
+          level={1}
           title="Contact Vaexil"
           description="Use this form for collaborations, promotions, stream questions, and future VaexCore conversations. Public contact is form-based so every request arrives with enough context to review."
         />

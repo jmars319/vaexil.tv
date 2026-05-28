@@ -19,6 +19,7 @@ export default async function FreelancerFreeItemsPage() {
       <Section className="pb-8 pt-16">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
+            level={1}
             title="Freelancer free items"
             description={`${items.length} verified official guide rows for free Freelancer items, weapons, tools, and Merces sources. Search by item, map, location, category, or notes.`}
           />

@@ -61,6 +61,7 @@ export default function PrivacyPage() {
     <>
       <Section className="pb-8 pt-16">
         <SectionHeading
+          level={1}
           title="Privacy and data handling"
           description="This page describes the current Vaexil.tv site behavior. Public contact, guide suggestions, votes, and analytics are intentionally lightweight for this first production version."
         />

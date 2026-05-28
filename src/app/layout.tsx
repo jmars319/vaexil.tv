@@ -34,10 +34,10 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/brand/vaexil-og.jpg",
+        url: "/opengraph-image",
         width: 1200,
         height: 630,
-        alt: "Vaexil neon wordmark",
+        alt: "Vaexil stream hub, guides, and Recon maps",
       },
     ],
   },
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.title,
     description: siteConfig.description,
-    images: ["/brand/vaexil-og.jpg"],
+    images: ["/opengraph-image"],
   },
   icons: {
     icon: "/icon.png",
@@ -74,6 +74,19 @@ export default function RootLayout({
       url: siteConfig.url,
       logo: `${siteConfig.url}/brand/vaexil-v-grid.webp`,
       description: siteConfig.description,
+      sameAs: [
+        siteConfig.links.twitch,
+        siteConfig.links.youtube,
+      ].filter(Boolean),
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "@id": `${siteConfig.url}/#vaexil`,
+      name: "Vaexil",
+      url: siteConfig.url,
+      description:
+        "Streamer and creator focused on reflective gaming, guides, Recon maps, and systems-minded creative work.",
       sameAs: [
         siteConfig.links.twitch,
         siteConfig.links.youtube,

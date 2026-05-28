@@ -35,6 +35,7 @@ export default async function SniperEliteReconPage() {
       <Section className="pb-8 pt-16">
         <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
           <SectionHeading
+            level={1}
             title="Sniper Elite 5 Recon"
             description="Curated interactive guide layers for Sniper Elite 5. Mission maps stay hidden until their custom schematic maps and marker data are ready."
           />
