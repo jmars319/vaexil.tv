@@ -72,7 +72,7 @@ export default function RootLayout({
       "@type": "Organization",
       name: "Vaexil.tv",
       url: siteConfig.url,
-      logo: `${siteConfig.url}/brand/vaexil-v-grid.webp`,
+      logo: `${siteConfig.url}/brand/vaexil-app-icon.png`,
       description: siteConfig.description,
       sameAs: [
         siteConfig.links.twitch,

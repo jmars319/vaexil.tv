@@ -26,6 +26,14 @@ export default function Image() {
         <div
           style={{
             position: "absolute",
+            inset: 0,
+            background:
+              "linear-gradient(120deg, rgba(34,211,238,0.16), transparent 34%), radial-gradient(circle at 78% 28%, rgba(217,70,239,0.22), transparent 30%)",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
             right: -60,
             top: -60,
             width: 360,
@@ -45,8 +53,25 @@ export default function Image() {
           }}
         />
         <div style={{ display: "flex", flexDirection: "column", gap: 30 }}>
-          <div style={{ fontSize: 32, color: "#22d3ee", letterSpacing: 9 }}>
-            VAEXIL.TV
+          <div style={{ display: "flex", alignItems: "center", gap: 22 }}>
+            <div
+              style={{
+                width: 88,
+                height: 88,
+                border: "2px solid rgba(34,211,238,0.32)",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                color: "#ffffff",
+                fontSize: 58,
+                fontWeight: 800,
+              }}
+            >
+              V
+            </div>
+            <div style={{ fontSize: 32, color: "#22d3ee", letterSpacing: 9 }}>
+              VAEXIL.TV
+            </div>
           </div>
           <div style={{ maxWidth: 820, fontSize: 80, lineHeight: 0.95, fontWeight: 700 }}>
             Stream hub, guides, and Recon maps.

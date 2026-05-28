@@ -27,7 +27,7 @@ export default function Home() {
       />
       <section className="relative overflow-hidden border-b border-white/10">
         <Image
-          src="/brand/vaexil-v-grid.webp"
+          src="/brand/vaexil-signal-field.svg"
           alt=""
           fill
           sizes="100vw"
@@ -63,14 +63,23 @@ export default function Home() {
               <div className="grid border-b border-white/10 md:grid-cols-[1fr_0.85fr]">
                 <div className="relative min-h-72">
                   <Image
-                    src="/brand/vaexil-og.jpg"
-                    alt="Vaexil neon wordmark"
+                    src="/brand/vaexil-signal-field.svg"
+                    alt=""
                     fill
                     sizes="(min-width: 1024px) 360px, 90vw"
                     className="object-cover"
                     priority
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <Image
+                      src="/brand/vaexil-mark.svg"
+                      alt="Vaexil"
+                      width={180}
+                      height={180}
+                      className="size-44 drop-shadow-[0_0_30px_rgba(34,211,238,0.38)]"
+                    />
+                  </div>
                 </div>
                 <div className="space-y-3 p-5">
                   {["Recon map notes", "Guide corrections", "Clip queue", "VaexCore planning"].map((item) => (
