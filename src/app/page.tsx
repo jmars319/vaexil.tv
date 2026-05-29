@@ -27,7 +27,7 @@ export default function Home() {
       />
       <section className="relative overflow-hidden border-b border-white/10">
         <Image
-          src="/brand/vaexil-hero-background.png"
+          src="/brand/vaexil/hero-background.png"
           alt=""
           fill
           sizes="100vw"
@@ -38,9 +38,15 @@ export default function Home() {
         <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-cyan-300/40 to-transparent" />
         <Section className="relative grid min-h-[calc(100vh-4rem)] items-center gap-12 py-20 lg:grid-cols-[0.95fr_1.05fr]">
           <div className="max-w-3xl">
-            <h1 className="text-6xl font-semibold tracking-tight text-white sm:text-7xl lg:text-8xl">
-              Vaexil
-            </h1>
+            <h1 className="sr-only">Vaexil</h1>
+            <Image
+              src="/brand/vaexil/header-logo.png"
+              alt="Vaexil"
+              width={640}
+              height={197}
+              priority
+              className="h-auto w-full max-w-[22rem] object-contain drop-shadow-[0_0_34px_rgba(0,200,255,0.18)]"
+            />
             <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-300 sm:text-xl">
               Stream hub, guide archive, Recon maps, clips, schedule, suggestions, and VaexCore.
             </p>
@@ -63,7 +69,7 @@ export default function Home() {
               <div className="border-b border-white/10">
                 <div className="relative aspect-[16/9]">
                   <Image
-                    src="/brand/vaexil-website-hero.png"
+                    src="/brand/vaexil/website-hero.png"
                     alt="Vaexil stream hub"
                     fill
                     sizes="(min-width: 1024px) 560px, 90vw"

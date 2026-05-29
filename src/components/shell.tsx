@@ -60,8 +60,8 @@ export function SiteHeader() {
           aria-label="Vaexil.tv home"
         >
           <Image
-            src="/brand/vaexil-header-logo.png"
-            alt="Vaexil.tv"
+            src="/brand/vaexil/header-logo.png"
+            alt="Vaexil"
             width={156}
             height={48}
             className="h-11 w-auto object-contain drop-shadow-[0_0_18px_rgba(0,213,255,0.22)]"
@@ -96,8 +96,8 @@ export function SiteFooter() {
         <div className="grid gap-8 py-10 lg:grid-cols-[1.2fr_0.7fr_1fr_1fr]">
           <div>
             <Image
-              src="/brand/vaexil-header-logo.png"
-              alt="Vaexil.tv"
+              src="/brand/vaexil/header-logo.png"
+              alt="Vaexil"
               width={156}
               height={48}
               className="h-9 w-auto object-contain"

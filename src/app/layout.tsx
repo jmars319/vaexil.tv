@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/brand/vaexil-og-image.png",
+        url: "/brand/vaexil/og-image.png",
         width: 1200,
         height: 630,
         alt: "Vaexil stream hub, guides, and Recon maps",
@@ -45,11 +45,11 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: siteConfig.title,
     description: siteConfig.description,
-    images: ["/brand/vaexil-og-image.png"],
+    images: ["/brand/vaexil/og-image.png"],
   },
   icons: {
-    icon: "/icon.png",
-    apple: "/icon.png",
+    icon: "/brand/vaexil/app-icon-512.png",
+    apple: "/brand/vaexil/app-icon-512.png",
   },
   manifest: "/manifest.webmanifest",
 };
@@ -72,7 +72,7 @@ export default function RootLayout({
       "@type": "Organization",
       name: "Vaexil.tv",
       url: siteConfig.url,
-      logo: `${siteConfig.url}/brand/vaexil-app-icon.png`,
+      logo: `${siteConfig.url}/brand/vaexil/app-icon-512.png`,
       description: siteConfig.description,
       sameAs: [
         siteConfig.links.twitch,
