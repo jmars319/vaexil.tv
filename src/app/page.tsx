@@ -60,19 +60,19 @@ export default function Home() {
           <div className="relative mx-auto w-full max-w-xl">
             <div className="absolute inset-10 rounded-full bg-cyan-300/20 blur-3xl" />
             <div className="relative overflow-hidden rounded-[2rem] border border-white/[0.12] bg-slate-950/72 shadow-[0_28px_110px_rgba(0,0,0,0.52)]">
-              <div className="grid border-b border-white/10 md:grid-cols-[1fr_0.85fr]">
-                <div className="relative min-h-72">
+              <div className="border-b border-white/10">
+                <div className="relative aspect-[16/9]">
                   <Image
                     src="/brand/vaexil-website-hero.png"
                     alt="Vaexil stream hub"
                     fill
-                    sizes="(min-width: 1024px) 360px, 90vw"
+                    sizes="(min-width: 1024px) 560px, 90vw"
                     className="object-cover"
                     priority
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/72 via-slate-950/8 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/58 via-transparent to-slate-950/8" />
                 </div>
-                <div className="space-y-3 p-5">
+                <div className="grid gap-3 p-5 sm:grid-cols-2">
                   {["Recon map notes", "Guide corrections", "Clip queue", "VaexCore planning"].map((item) => (
                     <div key={item} className="rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-medium text-slate-200">
                       {item}
