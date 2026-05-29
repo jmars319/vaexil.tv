@@ -56,19 +56,17 @@ export function SiteHeader() {
       <div className="mx-auto flex min-h-16 w-full max-w-7xl flex-col gap-3 px-4 py-3 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
         <Link
           href="/"
-          className="flex w-fit items-center gap-3 rounded-full outline-none ring-cyan-300/60 transition focus-visible:ring-2"
+          className="flex w-fit items-center rounded-full outline-none ring-cyan-300/60 transition focus-visible:ring-2"
+          aria-label="Vaexil.tv home"
         >
           <Image
-            src="/brand/vaexil-mark.svg"
-            alt=""
-            width={42}
-            height={42}
-            className="size-10 rounded-2xl object-contain shadow-[0_0_28px_rgba(0,213,255,0.28)]"
+            src="/brand/vaexil-header-logo.png"
+            alt="Vaexil.tv"
+            width={156}
+            height={48}
+            className="h-11 w-auto object-contain drop-shadow-[0_0_18px_rgba(0,213,255,0.22)]"
             priority
           />
-          <span className="text-base font-semibold tracking-[0.18em] text-white">
-            VAEXIL.TV
-          </span>
         </Link>
         <nav
           className="flex flex-wrap items-center gap-1 text-sm text-slate-300"
@@ -97,7 +95,13 @@ export function SiteFooter() {
       <div className="mx-auto w-full max-w-7xl px-4 text-sm text-slate-400 sm:px-6 lg:px-8">
         <div className="grid gap-8 py-10 lg:grid-cols-[1.2fr_0.7fr_1fr_1fr]">
           <div>
-            <p className="font-medium text-slate-200">Vaexil.tv</p>
+            <Image
+              src="/brand/vaexil-header-logo.png"
+              alt="Vaexil.tv"
+              width={156}
+              height={48}
+              className="h-9 w-auto object-contain"
+            />
             <p className="mt-1 max-w-2xl">
               Stream references, community suggestions, and future VaexCore
               product notes. Guide entries should be treated as official only

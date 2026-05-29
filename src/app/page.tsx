@@ -27,11 +27,11 @@ export default function Home() {
       />
       <section className="relative overflow-hidden border-b border-white/10">
         <Image
-          src="/brand/vaexil-signal-field.svg"
+          src="/brand/vaexil-hero-background.png"
           alt=""
           fill
           sizes="100vw"
-          className="absolute inset-0 object-cover opacity-30"
+          className="absolute inset-0 object-cover opacity-[0.45]"
           priority
         />
         <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(5,7,13,0.99)_0%,rgba(5,7,13,0.88)_42%,rgba(5,7,13,0.62)_100%),radial-gradient(circle_at_72%_26%,rgba(217,70,239,0.18),transparent_34%),radial-gradient(circle_at_32%_70%,rgba(34,211,238,0.18),transparent_30%)]" />
@@ -63,23 +63,14 @@ export default function Home() {
               <div className="grid border-b border-white/10 md:grid-cols-[1fr_0.85fr]">
                 <div className="relative min-h-72">
                   <Image
-                    src="/brand/vaexil-signal-field.svg"
-                    alt=""
+                    src="/brand/vaexil-website-hero.png"
+                    alt="Vaexil stream hub"
                     fill
                     sizes="(min-width: 1024px) 360px, 90vw"
                     className="object-cover"
                     priority
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent" />
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <Image
-                      src="/brand/vaexil-mark.svg"
-                      alt="Vaexil"
-                      width={180}
-                      height={180}
-                      className="size-44 drop-shadow-[0_0_30px_rgba(34,211,238,0.38)]"
-                    />
-                  </div>
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950/72 via-slate-950/8 to-transparent" />
                 </div>
                 <div className="space-y-3 p-5">
                   {["Recon map notes", "Guide corrections", "Clip queue", "VaexCore planning"].map((item) => (
