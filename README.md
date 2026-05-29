@@ -16,7 +16,7 @@ The Freelancer Free Items guide is seeded from a verified Vaexil source list. Th
 - Public contact form for collaboration, promotion, stream, and VaexCore inquiries
 - Community suggestion form and voting flow
 - Admin review/publishing surface with recent contact submissions and a small first-party analytics snapshot
-- Footer links into the JAMARQ/Tenra/Vaexil site family, with admin access kept unobtrusive in the footer
+- Footer links into the JAMARQ/Tenra/Vaexil site family, with admin access kept off public navigation
 - libSQL-backed local data layer with hosted libSQL/Turso deployment path
 - Deployment notes for Vercel or a comparable Git-based Node host
 

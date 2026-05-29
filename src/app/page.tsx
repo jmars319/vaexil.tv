@@ -1,4 +1,4 @@
-import { ExternalButton, PrimaryLink, SecondaryLink, Section } from "@/components/ui";
+import { ExternalButton, PrimaryExternalButton, PrimaryLink, SecondaryLink, Section } from "@/components/ui";
 import { continuityRoutes, hubCards } from "@/data/creator";
 import { siteConfig } from "@/lib/config";
 import { MessageCircle, Play, Radio, Sparkles } from "lucide-react";
@@ -54,11 +54,11 @@ export default function Home() {
               A home base for reflective gaming, useful references, map work, and stream-adjacent systems that should survive after the live feed moves on.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
-              <PrimaryLink href="/recon">Open Recon</PrimaryLink>
-              <ExternalButton href={siteConfig.links.twitch}>
+              <PrimaryExternalButton href={siteConfig.links.twitch}>
                 <Radio className="mr-2 size-4" aria-hidden="true" />
                 Watch live
-              </ExternalButton>
+              </PrimaryExternalButton>
+              <SecondaryLink href="/recon">Open Recon</SecondaryLink>
               <SecondaryLink href="/guides">Browse guides</SecondaryLink>
             </div>
           </div>

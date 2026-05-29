@@ -191,7 +191,7 @@ export function SiteFooter() {
           <p>&copy; {currentYear} Vaexil.tv. All rights reserved.</p>
           <nav
             className="flex flex-wrap gap-4"
-            aria-label="Vaexil legal and admin links"
+            aria-label="Vaexil legal links"
           >
             <Link
               href="/privacy"
@@ -204,12 +204,6 @@ export function SiteFooter() {
               className="text-[0.72rem] text-slate-400 transition hover:text-cyan-200"
             >
               Terms
-            </Link>
-            <Link
-              href="/admin"
-              className="text-[0.72rem] text-slate-500 transition hover:text-cyan-200"
-            >
-              Admin
             </Link>
           </nav>
         </div>
