@@ -25,7 +25,7 @@ const fields = [
   {
     name: "mapName",
     label: "Map name",
-    placeholder: "Use placeholder text if this needs admin confirmation",
+    placeholder: "Use draft text if this needs admin confirmation",
   },
 ];
 

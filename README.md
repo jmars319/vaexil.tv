@@ -4,7 +4,7 @@ Vaexil.tv is the creator hub for Vaexil. It collects stream references, guide ar
 
 ## Current Reality
 
-This is an early production-ready build, not a placeholder. Public routes cover the home hub, guide landing pages, the verified Freelancer Free Items table, Hitman mods/setup notes, contact intake, suggestion submission, community suggestions with vote thresholds, and VaexCore placeholder product cards. Admin routes are intentionally lightweight and password-protected for reviewing contact intake, checking light page-view analytics, and verifying, rejecting, or publishing guide suggestions.
+This is an early production-ready build, not a placeholder. Public routes cover the home hub, guide landing pages, the verified Freelancer Free Items table, Hitman mods/setup notes, contact intake, suggestion submission, community suggestions with vote thresholds, and reserved VaexCore product cards. Admin routes are intentionally lightweight and password-protected for reviewing contact intake, checking light page-view analytics, and verifying, rejecting, or publishing guide suggestions.
 
 The Freelancer Free Items guide is seeded from a verified Vaexil source list. The mods/setup guide tracks the current SMF-based load order and marks known-bad mods separately. Future guide additions should still go through review before they become official site content.
 
@@ -156,8 +156,8 @@ See [docs/deployment.md](docs/deployment.md) for the full domain, DNS, environme
 ## Guardrails
 
 - The current official Freelancer guide rows are verified seed data; keep future official additions reviewed before publishing.
-- Discord and GitHub links are configurable placeholders until final URLs exist.
+- Discord and GitHub links are configured later when final URLs exist.
 - No full user accounts or OAuth. Admin auth is intentionally lightweight for v1.
-- Clips and schedule are structural placeholders until real media or schedule data is ready.
+- Clips and schedule are reserved surfaces until real media or schedule data is ready.
 - Official guide rows must come from admin publishing, not automatic community vote thresholds.
 - Admin password changes are stored as hashes in the configured database. Keep `ADMIN_SESSION_SECRET` set in production so sessions are not tied to the bootstrap password.

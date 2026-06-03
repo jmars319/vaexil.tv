@@ -1,0 +1,45 @@
+{
+  "appDir": "src/app",
+  "sourceRoots": [
+    ".github/workflows",
+    "src/app",
+    "src/components",
+    "src/data",
+    "src/lib",
+    "docs",
+    "scripts"
+  ],
+  "assetRoots": [
+    "public",
+    "src/app",
+    "private/recon/maps"
+  ],
+  "generatedArtifactPatterns": [
+    ".next/**",
+    ".vercel/**",
+    ".data/**",
+    "build/**",
+    "dist/**",
+    "out/**",
+    "coverage/**",
+    "playwright-report/**",
+    "test-results/**",
+    "*.tsbuildinfo",
+    "next-env.d.ts"
+  ],
+  "maxImplementationFileLines": 700,
+  "maxScriptFileLines": 900,
+  "maxStyleFileLines": 400,
+  "maxDocFileLines": 1500,
+  "nearBudgetLineWindow": 25,
+  "maxAssetBytes": 3407872,
+  "nearAssetBytes": 102400,
+  "failOnWarnings": true,
+  "bundleBudget": {
+    "maxTotalStaticJsKb": 760,
+    "maxLargestChunkKb": 240,
+    "maxRouteFirstLoadKb": 585,
+    "nearBudgetKb": 4,
+    "failOnWarnings": true
+  }
+}

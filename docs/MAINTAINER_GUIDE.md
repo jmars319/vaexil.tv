@@ -31,8 +31,8 @@ This guide consolidates Vaexil.tv guardrails into normal maintainer documentatio
 
 ## Retired Assumptions
 
-- Discord and GitHub links are configurable placeholders until final URLs exist.
-- Clips and schedule remain structural placeholders until real media or schedule data is ready.
+- Discord and GitHub links are configured later when final URLs exist.
+- Clips and schedule remain reserved surfaces until real media or schedule data is ready.
 - Admin auth is intentionally lightweight for v1; do not add full user accounts or OAuth without an explicit decision.
 
 ## Verification Baseline

@@ -1,0 +1,261 @@
+[
+  {
+    "route": "/",
+    "kind": "page",
+    "methods": [
+      "PAGE"
+    ]
+  },
+  {
+    "route": "/about",
+    "kind": "page",
+    "methods": [
+      "PAGE"
+    ]
+  },
+  {
+    "route": "/admin",
+    "kind": "page",
+    "methods": [
+      "PAGE"
+    ]
+  },
+  {
+    "route": "/admin/recon",
+    "kind": "page",
+    "methods": [
+      "PAGE"
+    ]
+  },
+  {
+    "route": "/admin/recon/assets/[assetId]",
+    "kind": "route",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "route": "/admin/recon/maps/[mapSlug]",
+    "kind": "page",
+    "methods": [
+      "PAGE"
+    ]
+  },
+  {
+    "route": "/admin/recon/maps/[mapSlug]/preview",
+    "kind": "page",
+    "methods": [
+      "PAGE"
+    ]
+  },
+  {
+    "route": "/api/analytics/page-view",
+    "kind": "route",
+    "methods": [
+      "POST"
+    ]
+  },
+  {
+    "route": "/api/contact",
+    "kind": "route",
+    "methods": [
+      "POST"
+    ]
+  },
+  {
+    "route": "/clips",
+    "kind": "page",
+    "methods": [
+      "PAGE"
+    ]
+  },
+  {
+    "route": "/contact",
+    "kind": "page",
+    "methods": [
+      "PAGE"
+    ]
+  },
+  {
+    "route": "/favicon.ico",
+    "kind": "metadata",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "route": "/guides",
+    "kind": "page",
+    "methods": [
+      "PAGE"
+    ]
+  },
+  {
+    "route": "/guides/freelancer-free-items",
+    "kind": "page",
+    "methods": [
+      "PAGE"
+    ]
+  },
+  {
+    "route": "/guides/mods-setup",
+    "kind": "page",
+    "methods": [
+      "PAGE"
+    ]
+  },
+  {
+    "route": "/guides/stream-tools",
+    "kind": "page",
+    "methods": [
+      "PAGE"
+    ]
+  },
+  {
+    "route": "/live",
+    "kind": "page",
+    "methods": [
+      "PAGE"
+    ]
+  },
+  {
+    "route": "/manifest.webmanifest",
+    "kind": "metadata",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "route": "/privacy",
+    "kind": "page",
+    "methods": [
+      "PAGE"
+    ]
+  },
+  {
+    "route": "/recon",
+    "kind": "page",
+    "methods": [
+      "PAGE"
+    ]
+  },
+  {
+    "route": "/recon/hitman",
+    "kind": "page",
+    "methods": [
+      "PAGE"
+    ]
+  },
+  {
+    "route": "/recon/hitman/[mapSlug]",
+    "kind": "page",
+    "methods": [
+      "PAGE"
+    ]
+  },
+  {
+    "route": "/recon/sniper-elite-5",
+    "kind": "page",
+    "methods": [
+      "PAGE"
+    ]
+  },
+  {
+    "route": "/recon/sniper-elite-5/[missionSlug]",
+    "kind": "page",
+    "methods": [
+      "PAGE"
+    ]
+  },
+  {
+    "route": "/recon/sniper-elite-resistance",
+    "kind": "page",
+    "methods": [
+      "PAGE"
+    ]
+  },
+  {
+    "route": "/recon/sniper-elite-resistance/[missionSlug]",
+    "kind": "page",
+    "methods": [
+      "PAGE"
+    ]
+  },
+  {
+    "route": "/robots.txt",
+    "kind": "metadata",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "route": "/schedule",
+    "kind": "page",
+    "methods": [
+      "PAGE"
+    ]
+  },
+  {
+    "route": "/sitemap.xml",
+    "kind": "metadata",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "route": "/start-here",
+    "kind": "page",
+    "methods": [
+      "PAGE"
+    ]
+  },
+  {
+    "route": "/status/access-denied",
+    "kind": "page",
+    "methods": [
+      "PAGE"
+    ]
+  },
+  {
+    "route": "/status/maintenance",
+    "kind": "page",
+    "methods": [
+      "PAGE"
+    ]
+  },
+  {
+    "route": "/status/server-error",
+    "kind": "page",
+    "methods": [
+      "PAGE"
+    ]
+  },
+  {
+    "route": "/suggest",
+    "kind": "page",
+    "methods": [
+      "PAGE"
+    ]
+  },
+  {
+    "route": "/suggestions",
+    "kind": "page",
+    "methods": [
+      "PAGE"
+    ]
+  },
+  {
+    "route": "/terms",
+    "kind": "page",
+    "methods": [
+      "PAGE"
+    ]
+  },
+  {
+    "route": "/vaexcore",
+    "kind": "page",
+    "methods": [
+      "PAGE"
+    ]
+  }
+]
