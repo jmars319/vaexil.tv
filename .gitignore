@@ -40,6 +40,7 @@ scripts/dev-config.sh
 .env*
 !.env.example
 .data/
+_live-reference/
 
 # vercel
 .vercel

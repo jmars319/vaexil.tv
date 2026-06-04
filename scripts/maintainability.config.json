@@ -18,6 +18,7 @@
     ".next/**",
     ".vercel/**",
     ".data/**",
+    "_live-reference/**",
     "build/**",
     "dist/**",
     "out/**",
