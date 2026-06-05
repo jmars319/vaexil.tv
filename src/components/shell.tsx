@@ -1,5 +1,5 @@
 import { siteConfig } from "@/lib/config";
-import { Code, MessageCircle, Play, Radio } from "lucide-react";
+import { Code, MessageCircle, Play, Radio, ShieldCheck } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -160,6 +160,13 @@ export function SiteFooter() {
               className="mt-3 inline-flex text-slate-300 transition hover:text-cyan-200"
             >
               Contact Vaexil
+            </Link>
+            <Link
+              href="/admin"
+              className="mt-4 inline-flex min-h-10 items-center gap-2 rounded-full border border-cyan-300/30 px-4 text-sm font-semibold text-cyan-100 transition hover:border-cyan-200 hover:bg-cyan-300/[0.08] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200/70"
+            >
+              <ShieldCheck className="size-4" aria-hidden="true" />
+              Admin
             </Link>
             <div className="mt-4 flex flex-wrap gap-2">
               {social.map(({ label, href, icon: Icon }) =>
