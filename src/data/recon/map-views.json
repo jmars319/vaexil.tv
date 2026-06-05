@@ -1,5 +1,60 @@
 [
   {
+    "id": "hitman-berlin-1f",
+    "mapId": "hitman-berlin",
+    "label": "1F / exterior and ground (Level 0)",
+    "shortLabel": "1F",
+    "kind": "floor",
+    "floor": "1F",
+    "assetId": "hitmaps-hitman-berlin-level-0",
+    "sortOrder": 30,
+    "notes": "Actual private HITMAPS floor map for Berlin Level 0/exterior and ground review. Use only for admin coordinate capture and first-hand validation."
+  },
+  {
+    "id": "hitman-berlin-2f",
+    "mapId": "hitman-berlin",
+    "label": "2F / upper club (Level 1)",
+    "shortLabel": "2F",
+    "kind": "floor",
+    "floor": "2F",
+    "assetId": "hitmaps-hitman-berlin-level-1",
+    "sortOrder": 40,
+    "notes": "Actual private HITMAPS floor map for Berlin Level 1/upper club review. Use only for admin coordinate capture and first-hand validation."
+  },
+  {
+    "id": "hitman-berlin-3f",
+    "mapId": "hitman-berlin",
+    "label": "3F / roof access (Level 2)",
+    "shortLabel": "3F",
+    "kind": "floor",
+    "floor": "3F",
+    "assetId": "hitmaps-hitman-berlin-level-2",
+    "sortOrder": 50,
+    "notes": "Actual private HITMAPS floor map for Berlin Level 2/roof access review. Use only for admin coordinate capture and first-hand validation."
+  },
+  {
+    "id": "hitman-berlin-4f",
+    "mapId": "hitman-berlin",
+    "label": "4F / overpass (Level 3)",
+    "shortLabel": "4F",
+    "kind": "floor",
+    "floor": "4F",
+    "assetId": "hitmaps-hitman-berlin-level-3",
+    "sortOrder": 60,
+    "notes": "Actual private HITMAPS floor map for Berlin Level 3/overpass review. Use only for admin coordinate capture and first-hand validation."
+  },
+  {
+    "id": "hitman-berlin-b1",
+    "mapId": "hitman-berlin",
+    "label": "B1 / club basement (Level -1)",
+    "shortLabel": "B1",
+    "kind": "floor",
+    "floor": "B1",
+    "assetId": "hitmaps-hitman-berlin-level-minus-1",
+    "sortOrder": 20,
+    "notes": "Actual private HITMAPS floor map for Berlin Level -1/club basement review. Use only for admin coordinate capture and first-hand validation."
+  },
+  {
     "id": "hitman-berlin-b2",
     "mapId": "hitman-berlin",
     "label": "B2 / lower club (Level -2)",
@@ -9,6 +64,72 @@
     "assetId": "hitmaps-hitman-berlin-level-minus-2",
     "sortOrder": 10,
     "notes": "Actual private HITMAPS floor map for Berlin Level -2/lower club review. Use only for admin coordinate capture and first-hand validation."
+  },
+  {
+    "id": "hitman-berlin-tower",
+    "mapId": "hitman-berlin",
+    "label": "Tower / radio tower (Level 4)",
+    "shortLabel": "Tower",
+    "kind": "floor",
+    "floor": "Tower",
+    "assetId": "hitmaps-hitman-berlin-level-4",
+    "sortOrder": 70,
+    "notes": "Actual private HITMAPS floor map for Berlin Level 4/radio tower review. Use only for admin coordinate capture and first-hand validation."
+  },
+  {
+    "id": "hitman-dubai-1f",
+    "mapId": "hitman-dubai",
+    "label": "1F / lobby (Level 0)",
+    "shortLabel": "1F",
+    "kind": "floor",
+    "floor": "1F",
+    "assetId": "hitmaps-hitman-dubai-level-0",
+    "sortOrder": 20,
+    "notes": "Actual private HITMAPS floor map for Level 0/lobby review. Use only for admin coordinate capture and first-hand validation."
+  },
+  {
+    "id": "hitman-dubai-2f",
+    "mapId": "hitman-dubai",
+    "label": "2F / event (Level 1)",
+    "shortLabel": "2F",
+    "kind": "floor",
+    "floor": "2F",
+    "assetId": "hitmaps-hitman-dubai-level-1",
+    "sortOrder": 30,
+    "notes": "Actual private HITMAPS floor map for Level 1 / 2nd Floor review. Use only for admin coordinate capture and first-hand validation."
+  },
+  {
+    "id": "hitman-dubai-3f",
+    "mapId": "hitman-dubai",
+    "label": "3F / gallery (Level 2)",
+    "shortLabel": "3F",
+    "kind": "floor",
+    "floor": "3F",
+    "assetId": "hitmaps-hitman-dubai-level-2",
+    "sortOrder": 40,
+    "notes": "Actual private HITMAPS floor map for Level 2/gallery review. Use only for admin coordinate capture and first-hand validation."
+  },
+  {
+    "id": "hitman-dubai-4f",
+    "mapId": "hitman-dubai",
+    "label": "4F / staff (Level 3)",
+    "shortLabel": "4F",
+    "kind": "floor",
+    "floor": "4F",
+    "assetId": "hitmaps-hitman-dubai-level-3",
+    "sortOrder": 50,
+    "notes": "Actual private HITMAPS floor map for Level 3/staff and security review. Use only for admin coordinate capture and first-hand validation."
+  },
+  {
+    "id": "hitman-dubai-5f",
+    "mapId": "hitman-dubai",
+    "label": "5F / penthouse (Level 4)",
+    "shortLabel": "5F",
+    "kind": "floor",
+    "floor": "5F",
+    "assetId": "hitmaps-hitman-dubai-level-4",
+    "sortOrder": 60,
+    "notes": "Actual private HITMAPS floor map for Level 4/penthouse review. Use only for admin coordinate capture and first-hand validation."
   },
   {
     "id": "hitman-dubai-b1",
@@ -22,268 +143,279 @@
     "notes": "Actual private HITMAPS floor map for Level -1/service review. Use only for admin coordinate capture and first-hand validation."
   },
   {
+    "id": "hitman-dubai-roof",
+    "mapId": "hitman-dubai",
+    "label": "Roof (Level 5)",
+    "shortLabel": "Roof",
+    "kind": "floor",
+    "floor": "Roof",
+    "assetId": "hitmaps-hitman-dubai-level-5",
+    "sortOrder": 70,
+    "notes": "Actual private HITMAPS floor map for Level 5/roof review. Use only for admin coordinate capture and first-hand validation."
+  },
+  {
     "id": "se3-belly-of-the-beast-surface",
     "mapId": "se3-belly-of-the-beast",
-    "label": "Surface / mission review",
-    "shortLabel": "Surface",
+    "label": "Surface / external source",
+    "shortLabel": "Source",
     "kind": "surface",
     "floor": "surface",
-    "assetId": "draft-schematic-se3-belly-of-the-beast",
+    "assetId": "mapgenie-se3-belly-of-the-beast-source",
     "sortOrder": 10,
-    "notes": "Private neutral draft surface view for legacy Sniper Elite admin review. Replace with a reviewed Vaexil-authored or approved private source plate before position work."
+    "notes": "Private MapGenie external source plate for admin-only draft marker review. Labels: external_source_imported, needs_manual_position_review, manual_replacement_pending."
   },
   {
     "id": "se3-confrontation-surface",
     "mapId": "se3-confrontation",
-    "label": "Surface / mission review",
-    "shortLabel": "Surface",
+    "label": "Surface / external source",
+    "shortLabel": "Source",
     "kind": "surface",
     "floor": "surface",
-    "assetId": "draft-schematic-se3-confrontation",
+    "assetId": "mapgenie-se3-confrontation-source",
     "sortOrder": 10,
-    "notes": "Private neutral draft surface view for legacy Sniper Elite admin review. Replace with a reviewed Vaexil-authored or approved private source plate before position work."
+    "notes": "Private MapGenie external source plate for admin-only draft marker review. Labels: external_source_imported, needs_manual_position_review, manual_replacement_pending."
   },
   {
     "id": "se3-fort-rifugio-surface",
     "mapId": "se3-fort-rifugio",
-    "label": "Surface / mission review",
-    "shortLabel": "Surface",
+    "label": "Surface / external source",
+    "shortLabel": "Source",
     "kind": "surface",
     "floor": "surface",
-    "assetId": "draft-schematic-se3-fort-rifugio",
+    "assetId": "mapgenie-se3-fort-rifugio-source",
     "sortOrder": 10,
-    "notes": "Private neutral draft surface view for legacy Sniper Elite admin review. Replace with a reviewed Vaexil-authored or approved private source plate before position work."
+    "notes": "Private MapGenie external source plate for admin-only draft marker review. Labels: external_source_imported, needs_manual_position_review, manual_replacement_pending."
   },
   {
     "id": "se3-gaberoun-surface",
     "mapId": "se3-gaberoun",
-    "label": "Surface / mission review",
-    "shortLabel": "Surface",
+    "label": "Surface / external source",
+    "shortLabel": "Source",
     "kind": "surface",
     "floor": "surface",
-    "assetId": "draft-schematic-se3-gaberoun",
+    "assetId": "mapgenie-se3-gaberoun-source",
     "sortOrder": 10,
-    "notes": "Private neutral draft surface view for legacy Sniper Elite admin review. Replace with a reviewed Vaexil-authored or approved private source plate before position work."
+    "notes": "Private MapGenie external source plate for admin-only draft marker review. Labels: external_source_imported, needs_manual_position_review, manual_replacement_pending."
   },
   {
     "id": "se3-halfaya-pass-surface",
     "mapId": "se3-halfaya-pass",
-    "label": "Surface / mission review",
-    "shortLabel": "Surface",
+    "label": "Surface / external source",
+    "shortLabel": "Source",
     "kind": "surface",
     "floor": "surface",
-    "assetId": "draft-schematic-se3-halfaya-pass",
+    "assetId": "mapgenie-se3-halfaya-pass-source",
     "sortOrder": 10,
-    "notes": "Private neutral draft surface view for legacy Sniper Elite admin review. Replace with a reviewed Vaexil-authored or approved private source plate before position work."
+    "notes": "Private MapGenie external source plate for admin-only draft marker review. Labels: external_source_imported, needs_manual_position_review, manual_replacement_pending."
   },
   {
     "id": "se3-hunt-the-grey-wolf-surface",
     "mapId": "se3-hunt-the-grey-wolf",
-    "label": "Surface / mission review",
-    "shortLabel": "Surface",
+    "label": "Surface / external source",
+    "shortLabel": "Source",
     "kind": "surface",
     "floor": "surface",
-    "assetId": "draft-schematic-se3-hunt-the-grey-wolf",
+    "assetId": "mapgenie-se3-hunt-the-grey-wolf-source",
     "sortOrder": 10,
-    "notes": "Private neutral draft surface view for legacy Sniper Elite admin review. Replace with a reviewed Vaexil-authored or approved private source plate before position work."
+    "notes": "Private MapGenie external source plate for admin-only draft marker review. Labels: external_source_imported, needs_manual_position_review, manual_replacement_pending."
   },
   {
     "id": "se3-in-shadows-surface",
     "mapId": "se3-in-shadows",
-    "label": "Surface / mission review",
-    "shortLabel": "Surface",
+    "label": "Surface / external source",
+    "shortLabel": "Source",
     "kind": "surface",
     "floor": "surface",
-    "assetId": "draft-schematic-se3-in-shadows",
+    "assetId": "mapgenie-se3-in-shadows-source",
     "sortOrder": 10,
-    "notes": "Private neutral draft surface view for legacy Sniper Elite admin review. Replace with a reviewed Vaexil-authored or approved private source plate before position work."
+    "notes": "Private MapGenie external source plate for admin-only draft marker review. Labels: external_source_imported, needs_manual_position_review, manual_replacement_pending."
   },
   {
     "id": "se3-kasserine-pass-surface",
     "mapId": "se3-kasserine-pass",
-    "label": "Surface / mission review",
-    "shortLabel": "Surface",
+    "label": "Surface / external source",
+    "shortLabel": "Source",
     "kind": "surface",
     "floor": "surface",
-    "assetId": "draft-schematic-se3-kasserine-pass",
+    "assetId": "mapgenie-se3-kasserine-pass-source",
     "sortOrder": 10,
-    "notes": "Private neutral draft surface view for legacy Sniper Elite admin review. Replace with a reviewed Vaexil-authored or approved private source plate before position work."
+    "notes": "Private MapGenie external source plate for admin-only draft marker review. Labels: external_source_imported, needs_manual_position_review, manual_replacement_pending."
   },
   {
     "id": "se3-ponts-du-fahs-airfield-surface",
     "mapId": "se3-ponts-du-fahs-airfield",
-    "label": "Surface / mission review",
-    "shortLabel": "Surface",
+    "label": "Surface / external source",
+    "shortLabel": "Source",
     "kind": "surface",
     "floor": "surface",
-    "assetId": "draft-schematic-se3-ponts-du-fahs-airfield",
+    "assetId": "mapgenie-se3-ponts-du-fahs-airfield-source",
     "sortOrder": 10,
-    "notes": "Private neutral draft surface view for legacy Sniper Elite admin review. Replace with a reviewed Vaexil-authored or approved private source plate before position work."
+    "notes": "Private MapGenie external source plate for admin-only draft marker review. Labels: external_source_imported, needs_manual_position_review, manual_replacement_pending."
   },
   {
     "id": "se3-ratte-factory-surface",
     "mapId": "se3-ratte-factory",
-    "label": "Surface / mission review",
-    "shortLabel": "Surface",
+    "label": "Surface / external source",
+    "shortLabel": "Source",
     "kind": "surface",
     "floor": "surface",
-    "assetId": "draft-schematic-se3-ratte-factory",
+    "assetId": "mapgenie-se3-ratte-factory-source",
     "sortOrder": 10,
-    "notes": "Private neutral draft surface view for legacy Sniper Elite admin review. Replace with a reviewed Vaexil-authored or approved private source plate before position work."
+    "notes": "Private MapGenie external source plate for admin-only draft marker review. Labels: external_source_imported, needs_manual_position_review, manual_replacement_pending."
   },
   {
     "id": "se3-siege-of-tobruk-surface",
     "mapId": "se3-siege-of-tobruk",
-    "label": "Surface / mission review",
-    "shortLabel": "Surface",
+    "label": "Surface / external source",
+    "shortLabel": "Source",
     "kind": "surface",
     "floor": "surface",
-    "assetId": "draft-schematic-se3-siege-of-tobruk",
+    "assetId": "mapgenie-se3-siege-of-tobruk-source",
     "sortOrder": 10,
-    "notes": "Private neutral draft surface view for legacy Sniper Elite admin review. Replace with a reviewed Vaexil-authored or approved private source plate before position work."
+    "notes": "Private MapGenie external source plate for admin-only draft marker review. Labels: external_source_imported, needs_manual_position_review, manual_replacement_pending."
   },
   {
     "id": "se3-siwa-oasis-surface",
     "mapId": "se3-siwa-oasis",
-    "label": "Surface / mission review",
-    "shortLabel": "Surface",
+    "label": "Surface / external source",
+    "shortLabel": "Source",
     "kind": "surface",
     "floor": "surface",
-    "assetId": "draft-schematic-se3-siwa-oasis",
+    "assetId": "mapgenie-se3-siwa-oasis-source",
     "sortOrder": 10,
-    "notes": "Private neutral draft surface view for legacy Sniper Elite admin review. Replace with a reviewed Vaexil-authored or approved private source plate before position work."
+    "notes": "Private MapGenie external source plate for admin-only draft marker review. Labels: external_source_imported, needs_manual_position_review, manual_replacement_pending."
   },
   {
     "id": "se4-abrunza-monastery-surface",
     "mapId": "se4-abrunza-monastery",
-    "label": "Surface / mission review",
-    "shortLabel": "Surface",
+    "label": "Surface / external source",
+    "shortLabel": "Source",
     "kind": "surface",
     "floor": "surface",
-    "assetId": "draft-schematic-se4-abrunza-monastery",
+    "assetId": "mapgenie-se4-abrunza-monastery-source",
     "sortOrder": 10,
-    "notes": "Private neutral draft surface view for legacy Sniper Elite admin review. Replace with a reviewed Vaexil-authored or approved private source plate before position work."
+    "notes": "Private MapGenie external source plate for admin-only draft marker review. Labels: external_source_imported, needs_manual_position_review, manual_replacement_pending."
   },
   {
     "id": "se4-allagra-fortress-surface",
     "mapId": "se4-allagra-fortress",
-    "label": "Surface / mission review",
-    "shortLabel": "Surface",
+    "label": "Surface / external source",
+    "shortLabel": "Source",
     "kind": "surface",
     "floor": "surface",
-    "assetId": "draft-schematic-se4-allagra-fortress",
+    "assetId": "mapgenie-se4-allagra-fortress-source",
     "sortOrder": 10,
-    "notes": "Private neutral draft surface view for legacy Sniper Elite admin review. Replace with a reviewed Vaexil-authored or approved private source plate before position work."
+    "notes": "Private MapGenie external source plate for admin-only draft marker review. Labels: external_source_imported, needs_manual_position_review, manual_replacement_pending."
   },
   {
     "id": "se4-bitanti-village-surface",
     "mapId": "se4-bitanti-village",
-    "label": "Surface / mission review",
-    "shortLabel": "Surface",
+    "label": "Surface / external source",
+    "shortLabel": "Source",
     "kind": "surface",
     "floor": "surface",
-    "assetId": "draft-schematic-se4-bitanti-village",
+    "assetId": "mapgenie-se4-bitanti-village-source",
     "sortOrder": 10,
-    "notes": "Private neutral draft surface view for legacy Sniper Elite admin review. Replace with a reviewed Vaexil-authored or approved private source plate before position work."
+    "notes": "Private MapGenie external source plate for admin-only draft marker review. Labels: external_source_imported, needs_manual_position_review, manual_replacement_pending."
   },
   {
     "id": "se4-deathstorm-inception-surface",
     "mapId": "se4-deathstorm-inception",
-    "label": "Surface / mission review",
-    "shortLabel": "Surface",
+    "label": "Surface / external source",
+    "shortLabel": "Source",
     "kind": "surface",
     "floor": "surface",
-    "assetId": "draft-schematic-se4-deathstorm-inception",
+    "assetId": "mapgenie-se4-deathstorm-inception-source",
     "sortOrder": 10,
-    "notes": "Private neutral draft surface view for legacy Sniper Elite admin review. Replace with a reviewed Vaexil-authored or approved private source plate before position work."
+    "notes": "Private MapGenie external source plate for admin-only draft marker review. Labels: external_source_imported, needs_manual_position_review, manual_replacement_pending."
   },
   {
     "id": "se4-deathstorm-infiltration-surface",
     "mapId": "se4-deathstorm-infiltration",
-    "label": "Surface / mission review",
-    "shortLabel": "Surface",
+    "label": "Surface / external source",
+    "shortLabel": "Source",
     "kind": "surface",
     "floor": "surface",
-    "assetId": "draft-schematic-se4-deathstorm-infiltration",
+    "assetId": "mapgenie-se4-deathstorm-infiltration-source",
     "sortOrder": 10,
-    "notes": "Private neutral draft surface view for legacy Sniper Elite admin review. Replace with a reviewed Vaexil-authored or approved private source plate before position work."
+    "notes": "Private MapGenie external source plate for admin-only draft marker review. Labels: external_source_imported, needs_manual_position_review, manual_replacement_pending."
   },
   {
     "id": "se4-deathstorm-obliteration-surface",
     "mapId": "se4-deathstorm-obliteration",
-    "label": "Surface / mission review",
-    "shortLabel": "Surface",
+    "label": "Surface / external source",
+    "shortLabel": "Source",
     "kind": "surface",
     "floor": "surface",
-    "assetId": "draft-schematic-se4-deathstorm-obliteration",
+    "assetId": "mapgenie-se4-deathstorm-obliteration-source",
     "sortOrder": 10,
-    "notes": "Private neutral draft surface view for legacy Sniper Elite admin review. Replace with a reviewed Vaexil-authored or approved private source plate before position work."
+    "notes": "Private MapGenie external source plate for admin-only draft marker review. Labels: external_source_imported, needs_manual_position_review, manual_replacement_pending."
   },
   {
     "id": "se4-giovi-fiorini-mansion-surface",
     "mapId": "se4-giovi-fiorini-mansion",
-    "label": "Surface / mission review",
-    "shortLabel": "Surface",
+    "label": "Surface / external source",
+    "shortLabel": "Source",
     "kind": "surface",
     "floor": "surface",
-    "assetId": "draft-schematic-se4-giovi-fiorini-mansion",
+    "assetId": "mapgenie-se4-giovi-fiorini-mansion-source",
     "sortOrder": 10,
-    "notes": "Private neutral draft surface view for legacy Sniper Elite admin review. Replace with a reviewed Vaexil-authored or approved private source plate before position work."
+    "notes": "Private MapGenie external source plate for admin-only draft marker review. Labels: external_source_imported, needs_manual_position_review, manual_replacement_pending."
   },
   {
     "id": "se4-lorino-dockyard-surface",
     "mapId": "se4-lorino-dockyard",
-    "label": "Surface / mission review",
-    "shortLabel": "Surface",
+    "label": "Surface / external source",
+    "shortLabel": "Source",
     "kind": "surface",
     "floor": "surface",
-    "assetId": "draft-schematic-se4-lorino-dockyard",
+    "assetId": "mapgenie-se4-lorino-dockyard-source",
     "sortOrder": 10,
-    "notes": "Private neutral draft surface view for legacy Sniper Elite admin review. Replace with a reviewed Vaexil-authored or approved private source plate before position work."
+    "notes": "Private MapGenie external source plate for admin-only draft marker review. Labels: external_source_imported, needs_manual_position_review, manual_replacement_pending."
   },
   {
     "id": "se4-magazzeno-facility-surface",
     "mapId": "se4-magazzeno-facility",
-    "label": "Surface / mission review",
-    "shortLabel": "Surface",
+    "label": "Surface / external source",
+    "shortLabel": "Source",
     "kind": "surface",
     "floor": "surface",
-    "assetId": "draft-schematic-se4-magazzeno-facility",
+    "assetId": "mapgenie-se4-magazzeno-facility-source",
     "sortOrder": 10,
-    "notes": "Private neutral draft surface view for legacy Sniper Elite admin review. Replace with a reviewed Vaexil-authored or approved private source plate before position work."
+    "notes": "Private MapGenie external source plate for admin-only draft marker review. Labels: external_source_imported, needs_manual_position_review, manual_replacement_pending."
   },
   {
     "id": "se4-regilino-viaduct-surface",
     "mapId": "se4-regilino-viaduct",
-    "label": "Surface / mission review",
-    "shortLabel": "Surface",
+    "label": "Surface / external source",
+    "shortLabel": "Source",
     "kind": "surface",
     "floor": "surface",
-    "assetId": "draft-schematic-se4-regilino-viaduct",
+    "assetId": "mapgenie-se4-regilino-viaduct-source",
     "sortOrder": 10,
-    "notes": "Private neutral draft surface view for legacy Sniper Elite admin review. Replace with a reviewed Vaexil-authored or approved private source plate before position work."
+    "notes": "Private MapGenie external source plate for admin-only draft marker review. Labels: external_source_imported, needs_manual_position_review, manual_replacement_pending."
   },
   {
     "id": "se4-san-celini-island-surface",
     "mapId": "se4-san-celini-island",
-    "label": "Surface / mission review",
-    "shortLabel": "Surface",
+    "label": "Surface / external source",
+    "shortLabel": "Source",
     "kind": "surface",
     "floor": "surface",
-    "assetId": "draft-schematic-se4-san-celini-island",
+    "assetId": "mapgenie-se4-san-celini-island-source",
     "sortOrder": 10,
-    "notes": "Private neutral draft surface view for legacy Sniper Elite admin review. Replace with a reviewed Vaexil-authored or approved private source plate before position work."
+    "notes": "Private MapGenie external source plate for admin-only draft marker review. Labels: external_source_imported, needs_manual_position_review, manual_replacement_pending."
   },
   {
     "id": "se4-target-fuhrer-surface",
     "mapId": "se4-target-fuhrer",
-    "label": "Surface / mission review",
-    "shortLabel": "Surface",
+    "label": "Surface / external source",
+    "shortLabel": "Source",
     "kind": "surface",
     "floor": "surface",
-    "assetId": "draft-schematic-se4-target-fuhrer",
+    "assetId": "mapgenie-se4-target-fuhrer-source",
     "sortOrder": 10,
-    "notes": "Private neutral draft surface view for legacy Sniper Elite admin review. Replace with a reviewed Vaexil-authored or approved private source plate before position work."
+    "notes": "Private MapGenie external source plate for admin-only draft marker review. Labels: external_source_imported, needs_manual_position_review, manual_replacement_pending."
   },
   {
     "id": "se5-atlantic-wall-surface",
@@ -295,6 +427,17 @@
     "assetId": "guides4gamers-se5-atlantic-wall-surface",
     "sortOrder": 10,
     "notes": "Actual private Guides4Gamers source map for surface review. Interior, bunker, tunnel, or underground detail still requires first-hand Vaexil validation before publication."
+  },
+  {
+    "id": "se5-atlantic-wall-underground",
+    "mapId": "se5-atlantic-wall",
+    "label": "Underground / interiors",
+    "shortLabel": "Under",
+    "kind": "underground",
+    "floor": "underground",
+    "assetId": "draft-schematic-se5-atlantic-wall-underground",
+    "sortOrder": 20,
+    "notes": "Approximate Vaexil-authored underground/interior schematic for tunnels, bunker interiors, safehouse interior, and workbench-access review."
   },
   {
     "id": "se5-conqueror-surface",
@@ -451,6 +594,17 @@
     "notes": "Actual private Guides4Gamers source map for surface review. Interior, bunker, tunnel, or underground detail still requires first-hand Vaexil validation before publication."
   },
   {
+    "id": "ser-behind-enemy-lines-infrastructure",
+    "mapId": "ser-behind-enemy-lines",
+    "label": "Dam / interiors",
+    "shortLabel": "Dam",
+    "kind": "underground",
+    "floor": "interior",
+    "assetId": "draft-schematic-ser-behind-enemy-lines-interior",
+    "sortOrder": 20,
+    "notes": "Approximate Vaexil-authored dam/interior schematic for pipe panels, bunker/interior routes, and workbench-access review."
+  },
+  {
     "id": "ser-behind-enemy-lines-surface",
     "mapId": "ser-behind-enemy-lines",
     "label": "Surface",
@@ -585,68 +739,68 @@
   {
     "id": "sev2r-brandenburg-gate-surface",
     "mapId": "sev2r-brandenburg-gate",
-    "label": "Surface / mission review",
-    "shortLabel": "Surface",
+    "label": "Surface / external source",
+    "shortLabel": "Source",
     "kind": "surface",
     "floor": "surface",
-    "assetId": "draft-schematic-sev2r-brandenburg-gate",
+    "assetId": "mapgenie-sev2r-brandenburg-gate-source",
     "sortOrder": 10,
-    "notes": "Private neutral draft surface view for legacy Sniper Elite admin review. Replace with a reviewed Vaexil-authored or approved private source plate before position work."
+    "notes": "Private MapGenie external source plate for admin-only draft marker review. Labels: external_source_imported, needs_manual_position_review, manual_replacement_pending."
   },
   {
     "id": "sev2r-kaiser-friedrich-museum-surface",
     "mapId": "sev2r-kaiser-friedrich-museum",
-    "label": "Surface / mission review",
-    "shortLabel": "Surface",
+    "label": "Surface / external source",
+    "shortLabel": "Source",
     "kind": "surface",
     "floor": "surface",
-    "assetId": "draft-schematic-sev2r-kaiser-friedrich-museum",
+    "assetId": "mapgenie-sev2r-kaiser-friedrich-museum-source",
     "sortOrder": 10,
-    "notes": "Private neutral draft surface view for legacy Sniper Elite admin review. Replace with a reviewed Vaexil-authored or approved private source plate before position work."
+    "notes": "Private MapGenie external source plate for admin-only draft marker review. Labels: external_source_imported, needs_manual_position_review, manual_replacement_pending."
   },
   {
     "id": "sev2r-karlshorst-command-post-surface",
     "mapId": "sev2r-karlshorst-command-post",
-    "label": "Surface / mission review",
-    "shortLabel": "Surface",
+    "label": "Surface / external source",
+    "shortLabel": "Source",
     "kind": "surface",
     "floor": "surface",
-    "assetId": "draft-schematic-sev2r-karlshorst-command-post",
+    "assetId": "mapgenie-sev2r-karlshorst-command-post-source",
     "sortOrder": 10,
-    "notes": "Private neutral draft surface view for legacy Sniper Elite admin review. Replace with a reviewed Vaexil-authored or approved private source plate before position work."
+    "notes": "Private MapGenie external source plate for admin-only draft marker review. Labels: external_source_imported, needs_manual_position_review, manual_replacement_pending."
   },
   {
     "id": "sev2r-kopenick-launch-site-surface",
     "mapId": "sev2r-kopenick-launch-site",
-    "label": "Surface / mission review",
-    "shortLabel": "Surface",
+    "label": "Surface / external source",
+    "shortLabel": "Source",
     "kind": "surface",
     "floor": "surface",
-    "assetId": "draft-schematic-sev2r-kopenick-launch-site",
+    "assetId": "mapgenie-sev2r-kopenick-launch-site-source",
     "sortOrder": 10,
-    "notes": "Private neutral draft surface view for legacy Sniper Elite admin review. Replace with a reviewed Vaexil-authored or approved private source plate before position work."
+    "notes": "Private MapGenie external source plate for admin-only draft marker review. Labels: external_source_imported, needs_manual_position_review, manual_replacement_pending."
   },
   {
     "id": "sev2r-kreuzberg-headquarters-surface",
     "mapId": "sev2r-kreuzberg-headquarters",
-    "label": "Surface / mission review",
-    "shortLabel": "Surface",
+    "label": "Surface / external source",
+    "shortLabel": "Source",
     "kind": "surface",
     "floor": "surface",
-    "assetId": "draft-schematic-sev2r-kreuzberg-headquarters",
+    "assetId": "mapgenie-sev2r-kreuzberg-headquarters-source",
     "sortOrder": 10,
-    "notes": "Private neutral draft surface view for legacy Sniper Elite admin review. Replace with a reviewed Vaexil-authored or approved private source plate before position work."
+    "notes": "Private MapGenie external source plate for admin-only draft marker review. Labels: external_source_imported, needs_manual_position_review, manual_replacement_pending."
   },
   {
     "id": "sev2r-mittelwerk-facility-surface",
     "mapId": "sev2r-mittelwerk-facility",
-    "label": "Surface / mission review",
-    "shortLabel": "Surface",
+    "label": "Surface / external source",
+    "shortLabel": "Source",
     "kind": "surface",
     "floor": "surface",
-    "assetId": "draft-schematic-sev2r-mittelwerk-facility",
+    "assetId": "mapgenie-sev2r-mittelwerk-facility-source",
     "sortOrder": 10,
-    "notes": "Private neutral draft surface view for legacy Sniper Elite admin review. Replace with a reviewed Vaexil-authored or approved private source plate before position work."
+    "notes": "Private MapGenie external source plate for admin-only draft marker review. Labels: external_source_imported, needs_manual_position_review, manual_replacement_pending."
   },
   {
     "id": "sev2r-neudorf-outpost-surface",
@@ -662,24 +816,24 @@
   {
     "id": "sev2r-opernplatz-surface",
     "mapId": "sev2r-opernplatz",
-    "label": "Surface / mission review",
-    "shortLabel": "Surface",
+    "label": "Surface / external source",
+    "shortLabel": "Source",
     "kind": "surface",
     "floor": "surface",
-    "assetId": "draft-schematic-sev2r-opernplatz",
+    "assetId": "mapgenie-sev2r-opernplatz-source",
     "sortOrder": 10,
-    "notes": "Private neutral draft surface view for legacy Sniper Elite admin review. Replace with a reviewed Vaexil-authored or approved private source plate before position work."
+    "notes": "Private MapGenie external source plate for admin-only draft marker review. Labels: external_source_imported, needs_manual_position_review, manual_replacement_pending."
   },
   {
     "id": "sev2r-prologue-surface",
     "mapId": "sev2r-prologue",
-    "label": "Surface / mission review",
-    "shortLabel": "Surface",
+    "label": "Surface / external source",
+    "shortLabel": "Source",
     "kind": "surface",
     "floor": "surface",
-    "assetId": "draft-schematic-sev2r-prologue",
+    "assetId": "mapgenie-sev2r-prologue-source",
     "sortOrder": 10,
-    "notes": "Private neutral draft surface view for legacy Sniper Elite admin review. Replace with a reviewed Vaexil-authored or approved private source plate before position work."
+    "notes": "Private MapGenie external source plate for admin-only draft marker review. Labels: external_source_imported, needs_manual_position_review, manual_replacement_pending."
   },
   {
     "id": "sev2r-saint-pierre-surface",
@@ -695,24 +849,24 @@
   {
     "id": "sev2r-schoneberg-convoy-surface",
     "mapId": "sev2r-schoneberg-convoy",
-    "label": "Surface / mission review",
-    "shortLabel": "Surface",
+    "label": "Surface / external source",
+    "shortLabel": "Source",
     "kind": "surface",
     "floor": "surface",
-    "assetId": "draft-schematic-sev2r-schoneberg-convoy",
+    "assetId": "mapgenie-sev2r-schoneberg-convoy-source",
     "sortOrder": 10,
-    "notes": "Private neutral draft surface view for legacy Sniper Elite admin review. Replace with a reviewed Vaexil-authored or approved private source plate before position work."
+    "notes": "Private MapGenie external source plate for admin-only draft marker review. Labels: external_source_imported, needs_manual_position_review, manual_replacement_pending."
   },
   {
     "id": "sev2r-st-olibartus-church-surface",
     "mapId": "sev2r-st-olibartus-church",
-    "label": "Surface / mission review",
-    "shortLabel": "Surface",
+    "label": "Surface / external source",
+    "shortLabel": "Source",
     "kind": "surface",
     "floor": "surface",
-    "assetId": "draft-schematic-sev2r-st-olibartus-church",
+    "assetId": "mapgenie-sev2r-st-olibartus-church-source",
     "sortOrder": 10,
-    "notes": "Private neutral draft surface view for legacy Sniper Elite admin review. Replace with a reviewed Vaexil-authored or approved private source plate before position work."
+    "notes": "Private MapGenie external source plate for admin-only draft marker review. Labels: external_source_imported, needs_manual_position_review, manual_replacement_pending."
   },
   {
     "id": "sev2r-the-landwehr-canal-surface",
@@ -728,166 +882,12 @@
   {
     "id": "sev2r-tiergarten-flak-tower-surface",
     "mapId": "sev2r-tiergarten-flak-tower",
-    "label": "Surface / mission review",
-    "shortLabel": "Surface",
+    "label": "Surface / external source",
+    "shortLabel": "Source",
     "kind": "surface",
     "floor": "surface",
-    "assetId": "draft-schematic-sev2r-tiergarten-flak-tower",
+    "assetId": "mapgenie-sev2r-tiergarten-flak-tower-source",
     "sortOrder": 10,
-    "notes": "Private neutral draft surface view for legacy Sniper Elite admin review. Replace with a reviewed Vaexil-authored or approved private source plate before position work."
-  },
-  {
-    "id": "hitman-berlin-b1",
-    "mapId": "hitman-berlin",
-    "label": "B1 / club basement (Level -1)",
-    "shortLabel": "B1",
-    "kind": "floor",
-    "floor": "B1",
-    "assetId": "hitmaps-hitman-berlin-level-minus-1",
-    "sortOrder": 20,
-    "notes": "Actual private HITMAPS floor map for Berlin Level -1/club basement review. Use only for admin coordinate capture and first-hand validation."
-  },
-  {
-    "id": "hitman-dubai-1f",
-    "mapId": "hitman-dubai",
-    "label": "1F / lobby (Level 0)",
-    "shortLabel": "1F",
-    "kind": "floor",
-    "floor": "1F",
-    "assetId": "hitmaps-hitman-dubai-level-0",
-    "sortOrder": 20,
-    "notes": "Actual private HITMAPS floor map for Level 0/lobby review. Use only for admin coordinate capture and first-hand validation."
-  },
-  {
-    "id": "se5-atlantic-wall-underground",
-    "mapId": "se5-atlantic-wall",
-    "label": "Underground / interiors",
-    "shortLabel": "Under",
-    "kind": "underground",
-    "floor": "underground",
-    "assetId": "draft-schematic-se5-atlantic-wall-underground",
-    "sortOrder": 20,
-    "notes": "Approximate Vaexil-authored underground/interior schematic for tunnels, bunker interiors, safehouse interior, and workbench-access review."
-  },
-  {
-    "id": "ser-behind-enemy-lines-infrastructure",
-    "mapId": "ser-behind-enemy-lines",
-    "label": "Dam / interiors",
-    "shortLabel": "Dam",
-    "kind": "underground",
-    "floor": "interior",
-    "assetId": "draft-schematic-ser-behind-enemy-lines-interior",
-    "sortOrder": 20,
-    "notes": "Approximate Vaexil-authored dam/interior schematic for pipe panels, bunker/interior routes, and workbench-access review."
-  },
-  {
-    "id": "hitman-berlin-1f",
-    "mapId": "hitman-berlin",
-    "label": "1F / exterior and ground (Level 0)",
-    "shortLabel": "1F",
-    "kind": "floor",
-    "floor": "1F",
-    "assetId": "hitmaps-hitman-berlin-level-0",
-    "sortOrder": 30,
-    "notes": "Actual private HITMAPS floor map for Berlin Level 0/exterior and ground review. Use only for admin coordinate capture and first-hand validation."
-  },
-  {
-    "id": "hitman-dubai-2f",
-    "mapId": "hitman-dubai",
-    "label": "2F / event (Level 1)",
-    "shortLabel": "2F",
-    "kind": "floor",
-    "floor": "2F",
-    "assetId": "hitmaps-hitman-dubai-level-1",
-    "sortOrder": 30,
-    "notes": "Actual private HITMAPS floor map for Level 1 / 2nd Floor review. Use only for admin coordinate capture and first-hand validation."
-  },
-  {
-    "id": "hitman-berlin-2f",
-    "mapId": "hitman-berlin",
-    "label": "2F / upper club (Level 1)",
-    "shortLabel": "2F",
-    "kind": "floor",
-    "floor": "2F",
-    "assetId": "hitmaps-hitman-berlin-level-1",
-    "sortOrder": 40,
-    "notes": "Actual private HITMAPS floor map for Berlin Level 1/upper club review. Use only for admin coordinate capture and first-hand validation."
-  },
-  {
-    "id": "hitman-dubai-3f",
-    "mapId": "hitman-dubai",
-    "label": "3F / gallery (Level 2)",
-    "shortLabel": "3F",
-    "kind": "floor",
-    "floor": "3F",
-    "assetId": "hitmaps-hitman-dubai-level-2",
-    "sortOrder": 40,
-    "notes": "Actual private HITMAPS floor map for Level 2/gallery review. Use only for admin coordinate capture and first-hand validation."
-  },
-  {
-    "id": "hitman-berlin-3f",
-    "mapId": "hitman-berlin",
-    "label": "3F / roof access (Level 2)",
-    "shortLabel": "3F",
-    "kind": "floor",
-    "floor": "3F",
-    "assetId": "hitmaps-hitman-berlin-level-2",
-    "sortOrder": 50,
-    "notes": "Actual private HITMAPS floor map for Berlin Level 2/roof access review. Use only for admin coordinate capture and first-hand validation."
-  },
-  {
-    "id": "hitman-dubai-4f",
-    "mapId": "hitman-dubai",
-    "label": "4F / staff (Level 3)",
-    "shortLabel": "4F",
-    "kind": "floor",
-    "floor": "4F",
-    "assetId": "hitmaps-hitman-dubai-level-3",
-    "sortOrder": 50,
-    "notes": "Actual private HITMAPS floor map for Level 3/staff and security review. Use only for admin coordinate capture and first-hand validation."
-  },
-  {
-    "id": "hitman-berlin-4f",
-    "mapId": "hitman-berlin",
-    "label": "4F / overpass (Level 3)",
-    "shortLabel": "4F",
-    "kind": "floor",
-    "floor": "4F",
-    "assetId": "hitmaps-hitman-berlin-level-3",
-    "sortOrder": 60,
-    "notes": "Actual private HITMAPS floor map for Berlin Level 3/overpass review. Use only for admin coordinate capture and first-hand validation."
-  },
-  {
-    "id": "hitman-dubai-5f",
-    "mapId": "hitman-dubai",
-    "label": "5F / penthouse (Level 4)",
-    "shortLabel": "5F",
-    "kind": "floor",
-    "floor": "5F",
-    "assetId": "hitmaps-hitman-dubai-level-4",
-    "sortOrder": 60,
-    "notes": "Actual private HITMAPS floor map for Level 4/penthouse review. Use only for admin coordinate capture and first-hand validation."
-  },
-  {
-    "id": "hitman-berlin-tower",
-    "mapId": "hitman-berlin",
-    "label": "Tower / radio tower (Level 4)",
-    "shortLabel": "Tower",
-    "kind": "floor",
-    "floor": "Tower",
-    "assetId": "hitmaps-hitman-berlin-level-4",
-    "sortOrder": 70,
-    "notes": "Actual private HITMAPS floor map for Berlin Level 4/radio tower review. Use only for admin coordinate capture and first-hand validation."
-  },
-  {
-    "id": "hitman-dubai-roof",
-    "mapId": "hitman-dubai",
-    "label": "Roof (Level 5)",
-    "shortLabel": "Roof",
-    "kind": "floor",
-    "floor": "Roof",
-    "assetId": "hitmaps-hitman-dubai-level-5",
-    "sortOrder": 70,
-    "notes": "Actual private HITMAPS floor map for Level 5/roof review. Use only for admin coordinate capture and first-hand validation."
+    "notes": "Private MapGenie external source plate for admin-only draft marker review. Labels: external_source_imported, needs_manual_position_review, manual_replacement_pending."
   }
 ]

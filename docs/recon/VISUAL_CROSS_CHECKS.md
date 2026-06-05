@@ -28,12 +28,15 @@ node scripts/build-recon-visual-review-pack.mjs
 ```
 
 `build-recon-source-cross-checks.mjs` rebuilds the SE5/Resistance comparison
-records and preserves existing legacy V2R/SE3/SE4 source-gap records. Use
+records and preserves existing legacy V2R/SE3/SE4 records. Use
 `scripts/import-legacy-sniper-elite-recon.mjs --write` to refresh the legacy
-game/map/source scaffolding itself. The visual review pack writes to the system
-temp directory by default and may include copied third-party reference images.
-It must stay out of Git and must not be published. The generated `INDEX.md`,
-`SUMMARY.json`, and contact sheets are for manual owner review only.
+game/map/source scaffolding itself, then use
+`scripts/import-legacy-sniper-elite-source-maps.mjs --write` to refresh
+approved private MapGenie source plates and draft marker seeds. The visual
+review pack writes to the system temp directory by default and may include
+copied third-party reference images. It must stay out of Git and must not be
+published. The generated `INDEX.md`, `SUMMARY.json`, and contact sheets are for
+manual owner review only.
 
 ## Current Coverage
 
@@ -42,15 +45,16 @@ source. As of the current pass:
 
 - 65 Sniper Elite maps have source cross-check records.
 - 25 maps have `visual_sources_compared`.
-- 1 map has `partial_visual_sources_compared`: Mud and Thunder.
-- 39 legacy V2R/SE3/SE4 maps have `source_limited` visual review records.
+- 36 maps have `partial_visual_sources_compared`: Mud and Thunder plus 35
+  legacy V2R/SE3/SE4 maps with private MapGenie source imports.
+- 4 V2R DLC maps have `source_limited` visual review records because no
+  compatible MapGenie mission region was imported.
 - 2 maps have recorded manual position-review passes: The Atlantic Wall and
   Behind Enemy Lines.
 - 24 modern SE5/Resistance maps still need exact manual position review before
   any marker confidence upgrade.
-- 39 legacy V2R/SE3/SE4 maps have no coordinate marker seeds yet and require an
-  approved private source import or first-hand gameplay pass before coordinate
-  capture.
+- 1,158 legacy V2R/SE3/SE4 draft marker seeds are present from private MapGenie
+  source imports and remain `draft`/`unverified`.
 
 | Game | Map | Source status | Visual review | Sources | Manual review emphasis |
 | --- | --- | --- | --- | ---: | --- |
@@ -80,9 +84,9 @@ source. As of the current pass:
 | Sniper Elite: Resistance | Vercors Vendetta | needs manual position review | visual sources compared | 3 | Review village/road regions, workbenches, and DLC collectible-count expectations. |
 | Sniper Elite: Resistance | Striking Range | needs manual position review | visual sources compared | 4 | Review all marker positions manually; independent visual coverage exists, but fewer secondary sources are recorded than campaign maps. |
 | Sniper Elite: Resistance | Mud and Thunder | needs manual position review | partial visual sources compared | 3 | Treat as first-hand review priority; current secondary checks are guide-based rather than a full independent map surface. |
-| Sniper Elite V2 Remastered | 15 campaign/DLC draft maps | source gap | source limited | 4 | Mission scope and source discovery are recorded from official/product, wiki, Gamepressure, GameMappers/MapGenie, Wand, and DLC guide references. No map art or marker coordinates are imported. |
-| Sniper Elite 3 | 12 campaign/DLC draft maps | source gap | source limited | 5 | Mission scope and collectible category discovery are recorded from official/product, wiki, Gamepressure, PowerPyx, PS4Trophies, GameMappers/MapGenie, and Wand references. No map art or marker coordinates are imported. |
-| Sniper Elite 4 | 12 campaign/DLC draft maps | source gap | source limited | 5 | Mission scope and collectible category discovery are recorded from official/product, wiki, Gamepressure, GameMappers/MapGenie, sniperelite4maps, its GitHub repo, and Wand references. No map art or marker coordinates are imported. |
+| Sniper Elite V2 Remastered | 11 imported campaign maps / 4 DLC source gaps | needs manual position review / source gap | partial visual sources compared / source limited | 5 | Eleven MapGenie campaign source plates and 232 draft markers are private/admin-only. Four DLC missions remain neutral source-gap placeholders until a compatible source or manual pass exists. |
+| Sniper Elite 3 | 12 campaign/DLC draft maps | needs manual position review | partial visual sources compared | 6 | Twelve MapGenie source plates and 362 draft markers are private/admin-only. PowerPyx/PS4Trophies/Gamepressure remain count/category references only. |
+| Sniper Elite 4 | 12 campaign/DLC draft maps | needs manual position review | partial visual sources compared | 7 | Twelve MapGenie source plates and 564 draft markers are private/admin-only. sniperelite4maps and its GitHub repo are recorded as secondary visual/category references only. |
 
 ## Manual Review Standard
 

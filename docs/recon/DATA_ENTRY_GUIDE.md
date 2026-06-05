@@ -96,19 +96,23 @@ For Sniper Elite maps, source cross-check records live in
 `src/data/recon/source-cross-checks.json`. They record which secondary sources
 were checked, local marker/workbench counts, visual-review status, known gaps,
 and next review steps.
-They must not store copied third-party coordinates or guide prose. Rebuild the
+They must not store guide prose, screenshots, UI, icons, or marker detail text.
+Draft marker coordinates may be imported only when the source packet and asset
+sourcing notes record an owner-approved private source import. Rebuild the
 SE5/Resistance comparison records with
 `node scripts/build-recon-source-cross-checks.mjs --write` after marker
 import/category changes, then manually update any map-specific review notes that
-came from a real position pass. Refresh legacy V2R/SE3/SE4 source-gap records
-with `node scripts/import-legacy-sniper-elite-recon.mjs --write`.
+came from a real position pass. Refresh legacy V2R/SE3/SE4 game/map scaffolding
+with `node scripts/import-legacy-sniper-elite-recon.mjs --write`, then refresh
+approved external source plates and draft marker seeds with
+`node scripts/import-legacy-sniper-elite-source-maps.mjs --write`.
 
 The Sniper Elite V2 Remastered, Sniper Elite 3, and Sniper Elite 4 seed records
-are intentionally source-limited placeholders for this pass. They have private
-Vaexil draft plates, source packets, and source-gap cross-check records, but no
-coordinate marker seeds. Add legacy marker positions only after an approved
-private source import or first-hand gameplay pass records the map view,
-category, source basis, and remaining uncertainty.
+now use private MapGenie source plates and draft marker seeds where compatible
+source regions exist. V2R DLC missions without source regions remain neutral
+placeholder/source-gap records. Keep every legacy marker `draft`/`unverified`
+until first-hand gameplay review records the exact position, category, source
+basis, and remaining uncertainty.
 
 Guides4Gamers, HITMAPS, publisher screenshots, and other map images may still be
 opened or briefly stored in scratch space as draw-under references. Scratch

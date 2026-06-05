@@ -149,9 +149,11 @@ plates and marker seeds. Main-campaign cells use the corrected 3x3 campaign-cell
 transform rather than full campaign-composite coordinates; DLC/extra maps use
 their own source-map coordinate transform. They remain `draft`/`unverified`.
 The Sniper Elite V2 Remastered, Sniper Elite 3, and Sniper Elite 4 expansion
-currently uses Vaexil-created neutral placeholder plates and source-limited
-cross-check records only; no third-party legacy map art, screenshots, marker
-coordinates, app data, or guide prose has been imported.
+uses private MapGenie source plates and draft marker seeds where compatible
+campaign/DLC source regions exist. They are temporary external source imports
+only: public publication is blocked, all markers remain `draft`/`unverified`,
+V2R DLC missions without MapGenie regions stay source gaps, and every imported
+plate is marked for future manually sourced Vaexil replacement.
 
 Reference images from HITMAPS, Guides4Gamers, publisher screenshots, or other
 guide sites may also be used temporarily as draw-under material while authoring a
