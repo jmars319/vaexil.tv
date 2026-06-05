@@ -11,11 +11,21 @@ of HITMAPS, Sniper Elite Maps, Guides4Gamers, or any other map project.
 
 - `/recon` is the public Recon landing page.
 - `/recon/hitman` is the public HITMAN Recon game page.
+- `/recon/sniper-elite-v2-remastered` is the public Sniper Elite V2 Remastered
+  Recon game page.
+- `/recon/sniper-elite-3` is the public Sniper Elite 3 Recon game page.
+- `/recon/sniper-elite-4` is the public Sniper Elite 4 Recon game page.
 - `/recon/sniper-elite-5` is the public Sniper Elite 5 Recon game page.
 - `/recon/sniper-elite-resistance` is the public Sniper Elite: Resistance Recon
   game page.
 - `/recon/hitman/[mapSlug]` only renders published maps with approved public
   assets.
+- `/recon/sniper-elite-v2-remastered/[missionSlug]` only renders published maps
+  with approved public assets.
+- `/recon/sniper-elite-3/[missionSlug]` only renders published maps with
+  approved public assets.
+- `/recon/sniper-elite-4/[missionSlug]` only renders published maps with
+  approved public assets.
 - `/recon/sniper-elite-5/[missionSlug]` only renders published maps with
   approved public assets.
 - `/recon/sniper-elite-resistance/[missionSlug]` only renders published maps
@@ -127,17 +137,21 @@ Future public game map plates should still go through a separate publication
 review and may be Vaexil-authored schematic maps created from first-hand gameplay
 review and manual validation.
 
-Private source maps from HITMAPS or Guides4Gamers may be committed only under
-`private/recon/` with `imported: true`, `visibility = private`, and
-`status = candidate`. They are admin-only review surfaces for coordinate capture,
-not public assets. Do not use them to copy marker coordinates, marker labels,
-guide prose, checklist data, icons, UI, or API nodes unless the source packet and
-asset-sourcing notes record a specific owner-approved private draft import. The
-Sniper Elite 5 and Sniper Elite: Resistance Guides4Gamers imports are approved
-only as private draft source plates and marker seeds. Main-campaign cells use the
-corrected 3x3 campaign-cell transform rather than full campaign-composite
-coordinates; DLC/extra maps use their own source-map coordinate transform. They
-remain `draft`/`unverified`.
+Private source maps from HITMAPS, Guides4Gamers, or another documented source
+may be committed only under `private/recon/` with `imported: true`,
+`visibility = private`, and `status = candidate`. They are admin-only review
+surfaces for coordinate capture, not public assets. Do not use them to copy marker
+coordinates, marker labels, guide prose, checklist data, icons, UI, or API nodes
+unless the source packet and asset-sourcing notes record a specific
+owner-approved private draft import. The Sniper Elite 5 and Sniper Elite:
+Resistance Guides4Gamers imports are approved only as private draft source
+plates and marker seeds. Main-campaign cells use the corrected 3x3 campaign-cell
+transform rather than full campaign-composite coordinates; DLC/extra maps use
+their own source-map coordinate transform. They remain `draft`/`unverified`.
+The Sniper Elite V2 Remastered, Sniper Elite 3, and Sniper Elite 4 expansion
+currently uses Vaexil-created neutral placeholder plates and source-limited
+cross-check records only; no third-party legacy map art, screenshots, marker
+coordinates, app data, or guide prose has been imported.
 
 Reference images from HITMAPS, Guides4Gamers, publisher screenshots, or other
 guide sites may also be used temporarily as draw-under material while authoring a
@@ -207,12 +221,18 @@ change marker verification or publication rules.
 Publishing markers and maps remains an explicit future admin workflow. Nothing
 from coordinate capture publishes automatically.
 
-The current draft targets are HITMAN Dubai, HITMAN Berlin, all thirteen Sniper
-Elite 5 main-campaign/DLC maps, and all thirteen Sniper Elite: Resistance
+The current draft targets are HITMAN Dubai, HITMAN Berlin, all fifteen Sniper
+Elite V2 Remastered campaign/DLC maps, all twelve Sniper Elite 3 campaign/DLC
+maps, all twelve Sniper Elite 4 campaign/DLC maps, all thirteen Sniper Elite 5
+main-campaign/DLC maps, and all thirteen Sniper Elite: Resistance
 main-campaign/DLC maps. The HITMAN targets have private floor source maps for
-admin review. The Sniper Elite targets have private surface source maps, with
-separate approximate Vaexil-authored interior/underground review plates only
-where those have been explicitly modeled.
+admin review. The Sniper Elite 5 and Sniper Elite: Resistance targets have
+private surface source maps, with separate approximate Vaexil-authored
+interior/underground review plates only where those have been explicitly
+modeled. The legacy Sniper Elite targets currently have private Vaexil neutral
+placeholder plates, source packets, and source-gap cross-check records; marker
+coordinates are intentionally deferred until approved private source imports or
+first-hand gameplay validation are recorded.
 
 ## Freelancer Guide Bridge
 

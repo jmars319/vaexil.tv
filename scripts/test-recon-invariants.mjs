@@ -21,7 +21,7 @@ const icons = await readJson("src/data/recon/icon-manifest.json");
 const sourcePackets = await readJson("src/data/recon/source-packets.json");
 const sourceCrossChecks = await readJson("src/data/recon/source-cross-checks.json");
 
-assert.ok(games.length >= 3, "Recon should keep the initial three games");
+assert.ok(games.length >= 6, "Recon should keep the initial and legacy Recon games");
 assert.equal(new Set(games.map((game) => game.slug)).size, games.length, "Recon game slugs should be unique");
 
 const gameIds = new Set(games.map((game) => game.id));
@@ -37,15 +37,35 @@ const requiredDraftMapIds = new Set(
     .filter((map) => map.status === "draft")
     .map((map) => map.id),
 );
+const modernSniperEliteGameIds = new Set([
+  "sniper-elite-5",
+  "sniper-elite-resistance",
+]);
+const sniperEliteGameIds = new Set([
+  "sniper-elite-v2-remastered",
+  "sniper-elite-3",
+  "sniper-elite-4",
+  ...modernSniperEliteGameIds,
+]);
 const sniperEliteMapIds = new Set(
   maps
-    .filter((map) =>
-      ["sniper-elite-5", "sniper-elite-resistance"].includes(map.gameId),
-    )
+    .filter((map) => sniperEliteGameIds.has(map.gameId))
+    .map((map) => map.id),
+);
+const modernSniperEliteMapIds = new Set(
+  maps
+    .filter((map) => modernSniperEliteGameIds.has(map.gameId))
     .map((map) => map.id),
 );
 
-for (const requiredGame of ["hitman-woa", "sniper-elite-5", "sniper-elite-resistance"]) {
+for (const requiredGame of [
+  "hitman-woa",
+  "sniper-elite-v2-remastered",
+  "sniper-elite-3",
+  "sniper-elite-4",
+  "sniper-elite-5",
+  "sniper-elite-resistance",
+]) {
   assert.ok(gameIds.has(requiredGame), `Recon should include ${requiredGame}`);
 }
 
@@ -141,8 +161,8 @@ for (const icon of icons) {
 }
 
 assert.ok(
-  sniperEliteMapIds.size >= 26,
-  "Recon should include the full private SE5 and SE:R map set",
+  sniperEliteMapIds.size >= 65,
+  "Recon should include the private SE5, SE:R, and legacy Sniper Elite draft map sets",
 );
 assert.ok(
   markerSeeds.length >= 3189,
@@ -157,7 +177,11 @@ for (const marker of markerSeeds) {
   assert.ok(marker.x >= 0 && marker.x <= 100, `${marker.id} should use normalized x`);
   assert.ok(marker.y >= 0 && marker.y <= 100, `${marker.id} should use normalized y`);
   assert.ok(iconsByKey.has(marker.iconKey), `${marker.id} should use a known icon`);
-  assert.match(marker.sourceUrl, /^https:\/\/guides4gamers\.com\//, `${marker.id} should record Guides4Gamers as its source`);
+  assert.ok(marker.sourceName, `${marker.id} should record a source name`);
+  assert.match(marker.sourceUrl, /^https:\/\//, `${marker.id} should record an HTTPS source URL`);
+  if (marker.tags.includes("guides4gamers")) {
+    assert.match(marker.sourceUrl, /^https:\/\/guides4gamers\.com\//, `${marker.id} Guides4Gamers markers should record Guides4Gamers as their source`);
+  }
 
   if (/workbench/i.test(`${marker.category} ${marker.subcategory} ${marker.label}`)) {
     assert.equal(marker.category, "workbench", `${marker.id} workbench marker should use the workbench category`);
@@ -360,16 +384,28 @@ for (const mapId of sniperEliteMapIds) {
   assert.ok(map, `${mapId} should be registered`);
   assert.ok(sourcePacketsByMapId.has(mapId), `${mapId} should have a source packet`);
   assert.ok(
-    markerSeeds.some((marker) => marker.mapId === mapId),
-    `${mapId} should have private draft markers`,
-  );
-  assert.ok(
     sourceCrossChecksByMapId.has(mapId),
     `${mapId} should have a source cross-check record`,
   );
   assert.ok(
     (viewsByMapId.get(mapId) || []).some((view) => view.kind === "surface"),
     `${mapId} should have a private surface review view`,
+  );
+}
+
+for (const mapId of modernSniperEliteMapIds) {
+  assert.ok(
+    markerSeeds.some((marker) => marker.mapId === mapId),
+    `${mapId} should have private draft markers`,
+  );
+}
+
+const categoryRegistry = `${await text("src/data/recon/category-registry.ts")}\n${await text("src/data/recon/sniper-elite-legacy-categories.ts")}`;
+for (const expectedLegacyCategory of ["gold_bar", "war_diary", "deadeye_target"]) {
+  assert.match(
+    categoryRegistry,
+    new RegExp(`key: "${expectedLegacyCategory}"`),
+    `Recon category registry should include ${expectedLegacyCategory}`,
   );
 }
 

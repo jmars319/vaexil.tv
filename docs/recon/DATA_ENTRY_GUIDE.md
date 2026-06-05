@@ -97,9 +97,18 @@ For Sniper Elite maps, source cross-check records live in
 were checked, local marker/workbench counts, visual-review status, known gaps,
 and next review steps.
 They must not store copied third-party coordinates or guide prose. Rebuild the
-records with `node scripts/build-recon-source-cross-checks.mjs --write` after
-marker import/category changes, then manually update any map-specific review
-notes that came from a real position pass.
+SE5/Resistance comparison records with
+`node scripts/build-recon-source-cross-checks.mjs --write` after marker
+import/category changes, then manually update any map-specific review notes that
+came from a real position pass. Refresh legacy V2R/SE3/SE4 source-gap records
+with `node scripts/import-legacy-sniper-elite-recon.mjs --write`.
+
+The Sniper Elite V2 Remastered, Sniper Elite 3, and Sniper Elite 4 seed records
+are intentionally source-limited placeholders for this pass. They have private
+Vaexil draft plates, source packets, and source-gap cross-check records, but no
+coordinate marker seeds. Add legacy marker positions only after an approved
+private source import or first-hand gameplay pass records the map view,
+category, source basis, and remaining uncertainty.
 
 Guides4Gamers, HITMAPS, publisher screenshots, and other map images may still be
 opened or briefly stored in scratch space as draw-under references. Scratch

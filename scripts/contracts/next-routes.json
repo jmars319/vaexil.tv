@@ -154,6 +154,34 @@
     ]
   },
   {
+    "route": "/recon/sniper-elite-3",
+    "kind": "page",
+    "methods": [
+      "PAGE"
+    ]
+  },
+  {
+    "route": "/recon/sniper-elite-3/[missionSlug]",
+    "kind": "page",
+    "methods": [
+      "PAGE"
+    ]
+  },
+  {
+    "route": "/recon/sniper-elite-4",
+    "kind": "page",
+    "methods": [
+      "PAGE"
+    ]
+  },
+  {
+    "route": "/recon/sniper-elite-4/[missionSlug]",
+    "kind": "page",
+    "methods": [
+      "PAGE"
+    ]
+  },
+  {
     "route": "/recon/sniper-elite-5",
     "kind": "page",
     "methods": [
@@ -176,6 +204,20 @@
   },
   {
     "route": "/recon/sniper-elite-resistance/[missionSlug]",
+    "kind": "page",
+    "methods": [
+      "PAGE"
+    ]
+  },
+  {
+    "route": "/recon/sniper-elite-v2-remastered",
+    "kind": "page",
+    "methods": [
+      "PAGE"
+    ]
+  },
+  {
+    "route": "/recon/sniper-elite-v2-remastered/[missionSlug]",
     "kind": "page",
     "methods": [
       "PAGE"

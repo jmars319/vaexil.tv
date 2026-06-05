@@ -44,6 +44,23 @@ Git.
 | IO Interactive HITMAN World of Assassination | https://ioi.dk/hitman | Official product/location context | Official source for facts, not reusable assets | Not used for assets | No | Source-packet citation only; no screenshots, art, or UI assets are imported. |
 | Rebellion Sniper Elite 5 | https://shop.rebellion.com/products/sniper-elite-5 | Official product/feature context | Official source for facts, not reusable assets | Not used for assets | No | Source-packet citation only; no screenshots, art, or UI assets are imported. |
 | Rebellion Sniper Elite: Resistance | https://shop.rebellion.com/products/sniper-elite-resistance | Official product/feature context | Official source for facts, not reusable assets | Not used for assets | No | Source-packet citation only; no screenshots, art, or UI assets are imported. |
+| Rebellion Sniper Elite V2 Remastered | https://shop.rebellion.com/products/sniper-elite-v2-remastered | Official product/feature context | Official source for facts, not reusable assets | Not used for assets | No | Source-packet citation only; no screenshots, art, or UI assets are imported. |
+| Rebellion Sniper Elite 3 | https://shop.rebellion.com/products/sniper-elite-3 | Official product/feature context | Official source for facts, not reusable assets | Not used for assets | No | Source-packet citation only; no screenshots, art, or UI assets are imported. |
+| Rebellion Sniper Elite 4 | https://shop.rebellion.com/products/sniper-elite-4 | Official product/feature context | Official source for facts, not reusable assets | Not used for assets | No | Source-packet citation only; no screenshots, art, or UI assets are imported. |
+| Gamepressure Sniper Elite V2 | https://www.gamepressure.com/sniperelitev2/ | Editorial walkthrough/maps, collectible references | Third-party editorial/map content | Not used for assets | No | Legacy source-packet and source-gap cross-check citation only. Do not copy map images, screenshots, prose, routes, marker labels, or coordinates. |
+| Gamepressure Sniper Elite 3 | https://www.gamepressure.com/sniperelite3/ | Editorial walkthrough/maps, collectible references | Third-party editorial/map content | Not used for assets | No | Legacy source-packet and source-gap cross-check citation only. Do not copy map images, screenshots, prose, routes, marker labels, or coordinates. |
+| Gamepressure Sniper Elite 4 | https://www.gamepressure.com/sniper-elite-4/ | Editorial walkthrough/maps, collectible references | Third-party editorial/map content | Not used for assets | No | Legacy source-packet and source-gap cross-check citation only. Do not copy map images, screenshots, prose, routes, marker labels, or coordinates. |
+| GameMappers/MapGenie Sniper Elite V2 | https://gamemappers.com/sniper-elite-v2-map/ | Interactive map/checklist reference | Third-party map/checklist content | Not used for assets | No | Legacy source-packet and source-gap cross-check citation only. Do not copy app data, screenshots, icons, UI, marker labels, or coordinates. |
+| GameMappers/MapGenie Sniper Elite 3 | https://gamemappers.com/sniper-elite-3-map/ | Interactive map/checklist reference | Third-party map/checklist content | Not used for assets | No | Legacy source-packet and source-gap cross-check citation only. Do not copy app data, screenshots, icons, UI, marker labels, or coordinates. |
+| GameMappers/MapGenie Sniper Elite 4 | https://gamemappers.com/sniper-elite-4-map/ | Interactive map/checklist reference | Third-party map/checklist content | Not used for assets | No | Legacy source-packet and source-gap cross-check citation only. Do not copy app data, screenshots, icons, UI, marker labels, or coordinates. |
+| Wand Sniper Elite V2 Remastered | https://wand.com/games/sniper-elite-v2-remastered | Game/checklist support reference | Third-party app-backed guide content | Not used for assets | No | Legacy source-gap citation only; endpoint availability and map coverage still need manual review before any import decision. |
+| Wand Sniper Elite 3 | https://wand.com/games/sniper-elite-3 | Game/checklist support reference | Third-party app-backed guide content | Not used for assets | No | Legacy source-gap citation only; endpoint availability and map coverage still need manual review before any import decision. |
+| Wand Sniper Elite 4 | https://wand.com/games/sniper-elite-4 | Game/checklist support reference | Third-party app-backed guide content | Not used for assets | No | Legacy source-gap citation only; endpoint availability and map coverage still need manual review before any import decision. |
+| sniperelite4maps.de | https://sniperelite4maps.de/h/ | Interactive Sniper Elite 4 maps and markers | Third-party map/checklist content | Not used for assets | No | SE4 source-packet and source-gap citation only. Do not copy map images, app data, coordinates, icons, UI, or guide text. |
+| sniperelite4maps GitHub repo | https://github.com/lordfiSh/sniperelite4maps | Code/assets/data for Sniper Elite 4 map project | Third-party code/assets/data with reuse obligations to review separately | Depends on license if ever used | No | Source-gap citation only. A public repo does not make map art, game assets, marker data, or UI safe to import into Recon. |
+| PowerPyx Sniper Elite 3 guides | https://www.powerpyx.com/guides/sniper_elite_3.html | Editorial collectible guide, screenshots, counts | Third-party editorial content | Not used for assets | No | SE3 collectible-count and category cross-check source only. Do not copy screenshots, prose, routes, or positions. |
+| PS4Trophies Sniper Elite 3 guides | https://www.ps4trophiesgaming.com/sniper-elite-3/sniper-elite-3-collectibles-trophy-guides/ | Editorial collectible/trophy guide, screenshots, counts | Third-party editorial content | Not used for assets | No | SE3 collectible-count and category cross-check source only. Do not copy screenshots, prose, routes, or positions. |
+| SteamAH Sniper Elite V2 Remastered DLC guide | https://steamah.com/sniper-elite-v2-remastered-dlc-mission-walkthrough/ | Editorial DLC mission walkthrough | Third-party editorial content | Not used for assets | No | V2 Remastered DLC mission scope cross-check only. Do not copy screenshots, prose, routes, or positions. |
 | Push Square Sniper Elite guides | https://www.pushsquare.com/guides | Guide text, screenshots, collectible lists | Third-party editorial content | Not used for assets | No | Cross-check source only; do not copy screenshots, prose, marker coordinates, or guide routes. |
 
 ## Committed Assets
@@ -54,6 +71,9 @@ Git.
 | HITMAN Berlin Level -2 through Level 4 floor maps | `private/recon/maps/hitman-berlin/` | HITMAPS | Third-party source map; private draft review use approved by owner | Yes, private only |
 | Sniper Elite 5 main-campaign and DLC surface maps | `private/recon/maps/sniper-elite-5/*-guides4gamers-surface.jpg` | Guides4Gamers | Third-party source map; private draft review use approved by owner | Yes, private only |
 | Sniper Elite: Resistance campaign and DLC surface maps | `private/recon/maps/sniper-elite-resistance/*-guides4gamers-surface.jpg` | Guides4Gamers | Third-party source map; private draft review use approved by owner | Yes, private only |
+| Sniper Elite V2 Remastered campaign and DLC draft placeholders | `private/recon/maps/sniper-elite-v2-remastered/*-draft.svg` | Vaexil.tv-created neutral draft assets | Vaexil-created placeholder plates for private admin scaffolding | No |
+| Sniper Elite 3 campaign and DLC draft placeholders | `private/recon/maps/sniper-elite-3/*-draft.svg` | Vaexil.tv-created neutral draft assets | Vaexil-created placeholder plates for private admin scaffolding | No |
+| Sniper Elite 4 campaign and DLC draft placeholders | `private/recon/maps/sniper-elite-4/*-draft.svg` | Vaexil.tv-created neutral draft assets | Vaexil-created placeholder plates for private admin scaffolding | No |
 | HITMAN Dubai draft schematic | `private/recon/maps/hitman-dubai-draft.svg` | Vaexil.tv-created neutral draft asset | Vaexil-created draft schematic | No |
 | Sniper Elite 5 The Atlantic Wall draft schematic | `private/recon/maps/se5-atlantic-wall-draft.svg` | Vaexil.tv-created neutral draft asset | Vaexil-created draft schematic | No |
 | Sniper Elite: Resistance Behind Enemy Lines draft schematic | `private/recon/maps/ser-behind-enemy-lines-draft.svg` | Vaexil.tv-created neutral draft asset | Vaexil-created draft schematic | No |
@@ -61,9 +81,11 @@ Git.
 | Neutral common icons | `public/recon/icons/common/` | Vaexil.tv-created neutral icons | Vaexil-created placeholders | No |
 
 No official game icons, screenshots, publisher map art, third-party guide text,
-or third-party API data were imported. The only third-party marker-coordinate
-imports currently approved are the private Sniper Elite 5 and Sniper Elite:
-Resistance Guides4Gamers draft marker seeds in
+or third-party API data were imported. No Sniper Elite V2 Remastered, Sniper
+Elite 3, or Sniper Elite 4 third-party source plates, marker coordinates, app
+data, screenshots, icons, UI, or guide prose were imported in this pass. The
+only third-party marker-coordinate imports currently approved are the private
+Sniper Elite 5 and Sniper Elite: Resistance Guides4Gamers draft marker seeds in
 `src/data/recon/marker-seeds.json`; they are not public content.
 
 Cross-check records in `src/data/recon/source-cross-checks.json` may cite

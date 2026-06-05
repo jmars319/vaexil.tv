@@ -1,17 +1,18 @@
 # Recon Visual Cross-Checks
 
-This document records the Sniper Elite 5 and Sniper Elite: Resistance visual
-source comparison pass. It does not make any map public and does not mark exact
-marker coordinates as verified. It only records whether each private draft map
-has been compared against secondary visual/count references far enough for a
-manual owner review pass.
+This document records Sniper Elite visual source comparison and source-gap
+coverage. It does not make any map public and does not mark exact marker
+coordinates as verified. It only records whether each private draft map has been
+compared against secondary visual/count references far enough for a manual owner
+review pass, or whether it is present only as source-limited admin scaffolding.
 
 ## Source Rules
 
 - Keep Guides4Gamers source plates and marker seeds private/admin-only.
 - Use SniperElite5Maps, eXputer, Gamer Guides, Wand, MapMaster, PowerPyx,
-  GameSpot, Push Square, Game Rant, and similar sources only for visual
-  comparison, count checks, source-gap detection, and manual review focus.
+  GameSpot, Gamepressure, GameMappers/MapGenie, sniperelite4maps, Push Square,
+  Game Rant, and similar sources only for visual comparison, count checks,
+  source-gap detection, and manual review focus.
 - Do not copy third-party coordinates, route prose, screenshots, icons, app
   data, guide descriptions, or public UI into Recon.
 - Do not commit third-party comparison images that are not recorded private
@@ -26,23 +27,30 @@ node scripts/build-recon-source-cross-checks.mjs --write
 node scripts/build-recon-visual-review-pack.mjs
 ```
 
-The visual review pack writes to the system temp directory by default and may
-include copied third-party reference images. It must stay out of Git and must
-not be published. The generated `INDEX.md`, `SUMMARY.json`, and contact sheets
-are for manual owner review only.
+`build-recon-source-cross-checks.mjs` rebuilds the SE5/Resistance comparison
+records and preserves existing legacy V2R/SE3/SE4 source-gap records. Use
+`scripts/import-legacy-sniper-elite-recon.mjs --write` to refresh the legacy
+game/map/source scaffolding itself. The visual review pack writes to the system
+temp directory by default and may include copied third-party reference images.
+It must stay out of Git and must not be published. The generated `INDEX.md`,
+`SUMMARY.json`, and contact sheets are for manual owner review only.
 
 ## Current Coverage
 
-`src/data/recon/source-cross-checks.json` is the generated status source. As of
-the current pass:
+`src/data/recon/source-cross-checks.json` is the generated/preserved status
+source. As of the current pass:
 
-- 26 Sniper Elite maps have source cross-check records.
+- 65 Sniper Elite maps have source cross-check records.
 - 25 maps have `visual_sources_compared`.
 - 1 map has `partial_visual_sources_compared`: Mud and Thunder.
+- 39 legacy V2R/SE3/SE4 maps have `source_limited` visual review records.
 - 2 maps have recorded manual position-review passes: The Atlantic Wall and
   Behind Enemy Lines.
-- 24 maps still need exact manual position review before any marker confidence
-  upgrade.
+- 24 modern SE5/Resistance maps still need exact manual position review before
+  any marker confidence upgrade.
+- 39 legacy V2R/SE3/SE4 maps have no coordinate marker seeds yet and require an
+  approved private source import or first-hand gameplay pass before coordinate
+  capture.
 
 | Game | Map | Source status | Visual review | Sources | Manual review emphasis |
 | --- | --- | --- | --- | ---: | --- |
@@ -72,6 +80,9 @@ the current pass:
 | Sniper Elite: Resistance | Vercors Vendetta | needs manual position review | visual sources compared | 3 | Review village/road regions, workbenches, and DLC collectible-count expectations. |
 | Sniper Elite: Resistance | Striking Range | needs manual position review | visual sources compared | 4 | Review all marker positions manually; independent visual coverage exists, but fewer secondary sources are recorded than campaign maps. |
 | Sniper Elite: Resistance | Mud and Thunder | needs manual position review | partial visual sources compared | 3 | Treat as first-hand review priority; current secondary checks are guide-based rather than a full independent map surface. |
+| Sniper Elite V2 Remastered | 15 campaign/DLC draft maps | source gap | source limited | 4 | Mission scope and source discovery are recorded from official/product, wiki, Gamepressure, GameMappers/MapGenie, Wand, and DLC guide references. No map art or marker coordinates are imported. |
+| Sniper Elite 3 | 12 campaign/DLC draft maps | source gap | source limited | 5 | Mission scope and collectible category discovery are recorded from official/product, wiki, Gamepressure, PowerPyx, PS4Trophies, GameMappers/MapGenie, and Wand references. No map art or marker coordinates are imported. |
+| Sniper Elite 4 | 12 campaign/DLC draft maps | source gap | source limited | 5 | Mission scope and collectible category discovery are recorded from official/product, wiki, Gamepressure, GameMappers/MapGenie, sniperelite4maps, its GitHub repo, and Wand references. No map art or marker coordinates are imported. |
 
 ## Manual Review Standard
 

@@ -1,3 +1,5 @@
+import { sniperEliteLegacyCategories } from "./sniper-elite-legacy-categories";
+
 export type ReconCategory = {
   key: string;
   label: string;
@@ -9,9 +11,18 @@ export type ReconCategory = {
 };
 
 const hitmanGame = "hitman-woa";
+const sniperEliteV2RemasteredGame = "sniper-elite-v2-remastered";
+const sniperElite3Game = "sniper-elite-3";
+const sniperElite4Game = "sniper-elite-4";
 const sniperEliteGame = "sniper-elite-5";
 const sniperEliteResistanceGame = "sniper-elite-resistance";
-const sniperEliteGames = [sniperEliteGame, sniperEliteResistanceGame];
+const sniperEliteModernGames = [sniperEliteGame, sniperEliteResistanceGame];
+const sniperEliteGames = [
+  sniperEliteV2RemasteredGame,
+  sniperElite3Game,
+  sniperElite4Game,
+  ...sniperEliteModernGames,
+];
 
 export const reconCategories: ReconCategory[] = [
   {
@@ -209,7 +220,7 @@ export const reconCategories: ReconCategory[] = [
     description: "Weapon workbench.",
     defaultIconKey: "workbench",
     defaultVisible: true,
-    applicableGames: sniperEliteGames,
+    applicableGames: sniperEliteModernGames,
     applicableModes: ["campaign"],
   },
   {
@@ -218,7 +229,7 @@ export const reconCategories: ReconCategory[] = [
     description: "Rifle workbench.",
     defaultIconKey: "workbench",
     defaultVisible: true,
-    applicableGames: sniperEliteGames,
+    applicableGames: sniperEliteModernGames,
     applicableModes: ["campaign"],
   },
   {
@@ -227,7 +238,7 @@ export const reconCategories: ReconCategory[] = [
     description: "SMG workbench.",
     defaultIconKey: "workbench",
     defaultVisible: true,
-    applicableGames: sniperEliteGames,
+    applicableGames: sniperEliteModernGames,
     applicableModes: ["campaign"],
   },
   {
@@ -236,7 +247,7 @@ export const reconCategories: ReconCategory[] = [
     description: "Pistol workbench.",
     defaultIconKey: "workbench",
     defaultVisible: true,
-    applicableGames: sniperEliteGames,
+    applicableGames: sniperEliteModernGames,
     applicableModes: ["campaign"],
   },
   {
@@ -482,6 +493,7 @@ export const reconCategories: ReconCategory[] = [
     applicableGames: [sniperEliteResistanceGame],
     applicableModes: ["campaign"],
   },
+  ...sniperEliteLegacyCategories,
   {
     key: "alarm",
     label: "Alarm",

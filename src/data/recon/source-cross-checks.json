@@ -1,5 +1,3581 @@
 [
   {
+    "mapId": "sev2r-prologue",
+    "gameId": "sniper-elite-v2-remastered",
+    "status": "source_gap",
+    "lastReviewed": "2026-06-05",
+    "localMarkerCount": 0,
+    "localWorkbenchCount": 0,
+    "summary": "Prologue has a draft map shell, source packet, and private neutral review view. Exact marker coordinates still need private source approval or first-hand gameplay review.",
+    "sources": [
+      {
+        "label": "Sniper Elite Wiki - Sniper Elite V2",
+        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_V2",
+        "coverage": "mission_list_and_broad_context",
+        "notes": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
+      },
+      {
+        "label": "Gamepressure Sniper Elite V2 guide",
+        "url": "https://www.gamepressure.com/sniperelitev2/",
+        "coverage": "walkthrough_and_collectible_scope",
+        "notes": "Used for mission/collectible category coverage and manual review focus only. Map images, numbering, route prose, and text are not reused."
+      },
+      {
+        "label": "GameMappers Sniper Elite V2 map article",
+        "url": "https://gamemappers.com/sniper-elite-v2-map/",
+        "coverage": "map_category_and_completion_scope",
+        "notes": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
+      },
+      {
+        "label": "Wand Sniper Elite V2 Remastered game page",
+        "url": "https://wand.com/games/sniper-elite-v2-remastered",
+        "coverage": "game_tool_coverage_only",
+        "notes": "Confirms Wand game support, but no public Wand map endpoint was confirmed for this title during implementation."
+      },
+      {
+        "label": "SteamAH V2 Remastered DLC walkthrough",
+        "url": "https://steamah.com/sniper-elite-v2-remastered-dlc-mission-walkthrough/",
+        "coverage": "dlc_mission_presence_spot_check",
+        "notes": "Used only to spot-check the non-Fuehrer DLC mission set. Walkthrough prose and screenshots are not reused."
+      }
+    ],
+    "visualReview": {
+      "status": "source_limited",
+      "lastCompared": "2026-06-05",
+      "summary": "No committed third-party source plate or marker coordinate import exists for this legacy title. Use the listed sources only for manual comparison planning and category/count sanity checks.",
+      "findings": [
+        "A neutral Vaexil-created placeholder is attached for protected admin coordinate capture.",
+        "Public Recon still exposes no third-party map images, screenshots, UI, guide prose, or marker data.",
+        "Legacy-title source availability is weaker than current SE5/Resistance Guides4Gamers imports, so first-hand review is the publication gate."
+      ],
+      "manualReviewFocus": [
+        "Confirm the mission boundary, orientation, and major named zones before entering markers.",
+        "Review core objectives, starts, exits, collectibles, and challenge targets before resource or enemy-density layers.",
+        "Flag any interior, tunnel, elevation, or multi-stage area that needs a separate map view."
+      ]
+    },
+    "checks": [
+      {
+        "label": "Mission coverage",
+        "status": "match",
+        "localValue": "draft map record created",
+        "sourceValue": "campaign/DLC source list includes this mission",
+        "notes": "Mission inclusion is based on the recorded official/product and mission-list references."
+      },
+      {
+        "label": "Private source-map import",
+        "status": "source_gap",
+        "localValue": "neutral Vaexil placeholder only",
+        "sourceValue": "third-party references available",
+        "notes": "No compatible source-map import was committed in this pass; do not enter exact coordinates from third-party sources until approval and review notes exist."
+      },
+      {
+        "label": "Marker coordinate import",
+        "status": "source_gap",
+        "localValue": "0 draft markers",
+        "sourceValue": "manual review required",
+        "notes": "Marker seeds are intentionally deferred until a source-safe coordinate workflow is available for this map."
+      }
+    ],
+    "warnings": [
+      "Legacy map detail is research-scaffold level, not marker-coordinate parity with SE5/Resistance yet.",
+      "Do not publish this map or any marker until a first-hand gameplay or approved private source review pass is recorded."
+    ],
+    "nextSteps": [
+      "Run a scratch-only visual comparison pass against the recorded sources.",
+      "Capture normalized coordinates in the admin tool from gameplay or approved private source plates.",
+      "Update this cross-check with marker counts and manual position-review notes before any confidence upgrade."
+    ]
+  },
+  {
+    "mapId": "sev2r-schoneberg-convoy",
+    "gameId": "sniper-elite-v2-remastered",
+    "status": "source_gap",
+    "lastReviewed": "2026-06-05",
+    "localMarkerCount": 0,
+    "localWorkbenchCount": 0,
+    "summary": "Schöneberg Convoy has a draft map shell, source packet, and private neutral review view. Exact marker coordinates still need private source approval or first-hand gameplay review.",
+    "sources": [
+      {
+        "label": "Sniper Elite Wiki - Sniper Elite V2",
+        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_V2",
+        "coverage": "mission_list_and_broad_context",
+        "notes": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
+      },
+      {
+        "label": "Gamepressure Sniper Elite V2 guide",
+        "url": "https://www.gamepressure.com/sniperelitev2/",
+        "coverage": "walkthrough_and_collectible_scope",
+        "notes": "Used for mission/collectible category coverage and manual review focus only. Map images, numbering, route prose, and text are not reused."
+      },
+      {
+        "label": "GameMappers Sniper Elite V2 map article",
+        "url": "https://gamemappers.com/sniper-elite-v2-map/",
+        "coverage": "map_category_and_completion_scope",
+        "notes": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
+      },
+      {
+        "label": "Wand Sniper Elite V2 Remastered game page",
+        "url": "https://wand.com/games/sniper-elite-v2-remastered",
+        "coverage": "game_tool_coverage_only",
+        "notes": "Confirms Wand game support, but no public Wand map endpoint was confirmed for this title during implementation."
+      },
+      {
+        "label": "SteamAH V2 Remastered DLC walkthrough",
+        "url": "https://steamah.com/sniper-elite-v2-remastered-dlc-mission-walkthrough/",
+        "coverage": "dlc_mission_presence_spot_check",
+        "notes": "Used only to spot-check the non-Fuehrer DLC mission set. Walkthrough prose and screenshots are not reused."
+      }
+    ],
+    "visualReview": {
+      "status": "source_limited",
+      "lastCompared": "2026-06-05",
+      "summary": "No committed third-party source plate or marker coordinate import exists for this legacy title. Use the listed sources only for manual comparison planning and category/count sanity checks.",
+      "findings": [
+        "A neutral Vaexil-created placeholder is attached for protected admin coordinate capture.",
+        "Public Recon still exposes no third-party map images, screenshots, UI, guide prose, or marker data.",
+        "Legacy-title source availability is weaker than current SE5/Resistance Guides4Gamers imports, so first-hand review is the publication gate."
+      ],
+      "manualReviewFocus": [
+        "Confirm the mission boundary, orientation, and major named zones before entering markers.",
+        "Review core objectives, starts, exits, collectibles, and challenge targets before resource or enemy-density layers.",
+        "Flag any interior, tunnel, elevation, or multi-stage area that needs a separate map view."
+      ]
+    },
+    "checks": [
+      {
+        "label": "Mission coverage",
+        "status": "match",
+        "localValue": "draft map record created",
+        "sourceValue": "campaign/DLC source list includes this mission",
+        "notes": "Mission inclusion is based on the recorded official/product and mission-list references."
+      },
+      {
+        "label": "Private source-map import",
+        "status": "source_gap",
+        "localValue": "neutral Vaexil placeholder only",
+        "sourceValue": "third-party references available",
+        "notes": "No compatible source-map import was committed in this pass; do not enter exact coordinates from third-party sources until approval and review notes exist."
+      },
+      {
+        "label": "Marker coordinate import",
+        "status": "source_gap",
+        "localValue": "0 draft markers",
+        "sourceValue": "manual review required",
+        "notes": "Marker seeds are intentionally deferred until a source-safe coordinate workflow is available for this map."
+      }
+    ],
+    "warnings": [
+      "Legacy map detail is research-scaffold level, not marker-coordinate parity with SE5/Resistance yet.",
+      "Do not publish this map or any marker until a first-hand gameplay or approved private source review pass is recorded."
+    ],
+    "nextSteps": [
+      "Run a scratch-only visual comparison pass against the recorded sources.",
+      "Capture normalized coordinates in the admin tool from gameplay or approved private source plates.",
+      "Update this cross-check with marker counts and manual position-review notes before any confidence upgrade."
+    ]
+  },
+  {
+    "mapId": "sev2r-mittelwerk-facility",
+    "gameId": "sniper-elite-v2-remastered",
+    "status": "source_gap",
+    "lastReviewed": "2026-06-05",
+    "localMarkerCount": 0,
+    "localWorkbenchCount": 0,
+    "summary": "Mittelwerk Facility has a draft map shell, source packet, and private neutral review view. Exact marker coordinates still need private source approval or first-hand gameplay review.",
+    "sources": [
+      {
+        "label": "Sniper Elite Wiki - Sniper Elite V2",
+        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_V2",
+        "coverage": "mission_list_and_broad_context",
+        "notes": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
+      },
+      {
+        "label": "Gamepressure Sniper Elite V2 guide",
+        "url": "https://www.gamepressure.com/sniperelitev2/",
+        "coverage": "walkthrough_and_collectible_scope",
+        "notes": "Used for mission/collectible category coverage and manual review focus only. Map images, numbering, route prose, and text are not reused."
+      },
+      {
+        "label": "GameMappers Sniper Elite V2 map article",
+        "url": "https://gamemappers.com/sniper-elite-v2-map/",
+        "coverage": "map_category_and_completion_scope",
+        "notes": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
+      },
+      {
+        "label": "Wand Sniper Elite V2 Remastered game page",
+        "url": "https://wand.com/games/sniper-elite-v2-remastered",
+        "coverage": "game_tool_coverage_only",
+        "notes": "Confirms Wand game support, but no public Wand map endpoint was confirmed for this title during implementation."
+      },
+      {
+        "label": "SteamAH V2 Remastered DLC walkthrough",
+        "url": "https://steamah.com/sniper-elite-v2-remastered-dlc-mission-walkthrough/",
+        "coverage": "dlc_mission_presence_spot_check",
+        "notes": "Used only to spot-check the non-Fuehrer DLC mission set. Walkthrough prose and screenshots are not reused."
+      }
+    ],
+    "visualReview": {
+      "status": "source_limited",
+      "lastCompared": "2026-06-05",
+      "summary": "No committed third-party source plate or marker coordinate import exists for this legacy title. Use the listed sources only for manual comparison planning and category/count sanity checks.",
+      "findings": [
+        "A neutral Vaexil-created placeholder is attached for protected admin coordinate capture.",
+        "Public Recon still exposes no third-party map images, screenshots, UI, guide prose, or marker data.",
+        "Legacy-title source availability is weaker than current SE5/Resistance Guides4Gamers imports, so first-hand review is the publication gate."
+      ],
+      "manualReviewFocus": [
+        "Confirm the mission boundary, orientation, and major named zones before entering markers.",
+        "Review core objectives, starts, exits, collectibles, and challenge targets before resource or enemy-density layers.",
+        "Flag any interior, tunnel, elevation, or multi-stage area that needs a separate map view."
+      ]
+    },
+    "checks": [
+      {
+        "label": "Mission coverage",
+        "status": "match",
+        "localValue": "draft map record created",
+        "sourceValue": "campaign/DLC source list includes this mission",
+        "notes": "Mission inclusion is based on the recorded official/product and mission-list references."
+      },
+      {
+        "label": "Private source-map import",
+        "status": "source_gap",
+        "localValue": "neutral Vaexil placeholder only",
+        "sourceValue": "third-party references available",
+        "notes": "No compatible source-map import was committed in this pass; do not enter exact coordinates from third-party sources until approval and review notes exist."
+      },
+      {
+        "label": "Marker coordinate import",
+        "status": "source_gap",
+        "localValue": "0 draft markers",
+        "sourceValue": "manual review required",
+        "notes": "Marker seeds are intentionally deferred until a source-safe coordinate workflow is available for this map."
+      }
+    ],
+    "warnings": [
+      "Legacy map detail is research-scaffold level, not marker-coordinate parity with SE5/Resistance yet.",
+      "Do not publish this map or any marker until a first-hand gameplay or approved private source review pass is recorded."
+    ],
+    "nextSteps": [
+      "Run a scratch-only visual comparison pass against the recorded sources.",
+      "Capture normalized coordinates in the admin tool from gameplay or approved private source plates.",
+      "Update this cross-check with marker counts and manual position-review notes before any confidence upgrade."
+    ]
+  },
+  {
+    "mapId": "sev2r-kaiser-friedrich-museum",
+    "gameId": "sniper-elite-v2-remastered",
+    "status": "source_gap",
+    "lastReviewed": "2026-06-05",
+    "localMarkerCount": 0,
+    "localWorkbenchCount": 0,
+    "summary": "Kaiser-Friedrich Museum has a draft map shell, source packet, and private neutral review view. Exact marker coordinates still need private source approval or first-hand gameplay review.",
+    "sources": [
+      {
+        "label": "Sniper Elite Wiki - Sniper Elite V2",
+        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_V2",
+        "coverage": "mission_list_and_broad_context",
+        "notes": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
+      },
+      {
+        "label": "Gamepressure Sniper Elite V2 guide",
+        "url": "https://www.gamepressure.com/sniperelitev2/",
+        "coverage": "walkthrough_and_collectible_scope",
+        "notes": "Used for mission/collectible category coverage and manual review focus only. Map images, numbering, route prose, and text are not reused."
+      },
+      {
+        "label": "GameMappers Sniper Elite V2 map article",
+        "url": "https://gamemappers.com/sniper-elite-v2-map/",
+        "coverage": "map_category_and_completion_scope",
+        "notes": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
+      },
+      {
+        "label": "Wand Sniper Elite V2 Remastered game page",
+        "url": "https://wand.com/games/sniper-elite-v2-remastered",
+        "coverage": "game_tool_coverage_only",
+        "notes": "Confirms Wand game support, but no public Wand map endpoint was confirmed for this title during implementation."
+      },
+      {
+        "label": "SteamAH V2 Remastered DLC walkthrough",
+        "url": "https://steamah.com/sniper-elite-v2-remastered-dlc-mission-walkthrough/",
+        "coverage": "dlc_mission_presence_spot_check",
+        "notes": "Used only to spot-check the non-Fuehrer DLC mission set. Walkthrough prose and screenshots are not reused."
+      }
+    ],
+    "visualReview": {
+      "status": "source_limited",
+      "lastCompared": "2026-06-05",
+      "summary": "No committed third-party source plate or marker coordinate import exists for this legacy title. Use the listed sources only for manual comparison planning and category/count sanity checks.",
+      "findings": [
+        "A neutral Vaexil-created placeholder is attached for protected admin coordinate capture.",
+        "Public Recon still exposes no third-party map images, screenshots, UI, guide prose, or marker data.",
+        "Legacy-title source availability is weaker than current SE5/Resistance Guides4Gamers imports, so first-hand review is the publication gate."
+      ],
+      "manualReviewFocus": [
+        "Confirm the mission boundary, orientation, and major named zones before entering markers.",
+        "Review core objectives, starts, exits, collectibles, and challenge targets before resource or enemy-density layers.",
+        "Flag any interior, tunnel, elevation, or multi-stage area that needs a separate map view."
+      ]
+    },
+    "checks": [
+      {
+        "label": "Mission coverage",
+        "status": "match",
+        "localValue": "draft map record created",
+        "sourceValue": "campaign/DLC source list includes this mission",
+        "notes": "Mission inclusion is based on the recorded official/product and mission-list references."
+      },
+      {
+        "label": "Private source-map import",
+        "status": "source_gap",
+        "localValue": "neutral Vaexil placeholder only",
+        "sourceValue": "third-party references available",
+        "notes": "No compatible source-map import was committed in this pass; do not enter exact coordinates from third-party sources until approval and review notes exist."
+      },
+      {
+        "label": "Marker coordinate import",
+        "status": "source_gap",
+        "localValue": "0 draft markers",
+        "sourceValue": "manual review required",
+        "notes": "Marker seeds are intentionally deferred until a source-safe coordinate workflow is available for this map."
+      }
+    ],
+    "warnings": [
+      "Legacy map detail is research-scaffold level, not marker-coordinate parity with SE5/Resistance yet.",
+      "Do not publish this map or any marker until a first-hand gameplay or approved private source review pass is recorded."
+    ],
+    "nextSteps": [
+      "Run a scratch-only visual comparison pass against the recorded sources.",
+      "Capture normalized coordinates in the admin tool from gameplay or approved private source plates.",
+      "Update this cross-check with marker counts and manual position-review notes before any confidence upgrade."
+    ]
+  },
+  {
+    "mapId": "sev2r-opernplatz",
+    "gameId": "sniper-elite-v2-remastered",
+    "status": "source_gap",
+    "lastReviewed": "2026-06-05",
+    "localMarkerCount": 0,
+    "localWorkbenchCount": 0,
+    "summary": "Opernplatz has a draft map shell, source packet, and private neutral review view. Exact marker coordinates still need private source approval or first-hand gameplay review.",
+    "sources": [
+      {
+        "label": "Sniper Elite Wiki - Sniper Elite V2",
+        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_V2",
+        "coverage": "mission_list_and_broad_context",
+        "notes": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
+      },
+      {
+        "label": "Gamepressure Sniper Elite V2 guide",
+        "url": "https://www.gamepressure.com/sniperelitev2/",
+        "coverage": "walkthrough_and_collectible_scope",
+        "notes": "Used for mission/collectible category coverage and manual review focus only. Map images, numbering, route prose, and text are not reused."
+      },
+      {
+        "label": "GameMappers Sniper Elite V2 map article",
+        "url": "https://gamemappers.com/sniper-elite-v2-map/",
+        "coverage": "map_category_and_completion_scope",
+        "notes": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
+      },
+      {
+        "label": "Wand Sniper Elite V2 Remastered game page",
+        "url": "https://wand.com/games/sniper-elite-v2-remastered",
+        "coverage": "game_tool_coverage_only",
+        "notes": "Confirms Wand game support, but no public Wand map endpoint was confirmed for this title during implementation."
+      },
+      {
+        "label": "SteamAH V2 Remastered DLC walkthrough",
+        "url": "https://steamah.com/sniper-elite-v2-remastered-dlc-mission-walkthrough/",
+        "coverage": "dlc_mission_presence_spot_check",
+        "notes": "Used only to spot-check the non-Fuehrer DLC mission set. Walkthrough prose and screenshots are not reused."
+      }
+    ],
+    "visualReview": {
+      "status": "source_limited",
+      "lastCompared": "2026-06-05",
+      "summary": "No committed third-party source plate or marker coordinate import exists for this legacy title. Use the listed sources only for manual comparison planning and category/count sanity checks.",
+      "findings": [
+        "A neutral Vaexil-created placeholder is attached for protected admin coordinate capture.",
+        "Public Recon still exposes no third-party map images, screenshots, UI, guide prose, or marker data.",
+        "Legacy-title source availability is weaker than current SE5/Resistance Guides4Gamers imports, so first-hand review is the publication gate."
+      ],
+      "manualReviewFocus": [
+        "Confirm the mission boundary, orientation, and major named zones before entering markers.",
+        "Review core objectives, starts, exits, collectibles, and challenge targets before resource or enemy-density layers.",
+        "Flag any interior, tunnel, elevation, or multi-stage area that needs a separate map view."
+      ]
+    },
+    "checks": [
+      {
+        "label": "Mission coverage",
+        "status": "match",
+        "localValue": "draft map record created",
+        "sourceValue": "campaign/DLC source list includes this mission",
+        "notes": "Mission inclusion is based on the recorded official/product and mission-list references."
+      },
+      {
+        "label": "Private source-map import",
+        "status": "source_gap",
+        "localValue": "neutral Vaexil placeholder only",
+        "sourceValue": "third-party references available",
+        "notes": "No compatible source-map import was committed in this pass; do not enter exact coordinates from third-party sources until approval and review notes exist."
+      },
+      {
+        "label": "Marker coordinate import",
+        "status": "source_gap",
+        "localValue": "0 draft markers",
+        "sourceValue": "manual review required",
+        "notes": "Marker seeds are intentionally deferred until a source-safe coordinate workflow is available for this map."
+      }
+    ],
+    "warnings": [
+      "Legacy map detail is research-scaffold level, not marker-coordinate parity with SE5/Resistance yet.",
+      "Do not publish this map or any marker until a first-hand gameplay or approved private source review pass is recorded."
+    ],
+    "nextSteps": [
+      "Run a scratch-only visual comparison pass against the recorded sources.",
+      "Capture normalized coordinates in the admin tool from gameplay or approved private source plates.",
+      "Update this cross-check with marker counts and manual position-review notes before any confidence upgrade."
+    ]
+  },
+  {
+    "mapId": "sev2r-st-olibartus-church",
+    "gameId": "sniper-elite-v2-remastered",
+    "status": "source_gap",
+    "lastReviewed": "2026-06-05",
+    "localMarkerCount": 0,
+    "localWorkbenchCount": 0,
+    "summary": "St. Olibartus Church has a draft map shell, source packet, and private neutral review view. Exact marker coordinates still need private source approval or first-hand gameplay review.",
+    "sources": [
+      {
+        "label": "Sniper Elite Wiki - Sniper Elite V2",
+        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_V2",
+        "coverage": "mission_list_and_broad_context",
+        "notes": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
+      },
+      {
+        "label": "Gamepressure Sniper Elite V2 guide",
+        "url": "https://www.gamepressure.com/sniperelitev2/",
+        "coverage": "walkthrough_and_collectible_scope",
+        "notes": "Used for mission/collectible category coverage and manual review focus only. Map images, numbering, route prose, and text are not reused."
+      },
+      {
+        "label": "GameMappers Sniper Elite V2 map article",
+        "url": "https://gamemappers.com/sniper-elite-v2-map/",
+        "coverage": "map_category_and_completion_scope",
+        "notes": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
+      },
+      {
+        "label": "Wand Sniper Elite V2 Remastered game page",
+        "url": "https://wand.com/games/sniper-elite-v2-remastered",
+        "coverage": "game_tool_coverage_only",
+        "notes": "Confirms Wand game support, but no public Wand map endpoint was confirmed for this title during implementation."
+      },
+      {
+        "label": "SteamAH V2 Remastered DLC walkthrough",
+        "url": "https://steamah.com/sniper-elite-v2-remastered-dlc-mission-walkthrough/",
+        "coverage": "dlc_mission_presence_spot_check",
+        "notes": "Used only to spot-check the non-Fuehrer DLC mission set. Walkthrough prose and screenshots are not reused."
+      }
+    ],
+    "visualReview": {
+      "status": "source_limited",
+      "lastCompared": "2026-06-05",
+      "summary": "No committed third-party source plate or marker coordinate import exists for this legacy title. Use the listed sources only for manual comparison planning and category/count sanity checks.",
+      "findings": [
+        "A neutral Vaexil-created placeholder is attached for protected admin coordinate capture.",
+        "Public Recon still exposes no third-party map images, screenshots, UI, guide prose, or marker data.",
+        "Legacy-title source availability is weaker than current SE5/Resistance Guides4Gamers imports, so first-hand review is the publication gate."
+      ],
+      "manualReviewFocus": [
+        "Confirm the mission boundary, orientation, and major named zones before entering markers.",
+        "Review core objectives, starts, exits, collectibles, and challenge targets before resource or enemy-density layers.",
+        "Flag any interior, tunnel, elevation, or multi-stage area that needs a separate map view."
+      ]
+    },
+    "checks": [
+      {
+        "label": "Mission coverage",
+        "status": "match",
+        "localValue": "draft map record created",
+        "sourceValue": "campaign/DLC source list includes this mission",
+        "notes": "Mission inclusion is based on the recorded official/product and mission-list references."
+      },
+      {
+        "label": "Private source-map import",
+        "status": "source_gap",
+        "localValue": "neutral Vaexil placeholder only",
+        "sourceValue": "third-party references available",
+        "notes": "No compatible source-map import was committed in this pass; do not enter exact coordinates from third-party sources until approval and review notes exist."
+      },
+      {
+        "label": "Marker coordinate import",
+        "status": "source_gap",
+        "localValue": "0 draft markers",
+        "sourceValue": "manual review required",
+        "notes": "Marker seeds are intentionally deferred until a source-safe coordinate workflow is available for this map."
+      }
+    ],
+    "warnings": [
+      "Legacy map detail is research-scaffold level, not marker-coordinate parity with SE5/Resistance yet.",
+      "Do not publish this map or any marker until a first-hand gameplay or approved private source review pass is recorded."
+    ],
+    "nextSteps": [
+      "Run a scratch-only visual comparison pass against the recorded sources.",
+      "Capture normalized coordinates in the admin tool from gameplay or approved private source plates.",
+      "Update this cross-check with marker counts and manual position-review notes before any confidence upgrade."
+    ]
+  },
+  {
+    "mapId": "sev2r-tiergarten-flak-tower",
+    "gameId": "sniper-elite-v2-remastered",
+    "status": "source_gap",
+    "lastReviewed": "2026-06-05",
+    "localMarkerCount": 0,
+    "localWorkbenchCount": 0,
+    "summary": "Tiergarten Flak Tower has a draft map shell, source packet, and private neutral review view. Exact marker coordinates still need private source approval or first-hand gameplay review.",
+    "sources": [
+      {
+        "label": "Sniper Elite Wiki - Sniper Elite V2",
+        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_V2",
+        "coverage": "mission_list_and_broad_context",
+        "notes": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
+      },
+      {
+        "label": "Gamepressure Sniper Elite V2 guide",
+        "url": "https://www.gamepressure.com/sniperelitev2/",
+        "coverage": "walkthrough_and_collectible_scope",
+        "notes": "Used for mission/collectible category coverage and manual review focus only. Map images, numbering, route prose, and text are not reused."
+      },
+      {
+        "label": "GameMappers Sniper Elite V2 map article",
+        "url": "https://gamemappers.com/sniper-elite-v2-map/",
+        "coverage": "map_category_and_completion_scope",
+        "notes": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
+      },
+      {
+        "label": "Wand Sniper Elite V2 Remastered game page",
+        "url": "https://wand.com/games/sniper-elite-v2-remastered",
+        "coverage": "game_tool_coverage_only",
+        "notes": "Confirms Wand game support, but no public Wand map endpoint was confirmed for this title during implementation."
+      },
+      {
+        "label": "SteamAH V2 Remastered DLC walkthrough",
+        "url": "https://steamah.com/sniper-elite-v2-remastered-dlc-mission-walkthrough/",
+        "coverage": "dlc_mission_presence_spot_check",
+        "notes": "Used only to spot-check the non-Fuehrer DLC mission set. Walkthrough prose and screenshots are not reused."
+      }
+    ],
+    "visualReview": {
+      "status": "source_limited",
+      "lastCompared": "2026-06-05",
+      "summary": "No committed third-party source plate or marker coordinate import exists for this legacy title. Use the listed sources only for manual comparison planning and category/count sanity checks.",
+      "findings": [
+        "A neutral Vaexil-created placeholder is attached for protected admin coordinate capture.",
+        "Public Recon still exposes no third-party map images, screenshots, UI, guide prose, or marker data.",
+        "Legacy-title source availability is weaker than current SE5/Resistance Guides4Gamers imports, so first-hand review is the publication gate."
+      ],
+      "manualReviewFocus": [
+        "Confirm the mission boundary, orientation, and major named zones before entering markers.",
+        "Review core objectives, starts, exits, collectibles, and challenge targets before resource or enemy-density layers.",
+        "Flag any interior, tunnel, elevation, or multi-stage area that needs a separate map view."
+      ]
+    },
+    "checks": [
+      {
+        "label": "Mission coverage",
+        "status": "match",
+        "localValue": "draft map record created",
+        "sourceValue": "campaign/DLC source list includes this mission",
+        "notes": "Mission inclusion is based on the recorded official/product and mission-list references."
+      },
+      {
+        "label": "Private source-map import",
+        "status": "source_gap",
+        "localValue": "neutral Vaexil placeholder only",
+        "sourceValue": "third-party references available",
+        "notes": "No compatible source-map import was committed in this pass; do not enter exact coordinates from third-party sources until approval and review notes exist."
+      },
+      {
+        "label": "Marker coordinate import",
+        "status": "source_gap",
+        "localValue": "0 draft markers",
+        "sourceValue": "manual review required",
+        "notes": "Marker seeds are intentionally deferred until a source-safe coordinate workflow is available for this map."
+      }
+    ],
+    "warnings": [
+      "Legacy map detail is research-scaffold level, not marker-coordinate parity with SE5/Resistance yet.",
+      "Do not publish this map or any marker until a first-hand gameplay or approved private source review pass is recorded."
+    ],
+    "nextSteps": [
+      "Run a scratch-only visual comparison pass against the recorded sources.",
+      "Capture normalized coordinates in the admin tool from gameplay or approved private source plates.",
+      "Update this cross-check with marker counts and manual position-review notes before any confidence upgrade."
+    ]
+  },
+  {
+    "mapId": "sev2r-karlshorst-command-post",
+    "gameId": "sniper-elite-v2-remastered",
+    "status": "source_gap",
+    "lastReviewed": "2026-06-05",
+    "localMarkerCount": 0,
+    "localWorkbenchCount": 0,
+    "summary": "Karlshorst Command Post has a draft map shell, source packet, and private neutral review view. Exact marker coordinates still need private source approval or first-hand gameplay review.",
+    "sources": [
+      {
+        "label": "Sniper Elite Wiki - Sniper Elite V2",
+        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_V2",
+        "coverage": "mission_list_and_broad_context",
+        "notes": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
+      },
+      {
+        "label": "Gamepressure Sniper Elite V2 guide",
+        "url": "https://www.gamepressure.com/sniperelitev2/",
+        "coverage": "walkthrough_and_collectible_scope",
+        "notes": "Used for mission/collectible category coverage and manual review focus only. Map images, numbering, route prose, and text are not reused."
+      },
+      {
+        "label": "GameMappers Sniper Elite V2 map article",
+        "url": "https://gamemappers.com/sniper-elite-v2-map/",
+        "coverage": "map_category_and_completion_scope",
+        "notes": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
+      },
+      {
+        "label": "Wand Sniper Elite V2 Remastered game page",
+        "url": "https://wand.com/games/sniper-elite-v2-remastered",
+        "coverage": "game_tool_coverage_only",
+        "notes": "Confirms Wand game support, but no public Wand map endpoint was confirmed for this title during implementation."
+      },
+      {
+        "label": "SteamAH V2 Remastered DLC walkthrough",
+        "url": "https://steamah.com/sniper-elite-v2-remastered-dlc-mission-walkthrough/",
+        "coverage": "dlc_mission_presence_spot_check",
+        "notes": "Used only to spot-check the non-Fuehrer DLC mission set. Walkthrough prose and screenshots are not reused."
+      }
+    ],
+    "visualReview": {
+      "status": "source_limited",
+      "lastCompared": "2026-06-05",
+      "summary": "No committed third-party source plate or marker coordinate import exists for this legacy title. Use the listed sources only for manual comparison planning and category/count sanity checks.",
+      "findings": [
+        "A neutral Vaexil-created placeholder is attached for protected admin coordinate capture.",
+        "Public Recon still exposes no third-party map images, screenshots, UI, guide prose, or marker data.",
+        "Legacy-title source availability is weaker than current SE5/Resistance Guides4Gamers imports, so first-hand review is the publication gate."
+      ],
+      "manualReviewFocus": [
+        "Confirm the mission boundary, orientation, and major named zones before entering markers.",
+        "Review core objectives, starts, exits, collectibles, and challenge targets before resource or enemy-density layers.",
+        "Flag any interior, tunnel, elevation, or multi-stage area that needs a separate map view."
+      ]
+    },
+    "checks": [
+      {
+        "label": "Mission coverage",
+        "status": "match",
+        "localValue": "draft map record created",
+        "sourceValue": "campaign/DLC source list includes this mission",
+        "notes": "Mission inclusion is based on the recorded official/product and mission-list references."
+      },
+      {
+        "label": "Private source-map import",
+        "status": "source_gap",
+        "localValue": "neutral Vaexil placeholder only",
+        "sourceValue": "third-party references available",
+        "notes": "No compatible source-map import was committed in this pass; do not enter exact coordinates from third-party sources until approval and review notes exist."
+      },
+      {
+        "label": "Marker coordinate import",
+        "status": "source_gap",
+        "localValue": "0 draft markers",
+        "sourceValue": "manual review required",
+        "notes": "Marker seeds are intentionally deferred until a source-safe coordinate workflow is available for this map."
+      }
+    ],
+    "warnings": [
+      "Legacy map detail is research-scaffold level, not marker-coordinate parity with SE5/Resistance yet.",
+      "Do not publish this map or any marker until a first-hand gameplay or approved private source review pass is recorded."
+    ],
+    "nextSteps": [
+      "Run a scratch-only visual comparison pass against the recorded sources.",
+      "Capture normalized coordinates in the admin tool from gameplay or approved private source plates.",
+      "Update this cross-check with marker counts and manual position-review notes before any confidence upgrade."
+    ]
+  },
+  {
+    "mapId": "sev2r-kreuzberg-headquarters",
+    "gameId": "sniper-elite-v2-remastered",
+    "status": "source_gap",
+    "lastReviewed": "2026-06-05",
+    "localMarkerCount": 0,
+    "localWorkbenchCount": 0,
+    "summary": "Kreuzberg Headquarters has a draft map shell, source packet, and private neutral review view. Exact marker coordinates still need private source approval or first-hand gameplay review.",
+    "sources": [
+      {
+        "label": "Sniper Elite Wiki - Sniper Elite V2",
+        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_V2",
+        "coverage": "mission_list_and_broad_context",
+        "notes": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
+      },
+      {
+        "label": "Gamepressure Sniper Elite V2 guide",
+        "url": "https://www.gamepressure.com/sniperelitev2/",
+        "coverage": "walkthrough_and_collectible_scope",
+        "notes": "Used for mission/collectible category coverage and manual review focus only. Map images, numbering, route prose, and text are not reused."
+      },
+      {
+        "label": "GameMappers Sniper Elite V2 map article",
+        "url": "https://gamemappers.com/sniper-elite-v2-map/",
+        "coverage": "map_category_and_completion_scope",
+        "notes": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
+      },
+      {
+        "label": "Wand Sniper Elite V2 Remastered game page",
+        "url": "https://wand.com/games/sniper-elite-v2-remastered",
+        "coverage": "game_tool_coverage_only",
+        "notes": "Confirms Wand game support, but no public Wand map endpoint was confirmed for this title during implementation."
+      },
+      {
+        "label": "SteamAH V2 Remastered DLC walkthrough",
+        "url": "https://steamah.com/sniper-elite-v2-remastered-dlc-mission-walkthrough/",
+        "coverage": "dlc_mission_presence_spot_check",
+        "notes": "Used only to spot-check the non-Fuehrer DLC mission set. Walkthrough prose and screenshots are not reused."
+      }
+    ],
+    "visualReview": {
+      "status": "source_limited",
+      "lastCompared": "2026-06-05",
+      "summary": "No committed third-party source plate or marker coordinate import exists for this legacy title. Use the listed sources only for manual comparison planning and category/count sanity checks.",
+      "findings": [
+        "A neutral Vaexil-created placeholder is attached for protected admin coordinate capture.",
+        "Public Recon still exposes no third-party map images, screenshots, UI, guide prose, or marker data.",
+        "Legacy-title source availability is weaker than current SE5/Resistance Guides4Gamers imports, so first-hand review is the publication gate."
+      ],
+      "manualReviewFocus": [
+        "Confirm the mission boundary, orientation, and major named zones before entering markers.",
+        "Review core objectives, starts, exits, collectibles, and challenge targets before resource or enemy-density layers.",
+        "Flag any interior, tunnel, elevation, or multi-stage area that needs a separate map view."
+      ]
+    },
+    "checks": [
+      {
+        "label": "Mission coverage",
+        "status": "match",
+        "localValue": "draft map record created",
+        "sourceValue": "campaign/DLC source list includes this mission",
+        "notes": "Mission inclusion is based on the recorded official/product and mission-list references."
+      },
+      {
+        "label": "Private source-map import",
+        "status": "source_gap",
+        "localValue": "neutral Vaexil placeholder only",
+        "sourceValue": "third-party references available",
+        "notes": "No compatible source-map import was committed in this pass; do not enter exact coordinates from third-party sources until approval and review notes exist."
+      },
+      {
+        "label": "Marker coordinate import",
+        "status": "source_gap",
+        "localValue": "0 draft markers",
+        "sourceValue": "manual review required",
+        "notes": "Marker seeds are intentionally deferred until a source-safe coordinate workflow is available for this map."
+      }
+    ],
+    "warnings": [
+      "Legacy map detail is research-scaffold level, not marker-coordinate parity with SE5/Resistance yet.",
+      "Do not publish this map or any marker until a first-hand gameplay or approved private source review pass is recorded."
+    ],
+    "nextSteps": [
+      "Run a scratch-only visual comparison pass against the recorded sources.",
+      "Capture normalized coordinates in the admin tool from gameplay or approved private source plates.",
+      "Update this cross-check with marker counts and manual position-review notes before any confidence upgrade."
+    ]
+  },
+  {
+    "mapId": "sev2r-kopenick-launch-site",
+    "gameId": "sniper-elite-v2-remastered",
+    "status": "source_gap",
+    "lastReviewed": "2026-06-05",
+    "localMarkerCount": 0,
+    "localWorkbenchCount": 0,
+    "summary": "Köpenick Launch Site has a draft map shell, source packet, and private neutral review view. Exact marker coordinates still need private source approval or first-hand gameplay review.",
+    "sources": [
+      {
+        "label": "Sniper Elite Wiki - Sniper Elite V2",
+        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_V2",
+        "coverage": "mission_list_and_broad_context",
+        "notes": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
+      },
+      {
+        "label": "Gamepressure Sniper Elite V2 guide",
+        "url": "https://www.gamepressure.com/sniperelitev2/",
+        "coverage": "walkthrough_and_collectible_scope",
+        "notes": "Used for mission/collectible category coverage and manual review focus only. Map images, numbering, route prose, and text are not reused."
+      },
+      {
+        "label": "GameMappers Sniper Elite V2 map article",
+        "url": "https://gamemappers.com/sniper-elite-v2-map/",
+        "coverage": "map_category_and_completion_scope",
+        "notes": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
+      },
+      {
+        "label": "Wand Sniper Elite V2 Remastered game page",
+        "url": "https://wand.com/games/sniper-elite-v2-remastered",
+        "coverage": "game_tool_coverage_only",
+        "notes": "Confirms Wand game support, but no public Wand map endpoint was confirmed for this title during implementation."
+      },
+      {
+        "label": "SteamAH V2 Remastered DLC walkthrough",
+        "url": "https://steamah.com/sniper-elite-v2-remastered-dlc-mission-walkthrough/",
+        "coverage": "dlc_mission_presence_spot_check",
+        "notes": "Used only to spot-check the non-Fuehrer DLC mission set. Walkthrough prose and screenshots are not reused."
+      }
+    ],
+    "visualReview": {
+      "status": "source_limited",
+      "lastCompared": "2026-06-05",
+      "summary": "No committed third-party source plate or marker coordinate import exists for this legacy title. Use the listed sources only for manual comparison planning and category/count sanity checks.",
+      "findings": [
+        "A neutral Vaexil-created placeholder is attached for protected admin coordinate capture.",
+        "Public Recon still exposes no third-party map images, screenshots, UI, guide prose, or marker data.",
+        "Legacy-title source availability is weaker than current SE5/Resistance Guides4Gamers imports, so first-hand review is the publication gate."
+      ],
+      "manualReviewFocus": [
+        "Confirm the mission boundary, orientation, and major named zones before entering markers.",
+        "Review core objectives, starts, exits, collectibles, and challenge targets before resource or enemy-density layers.",
+        "Flag any interior, tunnel, elevation, or multi-stage area that needs a separate map view."
+      ]
+    },
+    "checks": [
+      {
+        "label": "Mission coverage",
+        "status": "match",
+        "localValue": "draft map record created",
+        "sourceValue": "campaign/DLC source list includes this mission",
+        "notes": "Mission inclusion is based on the recorded official/product and mission-list references."
+      },
+      {
+        "label": "Private source-map import",
+        "status": "source_gap",
+        "localValue": "neutral Vaexil placeholder only",
+        "sourceValue": "third-party references available",
+        "notes": "No compatible source-map import was committed in this pass; do not enter exact coordinates from third-party sources until approval and review notes exist."
+      },
+      {
+        "label": "Marker coordinate import",
+        "status": "source_gap",
+        "localValue": "0 draft markers",
+        "sourceValue": "manual review required",
+        "notes": "Marker seeds are intentionally deferred until a source-safe coordinate workflow is available for this map."
+      }
+    ],
+    "warnings": [
+      "Legacy map detail is research-scaffold level, not marker-coordinate parity with SE5/Resistance yet.",
+      "Do not publish this map or any marker until a first-hand gameplay or approved private source review pass is recorded."
+    ],
+    "nextSteps": [
+      "Run a scratch-only visual comparison pass against the recorded sources.",
+      "Capture normalized coordinates in the admin tool from gameplay or approved private source plates.",
+      "Update this cross-check with marker counts and manual position-review notes before any confidence upgrade."
+    ]
+  },
+  {
+    "mapId": "sev2r-brandenburg-gate",
+    "gameId": "sniper-elite-v2-remastered",
+    "status": "source_gap",
+    "lastReviewed": "2026-06-05",
+    "localMarkerCount": 0,
+    "localWorkbenchCount": 0,
+    "summary": "Brandenburg Gate has a draft map shell, source packet, and private neutral review view. Exact marker coordinates still need private source approval or first-hand gameplay review.",
+    "sources": [
+      {
+        "label": "Sniper Elite Wiki - Sniper Elite V2",
+        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_V2",
+        "coverage": "mission_list_and_broad_context",
+        "notes": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
+      },
+      {
+        "label": "Gamepressure Sniper Elite V2 guide",
+        "url": "https://www.gamepressure.com/sniperelitev2/",
+        "coverage": "walkthrough_and_collectible_scope",
+        "notes": "Used for mission/collectible category coverage and manual review focus only. Map images, numbering, route prose, and text are not reused."
+      },
+      {
+        "label": "GameMappers Sniper Elite V2 map article",
+        "url": "https://gamemappers.com/sniper-elite-v2-map/",
+        "coverage": "map_category_and_completion_scope",
+        "notes": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
+      },
+      {
+        "label": "Wand Sniper Elite V2 Remastered game page",
+        "url": "https://wand.com/games/sniper-elite-v2-remastered",
+        "coverage": "game_tool_coverage_only",
+        "notes": "Confirms Wand game support, but no public Wand map endpoint was confirmed for this title during implementation."
+      },
+      {
+        "label": "SteamAH V2 Remastered DLC walkthrough",
+        "url": "https://steamah.com/sniper-elite-v2-remastered-dlc-mission-walkthrough/",
+        "coverage": "dlc_mission_presence_spot_check",
+        "notes": "Used only to spot-check the non-Fuehrer DLC mission set. Walkthrough prose and screenshots are not reused."
+      }
+    ],
+    "visualReview": {
+      "status": "source_limited",
+      "lastCompared": "2026-06-05",
+      "summary": "No committed third-party source plate or marker coordinate import exists for this legacy title. Use the listed sources only for manual comparison planning and category/count sanity checks.",
+      "findings": [
+        "A neutral Vaexil-created placeholder is attached for protected admin coordinate capture.",
+        "Public Recon still exposes no third-party map images, screenshots, UI, guide prose, or marker data.",
+        "Legacy-title source availability is weaker than current SE5/Resistance Guides4Gamers imports, so first-hand review is the publication gate."
+      ],
+      "manualReviewFocus": [
+        "Confirm the mission boundary, orientation, and major named zones before entering markers.",
+        "Review core objectives, starts, exits, collectibles, and challenge targets before resource or enemy-density layers.",
+        "Flag any interior, tunnel, elevation, or multi-stage area that needs a separate map view."
+      ]
+    },
+    "checks": [
+      {
+        "label": "Mission coverage",
+        "status": "match",
+        "localValue": "draft map record created",
+        "sourceValue": "campaign/DLC source list includes this mission",
+        "notes": "Mission inclusion is based on the recorded official/product and mission-list references."
+      },
+      {
+        "label": "Private source-map import",
+        "status": "source_gap",
+        "localValue": "neutral Vaexil placeholder only",
+        "sourceValue": "third-party references available",
+        "notes": "No compatible source-map import was committed in this pass; do not enter exact coordinates from third-party sources until approval and review notes exist."
+      },
+      {
+        "label": "Marker coordinate import",
+        "status": "source_gap",
+        "localValue": "0 draft markers",
+        "sourceValue": "manual review required",
+        "notes": "Marker seeds are intentionally deferred until a source-safe coordinate workflow is available for this map."
+      }
+    ],
+    "warnings": [
+      "Legacy map detail is research-scaffold level, not marker-coordinate parity with SE5/Resistance yet.",
+      "Do not publish this map or any marker until a first-hand gameplay or approved private source review pass is recorded."
+    ],
+    "nextSteps": [
+      "Run a scratch-only visual comparison pass against the recorded sources.",
+      "Capture normalized coordinates in the admin tool from gameplay or approved private source plates.",
+      "Update this cross-check with marker counts and manual position-review notes before any confidence upgrade."
+    ]
+  },
+  {
+    "mapId": "sev2r-assassinate-the-fuhrer",
+    "gameId": "sniper-elite-v2-remastered",
+    "status": "source_gap",
+    "lastReviewed": "2026-06-05",
+    "localMarkerCount": 0,
+    "localWorkbenchCount": 0,
+    "summary": "Assassinate the Führer has a draft map shell, source packet, and private neutral review view. Exact marker coordinates still need private source approval or first-hand gameplay review.",
+    "sources": [
+      {
+        "label": "Sniper Elite Wiki - Sniper Elite V2",
+        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_V2",
+        "coverage": "mission_list_and_broad_context",
+        "notes": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
+      },
+      {
+        "label": "Gamepressure Sniper Elite V2 guide",
+        "url": "https://www.gamepressure.com/sniperelitev2/",
+        "coverage": "walkthrough_and_collectible_scope",
+        "notes": "Used for mission/collectible category coverage and manual review focus only. Map images, numbering, route prose, and text are not reused."
+      },
+      {
+        "label": "GameMappers Sniper Elite V2 map article",
+        "url": "https://gamemappers.com/sniper-elite-v2-map/",
+        "coverage": "map_category_and_completion_scope",
+        "notes": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
+      },
+      {
+        "label": "Wand Sniper Elite V2 Remastered game page",
+        "url": "https://wand.com/games/sniper-elite-v2-remastered",
+        "coverage": "game_tool_coverage_only",
+        "notes": "Confirms Wand game support, but no public Wand map endpoint was confirmed for this title during implementation."
+      },
+      {
+        "label": "SteamAH V2 Remastered DLC walkthrough",
+        "url": "https://steamah.com/sniper-elite-v2-remastered-dlc-mission-walkthrough/",
+        "coverage": "dlc_mission_presence_spot_check",
+        "notes": "Used only to spot-check the non-Fuehrer DLC mission set. Walkthrough prose and screenshots are not reused."
+      }
+    ],
+    "visualReview": {
+      "status": "source_limited",
+      "lastCompared": "2026-06-05",
+      "summary": "No committed third-party source plate or marker coordinate import exists for this legacy title. Use the listed sources only for manual comparison planning and category/count sanity checks.",
+      "findings": [
+        "A neutral Vaexil-created placeholder is attached for protected admin coordinate capture.",
+        "Public Recon still exposes no third-party map images, screenshots, UI, guide prose, or marker data.",
+        "Legacy-title source availability is weaker than current SE5/Resistance Guides4Gamers imports, so first-hand review is the publication gate."
+      ],
+      "manualReviewFocus": [
+        "Confirm the mission boundary, orientation, and major named zones before entering markers.",
+        "Review core objectives, starts, exits, collectibles, and challenge targets before resource or enemy-density layers.",
+        "Flag any interior, tunnel, elevation, or multi-stage area that needs a separate map view."
+      ]
+    },
+    "checks": [
+      {
+        "label": "Mission coverage",
+        "status": "match",
+        "localValue": "draft map record created",
+        "sourceValue": "campaign/DLC source list includes this mission",
+        "notes": "Mission inclusion is based on the recorded official/product and mission-list references."
+      },
+      {
+        "label": "Private source-map import",
+        "status": "source_gap",
+        "localValue": "neutral Vaexil placeholder only",
+        "sourceValue": "third-party references available",
+        "notes": "No compatible source-map import was committed in this pass; do not enter exact coordinates from third-party sources until approval and review notes exist."
+      },
+      {
+        "label": "Marker coordinate import",
+        "status": "source_gap",
+        "localValue": "0 draft markers",
+        "sourceValue": "manual review required",
+        "notes": "Marker seeds are intentionally deferred until a source-safe coordinate workflow is available for this map."
+      }
+    ],
+    "warnings": [
+      "Legacy map detail is research-scaffold level, not marker-coordinate parity with SE5/Resistance yet.",
+      "Do not publish this map or any marker until a first-hand gameplay or approved private source review pass is recorded."
+    ],
+    "nextSteps": [
+      "Run a scratch-only visual comparison pass against the recorded sources.",
+      "Capture normalized coordinates in the admin tool from gameplay or approved private source plates.",
+      "Update this cross-check with marker counts and manual position-review notes before any confidence upgrade."
+    ]
+  },
+  {
+    "mapId": "sev2r-neudorf-outpost",
+    "gameId": "sniper-elite-v2-remastered",
+    "status": "source_gap",
+    "lastReviewed": "2026-06-05",
+    "localMarkerCount": 0,
+    "localWorkbenchCount": 0,
+    "summary": "Neudorf Outpost has a draft map shell, source packet, and private neutral review view. Exact marker coordinates still need private source approval or first-hand gameplay review.",
+    "sources": [
+      {
+        "label": "Sniper Elite Wiki - Sniper Elite V2",
+        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_V2",
+        "coverage": "mission_list_and_broad_context",
+        "notes": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
+      },
+      {
+        "label": "Gamepressure Sniper Elite V2 guide",
+        "url": "https://www.gamepressure.com/sniperelitev2/",
+        "coverage": "walkthrough_and_collectible_scope",
+        "notes": "Used for mission/collectible category coverage and manual review focus only. Map images, numbering, route prose, and text are not reused."
+      },
+      {
+        "label": "GameMappers Sniper Elite V2 map article",
+        "url": "https://gamemappers.com/sniper-elite-v2-map/",
+        "coverage": "map_category_and_completion_scope",
+        "notes": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
+      },
+      {
+        "label": "Wand Sniper Elite V2 Remastered game page",
+        "url": "https://wand.com/games/sniper-elite-v2-remastered",
+        "coverage": "game_tool_coverage_only",
+        "notes": "Confirms Wand game support, but no public Wand map endpoint was confirmed for this title during implementation."
+      },
+      {
+        "label": "SteamAH V2 Remastered DLC walkthrough",
+        "url": "https://steamah.com/sniper-elite-v2-remastered-dlc-mission-walkthrough/",
+        "coverage": "dlc_mission_presence_spot_check",
+        "notes": "Used only to spot-check the non-Fuehrer DLC mission set. Walkthrough prose and screenshots are not reused."
+      }
+    ],
+    "visualReview": {
+      "status": "source_limited",
+      "lastCompared": "2026-06-05",
+      "summary": "No committed third-party source plate or marker coordinate import exists for this legacy title. Use the listed sources only for manual comparison planning and category/count sanity checks.",
+      "findings": [
+        "A neutral Vaexil-created placeholder is attached for protected admin coordinate capture.",
+        "Public Recon still exposes no third-party map images, screenshots, UI, guide prose, or marker data.",
+        "Legacy-title source availability is weaker than current SE5/Resistance Guides4Gamers imports, so first-hand review is the publication gate."
+      ],
+      "manualReviewFocus": [
+        "Confirm the mission boundary, orientation, and major named zones before entering markers.",
+        "Review core objectives, starts, exits, collectibles, and challenge targets before resource or enemy-density layers.",
+        "Flag any interior, tunnel, elevation, or multi-stage area that needs a separate map view."
+      ]
+    },
+    "checks": [
+      {
+        "label": "Mission coverage",
+        "status": "match",
+        "localValue": "draft map record created",
+        "sourceValue": "campaign/DLC source list includes this mission",
+        "notes": "Mission inclusion is based on the recorded official/product and mission-list references."
+      },
+      {
+        "label": "Private source-map import",
+        "status": "source_gap",
+        "localValue": "neutral Vaexil placeholder only",
+        "sourceValue": "third-party references available",
+        "notes": "No compatible source-map import was committed in this pass; do not enter exact coordinates from third-party sources until approval and review notes exist."
+      },
+      {
+        "label": "Marker coordinate import",
+        "status": "source_gap",
+        "localValue": "0 draft markers",
+        "sourceValue": "manual review required",
+        "notes": "Marker seeds are intentionally deferred until a source-safe coordinate workflow is available for this map."
+      }
+    ],
+    "warnings": [
+      "Legacy map detail is research-scaffold level, not marker-coordinate parity with SE5/Resistance yet.",
+      "Do not publish this map or any marker until a first-hand gameplay or approved private source review pass is recorded."
+    ],
+    "nextSteps": [
+      "Run a scratch-only visual comparison pass against the recorded sources.",
+      "Capture normalized coordinates in the admin tool from gameplay or approved private source plates.",
+      "Update this cross-check with marker counts and manual position-review notes before any confidence upgrade."
+    ]
+  },
+  {
+    "mapId": "sev2r-the-landwehr-canal",
+    "gameId": "sniper-elite-v2-remastered",
+    "status": "source_gap",
+    "lastReviewed": "2026-06-05",
+    "localMarkerCount": 0,
+    "localWorkbenchCount": 0,
+    "summary": "The Landwehr Canal has a draft map shell, source packet, and private neutral review view. Exact marker coordinates still need private source approval or first-hand gameplay review.",
+    "sources": [
+      {
+        "label": "Sniper Elite Wiki - Sniper Elite V2",
+        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_V2",
+        "coverage": "mission_list_and_broad_context",
+        "notes": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
+      },
+      {
+        "label": "Gamepressure Sniper Elite V2 guide",
+        "url": "https://www.gamepressure.com/sniperelitev2/",
+        "coverage": "walkthrough_and_collectible_scope",
+        "notes": "Used for mission/collectible category coverage and manual review focus only. Map images, numbering, route prose, and text are not reused."
+      },
+      {
+        "label": "GameMappers Sniper Elite V2 map article",
+        "url": "https://gamemappers.com/sniper-elite-v2-map/",
+        "coverage": "map_category_and_completion_scope",
+        "notes": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
+      },
+      {
+        "label": "Wand Sniper Elite V2 Remastered game page",
+        "url": "https://wand.com/games/sniper-elite-v2-remastered",
+        "coverage": "game_tool_coverage_only",
+        "notes": "Confirms Wand game support, but no public Wand map endpoint was confirmed for this title during implementation."
+      },
+      {
+        "label": "SteamAH V2 Remastered DLC walkthrough",
+        "url": "https://steamah.com/sniper-elite-v2-remastered-dlc-mission-walkthrough/",
+        "coverage": "dlc_mission_presence_spot_check",
+        "notes": "Used only to spot-check the non-Fuehrer DLC mission set. Walkthrough prose and screenshots are not reused."
+      }
+    ],
+    "visualReview": {
+      "status": "source_limited",
+      "lastCompared": "2026-06-05",
+      "summary": "No committed third-party source plate or marker coordinate import exists for this legacy title. Use the listed sources only for manual comparison planning and category/count sanity checks.",
+      "findings": [
+        "A neutral Vaexil-created placeholder is attached for protected admin coordinate capture.",
+        "Public Recon still exposes no third-party map images, screenshots, UI, guide prose, or marker data.",
+        "Legacy-title source availability is weaker than current SE5/Resistance Guides4Gamers imports, so first-hand review is the publication gate."
+      ],
+      "manualReviewFocus": [
+        "Confirm the mission boundary, orientation, and major named zones before entering markers.",
+        "Review core objectives, starts, exits, collectibles, and challenge targets before resource or enemy-density layers.",
+        "Flag any interior, tunnel, elevation, or multi-stage area that needs a separate map view."
+      ]
+    },
+    "checks": [
+      {
+        "label": "Mission coverage",
+        "status": "match",
+        "localValue": "draft map record created",
+        "sourceValue": "campaign/DLC source list includes this mission",
+        "notes": "Mission inclusion is based on the recorded official/product and mission-list references."
+      },
+      {
+        "label": "Private source-map import",
+        "status": "source_gap",
+        "localValue": "neutral Vaexil placeholder only",
+        "sourceValue": "third-party references available",
+        "notes": "No compatible source-map import was committed in this pass; do not enter exact coordinates from third-party sources until approval and review notes exist."
+      },
+      {
+        "label": "Marker coordinate import",
+        "status": "source_gap",
+        "localValue": "0 draft markers",
+        "sourceValue": "manual review required",
+        "notes": "Marker seeds are intentionally deferred until a source-safe coordinate workflow is available for this map."
+      }
+    ],
+    "warnings": [
+      "Legacy map detail is research-scaffold level, not marker-coordinate parity with SE5/Resistance yet.",
+      "Do not publish this map or any marker until a first-hand gameplay or approved private source review pass is recorded."
+    ],
+    "nextSteps": [
+      "Run a scratch-only visual comparison pass against the recorded sources.",
+      "Capture normalized coordinates in the admin tool from gameplay or approved private source plates.",
+      "Update this cross-check with marker counts and manual position-review notes before any confidence upgrade."
+    ]
+  },
+  {
+    "mapId": "sev2r-saint-pierre",
+    "gameId": "sniper-elite-v2-remastered",
+    "status": "source_gap",
+    "lastReviewed": "2026-06-05",
+    "localMarkerCount": 0,
+    "localWorkbenchCount": 0,
+    "summary": "Saint Pierre has a draft map shell, source packet, and private neutral review view. Exact marker coordinates still need private source approval or first-hand gameplay review.",
+    "sources": [
+      {
+        "label": "Sniper Elite Wiki - Sniper Elite V2",
+        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_V2",
+        "coverage": "mission_list_and_broad_context",
+        "notes": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
+      },
+      {
+        "label": "Gamepressure Sniper Elite V2 guide",
+        "url": "https://www.gamepressure.com/sniperelitev2/",
+        "coverage": "walkthrough_and_collectible_scope",
+        "notes": "Used for mission/collectible category coverage and manual review focus only. Map images, numbering, route prose, and text are not reused."
+      },
+      {
+        "label": "GameMappers Sniper Elite V2 map article",
+        "url": "https://gamemappers.com/sniper-elite-v2-map/",
+        "coverage": "map_category_and_completion_scope",
+        "notes": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
+      },
+      {
+        "label": "Wand Sniper Elite V2 Remastered game page",
+        "url": "https://wand.com/games/sniper-elite-v2-remastered",
+        "coverage": "game_tool_coverage_only",
+        "notes": "Confirms Wand game support, but no public Wand map endpoint was confirmed for this title during implementation."
+      },
+      {
+        "label": "SteamAH V2 Remastered DLC walkthrough",
+        "url": "https://steamah.com/sniper-elite-v2-remastered-dlc-mission-walkthrough/",
+        "coverage": "dlc_mission_presence_spot_check",
+        "notes": "Used only to spot-check the non-Fuehrer DLC mission set. Walkthrough prose and screenshots are not reused."
+      }
+    ],
+    "visualReview": {
+      "status": "source_limited",
+      "lastCompared": "2026-06-05",
+      "summary": "No committed third-party source plate or marker coordinate import exists for this legacy title. Use the listed sources only for manual comparison planning and category/count sanity checks.",
+      "findings": [
+        "A neutral Vaexil-created placeholder is attached for protected admin coordinate capture.",
+        "Public Recon still exposes no third-party map images, screenshots, UI, guide prose, or marker data.",
+        "Legacy-title source availability is weaker than current SE5/Resistance Guides4Gamers imports, so first-hand review is the publication gate."
+      ],
+      "manualReviewFocus": [
+        "Confirm the mission boundary, orientation, and major named zones before entering markers.",
+        "Review core objectives, starts, exits, collectibles, and challenge targets before resource or enemy-density layers.",
+        "Flag any interior, tunnel, elevation, or multi-stage area that needs a separate map view."
+      ]
+    },
+    "checks": [
+      {
+        "label": "Mission coverage",
+        "status": "match",
+        "localValue": "draft map record created",
+        "sourceValue": "campaign/DLC source list includes this mission",
+        "notes": "Mission inclusion is based on the recorded official/product and mission-list references."
+      },
+      {
+        "label": "Private source-map import",
+        "status": "source_gap",
+        "localValue": "neutral Vaexil placeholder only",
+        "sourceValue": "third-party references available",
+        "notes": "No compatible source-map import was committed in this pass; do not enter exact coordinates from third-party sources until approval and review notes exist."
+      },
+      {
+        "label": "Marker coordinate import",
+        "status": "source_gap",
+        "localValue": "0 draft markers",
+        "sourceValue": "manual review required",
+        "notes": "Marker seeds are intentionally deferred until a source-safe coordinate workflow is available for this map."
+      }
+    ],
+    "warnings": [
+      "Legacy map detail is research-scaffold level, not marker-coordinate parity with SE5/Resistance yet.",
+      "Do not publish this map or any marker until a first-hand gameplay or approved private source review pass is recorded."
+    ],
+    "nextSteps": [
+      "Run a scratch-only visual comparison pass against the recorded sources.",
+      "Capture normalized coordinates in the admin tool from gameplay or approved private source plates.",
+      "Update this cross-check with marker counts and manual position-review notes before any confidence upgrade."
+    ]
+  },
+  {
+    "mapId": "se3-siege-of-tobruk",
+    "gameId": "sniper-elite-3",
+    "status": "source_gap",
+    "lastReviewed": "2026-06-05",
+    "localMarkerCount": 0,
+    "localWorkbenchCount": 0,
+    "summary": "Siege of Tobruk has a draft map shell, source packet, and private neutral review view. Exact marker coordinates still need private source approval or first-hand gameplay review.",
+    "sources": [
+      {
+        "label": "Sniper Elite Wiki - Sniper Elite III",
+        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_III",
+        "coverage": "mission_list_and_broad_context",
+        "notes": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
+      },
+      {
+        "label": "Gamepressure Sniper Elite III guide",
+        "url": "https://www.gamepressure.com/sniperelite3/",
+        "coverage": "map_statistics_and_collectible_scope",
+        "notes": "Used for mission map/statistics and collectible category coverage only. Map images, route prose, and labels are not reused."
+      },
+      {
+        "label": "PowerPyx Sniper Elite 3 strategy guide",
+        "url": "https://www.powerpyx.com/guides/sniper_elite_3.html",
+        "coverage": "collectible_count_and_optional_objective_scope",
+        "notes": "Used to cross-check collectible categories and total coverage. Guide prose, video content, and positions are not reused."
+      },
+      {
+        "label": "PS4Trophies Sniper Elite 3 collectible guide",
+        "url": "https://www.ps4trophiesgaming.com/sniper-elite-3/sniper-elite-3-collectibles-trophy-guides/",
+        "coverage": "mission_collectible_count_spot_check",
+        "notes": "Used for count/category sanity checks only. Video routes and location descriptions are not reused."
+      },
+      {
+        "label": "GameMappers Sniper Elite 3 map article",
+        "url": "https://gamemappers.com/sniper-elite-3-map/",
+        "coverage": "map_category_and_completion_scope",
+        "notes": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
+      },
+      {
+        "label": "Wand Sniper Elite 3 game page",
+        "url": "https://wand.com/games/sniper-elite-3",
+        "coverage": "game_tool_and_overlay_coverage_only",
+        "notes": "Confirms Wand game support and overlay tooling. No public Wand map endpoint or app data is reused."
+      }
+    ],
+    "visualReview": {
+      "status": "source_limited",
+      "lastCompared": "2026-06-05",
+      "summary": "No committed third-party source plate or marker coordinate import exists for this legacy title. Use the listed sources only for manual comparison planning and category/count sanity checks.",
+      "findings": [
+        "A neutral Vaexil-created placeholder is attached for protected admin coordinate capture.",
+        "Public Recon still exposes no third-party map images, screenshots, UI, guide prose, or marker data.",
+        "Legacy-title source availability is weaker than current SE5/Resistance Guides4Gamers imports, so first-hand review is the publication gate."
+      ],
+      "manualReviewFocus": [
+        "Confirm the mission boundary, orientation, and major named zones before entering markers.",
+        "Review core objectives, starts, exits, collectibles, and challenge targets before resource or enemy-density layers.",
+        "Flag any interior, tunnel, elevation, or multi-stage area that needs a separate map view."
+      ]
+    },
+    "checks": [
+      {
+        "label": "Mission coverage",
+        "status": "match",
+        "localValue": "draft map record created",
+        "sourceValue": "campaign/DLC source list includes this mission",
+        "notes": "Mission inclusion is based on the recorded official/product and mission-list references."
+      },
+      {
+        "label": "Private source-map import",
+        "status": "source_gap",
+        "localValue": "neutral Vaexil placeholder only",
+        "sourceValue": "third-party references available",
+        "notes": "No compatible source-map import was committed in this pass; do not enter exact coordinates from third-party sources until approval and review notes exist."
+      },
+      {
+        "label": "Marker coordinate import",
+        "status": "source_gap",
+        "localValue": "0 draft markers",
+        "sourceValue": "manual review required",
+        "notes": "Marker seeds are intentionally deferred until a source-safe coordinate workflow is available for this map."
+      }
+    ],
+    "warnings": [
+      "Legacy map detail is research-scaffold level, not marker-coordinate parity with SE5/Resistance yet.",
+      "Do not publish this map or any marker until a first-hand gameplay or approved private source review pass is recorded."
+    ],
+    "nextSteps": [
+      "Run a scratch-only visual comparison pass against the recorded sources.",
+      "Capture normalized coordinates in the admin tool from gameplay or approved private source plates.",
+      "Update this cross-check with marker counts and manual position-review notes before any confidence upgrade."
+    ]
+  },
+  {
+    "mapId": "se3-gaberoun",
+    "gameId": "sniper-elite-3",
+    "status": "source_gap",
+    "lastReviewed": "2026-06-05",
+    "localMarkerCount": 0,
+    "localWorkbenchCount": 0,
+    "summary": "Gaberoun has a draft map shell, source packet, and private neutral review view. Exact marker coordinates still need private source approval or first-hand gameplay review.",
+    "sources": [
+      {
+        "label": "Sniper Elite Wiki - Sniper Elite III",
+        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_III",
+        "coverage": "mission_list_and_broad_context",
+        "notes": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
+      },
+      {
+        "label": "Gamepressure Sniper Elite III guide",
+        "url": "https://www.gamepressure.com/sniperelite3/",
+        "coverage": "map_statistics_and_collectible_scope",
+        "notes": "Used for mission map/statistics and collectible category coverage only. Map images, route prose, and labels are not reused."
+      },
+      {
+        "label": "PowerPyx Sniper Elite 3 strategy guide",
+        "url": "https://www.powerpyx.com/guides/sniper_elite_3.html",
+        "coverage": "collectible_count_and_optional_objective_scope",
+        "notes": "Used to cross-check collectible categories and total coverage. Guide prose, video content, and positions are not reused."
+      },
+      {
+        "label": "PS4Trophies Sniper Elite 3 collectible guide",
+        "url": "https://www.ps4trophiesgaming.com/sniper-elite-3/sniper-elite-3-collectibles-trophy-guides/",
+        "coverage": "mission_collectible_count_spot_check",
+        "notes": "Used for count/category sanity checks only. Video routes and location descriptions are not reused."
+      },
+      {
+        "label": "GameMappers Sniper Elite 3 map article",
+        "url": "https://gamemappers.com/sniper-elite-3-map/",
+        "coverage": "map_category_and_completion_scope",
+        "notes": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
+      },
+      {
+        "label": "Wand Sniper Elite 3 game page",
+        "url": "https://wand.com/games/sniper-elite-3",
+        "coverage": "game_tool_and_overlay_coverage_only",
+        "notes": "Confirms Wand game support and overlay tooling. No public Wand map endpoint or app data is reused."
+      }
+    ],
+    "visualReview": {
+      "status": "source_limited",
+      "lastCompared": "2026-06-05",
+      "summary": "No committed third-party source plate or marker coordinate import exists for this legacy title. Use the listed sources only for manual comparison planning and category/count sanity checks.",
+      "findings": [
+        "A neutral Vaexil-created placeholder is attached for protected admin coordinate capture.",
+        "Public Recon still exposes no third-party map images, screenshots, UI, guide prose, or marker data.",
+        "Legacy-title source availability is weaker than current SE5/Resistance Guides4Gamers imports, so first-hand review is the publication gate."
+      ],
+      "manualReviewFocus": [
+        "Confirm the mission boundary, orientation, and major named zones before entering markers.",
+        "Review core objectives, starts, exits, collectibles, and challenge targets before resource or enemy-density layers.",
+        "Flag any interior, tunnel, elevation, or multi-stage area that needs a separate map view."
+      ]
+    },
+    "checks": [
+      {
+        "label": "Mission coverage",
+        "status": "match",
+        "localValue": "draft map record created",
+        "sourceValue": "campaign/DLC source list includes this mission",
+        "notes": "Mission inclusion is based on the recorded official/product and mission-list references."
+      },
+      {
+        "label": "Private source-map import",
+        "status": "source_gap",
+        "localValue": "neutral Vaexil placeholder only",
+        "sourceValue": "third-party references available",
+        "notes": "No compatible source-map import was committed in this pass; do not enter exact coordinates from third-party sources until approval and review notes exist."
+      },
+      {
+        "label": "Marker coordinate import",
+        "status": "source_gap",
+        "localValue": "0 draft markers",
+        "sourceValue": "manual review required",
+        "notes": "Marker seeds are intentionally deferred until a source-safe coordinate workflow is available for this map."
+      }
+    ],
+    "warnings": [
+      "Legacy map detail is research-scaffold level, not marker-coordinate parity with SE5/Resistance yet.",
+      "Do not publish this map or any marker until a first-hand gameplay or approved private source review pass is recorded."
+    ],
+    "nextSteps": [
+      "Run a scratch-only visual comparison pass against the recorded sources.",
+      "Capture normalized coordinates in the admin tool from gameplay or approved private source plates.",
+      "Update this cross-check with marker counts and manual position-review notes before any confidence upgrade."
+    ]
+  },
+  {
+    "mapId": "se3-halfaya-pass",
+    "gameId": "sniper-elite-3",
+    "status": "source_gap",
+    "lastReviewed": "2026-06-05",
+    "localMarkerCount": 0,
+    "localWorkbenchCount": 0,
+    "summary": "Halfaya Pass has a draft map shell, source packet, and private neutral review view. Exact marker coordinates still need private source approval or first-hand gameplay review.",
+    "sources": [
+      {
+        "label": "Sniper Elite Wiki - Sniper Elite III",
+        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_III",
+        "coverage": "mission_list_and_broad_context",
+        "notes": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
+      },
+      {
+        "label": "Gamepressure Sniper Elite III guide",
+        "url": "https://www.gamepressure.com/sniperelite3/",
+        "coverage": "map_statistics_and_collectible_scope",
+        "notes": "Used for mission map/statistics and collectible category coverage only. Map images, route prose, and labels are not reused."
+      },
+      {
+        "label": "PowerPyx Sniper Elite 3 strategy guide",
+        "url": "https://www.powerpyx.com/guides/sniper_elite_3.html",
+        "coverage": "collectible_count_and_optional_objective_scope",
+        "notes": "Used to cross-check collectible categories and total coverage. Guide prose, video content, and positions are not reused."
+      },
+      {
+        "label": "PS4Trophies Sniper Elite 3 collectible guide",
+        "url": "https://www.ps4trophiesgaming.com/sniper-elite-3/sniper-elite-3-collectibles-trophy-guides/",
+        "coverage": "mission_collectible_count_spot_check",
+        "notes": "Used for count/category sanity checks only. Video routes and location descriptions are not reused."
+      },
+      {
+        "label": "GameMappers Sniper Elite 3 map article",
+        "url": "https://gamemappers.com/sniper-elite-3-map/",
+        "coverage": "map_category_and_completion_scope",
+        "notes": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
+      },
+      {
+        "label": "Wand Sniper Elite 3 game page",
+        "url": "https://wand.com/games/sniper-elite-3",
+        "coverage": "game_tool_and_overlay_coverage_only",
+        "notes": "Confirms Wand game support and overlay tooling. No public Wand map endpoint or app data is reused."
+      }
+    ],
+    "visualReview": {
+      "status": "source_limited",
+      "lastCompared": "2026-06-05",
+      "summary": "No committed third-party source plate or marker coordinate import exists for this legacy title. Use the listed sources only for manual comparison planning and category/count sanity checks.",
+      "findings": [
+        "A neutral Vaexil-created placeholder is attached for protected admin coordinate capture.",
+        "Public Recon still exposes no third-party map images, screenshots, UI, guide prose, or marker data.",
+        "Legacy-title source availability is weaker than current SE5/Resistance Guides4Gamers imports, so first-hand review is the publication gate."
+      ],
+      "manualReviewFocus": [
+        "Confirm the mission boundary, orientation, and major named zones before entering markers.",
+        "Review core objectives, starts, exits, collectibles, and challenge targets before resource or enemy-density layers.",
+        "Flag any interior, tunnel, elevation, or multi-stage area that needs a separate map view."
+      ]
+    },
+    "checks": [
+      {
+        "label": "Mission coverage",
+        "status": "match",
+        "localValue": "draft map record created",
+        "sourceValue": "campaign/DLC source list includes this mission",
+        "notes": "Mission inclusion is based on the recorded official/product and mission-list references."
+      },
+      {
+        "label": "Private source-map import",
+        "status": "source_gap",
+        "localValue": "neutral Vaexil placeholder only",
+        "sourceValue": "third-party references available",
+        "notes": "No compatible source-map import was committed in this pass; do not enter exact coordinates from third-party sources until approval and review notes exist."
+      },
+      {
+        "label": "Marker coordinate import",
+        "status": "source_gap",
+        "localValue": "0 draft markers",
+        "sourceValue": "manual review required",
+        "notes": "Marker seeds are intentionally deferred until a source-safe coordinate workflow is available for this map."
+      }
+    ],
+    "warnings": [
+      "Legacy map detail is research-scaffold level, not marker-coordinate parity with SE5/Resistance yet.",
+      "Do not publish this map or any marker until a first-hand gameplay or approved private source review pass is recorded."
+    ],
+    "nextSteps": [
+      "Run a scratch-only visual comparison pass against the recorded sources.",
+      "Capture normalized coordinates in the admin tool from gameplay or approved private source plates.",
+      "Update this cross-check with marker counts and manual position-review notes before any confidence upgrade."
+    ]
+  },
+  {
+    "mapId": "se3-fort-rifugio",
+    "gameId": "sniper-elite-3",
+    "status": "source_gap",
+    "lastReviewed": "2026-06-05",
+    "localMarkerCount": 0,
+    "localWorkbenchCount": 0,
+    "summary": "Fort Rifugio has a draft map shell, source packet, and private neutral review view. Exact marker coordinates still need private source approval or first-hand gameplay review.",
+    "sources": [
+      {
+        "label": "Sniper Elite Wiki - Sniper Elite III",
+        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_III",
+        "coverage": "mission_list_and_broad_context",
+        "notes": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
+      },
+      {
+        "label": "Gamepressure Sniper Elite III guide",
+        "url": "https://www.gamepressure.com/sniperelite3/",
+        "coverage": "map_statistics_and_collectible_scope",
+        "notes": "Used for mission map/statistics and collectible category coverage only. Map images, route prose, and labels are not reused."
+      },
+      {
+        "label": "PowerPyx Sniper Elite 3 strategy guide",
+        "url": "https://www.powerpyx.com/guides/sniper_elite_3.html",
+        "coverage": "collectible_count_and_optional_objective_scope",
+        "notes": "Used to cross-check collectible categories and total coverage. Guide prose, video content, and positions are not reused."
+      },
+      {
+        "label": "PS4Trophies Sniper Elite 3 collectible guide",
+        "url": "https://www.ps4trophiesgaming.com/sniper-elite-3/sniper-elite-3-collectibles-trophy-guides/",
+        "coverage": "mission_collectible_count_spot_check",
+        "notes": "Used for count/category sanity checks only. Video routes and location descriptions are not reused."
+      },
+      {
+        "label": "GameMappers Sniper Elite 3 map article",
+        "url": "https://gamemappers.com/sniper-elite-3-map/",
+        "coverage": "map_category_and_completion_scope",
+        "notes": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
+      },
+      {
+        "label": "Wand Sniper Elite 3 game page",
+        "url": "https://wand.com/games/sniper-elite-3",
+        "coverage": "game_tool_and_overlay_coverage_only",
+        "notes": "Confirms Wand game support and overlay tooling. No public Wand map endpoint or app data is reused."
+      }
+    ],
+    "visualReview": {
+      "status": "source_limited",
+      "lastCompared": "2026-06-05",
+      "summary": "No committed third-party source plate or marker coordinate import exists for this legacy title. Use the listed sources only for manual comparison planning and category/count sanity checks.",
+      "findings": [
+        "A neutral Vaexil-created placeholder is attached for protected admin coordinate capture.",
+        "Public Recon still exposes no third-party map images, screenshots, UI, guide prose, or marker data.",
+        "Legacy-title source availability is weaker than current SE5/Resistance Guides4Gamers imports, so first-hand review is the publication gate."
+      ],
+      "manualReviewFocus": [
+        "Confirm the mission boundary, orientation, and major named zones before entering markers.",
+        "Review core objectives, starts, exits, collectibles, and challenge targets before resource or enemy-density layers.",
+        "Flag any interior, tunnel, elevation, or multi-stage area that needs a separate map view."
+      ]
+    },
+    "checks": [
+      {
+        "label": "Mission coverage",
+        "status": "match",
+        "localValue": "draft map record created",
+        "sourceValue": "campaign/DLC source list includes this mission",
+        "notes": "Mission inclusion is based on the recorded official/product and mission-list references."
+      },
+      {
+        "label": "Private source-map import",
+        "status": "source_gap",
+        "localValue": "neutral Vaexil placeholder only",
+        "sourceValue": "third-party references available",
+        "notes": "No compatible source-map import was committed in this pass; do not enter exact coordinates from third-party sources until approval and review notes exist."
+      },
+      {
+        "label": "Marker coordinate import",
+        "status": "source_gap",
+        "localValue": "0 draft markers",
+        "sourceValue": "manual review required",
+        "notes": "Marker seeds are intentionally deferred until a source-safe coordinate workflow is available for this map."
+      }
+    ],
+    "warnings": [
+      "Legacy map detail is research-scaffold level, not marker-coordinate parity with SE5/Resistance yet.",
+      "Do not publish this map or any marker until a first-hand gameplay or approved private source review pass is recorded."
+    ],
+    "nextSteps": [
+      "Run a scratch-only visual comparison pass against the recorded sources.",
+      "Capture normalized coordinates in the admin tool from gameplay or approved private source plates.",
+      "Update this cross-check with marker counts and manual position-review notes before any confidence upgrade."
+    ]
+  },
+  {
+    "mapId": "se3-siwa-oasis",
+    "gameId": "sniper-elite-3",
+    "status": "source_gap",
+    "lastReviewed": "2026-06-05",
+    "localMarkerCount": 0,
+    "localWorkbenchCount": 0,
+    "summary": "Siwa Oasis has a draft map shell, source packet, and private neutral review view. Exact marker coordinates still need private source approval or first-hand gameplay review.",
+    "sources": [
+      {
+        "label": "Sniper Elite Wiki - Sniper Elite III",
+        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_III",
+        "coverage": "mission_list_and_broad_context",
+        "notes": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
+      },
+      {
+        "label": "Gamepressure Sniper Elite III guide",
+        "url": "https://www.gamepressure.com/sniperelite3/",
+        "coverage": "map_statistics_and_collectible_scope",
+        "notes": "Used for mission map/statistics and collectible category coverage only. Map images, route prose, and labels are not reused."
+      },
+      {
+        "label": "PowerPyx Sniper Elite 3 strategy guide",
+        "url": "https://www.powerpyx.com/guides/sniper_elite_3.html",
+        "coverage": "collectible_count_and_optional_objective_scope",
+        "notes": "Used to cross-check collectible categories and total coverage. Guide prose, video content, and positions are not reused."
+      },
+      {
+        "label": "PS4Trophies Sniper Elite 3 collectible guide",
+        "url": "https://www.ps4trophiesgaming.com/sniper-elite-3/sniper-elite-3-collectibles-trophy-guides/",
+        "coverage": "mission_collectible_count_spot_check",
+        "notes": "Used for count/category sanity checks only. Video routes and location descriptions are not reused."
+      },
+      {
+        "label": "GameMappers Sniper Elite 3 map article",
+        "url": "https://gamemappers.com/sniper-elite-3-map/",
+        "coverage": "map_category_and_completion_scope",
+        "notes": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
+      },
+      {
+        "label": "Wand Sniper Elite 3 game page",
+        "url": "https://wand.com/games/sniper-elite-3",
+        "coverage": "game_tool_and_overlay_coverage_only",
+        "notes": "Confirms Wand game support and overlay tooling. No public Wand map endpoint or app data is reused."
+      }
+    ],
+    "visualReview": {
+      "status": "source_limited",
+      "lastCompared": "2026-06-05",
+      "summary": "No committed third-party source plate or marker coordinate import exists for this legacy title. Use the listed sources only for manual comparison planning and category/count sanity checks.",
+      "findings": [
+        "A neutral Vaexil-created placeholder is attached for protected admin coordinate capture.",
+        "Public Recon still exposes no third-party map images, screenshots, UI, guide prose, or marker data.",
+        "Legacy-title source availability is weaker than current SE5/Resistance Guides4Gamers imports, so first-hand review is the publication gate."
+      ],
+      "manualReviewFocus": [
+        "Confirm the mission boundary, orientation, and major named zones before entering markers.",
+        "Review core objectives, starts, exits, collectibles, and challenge targets before resource or enemy-density layers.",
+        "Flag any interior, tunnel, elevation, or multi-stage area that needs a separate map view."
+      ]
+    },
+    "checks": [
+      {
+        "label": "Mission coverage",
+        "status": "match",
+        "localValue": "draft map record created",
+        "sourceValue": "campaign/DLC source list includes this mission",
+        "notes": "Mission inclusion is based on the recorded official/product and mission-list references."
+      },
+      {
+        "label": "Private source-map import",
+        "status": "source_gap",
+        "localValue": "neutral Vaexil placeholder only",
+        "sourceValue": "third-party references available",
+        "notes": "No compatible source-map import was committed in this pass; do not enter exact coordinates from third-party sources until approval and review notes exist."
+      },
+      {
+        "label": "Marker coordinate import",
+        "status": "source_gap",
+        "localValue": "0 draft markers",
+        "sourceValue": "manual review required",
+        "notes": "Marker seeds are intentionally deferred until a source-safe coordinate workflow is available for this map."
+      }
+    ],
+    "warnings": [
+      "Legacy map detail is research-scaffold level, not marker-coordinate parity with SE5/Resistance yet.",
+      "Do not publish this map or any marker until a first-hand gameplay or approved private source review pass is recorded."
+    ],
+    "nextSteps": [
+      "Run a scratch-only visual comparison pass against the recorded sources.",
+      "Capture normalized coordinates in the admin tool from gameplay or approved private source plates.",
+      "Update this cross-check with marker counts and manual position-review notes before any confidence upgrade."
+    ]
+  },
+  {
+    "mapId": "se3-kasserine-pass",
+    "gameId": "sniper-elite-3",
+    "status": "source_gap",
+    "lastReviewed": "2026-06-05",
+    "localMarkerCount": 0,
+    "localWorkbenchCount": 0,
+    "summary": "Kasserine Pass has a draft map shell, source packet, and private neutral review view. Exact marker coordinates still need private source approval or first-hand gameplay review.",
+    "sources": [
+      {
+        "label": "Sniper Elite Wiki - Sniper Elite III",
+        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_III",
+        "coverage": "mission_list_and_broad_context",
+        "notes": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
+      },
+      {
+        "label": "Gamepressure Sniper Elite III guide",
+        "url": "https://www.gamepressure.com/sniperelite3/",
+        "coverage": "map_statistics_and_collectible_scope",
+        "notes": "Used for mission map/statistics and collectible category coverage only. Map images, route prose, and labels are not reused."
+      },
+      {
+        "label": "PowerPyx Sniper Elite 3 strategy guide",
+        "url": "https://www.powerpyx.com/guides/sniper_elite_3.html",
+        "coverage": "collectible_count_and_optional_objective_scope",
+        "notes": "Used to cross-check collectible categories and total coverage. Guide prose, video content, and positions are not reused."
+      },
+      {
+        "label": "PS4Trophies Sniper Elite 3 collectible guide",
+        "url": "https://www.ps4trophiesgaming.com/sniper-elite-3/sniper-elite-3-collectibles-trophy-guides/",
+        "coverage": "mission_collectible_count_spot_check",
+        "notes": "Used for count/category sanity checks only. Video routes and location descriptions are not reused."
+      },
+      {
+        "label": "GameMappers Sniper Elite 3 map article",
+        "url": "https://gamemappers.com/sniper-elite-3-map/",
+        "coverage": "map_category_and_completion_scope",
+        "notes": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
+      },
+      {
+        "label": "Wand Sniper Elite 3 game page",
+        "url": "https://wand.com/games/sniper-elite-3",
+        "coverage": "game_tool_and_overlay_coverage_only",
+        "notes": "Confirms Wand game support and overlay tooling. No public Wand map endpoint or app data is reused."
+      }
+    ],
+    "visualReview": {
+      "status": "source_limited",
+      "lastCompared": "2026-06-05",
+      "summary": "No committed third-party source plate or marker coordinate import exists for this legacy title. Use the listed sources only for manual comparison planning and category/count sanity checks.",
+      "findings": [
+        "A neutral Vaexil-created placeholder is attached for protected admin coordinate capture.",
+        "Public Recon still exposes no third-party map images, screenshots, UI, guide prose, or marker data.",
+        "Legacy-title source availability is weaker than current SE5/Resistance Guides4Gamers imports, so first-hand review is the publication gate."
+      ],
+      "manualReviewFocus": [
+        "Confirm the mission boundary, orientation, and major named zones before entering markers.",
+        "Review core objectives, starts, exits, collectibles, and challenge targets before resource or enemy-density layers.",
+        "Flag any interior, tunnel, elevation, or multi-stage area that needs a separate map view."
+      ]
+    },
+    "checks": [
+      {
+        "label": "Mission coverage",
+        "status": "match",
+        "localValue": "draft map record created",
+        "sourceValue": "campaign/DLC source list includes this mission",
+        "notes": "Mission inclusion is based on the recorded official/product and mission-list references."
+      },
+      {
+        "label": "Private source-map import",
+        "status": "source_gap",
+        "localValue": "neutral Vaexil placeholder only",
+        "sourceValue": "third-party references available",
+        "notes": "No compatible source-map import was committed in this pass; do not enter exact coordinates from third-party sources until approval and review notes exist."
+      },
+      {
+        "label": "Marker coordinate import",
+        "status": "source_gap",
+        "localValue": "0 draft markers",
+        "sourceValue": "manual review required",
+        "notes": "Marker seeds are intentionally deferred until a source-safe coordinate workflow is available for this map."
+      }
+    ],
+    "warnings": [
+      "Legacy map detail is research-scaffold level, not marker-coordinate parity with SE5/Resistance yet.",
+      "Do not publish this map or any marker until a first-hand gameplay or approved private source review pass is recorded."
+    ],
+    "nextSteps": [
+      "Run a scratch-only visual comparison pass against the recorded sources.",
+      "Capture normalized coordinates in the admin tool from gameplay or approved private source plates.",
+      "Update this cross-check with marker counts and manual position-review notes before any confidence upgrade."
+    ]
+  },
+  {
+    "mapId": "se3-ponts-du-fahs-airfield",
+    "gameId": "sniper-elite-3",
+    "status": "source_gap",
+    "lastReviewed": "2026-06-05",
+    "localMarkerCount": 0,
+    "localWorkbenchCount": 0,
+    "summary": "Ponts Du Fahs Airfield has a draft map shell, source packet, and private neutral review view. Exact marker coordinates still need private source approval or first-hand gameplay review.",
+    "sources": [
+      {
+        "label": "Sniper Elite Wiki - Sniper Elite III",
+        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_III",
+        "coverage": "mission_list_and_broad_context",
+        "notes": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
+      },
+      {
+        "label": "Gamepressure Sniper Elite III guide",
+        "url": "https://www.gamepressure.com/sniperelite3/",
+        "coverage": "map_statistics_and_collectible_scope",
+        "notes": "Used for mission map/statistics and collectible category coverage only. Map images, route prose, and labels are not reused."
+      },
+      {
+        "label": "PowerPyx Sniper Elite 3 strategy guide",
+        "url": "https://www.powerpyx.com/guides/sniper_elite_3.html",
+        "coverage": "collectible_count_and_optional_objective_scope",
+        "notes": "Used to cross-check collectible categories and total coverage. Guide prose, video content, and positions are not reused."
+      },
+      {
+        "label": "PS4Trophies Sniper Elite 3 collectible guide",
+        "url": "https://www.ps4trophiesgaming.com/sniper-elite-3/sniper-elite-3-collectibles-trophy-guides/",
+        "coverage": "mission_collectible_count_spot_check",
+        "notes": "Used for count/category sanity checks only. Video routes and location descriptions are not reused."
+      },
+      {
+        "label": "GameMappers Sniper Elite 3 map article",
+        "url": "https://gamemappers.com/sniper-elite-3-map/",
+        "coverage": "map_category_and_completion_scope",
+        "notes": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
+      },
+      {
+        "label": "Wand Sniper Elite 3 game page",
+        "url": "https://wand.com/games/sniper-elite-3",
+        "coverage": "game_tool_and_overlay_coverage_only",
+        "notes": "Confirms Wand game support and overlay tooling. No public Wand map endpoint or app data is reused."
+      }
+    ],
+    "visualReview": {
+      "status": "source_limited",
+      "lastCompared": "2026-06-05",
+      "summary": "No committed third-party source plate or marker coordinate import exists for this legacy title. Use the listed sources only for manual comparison planning and category/count sanity checks.",
+      "findings": [
+        "A neutral Vaexil-created placeholder is attached for protected admin coordinate capture.",
+        "Public Recon still exposes no third-party map images, screenshots, UI, guide prose, or marker data.",
+        "Legacy-title source availability is weaker than current SE5/Resistance Guides4Gamers imports, so first-hand review is the publication gate."
+      ],
+      "manualReviewFocus": [
+        "Confirm the mission boundary, orientation, and major named zones before entering markers.",
+        "Review core objectives, starts, exits, collectibles, and challenge targets before resource or enemy-density layers.",
+        "Flag any interior, tunnel, elevation, or multi-stage area that needs a separate map view."
+      ]
+    },
+    "checks": [
+      {
+        "label": "Mission coverage",
+        "status": "match",
+        "localValue": "draft map record created",
+        "sourceValue": "campaign/DLC source list includes this mission",
+        "notes": "Mission inclusion is based on the recorded official/product and mission-list references."
+      },
+      {
+        "label": "Private source-map import",
+        "status": "source_gap",
+        "localValue": "neutral Vaexil placeholder only",
+        "sourceValue": "third-party references available",
+        "notes": "No compatible source-map import was committed in this pass; do not enter exact coordinates from third-party sources until approval and review notes exist."
+      },
+      {
+        "label": "Marker coordinate import",
+        "status": "source_gap",
+        "localValue": "0 draft markers",
+        "sourceValue": "manual review required",
+        "notes": "Marker seeds are intentionally deferred until a source-safe coordinate workflow is available for this map."
+      }
+    ],
+    "warnings": [
+      "Legacy map detail is research-scaffold level, not marker-coordinate parity with SE5/Resistance yet.",
+      "Do not publish this map or any marker until a first-hand gameplay or approved private source review pass is recorded."
+    ],
+    "nextSteps": [
+      "Run a scratch-only visual comparison pass against the recorded sources.",
+      "Capture normalized coordinates in the admin tool from gameplay or approved private source plates.",
+      "Update this cross-check with marker counts and manual position-review notes before any confidence upgrade."
+    ]
+  },
+  {
+    "mapId": "se3-ratte-factory",
+    "gameId": "sniper-elite-3",
+    "status": "source_gap",
+    "lastReviewed": "2026-06-05",
+    "localMarkerCount": 0,
+    "localWorkbenchCount": 0,
+    "summary": "Ratte Factory has a draft map shell, source packet, and private neutral review view. Exact marker coordinates still need private source approval or first-hand gameplay review.",
+    "sources": [
+      {
+        "label": "Sniper Elite Wiki - Sniper Elite III",
+        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_III",
+        "coverage": "mission_list_and_broad_context",
+        "notes": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
+      },
+      {
+        "label": "Gamepressure Sniper Elite III guide",
+        "url": "https://www.gamepressure.com/sniperelite3/",
+        "coverage": "map_statistics_and_collectible_scope",
+        "notes": "Used for mission map/statistics and collectible category coverage only. Map images, route prose, and labels are not reused."
+      },
+      {
+        "label": "PowerPyx Sniper Elite 3 strategy guide",
+        "url": "https://www.powerpyx.com/guides/sniper_elite_3.html",
+        "coverage": "collectible_count_and_optional_objective_scope",
+        "notes": "Used to cross-check collectible categories and total coverage. Guide prose, video content, and positions are not reused."
+      },
+      {
+        "label": "PS4Trophies Sniper Elite 3 collectible guide",
+        "url": "https://www.ps4trophiesgaming.com/sniper-elite-3/sniper-elite-3-collectibles-trophy-guides/",
+        "coverage": "mission_collectible_count_spot_check",
+        "notes": "Used for count/category sanity checks only. Video routes and location descriptions are not reused."
+      },
+      {
+        "label": "GameMappers Sniper Elite 3 map article",
+        "url": "https://gamemappers.com/sniper-elite-3-map/",
+        "coverage": "map_category_and_completion_scope",
+        "notes": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
+      },
+      {
+        "label": "Wand Sniper Elite 3 game page",
+        "url": "https://wand.com/games/sniper-elite-3",
+        "coverage": "game_tool_and_overlay_coverage_only",
+        "notes": "Confirms Wand game support and overlay tooling. No public Wand map endpoint or app data is reused."
+      }
+    ],
+    "visualReview": {
+      "status": "source_limited",
+      "lastCompared": "2026-06-05",
+      "summary": "No committed third-party source plate or marker coordinate import exists for this legacy title. Use the listed sources only for manual comparison planning and category/count sanity checks.",
+      "findings": [
+        "A neutral Vaexil-created placeholder is attached for protected admin coordinate capture.",
+        "Public Recon still exposes no third-party map images, screenshots, UI, guide prose, or marker data.",
+        "Legacy-title source availability is weaker than current SE5/Resistance Guides4Gamers imports, so first-hand review is the publication gate."
+      ],
+      "manualReviewFocus": [
+        "Confirm the mission boundary, orientation, and major named zones before entering markers.",
+        "Review core objectives, starts, exits, collectibles, and challenge targets before resource or enemy-density layers.",
+        "Flag any interior, tunnel, elevation, or multi-stage area that needs a separate map view."
+      ]
+    },
+    "checks": [
+      {
+        "label": "Mission coverage",
+        "status": "match",
+        "localValue": "draft map record created",
+        "sourceValue": "campaign/DLC source list includes this mission",
+        "notes": "Mission inclusion is based on the recorded official/product and mission-list references."
+      },
+      {
+        "label": "Private source-map import",
+        "status": "source_gap",
+        "localValue": "neutral Vaexil placeholder only",
+        "sourceValue": "third-party references available",
+        "notes": "No compatible source-map import was committed in this pass; do not enter exact coordinates from third-party sources until approval and review notes exist."
+      },
+      {
+        "label": "Marker coordinate import",
+        "status": "source_gap",
+        "localValue": "0 draft markers",
+        "sourceValue": "manual review required",
+        "notes": "Marker seeds are intentionally deferred until a source-safe coordinate workflow is available for this map."
+      }
+    ],
+    "warnings": [
+      "Legacy map detail is research-scaffold level, not marker-coordinate parity with SE5/Resistance yet.",
+      "Do not publish this map or any marker until a first-hand gameplay or approved private source review pass is recorded."
+    ],
+    "nextSteps": [
+      "Run a scratch-only visual comparison pass against the recorded sources.",
+      "Capture normalized coordinates in the admin tool from gameplay or approved private source plates.",
+      "Update this cross-check with marker counts and manual position-review notes before any confidence upgrade."
+    ]
+  },
+  {
+    "mapId": "se3-hunt-the-grey-wolf",
+    "gameId": "sniper-elite-3",
+    "status": "source_gap",
+    "lastReviewed": "2026-06-05",
+    "localMarkerCount": 0,
+    "localWorkbenchCount": 0,
+    "summary": "Hunt The Grey Wolf has a draft map shell, source packet, and private neutral review view. Exact marker coordinates still need private source approval or first-hand gameplay review.",
+    "sources": [
+      {
+        "label": "Sniper Elite Wiki - Sniper Elite III",
+        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_III",
+        "coverage": "mission_list_and_broad_context",
+        "notes": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
+      },
+      {
+        "label": "Gamepressure Sniper Elite III guide",
+        "url": "https://www.gamepressure.com/sniperelite3/",
+        "coverage": "map_statistics_and_collectible_scope",
+        "notes": "Used for mission map/statistics and collectible category coverage only. Map images, route prose, and labels are not reused."
+      },
+      {
+        "label": "PowerPyx Sniper Elite 3 strategy guide",
+        "url": "https://www.powerpyx.com/guides/sniper_elite_3.html",
+        "coverage": "collectible_count_and_optional_objective_scope",
+        "notes": "Used to cross-check collectible categories and total coverage. Guide prose, video content, and positions are not reused."
+      },
+      {
+        "label": "PS4Trophies Sniper Elite 3 collectible guide",
+        "url": "https://www.ps4trophiesgaming.com/sniper-elite-3/sniper-elite-3-collectibles-trophy-guides/",
+        "coverage": "mission_collectible_count_spot_check",
+        "notes": "Used for count/category sanity checks only. Video routes and location descriptions are not reused."
+      },
+      {
+        "label": "GameMappers Sniper Elite 3 map article",
+        "url": "https://gamemappers.com/sniper-elite-3-map/",
+        "coverage": "map_category_and_completion_scope",
+        "notes": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
+      },
+      {
+        "label": "Wand Sniper Elite 3 game page",
+        "url": "https://wand.com/games/sniper-elite-3",
+        "coverage": "game_tool_and_overlay_coverage_only",
+        "notes": "Confirms Wand game support and overlay tooling. No public Wand map endpoint or app data is reused."
+      }
+    ],
+    "visualReview": {
+      "status": "source_limited",
+      "lastCompared": "2026-06-05",
+      "summary": "No committed third-party source plate or marker coordinate import exists for this legacy title. Use the listed sources only for manual comparison planning and category/count sanity checks.",
+      "findings": [
+        "A neutral Vaexil-created placeholder is attached for protected admin coordinate capture.",
+        "Public Recon still exposes no third-party map images, screenshots, UI, guide prose, or marker data.",
+        "Legacy-title source availability is weaker than current SE5/Resistance Guides4Gamers imports, so first-hand review is the publication gate."
+      ],
+      "manualReviewFocus": [
+        "Confirm the mission boundary, orientation, and major named zones before entering markers.",
+        "Review core objectives, starts, exits, collectibles, and challenge targets before resource or enemy-density layers.",
+        "Flag any interior, tunnel, elevation, or multi-stage area that needs a separate map view."
+      ]
+    },
+    "checks": [
+      {
+        "label": "Mission coverage",
+        "status": "match",
+        "localValue": "draft map record created",
+        "sourceValue": "campaign/DLC source list includes this mission",
+        "notes": "Mission inclusion is based on the recorded official/product and mission-list references."
+      },
+      {
+        "label": "Private source-map import",
+        "status": "source_gap",
+        "localValue": "neutral Vaexil placeholder only",
+        "sourceValue": "third-party references available",
+        "notes": "No compatible source-map import was committed in this pass; do not enter exact coordinates from third-party sources until approval and review notes exist."
+      },
+      {
+        "label": "Marker coordinate import",
+        "status": "source_gap",
+        "localValue": "0 draft markers",
+        "sourceValue": "manual review required",
+        "notes": "Marker seeds are intentionally deferred until a source-safe coordinate workflow is available for this map."
+      }
+    ],
+    "warnings": [
+      "Legacy map detail is research-scaffold level, not marker-coordinate parity with SE5/Resistance yet.",
+      "Do not publish this map or any marker until a first-hand gameplay or approved private source review pass is recorded."
+    ],
+    "nextSteps": [
+      "Run a scratch-only visual comparison pass against the recorded sources.",
+      "Capture normalized coordinates in the admin tool from gameplay or approved private source plates.",
+      "Update this cross-check with marker counts and manual position-review notes before any confidence upgrade."
+    ]
+  },
+  {
+    "mapId": "se3-in-shadows",
+    "gameId": "sniper-elite-3",
+    "status": "source_gap",
+    "lastReviewed": "2026-06-05",
+    "localMarkerCount": 0,
+    "localWorkbenchCount": 0,
+    "summary": "In Shadows has a draft map shell, source packet, and private neutral review view. Exact marker coordinates still need private source approval or first-hand gameplay review.",
+    "sources": [
+      {
+        "label": "Sniper Elite Wiki - Sniper Elite III",
+        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_III",
+        "coverage": "mission_list_and_broad_context",
+        "notes": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
+      },
+      {
+        "label": "Gamepressure Sniper Elite III guide",
+        "url": "https://www.gamepressure.com/sniperelite3/",
+        "coverage": "map_statistics_and_collectible_scope",
+        "notes": "Used for mission map/statistics and collectible category coverage only. Map images, route prose, and labels are not reused."
+      },
+      {
+        "label": "PowerPyx Sniper Elite 3 strategy guide",
+        "url": "https://www.powerpyx.com/guides/sniper_elite_3.html",
+        "coverage": "collectible_count_and_optional_objective_scope",
+        "notes": "Used to cross-check collectible categories and total coverage. Guide prose, video content, and positions are not reused."
+      },
+      {
+        "label": "PS4Trophies Sniper Elite 3 collectible guide",
+        "url": "https://www.ps4trophiesgaming.com/sniper-elite-3/sniper-elite-3-collectibles-trophy-guides/",
+        "coverage": "mission_collectible_count_spot_check",
+        "notes": "Used for count/category sanity checks only. Video routes and location descriptions are not reused."
+      },
+      {
+        "label": "GameMappers Sniper Elite 3 map article",
+        "url": "https://gamemappers.com/sniper-elite-3-map/",
+        "coverage": "map_category_and_completion_scope",
+        "notes": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
+      },
+      {
+        "label": "Wand Sniper Elite 3 game page",
+        "url": "https://wand.com/games/sniper-elite-3",
+        "coverage": "game_tool_and_overlay_coverage_only",
+        "notes": "Confirms Wand game support and overlay tooling. No public Wand map endpoint or app data is reused."
+      }
+    ],
+    "visualReview": {
+      "status": "source_limited",
+      "lastCompared": "2026-06-05",
+      "summary": "No committed third-party source plate or marker coordinate import exists for this legacy title. Use the listed sources only for manual comparison planning and category/count sanity checks.",
+      "findings": [
+        "A neutral Vaexil-created placeholder is attached for protected admin coordinate capture.",
+        "Public Recon still exposes no third-party map images, screenshots, UI, guide prose, or marker data.",
+        "Legacy-title source availability is weaker than current SE5/Resistance Guides4Gamers imports, so first-hand review is the publication gate."
+      ],
+      "manualReviewFocus": [
+        "Confirm the mission boundary, orientation, and major named zones before entering markers.",
+        "Review core objectives, starts, exits, collectibles, and challenge targets before resource or enemy-density layers.",
+        "Flag any interior, tunnel, elevation, or multi-stage area that needs a separate map view."
+      ]
+    },
+    "checks": [
+      {
+        "label": "Mission coverage",
+        "status": "match",
+        "localValue": "draft map record created",
+        "sourceValue": "campaign/DLC source list includes this mission",
+        "notes": "Mission inclusion is based on the recorded official/product and mission-list references."
+      },
+      {
+        "label": "Private source-map import",
+        "status": "source_gap",
+        "localValue": "neutral Vaexil placeholder only",
+        "sourceValue": "third-party references available",
+        "notes": "No compatible source-map import was committed in this pass; do not enter exact coordinates from third-party sources until approval and review notes exist."
+      },
+      {
+        "label": "Marker coordinate import",
+        "status": "source_gap",
+        "localValue": "0 draft markers",
+        "sourceValue": "manual review required",
+        "notes": "Marker seeds are intentionally deferred until a source-safe coordinate workflow is available for this map."
+      }
+    ],
+    "warnings": [
+      "Legacy map detail is research-scaffold level, not marker-coordinate parity with SE5/Resistance yet.",
+      "Do not publish this map or any marker until a first-hand gameplay or approved private source review pass is recorded."
+    ],
+    "nextSteps": [
+      "Run a scratch-only visual comparison pass against the recorded sources.",
+      "Capture normalized coordinates in the admin tool from gameplay or approved private source plates.",
+      "Update this cross-check with marker counts and manual position-review notes before any confidence upgrade."
+    ]
+  },
+  {
+    "mapId": "se3-belly-of-the-beast",
+    "gameId": "sniper-elite-3",
+    "status": "source_gap",
+    "lastReviewed": "2026-06-05",
+    "localMarkerCount": 0,
+    "localWorkbenchCount": 0,
+    "summary": "Belly of the Beast has a draft map shell, source packet, and private neutral review view. Exact marker coordinates still need private source approval or first-hand gameplay review.",
+    "sources": [
+      {
+        "label": "Sniper Elite Wiki - Sniper Elite III",
+        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_III",
+        "coverage": "mission_list_and_broad_context",
+        "notes": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
+      },
+      {
+        "label": "Gamepressure Sniper Elite III guide",
+        "url": "https://www.gamepressure.com/sniperelite3/",
+        "coverage": "map_statistics_and_collectible_scope",
+        "notes": "Used for mission map/statistics and collectible category coverage only. Map images, route prose, and labels are not reused."
+      },
+      {
+        "label": "PowerPyx Sniper Elite 3 strategy guide",
+        "url": "https://www.powerpyx.com/guides/sniper_elite_3.html",
+        "coverage": "collectible_count_and_optional_objective_scope",
+        "notes": "Used to cross-check collectible categories and total coverage. Guide prose, video content, and positions are not reused."
+      },
+      {
+        "label": "PS4Trophies Sniper Elite 3 collectible guide",
+        "url": "https://www.ps4trophiesgaming.com/sniper-elite-3/sniper-elite-3-collectibles-trophy-guides/",
+        "coverage": "mission_collectible_count_spot_check",
+        "notes": "Used for count/category sanity checks only. Video routes and location descriptions are not reused."
+      },
+      {
+        "label": "GameMappers Sniper Elite 3 map article",
+        "url": "https://gamemappers.com/sniper-elite-3-map/",
+        "coverage": "map_category_and_completion_scope",
+        "notes": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
+      },
+      {
+        "label": "Wand Sniper Elite 3 game page",
+        "url": "https://wand.com/games/sniper-elite-3",
+        "coverage": "game_tool_and_overlay_coverage_only",
+        "notes": "Confirms Wand game support and overlay tooling. No public Wand map endpoint or app data is reused."
+      }
+    ],
+    "visualReview": {
+      "status": "source_limited",
+      "lastCompared": "2026-06-05",
+      "summary": "No committed third-party source plate or marker coordinate import exists for this legacy title. Use the listed sources only for manual comparison planning and category/count sanity checks.",
+      "findings": [
+        "A neutral Vaexil-created placeholder is attached for protected admin coordinate capture.",
+        "Public Recon still exposes no third-party map images, screenshots, UI, guide prose, or marker data.",
+        "Legacy-title source availability is weaker than current SE5/Resistance Guides4Gamers imports, so first-hand review is the publication gate."
+      ],
+      "manualReviewFocus": [
+        "Confirm the mission boundary, orientation, and major named zones before entering markers.",
+        "Review core objectives, starts, exits, collectibles, and challenge targets before resource or enemy-density layers.",
+        "Flag any interior, tunnel, elevation, or multi-stage area that needs a separate map view."
+      ]
+    },
+    "checks": [
+      {
+        "label": "Mission coverage",
+        "status": "match",
+        "localValue": "draft map record created",
+        "sourceValue": "campaign/DLC source list includes this mission",
+        "notes": "Mission inclusion is based on the recorded official/product and mission-list references."
+      },
+      {
+        "label": "Private source-map import",
+        "status": "source_gap",
+        "localValue": "neutral Vaexil placeholder only",
+        "sourceValue": "third-party references available",
+        "notes": "No compatible source-map import was committed in this pass; do not enter exact coordinates from third-party sources until approval and review notes exist."
+      },
+      {
+        "label": "Marker coordinate import",
+        "status": "source_gap",
+        "localValue": "0 draft markers",
+        "sourceValue": "manual review required",
+        "notes": "Marker seeds are intentionally deferred until a source-safe coordinate workflow is available for this map."
+      }
+    ],
+    "warnings": [
+      "Legacy map detail is research-scaffold level, not marker-coordinate parity with SE5/Resistance yet.",
+      "Do not publish this map or any marker until a first-hand gameplay or approved private source review pass is recorded."
+    ],
+    "nextSteps": [
+      "Run a scratch-only visual comparison pass against the recorded sources.",
+      "Capture normalized coordinates in the admin tool from gameplay or approved private source plates.",
+      "Update this cross-check with marker counts and manual position-review notes before any confidence upgrade."
+    ]
+  },
+  {
+    "mapId": "se3-confrontation",
+    "gameId": "sniper-elite-3",
+    "status": "source_gap",
+    "lastReviewed": "2026-06-05",
+    "localMarkerCount": 0,
+    "localWorkbenchCount": 0,
+    "summary": "Confrontation has a draft map shell, source packet, and private neutral review view. Exact marker coordinates still need private source approval or first-hand gameplay review.",
+    "sources": [
+      {
+        "label": "Sniper Elite Wiki - Sniper Elite III",
+        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_III",
+        "coverage": "mission_list_and_broad_context",
+        "notes": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
+      },
+      {
+        "label": "Gamepressure Sniper Elite III guide",
+        "url": "https://www.gamepressure.com/sniperelite3/",
+        "coverage": "map_statistics_and_collectible_scope",
+        "notes": "Used for mission map/statistics and collectible category coverage only. Map images, route prose, and labels are not reused."
+      },
+      {
+        "label": "PowerPyx Sniper Elite 3 strategy guide",
+        "url": "https://www.powerpyx.com/guides/sniper_elite_3.html",
+        "coverage": "collectible_count_and_optional_objective_scope",
+        "notes": "Used to cross-check collectible categories and total coverage. Guide prose, video content, and positions are not reused."
+      },
+      {
+        "label": "PS4Trophies Sniper Elite 3 collectible guide",
+        "url": "https://www.ps4trophiesgaming.com/sniper-elite-3/sniper-elite-3-collectibles-trophy-guides/",
+        "coverage": "mission_collectible_count_spot_check",
+        "notes": "Used for count/category sanity checks only. Video routes and location descriptions are not reused."
+      },
+      {
+        "label": "GameMappers Sniper Elite 3 map article",
+        "url": "https://gamemappers.com/sniper-elite-3-map/",
+        "coverage": "map_category_and_completion_scope",
+        "notes": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
+      },
+      {
+        "label": "Wand Sniper Elite 3 game page",
+        "url": "https://wand.com/games/sniper-elite-3",
+        "coverage": "game_tool_and_overlay_coverage_only",
+        "notes": "Confirms Wand game support and overlay tooling. No public Wand map endpoint or app data is reused."
+      }
+    ],
+    "visualReview": {
+      "status": "source_limited",
+      "lastCompared": "2026-06-05",
+      "summary": "No committed third-party source plate or marker coordinate import exists for this legacy title. Use the listed sources only for manual comparison planning and category/count sanity checks.",
+      "findings": [
+        "A neutral Vaexil-created placeholder is attached for protected admin coordinate capture.",
+        "Public Recon still exposes no third-party map images, screenshots, UI, guide prose, or marker data.",
+        "Legacy-title source availability is weaker than current SE5/Resistance Guides4Gamers imports, so first-hand review is the publication gate."
+      ],
+      "manualReviewFocus": [
+        "Confirm the mission boundary, orientation, and major named zones before entering markers.",
+        "Review core objectives, starts, exits, collectibles, and challenge targets before resource or enemy-density layers.",
+        "Flag any interior, tunnel, elevation, or multi-stage area that needs a separate map view."
+      ]
+    },
+    "checks": [
+      {
+        "label": "Mission coverage",
+        "status": "match",
+        "localValue": "draft map record created",
+        "sourceValue": "campaign/DLC source list includes this mission",
+        "notes": "Mission inclusion is based on the recorded official/product and mission-list references."
+      },
+      {
+        "label": "Private source-map import",
+        "status": "source_gap",
+        "localValue": "neutral Vaexil placeholder only",
+        "sourceValue": "third-party references available",
+        "notes": "No compatible source-map import was committed in this pass; do not enter exact coordinates from third-party sources until approval and review notes exist."
+      },
+      {
+        "label": "Marker coordinate import",
+        "status": "source_gap",
+        "localValue": "0 draft markers",
+        "sourceValue": "manual review required",
+        "notes": "Marker seeds are intentionally deferred until a source-safe coordinate workflow is available for this map."
+      }
+    ],
+    "warnings": [
+      "Legacy map detail is research-scaffold level, not marker-coordinate parity with SE5/Resistance yet.",
+      "Do not publish this map or any marker until a first-hand gameplay or approved private source review pass is recorded."
+    ],
+    "nextSteps": [
+      "Run a scratch-only visual comparison pass against the recorded sources.",
+      "Capture normalized coordinates in the admin tool from gameplay or approved private source plates.",
+      "Update this cross-check with marker counts and manual position-review notes before any confidence upgrade."
+    ]
+  },
+  {
+    "mapId": "se4-san-celini-island",
+    "gameId": "sniper-elite-4",
+    "status": "source_gap",
+    "lastReviewed": "2026-06-05",
+    "localMarkerCount": 0,
+    "localWorkbenchCount": 0,
+    "summary": "San Celini Island has a draft map shell, source packet, and private neutral review view. Exact marker coordinates still need private source approval or first-hand gameplay review.",
+    "sources": [
+      {
+        "label": "Sniper Elite Wiki - Sniper Elite 4",
+        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_4",
+        "coverage": "mission_list_and_broad_context",
+        "notes": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
+      },
+      {
+        "label": "Gamepressure Sniper Elite 4 guide",
+        "url": "https://www.gamepressure.com/sniper-elite-4/",
+        "coverage": "mission_map_and_collectible_scope",
+        "notes": "Used for mission structure, objective categories, and collectible categories only. Map images, route prose, labels, and screenshots are not reused."
+      },
+      {
+        "label": "GameMappers Sniper Elite 4 map article",
+        "url": "https://gamemappers.com/sniper-elite-4-map/",
+        "coverage": "map_category_and_completion_scope",
+        "notes": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
+      },
+      {
+        "label": "SniperElite4Maps website",
+        "url": "https://sniperelite4maps.de/h/",
+        "coverage": "independent_category_and_visual_reference",
+        "notes": "Used for category coverage and manual visual-review planning only. Map files, marker coordinates, UI, and text are not reused."
+      },
+      {
+        "label": "SniperElite4Maps GitHub repository",
+        "url": "https://github.com/lordfiSh/sniperelite4maps",
+        "coverage": "source_posture_and_issue_reference",
+        "notes": "Used to record source availability and unresolved issue posture only. Code, map assets, marker data, and descriptions are not reused."
+      },
+      {
+        "label": "Wand Sniper Elite 4 game page",
+        "url": "https://wand.com/games/sniper-elite-4",
+        "coverage": "game_tool_and_overlay_coverage_only",
+        "notes": "Confirms Wand game support and overlay tooling. No public Wand map endpoint or app data is reused."
+      }
+    ],
+    "visualReview": {
+      "status": "source_limited",
+      "lastCompared": "2026-06-05",
+      "summary": "No committed third-party source plate or marker coordinate import exists for this legacy title. Use the listed sources only for manual comparison planning and category/count sanity checks.",
+      "findings": [
+        "A neutral Vaexil-created placeholder is attached for protected admin coordinate capture.",
+        "Public Recon still exposes no third-party map images, screenshots, UI, guide prose, or marker data.",
+        "Legacy-title source availability is weaker than current SE5/Resistance Guides4Gamers imports, so first-hand review is the publication gate."
+      ],
+      "manualReviewFocus": [
+        "Confirm the mission boundary, orientation, and major named zones before entering markers.",
+        "Review core objectives, starts, exits, collectibles, and challenge targets before resource or enemy-density layers.",
+        "Flag any interior, tunnel, elevation, or multi-stage area that needs a separate map view."
+      ]
+    },
+    "checks": [
+      {
+        "label": "Mission coverage",
+        "status": "match",
+        "localValue": "draft map record created",
+        "sourceValue": "campaign/DLC source list includes this mission",
+        "notes": "Mission inclusion is based on the recorded official/product and mission-list references."
+      },
+      {
+        "label": "Private source-map import",
+        "status": "source_gap",
+        "localValue": "neutral Vaexil placeholder only",
+        "sourceValue": "third-party references available",
+        "notes": "No compatible source-map import was committed in this pass; do not enter exact coordinates from third-party sources until approval and review notes exist."
+      },
+      {
+        "label": "Marker coordinate import",
+        "status": "source_gap",
+        "localValue": "0 draft markers",
+        "sourceValue": "manual review required",
+        "notes": "Marker seeds are intentionally deferred until a source-safe coordinate workflow is available for this map."
+      }
+    ],
+    "warnings": [
+      "Legacy map detail is research-scaffold level, not marker-coordinate parity with SE5/Resistance yet.",
+      "Do not publish this map or any marker until a first-hand gameplay or approved private source review pass is recorded."
+    ],
+    "nextSteps": [
+      "Run a scratch-only visual comparison pass against the recorded sources.",
+      "Capture normalized coordinates in the admin tool from gameplay or approved private source plates.",
+      "Update this cross-check with marker counts and manual position-review notes before any confidence upgrade."
+    ]
+  },
+  {
+    "mapId": "se4-bitanti-village",
+    "gameId": "sniper-elite-4",
+    "status": "source_gap",
+    "lastReviewed": "2026-06-05",
+    "localMarkerCount": 0,
+    "localWorkbenchCount": 0,
+    "summary": "Bitanti Village has a draft map shell, source packet, and private neutral review view. Exact marker coordinates still need private source approval or first-hand gameplay review.",
+    "sources": [
+      {
+        "label": "Sniper Elite Wiki - Sniper Elite 4",
+        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_4",
+        "coverage": "mission_list_and_broad_context",
+        "notes": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
+      },
+      {
+        "label": "Gamepressure Sniper Elite 4 guide",
+        "url": "https://www.gamepressure.com/sniper-elite-4/",
+        "coverage": "mission_map_and_collectible_scope",
+        "notes": "Used for mission structure, objective categories, and collectible categories only. Map images, route prose, labels, and screenshots are not reused."
+      },
+      {
+        "label": "GameMappers Sniper Elite 4 map article",
+        "url": "https://gamemappers.com/sniper-elite-4-map/",
+        "coverage": "map_category_and_completion_scope",
+        "notes": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
+      },
+      {
+        "label": "SniperElite4Maps website",
+        "url": "https://sniperelite4maps.de/h/",
+        "coverage": "independent_category_and_visual_reference",
+        "notes": "Used for category coverage and manual visual-review planning only. Map files, marker coordinates, UI, and text are not reused."
+      },
+      {
+        "label": "SniperElite4Maps GitHub repository",
+        "url": "https://github.com/lordfiSh/sniperelite4maps",
+        "coverage": "source_posture_and_issue_reference",
+        "notes": "Used to record source availability and unresolved issue posture only. Code, map assets, marker data, and descriptions are not reused."
+      },
+      {
+        "label": "Wand Sniper Elite 4 game page",
+        "url": "https://wand.com/games/sniper-elite-4",
+        "coverage": "game_tool_and_overlay_coverage_only",
+        "notes": "Confirms Wand game support and overlay tooling. No public Wand map endpoint or app data is reused."
+      }
+    ],
+    "visualReview": {
+      "status": "source_limited",
+      "lastCompared": "2026-06-05",
+      "summary": "No committed third-party source plate or marker coordinate import exists for this legacy title. Use the listed sources only for manual comparison planning and category/count sanity checks.",
+      "findings": [
+        "A neutral Vaexil-created placeholder is attached for protected admin coordinate capture.",
+        "Public Recon still exposes no third-party map images, screenshots, UI, guide prose, or marker data.",
+        "Legacy-title source availability is weaker than current SE5/Resistance Guides4Gamers imports, so first-hand review is the publication gate."
+      ],
+      "manualReviewFocus": [
+        "Confirm the mission boundary, orientation, and major named zones before entering markers.",
+        "Review core objectives, starts, exits, collectibles, and challenge targets before resource or enemy-density layers.",
+        "Flag any interior, tunnel, elevation, or multi-stage area that needs a separate map view."
+      ]
+    },
+    "checks": [
+      {
+        "label": "Mission coverage",
+        "status": "match",
+        "localValue": "draft map record created",
+        "sourceValue": "campaign/DLC source list includes this mission",
+        "notes": "Mission inclusion is based on the recorded official/product and mission-list references."
+      },
+      {
+        "label": "Private source-map import",
+        "status": "source_gap",
+        "localValue": "neutral Vaexil placeholder only",
+        "sourceValue": "third-party references available",
+        "notes": "No compatible source-map import was committed in this pass; do not enter exact coordinates from third-party sources until approval and review notes exist."
+      },
+      {
+        "label": "Marker coordinate import",
+        "status": "source_gap",
+        "localValue": "0 draft markers",
+        "sourceValue": "manual review required",
+        "notes": "Marker seeds are intentionally deferred until a source-safe coordinate workflow is available for this map."
+      }
+    ],
+    "warnings": [
+      "Legacy map detail is research-scaffold level, not marker-coordinate parity with SE5/Resistance yet.",
+      "Do not publish this map or any marker until a first-hand gameplay or approved private source review pass is recorded."
+    ],
+    "nextSteps": [
+      "Run a scratch-only visual comparison pass against the recorded sources.",
+      "Capture normalized coordinates in the admin tool from gameplay or approved private source plates.",
+      "Update this cross-check with marker counts and manual position-review notes before any confidence upgrade."
+    ]
+  },
+  {
+    "mapId": "se4-regilino-viaduct",
+    "gameId": "sniper-elite-4",
+    "status": "source_gap",
+    "lastReviewed": "2026-06-05",
+    "localMarkerCount": 0,
+    "localWorkbenchCount": 0,
+    "summary": "Regilino Viaduct has a draft map shell, source packet, and private neutral review view. Exact marker coordinates still need private source approval or first-hand gameplay review.",
+    "sources": [
+      {
+        "label": "Sniper Elite Wiki - Sniper Elite 4",
+        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_4",
+        "coverage": "mission_list_and_broad_context",
+        "notes": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
+      },
+      {
+        "label": "Gamepressure Sniper Elite 4 guide",
+        "url": "https://www.gamepressure.com/sniper-elite-4/",
+        "coverage": "mission_map_and_collectible_scope",
+        "notes": "Used for mission structure, objective categories, and collectible categories only. Map images, route prose, labels, and screenshots are not reused."
+      },
+      {
+        "label": "GameMappers Sniper Elite 4 map article",
+        "url": "https://gamemappers.com/sniper-elite-4-map/",
+        "coverage": "map_category_and_completion_scope",
+        "notes": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
+      },
+      {
+        "label": "SniperElite4Maps website",
+        "url": "https://sniperelite4maps.de/h/",
+        "coverage": "independent_category_and_visual_reference",
+        "notes": "Used for category coverage and manual visual-review planning only. Map files, marker coordinates, UI, and text are not reused."
+      },
+      {
+        "label": "SniperElite4Maps GitHub repository",
+        "url": "https://github.com/lordfiSh/sniperelite4maps",
+        "coverage": "source_posture_and_issue_reference",
+        "notes": "Used to record source availability and unresolved issue posture only. Code, map assets, marker data, and descriptions are not reused."
+      },
+      {
+        "label": "Wand Sniper Elite 4 game page",
+        "url": "https://wand.com/games/sniper-elite-4",
+        "coverage": "game_tool_and_overlay_coverage_only",
+        "notes": "Confirms Wand game support and overlay tooling. No public Wand map endpoint or app data is reused."
+      }
+    ],
+    "visualReview": {
+      "status": "source_limited",
+      "lastCompared": "2026-06-05",
+      "summary": "No committed third-party source plate or marker coordinate import exists for this legacy title. Use the listed sources only for manual comparison planning and category/count sanity checks.",
+      "findings": [
+        "A neutral Vaexil-created placeholder is attached for protected admin coordinate capture.",
+        "Public Recon still exposes no third-party map images, screenshots, UI, guide prose, or marker data.",
+        "Legacy-title source availability is weaker than current SE5/Resistance Guides4Gamers imports, so first-hand review is the publication gate."
+      ],
+      "manualReviewFocus": [
+        "Confirm the mission boundary, orientation, and major named zones before entering markers.",
+        "Review core objectives, starts, exits, collectibles, and challenge targets before resource or enemy-density layers.",
+        "Flag any interior, tunnel, elevation, or multi-stage area that needs a separate map view."
+      ]
+    },
+    "checks": [
+      {
+        "label": "Mission coverage",
+        "status": "match",
+        "localValue": "draft map record created",
+        "sourceValue": "campaign/DLC source list includes this mission",
+        "notes": "Mission inclusion is based on the recorded official/product and mission-list references."
+      },
+      {
+        "label": "Private source-map import",
+        "status": "source_gap",
+        "localValue": "neutral Vaexil placeholder only",
+        "sourceValue": "third-party references available",
+        "notes": "No compatible source-map import was committed in this pass; do not enter exact coordinates from third-party sources until approval and review notes exist."
+      },
+      {
+        "label": "Marker coordinate import",
+        "status": "source_gap",
+        "localValue": "0 draft markers",
+        "sourceValue": "manual review required",
+        "notes": "Marker seeds are intentionally deferred until a source-safe coordinate workflow is available for this map."
+      }
+    ],
+    "warnings": [
+      "Legacy map detail is research-scaffold level, not marker-coordinate parity with SE5/Resistance yet.",
+      "Do not publish this map or any marker until a first-hand gameplay or approved private source review pass is recorded."
+    ],
+    "nextSteps": [
+      "Run a scratch-only visual comparison pass against the recorded sources.",
+      "Capture normalized coordinates in the admin tool from gameplay or approved private source plates.",
+      "Update this cross-check with marker counts and manual position-review notes before any confidence upgrade."
+    ]
+  },
+  {
+    "mapId": "se4-lorino-dockyard",
+    "gameId": "sniper-elite-4",
+    "status": "source_gap",
+    "lastReviewed": "2026-06-05",
+    "localMarkerCount": 0,
+    "localWorkbenchCount": 0,
+    "summary": "Lorino Dockyard has a draft map shell, source packet, and private neutral review view. Exact marker coordinates still need private source approval or first-hand gameplay review.",
+    "sources": [
+      {
+        "label": "Sniper Elite Wiki - Sniper Elite 4",
+        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_4",
+        "coverage": "mission_list_and_broad_context",
+        "notes": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
+      },
+      {
+        "label": "Gamepressure Sniper Elite 4 guide",
+        "url": "https://www.gamepressure.com/sniper-elite-4/",
+        "coverage": "mission_map_and_collectible_scope",
+        "notes": "Used for mission structure, objective categories, and collectible categories only. Map images, route prose, labels, and screenshots are not reused."
+      },
+      {
+        "label": "GameMappers Sniper Elite 4 map article",
+        "url": "https://gamemappers.com/sniper-elite-4-map/",
+        "coverage": "map_category_and_completion_scope",
+        "notes": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
+      },
+      {
+        "label": "SniperElite4Maps website",
+        "url": "https://sniperelite4maps.de/h/",
+        "coverage": "independent_category_and_visual_reference",
+        "notes": "Used for category coverage and manual visual-review planning only. Map files, marker coordinates, UI, and text are not reused."
+      },
+      {
+        "label": "SniperElite4Maps GitHub repository",
+        "url": "https://github.com/lordfiSh/sniperelite4maps",
+        "coverage": "source_posture_and_issue_reference",
+        "notes": "Used to record source availability and unresolved issue posture only. Code, map assets, marker data, and descriptions are not reused."
+      },
+      {
+        "label": "Wand Sniper Elite 4 game page",
+        "url": "https://wand.com/games/sniper-elite-4",
+        "coverage": "game_tool_and_overlay_coverage_only",
+        "notes": "Confirms Wand game support and overlay tooling. No public Wand map endpoint or app data is reused."
+      }
+    ],
+    "visualReview": {
+      "status": "source_limited",
+      "lastCompared": "2026-06-05",
+      "summary": "No committed third-party source plate or marker coordinate import exists for this legacy title. Use the listed sources only for manual comparison planning and category/count sanity checks.",
+      "findings": [
+        "A neutral Vaexil-created placeholder is attached for protected admin coordinate capture.",
+        "Public Recon still exposes no third-party map images, screenshots, UI, guide prose, or marker data.",
+        "Legacy-title source availability is weaker than current SE5/Resistance Guides4Gamers imports, so first-hand review is the publication gate."
+      ],
+      "manualReviewFocus": [
+        "Confirm the mission boundary, orientation, and major named zones before entering markers.",
+        "Review core objectives, starts, exits, collectibles, and challenge targets before resource or enemy-density layers.",
+        "Flag any interior, tunnel, elevation, or multi-stage area that needs a separate map view."
+      ]
+    },
+    "checks": [
+      {
+        "label": "Mission coverage",
+        "status": "match",
+        "localValue": "draft map record created",
+        "sourceValue": "campaign/DLC source list includes this mission",
+        "notes": "Mission inclusion is based on the recorded official/product and mission-list references."
+      },
+      {
+        "label": "Private source-map import",
+        "status": "source_gap",
+        "localValue": "neutral Vaexil placeholder only",
+        "sourceValue": "third-party references available",
+        "notes": "No compatible source-map import was committed in this pass; do not enter exact coordinates from third-party sources until approval and review notes exist."
+      },
+      {
+        "label": "Marker coordinate import",
+        "status": "source_gap",
+        "localValue": "0 draft markers",
+        "sourceValue": "manual review required",
+        "notes": "Marker seeds are intentionally deferred until a source-safe coordinate workflow is available for this map."
+      }
+    ],
+    "warnings": [
+      "Legacy map detail is research-scaffold level, not marker-coordinate parity with SE5/Resistance yet.",
+      "Do not publish this map or any marker until a first-hand gameplay or approved private source review pass is recorded."
+    ],
+    "nextSteps": [
+      "Run a scratch-only visual comparison pass against the recorded sources.",
+      "Capture normalized coordinates in the admin tool from gameplay or approved private source plates.",
+      "Update this cross-check with marker counts and manual position-review notes before any confidence upgrade."
+    ]
+  },
+  {
+    "mapId": "se4-abrunza-monastery",
+    "gameId": "sniper-elite-4",
+    "status": "source_gap",
+    "lastReviewed": "2026-06-05",
+    "localMarkerCount": 0,
+    "localWorkbenchCount": 0,
+    "summary": "Abrunza Monastery has a draft map shell, source packet, and private neutral review view. Exact marker coordinates still need private source approval or first-hand gameplay review.",
+    "sources": [
+      {
+        "label": "Sniper Elite Wiki - Sniper Elite 4",
+        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_4",
+        "coverage": "mission_list_and_broad_context",
+        "notes": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
+      },
+      {
+        "label": "Gamepressure Sniper Elite 4 guide",
+        "url": "https://www.gamepressure.com/sniper-elite-4/",
+        "coverage": "mission_map_and_collectible_scope",
+        "notes": "Used for mission structure, objective categories, and collectible categories only. Map images, route prose, labels, and screenshots are not reused."
+      },
+      {
+        "label": "GameMappers Sniper Elite 4 map article",
+        "url": "https://gamemappers.com/sniper-elite-4-map/",
+        "coverage": "map_category_and_completion_scope",
+        "notes": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
+      },
+      {
+        "label": "SniperElite4Maps website",
+        "url": "https://sniperelite4maps.de/h/",
+        "coverage": "independent_category_and_visual_reference",
+        "notes": "Used for category coverage and manual visual-review planning only. Map files, marker coordinates, UI, and text are not reused."
+      },
+      {
+        "label": "SniperElite4Maps GitHub repository",
+        "url": "https://github.com/lordfiSh/sniperelite4maps",
+        "coverage": "source_posture_and_issue_reference",
+        "notes": "Used to record source availability and unresolved issue posture only. Code, map assets, marker data, and descriptions are not reused."
+      },
+      {
+        "label": "Wand Sniper Elite 4 game page",
+        "url": "https://wand.com/games/sniper-elite-4",
+        "coverage": "game_tool_and_overlay_coverage_only",
+        "notes": "Confirms Wand game support and overlay tooling. No public Wand map endpoint or app data is reused."
+      }
+    ],
+    "visualReview": {
+      "status": "source_limited",
+      "lastCompared": "2026-06-05",
+      "summary": "No committed third-party source plate or marker coordinate import exists for this legacy title. Use the listed sources only for manual comparison planning and category/count sanity checks.",
+      "findings": [
+        "A neutral Vaexil-created placeholder is attached for protected admin coordinate capture.",
+        "Public Recon still exposes no third-party map images, screenshots, UI, guide prose, or marker data.",
+        "Legacy-title source availability is weaker than current SE5/Resistance Guides4Gamers imports, so first-hand review is the publication gate."
+      ],
+      "manualReviewFocus": [
+        "Confirm the mission boundary, orientation, and major named zones before entering markers.",
+        "Review core objectives, starts, exits, collectibles, and challenge targets before resource or enemy-density layers.",
+        "Flag any interior, tunnel, elevation, or multi-stage area that needs a separate map view."
+      ]
+    },
+    "checks": [
+      {
+        "label": "Mission coverage",
+        "status": "match",
+        "localValue": "draft map record created",
+        "sourceValue": "campaign/DLC source list includes this mission",
+        "notes": "Mission inclusion is based on the recorded official/product and mission-list references."
+      },
+      {
+        "label": "Private source-map import",
+        "status": "source_gap",
+        "localValue": "neutral Vaexil placeholder only",
+        "sourceValue": "third-party references available",
+        "notes": "No compatible source-map import was committed in this pass; do not enter exact coordinates from third-party sources until approval and review notes exist."
+      },
+      {
+        "label": "Marker coordinate import",
+        "status": "source_gap",
+        "localValue": "0 draft markers",
+        "sourceValue": "manual review required",
+        "notes": "Marker seeds are intentionally deferred until a source-safe coordinate workflow is available for this map."
+      }
+    ],
+    "warnings": [
+      "Legacy map detail is research-scaffold level, not marker-coordinate parity with SE5/Resistance yet.",
+      "Do not publish this map or any marker until a first-hand gameplay or approved private source review pass is recorded."
+    ],
+    "nextSteps": [
+      "Run a scratch-only visual comparison pass against the recorded sources.",
+      "Capture normalized coordinates in the admin tool from gameplay or approved private source plates.",
+      "Update this cross-check with marker counts and manual position-review notes before any confidence upgrade."
+    ]
+  },
+  {
+    "mapId": "se4-magazzeno-facility",
+    "gameId": "sniper-elite-4",
+    "status": "source_gap",
+    "lastReviewed": "2026-06-05",
+    "localMarkerCount": 0,
+    "localWorkbenchCount": 0,
+    "summary": "Magazzeno Facility has a draft map shell, source packet, and private neutral review view. Exact marker coordinates still need private source approval or first-hand gameplay review.",
+    "sources": [
+      {
+        "label": "Sniper Elite Wiki - Sniper Elite 4",
+        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_4",
+        "coverage": "mission_list_and_broad_context",
+        "notes": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
+      },
+      {
+        "label": "Gamepressure Sniper Elite 4 guide",
+        "url": "https://www.gamepressure.com/sniper-elite-4/",
+        "coverage": "mission_map_and_collectible_scope",
+        "notes": "Used for mission structure, objective categories, and collectible categories only. Map images, route prose, labels, and screenshots are not reused."
+      },
+      {
+        "label": "GameMappers Sniper Elite 4 map article",
+        "url": "https://gamemappers.com/sniper-elite-4-map/",
+        "coverage": "map_category_and_completion_scope",
+        "notes": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
+      },
+      {
+        "label": "SniperElite4Maps website",
+        "url": "https://sniperelite4maps.de/h/",
+        "coverage": "independent_category_and_visual_reference",
+        "notes": "Used for category coverage and manual visual-review planning only. Map files, marker coordinates, UI, and text are not reused."
+      },
+      {
+        "label": "SniperElite4Maps GitHub repository",
+        "url": "https://github.com/lordfiSh/sniperelite4maps",
+        "coverage": "source_posture_and_issue_reference",
+        "notes": "Used to record source availability and unresolved issue posture only. Code, map assets, marker data, and descriptions are not reused."
+      },
+      {
+        "label": "Wand Sniper Elite 4 game page",
+        "url": "https://wand.com/games/sniper-elite-4",
+        "coverage": "game_tool_and_overlay_coverage_only",
+        "notes": "Confirms Wand game support and overlay tooling. No public Wand map endpoint or app data is reused."
+      }
+    ],
+    "visualReview": {
+      "status": "source_limited",
+      "lastCompared": "2026-06-05",
+      "summary": "No committed third-party source plate or marker coordinate import exists for this legacy title. Use the listed sources only for manual comparison planning and category/count sanity checks.",
+      "findings": [
+        "A neutral Vaexil-created placeholder is attached for protected admin coordinate capture.",
+        "Public Recon still exposes no third-party map images, screenshots, UI, guide prose, or marker data.",
+        "Legacy-title source availability is weaker than current SE5/Resistance Guides4Gamers imports, so first-hand review is the publication gate."
+      ],
+      "manualReviewFocus": [
+        "Confirm the mission boundary, orientation, and major named zones before entering markers.",
+        "Review core objectives, starts, exits, collectibles, and challenge targets before resource or enemy-density layers.",
+        "Flag any interior, tunnel, elevation, or multi-stage area that needs a separate map view."
+      ]
+    },
+    "checks": [
+      {
+        "label": "Mission coverage",
+        "status": "match",
+        "localValue": "draft map record created",
+        "sourceValue": "campaign/DLC source list includes this mission",
+        "notes": "Mission inclusion is based on the recorded official/product and mission-list references."
+      },
+      {
+        "label": "Private source-map import",
+        "status": "source_gap",
+        "localValue": "neutral Vaexil placeholder only",
+        "sourceValue": "third-party references available",
+        "notes": "No compatible source-map import was committed in this pass; do not enter exact coordinates from third-party sources until approval and review notes exist."
+      },
+      {
+        "label": "Marker coordinate import",
+        "status": "source_gap",
+        "localValue": "0 draft markers",
+        "sourceValue": "manual review required",
+        "notes": "Marker seeds are intentionally deferred until a source-safe coordinate workflow is available for this map."
+      }
+    ],
+    "warnings": [
+      "Legacy map detail is research-scaffold level, not marker-coordinate parity with SE5/Resistance yet.",
+      "Do not publish this map or any marker until a first-hand gameplay or approved private source review pass is recorded."
+    ],
+    "nextSteps": [
+      "Run a scratch-only visual comparison pass against the recorded sources.",
+      "Capture normalized coordinates in the admin tool from gameplay or approved private source plates.",
+      "Update this cross-check with marker counts and manual position-review notes before any confidence upgrade."
+    ]
+  },
+  {
+    "mapId": "se4-giovi-fiorini-mansion",
+    "gameId": "sniper-elite-4",
+    "status": "source_gap",
+    "lastReviewed": "2026-06-05",
+    "localMarkerCount": 0,
+    "localWorkbenchCount": 0,
+    "summary": "Giovi Fiorini Mansion has a draft map shell, source packet, and private neutral review view. Exact marker coordinates still need private source approval or first-hand gameplay review.",
+    "sources": [
+      {
+        "label": "Sniper Elite Wiki - Sniper Elite 4",
+        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_4",
+        "coverage": "mission_list_and_broad_context",
+        "notes": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
+      },
+      {
+        "label": "Gamepressure Sniper Elite 4 guide",
+        "url": "https://www.gamepressure.com/sniper-elite-4/",
+        "coverage": "mission_map_and_collectible_scope",
+        "notes": "Used for mission structure, objective categories, and collectible categories only. Map images, route prose, labels, and screenshots are not reused."
+      },
+      {
+        "label": "GameMappers Sniper Elite 4 map article",
+        "url": "https://gamemappers.com/sniper-elite-4-map/",
+        "coverage": "map_category_and_completion_scope",
+        "notes": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
+      },
+      {
+        "label": "SniperElite4Maps website",
+        "url": "https://sniperelite4maps.de/h/",
+        "coverage": "independent_category_and_visual_reference",
+        "notes": "Used for category coverage and manual visual-review planning only. Map files, marker coordinates, UI, and text are not reused."
+      },
+      {
+        "label": "SniperElite4Maps GitHub repository",
+        "url": "https://github.com/lordfiSh/sniperelite4maps",
+        "coverage": "source_posture_and_issue_reference",
+        "notes": "Used to record source availability and unresolved issue posture only. Code, map assets, marker data, and descriptions are not reused."
+      },
+      {
+        "label": "Wand Sniper Elite 4 game page",
+        "url": "https://wand.com/games/sniper-elite-4",
+        "coverage": "game_tool_and_overlay_coverage_only",
+        "notes": "Confirms Wand game support and overlay tooling. No public Wand map endpoint or app data is reused."
+      }
+    ],
+    "visualReview": {
+      "status": "source_limited",
+      "lastCompared": "2026-06-05",
+      "summary": "No committed third-party source plate or marker coordinate import exists for this legacy title. Use the listed sources only for manual comparison planning and category/count sanity checks.",
+      "findings": [
+        "A neutral Vaexil-created placeholder is attached for protected admin coordinate capture.",
+        "Public Recon still exposes no third-party map images, screenshots, UI, guide prose, or marker data.",
+        "Legacy-title source availability is weaker than current SE5/Resistance Guides4Gamers imports, so first-hand review is the publication gate."
+      ],
+      "manualReviewFocus": [
+        "Confirm the mission boundary, orientation, and major named zones before entering markers.",
+        "Review core objectives, starts, exits, collectibles, and challenge targets before resource or enemy-density layers.",
+        "Flag any interior, tunnel, elevation, or multi-stage area that needs a separate map view."
+      ]
+    },
+    "checks": [
+      {
+        "label": "Mission coverage",
+        "status": "match",
+        "localValue": "draft map record created",
+        "sourceValue": "campaign/DLC source list includes this mission",
+        "notes": "Mission inclusion is based on the recorded official/product and mission-list references."
+      },
+      {
+        "label": "Private source-map import",
+        "status": "source_gap",
+        "localValue": "neutral Vaexil placeholder only",
+        "sourceValue": "third-party references available",
+        "notes": "No compatible source-map import was committed in this pass; do not enter exact coordinates from third-party sources until approval and review notes exist."
+      },
+      {
+        "label": "Marker coordinate import",
+        "status": "source_gap",
+        "localValue": "0 draft markers",
+        "sourceValue": "manual review required",
+        "notes": "Marker seeds are intentionally deferred until a source-safe coordinate workflow is available for this map."
+      }
+    ],
+    "warnings": [
+      "Legacy map detail is research-scaffold level, not marker-coordinate parity with SE5/Resistance yet.",
+      "Do not publish this map or any marker until a first-hand gameplay or approved private source review pass is recorded."
+    ],
+    "nextSteps": [
+      "Run a scratch-only visual comparison pass against the recorded sources.",
+      "Capture normalized coordinates in the admin tool from gameplay or approved private source plates.",
+      "Update this cross-check with marker counts and manual position-review notes before any confidence upgrade."
+    ]
+  },
+  {
+    "mapId": "se4-allagra-fortress",
+    "gameId": "sniper-elite-4",
+    "status": "source_gap",
+    "lastReviewed": "2026-06-05",
+    "localMarkerCount": 0,
+    "localWorkbenchCount": 0,
+    "summary": "Allagra Fortress has a draft map shell, source packet, and private neutral review view. Exact marker coordinates still need private source approval or first-hand gameplay review.",
+    "sources": [
+      {
+        "label": "Sniper Elite Wiki - Sniper Elite 4",
+        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_4",
+        "coverage": "mission_list_and_broad_context",
+        "notes": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
+      },
+      {
+        "label": "Gamepressure Sniper Elite 4 guide",
+        "url": "https://www.gamepressure.com/sniper-elite-4/",
+        "coverage": "mission_map_and_collectible_scope",
+        "notes": "Used for mission structure, objective categories, and collectible categories only. Map images, route prose, labels, and screenshots are not reused."
+      },
+      {
+        "label": "GameMappers Sniper Elite 4 map article",
+        "url": "https://gamemappers.com/sniper-elite-4-map/",
+        "coverage": "map_category_and_completion_scope",
+        "notes": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
+      },
+      {
+        "label": "SniperElite4Maps website",
+        "url": "https://sniperelite4maps.de/h/",
+        "coverage": "independent_category_and_visual_reference",
+        "notes": "Used for category coverage and manual visual-review planning only. Map files, marker coordinates, UI, and text are not reused."
+      },
+      {
+        "label": "SniperElite4Maps GitHub repository",
+        "url": "https://github.com/lordfiSh/sniperelite4maps",
+        "coverage": "source_posture_and_issue_reference",
+        "notes": "Used to record source availability and unresolved issue posture only. Code, map assets, marker data, and descriptions are not reused."
+      },
+      {
+        "label": "Wand Sniper Elite 4 game page",
+        "url": "https://wand.com/games/sniper-elite-4",
+        "coverage": "game_tool_and_overlay_coverage_only",
+        "notes": "Confirms Wand game support and overlay tooling. No public Wand map endpoint or app data is reused."
+      }
+    ],
+    "visualReview": {
+      "status": "source_limited",
+      "lastCompared": "2026-06-05",
+      "summary": "No committed third-party source plate or marker coordinate import exists for this legacy title. Use the listed sources only for manual comparison planning and category/count sanity checks.",
+      "findings": [
+        "A neutral Vaexil-created placeholder is attached for protected admin coordinate capture.",
+        "Public Recon still exposes no third-party map images, screenshots, UI, guide prose, or marker data.",
+        "Legacy-title source availability is weaker than current SE5/Resistance Guides4Gamers imports, so first-hand review is the publication gate."
+      ],
+      "manualReviewFocus": [
+        "Confirm the mission boundary, orientation, and major named zones before entering markers.",
+        "Review core objectives, starts, exits, collectibles, and challenge targets before resource or enemy-density layers.",
+        "Flag any interior, tunnel, elevation, or multi-stage area that needs a separate map view."
+      ]
+    },
+    "checks": [
+      {
+        "label": "Mission coverage",
+        "status": "match",
+        "localValue": "draft map record created",
+        "sourceValue": "campaign/DLC source list includes this mission",
+        "notes": "Mission inclusion is based on the recorded official/product and mission-list references."
+      },
+      {
+        "label": "Private source-map import",
+        "status": "source_gap",
+        "localValue": "neutral Vaexil placeholder only",
+        "sourceValue": "third-party references available",
+        "notes": "No compatible source-map import was committed in this pass; do not enter exact coordinates from third-party sources until approval and review notes exist."
+      },
+      {
+        "label": "Marker coordinate import",
+        "status": "source_gap",
+        "localValue": "0 draft markers",
+        "sourceValue": "manual review required",
+        "notes": "Marker seeds are intentionally deferred until a source-safe coordinate workflow is available for this map."
+      }
+    ],
+    "warnings": [
+      "Legacy map detail is research-scaffold level, not marker-coordinate parity with SE5/Resistance yet.",
+      "Do not publish this map or any marker until a first-hand gameplay or approved private source review pass is recorded."
+    ],
+    "nextSteps": [
+      "Run a scratch-only visual comparison pass against the recorded sources.",
+      "Capture normalized coordinates in the admin tool from gameplay or approved private source plates.",
+      "Update this cross-check with marker counts and manual position-review notes before any confidence upgrade."
+    ]
+  },
+  {
+    "mapId": "se4-target-fuhrer",
+    "gameId": "sniper-elite-4",
+    "status": "source_gap",
+    "lastReviewed": "2026-06-05",
+    "localMarkerCount": 0,
+    "localWorkbenchCount": 0,
+    "summary": "Target Führer has a draft map shell, source packet, and private neutral review view. Exact marker coordinates still need private source approval or first-hand gameplay review.",
+    "sources": [
+      {
+        "label": "Sniper Elite Wiki - Sniper Elite 4",
+        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_4",
+        "coverage": "mission_list_and_broad_context",
+        "notes": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
+      },
+      {
+        "label": "Gamepressure Sniper Elite 4 guide",
+        "url": "https://www.gamepressure.com/sniper-elite-4/",
+        "coverage": "mission_map_and_collectible_scope",
+        "notes": "Used for mission structure, objective categories, and collectible categories only. Map images, route prose, labels, and screenshots are not reused."
+      },
+      {
+        "label": "GameMappers Sniper Elite 4 map article",
+        "url": "https://gamemappers.com/sniper-elite-4-map/",
+        "coverage": "map_category_and_completion_scope",
+        "notes": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
+      },
+      {
+        "label": "SniperElite4Maps website",
+        "url": "https://sniperelite4maps.de/h/",
+        "coverage": "independent_category_and_visual_reference",
+        "notes": "Used for category coverage and manual visual-review planning only. Map files, marker coordinates, UI, and text are not reused."
+      },
+      {
+        "label": "SniperElite4Maps GitHub repository",
+        "url": "https://github.com/lordfiSh/sniperelite4maps",
+        "coverage": "source_posture_and_issue_reference",
+        "notes": "Used to record source availability and unresolved issue posture only. Code, map assets, marker data, and descriptions are not reused."
+      },
+      {
+        "label": "Wand Sniper Elite 4 game page",
+        "url": "https://wand.com/games/sniper-elite-4",
+        "coverage": "game_tool_and_overlay_coverage_only",
+        "notes": "Confirms Wand game support and overlay tooling. No public Wand map endpoint or app data is reused."
+      }
+    ],
+    "visualReview": {
+      "status": "source_limited",
+      "lastCompared": "2026-06-05",
+      "summary": "No committed third-party source plate or marker coordinate import exists for this legacy title. Use the listed sources only for manual comparison planning and category/count sanity checks.",
+      "findings": [
+        "A neutral Vaexil-created placeholder is attached for protected admin coordinate capture.",
+        "Public Recon still exposes no third-party map images, screenshots, UI, guide prose, or marker data.",
+        "Legacy-title source availability is weaker than current SE5/Resistance Guides4Gamers imports, so first-hand review is the publication gate."
+      ],
+      "manualReviewFocus": [
+        "Confirm the mission boundary, orientation, and major named zones before entering markers.",
+        "Review core objectives, starts, exits, collectibles, and challenge targets before resource or enemy-density layers.",
+        "Flag any interior, tunnel, elevation, or multi-stage area that needs a separate map view."
+      ]
+    },
+    "checks": [
+      {
+        "label": "Mission coverage",
+        "status": "match",
+        "localValue": "draft map record created",
+        "sourceValue": "campaign/DLC source list includes this mission",
+        "notes": "Mission inclusion is based on the recorded official/product and mission-list references."
+      },
+      {
+        "label": "Private source-map import",
+        "status": "source_gap",
+        "localValue": "neutral Vaexil placeholder only",
+        "sourceValue": "third-party references available",
+        "notes": "No compatible source-map import was committed in this pass; do not enter exact coordinates from third-party sources until approval and review notes exist."
+      },
+      {
+        "label": "Marker coordinate import",
+        "status": "source_gap",
+        "localValue": "0 draft markers",
+        "sourceValue": "manual review required",
+        "notes": "Marker seeds are intentionally deferred until a source-safe coordinate workflow is available for this map."
+      }
+    ],
+    "warnings": [
+      "Legacy map detail is research-scaffold level, not marker-coordinate parity with SE5/Resistance yet.",
+      "Do not publish this map or any marker until a first-hand gameplay or approved private source review pass is recorded."
+    ],
+    "nextSteps": [
+      "Run a scratch-only visual comparison pass against the recorded sources.",
+      "Capture normalized coordinates in the admin tool from gameplay or approved private source plates.",
+      "Update this cross-check with marker counts and manual position-review notes before any confidence upgrade."
+    ]
+  },
+  {
+    "mapId": "se4-deathstorm-inception",
+    "gameId": "sniper-elite-4",
+    "status": "source_gap",
+    "lastReviewed": "2026-06-05",
+    "localMarkerCount": 0,
+    "localWorkbenchCount": 0,
+    "summary": "Deathstorm Part 1: Inception has a draft map shell, source packet, and private neutral review view. Exact marker coordinates still need private source approval or first-hand gameplay review.",
+    "sources": [
+      {
+        "label": "Sniper Elite Wiki - Sniper Elite 4",
+        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_4",
+        "coverage": "mission_list_and_broad_context",
+        "notes": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
+      },
+      {
+        "label": "Gamepressure Sniper Elite 4 guide",
+        "url": "https://www.gamepressure.com/sniper-elite-4/",
+        "coverage": "mission_map_and_collectible_scope",
+        "notes": "Used for mission structure, objective categories, and collectible categories only. Map images, route prose, labels, and screenshots are not reused."
+      },
+      {
+        "label": "GameMappers Sniper Elite 4 map article",
+        "url": "https://gamemappers.com/sniper-elite-4-map/",
+        "coverage": "map_category_and_completion_scope",
+        "notes": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
+      },
+      {
+        "label": "SniperElite4Maps website",
+        "url": "https://sniperelite4maps.de/h/",
+        "coverage": "independent_category_and_visual_reference",
+        "notes": "Used for category coverage and manual visual-review planning only. Map files, marker coordinates, UI, and text are not reused."
+      },
+      {
+        "label": "SniperElite4Maps GitHub repository",
+        "url": "https://github.com/lordfiSh/sniperelite4maps",
+        "coverage": "source_posture_and_issue_reference",
+        "notes": "Used to record source availability and unresolved issue posture only. Code, map assets, marker data, and descriptions are not reused."
+      },
+      {
+        "label": "Wand Sniper Elite 4 game page",
+        "url": "https://wand.com/games/sniper-elite-4",
+        "coverage": "game_tool_and_overlay_coverage_only",
+        "notes": "Confirms Wand game support and overlay tooling. No public Wand map endpoint or app data is reused."
+      }
+    ],
+    "visualReview": {
+      "status": "source_limited",
+      "lastCompared": "2026-06-05",
+      "summary": "No committed third-party source plate or marker coordinate import exists for this legacy title. Use the listed sources only for manual comparison planning and category/count sanity checks.",
+      "findings": [
+        "A neutral Vaexil-created placeholder is attached for protected admin coordinate capture.",
+        "Public Recon still exposes no third-party map images, screenshots, UI, guide prose, or marker data.",
+        "Legacy-title source availability is weaker than current SE5/Resistance Guides4Gamers imports, so first-hand review is the publication gate."
+      ],
+      "manualReviewFocus": [
+        "Confirm the mission boundary, orientation, and major named zones before entering markers.",
+        "Review core objectives, starts, exits, collectibles, and challenge targets before resource or enemy-density layers.",
+        "Flag any interior, tunnel, elevation, or multi-stage area that needs a separate map view."
+      ]
+    },
+    "checks": [
+      {
+        "label": "Mission coverage",
+        "status": "match",
+        "localValue": "draft map record created",
+        "sourceValue": "campaign/DLC source list includes this mission",
+        "notes": "Mission inclusion is based on the recorded official/product and mission-list references."
+      },
+      {
+        "label": "Private source-map import",
+        "status": "source_gap",
+        "localValue": "neutral Vaexil placeholder only",
+        "sourceValue": "third-party references available",
+        "notes": "No compatible source-map import was committed in this pass; do not enter exact coordinates from third-party sources until approval and review notes exist."
+      },
+      {
+        "label": "Marker coordinate import",
+        "status": "source_gap",
+        "localValue": "0 draft markers",
+        "sourceValue": "manual review required",
+        "notes": "Marker seeds are intentionally deferred until a source-safe coordinate workflow is available for this map."
+      }
+    ],
+    "warnings": [
+      "Legacy map detail is research-scaffold level, not marker-coordinate parity with SE5/Resistance yet.",
+      "Do not publish this map or any marker until a first-hand gameplay or approved private source review pass is recorded."
+    ],
+    "nextSteps": [
+      "Run a scratch-only visual comparison pass against the recorded sources.",
+      "Capture normalized coordinates in the admin tool from gameplay or approved private source plates.",
+      "Update this cross-check with marker counts and manual position-review notes before any confidence upgrade."
+    ]
+  },
+  {
+    "mapId": "se4-deathstorm-infiltration",
+    "gameId": "sniper-elite-4",
+    "status": "source_gap",
+    "lastReviewed": "2026-06-05",
+    "localMarkerCount": 0,
+    "localWorkbenchCount": 0,
+    "summary": "Deathstorm Part 2: Infiltration has a draft map shell, source packet, and private neutral review view. Exact marker coordinates still need private source approval or first-hand gameplay review.",
+    "sources": [
+      {
+        "label": "Sniper Elite Wiki - Sniper Elite 4",
+        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_4",
+        "coverage": "mission_list_and_broad_context",
+        "notes": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
+      },
+      {
+        "label": "Gamepressure Sniper Elite 4 guide",
+        "url": "https://www.gamepressure.com/sniper-elite-4/",
+        "coverage": "mission_map_and_collectible_scope",
+        "notes": "Used for mission structure, objective categories, and collectible categories only. Map images, route prose, labels, and screenshots are not reused."
+      },
+      {
+        "label": "GameMappers Sniper Elite 4 map article",
+        "url": "https://gamemappers.com/sniper-elite-4-map/",
+        "coverage": "map_category_and_completion_scope",
+        "notes": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
+      },
+      {
+        "label": "SniperElite4Maps website",
+        "url": "https://sniperelite4maps.de/h/",
+        "coverage": "independent_category_and_visual_reference",
+        "notes": "Used for category coverage and manual visual-review planning only. Map files, marker coordinates, UI, and text are not reused."
+      },
+      {
+        "label": "SniperElite4Maps GitHub repository",
+        "url": "https://github.com/lordfiSh/sniperelite4maps",
+        "coverage": "source_posture_and_issue_reference",
+        "notes": "Used to record source availability and unresolved issue posture only. Code, map assets, marker data, and descriptions are not reused."
+      },
+      {
+        "label": "Wand Sniper Elite 4 game page",
+        "url": "https://wand.com/games/sniper-elite-4",
+        "coverage": "game_tool_and_overlay_coverage_only",
+        "notes": "Confirms Wand game support and overlay tooling. No public Wand map endpoint or app data is reused."
+      }
+    ],
+    "visualReview": {
+      "status": "source_limited",
+      "lastCompared": "2026-06-05",
+      "summary": "No committed third-party source plate or marker coordinate import exists for this legacy title. Use the listed sources only for manual comparison planning and category/count sanity checks.",
+      "findings": [
+        "A neutral Vaexil-created placeholder is attached for protected admin coordinate capture.",
+        "Public Recon still exposes no third-party map images, screenshots, UI, guide prose, or marker data.",
+        "Legacy-title source availability is weaker than current SE5/Resistance Guides4Gamers imports, so first-hand review is the publication gate."
+      ],
+      "manualReviewFocus": [
+        "Confirm the mission boundary, orientation, and major named zones before entering markers.",
+        "Review core objectives, starts, exits, collectibles, and challenge targets before resource or enemy-density layers.",
+        "Flag any interior, tunnel, elevation, or multi-stage area that needs a separate map view."
+      ]
+    },
+    "checks": [
+      {
+        "label": "Mission coverage",
+        "status": "match",
+        "localValue": "draft map record created",
+        "sourceValue": "campaign/DLC source list includes this mission",
+        "notes": "Mission inclusion is based on the recorded official/product and mission-list references."
+      },
+      {
+        "label": "Private source-map import",
+        "status": "source_gap",
+        "localValue": "neutral Vaexil placeholder only",
+        "sourceValue": "third-party references available",
+        "notes": "No compatible source-map import was committed in this pass; do not enter exact coordinates from third-party sources until approval and review notes exist."
+      },
+      {
+        "label": "Marker coordinate import",
+        "status": "source_gap",
+        "localValue": "0 draft markers",
+        "sourceValue": "manual review required",
+        "notes": "Marker seeds are intentionally deferred until a source-safe coordinate workflow is available for this map."
+      }
+    ],
+    "warnings": [
+      "Legacy map detail is research-scaffold level, not marker-coordinate parity with SE5/Resistance yet.",
+      "Do not publish this map or any marker until a first-hand gameplay or approved private source review pass is recorded."
+    ],
+    "nextSteps": [
+      "Run a scratch-only visual comparison pass against the recorded sources.",
+      "Capture normalized coordinates in the admin tool from gameplay or approved private source plates.",
+      "Update this cross-check with marker counts and manual position-review notes before any confidence upgrade."
+    ]
+  },
+  {
+    "mapId": "se4-deathstorm-obliteration",
+    "gameId": "sniper-elite-4",
+    "status": "source_gap",
+    "lastReviewed": "2026-06-05",
+    "localMarkerCount": 0,
+    "localWorkbenchCount": 0,
+    "summary": "Deathstorm Part 3: Obliteration has a draft map shell, source packet, and private neutral review view. Exact marker coordinates still need private source approval or first-hand gameplay review.",
+    "sources": [
+      {
+        "label": "Sniper Elite Wiki - Sniper Elite 4",
+        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_4",
+        "coverage": "mission_list_and_broad_context",
+        "notes": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
+      },
+      {
+        "label": "Gamepressure Sniper Elite 4 guide",
+        "url": "https://www.gamepressure.com/sniper-elite-4/",
+        "coverage": "mission_map_and_collectible_scope",
+        "notes": "Used for mission structure, objective categories, and collectible categories only. Map images, route prose, labels, and screenshots are not reused."
+      },
+      {
+        "label": "GameMappers Sniper Elite 4 map article",
+        "url": "https://gamemappers.com/sniper-elite-4-map/",
+        "coverage": "map_category_and_completion_scope",
+        "notes": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
+      },
+      {
+        "label": "SniperElite4Maps website",
+        "url": "https://sniperelite4maps.de/h/",
+        "coverage": "independent_category_and_visual_reference",
+        "notes": "Used for category coverage and manual visual-review planning only. Map files, marker coordinates, UI, and text are not reused."
+      },
+      {
+        "label": "SniperElite4Maps GitHub repository",
+        "url": "https://github.com/lordfiSh/sniperelite4maps",
+        "coverage": "source_posture_and_issue_reference",
+        "notes": "Used to record source availability and unresolved issue posture only. Code, map assets, marker data, and descriptions are not reused."
+      },
+      {
+        "label": "Wand Sniper Elite 4 game page",
+        "url": "https://wand.com/games/sniper-elite-4",
+        "coverage": "game_tool_and_overlay_coverage_only",
+        "notes": "Confirms Wand game support and overlay tooling. No public Wand map endpoint or app data is reused."
+      }
+    ],
+    "visualReview": {
+      "status": "source_limited",
+      "lastCompared": "2026-06-05",
+      "summary": "No committed third-party source plate or marker coordinate import exists for this legacy title. Use the listed sources only for manual comparison planning and category/count sanity checks.",
+      "findings": [
+        "A neutral Vaexil-created placeholder is attached for protected admin coordinate capture.",
+        "Public Recon still exposes no third-party map images, screenshots, UI, guide prose, or marker data.",
+        "Legacy-title source availability is weaker than current SE5/Resistance Guides4Gamers imports, so first-hand review is the publication gate."
+      ],
+      "manualReviewFocus": [
+        "Confirm the mission boundary, orientation, and major named zones before entering markers.",
+        "Review core objectives, starts, exits, collectibles, and challenge targets before resource or enemy-density layers.",
+        "Flag any interior, tunnel, elevation, or multi-stage area that needs a separate map view."
+      ]
+    },
+    "checks": [
+      {
+        "label": "Mission coverage",
+        "status": "match",
+        "localValue": "draft map record created",
+        "sourceValue": "campaign/DLC source list includes this mission",
+        "notes": "Mission inclusion is based on the recorded official/product and mission-list references."
+      },
+      {
+        "label": "Private source-map import",
+        "status": "source_gap",
+        "localValue": "neutral Vaexil placeholder only",
+        "sourceValue": "third-party references available",
+        "notes": "No compatible source-map import was committed in this pass; do not enter exact coordinates from third-party sources until approval and review notes exist."
+      },
+      {
+        "label": "Marker coordinate import",
+        "status": "source_gap",
+        "localValue": "0 draft markers",
+        "sourceValue": "manual review required",
+        "notes": "Marker seeds are intentionally deferred until a source-safe coordinate workflow is available for this map."
+      }
+    ],
+    "warnings": [
+      "Legacy map detail is research-scaffold level, not marker-coordinate parity with SE5/Resistance yet.",
+      "Do not publish this map or any marker until a first-hand gameplay or approved private source review pass is recorded."
+    ],
+    "nextSteps": [
+      "Run a scratch-only visual comparison pass against the recorded sources.",
+      "Capture normalized coordinates in the admin tool from gameplay or approved private source plates.",
+      "Update this cross-check with marker counts and manual position-review notes before any confidence upgrade."
+    ]
+  },
+  {
     "mapId": "se5-atlantic-wall",
     "gameId": "sniper-elite-5",
     "status": "position_cross_checked",

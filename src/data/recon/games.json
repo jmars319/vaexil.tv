@@ -9,13 +9,40 @@
     "sortOrder": 10
   },
   {
+    "id": "sniper-elite-v2-remastered",
+    "slug": "sniper-elite-v2-remastered",
+    "title": "Sniper Elite V2 Remastered",
+    "shortTitle": "Sniper Elite V2",
+    "description": "Curated Recon draft layers for Sniper Elite V2 Remastered campaign and DLC missions.",
+    "enabled": true,
+    "sortOrder": 20
+  },
+  {
+    "id": "sniper-elite-3",
+    "slug": "sniper-elite-3",
+    "title": "Sniper Elite 3",
+    "shortTitle": "Sniper Elite 3",
+    "description": "Curated Recon draft layers for Sniper Elite 3 campaign and DLC missions.",
+    "enabled": true,
+    "sortOrder": 30
+  },
+  {
+    "id": "sniper-elite-4",
+    "slug": "sniper-elite-4",
+    "title": "Sniper Elite 4",
+    "shortTitle": "Sniper Elite 4",
+    "description": "Curated Recon draft layers for Sniper Elite 4 campaign and DLC missions.",
+    "enabled": true,
+    "sortOrder": 40
+  },
+  {
     "id": "sniper-elite-5",
     "slug": "sniper-elite-5",
     "title": "Sniper Elite 5",
     "shortTitle": "Sniper Elite 5",
     "description": "Curated Recon map layers for Sniper Elite 5 missions covered on stream.",
     "enabled": true,
-    "sortOrder": 20
+    "sortOrder": 50
   },
   {
     "id": "sniper-elite-resistance",
@@ -24,6 +51,6 @@
     "shortTitle": "Sniper Elite: Resistance",
     "description": "Curated Recon map layers for Sniper Elite: Resistance missions covered on stream.",
     "enabled": true,
-    "sortOrder": 30
+    "sortOrder": 60
   }
 ]

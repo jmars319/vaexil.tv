@@ -523,20 +523,95 @@ function warningsFor(map, markers) {
   return warnings;
 }
 
-const [maps, markers, sourcePackets] = await Promise.all([
+function legacySourceGapFor(map, markers, packet) {
+  const packetSources = [
+    ...(packet?.officialSources || []),
+    ...(packet?.referenceSources || []),
+  ];
+  const sources = packetSources
+    .filter((source) => source.url)
+    .map((source) => ({
+      label: source.label,
+      url: source.url,
+      coverage: "source_gap_reference",
+      notes: "Recorded as private admin source context only. Map art, marker coordinates, screenshots, guide prose, icons, UI, and app data are not copied.",
+    }));
+
+  return {
+    mapId: map.id,
+    gameId: map.gameId,
+    status: "source_gap",
+    lastReviewed: today,
+    localMarkerCount: markers.length,
+    localWorkbenchCount: workbenchCount(markers),
+    summary: `${map.title} has legacy source context recorded, but no approved private source plate or marker-coordinate import yet.`,
+    sources,
+    visualReview: {
+      status: "source_limited",
+      lastCompared: today,
+      summary: `${map.title} is present for admin draft parity with a Vaexil neutral placeholder plate. Exact map layout and markers need approved source import or first-hand gameplay review.`,
+      findings: [
+        "Legacy reference sources were recorded for scope and source discovery only.",
+        "No third-party map art, screenshots, UI, marker coordinates, app data, or guide prose has been imported for this map.",
+      ],
+      manualReviewFocus: [
+        "Confirm mission boundaries and objective flow from first-hand gameplay.",
+        "Capture normalized coordinates only after the map view is approved for admin review.",
+        "Cross-check legacy title-specific collectibles before changing any marker confidence.",
+      ],
+    },
+    checks: [
+      {
+        label: "Legacy source import status",
+        status: "source_gap",
+        notes: "No approved private source-map import or marker-coordinate source adapter exists for this legacy map yet.",
+      },
+      {
+        label: "Marker seed status",
+        status: markers.length > 0 ? "pending" : "source_gap",
+        notes:
+          markers.length > 0
+            ? "Local marker seeds exist and need manual review before any confidence upgrade."
+            : "No local marker seeds are present; coordinate capture is deferred.",
+      },
+    ],
+    warnings: [
+      "Do not treat the neutral placeholder plate as a gameplay-accurate public map.",
+      "Do not copy coordinates, routes, guide text, screenshots, icons, UI, or app data from legacy reference sources.",
+    ],
+    nextSteps: [
+      "Review available legacy source coverage and record any owner-approved private source import before coordinate capture.",
+      "Create or approve a gameplay-accurate private review plate for this mission.",
+      "Capture draft/unverified markers from approved review material or first-hand gameplay only.",
+    ],
+  };
+}
+
+const [maps, markers, sourcePackets, existingSourceCrossChecks] = await Promise.all([
   readJson("src/data/recon/maps.json"),
   readJson("src/data/recon/marker-seeds.json"),
   readJson("src/data/recon/source-packets.json"),
+  readJson("src/data/recon/source-cross-checks.json"),
 ]);
 
 const packetsByMapId = new Map(
   sourcePackets.map((packet) => [packet.mapId, packet]),
 );
+const existingSourceCrossChecksByMapId = new Map(
+  existingSourceCrossChecks.map((check) => [check.mapId, check]),
+);
+const modernSniperEliteGameIds = new Set([
+  "sniper-elite-5",
+  "sniper-elite-resistance",
+]);
+const legacySniperEliteGameIds = new Set([
+  "sniper-elite-v2-remastered",
+  "sniper-elite-3",
+  "sniper-elite-4",
+]);
 
-const output = maps
-  .filter((map) =>
-    ["sniper-elite-5", "sniper-elite-resistance"].includes(map.gameId),
-  )
+const modernOutput = maps
+  .filter((map) => modernSniperEliteGameIds.has(map.gameId))
   .map((map) => {
     const mapMarkers = markers.filter((marker) => marker.mapId === map.id);
     const packet = packetsByMapId.get(map.id);
@@ -568,8 +643,21 @@ const output = maps
               "Verify exact placement in-game before changing marker confidence.",
             ],
     };
-  })
-  .sort((a, b) => a.mapId.localeCompare(b.mapId));
+  });
+
+const legacyOutput = maps
+  .filter((map) => legacySniperEliteGameIds.has(map.gameId))
+  .map((map) => {
+    const existing = existingSourceCrossChecksByMapId.get(map.id);
+    if (existing) return existing;
+
+    const mapMarkers = markers.filter((marker) => marker.mapId === map.id);
+    return legacySourceGapFor(map, mapMarkers, packetsByMapId.get(map.id));
+  });
+
+const output = [...modernOutput, ...legacyOutput].sort((a, b) =>
+  a.mapId.localeCompare(b.mapId),
+);
 
 await writeJson("src/data/recon/source-cross-checks.json", output);
 
