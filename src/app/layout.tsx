@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { PageViewTracker } from "@/components/page-view-tracker";
 import { PageShell } from "@/components/shell";
 import { siteConfig } from "@/lib/config";
@@ -115,6 +116,7 @@ export default function RootLayout({
         ))}
         <PageViewTracker />
         <PageShell>{children}</PageShell>
+        <Analytics />
       </body>
     </html>
   );
