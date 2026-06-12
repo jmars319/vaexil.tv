@@ -20,6 +20,8 @@ const routes = [
   "/sitemap.xml",
 ];
 
+const requireAdminReconSmoke = process.env.VAEXIL_E2E_REQUIRE_ADMIN_RECON === "1";
+
 async function loginAdmin(page: Page) {
   await page.goto("/admin", { waitUntil: "domcontentloaded" });
   const passwordInput = page.getByLabel("Admin password");
@@ -31,7 +33,15 @@ async function loginAdmin(page: Page) {
   const adminQueue = page.getByRole("heading", { name: "Admin queue" });
   await adminQueue.waitFor({ state: "visible", timeout: 5_000 }).catch(() => {});
   if (!(await adminQueue.isVisible().catch(() => false))) {
-    test.skip(true, "Admin Recon smoke requires the Playwright test admin env.");
+    if (requireAdminReconSmoke) {
+      throw new Error(
+        "Admin Recon smoke is required, but the Playwright test admin env did not authenticate.",
+      );
+    }
+    test.skip(
+      true,
+      "Optional admin Recon smoke skipped because the Playwright test admin env is not configured. Set VAEXIL_E2E_REQUIRE_ADMIN_RECON=1 to make this required.",
+    );
   }
   await expect(adminQueue).toBeVisible();
 }
@@ -129,10 +139,11 @@ test("admin Recon index groups maps by game and shows source-check status", asyn
   await expect(
     page.getByRole("link", { name: "Sniper Elite: Resistance / 13" }),
   ).toBeVisible();
-  await expect(page.getByText(/Source check: position cross checked/i).first()).toBeVisible();
-  await expect(page.getByText(/Source check: needs manual position review/i).first()).toBeVisible();
-  await expect(page.getByText(/Visual: visual sources compared/i).first()).toBeVisible();
-  await expect(page.getByText(/Visual: partial visual sources compared/i).first()).toBeVisible();
+  const reconAdmin = page.locator("main");
+  await expect(reconAdmin).toContainText(/Source check: position cross checked/i);
+  await expect(reconAdmin).toContainText(/Source check: needs manual position review/i);
+  await expect(reconAdmin).toContainText(/Visual: visual sources compared/i);
+  await expect(reconAdmin).toContainText(/Visual: partial visual sources compared/i);
 });
 
 test("admin Recon map supports wheel and touchpad-style zoom", async ({ page, isMobile }) => {
@@ -193,18 +204,18 @@ test("admin Atlantic Wall markers keep corrected positions and readable icons", 
       .locator("img"),
   ).toHaveAttribute("src", "/recon/icons/common/medal.svg");
   await expect(
-    page.getByRole("button", { exact: true, name: "Bolt Cutters" }).first().locator("img"),
+    viewport.getByRole("button", { exact: true, name: "Bolt Cutters" }).first().locator("img"),
   ).toHaveAttribute("src", "/recon/icons/common/bolt-cutters.svg");
   await expect(
-    page.getByRole("button", { exact: true, name: "Crowbar" }).first().locator("img"),
+    viewport.getByRole("button", { exact: true, name: "Crowbar" }).first().locator("img"),
   ).toHaveAttribute("src", "/recon/icons/common/crowbar.svg");
   await expect(
-    page.getByRole("button", { exact: true, name: "Satchel Charge" }).first().locator("img"),
+    viewport.getByRole("button", { exact: true, name: "Satchel Charge" }).first().locator("img"),
   ).toHaveAttribute("src", "/recon/icons/common/satchel-charge.svg");
 
   await page.getByRole("button", { exact: true, name: "Tools" }).click();
   await expect(
-    page.getByRole("button", { exact: true, name: "Crowbar" }).first(),
+    viewport.getByRole("button", { exact: true, name: "Crowbar" }).first(),
   ).toBeVisible();
   await page.getByRole("button", { exact: true, name: "Core" }).click();
 
@@ -225,7 +236,7 @@ test("admin Atlantic Wall markers keep corrected positions and readable icons", 
   await expect(detail).toContainText(/How to reach or complete/i);
   await expect(page.getByRole("heading", { name: "Source cross-check" })).toBeVisible();
   await expect(page.getByText(/Gamer Guides Sniper Elite 5 map index/i)).toBeVisible();
-  await expect(page.getByText(/Workbench count/i).first()).toBeVisible();
+  await expect(page.getByText("Workbench count", { exact: true })).toBeVisible();
 });
 
 test("admin Atlantic Wall public preview uses simplified published layout", async ({ page, isMobile }) => {
@@ -279,13 +290,13 @@ test("admin Behind Enemy Lines markers keep corrected campaign-cell positions", 
   );
 
   await expect(
-    page.getByRole("button", { exact: true, name: "Bolt Cutters" }).first().locator("img"),
+    viewport.getByRole("button", { exact: true, name: "Bolt Cutters" }).first().locator("img"),
   ).toHaveAttribute("src", "/recon/icons/common/bolt-cutters.svg");
   await expect(
-    page.getByRole("button", { exact: true, name: "Crowbar" }).first().locator("img"),
+    viewport.getByRole("button", { exact: true, name: "Crowbar" }).first().locator("img"),
   ).toHaveAttribute("src", "/recon/icons/common/crowbar.svg");
   await expect(
-    page.getByRole("button", { exact: true, name: "Satchel Charge" }).first().locator("img"),
+    viewport.getByRole("button", { exact: true, name: "Satchel Charge" }).first().locator("img"),
   ).toHaveAttribute("src", "/recon/icons/common/satchel-charge.svg");
 
   await page.getByPlaceholder("Search markers").fill("workbench");
@@ -326,7 +337,9 @@ test("admin Sniper Elite expansion maps are privately reviewable", async ({ page
   await page.getByRole("button", { name: /^Layers/ }).click();
   await page.getByRole("checkbox", { name: /Ammunition pickup/ }).check();
   await page.getByPlaceholder("Search markers").fill("ammunition");
-  await expect(page.getByRole("button", { name: /Ammunition/ }).first()).toBeVisible();
+  await expect(
+    page.getByTestId("recon-map-viewport").getByRole("button", { name: /Ammo|Ammunition/ }).first(),
+  ).toBeVisible();
 
   await page.goto("/admin/recon/maps/vercors-vendetta", {
     waitUntil: "domcontentloaded",
