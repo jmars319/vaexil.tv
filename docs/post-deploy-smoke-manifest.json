@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "siteId": "vaexil-tv",
+  "productionBaseUrl": "https://vaexil.tv",
+  "routes": {
+    "public": ["/", "/about", "/contact", "/guides", "/live", "/recon", "/schedule", "/suggest", "/privacy", "/terms"],
+    "admin": ["/admin", "/admin/recon"],
+    "api": ["/api/contact"]
+  },
+  "readOnlyDiagnostics": [
+    "Public home, Recon, guide, live, schedule, suggest, legal, and admin routes load.",
+    "Private/draft Recon content remains gated.",
+    "Contact API validation can reject invalid payloads without sending live messages."
+  ],
+  "formDryRun": "Do not submit live contact/suggestion forms without explicit approval.",
+  "exposureProbes": [
+    { "path": "/site-deploy.zip", "expectedStatus": [403, 404] },
+    { "path": "/backend-deploy.zip", "expectedStatus": [403, 404] },
+    { "path": "/frontend-deploy.zip", "expectedStatus": [403, 404] },
+    { "path": "/deploy.tar.gz", "expectedStatus": [403, 404] },
+    { "path": "/.env", "expectedStatus": [403, 404] },
+    { "path": "/.git/config", "expectedStatus": [403, 404] }
+  ]
+}

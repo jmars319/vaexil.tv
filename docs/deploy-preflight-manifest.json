@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "siteId": "vaexil-tv",
+  "productionBaseUrl": "https://vaexil.tv",
+  "deployModel": "public website",
+  "hosting": "Vercel",
+  "commands": {
+    "verify": "npm run test:all",
+    "build": "npm run build",
+    "deployCheck": "npm run test:deploy"
+  },
+  "artifacts": [],
+  "sourceMapPolicy": "do-not-publish-unless-explicitly-enabled-in-hosting",
+  "environment": {
+    "local": ".env.local",
+    "productionSource": "Vercel project settings",
+    "packagedRuntime": "hosted variables",
+    "secretsInGit": false
+  },
+  "forbiddenDeployPatterns": [".git/", ".env", ".env.local", ".env.production", "node_modules/", "test-results/", "playwright-report/", "coverage/", "*.map"],
+  "routeMap": {
+    "publicRoutes": ["/", "/about", "/contact", "/guides", "/live", "/recon", "/schedule", "/suggest", "/privacy", "/terms"],
+    "adminRoutes": ["/admin", "/admin/recon"],
+    "apiHealth": "",
+    "driftChecks": ["next-app-routes", "public-nav", "footer-links", "sitemap"]
+  },
+  "adminContract": {
+    "adminRoutes": ["/admin", "/admin/recon"],
+    "blankScreenGuard": "Admin routes must render useful auth/admin/recon states, never a blank screen.",
+    "systemChecks": {
+      "page": "",
+      "endpoint": "",
+      "requiredFields": []
+    }
+  },
+  "mediaContract": {
+    "storage": "vercel-hosted-with-r2-ready-environment",
+    "publicCdn": "https://cdn.vaexil.tv",
+    "fallback": "bundled public/recon assets",
+    "deployUploadsPolicy": "no uploaded media should be committed or packaged"
+  },
+  "testSafety": {
+    "productionDatabaseNames": [],
+    "liveProviderEnvVars": ["R2_SECRET_ACCESS_KEY", "RESEND_API_KEY", "SMTP_PASS"],
+    "liveUploadBuckets": ["vaexil-tv-media-public", "vaexil-tv-media-private"]
+  }
+}
