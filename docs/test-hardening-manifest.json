@@ -165,5 +165,100 @@
   "dataRetention": {
     "adminSurface": "/admin and /admin/recon review queues",
     "reviewCadence": "quarterly"
+  },
+  "apiResponseShape": {
+    "command": "npm run test:unit",
+    "surfaces": [
+      "admin dashboard"
+    ],
+    "schemas": [
+      "admin dashboard summary payload"
+    ],
+    "coverageNote": "Admin dashboard/API tests should assert stable response keys, empty-state arrays, and safe error shapes without relying on production data."
+  },
+  "adminNavigationContract": {
+    "notApplicableReason": "Shared cPanel admin navigation contract does not apply to this non-cPanel site."
+  },
+  "bundleBudgetTrend": {
+    "command": "npm run budget:bundle",
+    "trackedMetrics": [
+      "initial-js-bytes",
+      "largest-route-js-bytes",
+      "total-css-bytes",
+      "deploy-archive-bytes"
+    ],
+    "coverageNote": "Track trend deltas in CI/local verify; intentional increases should be reviewed with the feature that caused them."
+  },
+  "deadCodeImportCycle": {
+    "command": "npm run audit:maintainability",
+    "checks": [
+      "unused exports",
+      "orphan routes",
+      "import cycles",
+      "unexpected eager admin imports"
+    ]
+  },
+  "adminColorContrast": {
+    "command": "npm run test:e2e",
+    "surfaces": [
+      "admin-sidebar",
+      "admin-dashboard",
+      "admin-cards",
+      "admin-buttons",
+      "admin-form-fields",
+      "admin-status-badges"
+    ],
+    "coverageNote": "Admin smoke should catch low-contrast cards, disabled buttons, badges, and status panels, especially after shared-kit updates."
+  },
+  "themeMode": {
+    "mode": "single-theme",
+    "assertion": "This site intentionally ships one branded theme unless a future feature explicitly adds dark/light/system switching.",
+    "command": "npm run test:e2e",
+    "coverageNote": "Smoke tests should verify the branded theme is applied consistently and no accidental OS color-scheme inversion breaks readability."
+  },
+  "environmentCompleteness": {
+    "requiredModes": [
+      "local",
+      "production"
+    ],
+    "source": "docs/deploy-preflight-manifest.json environment",
+    "command": "npm run test:deploy",
+    "coverageNote": "Production deploy packaging must use the manifest env contract and avoid local-only env files."
+  },
+  "newRepoOnboarding": {
+    "requiredFiles": [
+      "docs/deploy-preflight-manifest.json",
+      "docs/post-deploy-smoke-manifest.json",
+      "docs/test-hardening-manifest.json",
+      "package.json",
+      "README.md"
+    ],
+    "checkCommand": "npm run test:all",
+    "coverageNote": "New deployable repos should not be considered onboarded until deploy, smoke, test-hardening, metadata, CI, and security-gate docs exist."
+  },
+  "productionReadinessScorecard": {
+    "scorecard": "docs/deploy-preflight-manifest.json plus docs/post-deploy-smoke-manifest.json",
+    "checks": [
+      "clean git state",
+      "green local verify",
+      "green pushed CI",
+      "deploy artifact check",
+      "post-deploy smoke scope",
+      "migration/backup readiness",
+      "security gate status"
+    ],
+    "reviewCadence": "before each production deploy or launch approval",
+    "coverageNote": "Use the deploy/smoke manifests as the site readiness scorecard before release."
+  },
+  "liveMonitoring": {
+    "signals": [
+      "post-deploy smoke manifest",
+      "GitHub Actions status",
+      "security advisory workflow status",
+      "Vercel deployment status",
+      "Vercel Analytics/Web Analytics where configured"
+    ],
+    "reviewCadence": "after each deploy and during weekly read-only audit automation",
+    "coverageNote": "Monitoring is read-only: check health, admin diagnostics, CDN/cache state, and CI/security status without mutating live data."
   }
 }
