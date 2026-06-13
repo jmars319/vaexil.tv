@@ -10,7 +10,7 @@ export default defineConfig({
   timeout: 30_000,
   expect: { timeout: 5_000 },
   fullyParallel: true,
-  reporter: [["list"]],
+  reporter: [["list"], ["json", { outputFile: "test-results/playwright-results.json" }]],
   webServer: {
     command: `VERCEL= LIBSQL_URL=file:.data/vaexil-playwright.db LIBSQL_AUTH_TOKEN= ADMIN_PASSWORD=playwright-admin-password ADMIN_SESSION_SECRET=playwright-admin-secret PORT=${port} sh -c "npm run db:seed && npm run dev"`,
     url: baseURL,

@@ -1,0 +1,9 @@
+{
+  "routes": [
+    { "name": "public-home", "path": "/", "surface": "public" },
+    { "name": "admin-home", "path": "/admin", "surface": "admin" },
+    { "name": "admin-recon", "path": "/admin/recon", "surface": "admin" },
+    { "name": "admin-recon-map", "path": "/admin/recon/maps/the-atlantic-wall", "surface": "admin" },
+    { "name": "admin-recon-preview", "path": "/admin/recon/maps/the-atlantic-wall/preview", "surface": "admin" }
+  ]
+}

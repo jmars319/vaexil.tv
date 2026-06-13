@@ -14,6 +14,7 @@ while IFS= read -r -d '' file; do
   node --check "$file"
 done < <(find "$ROOT_DIR/scripts" -type f \( -name '*.js' -o -name '*.mjs' -o -name '*.cjs' \) -print0)
 
+npm run test:guardrails
 npm run lint
 npm run typecheck
 

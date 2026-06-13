@@ -10,6 +10,7 @@ npm run security:local
 npm run test:unit
 npm run test:deploy
 npm run test:e2e
+npm run test:flake-report
 npm run verify
 
 echo "[test:all] All checks passed"
