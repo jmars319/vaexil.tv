@@ -10,6 +10,8 @@
     "typecheck": "rm -rf .next/dev && next typegen && tsc --noEmit",
     "audit:maintainability": "node scripts/audit-maintainability.mjs",
     "budget:bundle": "node scripts/analyze-build.mjs",
+    "test:selectors": "node scripts/verify-playwright-selectors.mjs",
+    "security:local": "just security",
     "test:static": "bash scripts/test-static.sh",
     "test:unit": "node scripts/test-recon-invariants.mjs",
     "test:e2e": "env -u NO_COLOR FORCE_COLOR=0 playwright test",

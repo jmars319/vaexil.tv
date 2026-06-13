@@ -204,18 +204,18 @@ test("admin Atlantic Wall markers keep corrected positions and readable icons", 
       .locator("img"),
   ).toHaveAttribute("src", "/recon/icons/common/medal.svg");
   await expect(
-    viewport.getByRole("button", { exact: true, name: "Bolt Cutters" }).first().locator("img"),
+    viewport.getByRole("button", { exact: true, name: "Bolt Cutters" }).first().locator("img"), // selector-intentional-first: duplicated collectible icon labels are expected across map markers.
   ).toHaveAttribute("src", "/recon/icons/common/bolt-cutters.svg");
   await expect(
-    viewport.getByRole("button", { exact: true, name: "Crowbar" }).first().locator("img"),
+    viewport.getByRole("button", { exact: true, name: "Crowbar" }).first().locator("img"), // selector-intentional-first: duplicated collectible icon labels are expected across map markers.
   ).toHaveAttribute("src", "/recon/icons/common/crowbar.svg");
   await expect(
-    viewport.getByRole("button", { exact: true, name: "Satchel Charge" }).first().locator("img"),
+    viewport.getByRole("button", { exact: true, name: "Satchel Charge" }).first().locator("img"), // selector-intentional-first: duplicated collectible icon labels are expected across map markers.
   ).toHaveAttribute("src", "/recon/icons/common/satchel-charge.svg");
 
   await page.getByRole("button", { exact: true, name: "Tools" }).click();
   await expect(
-    viewport.getByRole("button", { exact: true, name: "Crowbar" }).first(),
+    viewport.getByRole("button", { exact: true, name: "Crowbar" }).first(), // selector-intentional-first: layer filter only needs one visible matching marker.
   ).toBeVisible();
   await page.getByRole("button", { exact: true, name: "Core" }).click();
 
@@ -290,13 +290,13 @@ test("admin Behind Enemy Lines markers keep corrected campaign-cell positions", 
   );
 
   await expect(
-    viewport.getByRole("button", { exact: true, name: "Bolt Cutters" }).first().locator("img"),
+    viewport.getByRole("button", { exact: true, name: "Bolt Cutters" }).first().locator("img"), // selector-intentional-first: duplicated collectible icon labels are expected across map markers.
   ).toHaveAttribute("src", "/recon/icons/common/bolt-cutters.svg");
   await expect(
-    viewport.getByRole("button", { exact: true, name: "Crowbar" }).first().locator("img"),
+    viewport.getByRole("button", { exact: true, name: "Crowbar" }).first().locator("img"), // selector-intentional-first: duplicated collectible icon labels are expected across map markers.
   ).toHaveAttribute("src", "/recon/icons/common/crowbar.svg");
   await expect(
-    viewport.getByRole("button", { exact: true, name: "Satchel Charge" }).first().locator("img"),
+    viewport.getByRole("button", { exact: true, name: "Satchel Charge" }).first().locator("img"), // selector-intentional-first: duplicated collectible icon labels are expected across map markers.
   ).toHaveAttribute("src", "/recon/icons/common/satchel-charge.svg");
 
   await page.getByPlaceholder("Search markers").fill("workbench");
@@ -338,7 +338,7 @@ test("admin Sniper Elite expansion maps are privately reviewable", async ({ page
   await page.getByRole("checkbox", { name: /Ammunition pickup/ }).check();
   await page.getByPlaceholder("Search markers").fill("ammunition");
   await expect(
-    page.getByTestId("recon-map-viewport").getByRole("button", { name: /Ammo|Ammunition/ }).first(),
+    page.getByTestId("recon-map-viewport").getByRole("button", { name: /Ammo|Ammunition/ }).first(), // selector-intentional-first: any visible ammunition marker proves the enabled layer renders.
   ).toBeVisible();
 
   await page.goto("/admin/recon/maps/vercors-vendetta", {
