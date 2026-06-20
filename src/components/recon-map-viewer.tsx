@@ -9,9 +9,18 @@ import {
 } from "@/components/recon-map-layer-data";
 import { ReconMapControls } from "@/components/recon-map-controls";
 import { ReconMapSurface } from "@/components/recon-map-surface";
+import {
+  getProgressStorageKey,
+  parseProgressSnapshot,
+  readProgressSnapshot,
+  subscribeToProgressStorage,
+  writeProgressSnapshot,
+} from "@/components/recon-progress-storage";
 import type {
   GestureZoomEvent,
+  ReconCoordinate,
   ReconMapViewerProps,
+  ReconSuggestionDraft,
   ReconViewerCategory,
   ReconViewerMarker,
 } from "@/components/recon-map-viewer-types";
@@ -19,91 +28,32 @@ import { cn } from "@/lib/utils";
 import {
   useCallback,
   useEffect,
+  lazy,
   useMemo,
   useRef,
   useState,
   useSyncExternalStore,
+  Suspense,
 } from "react";
+
+const ReconMapSuggestionForm = lazy(
+  () =>
+    import("@/components/recon-map-suggestion-form").then(
+      (mod) => ({ default: mod.ReconMapSuggestionForm }),
+    ),
+);
 
 export type {
   ReconCoordinate,
   ReconMapViewerProps,
+  ReconSuggestionContext,
+  ReconSuggestionDraft,
+  ReconSuggestionKind,
   ReconViewerCategory,
   ReconViewerMarker,
   ReconViewerMarkerDetail,
   ReconViewerMarkerMedia,
 } from "@/components/recon-map-viewer-types";
-
-function getProgressStorageKey(title: string) {
-  const slug = title
-    .trim()
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-|-$/g, "");
-
-  return `vaexil.tv:recon-progress:${slug || "map"}`;
-}
-
-function readProgressSnapshot(storageKey: string) {
-  if (typeof window === "undefined") {
-    return "[]";
-  }
-
-  try {
-    return window.localStorage.getItem(storageKey) || "[]";
-  } catch {
-    return "[]";
-  }
-}
-
-function parseProgressSnapshot(snapshot: string) {
-  try {
-    const markerIds = JSON.parse(snapshot) as unknown;
-    return new Set(
-      Array.isArray(markerIds)
-        ? markerIds.filter((id): id is string => typeof id === "string")
-        : [],
-    );
-  } catch {
-    return new Set<string>();
-  }
-}
-
-function writeProgressSnapshot(storageKey: string, markerIds: Set<string>) {
-  if (typeof window === "undefined") {
-    return;
-  }
-
-  try {
-    window.localStorage.setItem(storageKey, JSON.stringify(Array.from(markerIds)));
-    window.dispatchEvent(new Event("vaexil-recon-progress"));
-  } catch {
-    window.dispatchEvent(new Event("vaexil-recon-progress"));
-  }
-}
-
-function subscribeToProgressStorage(
-  storageKey: string,
-  onStoreChange: () => void,
-) {
-  if (typeof window === "undefined") {
-    return () => {};
-  }
-
-  function handleStorage(event: StorageEvent) {
-    if (event.key === storageKey) {
-      onStoreChange();
-    }
-  }
-
-  window.addEventListener("storage", handleStorage);
-  window.addEventListener("vaexil-recon-progress", onStoreChange);
-
-  return () => {
-    window.removeEventListener("storage", handleStorage);
-    window.removeEventListener("vaexil-recon-progress", onStoreChange);
-  };
-}
 
 export function ReconMapViewer({
   title,
@@ -121,6 +71,7 @@ export function ReconMapViewer({
   emptyState = "No map asset is available yet.",
   className,
   viewerMode = "admin",
+  suggestionContext,
 }: ReconMapViewerProps) {
   const viewportRef = useRef<HTMLDivElement | null>(null);
   const scaleRef = useRef(1);
@@ -142,6 +93,8 @@ export function ReconMapViewer({
   const [showLayers, setShowLayers] = useState(false);
   const [showResults, setShowResults] = useState(false);
   const [hideCompleted, setHideCompleted] = useState(false);
+  const [suggestionDraft, setSuggestionDraft] =
+    useState<ReconSuggestionDraft | null>(null);
   const [visibleCategories, setVisibleCategories] = useState<Set<string>>(
     () =>
       new Set(
@@ -151,6 +104,7 @@ export function ReconMapViewer({
       ),
   );
   const publicMode = viewerMode === "public";
+  const suggestionsEnabled = Boolean(suggestionContext);
   const progressStorageKey = useMemo(() => getProgressStorageKey(title), [title]);
   const progressSnapshot = useSyncExternalStore(
     useCallback(
@@ -179,6 +133,34 @@ export function ReconMapViewer({
   const resetCompletedMarkers = useCallback(() => {
     writeProgressSnapshot(progressStorageKey, new Set());
   }, [progressStorageKey]);
+
+  const startNewSuggestion = useCallback(() => {
+    setSelectedId(null);
+    setSuggestionDraft({
+      type: "new_marker",
+      coordinate: null,
+      targetMarker: null,
+    });
+  }, []);
+
+  const startMarkerCorrection = useCallback((marker: ReconViewerMarker) => {
+    setSelectedId(marker.id);
+    setSuggestionDraft({
+      type: "marker_correction",
+      coordinate: { x: marker.x, y: marker.y },
+      targetMarker: marker,
+    });
+  }, []);
+
+  const handleCoordinateCapture = useCallback(
+    (coordinate: ReconCoordinate) => {
+      setSuggestionDraft((current) =>
+        current ? { ...current, coordinate } : current,
+      );
+      onCoordinateCapture?.(coordinate);
+    },
+    [onCoordinateCapture],
+  );
 
   const syncViewState = useCallback(
     (nextScale: number, nextOffset: { x: number; y: number }) => {
@@ -597,6 +579,8 @@ export function ReconMapViewer({
       top: clamp(markerY + 16, 16, Math.max(16, viewportSize.height - 360)),
     };
   }, [height, offset.x, offset.y, scale, selectedMarker, viewportSize, width]);
+  const activeCapturedCoordinate =
+    suggestionDraft?.coordinate || capturedCoordinate || null;
 
   return (
     <div className={cn("grid gap-3", className)}>
@@ -624,6 +608,8 @@ export function ReconMapViewer({
         setHideCompleted={setHideCompleted}
         toggleMarkerCompleted={toggleMarkerCompleted}
         resetCompletedMarkers={resetCompletedMarkers}
+        suggestionsEnabled={suggestionsEnabled}
+        onStartNewSuggestion={startNewSuggestion}
         selectedId={selectedId}
         focusMarker={focusMarker}
         categoryByKey={categoryByKey}
@@ -648,7 +634,7 @@ export function ReconMapViewer({
         selectedId={selectedId}
         selectedMarker={selectedMarker}
         selectedPopoverPosition={selectedPopoverPosition}
-        capturedCoordinate={capturedCoordinate}
+        capturedCoordinate={activeCapturedCoordinate}
         viewportRef={viewportRef}
         dragRef={dragRef}
         scaleRef={scaleRef}
@@ -658,11 +644,30 @@ export function ReconMapViewer({
         zoomBy={zoomBy}
         focusMarker={focusMarker}
         toggleMarkerCompleted={toggleMarkerCompleted}
+        onSuggestMarkerCorrection={
+          suggestionsEnabled ? startMarkerCorrection : undefined
+        }
         setSelectedId={setSelectedId}
         getCoordinateFromPointer={getCoordinateFromPointer}
-        onCoordinateCapture={onCoordinateCapture}
+        onCoordinateCapture={
+          suggestionDraft || onCoordinateCapture
+            ? handleCoordinateCapture
+            : undefined
+        }
+        suggestionCaptureActive={Boolean(suggestionDraft)}
         categoryByKey={categoryByKey}
       />
+      {suggestionContext && suggestionDraft ? (
+        <Suspense fallback={null}>
+          <ReconMapSuggestionForm
+            key={`${suggestionDraft.type}-${suggestionDraft.targetMarker?.id || "new"}`}
+            context={suggestionContext}
+            categories={categories}
+            draft={suggestionDraft}
+            onClose={() => setSuggestionDraft(null)}
+          />
+        </Suspense>
+      ) : null}
     </div>
   );
 }

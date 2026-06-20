@@ -53,6 +53,23 @@ export type ReconCoordinate = {
   y: number;
 };
 
+export type ReconSuggestionKind = "new_marker" | "marker_correction";
+
+export type ReconSuggestionContext = {
+  gameId: string;
+  mapId: string;
+  mapTitle: string;
+  mode?: string;
+  variant?: string;
+  floor?: string;
+};
+
+export type ReconSuggestionDraft = {
+  type: ReconSuggestionKind;
+  coordinate: ReconCoordinate | null;
+  targetMarker?: ReconViewerMarker | null;
+};
+
 export type ReconMapViewerProps = {
   title: string;
   imageSrc?: string | null;
@@ -69,6 +86,7 @@ export type ReconMapViewerProps = {
   emptyState?: string;
   className?: string;
   viewerMode?: "admin" | "public";
+  suggestionContext?: ReconSuggestionContext;
 };
 
 export type GestureZoomEvent = Event & {

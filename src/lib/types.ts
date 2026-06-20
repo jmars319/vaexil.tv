@@ -176,6 +176,8 @@ export type ReconMarkerDetail = {
 
 export type ReconMarkerSuggestion = {
   id: string;
+  suggestionType: "new_marker" | "marker_correction";
+  targetMarkerId: string | null;
   gameId: string;
   gameTitle: string;
   mapId: string;
@@ -190,6 +192,7 @@ export type ReconMarkerSuggestion = {
   floor: string | null;
   iconKey: string;
   sourceUrl: string | null;
+  submitterNote: string | null;
   status: ReconStatus;
   createdAt: string;
   updatedAt: string;

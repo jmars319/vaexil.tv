@@ -45,9 +45,11 @@ type ReconMapSurfaceProps = {
   zoomBy: (multiplier: number, point?: { x: number; y: number }) => void;
   focusMarker: (marker: ReconViewerMarker, targetScale?: number) => void;
   toggleMarkerCompleted: (markerId: string) => void;
+  onSuggestMarkerCorrection?: (marker: ReconViewerMarker) => void;
   setSelectedId: (id: string | null) => void;
   getCoordinateFromPointer: (clientX: number, clientY: number) => ReconCoordinate | null;
   onCoordinateCapture?: (coordinate: ReconCoordinate) => void;
+  suggestionCaptureActive?: boolean;
   categoryByKey: Map<string, ReconViewerCategory>;
 };
 
@@ -80,9 +82,11 @@ export function ReconMapSurface({
   zoomBy,
   focusMarker,
   toggleMarkerCompleted,
+  onSuggestMarkerCorrection,
   setSelectedId,
   getCoordinateFromPointer,
   onCoordinateCapture,
+  suggestionCaptureActive = false,
   categoryByKey,
 }: ReconMapSurfaceProps) {
   const selectedCategoryLabel =
@@ -121,7 +125,9 @@ export function ReconMapSurface({
           <div className="flex items-center gap-2">
             <span className="hidden items-center gap-1 text-xs text-slate-500 sm:inline-flex">
               <Info className="size-3.5" aria-hidden="true" />
-              Click markers for details
+              {suggestionCaptureActive
+                ? "Click map to place suggestion"
+                : "Click markers for details"}
             </span>
             <button
               type="button"
@@ -315,6 +321,11 @@ export function ReconMapSurface({
                 onCenter={() => focusMarker(selectedMarker, 1.65)}
                 onClose={() => setSelectedId(null)}
                 onToggleCompleted={() => toggleMarkerCompleted(selectedMarker.id)}
+                onSuggestCorrection={
+                  onSuggestMarkerCorrection
+                    ? () => onSuggestMarkerCorrection(selectedMarker)
+                    : undefined
+                }
                 completed={completedMarkerIds.has(selectedMarker.id)}
                 publicMode={publicMode}
               />
@@ -331,6 +342,11 @@ export function ReconMapSurface({
             onCenter={() => focusMarker(selectedMarker, 1.65)}
             onClose={() => setSelectedId(null)}
             onToggleCompleted={() => toggleMarkerCompleted(selectedMarker.id)}
+            onSuggestCorrection={
+              onSuggestMarkerCorrection
+                ? () => onSuggestMarkerCorrection(selectedMarker)
+                : undefined
+            }
             completed={completedMarkerIds.has(selectedMarker.id)}
             compact
             publicMode={publicMode}

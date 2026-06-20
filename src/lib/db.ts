@@ -260,6 +260,8 @@ async function migrateDb() {
       sql: `
         CREATE TABLE IF NOT EXISTS recon_marker_suggestions (
           id TEXT PRIMARY KEY,
+          suggestion_type TEXT NOT NULL DEFAULT 'new_marker',
+          target_marker_id TEXT,
           game_id TEXT NOT NULL,
           map_id TEXT NOT NULL,
           mode TEXT NOT NULL,
@@ -272,6 +274,7 @@ async function migrateDb() {
           floor TEXT,
           icon_key TEXT NOT NULL,
           source_url TEXT,
+          submitter_note TEXT,
           status TEXT NOT NULL DEFAULT 'pending',
           created_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
           updated_at TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -427,4 +430,41 @@ async function migrateDb() {
       args: [],
     },
   ]);
+
+  await ensureReconMarkerSuggestionColumns(db);
+}
+
+async function ensureColumn(
+  db: Client,
+  tableName: string,
+  columnName: string,
+  definition: string,
+) {
+  const result = await db.execute(`PRAGMA table_info(${tableName});`);
+  const hasColumn = result.rows.some((row) => row.name === columnName);
+
+  if (!hasColumn) {
+    await db.execute(`ALTER TABLE ${tableName} ADD COLUMN ${definition};`);
+  }
+}
+
+async function ensureReconMarkerSuggestionColumns(db: Client) {
+  await ensureColumn(
+    db,
+    "recon_marker_suggestions",
+    "suggestion_type",
+    "suggestion_type TEXT NOT NULL DEFAULT 'new_marker'",
+  );
+  await ensureColumn(
+    db,
+    "recon_marker_suggestions",
+    "target_marker_id",
+    "target_marker_id TEXT",
+  );
+  await ensureColumn(
+    db,
+    "recon_marker_suggestions",
+    "submitter_note",
+    "submitter_note TEXT",
+  );
 }

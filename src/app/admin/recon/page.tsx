@@ -242,6 +242,14 @@ export default async function ReconAdminPage() {
                         {suggestion.gameTitle} / {suggestion.mapTitle} /{" "}
                         {formatDate(suggestion.createdAt)}
                       </p>
+                      <p className="mt-2 text-xs font-medium uppercase tracking-[0.14em] text-cyan-200/80">
+                        {suggestion.suggestionType === "marker_correction"
+                          ? "Marker correction"
+                          : "New marker"}
+                        {suggestion.targetMarkerId
+                          ? ` / ${suggestion.targetMarkerId}`
+                          : ""}
+                      </p>
                     </div>
                     <StatusBadge status={suggestion.status} />
                   </div>
@@ -249,6 +257,16 @@ export default async function ReconAdminPage() {
                     x {suggestion.x.toFixed(2)} / y{" "}
                     {suggestion.y.toFixed(2)}
                   </p>
+                  {suggestion.description ? (
+                    <p className="mt-3 text-sm leading-6 text-slate-300">
+                      {suggestion.description}
+                    </p>
+                  ) : null}
+                  {suggestion.submitterNote ? (
+                    <p className="mt-2 text-sm leading-6 text-slate-500">
+                      {suggestion.submitterNote}
+                    </p>
+                  ) : null}
                 </article>
               ))}
             </div>

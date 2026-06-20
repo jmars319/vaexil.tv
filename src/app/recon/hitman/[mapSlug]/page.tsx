@@ -115,6 +115,13 @@ export default async function HitmanReconMapPage({
           markers={viewerMarkers}
           categories={categories}
           mapViews={mapViews}
+          suggestionContext={{
+            gameId: map.gameId,
+            mapId: map.id,
+            mapTitle: map.title,
+            mode: "freelancer",
+            variant: "any",
+          }}
         />
       </Section>
       <Section className="pt-4">

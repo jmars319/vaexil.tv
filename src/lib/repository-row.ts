@@ -245,8 +245,15 @@ export function mapReconMarker(row: Row): ReconMarker {
 }
 
 export function mapReconMarkerSuggestion(row: Row): ReconMarkerSuggestion {
+  const suggestionType = readString(row, "suggestion_type");
+
   return {
     id: readString(row, "id"),
+    suggestionType:
+      suggestionType === "marker_correction"
+        ? "marker_correction"
+        : "new_marker",
+    targetMarkerId: readNullableString(row, "target_marker_id"),
     gameId: readString(row, "game_id"),
     gameTitle: readString(row, "game_title"),
     mapId: readString(row, "map_id"),
@@ -261,6 +268,7 @@ export function mapReconMarkerSuggestion(row: Row): ReconMarkerSuggestion {
     floor: readNullableString(row, "floor"),
     iconKey: readString(row, "icon_key"),
     sourceUrl: readNullableString(row, "source_url"),
+    submitterNote: readNullableString(row, "submitter_note"),
     status: readReconStatus(row),
     createdAt: readString(row, "created_at"),
     updatedAt: readString(row, "updated_at"),

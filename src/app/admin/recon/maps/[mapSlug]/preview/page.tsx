@@ -158,6 +158,13 @@ export default async function ReconMapPublicPreviewPage({
           mapViews={mapViews}
           markerSummaryLabel="preview markers"
           emptyState="No draft map asset is available for preview yet."
+          suggestionContext={{
+            gameId: map.gameId,
+            mapId: map.id,
+            mapTitle: map.title,
+            mode: map.gameId === "hitman-woa" ? "freelancer" : "campaign",
+            variant: "any",
+          }}
         />
       </Section>
 

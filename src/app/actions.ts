@@ -3,6 +3,7 @@
 import {
   assertAdmin,
   clearAdminSession,
+  isAdminAuthenticated,
   passwordMatches,
   setAdminSession,
   setStoredAdminPassword,
@@ -110,6 +111,42 @@ export async function submitReconMarkerSuggestion(
     ok: true,
     message:
       "Recon marker capture saved as pending review. It is not public.",
+  };
+}
+
+export async function submitPublicReconMarkerSuggestion(
+  _previousState: ActionState,
+  formData: FormData,
+): Promise<ActionState> {
+  const parsed = reconMarkerSuggestionSchema.safeParse(
+    formDataToObject(formData),
+  );
+
+  if (!parsed.success) {
+    return {
+      ok: false,
+      message: "Please fix the highlighted fields.",
+      fieldErrors: parsed.error.flatten().fieldErrors,
+    };
+  }
+
+  try {
+    await createReconMarkerSuggestion(parsed.data, {
+      publicOnly: !(await isAdminAuthenticated()),
+    });
+  } catch {
+    return {
+      ok: false,
+      message: "That map is not accepting public Recon suggestions right now.",
+    };
+  }
+
+  revalidatePath("/admin");
+  revalidatePath("/admin/recon");
+
+  return {
+    ok: true,
+    message: "Recon suggestion saved for review. It will not publish automatically.",
   };
 }
 

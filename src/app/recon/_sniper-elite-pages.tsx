@@ -219,6 +219,13 @@ export async function renderSniperEliteMapPage({
           markers={viewerMarkers}
           categories={categories}
           mapViews={mapViews}
+          suggestionContext={{
+            gameId: map.gameId,
+            mapId: map.id,
+            mapTitle: map.title,
+            mode: "campaign",
+            variant: "any",
+          }}
         />
       </Section>
       <Section className="pt-4">

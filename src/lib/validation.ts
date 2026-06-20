@@ -97,6 +97,16 @@ export const adminPasswordChangeSchema = z
   });
 
 export const reconMarkerSuggestionSchema = z.object({
+  suggestionType: z
+    .enum(["new_marker", "marker_correction"])
+    .optional()
+    .transform((value) => value || "new_marker"),
+  targetMarkerId: z
+    .string()
+    .trim()
+    .max(160, "Target marker id must be 160 characters or less.")
+    .optional()
+    .transform((value) => value || ""),
   gameId: z.string().trim().min(1, "Choose a game."),
   mapId: z.string().trim().min(1, "Choose a map."),
   mode: z
@@ -145,6 +155,12 @@ export const reconMarkerSuggestionSchema = z.object({
     .min(2, "Choose an icon.")
     .max(80, "Icon key must be 80 characters or less."),
   sourceUrl: optionalUrl,
+  submitterNote: z
+    .string()
+    .trim()
+    .max(700, "Reviewer note must be 700 characters or less.")
+    .optional()
+    .transform((value) => value || ""),
 });
 
 export function formDataToObject(formData: FormData) {

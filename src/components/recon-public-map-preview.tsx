@@ -2,6 +2,7 @@
 
 import {
   ReconMapViewer,
+  type ReconSuggestionContext,
   type ReconViewerCategory,
   type ReconViewerMarker,
 } from "@/components/recon-map-viewer";
@@ -34,6 +35,7 @@ type ReconPublicMapPreviewProps = {
   markerSummaryLabel?: string;
   emptyState?: string;
   className?: string;
+  suggestionContext?: Omit<ReconSuggestionContext, "floor">;
 };
 
 function matchesFloor(marker: ReconViewerMarker, floor: string) {
@@ -61,6 +63,7 @@ export function ReconPublicMapPreview({
   markerSummaryLabel = "published markers",
   emptyState,
   className,
+  suggestionContext,
 }: ReconPublicMapPreviewProps) {
   const views =
     mapViews.length > 0
@@ -136,6 +139,14 @@ export function ReconPublicMapPreview({
         markerSummaryLabel={markerSummaryLabel}
         emptyState={emptyState}
         viewerMode="public"
+        suggestionContext={
+          suggestionContext
+            ? {
+                ...suggestionContext,
+                floor: activeView?.floor || "",
+              }
+            : undefined
+        }
       />
     </div>
   );

@@ -6,7 +6,6 @@ import type {
 } from "@/lib/types";
 import type {
   contactSchema,
-  reconMarkerSuggestionSchema,
   suggestionSchema,
 } from "@/lib/validation";
 import {
@@ -16,7 +15,6 @@ import {
   mapReconGame,
   mapReconMap,
   mapReconMarker,
-  mapReconMarkerSuggestion,
   mapSuggestion,
   readString,
   reconMapSelect,
@@ -25,9 +23,11 @@ import type { z } from "zod";
 
 type SuggestionInput = z.infer<typeof suggestionSchema>;
 type ContactInput = z.infer<typeof contactSchema>;
-type ReconMarkerSuggestionInput = z.infer<
-  typeof reconMarkerSuggestionSchema
->;
+
+export {
+  createReconMarkerSuggestion,
+  listReconMarkerSuggestions,
+} from "@/lib/recon-marker-suggestion-repository";
 
 const publicSuggestionStatuses: SuggestionStatus[] = [
   "pending",
@@ -217,87 +217,6 @@ export async function listAdminReconMarkers(mapId: string) {
   });
 
   return result.rows.map(mapReconMarker);
-}
-
-export async function listReconMarkerSuggestions(mapId?: string) {
-  await ensureDb();
-  const result = await getDb().execute({
-    sql: `
-      SELECT
-        s.*,
-        g.title AS game_title,
-        m.title AS map_title
-      FROM recon_marker_suggestions s
-      INNER JOIN recon_games g ON g.id = s.game_id
-      INNER JOIN recon_maps m ON m.id = s.map_id
-      ${mapId ? "WHERE s.map_id = ?" : ""}
-      ORDER BY s.created_at DESC
-      LIMIT ${mapId ? 250 : 50};
-    `,
-    args: mapId ? [mapId] : [],
-  });
-
-  return result.rows.map(mapReconMarkerSuggestion);
-}
-
-export async function createReconMarkerSuggestion(
-  input: ReconMarkerSuggestionInput,
-) {
-  await ensureDb();
-
-  const mapResult = await getDb().execute({
-    sql: `
-      SELECT id
-      FROM recon_maps
-      WHERE id = ? AND game_id = ?
-      LIMIT 1;
-    `,
-    args: [input.mapId, input.gameId],
-  });
-
-  if (!mapResult.rows[0]) {
-    throw new Error("Recon map not found for marker suggestion.");
-  }
-
-  const id = crypto.randomUUID();
-  await getDb().execute({
-    sql: `
-      INSERT INTO recon_marker_suggestions (
-        id,
-        game_id,
-        map_id,
-        mode,
-        variant,
-        category,
-        label,
-        description,
-        x,
-        y,
-        floor,
-        icon_key,
-        source_url,
-        status
-      )
-      VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, 'pending');
-    `,
-    args: [
-      id,
-      input.gameId,
-      input.mapId,
-      input.mode,
-      input.variant,
-      input.category,
-      input.label,
-      input.description || null,
-      input.x,
-      input.y,
-      input.floor || null,
-      input.iconKey,
-      input.sourceUrl || null,
-    ],
-  });
-
-  return id;
 }
 
 export async function listSuggestions(options?: { includeClosed?: boolean }) {

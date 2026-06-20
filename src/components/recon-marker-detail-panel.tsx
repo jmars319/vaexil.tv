@@ -10,6 +10,7 @@ type MarkerDetailPanelProps = {
   onCenter: () => void;
   onClose: () => void;
   onToggleCompleted?: () => void;
+  onSuggestCorrection?: () => void;
   completed?: boolean;
   compact?: boolean;
   publicMode?: boolean;
@@ -21,6 +22,7 @@ export function MarkerDetailPanel({
   onCenter,
   onClose,
   onToggleCompleted,
+  onSuggestCorrection,
   completed = false,
   compact = false,
   publicMode = false,
@@ -223,6 +225,16 @@ export function MarkerDetailPanel({
               <Circle className="size-4" aria-hidden="true" />
             )}
             {completed ? "Found" : "Mark found"}
+          </button>
+        ) : null}
+        {publicMode && onSuggestCorrection ? (
+          <button
+            type="button"
+            onClick={onSuggestCorrection}
+            className="inline-flex h-10 items-center justify-center gap-2 rounded-xl border border-white/10 bg-slate-950/70 px-3 text-sm font-semibold text-slate-200 transition hover:border-cyan-300/50 hover:bg-white/[0.06] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200/70"
+          >
+            <Circle className="size-4" aria-hidden="true" />
+            Suggest fix
           </button>
         ) : null}
 
