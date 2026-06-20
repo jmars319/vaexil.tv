@@ -16,7 +16,14 @@ import type {
   ReconViewerMarker,
 } from "@/components/recon-map-viewer-types";
 import { cn } from "@/lib/utils";
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  useSyncExternalStore,
+} from "react";
 
 export type {
   ReconCoordinate,
@@ -26,6 +33,77 @@ export type {
   ReconViewerMarkerDetail,
   ReconViewerMarkerMedia,
 } from "@/components/recon-map-viewer-types";
+
+function getProgressStorageKey(title: string) {
+  const slug = title
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+
+  return `vaexil.tv:recon-progress:${slug || "map"}`;
+}
+
+function readProgressSnapshot(storageKey: string) {
+  if (typeof window === "undefined") {
+    return "[]";
+  }
+
+  try {
+    return window.localStorage.getItem(storageKey) || "[]";
+  } catch {
+    return "[]";
+  }
+}
+
+function parseProgressSnapshot(snapshot: string) {
+  try {
+    const markerIds = JSON.parse(snapshot) as unknown;
+    return new Set(
+      Array.isArray(markerIds)
+        ? markerIds.filter((id): id is string => typeof id === "string")
+        : [],
+    );
+  } catch {
+    return new Set<string>();
+  }
+}
+
+function writeProgressSnapshot(storageKey: string, markerIds: Set<string>) {
+  if (typeof window === "undefined") {
+    return;
+  }
+
+  try {
+    window.localStorage.setItem(storageKey, JSON.stringify(Array.from(markerIds)));
+    window.dispatchEvent(new Event("vaexil-recon-progress"));
+  } catch {
+    window.dispatchEvent(new Event("vaexil-recon-progress"));
+  }
+}
+
+function subscribeToProgressStorage(
+  storageKey: string,
+  onStoreChange: () => void,
+) {
+  if (typeof window === "undefined") {
+    return () => {};
+  }
+
+  function handleStorage(event: StorageEvent) {
+    if (event.key === storageKey) {
+      onStoreChange();
+    }
+  }
+
+  window.addEventListener("storage", handleStorage);
+  window.addEventListener("vaexil-recon-progress", onStoreChange);
+
+  return () => {
+    window.removeEventListener("storage", handleStorage);
+    window.removeEventListener("vaexil-recon-progress", onStoreChange);
+  };
+}
 
 export function ReconMapViewer({
   title,
@@ -63,6 +141,7 @@ export function ReconMapViewer({
   const [selectedId, setSelectedId] = useState<string | null>(null);
   const [showLayers, setShowLayers] = useState(false);
   const [showResults, setShowResults] = useState(false);
+  const [hideCompleted, setHideCompleted] = useState(false);
   const [visibleCategories, setVisibleCategories] = useState<Set<string>>(
     () =>
       new Set(
@@ -72,6 +151,34 @@ export function ReconMapViewer({
       ),
   );
   const publicMode = viewerMode === "public";
+  const progressStorageKey = useMemo(() => getProgressStorageKey(title), [title]);
+  const progressSnapshot = useSyncExternalStore(
+    useCallback(
+      (onStoreChange) =>
+        subscribeToProgressStorage(progressStorageKey, onStoreChange),
+      [progressStorageKey],
+    ),
+    useCallback(() => readProgressSnapshot(progressStorageKey), [progressStorageKey]),
+    () => "[]",
+  );
+  const completedMarkerIds = useMemo(
+    () => (publicMode ? parseProgressSnapshot(progressSnapshot) : new Set<string>()),
+    [progressSnapshot, publicMode],
+  );
+
+  const toggleMarkerCompleted = useCallback((markerId: string) => {
+    const next = new Set(completedMarkerIds);
+    if (next.has(markerId)) {
+      next.delete(markerId);
+    } else {
+      next.add(markerId);
+    }
+    writeProgressSnapshot(progressStorageKey, next);
+  }, [completedMarkerIds, progressStorageKey]);
+
+  const resetCompletedMarkers = useCallback(() => {
+    writeProgressSnapshot(progressStorageKey, new Set());
+  }, [progressStorageKey]);
 
   const syncViewState = useCallback(
     (nextScale: number, nextOffset: { x: number; y: number }) => {
@@ -133,6 +240,31 @@ export function ReconMapViewer({
 
     return counts;
   }, [markers]);
+
+  const trackableMarkers = useMemo(
+    () => markers.filter((marker) => !marker.hiddenByDefault),
+    [markers],
+  );
+
+  const totalTrackableMarkers = trackableMarkers.length;
+  const completedCount = useMemo(
+    () =>
+      trackableMarkers.filter((marker) => completedMarkerIds.has(marker.id)).length,
+    [completedMarkerIds, trackableMarkers],
+  );
+
+  const completedCountsByCategory = useMemo(() => {
+    const counts = new Map<string, number>();
+
+    for (const marker of trackableMarkers) {
+      if (!completedMarkerIds.has(marker.id)) {
+        continue;
+      }
+      counts.set(marker.category, (counts.get(marker.category) || 0) + 1);
+    }
+
+    return counts;
+  }, [completedMarkerIds, trackableMarkers]);
 
   const availableCategories = useMemo(() => {
     const withMarkers = categories.filter(
@@ -254,9 +386,16 @@ export function ReconMapViewer({
     return markers.filter((marker) => {
       const matchesCategory =
         visibleCategories.has(marker.category) && !marker.hiddenByDefault;
+      const matchesCompletion =
+        !publicMode || !hideCompleted || !completedMarkerIds.has(marker.id);
+      const detail = marker.detail;
       const haystack = [
         marker.label,
         marker.description || "",
+        detail?.locationHint || "",
+        ...(detail?.howToSteps || []),
+        ...(detail?.requirements || []),
+        ...(detail?.notes || []),
         categoryByKey.get(marker.category)?.label || marker.category,
       ]
         .join(" ")
@@ -264,10 +403,19 @@ export function ReconMapViewer({
 
       return (
         matchesCategory &&
+        matchesCompletion &&
         (!normalizedQuery || haystack.includes(normalizedQuery))
       );
     });
-  }, [categoryByKey, markers, query, visibleCategories]);
+  }, [
+    categoryByKey,
+    completedMarkerIds,
+    hideCompleted,
+    markers,
+    publicMode,
+    query,
+    visibleCategories,
+  ]);
 
   const selectedMarker =
     filteredMarkers.find((marker) => marker.id === selectedId) || null;
@@ -468,6 +616,14 @@ export function ReconMapViewer({
         markerCountsByCategory={markerCountsByCategory}
         filteredMarkers={filteredMarkers}
         markers={markers}
+        completedMarkerIds={completedMarkerIds}
+        completedCountsByCategory={completedCountsByCategory}
+        completedCount={completedCount}
+        totalTrackableMarkers={totalTrackableMarkers}
+        hideCompleted={hideCompleted}
+        setHideCompleted={setHideCompleted}
+        toggleMarkerCompleted={toggleMarkerCompleted}
+        resetCompletedMarkers={resetCompletedMarkers}
         selectedId={selectedId}
         focusMarker={focusMarker}
         categoryByKey={categoryByKey}
@@ -484,6 +640,9 @@ export function ReconMapViewer({
         markerSummaryLabel={markerSummaryLabel}
         emptyState={emptyState}
         publicMode={publicMode}
+        completedMarkerIds={completedMarkerIds}
+        completedCount={completedCount}
+        totalTrackableMarkers={totalTrackableMarkers}
         scale={scale}
         offset={offset}
         selectedId={selectedId}
@@ -498,6 +657,7 @@ export function ReconMapViewer({
         resetView={resetView}
         zoomBy={zoomBy}
         focusMarker={focusMarker}
+        toggleMarkerCompleted={toggleMarkerCompleted}
         setSelectedId={setSelectedId}
         getCoordinateFromPointer={getCoordinateFromPointer}
         onCoordinateCapture={onCoordinateCapture}

@@ -1,7 +1,7 @@
 import { formatCoordinate, type ReconLayerSection } from "@/components/recon-map-layer-data";
 import type { ReconViewerCategory, ReconViewerMarker } from "@/components/recon-map-viewer-types";
 import { cn } from "@/lib/utils";
-import { ChevronDown, Layers, List, Search } from "lucide-react";
+import { CheckCircle2, ChevronDown, Circle, Layers, List, Search } from "lucide-react";
 
 type LayerPreset = {
   label: string;
@@ -24,6 +24,14 @@ type ReconMapControlsProps = {
   markerCountsByCategory: Map<string, number>;
   filteredMarkers: ReconViewerMarker[];
   markers: ReconViewerMarker[];
+  completedMarkerIds: Set<string>;
+  completedCountsByCategory: Map<string, number>;
+  completedCount: number;
+  totalTrackableMarkers: number;
+  hideCompleted: boolean;
+  setHideCompleted: (hideCompleted: boolean) => void;
+  toggleMarkerCompleted: (markerId: string) => void;
+  resetCompletedMarkers: () => void;
   selectedId: string | null;
   focusMarker: (marker: ReconViewerMarker) => void;
   categoryByKey: Map<string, ReconViewerCategory>;
@@ -46,11 +54,23 @@ export function ReconMapControls({
   markerCountsByCategory,
   filteredMarkers,
   markers,
+  completedMarkerIds,
+  completedCountsByCategory,
+  completedCount,
+  totalTrackableMarkers,
+  hideCompleted,
+  setHideCompleted,
+  toggleMarkerCompleted,
+  resetCompletedMarkers,
   selectedId,
   focusMarker,
   categoryByKey,
   publicMode,
 }: ReconMapControlsProps) {
+  const visibleAvailableCategoryCount = availableCategories.filter((category) =>
+    visibleCategories.has(category.key),
+  ).length;
+
   return (
     <section
       className={cn(
@@ -77,6 +97,31 @@ export function ReconMapControls({
           <span className="inline-flex h-9 items-center rounded-full border border-white/10 bg-slate-950/60 px-3 text-xs font-medium text-slate-400">
             {filteredMarkers.length}/{markers.length} visible
           </span>
+          {publicMode && totalTrackableMarkers > 0 ? (
+            <>
+              <span className="inline-flex h-9 items-center rounded-full border border-emerald-300/20 bg-emerald-300/[0.08] px-3 text-xs font-semibold text-emerald-100">
+                {completedCount}/{totalTrackableMarkers} found
+              </span>
+              <label className="inline-flex h-9 cursor-pointer items-center gap-2 rounded-xl border border-white/10 px-3 text-xs font-semibold text-slate-200 transition hover:border-cyan-300/50 hover:bg-white/[0.06]">
+                <input
+                  type="checkbox"
+                  checked={hideCompleted}
+                  onChange={(event) => setHideCompleted(event.target.checked)}
+                  className="size-4 accent-emerald-300"
+                />
+                Hide found
+              </label>
+              {completedCount > 0 ? (
+                <button
+                  type="button"
+                  onClick={resetCompletedMarkers}
+                  className="inline-flex h-9 items-center justify-center rounded-xl border border-white/10 px-3 text-xs font-semibold text-slate-300 transition hover:border-rose-300/50 hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200/70"
+                >
+                  Reset found
+                </button>
+              ) : null}
+            </>
+          ) : null}
           <button
             type="button"
             onClick={() => setShowLayers((current) => !current)}
@@ -86,7 +131,7 @@ export function ReconMapControls({
             <Layers className="size-4" aria-hidden="true" />
             {publicMode ? "Filters" : "Layers"}
             <span className="text-slate-500">
-              {visibleCategories.size}/{availableCategories.length}
+              {visibleAvailableCategoryCount}/{availableCategories.length}
             </span>
             <ChevronDown
               className={cn("size-3.5 transition", showLayers && "rotate-180")}
@@ -150,6 +195,8 @@ export function ReconMapControls({
                       {section.categories.map((category) => {
                         const checked = visibleCategories.has(category.key);
                         const markerCount = markerCountsByCategory.get(category.key) || 0;
+                        const foundCount =
+                          completedCountsByCategory.get(category.key) || 0;
 
                         return (
                           <label
@@ -185,7 +232,7 @@ export function ReconMapControls({
                               className="shrink-0 rounded-full border border-white/10 bg-slate-950/60 px-2 py-0.5 text-[11px] text-slate-400"
                               aria-hidden="true"
                             >
-                              {markerCount}
+                              {publicMode ? `${foundCount}/${markerCount}` : markerCount}
                             </span>
                           </label>
                         );
@@ -208,32 +255,65 @@ export function ReconMapControls({
           ) : (
             <div className="grid max-h-56 gap-2 overflow-y-auto pr-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {filteredMarkers.map((marker) => (
-                <button
+                <div
                   key={marker.id}
-                  type="button"
-                  onClick={() => focusMarker(marker)}
                   className={cn(
-                    "rounded-xl border px-3 py-2 text-left text-sm transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200/70",
+                    "flex rounded-xl border text-sm transition",
                     selectedId === marker.id
                       ? "border-cyan-200/60 bg-cyan-300/[0.1] text-white"
                       : "border-white/10 bg-slate-950/40 text-slate-300 hover:border-cyan-300/40 hover:text-white",
                   )}
                 >
-                  <span className="flex items-start justify-between gap-3">
-                    <span className="min-w-0 break-words font-medium">
-                      {marker.label}
-                    </span>
-                    <span
-                      className="shrink-0 text-[11px] text-slate-600"
-                      aria-hidden="true"
+                  {publicMode ? (
+                    <button
+                      type="button"
+                      onClick={() => toggleMarkerCompleted(marker.id)}
+                      className={cn(
+                        "flex w-10 shrink-0 items-start justify-center rounded-l-xl py-2.5 transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-cyan-200/70",
+                        completedMarkerIds.has(marker.id)
+                          ? "text-emerald-100"
+                          : "text-slate-500 hover:text-cyan-100",
+                      )}
+                      aria-label={
+                        completedMarkerIds.has(marker.id)
+                          ? `Mark ${marker.label} as not found`
+                          : `Mark ${marker.label} as found`
+                      }
                     >
-                      {formatCoordinate(marker.x)}, {formatCoordinate(marker.y)}
+                      {completedMarkerIds.has(marker.id) ? (
+                        <CheckCircle2 className="size-5" aria-hidden="true" />
+                      ) : (
+                        <Circle className="size-5" aria-hidden="true" />
+                      )}
+                    </button>
+                  ) : null}
+                  <button
+                    type="button"
+                    onClick={() => focusMarker(marker)}
+                    className="min-w-0 flex-1 px-3 py-2 text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-cyan-200/70"
+                  >
+                    <span className="flex items-start justify-between gap-3">
+                      <span
+                        className={cn(
+                          "min-w-0 break-words font-medium",
+                          completedMarkerIds.has(marker.id) &&
+                            "text-slate-500 line-through decoration-emerald-300/70",
+                        )}
+                      >
+                        {marker.label}
+                      </span>
+                      <span
+                        className="shrink-0 text-[11px] text-slate-600"
+                        aria-hidden="true"
+                      >
+                        {formatCoordinate(marker.x)}, {formatCoordinate(marker.y)}
+                      </span>
                     </span>
-                  </span>
-                  <span className="mt-1 block text-xs text-slate-500">
-                    {categoryByKey.get(marker.category)?.label || marker.category}
-                  </span>
-                </button>
+                    <span className="mt-1 block text-xs text-slate-500">
+                      {categoryByKey.get(marker.category)?.label || marker.category}
+                    </span>
+                  </button>
+                </div>
               ))}
             </div>
           )}

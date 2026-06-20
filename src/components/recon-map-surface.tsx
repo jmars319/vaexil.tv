@@ -20,6 +20,9 @@ type ReconMapSurfaceProps = {
   markerSummaryLabel: string;
   emptyState: string;
   publicMode: boolean;
+  completedMarkerIds: Set<string>;
+  completedCount: number;
+  totalTrackableMarkers: number;
   scale: number;
   offset: { x: number; y: number };
   selectedId: string | null;
@@ -41,6 +44,7 @@ type ReconMapSurfaceProps = {
   resetView: () => void;
   zoomBy: (multiplier: number, point?: { x: number; y: number }) => void;
   focusMarker: (marker: ReconViewerMarker, targetScale?: number) => void;
+  toggleMarkerCompleted: (markerId: string) => void;
   setSelectedId: (id: string | null) => void;
   getCoordinateFromPointer: (clientX: number, clientY: number) => ReconCoordinate | null;
   onCoordinateCapture?: (coordinate: ReconCoordinate) => void;
@@ -58,6 +62,9 @@ export function ReconMapSurface({
   markerSummaryLabel,
   emptyState,
   publicMode,
+  completedMarkerIds,
+  completedCount,
+  totalTrackableMarkers,
   scale,
   offset,
   selectedId,
@@ -72,6 +79,7 @@ export function ReconMapSurface({
   resetView,
   zoomBy,
   focusMarker,
+  toggleMarkerCompleted,
   setSelectedId,
   getCoordinateFromPointer,
   onCoordinateCapture,
@@ -86,12 +94,29 @@ export function ReconMapSurface({
     <>
       <section className="overflow-hidden rounded-2xl border border-white/10 bg-slate-950/70">
         <div className="flex flex-wrap items-center justify-between gap-3 border-b border-white/10 p-3">
-          <div>
+          <div className="min-w-0">
             <h2 className="text-sm font-semibold text-white">{title}</h2>
             <p className="mt-1 text-xs text-slate-500">
               {markers.length} {markerSummaryLabel} / {filteredMarkers.length} visible /{" "}
               {Math.round(scale * 100)}% zoom
             </p>
+            {publicMode && totalTrackableMarkers > 0 ? (
+              <div className="mt-2 flex max-w-sm items-center gap-2">
+                <div className="h-1.5 min-w-28 flex-1 overflow-hidden rounded-full bg-white/10">
+                  <div
+                    className="h-full rounded-full bg-emerald-300 transition-[width]"
+                    style={{
+                      width: `${Math.round(
+                        (completedCount / totalTrackableMarkers) * 100,
+                      )}%`,
+                    }}
+                  />
+                </div>
+                <span className="shrink-0 text-[11px] font-semibold text-emerald-100">
+                  {completedCount}/{totalTrackableMarkers} found
+                </span>
+              </div>
+            ) : null}
           </div>
           <div className="flex items-center gap-2">
             <span className="hidden items-center gap-1 text-xs text-slate-500 sm:inline-flex">
@@ -229,6 +254,8 @@ export function ReconMapSurface({
                 onClick={() => focusMarker(marker)}
                 className={cn(
                   "group/marker absolute flex size-7 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full border border-cyan-100/80 bg-slate-950/90 text-xs font-semibold text-cyan-100 shadow-[0_0_14px_rgba(34,211,238,0.32)] transition after:absolute after:-inset-2 after:content-[''] hover:scale-110 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-100",
+                  completedMarkerIds.has(marker.id) &&
+                    "border-emerald-200/80 bg-emerald-300 text-slate-950 shadow-[0_0_16px_rgba(110,231,183,0.36)] opacity-80",
                   selectedId === marker.id &&
                     "z-20 scale-110 border-white bg-cyan-300 text-slate-950",
                 )}
@@ -287,6 +314,8 @@ export function ReconMapSurface({
                 categoryLabel={selectedCategoryLabel}
                 onCenter={() => focusMarker(selectedMarker, 1.65)}
                 onClose={() => setSelectedId(null)}
+                onToggleCompleted={() => toggleMarkerCompleted(selectedMarker.id)}
+                completed={completedMarkerIds.has(selectedMarker.id)}
                 publicMode={publicMode}
               />
             </div>
@@ -301,6 +330,8 @@ export function ReconMapSurface({
             categoryLabel={selectedCategoryLabel}
             onCenter={() => focusMarker(selectedMarker, 1.65)}
             onClose={() => setSelectedId(null)}
+            onToggleCompleted={() => toggleMarkerCompleted(selectedMarker.id)}
+            completed={completedMarkerIds.has(selectedMarker.id)}
             compact
             publicMode={publicMode}
           />

@@ -1,7 +1,7 @@
 import { formatCoordinate } from "@/components/recon-map-layer-data";
 import type { ReconViewerMarker } from "@/components/recon-map-viewer-types";
 import { cn } from "@/lib/utils";
-import { Target, X } from "lucide-react";
+import { CheckCircle2, Circle, Target, X } from "lucide-react";
 import Image from "next/image";
 
 type MarkerDetailPanelProps = {
@@ -9,6 +9,8 @@ type MarkerDetailPanelProps = {
   categoryLabel: string;
   onCenter: () => void;
   onClose: () => void;
+  onToggleCompleted?: () => void;
+  completed?: boolean;
   compact?: boolean;
   publicMode?: boolean;
 };
@@ -18,6 +20,8 @@ export function MarkerDetailPanel({
   categoryLabel,
   onCenter,
   onClose,
+  onToggleCompleted,
+  completed = false,
   compact = false,
   publicMode = false,
 }: MarkerDetailPanelProps) {
@@ -201,14 +205,36 @@ export function MarkerDetailPanel({
         ) : null}
       </div>
 
-      <button
-        type="button"
-        onClick={onCenter}
-        className="mt-3 inline-flex h-10 w-full items-center justify-center gap-2 rounded-xl border border-cyan-300/25 bg-cyan-300/[0.08] px-3 text-sm font-semibold text-cyan-100 transition hover:border-cyan-200/60 hover:bg-cyan-300/[0.13] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200/70"
-      >
-        <Target className="size-4" aria-hidden="true" />
-        Center marker
-      </button>
+      <div className="mt-3 grid gap-2 sm:grid-cols-2">
+        {publicMode && onToggleCompleted ? (
+          <button
+            type="button"
+            onClick={onToggleCompleted}
+            className={cn(
+              "inline-flex h-10 items-center justify-center gap-2 rounded-xl border px-3 text-sm font-semibold transition focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200/70",
+              completed
+                ? "border-emerald-300/35 bg-emerald-300/[0.12] text-emerald-100 hover:border-emerald-200/70"
+                : "border-white/10 bg-slate-950/70 text-slate-200 hover:border-cyan-300/50 hover:bg-white/[0.06]",
+            )}
+          >
+            {completed ? (
+              <CheckCircle2 className="size-4" aria-hidden="true" />
+            ) : (
+              <Circle className="size-4" aria-hidden="true" />
+            )}
+            {completed ? "Found" : "Mark found"}
+          </button>
+        ) : null}
+
+        <button
+          type="button"
+          onClick={onCenter}
+          className="inline-flex h-10 items-center justify-center gap-2 rounded-xl border border-cyan-300/25 bg-cyan-300/[0.08] px-3 text-sm font-semibold text-cyan-100 transition hover:border-cyan-200/60 hover:bg-cyan-300/[0.13] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200/70"
+        >
+          <Target className="size-4" aria-hidden="true" />
+          Center marker
+        </button>
+      </div>
     </article>
   );
 }
