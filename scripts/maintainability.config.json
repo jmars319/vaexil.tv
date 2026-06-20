@@ -40,6 +40,11 @@
     "maxTotalStaticJsKb": 760,
     "maxLargestChunkKb": 240,
     "maxRouteFirstLoadKb": 585,
+    "maxServerTraceMb": 260,
+    "nearServerTraceMb": 10,
+    "bannedServerTracePatterns": [
+      "private/recon/"
+    ],
     "nearBudgetKb": 4,
     "failOnWarnings": true
   }

@@ -9,9 +9,6 @@ const nextConfig: NextConfig = {
   turbopack: {
     root,
   },
-  outputFileTracingIncludes: {
-    "/admin/recon/assets/[assetId]": ["./private/recon/maps/**/*"],
-  },
   async redirects() {
     return [
       {

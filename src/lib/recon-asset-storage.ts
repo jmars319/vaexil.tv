@@ -1,6 +1,5 @@
 import { GetObjectCommand, S3Client } from "@aws-sdk/client-s3";
-import { readFile } from "node:fs/promises";
-import { extname, relative, resolve, sep } from "node:path";
+import { extname } from "node:path";
 
 const reconAssetPrefixes = ["private/recon/", "public/recon/"] as const;
 
@@ -155,42 +154,28 @@ async function readFromR2(path: string): Promise<ReconAssetRead> {
 }
 
 async function readFromLocal(path: string): Promise<ReconAssetRead> {
-  const localRoot = path.startsWith("private/recon/")
-    ? resolve(process.cwd(), "private", "recon")
-    : resolve(process.cwd(), "public", "recon");
-  const localPath = path.replace(/^private\/recon\/|^public\/recon\//, "");
-  const absolutePath = resolve(localRoot, localPath);
-  const relativePath = relative(localRoot, absolutePath);
-
-  if (
-    relativePath.startsWith("..") ||
-    relativePath === "" ||
-    relativePath.split(sep).includes("..")
-  ) {
-    throw new Error("Recon asset path escaped the project directory.");
+  if (process.env.NODE_ENV === "production") {
+    throw new Error("Local Recon asset storage is disabled in production.");
   }
 
-  return {
-    body: await readFile(absolutePath),
-    contentType: getReconAssetContentType(path),
-    source: "local",
-  };
+  const { readReconAssetFromLocal } = await import("./recon-local-asset-storage");
+  return readReconAssetFromLocal(path);
 }
 
 export async function readReconAsset(path: string) {
   assertReconAssetKey(path);
 
-  if (getStoreMode() !== "r2") {
-    return readFromLocal(path);
-  }
+  if (process.env.NODE_ENV === "production" || getStoreMode() === "r2") {
+    try {
+      return await readFromR2(path);
+    } catch (error) {
+      if (process.env.NODE_ENV === "production") {
+        throw error;
+      }
 
-  try {
-    return await readFromR2(path);
-  } catch (error) {
-    if (process.env.NODE_ENV === "production") {
-      throw error;
+      return readFromLocal(path);
     }
-
-    return readFromLocal(path);
   }
+
+  return readFromLocal(path);
 }

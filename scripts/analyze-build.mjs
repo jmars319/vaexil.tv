@@ -20,6 +20,10 @@ function formatKb(bytes) {
   return `${(bytes / 1024).toFixed(2)} KiB`;
 }
 
+function formatMb(bytes) {
+  return `${(bytes / 1024 / 1024).toFixed(2)} MiB`;
+}
+
 function collectJsFiles(dirPath) {
   if (!existsSync(dirPath)) {
     return [];
@@ -37,8 +41,34 @@ function collectJsFiles(dirPath) {
   return files;
 }
 
+function collectFilesBySuffix(dirPath, suffix) {
+  if (!existsSync(dirPath)) {
+    return [];
+  }
+
+  const files = [];
+  for (const entry of readdirSync(dirPath, { withFileTypes: true })) {
+    const absolutePath = path.join(dirPath, entry.name);
+    if (entry.isDirectory()) {
+      files.push(...collectFilesBySuffix(absolutePath, suffix));
+    } else if (entry.name.endsWith(suffix)) {
+      files.push(absolutePath);
+    }
+  }
+  return files;
+}
+
+function traceFileSize(tracePath, tracedFile) {
+  try {
+    return statSync(path.resolve(path.dirname(tracePath), tracedFile)).size;
+  } catch {
+    return 0;
+  }
+}
+
 const staticChunkDir = path.join(root, ".next", "static", "chunks");
 const routeStatsPath = path.join(root, ".next", "diagnostics", "route-bundle-stats.json");
+const serverAppDir = path.join(root, ".next", "server", "app");
 
 if (!existsSync(staticChunkDir) || !existsSync(routeStatsPath)) {
   fail("Built Next assets were not found. Run `npm run build` before `npm run budget:bundle`.");
@@ -82,6 +112,40 @@ if (!existsSync(staticChunkDir) || !existsSync(routeStatsPath)) {
     } else if ((budget.maxRouteFirstLoadKb * 1024) - largestRoute.firstLoadUncompressedJsBytes <= budget.nearBudgetKb * 1024) {
       warn(`Largest route first-load JS is near budget: ${formatKb(largestRoute.firstLoadUncompressedJsBytes)} / ${budget.maxRouteFirstLoadKb.toFixed(2)} KiB.`);
     }
+  }
+
+  const traceFiles = collectFilesBySuffix(serverAppDir, ".nft.json");
+  const serverTraces = traceFiles.map((tracePath) => {
+    const trace = JSON.parse(readFileSync(tracePath, "utf8"));
+    const tracedFiles = trace.files ?? [];
+    const byteSize = tracedFiles.reduce((sum, tracedFile) => sum + traceFileSize(tracePath, tracedFile), 0);
+    return {
+      file: path.relative(root, tracePath),
+      byteSize,
+      bannedFiles: tracedFiles.filter((tracedFile) =>
+        (budget.bannedServerTracePatterns ?? []).some((pattern) => tracedFile.includes(pattern)),
+      ),
+    };
+  });
+
+  const largestTrace = serverTraces.toSorted((a, b) => b.byteSize - a.byteSize)[0];
+  if (largestTrace) {
+    console.log(`[bundle] Largest server trace: ${formatMb(largestTrace.byteSize)} (${largestTrace.file})`);
+    const maxServerTraceBytes = budget.maxServerTraceMb * 1024 * 1024;
+    const nearServerTraceBytes = budget.nearServerTraceMb * 1024 * 1024;
+    if (largestTrace.byteSize > maxServerTraceBytes) {
+      fail(`Largest server trace is ${formatMb(largestTrace.byteSize)}; budget is ${budget.maxServerTraceMb.toFixed(2)} MiB.`);
+    } else if (maxServerTraceBytes - largestTrace.byteSize <= nearServerTraceBytes) {
+      warn(`Largest server trace is near budget: ${formatMb(largestTrace.byteSize)} / ${budget.maxServerTraceMb.toFixed(2)} MiB.`);
+    }
+  }
+
+  for (const serverTrace of serverTraces) {
+    if (serverTrace.bannedFiles.length === 0) {
+      continue;
+    }
+
+    fail(`${serverTrace.file} traces disallowed deploy assets: ${serverTrace.bannedFiles.slice(0, 5).join(", ")}${serverTrace.bannedFiles.length > 5 ? "..." : ""}`);
   }
 }
 
