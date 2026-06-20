@@ -39,6 +39,7 @@ function gitLsFiles() {
 }
 
 const trackedFiles = gitLsFiles();
+const existingTrackedFiles = trackedFiles.filter((filePath) => existsSync(path.join(root, filePath)));
 
 function isUnderAnyRoot(filePath, roots) {
   return roots.some((sourceRoot) => {
@@ -60,9 +61,8 @@ function globToRegex(glob) {
 
 const generatedArtifactRegexes = config.generatedArtifactPatterns.map(globToRegex);
 
-for (const filePath of trackedFiles) {
+for (const filePath of existingTrackedFiles) {
   if (
-    existsSync(path.join(root, filePath)) &&
     generatedArtifactRegexes.some((pattern) => pattern.test(filePath))
   ) {
     reportFailure(`Generated/runtime artifact is tracked: ${filePath}`);
@@ -85,7 +85,7 @@ function lineBudgetFor(filePath) {
   return null;
 }
 
-for (const filePath of trackedFiles) {
+for (const filePath of existingTrackedFiles) {
   if (!isUnderAnyRoot(filePath, config.sourceRoots)) {
     continue;
   }
@@ -110,7 +110,7 @@ const bannedImportPatterns = [
   /require\(["'][^"']*(?:node_modules|\.next|dist|build|coverage)\//,
 ];
 
-for (const filePath of trackedFiles) {
+for (const filePath of existingTrackedFiles) {
   if (!isUnderAnyRoot(filePath, config.sourceRoots) || !/\.(ts|tsx|js|mjs|cjs)$/.test(filePath)) {
     continue;
   }
@@ -246,7 +246,7 @@ async function checkSnapshots() {
 }
 
 function checkWorkflowHygiene() {
-  const workflowFiles = trackedFiles.filter((filePath) => filePath.startsWith(".github/workflows/") && filePath.endsWith(".yml"));
+  const workflowFiles = existingTrackedFiles.filter((filePath) => filePath.startsWith(".github/workflows/") && filePath.endsWith(".yml"));
   for (const filePath of workflowFiles) {
     const source = readFileSync(path.join(root, filePath), "utf8");
     if (!/timeout-minutes:\s*\d+/.test(source)) {
@@ -261,7 +261,7 @@ function checkWorkflowHygiene() {
 async function checkAssets() {
   const assetRoots = config.assetRoots ?? [];
   const assetExtensions = new Set([".png", ".jpg", ".jpeg", ".webp", ".gif", ".svg", ".ico", ".woff", ".woff2", ".ttf"]);
-  for (const filePath of trackedFiles) {
+  for (const filePath of existingTrackedFiles) {
     if (!isUnderAnyRoot(filePath, assetRoots) || !assetExtensions.has(path.extname(filePath).toLowerCase())) {
       continue;
     }

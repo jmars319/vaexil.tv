@@ -1,5 +1,87 @@
 [
   {
+    "mapId": "hitman-ambrose-island",
+    "gameId": "hitman-woa",
+    "status": "research_draft",
+    "lastReviewed": "2026-06-16",
+    "officialSources": [
+      {
+        "label": "IO Interactive - HITMAN World of Assassination",
+        "url": "https://ioi.dk/hitman",
+        "note": "Official product and location context for World of Assassination."
+      }
+    ],
+    "referenceSources": [
+      {
+        "label": "HITMAPS - Shadows in the Water floor maps",
+        "url": "https://www.hitmaps.com/games/hitman2/ambrose-island/shadows-in-the-water/",
+        "note": "Private source-map imagery imported for admin-only floor review; do not copy marker coordinates, checklist data, labels, public UI, API nodes, or guide prose."
+      },
+      {
+        "label": "First-hand Vaexil gameplay review",
+        "url": "",
+        "note": "Required before any Ambrose Island marker becomes verified or published."
+      }
+    ],
+    "verifiedNamedAreas": [],
+    "approximateAreas": [
+      "Ambrose Island / Shadows in the Water floor geometry review",
+      "Mission-space circulation, entrances, exits, shortcuts, vertical traversal, and target-area context"
+    ],
+    "poiCandidates": [],
+    "uncertaintyNotes": [
+      "HITMAPS floor map imagery is imported as private admin-only source material for local reference.",
+      "Markers still require first-hand Vaexil gameplay validation before they can become verified or published.",
+      "No HITMAPS API nodes, guide text, UI data, labels, or marker coordinate data is used."
+    ],
+    "avoidCopying": [
+      "Official screenshots, map art, UI icons, and marketing images.",
+      "HITMAPS API nodes, marker coordinates, labels, guide prose, and UI data.",
+      "Third-party guide prose, numbered POI lists, annotated screenshots, and route instructions."
+    ]
+  },
+  {
+    "mapId": "hitman-bangkok",
+    "gameId": "hitman-woa",
+    "status": "research_draft",
+    "lastReviewed": "2026-06-16",
+    "officialSources": [
+      {
+        "label": "IO Interactive - HITMAN World of Assassination",
+        "url": "https://ioi.dk/hitman",
+        "note": "Official product and location context for World of Assassination."
+      }
+    ],
+    "referenceSources": [
+      {
+        "label": "HITMAPS - Club 27 floor maps",
+        "url": "https://www.hitmaps.com/games/hitman/bangkok/club-27/",
+        "note": "Private source-map imagery imported for admin-only floor review; do not copy marker coordinates, checklist data, labels, public UI, API nodes, or guide prose."
+      },
+      {
+        "label": "First-hand Vaexil gameplay review",
+        "url": "",
+        "note": "Required before any Bangkok marker becomes verified or published."
+      }
+    ],
+    "verifiedNamedAreas": [],
+    "approximateAreas": [
+      "Bangkok / Club 27 floor geometry review",
+      "Mission-space circulation, entrances, exits, shortcuts, vertical traversal, and target-area context"
+    ],
+    "poiCandidates": [],
+    "uncertaintyNotes": [
+      "HITMAPS floor map imagery is imported as private admin-only source material for local reference.",
+      "Markers still require first-hand Vaexil gameplay validation before they can become verified or published.",
+      "No HITMAPS API nodes, guide text, UI data, labels, or marker coordinate data is used."
+    ],
+    "avoidCopying": [
+      "Official screenshots, map art, UI icons, and marketing images.",
+      "HITMAPS API nodes, marker coordinates, labels, guide prose, and UI data.",
+      "Third-party guide prose, numbered POI lists, annotated screenshots, and route instructions."
+    ]
+  },
+  {
     "mapId": "hitman-berlin",
     "gameId": "hitman-woa",
     "status": "research_draft",
@@ -65,6 +147,211 @@
       "Berlin has strong vertical and interior layering; B2 through tower views must be reviewed separately before any marker is published.",
       "HITMAPS floor map imagery is imported as private admin-only source assets for review; it is not public, and markers still require first-hand Vaexil validation.",
       "No HITMAPS API data, guide text, UI data, labels, or marker coordinate data is used."
+    ],
+    "avoidCopying": [
+      "Official screenshots, map art, UI icons, and marketing images.",
+      "HITMAPS API nodes, marker coordinates, labels, guide prose, and UI data.",
+      "Third-party guide prose, numbered POI lists, annotated screenshots, and route instructions."
+    ]
+  },
+  {
+    "mapId": "hitman-carpathian-mountains",
+    "gameId": "hitman-woa",
+    "status": "research_draft",
+    "lastReviewed": "2026-06-16",
+    "officialSources": [
+      {
+        "label": "IO Interactive - HITMAN World of Assassination",
+        "url": "https://ioi.dk/hitman",
+        "note": "Official product and location context for World of Assassination."
+      }
+    ],
+    "referenceSources": [
+      {
+        "label": "HITMAPS - Untouchable floor maps",
+        "url": "https://www.hitmaps.com/games/hitman3/carpathian-mountains/untouchable/",
+        "note": "Private source-map imagery imported for admin-only floor review; do not copy marker coordinates, checklist data, labels, public UI, API nodes, or guide prose."
+      },
+      {
+        "label": "First-hand Vaexil gameplay review",
+        "url": "",
+        "note": "Required before any Carpathian Mountains marker becomes verified or published."
+      }
+    ],
+    "verifiedNamedAreas": [],
+    "approximateAreas": [
+      "Carpathian Mountains / Untouchable floor geometry review",
+      "Mission-space circulation, entrances, exits, shortcuts, vertical traversal, and target-area context"
+    ],
+    "poiCandidates": [],
+    "uncertaintyNotes": [
+      "HITMAPS floor map imagery is imported as private admin-only source material for local reference.",
+      "Markers still require first-hand Vaexil gameplay validation before they can become verified or published.",
+      "No HITMAPS API nodes, guide text, UI data, labels, or marker coordinate data is used."
+    ],
+    "avoidCopying": [
+      "Official screenshots, map art, UI icons, and marketing images.",
+      "HITMAPS API nodes, marker coordinates, labels, guide prose, and UI data.",
+      "Third-party guide prose, numbered POI lists, annotated screenshots, and route instructions."
+    ]
+  },
+  {
+    "mapId": "hitman-chongqing",
+    "gameId": "hitman-woa",
+    "status": "research_draft",
+    "lastReviewed": "2026-06-16",
+    "officialSources": [
+      {
+        "label": "IO Interactive - HITMAN World of Assassination",
+        "url": "https://ioi.dk/hitman",
+        "note": "Official product and location context for World of Assassination."
+      }
+    ],
+    "referenceSources": [
+      {
+        "label": "HITMAPS - End of an Era floor maps",
+        "url": "https://www.hitmaps.com/games/hitman3/chongqing/end-of-an-era/",
+        "note": "Private source-map imagery imported for admin-only floor review; do not copy marker coordinates, checklist data, labels, public UI, API nodes, or guide prose."
+      },
+      {
+        "label": "First-hand Vaexil gameplay review",
+        "url": "",
+        "note": "Required before any Chongqing marker becomes verified or published."
+      }
+    ],
+    "verifiedNamedAreas": [],
+    "approximateAreas": [
+      "Chongqing / End of an Era floor geometry review",
+      "Mission-space circulation, entrances, exits, shortcuts, vertical traversal, and target-area context"
+    ],
+    "poiCandidates": [],
+    "uncertaintyNotes": [
+      "HITMAPS floor map imagery is imported as private admin-only source material for local reference.",
+      "Markers still require first-hand Vaexil gameplay validation before they can become verified or published.",
+      "No HITMAPS API nodes, guide text, UI data, labels, or marker coordinate data is used."
+    ],
+    "avoidCopying": [
+      "Official screenshots, map art, UI icons, and marketing images.",
+      "HITMAPS API nodes, marker coordinates, labels, guide prose, and UI data.",
+      "Third-party guide prose, numbered POI lists, annotated screenshots, and route instructions."
+    ]
+  },
+  {
+    "mapId": "hitman-colorado",
+    "gameId": "hitman-woa",
+    "status": "research_draft",
+    "lastReviewed": "2026-06-16",
+    "officialSources": [
+      {
+        "label": "IO Interactive - HITMAN World of Assassination",
+        "url": "https://ioi.dk/hitman",
+        "note": "Official product and location context for World of Assassination."
+      }
+    ],
+    "referenceSources": [
+      {
+        "label": "HITMAPS - Freedom Fighters floor maps",
+        "url": "https://www.hitmaps.com/games/hitman/colorado/freedom-fighters/",
+        "note": "Private source-map imagery imported for admin-only floor review; do not copy marker coordinates, checklist data, labels, public UI, API nodes, or guide prose."
+      },
+      {
+        "label": "First-hand Vaexil gameplay review",
+        "url": "",
+        "note": "Required before any Colorado marker becomes verified or published."
+      }
+    ],
+    "verifiedNamedAreas": [],
+    "approximateAreas": [
+      "Colorado / Freedom Fighters floor geometry review",
+      "Mission-space circulation, entrances, exits, shortcuts, vertical traversal, and target-area context"
+    ],
+    "poiCandidates": [],
+    "uncertaintyNotes": [
+      "HITMAPS floor map imagery is imported as private admin-only source material for local reference.",
+      "Markers still require first-hand Vaexil gameplay validation before they can become verified or published.",
+      "No HITMAPS API nodes, guide text, UI data, labels, or marker coordinate data is used."
+    ],
+    "avoidCopying": [
+      "Official screenshots, map art, UI icons, and marketing images.",
+      "HITMAPS API nodes, marker coordinates, labels, guide prose, and UI data.",
+      "Third-party guide prose, numbered POI lists, annotated screenshots, and route instructions."
+    ]
+  },
+  {
+    "mapId": "hitman-dartmoor",
+    "gameId": "hitman-woa",
+    "status": "research_draft",
+    "lastReviewed": "2026-06-16",
+    "officialSources": [
+      {
+        "label": "IO Interactive - HITMAN World of Assassination",
+        "url": "https://ioi.dk/hitman",
+        "note": "Official product and location context for World of Assassination."
+      }
+    ],
+    "referenceSources": [
+      {
+        "label": "HITMAPS - Death in the Family floor maps",
+        "url": "https://www.hitmaps.com/games/hitman3/dartmoor/death-in-the-family/",
+        "note": "Private source-map imagery imported for admin-only floor review; do not copy marker coordinates, checklist data, labels, public UI, API nodes, or guide prose."
+      },
+      {
+        "label": "First-hand Vaexil gameplay review",
+        "url": "",
+        "note": "Required before any Dartmoor marker becomes verified or published."
+      }
+    ],
+    "verifiedNamedAreas": [],
+    "approximateAreas": [
+      "Dartmoor / Death in the Family floor geometry review",
+      "Mission-space circulation, entrances, exits, shortcuts, vertical traversal, and target-area context"
+    ],
+    "poiCandidates": [],
+    "uncertaintyNotes": [
+      "HITMAPS floor map imagery is imported as private admin-only source material for local reference.",
+      "Markers still require first-hand Vaexil gameplay validation before they can become verified or published.",
+      "No HITMAPS API nodes, guide text, UI data, labels, or marker coordinate data is used."
+    ],
+    "avoidCopying": [
+      "Official screenshots, map art, UI icons, and marketing images.",
+      "HITMAPS API nodes, marker coordinates, labels, guide prose, and UI data.",
+      "Third-party guide prose, numbered POI lists, annotated screenshots, and route instructions."
+    ]
+  },
+  {
+    "mapId": "hitman-dartmoor-garden-show",
+    "gameId": "hitman-woa",
+    "status": "research_draft",
+    "lastReviewed": "2026-06-16",
+    "officialSources": [
+      {
+        "label": "IO Interactive - HITMAN World of Assassination",
+        "url": "https://ioi.dk/hitman",
+        "note": "Official product and location context for World of Assassination."
+      }
+    ],
+    "referenceSources": [
+      {
+        "label": "HITMAPS - The Dartmoor Garden Show floor maps",
+        "url": "https://www.hitmaps.com/games/hitman3/dartmoor/the-dartmoor-garden-show/",
+        "note": "Private source-map imagery imported for admin-only floor review; do not copy marker coordinates, checklist data, labels, public UI, API nodes, or guide prose."
+      },
+      {
+        "label": "First-hand Vaexil gameplay review",
+        "url": "",
+        "note": "Required before any Dartmoor marker becomes verified or published."
+      }
+    ],
+    "verifiedNamedAreas": [],
+    "approximateAreas": [
+      "Dartmoor / The Dartmoor Garden Show floor geometry review",
+      "Mission-space circulation, entrances, exits, shortcuts, vertical traversal, and target-area context"
+    ],
+    "poiCandidates": [],
+    "uncertaintyNotes": [
+      "HITMAPS floor map imagery is imported as private admin-only source material for local reference.",
+      "Markers still require first-hand Vaexil gameplay validation before they can become verified or published.",
+      "No HITMAPS API nodes, guide text, UI data, labels, or marker coordinate data is used."
     ],
     "avoidCopying": [
       "Official screenshots, map art, UI icons, and marketing images.",
@@ -149,6 +436,621 @@
       "Official screenshots, map art, UI icons, and marketing images.",
       "HITMAPS API nodes, marker coordinates, labels, guide prose, and UI data.",
       "Third-party guide prose or annotated screenshots."
+    ]
+  },
+  {
+    "mapId": "hitman-haven-island",
+    "gameId": "hitman-woa",
+    "status": "research_draft",
+    "lastReviewed": "2026-06-16",
+    "officialSources": [
+      {
+        "label": "IO Interactive - HITMAN World of Assassination",
+        "url": "https://ioi.dk/hitman",
+        "note": "Official product and location context for World of Assassination."
+      }
+    ],
+    "referenceSources": [
+      {
+        "label": "HITMAPS - The Last Resort floor maps",
+        "url": "https://www.hitmaps.com/games/hitman2/haven-island/the-last-resort/",
+        "note": "Private source-map imagery imported for admin-only floor review; do not copy marker coordinates, checklist data, labels, public UI, API nodes, or guide prose."
+      },
+      {
+        "label": "First-hand Vaexil gameplay review",
+        "url": "",
+        "note": "Required before any Haven Island marker becomes verified or published."
+      }
+    ],
+    "verifiedNamedAreas": [],
+    "approximateAreas": [
+      "Haven Island / The Last Resort floor geometry review",
+      "Mission-space circulation, entrances, exits, shortcuts, vertical traversal, and target-area context"
+    ],
+    "poiCandidates": [],
+    "uncertaintyNotes": [
+      "HITMAPS floor map imagery is imported as private admin-only source material for local reference.",
+      "Markers still require first-hand Vaexil gameplay validation before they can become verified or published.",
+      "No HITMAPS API nodes, guide text, UI data, labels, or marker coordinate data is used."
+    ],
+    "avoidCopying": [
+      "Official screenshots, map art, UI icons, and marketing images.",
+      "HITMAPS API nodes, marker coordinates, labels, guide prose, and UI data.",
+      "Third-party guide prose, numbered POI lists, annotated screenshots, and route instructions."
+    ]
+  },
+  {
+    "mapId": "hitman-hawkes-bay",
+    "gameId": "hitman-woa",
+    "status": "research_draft",
+    "lastReviewed": "2026-06-16",
+    "officialSources": [
+      {
+        "label": "IO Interactive - HITMAN World of Assassination",
+        "url": "https://ioi.dk/hitman",
+        "note": "Official product and location context for World of Assassination."
+      }
+    ],
+    "referenceSources": [
+      {
+        "label": "HITMAPS - Nightcall floor maps",
+        "url": "https://www.hitmaps.com/games/hitman2/hawkes-bay/nightcall/",
+        "note": "Private source-map imagery imported for admin-only floor review; do not copy marker coordinates, checklist data, labels, public UI, API nodes, or guide prose."
+      },
+      {
+        "label": "First-hand Vaexil gameplay review",
+        "url": "",
+        "note": "Required before any Hawke's Bay marker becomes verified or published."
+      }
+    ],
+    "verifiedNamedAreas": [],
+    "approximateAreas": [
+      "Hawke's Bay / Nightcall floor geometry review",
+      "Mission-space circulation, entrances, exits, shortcuts, vertical traversal, and target-area context"
+    ],
+    "poiCandidates": [],
+    "uncertaintyNotes": [
+      "HITMAPS floor map imagery is imported as private admin-only source material for local reference.",
+      "Markers still require first-hand Vaexil gameplay validation before they can become verified or published.",
+      "No HITMAPS API nodes, guide text, UI data, labels, or marker coordinate data is used."
+    ],
+    "avoidCopying": [
+      "Official screenshots, map art, UI icons, and marketing images.",
+      "HITMAPS API nodes, marker coordinates, labels, guide prose, and UI data.",
+      "Third-party guide prose, numbered POI lists, annotated screenshots, and route instructions."
+    ]
+  },
+  {
+    "mapId": "hitman-hokkaido",
+    "gameId": "hitman-woa",
+    "status": "research_draft",
+    "lastReviewed": "2026-06-16",
+    "officialSources": [
+      {
+        "label": "IO Interactive - HITMAN World of Assassination",
+        "url": "https://ioi.dk/hitman",
+        "note": "Official product and location context for World of Assassination."
+      }
+    ],
+    "referenceSources": [
+      {
+        "label": "HITMAPS - Situs Inversus floor maps",
+        "url": "https://www.hitmaps.com/games/hitman/hokkaido/situs-inversus/",
+        "note": "Private source-map imagery imported for admin-only floor review; do not copy marker coordinates, checklist data, labels, public UI, API nodes, or guide prose."
+      },
+      {
+        "label": "First-hand Vaexil gameplay review",
+        "url": "",
+        "note": "Required before any Hokkaido marker becomes verified or published."
+      }
+    ],
+    "verifiedNamedAreas": [],
+    "approximateAreas": [
+      "Hokkaido / Situs Inversus floor geometry review",
+      "Mission-space circulation, entrances, exits, shortcuts, vertical traversal, and target-area context"
+    ],
+    "poiCandidates": [],
+    "uncertaintyNotes": [
+      "HITMAPS floor map imagery is imported as private admin-only source material for local reference.",
+      "Markers still require first-hand Vaexil gameplay validation before they can become verified or published.",
+      "No HITMAPS API nodes, guide text, UI data, labels, or marker coordinate data is used."
+    ],
+    "avoidCopying": [
+      "Official screenshots, map art, UI icons, and marketing images.",
+      "HITMAPS API nodes, marker coordinates, labels, guide prose, and UI data.",
+      "Third-party guide prose, numbered POI lists, annotated screenshots, and route instructions."
+    ]
+  },
+  {
+    "mapId": "hitman-ica-facility-final-test",
+    "gameId": "hitman-woa",
+    "status": "research_draft",
+    "lastReviewed": "2026-06-16",
+    "officialSources": [
+      {
+        "label": "IO Interactive - HITMAN World of Assassination",
+        "url": "https://ioi.dk/hitman",
+        "note": "Official product and location context for World of Assassination."
+      }
+    ],
+    "referenceSources": [
+      {
+        "label": "HITMAPS - The Final Test floor maps",
+        "url": "https://www.hitmaps.com/games/hitman/ica-facility/the-final-test/",
+        "note": "Private source-map imagery imported for admin-only floor review; do not copy marker coordinates, checklist data, labels, public UI, API nodes, or guide prose."
+      },
+      {
+        "label": "First-hand Vaexil gameplay review",
+        "url": "",
+        "note": "Required before any ICA Facility marker becomes verified or published."
+      }
+    ],
+    "verifiedNamedAreas": [],
+    "approximateAreas": [
+      "ICA Facility / The Final Test floor geometry review",
+      "Mission-space circulation, entrances, exits, shortcuts, vertical traversal, and target-area context"
+    ],
+    "poiCandidates": [],
+    "uncertaintyNotes": [
+      "HITMAPS floor map imagery is imported as private admin-only source material for local reference.",
+      "Markers still require first-hand Vaexil gameplay validation before they can become verified or published.",
+      "No HITMAPS API nodes, guide text, UI data, labels, or marker coordinate data is used."
+    ],
+    "avoidCopying": [
+      "Official screenshots, map art, UI icons, and marketing images.",
+      "HITMAPS API nodes, marker coordinates, labels, guide prose, and UI data.",
+      "Third-party guide prose, numbered POI lists, annotated screenshots, and route instructions."
+    ]
+  },
+  {
+    "mapId": "hitman-ica-facility-freeform-training",
+    "gameId": "hitman-woa",
+    "status": "research_draft",
+    "lastReviewed": "2026-06-16",
+    "officialSources": [
+      {
+        "label": "IO Interactive - HITMAN World of Assassination",
+        "url": "https://ioi.dk/hitman",
+        "note": "Official product and location context for World of Assassination."
+      }
+    ],
+    "referenceSources": [
+      {
+        "label": "HITMAPS - Freeform Training floor maps",
+        "url": "https://www.hitmaps.com/games/hitman/ica-facility/freeform-training/",
+        "note": "Private source-map imagery imported for admin-only floor review; do not copy marker coordinates, checklist data, labels, public UI, API nodes, or guide prose."
+      },
+      {
+        "label": "First-hand Vaexil gameplay review",
+        "url": "",
+        "note": "Required before any ICA Facility marker becomes verified or published."
+      }
+    ],
+    "verifiedNamedAreas": [],
+    "approximateAreas": [
+      "ICA Facility / Freeform Training floor geometry review",
+      "Mission-space circulation, entrances, exits, shortcuts, vertical traversal, and target-area context"
+    ],
+    "poiCandidates": [],
+    "uncertaintyNotes": [
+      "HITMAPS floor map imagery is imported as private admin-only source material for local reference.",
+      "Markers still require first-hand Vaexil gameplay validation before they can become verified or published.",
+      "No HITMAPS API nodes, guide text, UI data, labels, or marker coordinate data is used."
+    ],
+    "avoidCopying": [
+      "Official screenshots, map art, UI icons, and marketing images.",
+      "HITMAPS API nodes, marker coordinates, labels, guide prose, and UI data.",
+      "Third-party guide prose, numbered POI lists, annotated screenshots, and route instructions."
+    ]
+  },
+  {
+    "mapId": "hitman-isle-of-sgail",
+    "gameId": "hitman-woa",
+    "status": "research_draft",
+    "lastReviewed": "2026-06-16",
+    "officialSources": [
+      {
+        "label": "IO Interactive - HITMAN World of Assassination",
+        "url": "https://ioi.dk/hitman",
+        "note": "Official product and location context for World of Assassination."
+      }
+    ],
+    "referenceSources": [
+      {
+        "label": "HITMAPS - The Ark Society floor maps",
+        "url": "https://www.hitmaps.com/games/hitman2/isle-of-sgail/ark-society/",
+        "note": "Private source-map imagery imported for admin-only floor review; do not copy marker coordinates, checklist data, labels, public UI, API nodes, or guide prose."
+      },
+      {
+        "label": "First-hand Vaexil gameplay review",
+        "url": "",
+        "note": "Required before any Isle of Sgàil marker becomes verified or published."
+      }
+    ],
+    "verifiedNamedAreas": [],
+    "approximateAreas": [
+      "Isle of Sgàil / The Ark Society floor geometry review",
+      "Mission-space circulation, entrances, exits, shortcuts, vertical traversal, and target-area context"
+    ],
+    "poiCandidates": [],
+    "uncertaintyNotes": [
+      "HITMAPS floor map imagery is imported as private admin-only source material for local reference.",
+      "Markers still require first-hand Vaexil gameplay validation before they can become verified or published.",
+      "No HITMAPS API nodes, guide text, UI data, labels, or marker coordinate data is used."
+    ],
+    "avoidCopying": [
+      "Official screenshots, map art, UI icons, and marketing images.",
+      "HITMAPS API nodes, marker coordinates, labels, guide prose, and UI data.",
+      "Third-party guide prose, numbered POI lists, annotated screenshots, and route instructions."
+    ]
+  },
+  {
+    "mapId": "hitman-marrakesh",
+    "gameId": "hitman-woa",
+    "status": "research_draft",
+    "lastReviewed": "2026-06-16",
+    "officialSources": [
+      {
+        "label": "IO Interactive - HITMAN World of Assassination",
+        "url": "https://ioi.dk/hitman",
+        "note": "Official product and location context for World of Assassination."
+      }
+    ],
+    "referenceSources": [
+      {
+        "label": "HITMAPS - A Gilded Cage floor maps",
+        "url": "https://www.hitmaps.com/games/hitman/marrakesh/a-gilded-cage/",
+        "note": "Private source-map imagery imported for admin-only floor review; do not copy marker coordinates, checklist data, labels, public UI, API nodes, or guide prose."
+      },
+      {
+        "label": "First-hand Vaexil gameplay review",
+        "url": "",
+        "note": "Required before any Marrakesh marker becomes verified or published."
+      }
+    ],
+    "verifiedNamedAreas": [],
+    "approximateAreas": [
+      "Marrakesh / A Gilded Cage floor geometry review",
+      "Mission-space circulation, entrances, exits, shortcuts, vertical traversal, and target-area context"
+    ],
+    "poiCandidates": [],
+    "uncertaintyNotes": [
+      "HITMAPS floor map imagery is imported as private admin-only source material for local reference.",
+      "Markers still require first-hand Vaexil gameplay validation before they can become verified or published.",
+      "No HITMAPS API nodes, guide text, UI data, labels, or marker coordinate data is used."
+    ],
+    "avoidCopying": [
+      "Official screenshots, map art, UI icons, and marketing images.",
+      "HITMAPS API nodes, marker coordinates, labels, guide prose, and UI data.",
+      "Third-party guide prose, numbered POI lists, annotated screenshots, and route instructions."
+    ]
+  },
+  {
+    "mapId": "hitman-mendoza",
+    "gameId": "hitman-woa",
+    "status": "research_draft",
+    "lastReviewed": "2026-06-16",
+    "officialSources": [
+      {
+        "label": "IO Interactive - HITMAN World of Assassination",
+        "url": "https://ioi.dk/hitman",
+        "note": "Official product and location context for World of Assassination."
+      }
+    ],
+    "referenceSources": [
+      {
+        "label": "HITMAPS - The Farewell floor maps",
+        "url": "https://www.hitmaps.com/games/hitman3/mendoza/the-farewell/",
+        "note": "Private source-map imagery imported for admin-only floor review; do not copy marker coordinates, checklist data, labels, public UI, API nodes, or guide prose."
+      },
+      {
+        "label": "First-hand Vaexil gameplay review",
+        "url": "",
+        "note": "Required before any Mendoza marker becomes verified or published."
+      }
+    ],
+    "verifiedNamedAreas": [],
+    "approximateAreas": [
+      "Mendoza / The Farewell floor geometry review",
+      "Mission-space circulation, entrances, exits, shortcuts, vertical traversal, and target-area context"
+    ],
+    "poiCandidates": [],
+    "uncertaintyNotes": [
+      "HITMAPS floor map imagery is imported as private admin-only source material for local reference.",
+      "Markers still require first-hand Vaexil gameplay validation before they can become verified or published.",
+      "No HITMAPS API nodes, guide text, UI data, labels, or marker coordinate data is used."
+    ],
+    "avoidCopying": [
+      "Official screenshots, map art, UI icons, and marketing images.",
+      "HITMAPS API nodes, marker coordinates, labels, guide prose, and UI data.",
+      "Third-party guide prose, numbered POI lists, annotated screenshots, and route instructions."
+    ]
+  },
+  {
+    "mapId": "hitman-miami",
+    "gameId": "hitman-woa",
+    "status": "research_draft",
+    "lastReviewed": "2026-06-16",
+    "officialSources": [
+      {
+        "label": "IO Interactive - HITMAN World of Assassination",
+        "url": "https://ioi.dk/hitman",
+        "note": "Official product and location context for World of Assassination."
+      }
+    ],
+    "referenceSources": [
+      {
+        "label": "HITMAPS - The Finish Line floor maps",
+        "url": "https://www.hitmaps.com/games/hitman2/miami/finish-line/",
+        "note": "Private source-map imagery imported for admin-only floor review; do not copy marker coordinates, checklist data, labels, public UI, API nodes, or guide prose."
+      },
+      {
+        "label": "First-hand Vaexil gameplay review",
+        "url": "",
+        "note": "Required before any Miami marker becomes verified or published."
+      }
+    ],
+    "verifiedNamedAreas": [],
+    "approximateAreas": [
+      "Miami / The Finish Line floor geometry review",
+      "Mission-space circulation, entrances, exits, shortcuts, vertical traversal, and target-area context"
+    ],
+    "poiCandidates": [],
+    "uncertaintyNotes": [
+      "HITMAPS floor map imagery is imported as private admin-only source material for local reference.",
+      "Markers still require first-hand Vaexil gameplay validation before they can become verified or published.",
+      "No HITMAPS API nodes, guide text, UI data, labels, or marker coordinate data is used."
+    ],
+    "avoidCopying": [
+      "Official screenshots, map art, UI icons, and marketing images.",
+      "HITMAPS API nodes, marker coordinates, labels, guide prose, and UI data.",
+      "Third-party guide prose, numbered POI lists, annotated screenshots, and route instructions."
+    ]
+  },
+  {
+    "mapId": "hitman-mumbai",
+    "gameId": "hitman-woa",
+    "status": "research_draft",
+    "lastReviewed": "2026-06-16",
+    "officialSources": [
+      {
+        "label": "IO Interactive - HITMAN World of Assassination",
+        "url": "https://ioi.dk/hitman",
+        "note": "Official product and location context for World of Assassination."
+      }
+    ],
+    "referenceSources": [
+      {
+        "label": "HITMAPS - Chasing a Ghost floor maps",
+        "url": "https://www.hitmaps.com/games/hitman2/mumbai/chasing-a-ghost/",
+        "note": "Private source-map imagery imported for admin-only floor review; do not copy marker coordinates, checklist data, labels, public UI, API nodes, or guide prose."
+      },
+      {
+        "label": "First-hand Vaexil gameplay review",
+        "url": "",
+        "note": "Required before any Mumbai marker becomes verified or published."
+      }
+    ],
+    "verifiedNamedAreas": [],
+    "approximateAreas": [
+      "Mumbai / Chasing a Ghost floor geometry review",
+      "Mission-space circulation, entrances, exits, shortcuts, vertical traversal, and target-area context"
+    ],
+    "poiCandidates": [],
+    "uncertaintyNotes": [
+      "HITMAPS floor map imagery is imported as private admin-only source material for local reference.",
+      "Markers still require first-hand Vaexil gameplay validation before they can become verified or published.",
+      "No HITMAPS API nodes, guide text, UI data, labels, or marker coordinate data is used."
+    ],
+    "avoidCopying": [
+      "Official screenshots, map art, UI icons, and marketing images.",
+      "HITMAPS API nodes, marker coordinates, labels, guide prose, and UI data.",
+      "Third-party guide prose, numbered POI lists, annotated screenshots, and route instructions."
+    ]
+  },
+  {
+    "mapId": "hitman-new-york",
+    "gameId": "hitman-woa",
+    "status": "research_draft",
+    "lastReviewed": "2026-06-16",
+    "officialSources": [
+      {
+        "label": "IO Interactive - HITMAN World of Assassination",
+        "url": "https://ioi.dk/hitman",
+        "note": "Official product and location context for World of Assassination."
+      }
+    ],
+    "referenceSources": [
+      {
+        "label": "HITMAPS - Golden Handshake floor maps",
+        "url": "https://www.hitmaps.com/games/hitman2/new-york/golden-handshake/",
+        "note": "Private source-map imagery imported for admin-only floor review; do not copy marker coordinates, checklist data, labels, public UI, API nodes, or guide prose."
+      },
+      {
+        "label": "First-hand Vaexil gameplay review",
+        "url": "",
+        "note": "Required before any New York marker becomes verified or published."
+      }
+    ],
+    "verifiedNamedAreas": [],
+    "approximateAreas": [
+      "New York / Golden Handshake floor geometry review",
+      "Mission-space circulation, entrances, exits, shortcuts, vertical traversal, and target-area context"
+    ],
+    "poiCandidates": [],
+    "uncertaintyNotes": [
+      "HITMAPS floor map imagery is imported as private admin-only source material for local reference.",
+      "Markers still require first-hand Vaexil gameplay validation before they can become verified or published.",
+      "No HITMAPS API nodes, guide text, UI data, labels, or marker coordinate data is used."
+    ],
+    "avoidCopying": [
+      "Official screenshots, map art, UI icons, and marketing images.",
+      "HITMAPS API nodes, marker coordinates, labels, guide prose, and UI data.",
+      "Third-party guide prose, numbered POI lists, annotated screenshots, and route instructions."
+    ]
+  },
+  {
+    "mapId": "hitman-paris",
+    "gameId": "hitman-woa",
+    "status": "research_draft",
+    "lastReviewed": "2026-06-16",
+    "officialSources": [
+      {
+        "label": "IO Interactive - HITMAN World of Assassination",
+        "url": "https://ioi.dk/hitman",
+        "note": "Official product and location context for World of Assassination."
+      }
+    ],
+    "referenceSources": [
+      {
+        "label": "HITMAPS - The Showstopper floor maps",
+        "url": "https://www.hitmaps.com/games/hitman/paris/the-showstopper/",
+        "note": "Private source-map imagery imported for admin-only floor review; do not copy marker coordinates, checklist data, labels, public UI, API nodes, or guide prose."
+      },
+      {
+        "label": "First-hand Vaexil gameplay review",
+        "url": "",
+        "note": "Required before any Paris marker becomes verified or published."
+      }
+    ],
+    "verifiedNamedAreas": [],
+    "approximateAreas": [
+      "Paris / The Showstopper floor geometry review",
+      "Mission-space circulation, entrances, exits, shortcuts, vertical traversal, and target-area context"
+    ],
+    "poiCandidates": [],
+    "uncertaintyNotes": [
+      "HITMAPS floor map imagery is imported as private admin-only source material for local reference.",
+      "Markers still require first-hand Vaexil gameplay validation before they can become verified or published.",
+      "No HITMAPS API nodes, guide text, UI data, labels, or marker coordinate data is used."
+    ],
+    "avoidCopying": [
+      "Official screenshots, map art, UI icons, and marketing images.",
+      "HITMAPS API nodes, marker coordinates, labels, guide prose, and UI data.",
+      "Third-party guide prose, numbered POI lists, annotated screenshots, and route instructions."
+    ]
+  },
+  {
+    "mapId": "hitman-santa-fortuna",
+    "gameId": "hitman-woa",
+    "status": "research_draft",
+    "lastReviewed": "2026-06-16",
+    "officialSources": [
+      {
+        "label": "IO Interactive - HITMAN World of Assassination",
+        "url": "https://ioi.dk/hitman",
+        "note": "Official product and location context for World of Assassination."
+      }
+    ],
+    "referenceSources": [
+      {
+        "label": "HITMAPS - Three-Headed Serpent floor maps",
+        "url": "https://www.hitmaps.com/games/hitman2/santa-fortuna/three-headed-serpent/",
+        "note": "Private source-map imagery imported for admin-only floor review; do not copy marker coordinates, checklist data, labels, public UI, API nodes, or guide prose."
+      },
+      {
+        "label": "First-hand Vaexil gameplay review",
+        "url": "",
+        "note": "Required before any Santa Fortuna marker becomes verified or published."
+      }
+    ],
+    "verifiedNamedAreas": [],
+    "approximateAreas": [
+      "Santa Fortuna / Three-Headed Serpent floor geometry review",
+      "Mission-space circulation, entrances, exits, shortcuts, vertical traversal, and target-area context"
+    ],
+    "poiCandidates": [],
+    "uncertaintyNotes": [
+      "HITMAPS floor map imagery is imported as private admin-only source material for local reference.",
+      "Markers still require first-hand Vaexil gameplay validation before they can become verified or published.",
+      "No HITMAPS API nodes, guide text, UI data, labels, or marker coordinate data is used."
+    ],
+    "avoidCopying": [
+      "Official screenshots, map art, UI icons, and marketing images.",
+      "HITMAPS API nodes, marker coordinates, labels, guide prose, and UI data.",
+      "Third-party guide prose, numbered POI lists, annotated screenshots, and route instructions."
+    ]
+  },
+  {
+    "mapId": "hitman-sapienza",
+    "gameId": "hitman-woa",
+    "status": "research_draft",
+    "lastReviewed": "2026-06-16",
+    "officialSources": [
+      {
+        "label": "IO Interactive - HITMAN World of Assassination",
+        "url": "https://ioi.dk/hitman",
+        "note": "Official product and location context for World of Assassination."
+      }
+    ],
+    "referenceSources": [
+      {
+        "label": "HITMAPS - World of Tomorrow floor maps",
+        "url": "https://www.hitmaps.com/games/hitman/sapienza/world-of-tomorrow/",
+        "note": "Private source-map imagery imported for admin-only floor review; do not copy marker coordinates, checklist data, labels, public UI, API nodes, or guide prose."
+      },
+      {
+        "label": "First-hand Vaexil gameplay review",
+        "url": "",
+        "note": "Required before any Sapienza marker becomes verified or published."
+      }
+    ],
+    "verifiedNamedAreas": [],
+    "approximateAreas": [
+      "Sapienza / World of Tomorrow floor geometry review",
+      "Mission-space circulation, entrances, exits, shortcuts, vertical traversal, and target-area context"
+    ],
+    "poiCandidates": [],
+    "uncertaintyNotes": [
+      "HITMAPS floor map imagery is imported as private admin-only source material for local reference.",
+      "Markers still require first-hand Vaexil gameplay validation before they can become verified or published.",
+      "No HITMAPS API nodes, guide text, UI data, labels, or marker coordinate data is used."
+    ],
+    "avoidCopying": [
+      "Official screenshots, map art, UI icons, and marketing images.",
+      "HITMAPS API nodes, marker coordinates, labels, guide prose, and UI data.",
+      "Third-party guide prose, numbered POI lists, annotated screenshots, and route instructions."
+    ]
+  },
+  {
+    "mapId": "hitman-whittleton-creek",
+    "gameId": "hitman-woa",
+    "status": "research_draft",
+    "lastReviewed": "2026-06-16",
+    "officialSources": [
+      {
+        "label": "IO Interactive - HITMAN World of Assassination",
+        "url": "https://ioi.dk/hitman",
+        "note": "Official product and location context for World of Assassination."
+      }
+    ],
+    "referenceSources": [
+      {
+        "label": "HITMAPS - Another Life floor maps",
+        "url": "https://www.hitmaps.com/games/hitman2/whittleton-creek/another-life/",
+        "note": "Private source-map imagery imported for admin-only floor review; do not copy marker coordinates, checklist data, labels, public UI, API nodes, or guide prose."
+      },
+      {
+        "label": "First-hand Vaexil gameplay review",
+        "url": "",
+        "note": "Required before any Whittleton Creek marker becomes verified or published."
+      }
+    ],
+    "verifiedNamedAreas": [],
+    "approximateAreas": [
+      "Whittleton Creek / Another Life floor geometry review",
+      "Mission-space circulation, entrances, exits, shortcuts, vertical traversal, and target-area context"
+    ],
+    "poiCandidates": [],
+    "uncertaintyNotes": [
+      "HITMAPS floor map imagery is imported as private admin-only source material for local reference.",
+      "Markers still require first-hand Vaexil gameplay validation before they can become verified or published.",
+      "No HITMAPS API nodes, guide text, UI data, labels, or marker coordinate data is used."
+    ],
+    "avoidCopying": [
+      "Official screenshots, map art, UI icons, and marketing images.",
+      "HITMAPS API nodes, marker coordinates, labels, guide prose, and UI data.",
+      "Third-party guide prose, numbered POI lists, annotated screenshots, and route instructions."
     ]
   },
   {
@@ -1739,7 +2641,7 @@
     "mapId": "se5-atlantic-wall",
     "gameId": "sniper-elite-5",
     "status": "research_draft",
-    "lastReviewed": "2026-05-26",
+    "lastReviewed": "2026-06-16",
     "officialSources": [
       {
         "label": "Rebellion - Sniper Elite 5",
@@ -1802,7 +2704,7 @@
     "mapId": "se5-conqueror",
     "gameId": "sniper-elite-5",
     "status": "research_draft",
-    "lastReviewed": "2026-05-26",
+    "lastReviewed": "2026-06-16",
     "officialSources": [
       {
         "label": "Rebellion - Sniper Elite 5",
@@ -1865,7 +2767,7 @@
     "mapId": "se5-festung-guernsey",
     "gameId": "sniper-elite-5",
     "status": "research_draft",
-    "lastReviewed": "2026-05-26",
+    "lastReviewed": "2026-06-16",
     "officialSources": [
       {
         "label": "Rebellion - Sniper Elite 5",
@@ -1928,7 +2830,7 @@
     "mapId": "se5-kraken-awakes",
     "gameId": "sniper-elite-5",
     "status": "research_draft",
-    "lastReviewed": "2026-05-26",
+    "lastReviewed": "2026-06-16",
     "officialSources": [
       {
         "label": "Rebellion - Sniper Elite 5",
@@ -1991,7 +2893,7 @@
     "mapId": "se5-landing-force",
     "gameId": "sniper-elite-5",
     "status": "research_draft",
-    "lastReviewed": "2026-05-26",
+    "lastReviewed": "2026-06-16",
     "officialSources": [
       {
         "label": "Rebellion - Sniper Elite 5",
@@ -2054,7 +2956,7 @@
     "mapId": "se5-liberation",
     "gameId": "sniper-elite-5",
     "status": "research_draft",
-    "lastReviewed": "2026-05-26",
+    "lastReviewed": "2026-06-16",
     "officialSources": [
       {
         "label": "Rebellion - Sniper Elite 5",
@@ -2117,7 +3019,7 @@
     "mapId": "se5-occupied-residence",
     "gameId": "sniper-elite-5",
     "status": "research_draft",
-    "lastReviewed": "2026-05-26",
+    "lastReviewed": "2026-06-16",
     "officialSources": [
       {
         "label": "Rebellion - Sniper Elite 5",
@@ -2180,7 +3082,7 @@
     "mapId": "se5-rough-landing",
     "gameId": "sniper-elite-5",
     "status": "research_draft",
-    "lastReviewed": "2026-05-26",
+    "lastReviewed": "2026-06-16",
     "officialSources": [
       {
         "label": "Rebellion - Sniper Elite 5",
@@ -2243,7 +3145,7 @@
     "mapId": "se5-rubble-and-ruin",
     "gameId": "sniper-elite-5",
     "status": "research_draft",
-    "lastReviewed": "2026-05-26",
+    "lastReviewed": "2026-06-16",
     "officialSources": [
       {
         "label": "Rebellion - Sniper Elite 5",
@@ -2306,7 +3208,7 @@
     "mapId": "se5-secret-weapons",
     "gameId": "sniper-elite-5",
     "status": "research_draft",
-    "lastReviewed": "2026-05-26",
+    "lastReviewed": "2026-06-16",
     "officialSources": [
       {
         "label": "Rebellion - Sniper Elite 5",
@@ -2369,7 +3271,7 @@
     "mapId": "se5-spy-academy",
     "gameId": "sniper-elite-5",
     "status": "research_draft",
-    "lastReviewed": "2026-05-26",
+    "lastReviewed": "2026-06-16",
     "officialSources": [
       {
         "label": "Rebellion - Sniper Elite 5",
@@ -2432,7 +3334,7 @@
     "mapId": "se5-war-factory",
     "gameId": "sniper-elite-5",
     "status": "research_draft",
-    "lastReviewed": "2026-05-26",
+    "lastReviewed": "2026-06-16",
     "officialSources": [
       {
         "label": "Rebellion - Sniper Elite 5",
@@ -2495,7 +3397,7 @@
     "mapId": "se5-wolf-mountain",
     "gameId": "sniper-elite-5",
     "status": "research_draft",
-    "lastReviewed": "2026-05-26",
+    "lastReviewed": "2026-06-16",
     "officialSources": [
       {
         "label": "Rebellion - Sniper Elite 5",
@@ -2558,7 +3460,7 @@
     "mapId": "ser-all-or-nothing",
     "gameId": "sniper-elite-resistance",
     "status": "research_draft",
-    "lastReviewed": "2026-05-26",
+    "lastReviewed": "2026-06-16",
     "officialSources": [
       {
         "label": "Rebellion - Sniper Elite: Resistance",
@@ -2621,7 +3523,7 @@
     "mapId": "ser-assault-on-fort-rouge",
     "gameId": "sniper-elite-resistance",
     "status": "research_draft",
-    "lastReviewed": "2026-05-26",
+    "lastReviewed": "2026-06-16",
     "officialSources": [
       {
         "label": "Rebellion - Sniper Elite: Resistance",
@@ -2684,7 +3586,7 @@
     "mapId": "ser-behind-enemy-lines",
     "gameId": "sniper-elite-resistance",
     "status": "research_draft",
-    "lastReviewed": "2026-05-26",
+    "lastReviewed": "2026-06-16",
     "officialSources": [
       {
         "label": "Rebellion - Sniper Elite: Resistance",
@@ -2747,7 +3649,7 @@
     "mapId": "ser-collision-course",
     "gameId": "sniper-elite-resistance",
     "status": "research_draft",
-    "lastReviewed": "2026-05-26",
+    "lastReviewed": "2026-06-16",
     "officialSources": [
       {
         "label": "Rebellion - Sniper Elite: Resistance",
@@ -2810,7 +3712,7 @@
     "mapId": "ser-dead-drop",
     "gameId": "sniper-elite-resistance",
     "status": "research_draft",
-    "lastReviewed": "2026-05-26",
+    "lastReviewed": "2026-06-16",
     "officialSources": [
       {
         "label": "Rebellion - Sniper Elite: Resistance",
@@ -2873,7 +3775,7 @@
     "mapId": "ser-devils-cauldron",
     "gameId": "sniper-elite-resistance",
     "status": "research_draft",
-    "lastReviewed": "2026-05-26",
+    "lastReviewed": "2026-06-16",
     "officialSources": [
       {
         "label": "Rebellion - Sniper Elite: Resistance",
@@ -2936,7 +3838,7 @@
     "mapId": "ser-end-of-the-line",
     "gameId": "sniper-elite-resistance",
     "status": "research_draft",
-    "lastReviewed": "2026-05-26",
+    "lastReviewed": "2026-06-16",
     "officialSources": [
       {
         "label": "Rebellion - Sniper Elite: Resistance",
@@ -2999,7 +3901,7 @@
     "mapId": "ser-lights-camera-achtung",
     "gameId": "sniper-elite-resistance",
     "status": "research_draft",
-    "lastReviewed": "2026-05-26",
+    "lastReviewed": "2026-06-16",
     "officialSources": [
       {
         "label": "Rebellion - Sniper Elite: Resistance",
@@ -3062,7 +3964,7 @@
     "mapId": "ser-lock-stock-and-barrels",
     "gameId": "sniper-elite-resistance",
     "status": "research_draft",
-    "lastReviewed": "2026-05-26",
+    "lastReviewed": "2026-06-16",
     "officialSources": [
       {
         "label": "Rebellion - Sniper Elite: Resistance",
@@ -3125,7 +4027,7 @@
     "mapId": "ser-mud-and-thunder",
     "gameId": "sniper-elite-resistance",
     "status": "research_draft",
-    "lastReviewed": "2026-05-26",
+    "lastReviewed": "2026-06-16",
     "officialSources": [
       {
         "label": "Rebellion - Sniper Elite: Resistance",
@@ -3188,7 +4090,7 @@
     "mapId": "ser-sonderzuge-sabotage",
     "gameId": "sniper-elite-resistance",
     "status": "research_draft",
-    "lastReviewed": "2026-05-26",
+    "lastReviewed": "2026-06-16",
     "officialSources": [
       {
         "label": "Rebellion - Sniper Elite: Resistance",
@@ -3251,7 +4153,7 @@
     "mapId": "ser-striking-range",
     "gameId": "sniper-elite-resistance",
     "status": "research_draft",
-    "lastReviewed": "2026-05-26",
+    "lastReviewed": "2026-06-16",
     "officialSources": [
       {
         "label": "Rebellion - Sniper Elite: Resistance",
@@ -3314,7 +4216,7 @@
     "mapId": "ser-vercors-vendetta",
     "gameId": "sniper-elite-resistance",
     "status": "research_draft",
-    "lastReviewed": "2026-05-26",
+    "lastReviewed": "2026-06-16",
     "officialSources": [
       {
         "label": "Rebellion - Sniper Elite: Resistance",
@@ -3371,1121 +4273,6 @@
       "Rebellion screenshots, in-game map art, UI icons, and marketing images.",
       "Guides4Gamers guide prose, screenshots, icons, public UI, and full walkthrough text.",
       "Third-party annotated map images, proprietary icons, and guide prose from other sources."
-    ]
-  },
-  {
-    "mapId": "sev2r-assassinate-the-fuhrer",
-    "gameId": "sniper-elite-v2-remastered",
-    "status": "research_draft",
-    "lastReviewed": "2026-06-05",
-    "officialSources": [
-      {
-        "label": "Rebellion - Sniper Elite V2 Remastered",
-        "url": "https://shop.rebellion.com/products/sniper-elite-v2-remastered",
-        "note": "Official product context for the remaster and bundled DLC mission scope."
-      }
-    ],
-    "referenceSources": [
-      {
-        "label": "MapGenie Sniper Elite V2 Germany Map",
-        "url": "https://mapgenie.io/sniper-elite-v2/maps/germany",
-        "note": "MapGenie source import was found for this title, but this mission has no compatible importable mission region in the current payload."
-      },
-      {
-        "label": "MapGenie Sniper Elite V2 Germany Map",
-        "url": "https://mapgenie.io/sniper-elite-v2/maps/germany",
-        "note": "MapGenie source import was found for this title, but this mission has no compatible importable mission region in the current payload."
-      },
-      {
-        "label": "MapGenie Sniper Elite V2 Germany Map",
-        "url": "https://mapgenie.io/sniper-elite-v2/maps/germany",
-        "note": "MapGenie source import was found for this title, but this mission has no compatible importable mission region in the current payload."
-      },
-      {
-        "label": "Sniper Elite Wiki - Sniper Elite V2",
-        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_V2",
-        "note": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
-      },
-      {
-        "label": "Gamepressure Sniper Elite V2 guide",
-        "url": "https://www.gamepressure.com/sniperelitev2/",
-        "note": "Used for mission/collectible category coverage and manual review focus only. Map images, numbering, route prose, and text are not reused."
-      },
-      {
-        "label": "GameMappers Sniper Elite V2 map article",
-        "url": "https://gamemappers.com/sniper-elite-v2-map/",
-        "note": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
-      },
-      {
-        "label": "Wand Sniper Elite V2 Remastered game page",
-        "url": "https://wand.com/games/sniper-elite-v2-remastered",
-        "note": "Confirms Wand game support, but no public Wand map endpoint was confirmed for this title during implementation."
-      },
-      {
-        "label": "SteamAH V2 Remastered DLC walkthrough",
-        "url": "https://steamah.com/sniper-elite-v2-remastered-dlc-mission-walkthrough/",
-        "note": "Used only to spot-check the non-Fuehrer DLC mission set. Walkthrough prose and screenshots are not reused."
-      },
-      {
-        "label": "First-hand Vaexil gameplay review",
-        "url": "",
-        "note": "Required before any Assassinate the Führer marker becomes verified or published."
-      }
-    ],
-    "verifiedNamedAreas": [],
-    "approximateAreas": [
-      "Assassinate the Führer private neutral draft surface plate",
-      "Mission start, objective, extraction, and route-review candidates",
-      "Collectible, document, weapon, resource, and challenge-review candidates",
-      "Interior, elevated, tunnel, or vertical spaces that may need future split views",
-      "Manual replacement pending because no compatible external mission source was imported for this map.",
-      "Manual replacement pending because no compatible external mission source was imported for this map.",
-      "Manual replacement pending because no compatible external mission source was imported for this map."
-    ],
-    "poiCandidates": [
-      {
-        "label": "Assassinate the Führer Gold bar sweep",
-        "category": "gold_bar",
-        "confidence": "unverified",
-        "notes": "Source-packet review candidate only; create coordinates after private source import, scratch comparison, or first-hand gameplay review."
-      },
-      {
-        "label": "Assassinate the Führer Wine bottle sweep",
-        "category": "wine_bottle",
-        "confidence": "unverified",
-        "notes": "Source-packet review candidate only; create coordinates after private source import, scratch comparison, or first-hand gameplay review."
-      },
-      {
-        "label": "Assassinate the Führer Primary objective route review",
-        "category": "main_objective",
-        "confidence": "unverified",
-        "notes": "Source-packet review candidate only; create coordinates after private source import, scratch comparison, or first-hand gameplay review."
-      },
-      {
-        "label": "Assassinate the Führer Sniper and vehicle threat review",
-        "category": "sniper",
-        "confidence": "unverified",
-        "notes": "Source-packet review candidate only; create coordinates after private source import, scratch comparison, or first-hand gameplay review."
-      }
-    ],
-    "uncertaintyNotes": [
-      "No compatible MapGenie mission region was available for this DLC map during the source-map import pass.",
-      "No compatible MapGenie mission region was available for this DLC map during the source-map import pass.",
-      "No compatible MapGenie mission region was available for this DLC map during the source-map import pass.",
-      "This legacy Sniper Elite map is admin-draft scaffolding only and currently uses a neutral Vaexil-created placeholder plate.",
-      "No third-party source map, marker coordinate payload, guide prose, screenshots, icons, or public UI has been imported for this title.",
-      "Exact marker placement requires a later private source-map approval, scratch-only visual comparison, or first-hand gameplay coordinate pass.",
-      "If a compatible private source plate is approved later, keep it under private/recon and keep resulting markers draft/unverified until manually reviewed."
-    ],
-    "avoidCopying": [
-      "Rebellion screenshots, in-game map art, UI icons, and marketing images.",
-      "Gamepressure map images, numbering systems, route prose, screenshots, and guide text.",
-      "GameMappers, MapGenie, SniperElite4Maps, Wand, PowerPyx, PS4Trophies, and similar marker coordinates, app data, screenshots, UI, guide prose, and route descriptions.",
-      "Any third-party source-map image unless it is explicitly recorded as owner-approved private review material."
-    ]
-  },
-  {
-    "mapId": "sev2r-brandenburg-gate",
-    "gameId": "sniper-elite-v2-remastered",
-    "status": "research_draft",
-    "lastReviewed": "2026-06-05",
-    "officialSources": [
-      {
-        "label": "Rebellion - Sniper Elite V2 Remastered",
-        "url": "https://shop.rebellion.com/products/sniper-elite-v2-remastered",
-        "note": "Official product context for game and mission scope; no official art, screenshots, UI, or map assets are reused."
-      }
-    ],
-    "referenceSources": [
-      {
-        "label": "MapGenie Sniper Elite V2 Germany Map",
-        "url": "https://mapgenie.io/sniper-elite-v2/maps/germany",
-        "note": "Private source-map imagery, category labels, and marker coordinate payload are imported for admin-only draft review. Public publication and manual Vaexil replacement remain blocked."
-      },
-      {
-        "label": "GameMappers Sniper Elite V2 map article",
-        "url": "https://gamemappers.com/sniper-elite-v2-map/",
-        "note": "MapGenie-backed source context only; no GameMappers UI, prose, screenshots, or marker text is imported separately."
-      },
-      {
-        "label": "First-hand Vaexil gameplay review",
-        "url": "",
-        "note": "Required before any Brandenburg Gate marker becomes verified or published."
-      }
-    ],
-    "verifiedNamedAreas": [],
-    "approximateAreas": [
-      "Brandenburg Gate private MapGenie source-map plate",
-      "19 external draft marker coordinates queued for manual review",
-      "Manual Vaexil replacement source pending"
-    ],
-    "poiCandidates": [
-      {
-        "label": "Brandenburg Gate imported marker review",
-        "category": "poi",
-        "confidence": "unverified",
-        "notes": "External marker seed layer is draft-only and must be reviewed in-game before any confidence upgrade."
-      },
-      {
-        "label": "Brandenburg Gate manual replacement pass",
-        "category": "poi",
-        "confidence": "unverified",
-        "notes": "Replace this private external source plate with a manually sourced Vaexil map when available while preserving stable map and marker contracts."
-      }
-    ],
-    "uncertaintyNotes": [
-      "The active source plate is a private admin-only candidate rendered from MapGenie source tiles and must not be published as a public Recon asset.",
-      "Marker positions use MapGenie Web Mercator tile coordinates normalized into the private Recon source plate.",
-      "Marker labels are short source titles only; guide prose, screenshots, media, icons, checklist state, route text, and UI are not reused.",
-      "All imported markers remain draft/unverified until first-hand Vaexil gameplay review confirms placement and meaning."
-    ],
-    "avoidCopying": [
-      "Rebellion screenshots, in-game map art, UI icons, and marketing images.",
-      "MapGenie UI chrome, icons, media attachments, screenshots, checklist state, route prose, and guide descriptions.",
-      "Gamepressure, Wand, sniperelite4maps, PowerPyx, PS4Trophies, and similar guide prose, screenshots, routes, UI, icons, and media."
-    ]
-  },
-  {
-    "mapId": "sev2r-kaiser-friedrich-museum",
-    "gameId": "sniper-elite-v2-remastered",
-    "status": "research_draft",
-    "lastReviewed": "2026-06-05",
-    "officialSources": [
-      {
-        "label": "Rebellion - Sniper Elite V2 Remastered",
-        "url": "https://shop.rebellion.com/products/sniper-elite-v2-remastered",
-        "note": "Official product context for game and mission scope; no official art, screenshots, UI, or map assets are reused."
-      }
-    ],
-    "referenceSources": [
-      {
-        "label": "MapGenie Sniper Elite V2 Germany Map",
-        "url": "https://mapgenie.io/sniper-elite-v2/maps/germany",
-        "note": "Private source-map imagery, category labels, and marker coordinate payload are imported for admin-only draft review. Public publication and manual Vaexil replacement remain blocked."
-      },
-      {
-        "label": "GameMappers Sniper Elite V2 map article",
-        "url": "https://gamemappers.com/sniper-elite-v2-map/",
-        "note": "MapGenie-backed source context only; no GameMappers UI, prose, screenshots, or marker text is imported separately."
-      },
-      {
-        "label": "First-hand Vaexil gameplay review",
-        "url": "",
-        "note": "Required before any Kaiser-Friedrich Museum marker becomes verified or published."
-      }
-    ],
-    "verifiedNamedAreas": [],
-    "approximateAreas": [
-      "Kaiser-Friedrich Museum private MapGenie source-map plate",
-      "29 external draft marker coordinates queued for manual review",
-      "Manual Vaexil replacement source pending"
-    ],
-    "poiCandidates": [
-      {
-        "label": "Kaiser-Friedrich Museum imported marker review",
-        "category": "poi",
-        "confidence": "unverified",
-        "notes": "External marker seed layer is draft-only and must be reviewed in-game before any confidence upgrade."
-      },
-      {
-        "label": "Kaiser-Friedrich Museum manual replacement pass",
-        "category": "poi",
-        "confidence": "unverified",
-        "notes": "Replace this private external source plate with a manually sourced Vaexil map when available while preserving stable map and marker contracts."
-      }
-    ],
-    "uncertaintyNotes": [
-      "The active source plate is a private admin-only candidate rendered from MapGenie source tiles and must not be published as a public Recon asset.",
-      "Marker positions use MapGenie Web Mercator tile coordinates normalized into the private Recon source plate.",
-      "Marker labels are short source titles only; guide prose, screenshots, media, icons, checklist state, route text, and UI are not reused.",
-      "All imported markers remain draft/unverified until first-hand Vaexil gameplay review confirms placement and meaning."
-    ],
-    "avoidCopying": [
-      "Rebellion screenshots, in-game map art, UI icons, and marketing images.",
-      "MapGenie UI chrome, icons, media attachments, screenshots, checklist state, route prose, and guide descriptions.",
-      "Gamepressure, Wand, sniperelite4maps, PowerPyx, PS4Trophies, and similar guide prose, screenshots, routes, UI, icons, and media."
-    ]
-  },
-  {
-    "mapId": "sev2r-karlshorst-command-post",
-    "gameId": "sniper-elite-v2-remastered",
-    "status": "research_draft",
-    "lastReviewed": "2026-06-05",
-    "officialSources": [
-      {
-        "label": "Rebellion - Sniper Elite V2 Remastered",
-        "url": "https://shop.rebellion.com/products/sniper-elite-v2-remastered",
-        "note": "Official product context for game and mission scope; no official art, screenshots, UI, or map assets are reused."
-      }
-    ],
-    "referenceSources": [
-      {
-        "label": "MapGenie Sniper Elite V2 Germany Map",
-        "url": "https://mapgenie.io/sniper-elite-v2/maps/germany",
-        "note": "Private source-map imagery, category labels, and marker coordinate payload are imported for admin-only draft review. Public publication and manual Vaexil replacement remain blocked."
-      },
-      {
-        "label": "GameMappers Sniper Elite V2 map article",
-        "url": "https://gamemappers.com/sniper-elite-v2-map/",
-        "note": "MapGenie-backed source context only; no GameMappers UI, prose, screenshots, or marker text is imported separately."
-      },
-      {
-        "label": "First-hand Vaexil gameplay review",
-        "url": "",
-        "note": "Required before any Karlshorst Command Post marker becomes verified or published."
-      }
-    ],
-    "verifiedNamedAreas": [],
-    "approximateAreas": [
-      "Karlshorst Command Post private MapGenie source-map plate",
-      "20 external draft marker coordinates queued for manual review",
-      "Manual Vaexil replacement source pending"
-    ],
-    "poiCandidates": [
-      {
-        "label": "Karlshorst Command Post imported marker review",
-        "category": "poi",
-        "confidence": "unverified",
-        "notes": "External marker seed layer is draft-only and must be reviewed in-game before any confidence upgrade."
-      },
-      {
-        "label": "Karlshorst Command Post manual replacement pass",
-        "category": "poi",
-        "confidence": "unverified",
-        "notes": "Replace this private external source plate with a manually sourced Vaexil map when available while preserving stable map and marker contracts."
-      }
-    ],
-    "uncertaintyNotes": [
-      "The active source plate is a private admin-only candidate rendered from MapGenie source tiles and must not be published as a public Recon asset.",
-      "Marker positions use MapGenie Web Mercator tile coordinates normalized into the private Recon source plate.",
-      "Marker labels are short source titles only; guide prose, screenshots, media, icons, checklist state, route text, and UI are not reused.",
-      "All imported markers remain draft/unverified until first-hand Vaexil gameplay review confirms placement and meaning."
-    ],
-    "avoidCopying": [
-      "Rebellion screenshots, in-game map art, UI icons, and marketing images.",
-      "MapGenie UI chrome, icons, media attachments, screenshots, checklist state, route prose, and guide descriptions.",
-      "Gamepressure, Wand, sniperelite4maps, PowerPyx, PS4Trophies, and similar guide prose, screenshots, routes, UI, icons, and media."
-    ]
-  },
-  {
-    "mapId": "sev2r-kopenick-launch-site",
-    "gameId": "sniper-elite-v2-remastered",
-    "status": "research_draft",
-    "lastReviewed": "2026-06-05",
-    "officialSources": [
-      {
-        "label": "Rebellion - Sniper Elite V2 Remastered",
-        "url": "https://shop.rebellion.com/products/sniper-elite-v2-remastered",
-        "note": "Official product context for game and mission scope; no official art, screenshots, UI, or map assets are reused."
-      }
-    ],
-    "referenceSources": [
-      {
-        "label": "MapGenie Sniper Elite V2 Germany Map",
-        "url": "https://mapgenie.io/sniper-elite-v2/maps/germany",
-        "note": "Private source-map imagery, category labels, and marker coordinate payload are imported for admin-only draft review. Public publication and manual Vaexil replacement remain blocked."
-      },
-      {
-        "label": "GameMappers Sniper Elite V2 map article",
-        "url": "https://gamemappers.com/sniper-elite-v2-map/",
-        "note": "MapGenie-backed source context only; no GameMappers UI, prose, screenshots, or marker text is imported separately."
-      },
-      {
-        "label": "First-hand Vaexil gameplay review",
-        "url": "",
-        "note": "Required before any Köpenick Launch Site marker becomes verified or published."
-      }
-    ],
-    "verifiedNamedAreas": [],
-    "approximateAreas": [
-      "Köpenick Launch Site private MapGenie source-map plate",
-      "27 external draft marker coordinates queued for manual review",
-      "Manual Vaexil replacement source pending"
-    ],
-    "poiCandidates": [
-      {
-        "label": "Köpenick Launch Site imported marker review",
-        "category": "poi",
-        "confidence": "unverified",
-        "notes": "External marker seed layer is draft-only and must be reviewed in-game before any confidence upgrade."
-      },
-      {
-        "label": "Köpenick Launch Site manual replacement pass",
-        "category": "poi",
-        "confidence": "unverified",
-        "notes": "Replace this private external source plate with a manually sourced Vaexil map when available while preserving stable map and marker contracts."
-      }
-    ],
-    "uncertaintyNotes": [
-      "The active source plate is a private admin-only candidate rendered from MapGenie source tiles and must not be published as a public Recon asset.",
-      "Marker positions use MapGenie Web Mercator tile coordinates normalized into the private Recon source plate.",
-      "Marker labels are short source titles only; guide prose, screenshots, media, icons, checklist state, route text, and UI are not reused.",
-      "All imported markers remain draft/unverified until first-hand Vaexil gameplay review confirms placement and meaning."
-    ],
-    "avoidCopying": [
-      "Rebellion screenshots, in-game map art, UI icons, and marketing images.",
-      "MapGenie UI chrome, icons, media attachments, screenshots, checklist state, route prose, and guide descriptions.",
-      "Gamepressure, Wand, sniperelite4maps, PowerPyx, PS4Trophies, and similar guide prose, screenshots, routes, UI, icons, and media."
-    ]
-  },
-  {
-    "mapId": "sev2r-kreuzberg-headquarters",
-    "gameId": "sniper-elite-v2-remastered",
-    "status": "research_draft",
-    "lastReviewed": "2026-06-05",
-    "officialSources": [
-      {
-        "label": "Rebellion - Sniper Elite V2 Remastered",
-        "url": "https://shop.rebellion.com/products/sniper-elite-v2-remastered",
-        "note": "Official product context for game and mission scope; no official art, screenshots, UI, or map assets are reused."
-      }
-    ],
-    "referenceSources": [
-      {
-        "label": "MapGenie Sniper Elite V2 Germany Map",
-        "url": "https://mapgenie.io/sniper-elite-v2/maps/germany",
-        "note": "Private source-map imagery, category labels, and marker coordinate payload are imported for admin-only draft review. Public publication and manual Vaexil replacement remain blocked."
-      },
-      {
-        "label": "GameMappers Sniper Elite V2 map article",
-        "url": "https://gamemappers.com/sniper-elite-v2-map/",
-        "note": "MapGenie-backed source context only; no GameMappers UI, prose, screenshots, or marker text is imported separately."
-      },
-      {
-        "label": "First-hand Vaexil gameplay review",
-        "url": "",
-        "note": "Required before any Kreuzberg Headquarters marker becomes verified or published."
-      }
-    ],
-    "verifiedNamedAreas": [],
-    "approximateAreas": [
-      "Kreuzberg Headquarters private MapGenie source-map plate",
-      "23 external draft marker coordinates queued for manual review",
-      "Manual Vaexil replacement source pending"
-    ],
-    "poiCandidates": [
-      {
-        "label": "Kreuzberg Headquarters imported marker review",
-        "category": "poi",
-        "confidence": "unverified",
-        "notes": "External marker seed layer is draft-only and must be reviewed in-game before any confidence upgrade."
-      },
-      {
-        "label": "Kreuzberg Headquarters manual replacement pass",
-        "category": "poi",
-        "confidence": "unverified",
-        "notes": "Replace this private external source plate with a manually sourced Vaexil map when available while preserving stable map and marker contracts."
-      }
-    ],
-    "uncertaintyNotes": [
-      "The active source plate is a private admin-only candidate rendered from MapGenie source tiles and must not be published as a public Recon asset.",
-      "Marker positions use MapGenie Web Mercator tile coordinates normalized into the private Recon source plate.",
-      "Marker labels are short source titles only; guide prose, screenshots, media, icons, checklist state, route text, and UI are not reused.",
-      "All imported markers remain draft/unverified until first-hand Vaexil gameplay review confirms placement and meaning."
-    ],
-    "avoidCopying": [
-      "Rebellion screenshots, in-game map art, UI icons, and marketing images.",
-      "MapGenie UI chrome, icons, media attachments, screenshots, checklist state, route prose, and guide descriptions.",
-      "Gamepressure, Wand, sniperelite4maps, PowerPyx, PS4Trophies, and similar guide prose, screenshots, routes, UI, icons, and media."
-    ]
-  },
-  {
-    "mapId": "sev2r-mittelwerk-facility",
-    "gameId": "sniper-elite-v2-remastered",
-    "status": "research_draft",
-    "lastReviewed": "2026-06-05",
-    "officialSources": [
-      {
-        "label": "Rebellion - Sniper Elite V2 Remastered",
-        "url": "https://shop.rebellion.com/products/sniper-elite-v2-remastered",
-        "note": "Official product context for game and mission scope; no official art, screenshots, UI, or map assets are reused."
-      }
-    ],
-    "referenceSources": [
-      {
-        "label": "MapGenie Sniper Elite V2 Germany Map",
-        "url": "https://mapgenie.io/sniper-elite-v2/maps/germany",
-        "note": "Private source-map imagery, category labels, and marker coordinate payload are imported for admin-only draft review. Public publication and manual Vaexil replacement remain blocked."
-      },
-      {
-        "label": "GameMappers Sniper Elite V2 map article",
-        "url": "https://gamemappers.com/sniper-elite-v2-map/",
-        "note": "MapGenie-backed source context only; no GameMappers UI, prose, screenshots, or marker text is imported separately."
-      },
-      {
-        "label": "First-hand Vaexil gameplay review",
-        "url": "",
-        "note": "Required before any Mittelwerk Facility marker becomes verified or published."
-      }
-    ],
-    "verifiedNamedAreas": [],
-    "approximateAreas": [
-      "Mittelwerk Facility private MapGenie source-map plate",
-      "26 external draft marker coordinates queued for manual review",
-      "Manual Vaexil replacement source pending"
-    ],
-    "poiCandidates": [
-      {
-        "label": "Mittelwerk Facility imported marker review",
-        "category": "poi",
-        "confidence": "unverified",
-        "notes": "External marker seed layer is draft-only and must be reviewed in-game before any confidence upgrade."
-      },
-      {
-        "label": "Mittelwerk Facility manual replacement pass",
-        "category": "poi",
-        "confidence": "unverified",
-        "notes": "Replace this private external source plate with a manually sourced Vaexil map when available while preserving stable map and marker contracts."
-      }
-    ],
-    "uncertaintyNotes": [
-      "The active source plate is a private admin-only candidate rendered from MapGenie source tiles and must not be published as a public Recon asset.",
-      "Marker positions use MapGenie Web Mercator tile coordinates normalized into the private Recon source plate.",
-      "Marker labels are short source titles only; guide prose, screenshots, media, icons, checklist state, route text, and UI are not reused.",
-      "All imported markers remain draft/unverified until first-hand Vaexil gameplay review confirms placement and meaning."
-    ],
-    "avoidCopying": [
-      "Rebellion screenshots, in-game map art, UI icons, and marketing images.",
-      "MapGenie UI chrome, icons, media attachments, screenshots, checklist state, route prose, and guide descriptions.",
-      "Gamepressure, Wand, sniperelite4maps, PowerPyx, PS4Trophies, and similar guide prose, screenshots, routes, UI, icons, and media."
-    ]
-  },
-  {
-    "mapId": "sev2r-neudorf-outpost",
-    "gameId": "sniper-elite-v2-remastered",
-    "status": "research_draft",
-    "lastReviewed": "2026-06-05",
-    "officialSources": [
-      {
-        "label": "Rebellion - Sniper Elite V2 Remastered",
-        "url": "https://shop.rebellion.com/products/sniper-elite-v2-remastered",
-        "note": "Official product context for the remaster and bundled DLC mission scope."
-      }
-    ],
-    "referenceSources": [
-      {
-        "label": "MapGenie Sniper Elite V2 Germany Map",
-        "url": "https://mapgenie.io/sniper-elite-v2/maps/germany",
-        "note": "MapGenie source import was found for this title, but this mission has no compatible importable mission region in the current payload."
-      },
-      {
-        "label": "MapGenie Sniper Elite V2 Germany Map",
-        "url": "https://mapgenie.io/sniper-elite-v2/maps/germany",
-        "note": "MapGenie source import was found for this title, but this mission has no compatible importable mission region in the current payload."
-      },
-      {
-        "label": "MapGenie Sniper Elite V2 Germany Map",
-        "url": "https://mapgenie.io/sniper-elite-v2/maps/germany",
-        "note": "MapGenie source import was found for this title, but this mission has no compatible importable mission region in the current payload."
-      },
-      {
-        "label": "Sniper Elite Wiki - Sniper Elite V2",
-        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_V2",
-        "note": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
-      },
-      {
-        "label": "Gamepressure Sniper Elite V2 guide",
-        "url": "https://www.gamepressure.com/sniperelitev2/",
-        "note": "Used for mission/collectible category coverage and manual review focus only. Map images, numbering, route prose, and text are not reused."
-      },
-      {
-        "label": "GameMappers Sniper Elite V2 map article",
-        "url": "https://gamemappers.com/sniper-elite-v2-map/",
-        "note": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
-      },
-      {
-        "label": "Wand Sniper Elite V2 Remastered game page",
-        "url": "https://wand.com/games/sniper-elite-v2-remastered",
-        "note": "Confirms Wand game support, but no public Wand map endpoint was confirmed for this title during implementation."
-      },
-      {
-        "label": "SteamAH V2 Remastered DLC walkthrough",
-        "url": "https://steamah.com/sniper-elite-v2-remastered-dlc-mission-walkthrough/",
-        "note": "Used only to spot-check the non-Fuehrer DLC mission set. Walkthrough prose and screenshots are not reused."
-      },
-      {
-        "label": "First-hand Vaexil gameplay review",
-        "url": "",
-        "note": "Required before any Neudorf Outpost marker becomes verified or published."
-      }
-    ],
-    "verifiedNamedAreas": [],
-    "approximateAreas": [
-      "Neudorf Outpost private neutral draft surface plate",
-      "Mission start, objective, extraction, and route-review candidates",
-      "Collectible, document, weapon, resource, and challenge-review candidates",
-      "Interior, elevated, tunnel, or vertical spaces that may need future split views",
-      "Manual replacement pending because no compatible external mission source was imported for this map.",
-      "Manual replacement pending because no compatible external mission source was imported for this map.",
-      "Manual replacement pending because no compatible external mission source was imported for this map."
-    ],
-    "poiCandidates": [
-      {
-        "label": "Neudorf Outpost Gold bar sweep",
-        "category": "gold_bar",
-        "confidence": "unverified",
-        "notes": "Source-packet review candidate only; create coordinates after private source import, scratch comparison, or first-hand gameplay review."
-      },
-      {
-        "label": "Neudorf Outpost Wine bottle sweep",
-        "category": "wine_bottle",
-        "confidence": "unverified",
-        "notes": "Source-packet review candidate only; create coordinates after private source import, scratch comparison, or first-hand gameplay review."
-      },
-      {
-        "label": "Neudorf Outpost Primary objective route review",
-        "category": "main_objective",
-        "confidence": "unverified",
-        "notes": "Source-packet review candidate only; create coordinates after private source import, scratch comparison, or first-hand gameplay review."
-      },
-      {
-        "label": "Neudorf Outpost Sniper and vehicle threat review",
-        "category": "sniper",
-        "confidence": "unverified",
-        "notes": "Source-packet review candidate only; create coordinates after private source import, scratch comparison, or first-hand gameplay review."
-      }
-    ],
-    "uncertaintyNotes": [
-      "No compatible MapGenie mission region was available for this DLC map during the source-map import pass.",
-      "No compatible MapGenie mission region was available for this DLC map during the source-map import pass.",
-      "No compatible MapGenie mission region was available for this DLC map during the source-map import pass.",
-      "This legacy Sniper Elite map is admin-draft scaffolding only and currently uses a neutral Vaexil-created placeholder plate.",
-      "No third-party source map, marker coordinate payload, guide prose, screenshots, icons, or public UI has been imported for this title.",
-      "Exact marker placement requires a later private source-map approval, scratch-only visual comparison, or first-hand gameplay coordinate pass.",
-      "If a compatible private source plate is approved later, keep it under private/recon and keep resulting markers draft/unverified until manually reviewed."
-    ],
-    "avoidCopying": [
-      "Rebellion screenshots, in-game map art, UI icons, and marketing images.",
-      "Gamepressure map images, numbering systems, route prose, screenshots, and guide text.",
-      "GameMappers, MapGenie, SniperElite4Maps, Wand, PowerPyx, PS4Trophies, and similar marker coordinates, app data, screenshots, UI, guide prose, and route descriptions.",
-      "Any third-party source-map image unless it is explicitly recorded as owner-approved private review material."
-    ]
-  },
-  {
-    "mapId": "sev2r-opernplatz",
-    "gameId": "sniper-elite-v2-remastered",
-    "status": "research_draft",
-    "lastReviewed": "2026-06-05",
-    "officialSources": [
-      {
-        "label": "Rebellion - Sniper Elite V2 Remastered",
-        "url": "https://shop.rebellion.com/products/sniper-elite-v2-remastered",
-        "note": "Official product context for game and mission scope; no official art, screenshots, UI, or map assets are reused."
-      }
-    ],
-    "referenceSources": [
-      {
-        "label": "MapGenie Sniper Elite V2 Germany Map",
-        "url": "https://mapgenie.io/sniper-elite-v2/maps/germany",
-        "note": "Private source-map imagery, category labels, and marker coordinate payload are imported for admin-only draft review. Public publication and manual Vaexil replacement remain blocked."
-      },
-      {
-        "label": "GameMappers Sniper Elite V2 map article",
-        "url": "https://gamemappers.com/sniper-elite-v2-map/",
-        "note": "MapGenie-backed source context only; no GameMappers UI, prose, screenshots, or marker text is imported separately."
-      },
-      {
-        "label": "First-hand Vaexil gameplay review",
-        "url": "",
-        "note": "Required before any Opernplatz marker becomes verified or published."
-      }
-    ],
-    "verifiedNamedAreas": [],
-    "approximateAreas": [
-      "Opernplatz private MapGenie source-map plate",
-      "22 external draft marker coordinates queued for manual review",
-      "Manual Vaexil replacement source pending"
-    ],
-    "poiCandidates": [
-      {
-        "label": "Opernplatz imported marker review",
-        "category": "poi",
-        "confidence": "unverified",
-        "notes": "External marker seed layer is draft-only and must be reviewed in-game before any confidence upgrade."
-      },
-      {
-        "label": "Opernplatz manual replacement pass",
-        "category": "poi",
-        "confidence": "unverified",
-        "notes": "Replace this private external source plate with a manually sourced Vaexil map when available while preserving stable map and marker contracts."
-      }
-    ],
-    "uncertaintyNotes": [
-      "The active source plate is a private admin-only candidate rendered from MapGenie source tiles and must not be published as a public Recon asset.",
-      "Marker positions use MapGenie Web Mercator tile coordinates normalized into the private Recon source plate.",
-      "Marker labels are short source titles only; guide prose, screenshots, media, icons, checklist state, route text, and UI are not reused.",
-      "All imported markers remain draft/unverified until first-hand Vaexil gameplay review confirms placement and meaning."
-    ],
-    "avoidCopying": [
-      "Rebellion screenshots, in-game map art, UI icons, and marketing images.",
-      "MapGenie UI chrome, icons, media attachments, screenshots, checklist state, route prose, and guide descriptions.",
-      "Gamepressure, Wand, sniperelite4maps, PowerPyx, PS4Trophies, and similar guide prose, screenshots, routes, UI, icons, and media."
-    ]
-  },
-  {
-    "mapId": "sev2r-prologue",
-    "gameId": "sniper-elite-v2-remastered",
-    "status": "research_draft",
-    "lastReviewed": "2026-06-05",
-    "officialSources": [
-      {
-        "label": "Rebellion - Sniper Elite V2 Remastered",
-        "url": "https://shop.rebellion.com/products/sniper-elite-v2-remastered",
-        "note": "Official product context for game and mission scope; no official art, screenshots, UI, or map assets are reused."
-      }
-    ],
-    "referenceSources": [
-      {
-        "label": "MapGenie Sniper Elite V2 Germany Map",
-        "url": "https://mapgenie.io/sniper-elite-v2/maps/germany",
-        "note": "Private source-map imagery, category labels, and marker coordinate payload are imported for admin-only draft review. Public publication and manual Vaexil replacement remain blocked."
-      },
-      {
-        "label": "GameMappers Sniper Elite V2 map article",
-        "url": "https://gamemappers.com/sniper-elite-v2-map/",
-        "note": "MapGenie-backed source context only; no GameMappers UI, prose, screenshots, or marker text is imported separately."
-      },
-      {
-        "label": "First-hand Vaexil gameplay review",
-        "url": "",
-        "note": "Required before any Prologue marker becomes verified or published."
-      }
-    ],
-    "verifiedNamedAreas": [],
-    "approximateAreas": [
-      "Prologue private MapGenie source-map plate",
-      "3 external draft marker coordinates queued for manual review",
-      "Manual Vaexil replacement source pending"
-    ],
-    "poiCandidates": [
-      {
-        "label": "Prologue imported marker review",
-        "category": "poi",
-        "confidence": "unverified",
-        "notes": "External marker seed layer is draft-only and must be reviewed in-game before any confidence upgrade."
-      },
-      {
-        "label": "Prologue manual replacement pass",
-        "category": "poi",
-        "confidence": "unverified",
-        "notes": "Replace this private external source plate with a manually sourced Vaexil map when available while preserving stable map and marker contracts."
-      }
-    ],
-    "uncertaintyNotes": [
-      "The active source plate is a private admin-only candidate rendered from MapGenie source tiles and must not be published as a public Recon asset.",
-      "Marker positions use MapGenie Web Mercator tile coordinates normalized into the private Recon source plate.",
-      "Marker labels are short source titles only; guide prose, screenshots, media, icons, checklist state, route text, and UI are not reused.",
-      "All imported markers remain draft/unverified until first-hand Vaexil gameplay review confirms placement and meaning."
-    ],
-    "avoidCopying": [
-      "Rebellion screenshots, in-game map art, UI icons, and marketing images.",
-      "MapGenie UI chrome, icons, media attachments, screenshots, checklist state, route prose, and guide descriptions.",
-      "Gamepressure, Wand, sniperelite4maps, PowerPyx, PS4Trophies, and similar guide prose, screenshots, routes, UI, icons, and media."
-    ]
-  },
-  {
-    "mapId": "sev2r-saint-pierre",
-    "gameId": "sniper-elite-v2-remastered",
-    "status": "research_draft",
-    "lastReviewed": "2026-06-05",
-    "officialSources": [
-      {
-        "label": "Rebellion - Sniper Elite V2 Remastered",
-        "url": "https://shop.rebellion.com/products/sniper-elite-v2-remastered",
-        "note": "Official product context for the remaster and bundled DLC mission scope."
-      }
-    ],
-    "referenceSources": [
-      {
-        "label": "MapGenie Sniper Elite V2 Germany Map",
-        "url": "https://mapgenie.io/sniper-elite-v2/maps/germany",
-        "note": "MapGenie source import was found for this title, but this mission has no compatible importable mission region in the current payload."
-      },
-      {
-        "label": "MapGenie Sniper Elite V2 Germany Map",
-        "url": "https://mapgenie.io/sniper-elite-v2/maps/germany",
-        "note": "MapGenie source import was found for this title, but this mission has no compatible importable mission region in the current payload."
-      },
-      {
-        "label": "MapGenie Sniper Elite V2 Germany Map",
-        "url": "https://mapgenie.io/sniper-elite-v2/maps/germany",
-        "note": "MapGenie source import was found for this title, but this mission has no compatible importable mission region in the current payload."
-      },
-      {
-        "label": "Sniper Elite Wiki - Sniper Elite V2",
-        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_V2",
-        "note": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
-      },
-      {
-        "label": "Gamepressure Sniper Elite V2 guide",
-        "url": "https://www.gamepressure.com/sniperelitev2/",
-        "note": "Used for mission/collectible category coverage and manual review focus only. Map images, numbering, route prose, and text are not reused."
-      },
-      {
-        "label": "GameMappers Sniper Elite V2 map article",
-        "url": "https://gamemappers.com/sniper-elite-v2-map/",
-        "note": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
-      },
-      {
-        "label": "Wand Sniper Elite V2 Remastered game page",
-        "url": "https://wand.com/games/sniper-elite-v2-remastered",
-        "note": "Confirms Wand game support, but no public Wand map endpoint was confirmed for this title during implementation."
-      },
-      {
-        "label": "SteamAH V2 Remastered DLC walkthrough",
-        "url": "https://steamah.com/sniper-elite-v2-remastered-dlc-mission-walkthrough/",
-        "note": "Used only to spot-check the non-Fuehrer DLC mission set. Walkthrough prose and screenshots are not reused."
-      },
-      {
-        "label": "First-hand Vaexil gameplay review",
-        "url": "",
-        "note": "Required before any Saint Pierre marker becomes verified or published."
-      }
-    ],
-    "verifiedNamedAreas": [],
-    "approximateAreas": [
-      "Saint Pierre private neutral draft surface plate",
-      "Mission start, objective, extraction, and route-review candidates",
-      "Collectible, document, weapon, resource, and challenge-review candidates",
-      "Interior, elevated, tunnel, or vertical spaces that may need future split views",
-      "Manual replacement pending because no compatible external mission source was imported for this map.",
-      "Manual replacement pending because no compatible external mission source was imported for this map.",
-      "Manual replacement pending because no compatible external mission source was imported for this map."
-    ],
-    "poiCandidates": [
-      {
-        "label": "Saint Pierre Gold bar sweep",
-        "category": "gold_bar",
-        "confidence": "unverified",
-        "notes": "Source-packet review candidate only; create coordinates after private source import, scratch comparison, or first-hand gameplay review."
-      },
-      {
-        "label": "Saint Pierre Wine bottle sweep",
-        "category": "wine_bottle",
-        "confidence": "unverified",
-        "notes": "Source-packet review candidate only; create coordinates after private source import, scratch comparison, or first-hand gameplay review."
-      },
-      {
-        "label": "Saint Pierre Primary objective route review",
-        "category": "main_objective",
-        "confidence": "unverified",
-        "notes": "Source-packet review candidate only; create coordinates after private source import, scratch comparison, or first-hand gameplay review."
-      },
-      {
-        "label": "Saint Pierre Sniper and vehicle threat review",
-        "category": "sniper",
-        "confidence": "unverified",
-        "notes": "Source-packet review candidate only; create coordinates after private source import, scratch comparison, or first-hand gameplay review."
-      }
-    ],
-    "uncertaintyNotes": [
-      "No compatible MapGenie mission region was available for this DLC map during the source-map import pass.",
-      "No compatible MapGenie mission region was available for this DLC map during the source-map import pass.",
-      "No compatible MapGenie mission region was available for this DLC map during the source-map import pass.",
-      "This legacy Sniper Elite map is admin-draft scaffolding only and currently uses a neutral Vaexil-created placeholder plate.",
-      "No third-party source map, marker coordinate payload, guide prose, screenshots, icons, or public UI has been imported for this title.",
-      "Exact marker placement requires a later private source-map approval, scratch-only visual comparison, or first-hand gameplay coordinate pass.",
-      "If a compatible private source plate is approved later, keep it under private/recon and keep resulting markers draft/unverified until manually reviewed."
-    ],
-    "avoidCopying": [
-      "Rebellion screenshots, in-game map art, UI icons, and marketing images.",
-      "Gamepressure map images, numbering systems, route prose, screenshots, and guide text.",
-      "GameMappers, MapGenie, SniperElite4Maps, Wand, PowerPyx, PS4Trophies, and similar marker coordinates, app data, screenshots, UI, guide prose, and route descriptions.",
-      "Any third-party source-map image unless it is explicitly recorded as owner-approved private review material."
-    ]
-  },
-  {
-    "mapId": "sev2r-schoneberg-convoy",
-    "gameId": "sniper-elite-v2-remastered",
-    "status": "research_draft",
-    "lastReviewed": "2026-06-05",
-    "officialSources": [
-      {
-        "label": "Rebellion - Sniper Elite V2 Remastered",
-        "url": "https://shop.rebellion.com/products/sniper-elite-v2-remastered",
-        "note": "Official product context for game and mission scope; no official art, screenshots, UI, or map assets are reused."
-      }
-    ],
-    "referenceSources": [
-      {
-        "label": "MapGenie Sniper Elite V2 Germany Map",
-        "url": "https://mapgenie.io/sniper-elite-v2/maps/germany",
-        "note": "Private source-map imagery, category labels, and marker coordinate payload are imported for admin-only draft review. Public publication and manual Vaexil replacement remain blocked."
-      },
-      {
-        "label": "GameMappers Sniper Elite V2 map article",
-        "url": "https://gamemappers.com/sniper-elite-v2-map/",
-        "note": "MapGenie-backed source context only; no GameMappers UI, prose, screenshots, or marker text is imported separately."
-      },
-      {
-        "label": "First-hand Vaexil gameplay review",
-        "url": "",
-        "note": "Required before any Schöneberg Convoy marker becomes verified or published."
-      }
-    ],
-    "verifiedNamedAreas": [],
-    "approximateAreas": [
-      "Schöneberg Convoy private MapGenie source-map plate",
-      "20 external draft marker coordinates queued for manual review",
-      "Manual Vaexil replacement source pending"
-    ],
-    "poiCandidates": [
-      {
-        "label": "Schöneberg Convoy imported marker review",
-        "category": "poi",
-        "confidence": "unverified",
-        "notes": "External marker seed layer is draft-only and must be reviewed in-game before any confidence upgrade."
-      },
-      {
-        "label": "Schöneberg Convoy manual replacement pass",
-        "category": "poi",
-        "confidence": "unverified",
-        "notes": "Replace this private external source plate with a manually sourced Vaexil map when available while preserving stable map and marker contracts."
-      }
-    ],
-    "uncertaintyNotes": [
-      "The active source plate is a private admin-only candidate rendered from MapGenie source tiles and must not be published as a public Recon asset.",
-      "Marker positions use MapGenie Web Mercator tile coordinates normalized into the private Recon source plate.",
-      "Marker labels are short source titles only; guide prose, screenshots, media, icons, checklist state, route text, and UI are not reused.",
-      "All imported markers remain draft/unverified until first-hand Vaexil gameplay review confirms placement and meaning."
-    ],
-    "avoidCopying": [
-      "Rebellion screenshots, in-game map art, UI icons, and marketing images.",
-      "MapGenie UI chrome, icons, media attachments, screenshots, checklist state, route prose, and guide descriptions.",
-      "Gamepressure, Wand, sniperelite4maps, PowerPyx, PS4Trophies, and similar guide prose, screenshots, routes, UI, icons, and media."
-    ]
-  },
-  {
-    "mapId": "sev2r-st-olibartus-church",
-    "gameId": "sniper-elite-v2-remastered",
-    "status": "research_draft",
-    "lastReviewed": "2026-06-05",
-    "officialSources": [
-      {
-        "label": "Rebellion - Sniper Elite V2 Remastered",
-        "url": "https://shop.rebellion.com/products/sniper-elite-v2-remastered",
-        "note": "Official product context for game and mission scope; no official art, screenshots, UI, or map assets are reused."
-      }
-    ],
-    "referenceSources": [
-      {
-        "label": "MapGenie Sniper Elite V2 Germany Map",
-        "url": "https://mapgenie.io/sniper-elite-v2/maps/germany",
-        "note": "Private source-map imagery, category labels, and marker coordinate payload are imported for admin-only draft review. Public publication and manual Vaexil replacement remain blocked."
-      },
-      {
-        "label": "GameMappers Sniper Elite V2 map article",
-        "url": "https://gamemappers.com/sniper-elite-v2-map/",
-        "note": "MapGenie-backed source context only; no GameMappers UI, prose, screenshots, or marker text is imported separately."
-      },
-      {
-        "label": "First-hand Vaexil gameplay review",
-        "url": "",
-        "note": "Required before any St. Olibartus Church marker becomes verified or published."
-      }
-    ],
-    "verifiedNamedAreas": [],
-    "approximateAreas": [
-      "St. Olibartus Church private MapGenie source-map plate",
-      "23 external draft marker coordinates queued for manual review",
-      "Manual Vaexil replacement source pending"
-    ],
-    "poiCandidates": [
-      {
-        "label": "St. Olibartus Church imported marker review",
-        "category": "poi",
-        "confidence": "unverified",
-        "notes": "External marker seed layer is draft-only and must be reviewed in-game before any confidence upgrade."
-      },
-      {
-        "label": "St. Olibartus Church manual replacement pass",
-        "category": "poi",
-        "confidence": "unverified",
-        "notes": "Replace this private external source plate with a manually sourced Vaexil map when available while preserving stable map and marker contracts."
-      }
-    ],
-    "uncertaintyNotes": [
-      "The active source plate is a private admin-only candidate rendered from MapGenie source tiles and must not be published as a public Recon asset.",
-      "Marker positions use MapGenie Web Mercator tile coordinates normalized into the private Recon source plate.",
-      "Marker labels are short source titles only; guide prose, screenshots, media, icons, checklist state, route text, and UI are not reused.",
-      "All imported markers remain draft/unverified until first-hand Vaexil gameplay review confirms placement and meaning."
-    ],
-    "avoidCopying": [
-      "Rebellion screenshots, in-game map art, UI icons, and marketing images.",
-      "MapGenie UI chrome, icons, media attachments, screenshots, checklist state, route prose, and guide descriptions.",
-      "Gamepressure, Wand, sniperelite4maps, PowerPyx, PS4Trophies, and similar guide prose, screenshots, routes, UI, icons, and media."
-    ]
-  },
-  {
-    "mapId": "sev2r-the-landwehr-canal",
-    "gameId": "sniper-elite-v2-remastered",
-    "status": "research_draft",
-    "lastReviewed": "2026-06-05",
-    "officialSources": [
-      {
-        "label": "Rebellion - Sniper Elite V2 Remastered",
-        "url": "https://shop.rebellion.com/products/sniper-elite-v2-remastered",
-        "note": "Official product context for the remaster and bundled DLC mission scope."
-      }
-    ],
-    "referenceSources": [
-      {
-        "label": "MapGenie Sniper Elite V2 Germany Map",
-        "url": "https://mapgenie.io/sniper-elite-v2/maps/germany",
-        "note": "MapGenie source import was found for this title, but this mission has no compatible importable mission region in the current payload."
-      },
-      {
-        "label": "MapGenie Sniper Elite V2 Germany Map",
-        "url": "https://mapgenie.io/sniper-elite-v2/maps/germany",
-        "note": "MapGenie source import was found for this title, but this mission has no compatible importable mission region in the current payload."
-      },
-      {
-        "label": "MapGenie Sniper Elite V2 Germany Map",
-        "url": "https://mapgenie.io/sniper-elite-v2/maps/germany",
-        "note": "MapGenie source import was found for this title, but this mission has no compatible importable mission region in the current payload."
-      },
-      {
-        "label": "Sniper Elite Wiki - Sniper Elite V2",
-        "url": "https://sniperelite.fandom.com/wiki/Sniper_Elite_V2",
-        "note": "Used to confirm campaign and DLC mission names; community wiki text and images are not reused."
-      },
-      {
-        "label": "Gamepressure Sniper Elite V2 guide",
-        "url": "https://www.gamepressure.com/sniperelitev2/",
-        "note": "Used for mission/collectible category coverage and manual review focus only. Map images, numbering, route prose, and text are not reused."
-      },
-      {
-        "label": "GameMappers Sniper Elite V2 map article",
-        "url": "https://gamemappers.com/sniper-elite-v2-map/",
-        "note": "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused."
-      },
-      {
-        "label": "Wand Sniper Elite V2 Remastered game page",
-        "url": "https://wand.com/games/sniper-elite-v2-remastered",
-        "note": "Confirms Wand game support, but no public Wand map endpoint was confirmed for this title during implementation."
-      },
-      {
-        "label": "SteamAH V2 Remastered DLC walkthrough",
-        "url": "https://steamah.com/sniper-elite-v2-remastered-dlc-mission-walkthrough/",
-        "note": "Used only to spot-check the non-Fuehrer DLC mission set. Walkthrough prose and screenshots are not reused."
-      },
-      {
-        "label": "First-hand Vaexil gameplay review",
-        "url": "",
-        "note": "Required before any The Landwehr Canal marker becomes verified or published."
-      }
-    ],
-    "verifiedNamedAreas": [],
-    "approximateAreas": [
-      "The Landwehr Canal private neutral draft surface plate",
-      "Mission start, objective, extraction, and route-review candidates",
-      "Collectible, document, weapon, resource, and challenge-review candidates",
-      "Interior, elevated, tunnel, or vertical spaces that may need future split views",
-      "Manual replacement pending because no compatible external mission source was imported for this map.",
-      "Manual replacement pending because no compatible external mission source was imported for this map.",
-      "Manual replacement pending because no compatible external mission source was imported for this map."
-    ],
-    "poiCandidates": [
-      {
-        "label": "The Landwehr Canal Gold bar sweep",
-        "category": "gold_bar",
-        "confidence": "unverified",
-        "notes": "Source-packet review candidate only; create coordinates after private source import, scratch comparison, or first-hand gameplay review."
-      },
-      {
-        "label": "The Landwehr Canal Wine bottle sweep",
-        "category": "wine_bottle",
-        "confidence": "unverified",
-        "notes": "Source-packet review candidate only; create coordinates after private source import, scratch comparison, or first-hand gameplay review."
-      },
-      {
-        "label": "The Landwehr Canal Primary objective route review",
-        "category": "main_objective",
-        "confidence": "unverified",
-        "notes": "Source-packet review candidate only; create coordinates after private source import, scratch comparison, or first-hand gameplay review."
-      },
-      {
-        "label": "The Landwehr Canal Sniper and vehicle threat review",
-        "category": "sniper",
-        "confidence": "unverified",
-        "notes": "Source-packet review candidate only; create coordinates after private source import, scratch comparison, or first-hand gameplay review."
-      }
-    ],
-    "uncertaintyNotes": [
-      "No compatible MapGenie mission region was available for this DLC map during the source-map import pass.",
-      "No compatible MapGenie mission region was available for this DLC map during the source-map import pass.",
-      "No compatible MapGenie mission region was available for this DLC map during the source-map import pass.",
-      "This legacy Sniper Elite map is admin-draft scaffolding only and currently uses a neutral Vaexil-created placeholder plate.",
-      "No third-party source map, marker coordinate payload, guide prose, screenshots, icons, or public UI has been imported for this title.",
-      "Exact marker placement requires a later private source-map approval, scratch-only visual comparison, or first-hand gameplay coordinate pass.",
-      "If a compatible private source plate is approved later, keep it under private/recon and keep resulting markers draft/unverified until manually reviewed."
-    ],
-    "avoidCopying": [
-      "Rebellion screenshots, in-game map art, UI icons, and marketing images.",
-      "Gamepressure map images, numbering systems, route prose, screenshots, and guide text.",
-      "GameMappers, MapGenie, SniperElite4Maps, Wand, PowerPyx, PS4Trophies, and similar marker coordinates, app data, screenshots, UI, guide prose, and route descriptions.",
-      "Any third-party source-map image unless it is explicitly recorded as owner-approved private review material."
-    ]
-  },
-  {
-    "mapId": "sev2r-tiergarten-flak-tower",
-    "gameId": "sniper-elite-v2-remastered",
-    "status": "research_draft",
-    "lastReviewed": "2026-06-05",
-    "officialSources": [
-      {
-        "label": "Rebellion - Sniper Elite V2 Remastered",
-        "url": "https://shop.rebellion.com/products/sniper-elite-v2-remastered",
-        "note": "Official product context for game and mission scope; no official art, screenshots, UI, or map assets are reused."
-      }
-    ],
-    "referenceSources": [
-      {
-        "label": "MapGenie Sniper Elite V2 Germany Map",
-        "url": "https://mapgenie.io/sniper-elite-v2/maps/germany",
-        "note": "Private source-map imagery, category labels, and marker coordinate payload are imported for admin-only draft review. Public publication and manual Vaexil replacement remain blocked."
-      },
-      {
-        "label": "GameMappers Sniper Elite V2 map article",
-        "url": "https://gamemappers.com/sniper-elite-v2-map/",
-        "note": "MapGenie-backed source context only; no GameMappers UI, prose, screenshots, or marker text is imported separately."
-      },
-      {
-        "label": "First-hand Vaexil gameplay review",
-        "url": "",
-        "note": "Required before any Tiergarten Flak Tower marker becomes verified or published."
-      }
-    ],
-    "verifiedNamedAreas": [],
-    "approximateAreas": [
-      "Tiergarten Flak Tower private MapGenie source-map plate",
-      "20 external draft marker coordinates queued for manual review",
-      "Manual Vaexil replacement source pending"
-    ],
-    "poiCandidates": [
-      {
-        "label": "Tiergarten Flak Tower imported marker review",
-        "category": "poi",
-        "confidence": "unverified",
-        "notes": "External marker seed layer is draft-only and must be reviewed in-game before any confidence upgrade."
-      },
-      {
-        "label": "Tiergarten Flak Tower manual replacement pass",
-        "category": "poi",
-        "confidence": "unverified",
-        "notes": "Replace this private external source plate with a manually sourced Vaexil map when available while preserving stable map and marker contracts."
-      }
-    ],
-    "uncertaintyNotes": [
-      "The active source plate is a private admin-only candidate rendered from MapGenie source tiles and must not be published as a public Recon asset.",
-      "Marker positions use MapGenie Web Mercator tile coordinates normalized into the private Recon source plate.",
-      "Marker labels are short source titles only; guide prose, screenshots, media, icons, checklist state, route text, and UI are not reused.",
-      "All imported markers remain draft/unverified until first-hand Vaexil gameplay review confirms placement and meaning."
-    ],
-    "avoidCopying": [
-      "Rebellion screenshots, in-game map art, UI icons, and marketing images.",
-      "MapGenie UI chrome, icons, media attachments, screenshots, checklist state, route prose, and guide descriptions.",
-      "Gamepressure, Wand, sniperelite4maps, PowerPyx, PS4Trophies, and similar guide prose, screenshots, routes, UI, icons, and media."
     ]
   }
 ]

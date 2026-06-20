@@ -11,8 +11,6 @@ of HITMAPS, Sniper Elite Maps, Guides4Gamers, or any other map project.
 
 - `/recon` is the public Recon landing page.
 - `/recon/hitman` is the public HITMAN Recon game page.
-- `/recon/sniper-elite-v2-remastered` is the public Sniper Elite V2 Remastered
-  Recon game page.
 - `/recon/sniper-elite-3` is the public Sniper Elite 3 Recon game page.
 - `/recon/sniper-elite-4` is the public Sniper Elite 4 Recon game page.
 - `/recon/sniper-elite-5` is the public Sniper Elite 5 Recon game page.
@@ -20,8 +18,6 @@ of HITMAPS, Sniper Elite Maps, Guides4Gamers, or any other map project.
   game page.
 - `/recon/hitman/[mapSlug]` only renders published maps with approved public
   assets.
-- `/recon/sniper-elite-v2-remastered/[missionSlug]` only renders published maps
-  with approved public assets.
 - `/recon/sniper-elite-3/[missionSlug]` only renders published maps with
   approved public assets.
 - `/recon/sniper-elite-4/[missionSlug]` only renders published maps with
@@ -148,12 +144,11 @@ Resistance Guides4Gamers imports are approved only as private draft source
 plates and marker seeds. Main-campaign cells use the corrected 3x3 campaign-cell
 transform rather than full campaign-composite coordinates; DLC/extra maps use
 their own source-map coordinate transform. They remain `draft`/`unverified`.
-The Sniper Elite V2 Remastered, Sniper Elite 3, and Sniper Elite 4 expansion
-uses private MapGenie source plates and draft marker seeds where compatible
-campaign/DLC source regions exist. They are temporary external source imports
-only: public publication is blocked, all markers remain `draft`/`unverified`,
-V2R DLC missions without MapGenie regions stay source gaps, and every imported
-plate is marked for future manually sourced Vaexil replacement.
+Sniper Elite 3 and Sniper Elite 4 use private MapGenie source plates and draft
+marker seeds where compatible campaign/DLC source regions exist. They are
+temporary external source imports only: public publication is blocked, all
+markers remain `draft`/`unverified`, and every imported plate is marked for
+future manually sourced Vaexil replacement.
 
 Reference images from HITMAPS, Guides4Gamers, publisher screenshots, or other
 guide sites may also be used temporarily as draw-under material while authoring a
@@ -223,18 +218,17 @@ change marker verification or publication rules.
 Publishing markers and maps remains an explicit future admin workflow. Nothing
 from coordinate capture publishes automatically.
 
-The current draft targets are HITMAN Dubai, HITMAN Berlin, all fifteen Sniper
-Elite V2 Remastered campaign/DLC maps, all twelve Sniper Elite 3 campaign/DLC
-maps, all twelve Sniper Elite 4 campaign/DLC maps, all thirteen Sniper Elite 5
-main-campaign/DLC maps, and all thirteen Sniper Elite: Resistance
-main-campaign/DLC maps. The HITMAN targets have private floor source maps for
-admin review. The Sniper Elite 5 and Sniper Elite: Resistance targets have
-private surface source maps, with separate approximate Vaexil-authored
-interior/underground review plates only where those have been explicitly
-modeled. The legacy Sniper Elite targets currently have private Vaexil neutral
-placeholder plates, source packets, and source-gap cross-check records; marker
-coordinates are intentionally deferred until approved private source imports or
-first-hand gameplay validation are recorded.
+The current draft targets are the 24 core HITMAN World of Assassination map
+sets, all twelve Sniper Elite 3 campaign/DLC maps, all twelve Sniper Elite 4
+campaign/DLC maps, all thirteen Sniper Elite 5 main-campaign/DLC maps, and all
+thirteen Sniper Elite: Resistance main-campaign/DLC maps. The HITMAN targets
+have private floor source maps for admin review. The Sniper Elite 5 and Sniper
+Elite: Resistance targets have private surface source maps, with separate
+approximate Vaexil-authored interior/underground review plates only where those
+have been explicitly modeled. The legacy Sniper Elite 3 and 4 targets currently
+have private source plates, source packets, and source cross-check records;
+marker coordinates remain draft/unverified until first-hand gameplay validation
+is recorded.
 
 ## Freelancer Guide Bridge
 

@@ -210,20 +210,6 @@
     ]
   },
   {
-    "route": "/recon/sniper-elite-v2-remastered",
-    "kind": "page",
-    "methods": [
-      "PAGE"
-    ]
-  },
-  {
-    "route": "/recon/sniper-elite-v2-remastered/[missionSlug]",
-    "kind": "page",
-    "methods": [
-      "PAGE"
-    ]
-  },
-  {
     "route": "/robots.txt",
     "kind": "metadata",
     "methods": [

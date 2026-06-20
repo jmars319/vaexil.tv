@@ -55,84 +55,13 @@ function xmlEscape(value) {
 
 const gameSortOrders = new Map([
   ["hitman-woa", 10],
-  ["sniper-elite-v2-remastered", 20],
-  ["sniper-elite-3", 30],
-  ["sniper-elite-4", 40],
-  ["sniper-elite-5", 50],
-  ["sniper-elite-resistance", 60],
+  ["sniper-elite-3", 20],
+  ["sniper-elite-4", 30],
+  ["sniper-elite-5", 40],
+  ["sniper-elite-resistance", 50],
 ]);
 
 const configs = [
-  {
-    id: "sniper-elite-v2-remastered",
-    slug: "sniper-elite-v2-remastered",
-    title: "Sniper Elite V2 Remastered",
-    shortTitle: "Sniper Elite V2",
-    description:
-      "Curated Recon draft layers for Sniper Elite V2 Remastered campaign and DLC missions.",
-    sortOrder: 20,
-    prefix: "sev2r",
-    official: {
-      label: "Rebellion - Sniper Elite V2 Remastered",
-      url: "https://shop.rebellion.com/products/sniper-elite-v2-remastered",
-      note: "Official product context for the remaster and bundled DLC mission scope.",
-    },
-    sources: [
-      {
-        label: "Sniper Elite Wiki - Sniper Elite V2",
-        url: "https://sniperelite.fandom.com/wiki/Sniper_Elite_V2",
-        coverage: "mission_list_and_broad_context",
-        note: "Used to confirm campaign and DLC mission names; community wiki text and images are not reused.",
-      },
-      {
-        label: "Gamepressure Sniper Elite V2 guide",
-        url: "https://www.gamepressure.com/sniperelitev2/",
-        coverage: "walkthrough_and_collectible_scope",
-        note: "Used for mission/collectible category coverage and manual review focus only. Map images, numbering, route prose, and text are not reused.",
-      },
-      {
-        label: "GameMappers Sniper Elite V2 map article",
-        url: "https://gamemappers.com/sniper-elite-v2-map/",
-        coverage: "map_category_and_completion_scope",
-        note: "Used as a MapGenie-backed category/scope reference only. Coordinates, screenshots, UI, and marker text are not reused.",
-      },
-      {
-        label: "Wand Sniper Elite V2 Remastered game page",
-        url: "https://wand.com/games/sniper-elite-v2-remastered",
-        coverage: "game_tool_coverage_only",
-        note: "Confirms Wand game support, but no public Wand map endpoint was confirmed for this title during implementation.",
-      },
-      {
-        label: "SteamAH V2 Remastered DLC walkthrough",
-        url: "https://steamah.com/sniper-elite-v2-remastered-dlc-mission-walkthrough/",
-        coverage: "dlc_mission_presence_spot_check",
-        note: "Used only to spot-check the non-Fuehrer DLC mission set. Walkthrough prose and screenshots are not reused.",
-      },
-    ],
-    poiCandidates: [
-      ["Gold bar sweep", "gold_bar"],
-      ["Wine bottle sweep", "wine_bottle"],
-      ["Primary objective route review", "main_objective"],
-      ["Sniper and vehicle threat review", "sniper"],
-    ],
-    missions: [
-      ["prologue", "Prologue", "Campaign Prologue"],
-      ["schoneberg-convoy", "Schöneberg Convoy", "Mission 1"],
-      ["mittelwerk-facility", "Mittelwerk Facility", "Mission 2"],
-      ["kaiser-friedrich-museum", "Kaiser-Friedrich Museum", "Mission 3"],
-      ["opernplatz", "Opernplatz", "Mission 4"],
-      ["st-olibartus-church", "St. Olibartus Church", "Mission 5"],
-      ["tiergarten-flak-tower", "Tiergarten Flak Tower", "Mission 6"],
-      ["karlshorst-command-post", "Karlshorst Command Post", "Mission 7"],
-      ["kreuzberg-headquarters", "Kreuzberg Headquarters", "Mission 8"],
-      ["kopenick-launch-site", "Köpenick Launch Site", "Mission 9"],
-      ["brandenburg-gate", "Brandenburg Gate", "Mission 10"],
-      ["assassinate-the-fuhrer", "Assassinate the Führer", "DLC Mission"],
-      ["neudorf-outpost", "Neudorf Outpost", "DLC Mission"],
-      ["the-landwehr-canal", "The Landwehr Canal", "DLC Mission"],
-      ["saint-pierre", "Saint Pierre", "DLC Mission"],
-    ],
-  },
   {
     id: "sniper-elite-3",
     slug: "sniper-elite-3",
@@ -481,7 +410,7 @@ for (const config of configs) {
   for (const [index, mission] of config.missions.entries()) {
     const id = mapId(config, mission);
     const asset = assetId(config, mission);
-    const sortOrder = index < 8 || config.id === "sniper-elite-v2-remastered"
+    const sortOrder = index < 8
       ? (index + 1) * 10
       : 200 + (index - 7) * 10;
 

@@ -10,6 +10,12 @@ const cacheRoot = join("/tmp", "vaexil-g4g-sniper-elite-import");
 const today = new Date().toISOString().slice(0, 10);
 const dryRun = !process.argv.includes("--write");
 const overwriteAssets = process.argv.includes("--overwrite-assets");
+const gameArgs = process.argv.slice(2).flatMap((arg, index, args) => {
+  if (arg === "--game" && args[index + 1]) return [args[index + 1]];
+  if (arg.startsWith("--game=")) return [arg.slice("--game=".length)];
+  return [];
+});
+const selectedGameIds = gameArgs.length > 0 ? new Set(gameArgs) : null;
 
 const missionGrids = {
   "sniper-elite-5": {
@@ -69,8 +75,8 @@ const missionGrids = {
 };
 
 const categoryBySubcategory = new Map([
-  ["Alarm", ["alarm", "poi"]],
-  ["Alarm Sirens", ["alarm_siren", "poi"]],
+  ["Alarm", ["alarm", "alarm"]],
+  ["Alarm Sirens", ["alarm_siren", "alarm"]],
   ["Ammunition", ["ammunition", "ammo"]],
   ["Armored Vehicle", ["vehicle", "vehicle"]],
   ["Bolt Cutter", ["bolt_cutters", "bolt-cutters"]],
@@ -105,8 +111,22 @@ const categoryBySubcategory = new Map([
   ["Tank", ["vehicle", "vehicle"]],
   ["Tool", ["tool", "tool"]],
   ["Transition", ["transition", "route-point"]],
+  ["Vehicle", ["vehicle", "vehicle"]],
   ["Weapon", ["weapon", "weapon"]],
   ["Workbench", ["workbench", "workbench"]],
+]);
+
+const categoryByLabel = new Map([
+  ["Administration Safe", ["key_or_code", "key"]],
+  ["Armored Vehicle", ["vehicle", "vehicle"]],
+  ["Bolt Cutters", ["bolt_cutters", "bolt-cutters"]],
+  ["Crowbar", ["crowbar", "crowbar"]],
+  ["Documents", ["classified_document", "document"]],
+  ["Erich Windolf", ["kill_list_target", "target"]],
+  ["Poison", ["poison_pickup", "poison"]],
+  ["Rat Bomb", ["explosives", "explosive"]],
+  ...["Armoury Door", "Locked Door", "Maintenance Tunnel Door", "Maintenance Tunnel Door #2", "Vogels Saferoom"]
+    .map((label) => [label, ["passage", "entrance"]]),
 ]);
 
 const medalNotes = new Map([
@@ -308,26 +328,30 @@ async function cropMissionPlates(config, payload, fullPath, scaleLevel = 2) {
 }
 
 async function renderSinglePlate(config, mission, payload) {
-  const tileInfo = await downloadTiles(config, payload, 1);
-  const fullPath = buildComposite(config, payload, tileInfo, 1);
   const relativeOutput = assetPath(config, mission);
   const outputPath = join(rootPath, relativeOutput);
+  if (existsSync(outputPath) && !overwriteAssets) return;
 
-  if (!existsSync(outputPath) || overwriteAssets) {
-    if (dryRun) {
-      console.log(`[dry-run] would render ${relativeOutput}`);
-    } else {
-      await mkdir(dirname(outputPath), { recursive: true });
-      execFileSync("magick", [
-        fullPath,
-        "-resize",
-        "2048x2048!",
-        "-quality",
-        "86",
-        outputPath,
-      ]);
-    }
+  const tileInfo = await downloadTiles(config, payload, 1);
+  const fullPath = buildComposite(config, payload, tileInfo, 1);
+
+  if (dryRun) {
+    console.log(`[dry-run] would render ${relativeOutput}`);
+  } else {
+    await mkdir(dirname(outputPath), { recursive: true });
+    execFileSync("magick", [
+      fullPath,
+      "-resize",
+      "2048x2048!",
+      "-quality",
+      "86",
+      outputPath,
+    ]);
   }
+}
+
+function needsCampaignPlateRender(config) {
+  return overwriteAssets || config.missions.some((mission) => !existsSync(join(rootPath, assetPath(config, mission))));
 }
 
 function markerDescription(id, poi, missionTitle) {
@@ -374,6 +398,8 @@ function markerDescription(id, poi, missionTitle) {
 }
 
 function markerCategoryAndIcon(poi) {
+  const labelMapped = categoryByLabel.get(markerLabel(poi));
+  if (labelMapped) return labelMapped;
   const mapped = categoryBySubcategory.get(poi.name_sub);
   if (!mapped) return ["poi", "poi"];
   return mapped;
@@ -381,24 +407,33 @@ function markerCategoryAndIcon(poi) {
 
 const genericPoiDescription = "Point-of-interest draft marker. Verify exact purpose and placement in-game before publishing.";
 
-function mergeExistingMarker(existing, poi, sourceId, missionTitle) {
-  const [category, iconKey] = markerCategoryAndIcon(poi);
+const markerOverrides = new Map([
+  ["g4g-se5-atlantic-wall-37260", { description: "Initial off-map submarine-deck start, represented at the southeast beach landing lane so the draft marker reads as an entry route instead of an ocean POI. Verify the exact start handoff in-game before publishing.", x: 80.7, y: 80.4, tags: ["cross-source-scale-corrected", "manual-shoreline-anchor"] }],
+  ["g4g-se5-atlantic-wall-37590", { description: "Main beach objective anchor on the southeast shoreline. The source seed was corrected against the visible map plate and broad southeast-intro route references; verify the exact objective boundary in-game before publishing.", x: 78.4, y: 77.2, tags: ["cross-source-scale-corrected", "manual-shoreline-anchor"] }],
+]);
+
+function applyMarkerOverrides(marker) {
+  const override = markerOverrides.get(marker.id);
+  if (!override) return marker;
 
   return {
+    ...marker,
+    ...override,
+    tags: Array.from(new Set([...(marker.tags || []), ...(override.tags || [])])),
+  };
+}
+
+function mergeExistingMarker(existing, generated) {
+  return {
     ...existing,
-    category:
-      existing.category === "poi" && category !== "poi"
-        ? category
-        : existing.category,
-    iconKey:
-      existing.iconKey === "poi" && iconKey !== "poi"
-        ? iconKey
-        : existing.iconKey,
+    ...generated,
     description:
-      existing.description === genericPoiDescription && category !== "poi"
-        ? markerDescription(sourceId, poi, missionTitle)
-        : existing.description,
-    subcategory: existing.subcategory || poi.name_sub || null,
+      existing.description === genericPoiDescription && generated.category !== "poi"
+        ? generated.description
+        : existing.description || generated.description,
+    confidence: existing.confidence || generated.confidence,
+    status: existing.status || generated.status,
+    tags: Array.from(new Set([...(generated.tags || []), ...(existing.tags || [])])),
     hiddenByDefault: false,
   };
 }
@@ -431,13 +466,8 @@ function generateMarkers(config, payload, existingMarkers) {
 
     for (const [sourceId, poi] of pois) {
       const id = `g4g-${config.gameShort}-${mission[0]}-${sourceId}`;
-      if (existingById.has(id)) {
-        output.push(mergeExistingMarker(existingById.get(id), poi, sourceId, mission[1]));
-        continue;
-      }
-
       const [category, iconKey] = markerCategoryAndIcon(poi);
-      output.push({
+      const generated = applyMarkerOverrides({
         id,
         gameId: config.gameId,
         mapId,
@@ -464,6 +494,7 @@ function generateMarkers(config, payload, existingMarkers) {
         status: "draft",
         hiddenByDefault: false,
       });
+      output.push(existingById.has(id) ? mergeExistingMarker(existingById.get(id), generated) : generated);
     }
   }
 
@@ -482,12 +513,8 @@ function generateSingleMarkers(config, mission, payload, existingMarkers) {
     })
     .map(([sourceId, poi]) => {
       const id = `g4g-${config.gameShort}-${mission[0]}-${sourceId}`;
-      if (existingById.has(id)) {
-        return mergeExistingMarker(existingById.get(id), poi, sourceId, mission[1]);
-      }
-
       const [category, iconKey] = markerCategoryAndIcon(poi);
-      return {
+      const generated = {
         id,
         gameId: config.gameId,
         mapId,
@@ -514,6 +541,7 @@ function generateSingleMarkers(config, mission, payload, existingMarkers) {
         status: "draft",
         hiddenByDefault: false,
       };
+      return existingById.has(id) ? mergeExistingMarker(existingById.get(id), generated) : generated;
     });
 }
 
@@ -721,8 +749,10 @@ function replaceGeneratedByGame(existing, generated, predicate) {
 function sortReconMaps(maps) {
   const order = new Map([
     ["hitman-woa", 10],
-    ["sniper-elite-5", 20],
-    ["sniper-elite-resistance", 30],
+    ["sniper-elite-3", 20],
+    ["sniper-elite-4", 30],
+    ["sniper-elite-5", 40],
+    ["sniper-elite-resistance", 50],
   ]);
   return [...maps].sort((a, b) => {
     const game = (order.get(a.gameId) || 99) - (order.get(b.gameId) || 99);
@@ -736,6 +766,14 @@ function sortById(items) {
 }
 
 async function main() {
+  const selectedConfigs = Object.values(missionGrids).filter(
+    (config) => !selectedGameIds || selectedGameIds.has(config.gameId),
+  );
+  if (selectedConfigs.length === 0) {
+    throw new Error(`No Guides4Gamers import config matched: ${[...selectedGameIds].join(", ")}`);
+  }
+  const selectedConfigIds = new Set(selectedConfigs.map((config) => config.gameId));
+
   const [maps, assets, views, packets, markers] = await Promise.all([
     readJson("src/data/recon/maps.json"),
     readJson("src/data/recon/asset-manifest.json"),
@@ -748,17 +786,15 @@ async function main() {
   let nextAssets = assets;
   let nextViews = views;
   let nextPackets = packets;
-  let nextMarkers = markers.filter(
-    (marker) =>
-      marker.gameId !== "sniper-elite-5" &&
-      marker.gameId !== "sniper-elite-resistance",
-  );
+  let nextMarkers = markers.filter((marker) => !selectedConfigIds.has(marker.gameId));
 
-  for (const config of Object.values(missionGrids)) {
+  for (const config of selectedConfigs) {
     const payload = await fetchJson(`https://guides4gamers.com/json/map.2.0.php?id=${config.g4gMapId}`);
-    const tileInfo = await downloadTiles(config, payload);
-    const fullPath = buildComposite(config, payload, tileInfo);
-    await cropMissionPlates(config, payload, fullPath);
+    if (needsCampaignPlateRender(config)) {
+      const tileInfo = await downloadTiles(config, payload);
+      const fullPath = buildComposite(config, payload, tileInfo);
+      await cropMissionPlates(config, payload, fullPath);
+    }
 
     const mapItems = generatedMaps(config);
     const assetItems = generatedAssets(config);

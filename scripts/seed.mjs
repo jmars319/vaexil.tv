@@ -57,6 +57,62 @@ const reconMarkerDetails = JSON.parse(
   ),
 );
 
+function placeholders(values) {
+  return values.map(() => "?").join(", ");
+}
+
+async function pruneStaleReconRows() {
+  const gameIds = reconSeedGames.map((game) => game.id);
+  const mapIds = reconSeedMaps.map((map) => map.id);
+
+  if (gameIds.length === 0 || mapIds.length === 0) {
+    throw new Error("Refusing to prune Recon rows from an empty seed catalog.");
+  }
+
+  const gameList = placeholders(gameIds);
+  const mapList = placeholders(mapIds);
+  const gameAndMapArgs = [...gameIds, ...mapIds];
+
+  await db.batch([
+    {
+      sql: `DELETE FROM recon_marker_details WHERE map_id NOT IN (${mapList});`,
+      args: mapIds,
+    },
+    {
+      sql: `DELETE FROM recon_source_cross_checks WHERE game_id NOT IN (${gameList}) OR map_id NOT IN (${mapList});`,
+      args: gameAndMapArgs,
+    },
+    {
+      sql: `DELETE FROM recon_source_packets WHERE game_id NOT IN (${gameList}) OR map_id NOT IN (${mapList});`,
+      args: gameAndMapArgs,
+    },
+    {
+      sql: `DELETE FROM recon_marker_suggestions WHERE game_id NOT IN (${gameList}) OR map_id NOT IN (${mapList});`,
+      args: gameAndMapArgs,
+    },
+    {
+      sql: `DELETE FROM recon_guides WHERE game_id NOT IN (${gameList}) OR (map_id IS NOT NULL AND map_id NOT IN (${mapList}));`,
+      args: gameAndMapArgs,
+    },
+    {
+      sql: `DELETE FROM recon_markers WHERE game_id NOT IN (${gameList}) OR map_id NOT IN (${mapList});`,
+      args: gameAndMapArgs,
+    },
+    {
+      sql: `DELETE FROM recon_assets WHERE game_id NOT IN (${gameList}) OR (map_id IS NOT NULL AND map_id NOT IN (${mapList}));`,
+      args: gameAndMapArgs,
+    },
+    {
+      sql: `DELETE FROM recon_maps WHERE game_id NOT IN (${gameList}) OR id NOT IN (${mapList});`,
+      args: gameAndMapArgs,
+    },
+    {
+      sql: `DELETE FROM recon_games WHERE id NOT IN (${gameList});`,
+      args: gameIds,
+    },
+  ]);
+}
+
 await db.batch([
   {
     sql: `
@@ -421,6 +477,7 @@ await db.batch([
 ]);
 
 await db.execute("DELETE FROM official_items WHERE id LIKE 'seed-sample-%';");
+await pruneStaleReconRows();
 
 for (const item of seedItems) {
   await db.execute({

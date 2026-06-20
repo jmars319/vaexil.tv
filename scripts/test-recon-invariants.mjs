@@ -21,7 +21,7 @@ const icons = await readJson("src/data/recon/icon-manifest.json");
 const sourcePackets = await readJson("src/data/recon/source-packets.json");
 const sourceCrossChecks = await readJson("src/data/recon/source-cross-checks.json");
 
-assert.ok(games.length >= 6, "Recon should keep the initial and legacy Recon games");
+assert.ok(games.length >= 5, "Recon should keep the active Recon games");
 assert.equal(new Set(games.map((game) => game.slug)).size, games.length, "Recon game slugs should be unique");
 
 const gameIds = new Set(games.map((game) => game.id));
@@ -31,6 +31,9 @@ const iconsByKey = new Map(icons.map((icon) => [icon.key, icon]));
 const viewsByMapId = new Map();
 const sourcePacketsByMapId = new Map(sourcePackets.map((packet) => [packet.mapId, packet]));
 const sourceCrossChecksByMapId = new Map(sourceCrossChecks.map((check) => [check.mapId, check]));
+const markerDetailAssetIds = new Set(
+  markerDetails.flatMap((detail) => detail.mediaAssetIds || []),
+);
 const routeKeys = new Set();
 const requiredDraftMapIds = new Set(
   maps
@@ -42,7 +45,6 @@ const modernSniperEliteGameIds = new Set([
   "sniper-elite-resistance",
 ]);
 const sniperEliteGameIds = new Set([
-  "sniper-elite-v2-remastered",
   "sniper-elite-3",
   "sniper-elite-4",
   ...modernSniperEliteGameIds,
@@ -60,7 +62,6 @@ const modernSniperEliteMapIds = new Set(
 
 for (const requiredGame of [
   "hitman-woa",
-  "sniper-elite-v2-remastered",
   "sniper-elite-3",
   "sniper-elite-4",
   "sniper-elite-5",
@@ -148,10 +149,18 @@ for (const mapId of ["se5-atlantic-wall", "ser-behind-enemy-lines"]) {
   assert.ok(views.some((view) => view.kind === "underground"), `${mapId} should define an underground/interior view`);
 }
 
-for (const asset of assets.filter((item) => item.imported)) {
+for (const asset of assets.filter((item) => item.imported && item.type === "base_map")) {
   assert.ok(
     mapViews.some((view) => view.assetId === asset.id),
     `${asset.id} should be attached to at least one private source-map review view`,
+  );
+  assert.equal(asset.visibility, "private", `${asset.id} should not be public`);
+}
+
+for (const asset of assets.filter((item) => item.imported && item.type === "marker_context")) {
+  assert.ok(
+    markerDetailAssetIds.has(asset.id),
+    `${asset.id} should be attached to at least one private marker detail`,
   );
   assert.equal(asset.visibility, "private", `${asset.id} should not be public`);
 }
@@ -161,8 +170,8 @@ for (const icon of icons) {
 }
 
 assert.ok(
-  sniperEliteMapIds.size >= 65,
-  "Recon should include the private SE5, SE:R, and legacy Sniper Elite draft map sets",
+  sniperEliteMapIds.size >= 50,
+  "Recon should include the private SE3, SE4, SE5, and SE:R draft map sets",
 );
 assert.ok(
   markerSeeds.length >= 3189,
@@ -308,6 +317,42 @@ assert.match(
   "Behind Enemy Lines workbench marker should record the cross-source collectible check",
 );
 
+function assertMapGeniePrivateContext(gameId, expectedMarkerCount, expectedContextAssetCount, label) {
+  const gameMarkers = markerSeeds.filter((marker) => marker.gameId === gameId);
+  const markerIds = new Set(gameMarkers.map((marker) => marker.id));
+  const detailsById = new Map(
+    markerDetails
+      .filter((detail) => markerIds.has(detail.markerId))
+      .map((detail) => [detail.markerId, detail]),
+  );
+  const contextAssets = assets.filter(
+    (asset) => asset.gameId === gameId && asset.type === "marker_context",
+  );
+
+  assert.equal(
+    gameMarkers.length,
+    expectedMarkerCount,
+    `${label} should keep the complete MapGenie marker set`,
+  );
+  assert.equal(
+    detailsById.size,
+    gameMarkers.length,
+    `Every ${label} marker should have private admin review detail`,
+  );
+  assert.equal(
+    contextAssets.length,
+    expectedContextAssetCount,
+    `${label} should keep every imported private MapGenie marker context image`,
+  );
+  for (const marker of gameMarkers) {
+    const detail = detailsById.get(marker.id);
+    assert.equal(detail?.visibility, "private", `${marker.id} ${label} marker detail should stay private`);
+  }
+}
+
+assertMapGeniePrivateContext("sniper-elite-3", 362, 184, "Sniper Elite 3");
+assertMapGeniePrivateContext("sniper-elite-4", 564, 149, "Sniper Elite 4");
+
 for (const packet of sourcePackets) {
   assert.ok(mapsById.has(packet.mapId), `${packet.mapId} source packet should be tied to a tracked Recon map`);
   assert.ok(packet.lastReviewed, `${packet.mapId} should record lastReviewed`);
@@ -401,7 +446,7 @@ for (const mapId of modernSniperEliteMapIds) {
 }
 
 const categoryRegistry = `${await text("src/data/recon/category-registry.ts")}\n${await text("src/data/recon/sniper-elite-legacy-categories.ts")}`;
-for (const expectedLegacyCategory of ["gold_bar", "war_diary", "deadeye_target"]) {
+for (const expectedLegacyCategory of ["war_diary", "deadeye_target"]) {
   assert.match(
     categoryRegistry,
     new RegExp(`key: "${expectedLegacyCategory}"`),

@@ -11,14 +11,12 @@ export type ReconCategory = {
 };
 
 const hitmanGame = "hitman-woa";
-const sniperEliteV2RemasteredGame = "sniper-elite-v2-remastered";
 const sniperElite3Game = "sniper-elite-3";
 const sniperElite4Game = "sniper-elite-4";
 const sniperEliteGame = "sniper-elite-5";
 const sniperEliteResistanceGame = "sniper-elite-resistance";
 const sniperEliteModernGames = [sniperEliteGame, sniperEliteResistanceGame];
 const sniperEliteGames = [
-  sniperEliteV2RemasteredGame,
   sniperElite3Game,
   sniperElite4Game,
   ...sniperEliteModernGames,
@@ -498,7 +496,7 @@ export const reconCategories: ReconCategory[] = [
     key: "alarm",
     label: "Alarm",
     description: "Alarm system or control point.",
-    defaultIconKey: "poi",
+    defaultIconKey: "alarm",
     defaultVisible: true,
     applicableGames: sniperEliteGames,
     applicableModes: ["campaign"],
@@ -507,7 +505,7 @@ export const reconCategories: ReconCategory[] = [
     key: "alarm_siren",
     label: "Alarm siren",
     description: "Alarm siren position.",
-    defaultIconKey: "poi",
+    defaultIconKey: "alarm",
     defaultVisible: true,
     applicableGames: sniperEliteGames,
     applicableModes: ["campaign"],

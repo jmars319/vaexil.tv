@@ -1,5 +1,4 @@
 export const supportedGameIds = new Set([
-  "sniper-elite-v2-remastered",
   "sniper-elite-3",
   "sniper-elite-4",
 ]);
@@ -16,11 +15,6 @@ export function categoryMapFor(config, categoryTitle) {
   };
 
   const byGame = {
-    "sniper-elite-v2-remastered": {
-      "Gold Bar": ["gold_bar", "item"],
-      "Wine Bottle": ["wine_bottle", "item"],
-      "Ammo Box": ["ammunition", "ammo"],
-    },
     "sniper-elite-3": {
       "Collectible Card": ["collectible_card", "document"],
       "Long Shot": ["long_shot", "target"],
@@ -60,11 +54,6 @@ function missionBase(config, slug, title, regionSlug = slug) {
     regionSlug,
   };
 }
-
-const v2RegionTitles = new Map([
-  ["schoneberg-convoy", "schonberg-convoy"],
-  ["mittelwerk-facility", "mittlewerk-facility"],
-]);
 
 const se4GridBounds = {
   "san-celini-island": {
@@ -142,45 +131,6 @@ const se4GridBounds = {
 };
 
 export const configs = [
-  {
-    gameId: "sniper-elite-v2-remastered",
-    prefix: "sev2r",
-    sourceSlug: "sniper-elite-v2-germany",
-    sourceName: "MapGenie Sniper Elite V2 Germany Map",
-    mapGenieUrl: "https://mapgenie.io/sniper-elite-v2/maps/germany",
-    tileZoom: 13,
-    officialLabel: "Rebellion - Sniper Elite V2 Remastered",
-    officialUrl: "https://shop.rebellion.com/products/sniper-elite-v2-remastered",
-    assignment: "region",
-    secondarySources: [
-      {
-        label: "GameMappers Sniper Elite V2 map article",
-        url: "https://gamemappers.com/sniper-elite-v2-map/",
-        coverage: "mapgenie_category_scope_reference",
-        note: "MapGenie-backed source context only; no GameMappers UI, prose, screenshots, or marker text is imported separately.",
-      },
-    ],
-    missions: [
-      ["prologue", "Prologue"],
-      ["schoneberg-convoy", "Schöneberg Convoy"],
-      ["mittelwerk-facility", "Mittelwerk Facility"],
-      ["kaiser-friedrich-museum", "Kaiser-Friedrich Museum"],
-      ["opernplatz", "Opernplatz"],
-      ["st-olibartus-church", "St. Olibartus Church"],
-      ["tiergarten-flak-tower", "Tiergarten Flak Tower"],
-      ["karlshorst-command-post", "Karlshorst Command Post"],
-      ["kreuzberg-headquarters", "Kreuzberg Headquarters"],
-      ["kopenick-launch-site", "Köpenick Launch Site"],
-      ["brandenburg-gate", "Brandenburg Gate"],
-    ].map(([slug, title]) =>
-      missionBase(
-        { prefix: "sev2r", gameId: "sniper-elite-v2-remastered" },
-        slug,
-        title,
-        v2RegionTitles.get(slug) || slug,
-      ),
-    ),
-  },
   {
     gameId: "sniper-elite-3",
     prefix: "se3",

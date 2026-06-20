@@ -9,15 +9,6 @@
     "sortOrder": 10
   },
   {
-    "id": "sniper-elite-v2-remastered",
-    "slug": "sniper-elite-v2-remastered",
-    "title": "Sniper Elite V2 Remastered",
-    "shortTitle": "Sniper Elite V2",
-    "description": "Curated Recon draft layers for Sniper Elite V2 Remastered campaign and DLC missions.",
-    "enabled": true,
-    "sortOrder": 20
-  },
-  {
     "id": "sniper-elite-3",
     "slug": "sniper-elite-3",
     "title": "Sniper Elite 3",

@@ -1,28 +1,9 @@
 import type { ReconCategory } from "./category-registry";
 
-const sniperEliteV2RemasteredGame = "sniper-elite-v2-remastered";
 const sniperElite3Game = "sniper-elite-3";
 const sniperElite4Game = "sniper-elite-4";
 
 export const sniperEliteLegacyCategories: ReconCategory[] = [
-  {
-    key: "gold_bar",
-    label: "Gold bar",
-    description: "Gold bar collectible.",
-    defaultIconKey: "item",
-    defaultVisible: true,
-    applicableGames: [sniperEliteV2RemasteredGame],
-    applicableModes: ["campaign"],
-  },
-  {
-    key: "wine_bottle",
-    label: "Wine bottle",
-    description: "Wine bottle collectible.",
-    defaultIconKey: "item",
-    defaultVisible: true,
-    applicableGames: [sniperEliteV2RemasteredGame],
-    applicableModes: ["campaign"],
-  },
   {
     key: "war_diary",
     label: "War diary",

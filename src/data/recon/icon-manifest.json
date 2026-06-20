@@ -190,6 +190,23 @@
     ]
   },
   {
+    "key": "alarm",
+    "label": "Alarm",
+    "path": "/recon/icons/common/alarm.svg",
+    "source": "Vaexil.tv custom neutral icon",
+    "license": "Vaexil-created",
+    "attribution": "Vaexil.tv",
+    "isPlaceholder": false,
+    "applicableGames": [
+      "sniper-elite-5",
+      "sniper-elite-resistance"
+    ],
+    "applicableCategories": [
+      "alarm",
+      "alarm_siren"
+    ]
+  },
+  {
     "key": "weapon",
     "label": "Weapon",
     "path": "/recon/icons/common/weapon.svg",

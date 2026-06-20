@@ -102,17 +102,15 @@ sourcing notes record an owner-approved private source import. Rebuild the
 SE5/Resistance comparison records with
 `node scripts/build-recon-source-cross-checks.mjs --write` after marker
 import/category changes, then manually update any map-specific review notes that
-came from a real position pass. Refresh legacy V2R/SE3/SE4 game/map scaffolding
-with `node scripts/import-legacy-sniper-elite-recon.mjs --write`, then refresh
+came from a real position pass. Refresh legacy SE3/SE4 game/map scaffolding with
+`node scripts/import-legacy-sniper-elite-recon.mjs --write`, then refresh
 approved external source plates and draft marker seeds with
 `node scripts/import-legacy-sniper-elite-source-maps.mjs --write`.
 
-The Sniper Elite V2 Remastered, Sniper Elite 3, and Sniper Elite 4 seed records
-now use private MapGenie source plates and draft marker seeds where compatible
-source regions exist. V2R DLC missions without source regions remain neutral
-placeholder/source-gap records. Keep every legacy marker `draft`/`unverified`
-until first-hand gameplay review records the exact position, category, source
-basis, and remaining uncertainty.
+The Sniper Elite 3 and Sniper Elite 4 seed records use private MapGenie source
+plates and draft marker seeds where compatible source regions exist. Keep every
+legacy marker `draft`/`unverified` until first-hand gameplay review records the
+exact position, category, source basis, and remaining uncertainty.
 
 Guides4Gamers, HITMAPS, publisher screenshots, and other map images may still be
 opened or briefly stored in scratch space as draw-under references. Scratch

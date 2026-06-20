@@ -156,6 +156,7 @@ export type ReconMarker = {
 export type ReconMarkerDetailPayload = {
   markerId: string;
   mapId: string;
+  visibility?: "public" | "private";
   locationHint?: string;
   howToSteps?: string[];
   requirements?: string[];

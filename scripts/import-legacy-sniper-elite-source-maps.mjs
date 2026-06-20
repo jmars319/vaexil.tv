@@ -67,11 +67,10 @@ function sortByMapId(items) {
 function sortMaps(items) {
   const order = new Map([
     ["hitman-woa", 10],
-    ["sniper-elite-v2-remastered", 20],
-    ["sniper-elite-3", 30],
-    ["sniper-elite-4", 40],
-    ["sniper-elite-5", 50],
-    ["sniper-elite-resistance", 60],
+    ["sniper-elite-3", 20],
+    ["sniper-elite-4", 30],
+    ["sniper-elite-5", 40],
+    ["sniper-elite-resistance", 50],
   ]);
   return [...items].sort((a, b) => {
     const gameOrder = (order.get(a.gameId) || 999) - (order.get(b.gameId) || 999);

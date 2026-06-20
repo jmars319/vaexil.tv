@@ -605,7 +605,6 @@ const modernSniperEliteGameIds = new Set([
   "sniper-elite-resistance",
 ]);
 const legacySniperEliteGameIds = new Set([
-  "sniper-elite-v2-remastered",
   "sniper-elite-3",
   "sniper-elite-4",
 ]);

@@ -68,6 +68,21 @@ function toViewerMedia(
   });
 }
 
+function toViewerDetail(
+  detail: ReconMarkerDetail | undefined,
+  adminMode: boolean,
+) {
+  if (!detail) {
+    return undefined;
+  }
+
+  if (detail.payload.visibility === "private" && !adminMode) {
+    return undefined;
+  }
+
+  return detail.payload;
+}
+
 export function buildReconViewerMarkers(
   markers: ReconMarker[],
   details: ReconMarkerDetail[],
@@ -81,6 +96,7 @@ export function buildReconViewerMarkers(
 
   return markers.map((marker) => {
     const detail = detailByMarkerId.get(marker.id);
+    const viewerDetail = toViewerDetail(detail, Boolean(options.adminMode));
 
     return {
       id: marker.id,
@@ -99,10 +115,12 @@ export function buildReconViewerMarkers(
       status: marker.status,
       mode: marker.mode,
       variant: marker.variant,
-      detail: detail?.payload,
+      detail: viewerDetail,
       detailStatus: detail?.status,
       detailLastReviewed: detail?.lastReviewed,
-      media: toViewerMedia(detail, assetById, Boolean(options.adminMode)),
+      media: viewerDetail
+        ? toViewerMedia(detail, assetById, Boolean(options.adminMode))
+        : [],
     };
   });
 }
