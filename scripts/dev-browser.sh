@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Shared browser opener for local dev scripts.
+# Keep browser launch policy shared because dev scripts run across macOS, Windows, and Linux shells.
 
 dev_browser_log_info() {
   if declare -F log_info >/dev/null 2>&1; then
