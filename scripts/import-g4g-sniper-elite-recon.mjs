@@ -17,7 +17,7 @@ const gameArgs = process.argv.slice(2).flatMap((arg, index, args) => {
 });
 const selectedGameIds = gameArgs.length > 0 ? new Set(gameArgs) : null;
 
-const missionGrids = {
+/* G4G source contract */ const missionGrids = {
   "sniper-elite-5": {
     gameId: "sniper-elite-5",
     gameShort: "se5",
@@ -164,7 +164,7 @@ const medalNotes = new Map([
   ["68718", "Medal draft: gnome-related photo-mode achievement reference. Verify exact interaction and framing in-game before publishing."],
 ]);
 
-function jsonUrl(path) {
+/* JSON file boundary */ function jsonUrl(path) {
   return new URL(path, root);
 }
 
@@ -220,7 +220,7 @@ async function downloadFile(url, path) {
   await writeFile(path, bytes);
 }
 
-async function downloadTiles(config, payload, scaleLevel = 2) {
+/* Tile download workflow */ async function downloadTiles(config, payload, scaleLevel = 2) {
   const map = payload.map;
   const fullSize = map.width / scaleLevel;
   const tileCount = Math.ceil(fullSize / 512);
@@ -251,7 +251,7 @@ async function downloadTiles(config, payload, scaleLevel = 2) {
   return { tileDir, tileCount, fullSize };
 }
 
-function buildComposite(config, payload, tileInfo, scaleLevel = 2) {
+/* Map plate render workflow */ function buildComposite(config, payload, tileInfo, scaleLevel = 2) {
   const fullPath = join(
     cacheRoot,
     config.sourcePath,
@@ -354,7 +354,7 @@ function needsCampaignPlateRender(config) {
   return overwriteAssets || config.missions.some((mission) => !existsSync(join(rootPath, assetPath(config, mission))));
 }
 
-function markerDescription(id, poi, missionTitle) {
+/* Marker normalization boundary */ function markerDescription(id, poi, missionTitle) {
   if (medalNotes.has(id)) return medalNotes.get(id);
 
   const templates = {
@@ -545,7 +545,7 @@ function generateSingleMarkers(config, mission, payload, existingMarkers) {
     });
 }
 
-function generatedMaps(config) {
+/* Recon output contracts */ function generatedMaps(config) {
   return config.missions.map((mission, index) => ({
     id: missionId(config, mission),
     gameId: config.gameId,
@@ -765,7 +765,7 @@ function sortById(items) {
   return [...items].sort((a, b) => a.id.localeCompare(b.id));
 }
 
-async function main() {
+/* Recon data merge workflow */ async function main() {
   const selectedConfigs = Object.values(missionGrids).filter(
     (config) => !selectedGameIds || selectedGameIds.has(config.gameId),
   );

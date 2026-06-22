@@ -3,6 +3,7 @@ import { access, readdir, readFile } from "node:fs/promises";
 
 const root = new URL("../", import.meta.url);
 
+// JSON fixture boundary
 async function readJson(path) {
   return JSON.parse(await readFile(new URL(path, root), "utf8"));
 }
@@ -21,6 +22,7 @@ const icons = await readJson("src/data/recon/icon-manifest.json");
 const sourcePackets = await readJson("src/data/recon/source-packets.json");
 const sourceCrossChecks = await readJson("src/data/recon/source-cross-checks.json");
 
+// Registry integrity gates
 assert.ok(games.length >= 5, "Recon should keep the active Recon games");
 assert.equal(new Set(games.map((game) => game.slug)).size, games.length, "Recon game slugs should be unique");
 
@@ -99,6 +101,7 @@ for (const map of maps) {
   }
 }
 
+// Private asset gates
 for (const asset of assets) {
   if (asset.visibility === "private") {
     assert.match(asset.path, /^private\/recon\//, `${asset.id} private asset path should not be public`);
@@ -177,6 +180,7 @@ assert.ok(
   markerSeeds.length >= 3189,
   "Recon should include the full private SE5 and SE:R draft marker import",
 );
+// Marker seed invariants
 for (const marker of markerSeeds) {
   const map = mapsById.get(marker.mapId);
   assert.ok(map, `${marker.id} should point to a known map`);
@@ -217,6 +221,7 @@ for (const detail of markerDetails) {
   }
 }
 
+// Position safety gates
 const atlanticWallMarkers = markerSeeds.filter((marker) => marker.mapId === "se5-atlantic-wall");
 const atlanticWallMarkerBySourceId = new Map(
   atlanticWallMarkers.map((marker) => [marker.sourceMarkerId, marker]),
@@ -353,6 +358,7 @@ function assertMapGeniePrivateContext(gameId, expectedMarkerCount, expectedConte
 assertMapGeniePrivateContext("sniper-elite-3", 362, 184, "Sniper Elite 3");
 assertMapGeniePrivateContext("sniper-elite-4", 564, 149, "Sniper Elite 4");
 
+// Source provenance gates
 for (const packet of sourcePackets) {
   assert.ok(mapsById.has(packet.mapId), `${packet.mapId} source packet should be tied to a tracked Recon map`);
   assert.ok(packet.lastReviewed, `${packet.mapId} should record lastReviewed`);
@@ -445,6 +451,7 @@ for (const mapId of modernSniperEliteMapIds) {
   );
 }
 
+// Public exposure gates
 const categoryRegistry = `${await text("src/data/recon/category-registry.ts")}\n${await text("src/data/recon/sniper-elite-legacy-categories.ts")}`;
 for (const expectedLegacyCategory of ["war_diary", "deadeye_target"]) {
   assert.match(

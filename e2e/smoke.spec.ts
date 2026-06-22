@@ -1,5 +1,6 @@
 import { expect, test, type Page } from "@playwright/test";
 
+// Public route smoke matrix
 const routes = [
   "/",
   "/recon",
@@ -20,6 +21,7 @@ const routes = [
   "/sitemap.xml",
 ];
 
+// Optional admin gate
 const requireAdminReconSmoke = process.env.VAEXIL_E2E_REQUIRE_ADMIN_RECON === "1";
 
 async function loginAdmin(page: Page) {
@@ -59,6 +61,7 @@ for (const route of routes) {
   });
 }
 
+// Public privacy gates
 test("draft Recon map remains public 404", async ({ request }) => {
   const response = await request.get("/recon/hitman/dubai");
   expect(response.status()).toBe(404);
@@ -98,6 +101,7 @@ const privateSniperEliteRoutes = [
   "/recon/sniper-elite-resistance/mud-and-thunder",
 ];
 
+// Draft route privacy matrix
 for (const route of privateSniperEliteRoutes) {
   test(`draft ${route} remains public 404`, async ({ request }) => {
     const response = await request.get(route);
@@ -122,6 +126,7 @@ test("private imported Berlin Recon asset is gated when logged out", async ({ re
   expect(response.status()).toBe(404);
 });
 
+// Admin Recon smoke boundary
 test("admin Recon index groups maps by game and shows source-check status", async ({ page }) => {
   await loginAdmin(page);
 
@@ -174,6 +179,7 @@ test("admin Recon map supports wheel and touchpad-style zoom", async ({ page, is
     .toBeLessThan(zoomedIn);
 });
 
+// Position regression smoke
 test("admin Atlantic Wall markers keep corrected positions and readable icons", async ({ page, isMobile }) => {
   test.skip(isMobile, "Desktop map QA covers dense marker positioning and toolbar interactions.");
   await loginAdmin(page);
@@ -349,6 +355,7 @@ test("admin Sniper Elite expansion maps are privately reviewable", async ({ page
   await expect(page.getByRole("button", { exact: true, name: "DLC2: Waterfalls" })).toBeVisible();
 });
 
+// Mobile detail surface
 test("mobile admin Recon marker detail opens as a bottom sheet", async ({ page, isMobile }) => {
   test.skip(!isMobile, "Mobile bottom-sheet behavior is covered in the mobile project.");
   await loginAdmin(page);
@@ -371,6 +378,7 @@ test("mobile admin Recon marker detail opens as a bottom sheet", async ({ page, 
   await expect(page.getByRole("button", { name: "Close marker detail" })).toBeVisible();
 });
 
+// API privacy smoke
 test("contact API rejects invalid payload without leaking internals", async ({ request }) => {
   const response = await request.post("/api/contact", { data: {} });
   expect(response.status()).toBe(400);

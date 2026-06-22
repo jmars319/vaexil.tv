@@ -14,6 +14,7 @@ import type {
   SuggestionStatus,
 } from "@/lib/types";
 
+// Row coercion boundary
 export function readString(row: Row, key: string) {
   const value = row[key];
   return value == null ? "" : String(value);
@@ -37,6 +38,7 @@ function readNullableNumber(row: Row, key: string) {
   return value == null || value === "" ? null : Number(value);
 }
 
+// Status fallback contract
 function readStatus(row: Row): SuggestionStatus {
   const value = readString(row, "status");
   if (
@@ -91,6 +93,7 @@ function readReconAssetVisibility(
   return readString(row, key) === "public" ? "public" : "private";
 }
 
+// JSON field boundary
 function readStringArray(row: Row, key: string) {
   const raw = readString(row, key);
   if (!raw) {
@@ -107,6 +110,7 @@ function readStringArray(row: Row, key: string) {
   }
 }
 
+// Community data boundary
 export function mapOfficialItem(row: Row): OfficialGuideItem {
   return {
     id: readString(row, "id"),
@@ -150,6 +154,7 @@ export function mapContactSubmission(row: Row): ContactSubmission {
   };
 }
 
+// Recon catalog data boundary
 export function mapReconGame(row: Row): ReconGame {
   return {
     id: readString(row, "id"),
@@ -214,6 +219,7 @@ export function mapReconMap(row: Row): ReconMap {
   };
 }
 
+// Recon marker data boundary
 export function mapReconMarker(row: Row): ReconMarker {
   return {
     id: readString(row, "id"),
@@ -275,6 +281,7 @@ export function mapReconMarkerSuggestion(row: Row): ReconMarkerSuggestion {
   };
 }
 
+// Shared select contract
 export const reconMapSelect = `
   m.*,
   g.slug AS game_slug,

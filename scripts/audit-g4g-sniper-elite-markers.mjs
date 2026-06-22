@@ -8,6 +8,7 @@ const gameArgs = process.argv.slice(2).flatMap((arg, index, args) => {
   return [];
 });
 
+// G4G source contract
 const gameConfigs = {
   "sniper-elite-5": {
     gameId: "sniper-elite-5",
@@ -69,6 +70,7 @@ const selectedConfigs = gameArgs.length > 0
     })
   : Object.values(gameConfigs);
 
+// Category normalization contract
 const categoryBySubcategory = new Map([
   ["Alarm", ["alarm", "alarm"]],
   ["Alarm Sirens", ["alarm_siren", "alarm"]],
@@ -127,6 +129,7 @@ const categoryByLabel = new Map([
   ["Vogels Saferoom", ["passage", "entrance"]],
 ]);
 
+// Coordinate override boundary
 const markerOverrides = new Map([
   ["g4g-se5-atlantic-wall-37260", { x: 80.7, y: 80.4 }],
   ["g4g-se5-atlantic-wall-37590", { x: 78.4, y: 77.2 }],
@@ -164,6 +167,7 @@ function applyMarkerOverrides(marker) {
   return override ? { ...marker, ...override } : marker;
 }
 
+// Live source fetch boundary
 async function fetchMapPayload(mapId) {
   const url = `https://guides4gamers.com/json/map.2.0.php?id=${mapId}`;
   const response = await fetch(url);
@@ -173,6 +177,7 @@ async function fetchMapPayload(mapId) {
   return response.json();
 }
 
+// Campaign cell transform boundary
 function expectedCampaignMarkers(config, payload) {
   const cellSize = payload.map.width / 3;
   const output = [];
@@ -208,6 +213,7 @@ function expectedCampaignMarkers(config, payload) {
   return output;
 }
 
+// Single-map transform boundary
 function expectedSingleMarkers(config, mission, payload) {
   return Object.entries(payload.pois).map(([sourceMarkerId, poi]) => {
     const [category, iconKey] = markerCategoryAndIcon(poi);
@@ -234,6 +240,7 @@ function assertNear(actual, expected, context, failures) {
   }
 }
 
+// Local parity workflow
 const [maps, markers, icons] = [
   readJson("src/data/recon/maps.json"),
   readJson("src/data/recon/marker-seeds.json"),

@@ -53,6 +53,7 @@ type ReconMapSurfaceProps = {
   categoryByKey: Map<string, ReconViewerCategory>;
 };
 
+// Pointer surface contract
 export function ReconMapSurface({
   title,
   imageSrc,
@@ -89,11 +90,13 @@ export function ReconMapSurface({
   suggestionCaptureActive = false,
   categoryByKey,
 }: ReconMapSurfaceProps) {
+  // Detail panel contract
   const selectedCategoryLabel =
     selectedMarker
       ? categoryByKey.get(selectedMarker.category)?.label || selectedMarker.category
       : "";
 
+  // Map surface composition
   return (
     <>
       <section className="overflow-hidden rounded-2xl border border-white/10 bg-slate-950/70">

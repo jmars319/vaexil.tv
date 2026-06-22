@@ -35,6 +35,7 @@ const publicSuggestionStatuses: SuggestionStatus[] = [
   "verified",
 ];
 
+// Public item reads
 export async function listOfficialItems() {
   await ensureDb();
   const result = await getDb().execute(`
@@ -46,6 +47,7 @@ export async function listOfficialItems() {
   return result.rows.map(mapOfficialItem);
 }
 
+// Public Recon data boundary
 export async function listReconGames() {
   await ensureDb();
   const result = await getDb().execute(`
@@ -219,6 +221,7 @@ export async function listAdminReconMarkers(mapId: string) {
   return result.rows.map(mapReconMarker);
 }
 
+// Community suggestion workflow
 export async function listSuggestions(options?: { includeClosed?: boolean }) {
   await ensureDb();
   const allowedStatuses = options?.includeClosed
@@ -284,6 +287,7 @@ export async function createSuggestion(input: SuggestionInput) {
   return id;
 }
 
+// Suggestion voting boundary
 export async function addVote(suggestionId: string, voterKey: string) {
   await ensureDb();
   const db = getDb();
@@ -369,6 +373,7 @@ export async function verifySuggestionById(suggestionId: string) {
   });
 }
 
+// Suggestion publishing workflow
 export async function publishSuggestionById(suggestionId: string) {
   await ensureDb();
   const db = getDb();
@@ -427,6 +432,7 @@ export async function publishSuggestionById(suggestionId: string) {
   ]);
 }
 
+// Contact persistence boundary
 export async function recordContactSubmission(input: ContactInput) {
   await ensureDb();
   const id = crypto.randomUUID();
@@ -491,6 +497,7 @@ export async function listRecentContactSubmissions(limit = 5) {
   return result.rows.map(mapContactSubmission);
 }
 
+// Analytics capture boundary
 export async function recordPageView(input: {
   path: string;
   referrer?: string;
@@ -520,6 +527,7 @@ export async function recordPageView(input: {
   });
 }
 
+// Analytics reporting surface
 export async function getAnalyticsSummary(): Promise<AnalyticsSummary> {
   const empty: AnalyticsSummary = {
     viewsLast7Days: 0,

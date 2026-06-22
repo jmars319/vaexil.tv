@@ -14,6 +14,7 @@ const gameArgs = process.argv.slice(2).flatMap((arg, index, args) => {
   return [];
 });
 
+// G4G source contract
 const gameConfigs = {
   "sniper-elite-5": {
     gameId: "sniper-elite-5",
@@ -73,6 +74,7 @@ const selectedConfigs = gameArgs.length > 0
     })
   : Object.values(gameConfigs);
 
+// JSON file boundary
 function jsonUrl(path) {
   return new URL(path, root);
 }
@@ -102,6 +104,7 @@ async function fetchJson(url) {
   return response.json();
 }
 
+// Source content normalization
 function decodeHtml(value) {
   return value
     .replace(/&nbsp;/g, " ")
@@ -166,6 +169,7 @@ function imagePath(config, mission, sourceMarkerId, index) {
   return `private/recon/markers/${config.sourcePath}/${mission[0]}/${safeFilePart(sourceMarkerId)}-${String(index + 1).padStart(2, "0")}.jpg`;
 }
 
+// Private media boundary
 async function downloadFile(url, relativePath) {
   const outputPath = join(rootPath, relativePath);
   if (existsSync(outputPath)) return;
@@ -186,6 +190,7 @@ function uniqueStrings(values) {
   return [...new Set(values.filter((value) => typeof value === "string" && value.trim()).map((value) => value.trim()))];
 }
 
+// Marker detail contract
 function buildDetail(config, existingDetail, markerSeed, mission, sourceMarkerId, poi, mediaAssetIds) {
   const sourceText = descriptionText(String(poi.description || ""));
   const existingLocationHint = existingDetail?.locationHint || "";
@@ -235,6 +240,7 @@ function buildImageAsset(config, mission, sourceMarkerId, poi, screenshot, index
   };
 }
 
+// Campaign cell workflow
 function expectedCampaignDetails(config, payload, existingByMarkerId, markerById) {
   const cellSize = payload.map.width / 3;
   const details = [];
@@ -277,6 +283,7 @@ function expectedCampaignDetails(config, payload, existingByMarkerId, markerById
   return { details, assets, downloads };
 }
 
+// Single map workflow
 function expectedSingleDetails(config, mission, payload, existingByMarkerId, markerById) {
   const details = [];
   const assets = [];
@@ -308,6 +315,7 @@ function expectedSingleDetails(config, mission, payload, existingByMarkerId, mar
   return { details, assets, downloads };
 }
 
+// Download concurrency boundary
 async function runDownloads(downloads) {
   const concurrency = 10;
   let index = 0;
@@ -346,6 +354,7 @@ async function collectConfigDetails(config, existingByMarkerId, markerById) {
   return { generatedDetails, generatedAssets, downloads };
 }
 
+// Private import merge boundary
 async function main() {
   const [assets, details, markers] = await Promise.all([
     readJson("src/data/recon/asset-manifest.json"),

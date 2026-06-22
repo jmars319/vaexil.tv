@@ -36,14 +36,14 @@ import {
   Suspense,
 } from "react";
 
-const ReconMapSuggestionForm = lazy(
+/* Suggestion form boundary */ const ReconMapSuggestionForm = lazy(
   () =>
     import("@/components/recon-map-suggestion-form").then(
       (mod) => ({ default: mod.ReconMapSuggestionForm }),
     ),
 );
 
-export type {
+/* Viewer data contract */ export type {
   ReconCoordinate,
   ReconMapViewerProps,
   ReconSuggestionContext,
@@ -73,7 +73,7 @@ export function ReconMapViewer({
   viewerMode = "admin",
   suggestionContext,
 }: ReconMapViewerProps) {
-  const viewportRef = useRef<HTMLDivElement | null>(null);
+  /* Viewport state boundary */ const viewportRef = useRef<HTMLDivElement | null>(null);
   const scaleRef = useRef(1);
   const offsetRef = useRef({ x: 0, y: 0 });
   const gestureStartScaleRef = useRef<number | null>(null);
@@ -105,7 +105,7 @@ export function ReconMapViewer({
   );
   const publicMode = viewerMode === "public";
   const suggestionsEnabled = Boolean(suggestionContext);
-  const progressStorageKey = useMemo(() => getProgressStorageKey(title), [title]);
+  /* Public progress persistence */ const progressStorageKey = useMemo(() => getProgressStorageKey(title), [title]);
   const progressSnapshot = useSyncExternalStore(
     useCallback(
       (onStoreChange) =>
@@ -192,7 +192,7 @@ export function ReconMapViewer({
     });
   }, [height, maxZoom, minZoom, syncViewState, width]);
 
-  useEffect(() => {
+  /* Viewport resize boundary */ useEffect(() => {
     resetView();
     const viewport = viewportRef.current;
     if (!viewport) {
@@ -205,7 +205,7 @@ export function ReconMapViewer({
     return () => observer.disconnect();
   }, [resetView]);
 
-  const categoryByKey = useMemo(
+  /* Layer visibility surface */ const categoryByKey = useMemo(
     () => new Map(categories.map((category) => [category.key, category])),
     [categories],
   );
@@ -362,7 +362,7 @@ export function ReconMapViewer({
     [availableCategories, availableCategoryKeys, defaultVisibleCategoryKeys],
   );
 
-  const filteredMarkers = useMemo(() => {
+  /* Marker filter surface */ const filteredMarkers = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase();
 
     return markers.filter((marker) => {
@@ -467,7 +467,7 @@ export function ReconMapViewer({
     [zoomToPoint],
   );
 
-  useEffect(() => {
+  /* Pointer zoom boundary */ useEffect(() => {
     const viewport = viewportRef.current;
     if (!viewport) {
       return;
@@ -548,7 +548,7 @@ export function ReconMapViewer({
     };
   }, [zoomBy, zoomToPoint]);
 
-  function getCoordinateFromPointer(clientX: number, clientY: number) {
+  /* Coordinate capture boundary */ function getCoordinateFromPointer(clientX: number, clientY: number) {
     const viewport = viewportRef.current;
     if (!viewport) {
       return null;
@@ -582,7 +582,7 @@ export function ReconMapViewer({
   const activeCapturedCoordinate =
     suggestionDraft?.coordinate || capturedCoordinate || null;
 
-  return (
+  /* Viewer surface composition */ return (
     <div className={cn("grid gap-3", className)}>
       <ReconMapControls
         query={query}

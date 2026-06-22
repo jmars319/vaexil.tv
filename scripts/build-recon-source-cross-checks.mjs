@@ -4,6 +4,7 @@ const root = new URL("../", import.meta.url);
 const writeMode = process.argv.includes("--write");
 const today = new Date().toISOString().slice(0, 10);
 
+// JSON file boundary
 async function readJson(path) {
   return JSON.parse(await readFile(new URL(path, root), "utf8"));
 }
@@ -18,6 +19,7 @@ async function writeJson(path, value) {
   await writeFile(new URL(path, root), formatted);
 }
 
+// Source count contract
 const se5GamerGuidesMarkerCounts = new Map([
   ["se5-atlantic-wall", 66],
   ["se5-occupied-residence", 49],
@@ -153,6 +155,7 @@ const positionReviewed = new Map([
   ],
 ]);
 
+// External source contract
 const urls = {
   gamerGuidesSe5Maps: "https://www.gamerguides.com/sniper-elite-5/maps",
   exputerSe5InteractiveMap: "https://exputer.com/guides/sniper-elite-5-interactive-map/",
@@ -187,6 +190,7 @@ function sourceSourceForPacket(packet, map) {
   };
 }
 
+// Source coverage boundary
 function externalSourcesFor(map, packet) {
   const sources = [];
   const packetSource = sourceSourceForPacket(packet, map);
@@ -305,6 +309,7 @@ function externalSourcesFor(map, packet) {
   return sources;
 }
 
+// Visual review workflow
 function visualReviewStatusFor(map, sources) {
   const labels = sources.map((source) => source.label).join(" ");
   const hasIndependentVisual =
@@ -423,6 +428,7 @@ function expectedWorkbenchCount(mapId) {
   return null;
 }
 
+// Cross-check contract
 function checksFor(map, markers, sources) {
   const checks = [];
   const localWorkbenchCount = workbenchCount(markers);
@@ -523,6 +529,7 @@ function warningsFor(map, markers) {
   return warnings;
 }
 
+// Source gap boundary
 function legacySourceGapFor(map, markers, packet) {
   const packetSources = [
     ...(packet?.officialSources || []),
@@ -587,6 +594,7 @@ function legacySourceGapFor(map, markers, packet) {
   };
 }
 
+// Cross-check merge workflow
 const [maps, markers, sourcePackets, existingSourceCrossChecks] = await Promise.all([
   readJson("src/data/recon/maps.json"),
   readJson("src/data/recon/marker-seeds.json"),
@@ -609,6 +617,7 @@ const legacySniperEliteGameIds = new Set([
   "sniper-elite-4",
 ]);
 
+// Modern output surface
 const modernOutput = maps
   .filter((map) => modernSniperEliteGameIds.has(map.gameId))
   .map((map) => {
@@ -644,6 +653,7 @@ const modernOutput = maps
     };
   });
 
+// Legacy output surface
 const legacyOutput = maps
   .filter((map) => legacySniperEliteGameIds.has(map.gameId))
   .map((map) => {

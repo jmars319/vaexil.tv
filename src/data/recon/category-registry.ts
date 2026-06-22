@@ -1,5 +1,6 @@
 import { sniperEliteLegacyCategories } from "./sniper-elite-legacy-categories";
 
+// Recon category contract
 export type ReconCategory = {
   key: string;
   label: string;
@@ -22,6 +23,7 @@ const sniperEliteGames = [
   ...sniperEliteModernGames,
 ];
 
+// Public category registry
 export const reconCategories: ReconCategory[] = [
   {
     key: "item_spawn",
@@ -530,6 +532,7 @@ export const reconCategories: ReconCategory[] = [
   },
 ];
 
+// Category lookup boundary
 export function getReconCategoriesForGame(gameId: string) {
   return reconCategories.filter((category) =>
     category.applicableGames.includes(gameId),

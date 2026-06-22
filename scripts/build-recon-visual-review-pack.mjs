@@ -6,6 +6,8 @@ import { fileURLToPath } from "node:url";
 
 const root = fileURLToPath(new URL("../", import.meta.url));
 const today = new Date().toISOString().slice(0, 10);
+
+// Scratch output boundary
 const outputRoot =
   process.env.RECON_VISUAL_REVIEW_DIR ||
   join(tmpdir(), `vaexil-recon-visual-cross-check-${today}`);
@@ -14,6 +16,7 @@ const sheetsDir = join(outputRoot, "sheets");
 const tileDir = join(outputRoot, "sniperelite5maps-tiles");
 const includeSniperElite5Maps = !process.argv.includes("--no-sniperelite5maps");
 
+// External reference contract
 const se5MapsSlugs = new Map([
   ["se5-atlantic-wall", "m01-the-atlantic-wall"],
   ["se5-occupied-residence", "m02-occupied-residence"],
@@ -84,6 +87,7 @@ const mapMasterSerIds = new Map([
   ["ser-striking-range", 354],
 ]);
 
+// JSON file boundary
 async function readJson(path) {
   return JSON.parse(await readFile(join(root, path), "utf8"));
 }
@@ -109,6 +113,7 @@ async function fetchBuffer(url) {
   return Buffer.from(await response.arrayBuffer());
 }
 
+// Reference download boundary
 async function downloadReference(mapId, label, url, extension) {
   const fileName = `${mapId}-${slugify(label)}${extension}`;
   const target = join(referencesDir, fileName);
@@ -126,6 +131,7 @@ function hasMagick() {
   return spawnSync("magick", ["-version"], { stdio: "ignore" }).status === 0;
 }
 
+// SE5 tile stitch workflow
 async function buildSniperElite5MapsReference(mapId, slug) {
   if (!includeSniperElite5Maps || !hasMagick()) return null;
 
@@ -213,6 +219,7 @@ async function buildSniperElite5MapsReference(mapId, slug) {
   };
 }
 
+// Contact sheet workflow
 async function createSheet(mapId, references) {
   if (!hasMagick() || references.length < 2) return null;
 
@@ -247,6 +254,7 @@ async function createSheet(mapId, references) {
   };
 }
 
+// Private source asset boundary
 function localSourceAssetFor(mapId, assets) {
   return assets.find(
     (asset) =>
@@ -257,6 +265,7 @@ function localSourceAssetFor(mapId, assets) {
   );
 }
 
+// Review pack workflow
 async function main() {
   await mkdir(referencesDir, { recursive: true });
   await mkdir(sheetsDir, { recursive: true });

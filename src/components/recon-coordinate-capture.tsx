@@ -50,6 +50,7 @@ type MapViewOption = {
   notes: string;
 };
 
+// Suggestion action contract
 const initialState: ActionState = {
   ok: false,
   message: "",
@@ -82,6 +83,7 @@ function formatCoordinate(value: number | null) {
   return value == null ? "--" : value.toFixed(2);
 }
 
+// Admin capture workflow
 export function ReconCoordinateCapture({
   map,
   imageSrc,
@@ -114,6 +116,8 @@ export function ReconCoordinateCapture({
         ];
   const [activeViewId, setActiveViewId] = useState(views[0]?.id || "default");
   const activeView = views.find((view) => view.id === activeViewId) || views[0];
+
+  // Coordinate state boundary
   const [coordinate, setCoordinate] = useState<ReconCoordinate | null>(null);
   const [category, setCategory] = useState(categories[0]?.key || "poi");
   const [floor, setFloor] = useState(activeView?.floor || "");
@@ -127,6 +131,8 @@ export function ReconCoordinateCapture({
   );
 
   const activeFloor = (activeView?.floor || "").trim().toLowerCase();
+
+  // Active-floor marker boundary
   const draftMarkers = markers.filter((marker) => {
     if (!activeFloor) {
       return true;
@@ -157,6 +163,7 @@ export function ReconCoordinateCapture({
     }));
   const viewerMarkers = [...draftMarkers, ...suggestionMarkers];
 
+  // Capture surface composition
   return (
     <div className="grid gap-5">
       {views.length > 1 ? (

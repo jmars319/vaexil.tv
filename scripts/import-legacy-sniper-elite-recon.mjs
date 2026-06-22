@@ -5,6 +5,7 @@ const root = new URL("../", import.meta.url);
 const writeMode = process.argv.includes("--write");
 const lastReviewed = "2026-06-05";
 
+// JSON file boundary
 async function readJson(path) {
   return JSON.parse(await readFile(new URL(path, root), "utf8"));
 }
@@ -61,6 +62,7 @@ const gameSortOrders = new Map([
   ["sniper-elite-resistance", 50],
 ]);
 
+// Source catalog contract
 const configs = [
   {
     id: "sniper-elite-3",
@@ -212,6 +214,7 @@ const configs = [
   },
 ];
 
+// Recon id contract
 function mapId(config, mission) {
   return `${config.prefix}-${mission[0]}`;
 }
@@ -252,6 +255,7 @@ function sourceReferences(config, mission) {
   ];
 }
 
+// Source packet contract
 function sourcePacket(config, mission) {
   const title = mission[1];
   return {
@@ -289,6 +293,7 @@ function sourcePacket(config, mission) {
   };
 }
 
+// Cross-check contract
 function sourceCrossCheck(config, mission) {
   const id = mapId(config, mission);
   return {
@@ -356,6 +361,7 @@ function sourceCrossCheck(config, mission) {
   };
 }
 
+// Placeholder asset boundary
 function placeholderSvg(config, mission) {
   const title = xmlEscape(mission[1]);
   const game = xmlEscape(config.shortTitle);
@@ -383,6 +389,7 @@ function placeholderSvg(config, mission) {
 `;
 }
 
+// Recon data merge workflow
 const games = await readJson("src/data/recon/games.json");
 const maps = await readJson("src/data/recon/maps.json");
 const assets = await readJson("src/data/recon/asset-manifest.json");

@@ -9,6 +9,7 @@ declare global {
   var vaexilDbReady: Promise<void> | undefined;
 }
 
+// Database runtime boundary
 export function getDb() {
   if (!globalThis.vaexilDbClient) {
     const url =
@@ -48,6 +49,7 @@ export async function ensureDb() {
   return globalThis.vaexilDbReady;
 }
 
+// Schema migration contract
 async function migrateDb() {
   const db = getDb();
 
@@ -138,6 +140,7 @@ async function migrateDb() {
       args: [],
     },
     {
+      // Recon catalog persistence
       sql: `
         CREATE TABLE IF NOT EXISTS recon_games (
           id TEXT PRIMARY KEY,
@@ -205,6 +208,7 @@ async function migrateDb() {
       args: [],
     },
     {
+      // Recon marker persistence
       sql: `
         CREATE TABLE IF NOT EXISTS recon_markers (
           id TEXT PRIMARY KEY,
@@ -257,6 +261,7 @@ async function migrateDb() {
       args: [],
     },
     {
+      // Recon suggestion persistence
       sql: `
         CREATE TABLE IF NOT EXISTS recon_marker_suggestions (
           id TEXT PRIMARY KEY,
@@ -434,6 +439,7 @@ async function migrateDb() {
   await ensureReconMarkerSuggestionColumns(db);
 }
 
+// Backward-compatible migration boundary
 async function ensureColumn(
   db: Client,
   tableName: string,

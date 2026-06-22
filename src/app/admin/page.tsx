@@ -33,6 +33,7 @@ type AdminPageProps = {
   searchParams: Promise<{ error?: string | string[] }>;
 };
 
+// Admin auth boundary
 export default async function AdminPage({ searchParams }: AdminPageProps) {
   const authenticated = await isAdminAuthenticated();
   const params = await searchParams;
@@ -206,6 +207,7 @@ export default async function AdminPage({ searchParams }: AdminPageProps) {
   );
 }
 
+// First-party analytics surface
 function AnalyticsPanel({ summary }: { summary: AnalyticsSummary }) {
   return (
     <div className="rounded-2xl border border-white/10 bg-white/[0.035] p-5">
@@ -254,6 +256,7 @@ function AnalyticsPanel({ summary }: { summary: AnalyticsSummary }) {
   );
 }
 
+// Contact persistence surface
 function ContactPanel({ contacts }: { contacts: ContactSubmission[] }) {
   return (
     <div className="rounded-2xl border border-white/10 bg-white/[0.035] p-5">
@@ -306,6 +309,7 @@ function ContactPanel({ contacts }: { contacts: ContactSubmission[] }) {
   );
 }
 
+// Bootstrap auth boundary
 function AdminLogin({
   configured,
   hasError,
@@ -360,6 +364,7 @@ function AdminLogin({
   );
 }
 
+// Suggestion workflow boundary
 function AdminActionButton({
   action,
   suggestionId,

@@ -47,6 +47,7 @@ type ReconMapControlsProps = {
   publicMode: boolean;
 };
 
+// Public filter contract
 export function ReconMapControls({
   query,
   setQuery,
@@ -78,10 +79,12 @@ export function ReconMapControls({
   categoryByKey,
   publicMode,
 }: ReconMapControlsProps) {
+  // Filter summary boundary
   const visibleAvailableCategoryCount = availableCategories.filter((category) =>
     visibleCategories.has(category.key),
   ).length;
 
+  // Control surface composition
   return (
     <section
       className={cn(
@@ -344,6 +347,7 @@ export function ReconMapControls({
   );
 }
 
+// Layer preset boundary
 function LayerPresetButtons({
   layerPresets,
   setVisibleLayerKeys,

@@ -21,9 +21,9 @@ const selectedGameIds = new Set(
     .filter(Boolean),
 );
 
-const shouldImportGame = (gameId) => selectedGameIds.size === 0 || selectedGameIds.has(gameId);
+/* Game selection boundary */ const shouldImportGame = (gameId) => selectedGameIds.size === 0 || selectedGameIds.has(gameId);
 
-async function readJson(path) {
+/* JSON file boundary */ async function readJson(path) {
   return JSON.parse(await readFile(new URL(path, root), "utf8"));
 }
 
@@ -123,7 +123,7 @@ function extractMapData(html, sourceUrl) {
   return JSON.parse(html.slice(jsonStart, end));
 }
 
-async function fetchMapGenieData(config) {
+/* MapGenie cache boundary */ async function fetchMapGenieData(config) {
   const cachePath = join(cacheRoot, "html", `${config.sourceSlug}.html`);
   let html;
   if (existsSync(cachePath)) {
@@ -136,7 +136,7 @@ async function fetchMapGenieData(config) {
   return extractMapData(html, config.mapGenieUrl);
 }
 
-function project(lng, lat, zoom) {
+/* Coordinate projection boundary */ function project(lng, lat, zoom) {
   const sin = Math.sin((lat * Math.PI) / 180);
   const scale = tileSize * 2 ** zoom;
   return {
@@ -203,7 +203,7 @@ async function downloadTile(tileSet, zoom, x, y) {
   return path;
 }
 
-async function downloadTiles(tileSet, zoom, tileBounds) {
+/* Tile download workflow */ async function downloadTiles(tileSet, zoom, tileBounds) {
   const tasks = [];
   for (let y = tileBounds.minTileY; y <= tileBounds.maxTileY; y += 1) {
     for (let x = tileBounds.minTileX; x <= tileBounds.maxTileX; x += 1) {
@@ -327,7 +327,7 @@ async function renderPlate(config, data, mission) {
   return outputSize;
 }
 
-function normalizeMarker(location, bounds, zoom = defaultTileZoom) {
+/* Marker normalization boundary */ function normalizeMarker(location, bounds, zoom = defaultTileZoom) {
   const geometry = cropGeometry(bounds, zoom);
   const point = project(Number(location.longitude), Number(location.latitude), zoom);
 
@@ -410,7 +410,7 @@ function officialReference(config) {
   };
 }
 
-function packetFor(config, mission, markerCount) {
+/* Source packet contract */ function packetFor(config, mission, markerCount) {
   return {
     mapId: mission.mapId,
     gameId: config.gameId,
@@ -548,7 +548,7 @@ function crossCheckFor(config, mission, markers) {
   };
 }
 
-function sourceGapPacket(existingPacket, config) {
+/* Source gap boundary */ function sourceGapPacket(existingPacket, config) {
   if (!existingPacket) return null;
   return {
     ...existingPacket,
@@ -606,7 +606,7 @@ function sourceGapCrossCheck(existing, config, mission) {
   };
 }
 
-function buildImportedAsset(config, mission, size) {
+/* Recon output contracts */ function buildImportedAsset(config, mission, size) {
   return {
     id: mission.assetId,
     gameId: config.gameId,
@@ -657,7 +657,7 @@ function buildMapView(existingView, mission) {
   };
 }
 
-function mapMissionsFromRegions(config, data) {
+/* Mission assignment workflow */ function mapMissionsFromRegions(config, data) {
   const regionsByTitle = new Map(data.regions.map((region) => [slugTitle(region.title), region]));
   return config.missions
     .map((mission) => {
@@ -750,7 +750,7 @@ for (const gameId of selectedGameIds) {
   }
 }
 
-const [maps, assets, views, packets, checks, markerSeeds] = await Promise.all([
+/* Recon data merge workflow */ const [maps, assets, views, packets, checks, markerSeeds] = await Promise.all([
   readJson("src/data/recon/maps.json"),
   readJson("src/data/recon/asset-manifest.json"),
   readJson("src/data/recon/map-views.json"),

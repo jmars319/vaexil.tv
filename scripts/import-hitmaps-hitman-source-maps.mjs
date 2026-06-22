@@ -12,6 +12,7 @@ const overwriteAssets = process.argv.includes("--overwrite-assets");
 const targetMaxSize = 2048;
 const today = new Date().toISOString().slice(0, 10);
 
+// Hitmaps source contract
 const mapSets = [
   {
     mapId: "hitman-ica-facility-freeform-training",
@@ -351,6 +352,7 @@ const mapSets = [
   },
 ];
 
+// JSON file boundary
 async function readJson(path) {
   return JSON.parse(await readFile(new URL(path, root), "utf8"));
 }
@@ -395,6 +397,7 @@ function mergeByKey(existing, updates, key) {
   return [...next.values()];
 }
 
+// Source URL contract
 function sourcePageUrl(mapSet) {
   return `https://www.hitmaps.com/games/${mapSet.hitmapsGame}/${mapSet.locationSlug}/${mapSet.missionSlug}/`;
 }
@@ -432,6 +435,7 @@ function floorsFor(mapSet) {
   return floors;
 }
 
+// SVG download boundary
 async function fetchBuffer(url) {
   const response = await fetch(url, {
     headers: {
@@ -465,6 +469,7 @@ function imageSize(path) {
   return { width, height };
 }
 
+// Floor render workflow
 async function renderFloor(mapSet, floor) {
   const outputPath = join(rootPath, filePath(mapSet, floor));
 
@@ -497,6 +502,7 @@ async function renderFloor(mapSet, floor) {
   return imageSize(outputPath);
 }
 
+// Recon output contracts
 function buildMap(mapSet, existingMap, levelZeroSize) {
   return {
     ...(existingMap || {
@@ -610,6 +616,7 @@ function buildSourcePacket(mapSet) {
   };
 }
 
+// Recon data merge workflow
 const [maps, assets, views, packets] = await Promise.all([
   readJson("src/data/recon/maps.json"),
   readJson("src/data/recon/asset-manifest.json"),

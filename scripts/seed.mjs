@@ -5,6 +5,7 @@ import { join } from "node:path";
 
 const url = process.env.LIBSQL_URL || "file:.data/vaexil.db";
 
+// Local database boundary
 if (url.startsWith("file:")) {
   mkdirSync(join(process.cwd(), ".data"), { recursive: true });
 }
@@ -14,6 +15,7 @@ const db = createClient({
   authToken: process.env.LIBSQL_AUTH_TOKEN || undefined,
 });
 
+// Seed payload contract
 const seedItems = JSON.parse(
   await readFile(
     new URL("../src/data/freelancer-free-items.json", import.meta.url),
@@ -61,6 +63,7 @@ function placeholders(values) {
   return values.map(() => "?").join(", ");
 }
 
+// Stale Recon pruning boundary
 async function pruneStaleReconRows() {
   const gameIds = reconSeedGames.map((game) => game.id);
   const mapIds = reconSeedMaps.map((map) => map.id);
@@ -113,6 +116,7 @@ async function pruneStaleReconRows() {
   ]);
 }
 
+// Schema migration contract
 await db.batch([
   {
     sql: `
@@ -476,6 +480,7 @@ await db.batch([
   },
 ]);
 
+// Legacy item seed workflow
 await db.execute("DELETE FROM official_items WHERE id LIKE 'seed-sample-%';");
 await pruneStaleReconRows();
 
@@ -512,6 +517,7 @@ for (const item of seedItems) {
   });
 }
 
+// Recon catalog seed workflow
 for (const game of reconSeedGames) {
   await db.execute({
     sql: `
@@ -736,6 +742,7 @@ for (const marker of reconSeedMarkers) {
   });
 }
 
+// Recon source audit workflow
 for (const packet of reconSourcePackets) {
   await db.execute({
     sql: `
