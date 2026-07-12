@@ -1,0 +1,99 @@
+name: Fetch Salvation's Edge record definitions
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/fetch-salvation-records.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  fetch-records:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch current Bungie manifest records
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          import pathlib
+          import urllib.request
+
+          targets = [
+              "Touch and Go",
+              "Changing Tactics",
+              "Singular Torment",
+              "Equal Distribution",
+              "Careful Calculation",
+              "Scenic Route",
+              "At Capacity",
+              "Balanced Diet",
+              "Varied Geometry",
+              "Coordinated Efforts",
+              "Iconoclast",
+              "Resonant Cellweave",
+              "Diametric Crush",
+          ]
+
+          def read_json(url):
+              req = urllib.request.Request(url, headers={"User-Agent": "Vaexil-guide-research/1.0"})
+              with urllib.request.urlopen(req, timeout=180) as response:
+                  return json.load(response)
+
+          manifest = read_json("https://www.bungie.net/Platform/Destiny2/Manifest/")["Response"]
+          paths = manifest["jsonWorldComponentContentPaths"]["en"]
+          records = read_json("https://www.bungie.net" + paths["DestinyRecordDefinition"])
+          objectives = read_json("https://www.bungie.net" + paths["DestinyObjectiveDefinition"])
+
+          output = {
+              "manifestVersion": manifest.get("version"),
+              "records": {},
+          }
+
+          by_name = {}
+          for value in records.values():
+              name = value.get("displayProperties", {}).get("name", "")
+              if name:
+                  by_name.setdefault(name.casefold(), []).append(value)
+
+          for target in targets:
+              matches = by_name.get(target.casefold(), [])
+              rendered = []
+              for record in matches:
+                  objective_defs = []
+                  for objective_hash in record.get("objectiveHashes", []):
+                      objective = objectives.get(str(objective_hash), {})
+                      objective_defs.append({
+                          "hash": objective_hash,
+                          "progressDescription": objective.get("progressDescription"),
+                          "completionValue": objective.get("completionValue"),
+                          "scope": objective.get("scope"),
+                          "locationHash": objective.get("locationHash"),
+                      })
+                  rendered.append({
+                      "hash": record.get("hash"),
+                      "name": record.get("displayProperties", {}).get("name"),
+                      "description": record.get("displayProperties", {}).get("description"),
+                      "objectiveHashes": record.get("objectiveHashes", []),
+                      "objectives": objective_defs,
+                      "scope": record.get("scope"),
+                      "recordValueStyle": record.get("recordValueStyle"),
+                      "presentationInfo": record.get("presentationInfo"),
+                  })
+              output["records"][target] = rendered
+
+          pathlib.Path("tmp").mkdir(exist_ok=True)
+          pathlib.Path("tmp/salvation-record-definitions.json").write_text(
+              json.dumps(output, indent=2, ensure_ascii=False), encoding="utf-8"
+          )
+          print(json.dumps(output, indent=2, ensure_ascii=False))
+          PY
+
+      - name: Upload record definitions
+        uses: actions/upload-artifact@v4
+        with:
+          name: salvation-record-definitions
+          path: tmp/salvation-record-definitions.json
+          if-no-files-found: error
