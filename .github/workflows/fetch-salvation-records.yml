@@ -13,7 +13,7 @@ jobs:
   fetch-records:
     runs-on: ubuntu-latest
     steps:
-      - name: Fetch current Bungie manifest records
+      - name: Fetch current Bungie manifest data
         shell: bash
         run: |
           python - <<'PY'
@@ -21,7 +21,7 @@ jobs:
           import pathlib
           import urllib.request
 
-          targets = [
+          record_targets = [
               "Touch and Go",
               "Changing Tactics",
               "Singular Torment",
@@ -37,19 +37,54 @@ jobs:
               "Diametric Crush",
           ]
 
+          challenge_modifier_hashes = [
+              3621023005,
+              1204802854,
+              1553052482,
+              2821522136,
+              1315424373,
+          ]
+
+          armor_hashes = [
+              668401898, 1286143186, 2330310558, 2981434142,
+              3365555057, 3543048103, 387932854, 1504514464,
+              1922960867, 2311061287, 3256796439, 3462510907,
+              2749693048, 3196704707, 4002581124,
+          ]
+
+          loot_hashes = [
+              859869931, 1258168956, 1770490683, 535198113,
+              3569407878, 445197843, 3284383335,
+              172461430, 892183998, 1039915310,
+              2001697739, 3123651616, 3951511045,
+          ] + armor_hashes
+
           def read_json(url):
               req = urllib.request.Request(url, headers={"User-Agent": "Vaexil-guide-research/1.0"})
-              with urllib.request.urlopen(req, timeout=180) as response:
+              with urllib.request.urlopen(req, timeout=240) as response:
                   return json.load(response)
 
           manifest = read_json("https://www.bungie.net/Platform/Destiny2/Manifest/")["Response"]
           paths = manifest["jsonWorldComponentContentPaths"]["en"]
-          records = read_json("https://www.bungie.net" + paths["DestinyRecordDefinition"])
-          objectives = read_json("https://www.bungie.net" + paths["DestinyObjectiveDefinition"])
+
+          def component(name):
+              return read_json("https://www.bungie.net" + paths[name])
+
+          records = component("DestinyRecordDefinition")
+          objectives = component("DestinyObjectiveDefinition")
+          items = component("DestinyInventoryItemDefinition")
+          plugsets = component("DestinyPlugSetDefinition")
+          modifiers = component("DestinyActivityModifierDefinition")
+          presentation = component("DestinyPresentationNodeDefinition")
 
           output = {
               "manifestVersion": manifest.get("version"),
               "records": {},
+              "challengeModifiers": {},
+              "lootItems": {},
+              "raidMods": [],
+              "relatedRecords": [],
+              "relatedPresentationNodes": [],
           }
 
           by_name = {}
@@ -58,7 +93,7 @@ jobs:
               if name:
                   by_name.setdefault(name.casefold(), []).append(value)
 
-          for target in targets:
+          for target in record_targets:
               matches = by_name.get(target.casefold(), [])
               rendered = []
               for record in matches:
@@ -78,22 +113,105 @@ jobs:
                       "description": record.get("displayProperties", {}).get("description"),
                       "objectiveHashes": record.get("objectiveHashes", []),
                       "objectives": objective_defs,
-                      "scope": record.get("scope"),
-                      "recordValueStyle": record.get("recordValueStyle"),
-                      "presentationInfo": record.get("presentationInfo"),
+                      "parentNodeHashes": record.get("parentNodeHashes", []),
                   })
               output["records"][target] = rendered
 
+          for h in challenge_modifier_hashes:
+              mod = modifiers.get(str(h), {})
+              output["challengeModifiers"][str(h)] = {
+                  "name": mod.get("displayProperties", {}).get("name"),
+                  "description": mod.get("displayProperties", {}).get("description"),
+              }
+
+          for h in loot_hashes:
+              item = items.get(str(h), {})
+              output["lootItems"][str(h)] = {
+                  "name": item.get("displayProperties", {}).get("name"),
+                  "description": item.get("displayProperties", {}).get("description"),
+                  "itemTypeDisplayName": item.get("itemTypeDisplayName"),
+                  "classType": item.get("classType"),
+                  "damageTypeHashes": item.get("damageTypeHashes", []),
+                  "collectibleHash": item.get("collectibleHash"),
+              }
+
+          candidate_plug_hashes = set()
+          for h in armor_hashes:
+              item = items.get(str(h), {})
+              for entry in item.get("sockets", {}).get("socketEntries", []):
+                  for key in ("reusablePlugSetHash", "randomizedPlugSetHash"):
+                      psh = entry.get(key)
+                      if psh:
+                          ps = plugsets.get(str(psh), {})
+                          for reusable in ps.get("reusablePlugItems", []):
+                              ph = reusable.get("plugItemHash")
+                              if ph:
+                                  candidate_plug_hashes.add(ph)
+                  ph = entry.get("singleInitialItemHash")
+                  if ph:
+                      candidate_plug_hashes.add(ph)
+
+          seen_mods = set()
+          for h in candidate_plug_hashes:
+              item = items.get(str(h), {})
+              dp = item.get("displayProperties", {})
+              name = dp.get("name", "")
+              desc = dp.get("description", "")
+              plug = item.get("plug", {}) or {}
+              category = plug.get("plugCategoryIdentifier", "") or ""
+              item_type = item.get("itemTypeDisplayName", "") or ""
+              text = f"{name} {desc} {category} {item_type}".casefold()
+              if name and ("raid" in text or "resonance" in text or "verity" in text or "witness" in text or "salvation" in text):
+                  key = (name, desc, category)
+                  if key not in seen_mods:
+                      seen_mods.add(key)
+                      output["raidMods"].append({
+                          "hash": h,
+                          "name": name,
+                          "description": desc,
+                          "itemTypeDisplayName": item_type,
+                          "plugCategoryIdentifier": category,
+                      })
+
+          for value in records.values():
+              dp = value.get("displayProperties", {})
+              name = dp.get("name", "")
+              desc = dp.get("description", "")
+              text = f"{name} {desc}".casefold()
+              if any(term in text for term in ["substratum", "dissipation", "repository", "verity", "zenith", "salvation's edge"]):
+                  output["relatedRecords"].append({
+                      "hash": value.get("hash"),
+                      "name": name,
+                      "description": desc,
+                      "parentNodeHashes": value.get("parentNodeHashes", []),
+                  })
+
+          for value in presentation.values():
+              dp = value.get("displayProperties", {})
+              name = dp.get("name", "")
+              desc = dp.get("description", "")
+              text = f"{name} {desc}".casefold()
+              if any(term in text for term in ["iconoclast", "salvation's edge"]):
+                  output["relatedPresentationNodes"].append({
+                      "hash": value.get("hash"),
+                      "name": name,
+                      "description": desc,
+                      "children": value.get("children", {}),
+                  })
+
+          output["raidMods"].sort(key=lambda x: x["name"])
+          output["relatedRecords"].sort(key=lambda x: (x["name"], x["hash"] or 0))
+
           pathlib.Path("tmp").mkdir(exist_ok=True)
-          pathlib.Path("tmp/salvation-record-definitions.json").write_text(
+          pathlib.Path("tmp/salvation-manifest-data.json").write_text(
               json.dumps(output, indent=2, ensure_ascii=False), encoding="utf-8"
           )
           print(json.dumps(output, indent=2, ensure_ascii=False))
           PY
 
-      - name: Upload record definitions
+      - name: Upload manifest data
         uses: actions/upload-artifact@v4
         with:
-          name: salvation-record-definitions
-          path: tmp/salvation-record-definitions.json
+          name: salvation-manifest-data
+          path: tmp/salvation-manifest-data.json
           if-no-files-found: error
