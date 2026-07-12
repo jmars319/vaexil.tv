@@ -22,27 +22,24 @@ jobs:
           import urllib.request
 
           EXACT_RECORD_NAMES = {
-              "Summoning Ritual",
-              "Which Witch",
-              "Forever Fight",
-              "Keep Out",
-              "Strength of Memory",
-              "Petra's Run",
-              "Rivensbane",
-              "O Murderer Mine",
-              "Coliseum Champion",
-              "New Meta",
-              "Thunderstruck",
-              "Sunburn",
-              "The Night Owl",
-              "Habitual Wisher",
-              "O Grave Robber Mine",
+              "Summoning Ritual", "Which Witch", "Forever Fight", "Keep Out",
+              "Strength of Memory", "Petra's Run", "Rivensbane",
+              "O Murderer Mine", "Coliseum Champion", "New Meta",
+              "Thunderstruck", "Sunburn", "The Night Owl", "Habitual Wisher",
+              "O Grave Robber Mine", "O Deepsight Mine",
+          }
+          EXACT_ITEM_NAMES = {
+              "Chattering Bone", "The Supremacy", "Transfiguration",
+              "Apex Predator", "Age-Old Bond", "Nation of Beasts",
+              "Techeun Force", "Tyranny of Heaven", "One Thousand Voices",
+              "Ethereal Key", "Glittering Key",
           }
           TERMS = [
               "last wish", "riven of a thousand voices", "kalli", "shuro chi",
-              "morgeth", "spirekeeper", "vault", "queenswalk", "heart of riven",
+              "morgeth", "spirekeeper", "queenswalk", "heart of riven",
               "petra's run", "rivensbane", "summoning ritual", "which witch",
               "forever fight", "keep out", "strength of memory", "wall of wishes",
+              "deepsight mine",
           ]
 
           def read_json(url):
@@ -54,7 +51,10 @@ jobs:
           paths = manifest["jsonWorldComponentContentPaths"]["en"]
 
           def component(name):
-              return read_json("https://www.bungie.net" + paths[name])
+              path = paths.get(name)
+              if not path:
+                  return {}
+              return read_json("https://www.bungie.net" + path)
 
           records = component("DestinyRecordDefinition")
           objectives = component("DestinyObjectiveDefinition")
@@ -64,10 +64,9 @@ jobs:
           sources = component("DestinySourceDefinition")
           items = component("DestinyInventoryItemDefinition")
           collectibles = component("DestinyCollectibleDefinition")
-          lore = component("DestinyLoreDefinition")
 
           def dp(value):
-              return value.get("displayProperties", {}) or {}
+              return (value or {}).get("displayProperties", {}) or {}
 
           def text(value):
               d = dp(value)
@@ -75,16 +74,9 @@ jobs:
 
           out = {
               "manifestVersion": manifest.get("version"),
-              "activities": [],
-              "activityModifiers": [],
-              "sourceDefinitions": [],
-              "sealNodes": [],
-              "sealRecords": [],
-              "matchingRecords": [],
-              "lootItems": [],
-              "raidMods": [],
-              "collectibles": [],
-              "wishLore": [],
+              "activities": [], "activityModifiers": [], "sourceDefinitions": [],
+              "sealNodes": [], "sealRecords": [], "matchingRecords": [],
+              "lootItems": [], "raidMods": [], "collectibles": [],
           }
 
           matching_source_hashes = set()
@@ -93,8 +85,7 @@ jobs:
                   h = value.get("hash")
                   matching_source_hashes.add(h)
                   out["sourceDefinitions"].append({
-                      "hash": h,
-                      "name": dp(value).get("name"),
+                      "hash": h, "name": dp(value).get("name"),
                       "description": dp(value).get("description"),
                       "category": value.get("category"),
                   })
@@ -102,14 +93,12 @@ jobs:
           activity_modifier_hashes = set()
           for value in activities.values():
               if "last wish" in text(value):
-                  for m in value.get("modifiers", []):
-                      if isinstance(m, dict):
-                          mh = m.get("activityModifierHash")
-                          if mh:
-                              activity_modifier_hashes.add(mh)
+                  for m in value.get("modifiers", []) or []:
+                      mh = m.get("activityModifierHash") if isinstance(m, dict) else None
+                      if mh:
+                          activity_modifier_hashes.add(mh)
                   out["activities"].append({
-                      "hash": value.get("hash"),
-                      "name": dp(value).get("name"),
+                      "hash": value.get("hash"), "name": dp(value).get("name"),
                       "description": dp(value).get("description"),
                       "activityModeTypes": value.get("activityModeTypes", []),
                       "activityLevel": value.get("activityLevel"),
@@ -117,14 +106,12 @@ jobs:
                       "modifiers": value.get("modifiers", []),
                       "challenges": value.get("challenges", []),
                       "rewards": value.get("rewards", []),
-                      "destinationHash": value.get("destinationHash"),
                   })
 
           for mh in sorted(activity_modifier_hashes):
               value = modifiers.get(str(mh), {})
               out["activityModifiers"].append({
-                  "hash": mh,
-                  "name": dp(value).get("name"),
+                  "hash": mh, "name": dp(value).get("name"),
                   "description": dp(value).get("description"),
               })
 
@@ -134,8 +121,7 @@ jobs:
               if "rivensbane" in t or "last wish" in t:
                   seed_nodes.append(value)
                   out["sealNodes"].append({
-                      "hash": value.get("hash"),
-                      "name": dp(value).get("name"),
+                      "hash": value.get("hash"), "name": dp(value).get("name"),
                       "description": dp(value).get("description"),
                       "children": value.get("children", {}),
                       "parentNodeHashes": value.get("parentNodeHashes", []),
@@ -143,26 +129,24 @@ jobs:
 
           record_hashes = set()
           node_hashes = {v.get("hash") for v in seed_nodes if v.get("hash")}
-          changed = True
-          while changed:
-              changed = False
-              for nh in list(node_hashes):
-                  node = presentation.get(str(nh), {})
-                  children = node.get("children", {}) or {}
-                  for child in children.get("records", []) or []:
-                      rh = child.get("recordHash")
-                      if rh and rh not in record_hashes:
-                          record_hashes.add(rh)
-                          changed = True
-                  for child in children.get("presentationNodes", []) or []:
-                      ph = child.get("presentationNodeHash")
-                      if ph and ph not in node_hashes:
-                          node_hashes.add(ph)
-                          changed = True
+          pending = list(node_hashes)
+          while pending:
+              nh = pending.pop()
+              node = presentation.get(str(nh), {})
+              children = node.get("children", {}) or {}
+              for child in children.get("records", []) or []:
+                  rh = child.get("recordHash")
+                  if rh:
+                      record_hashes.add(rh)
+              for child in children.get("presentationNodes", []) or []:
+                  ph = child.get("presentationNodeHash")
+                  if ph and ph not in node_hashes:
+                      node_hashes.add(ph)
+                      pending.append(ph)
 
           def render_record(value):
               objective_defs = []
-              for oh in value.get("objectiveHashes", []):
+              for oh in value.get("objectiveHashes", []) or []:
                   obj = objectives.get(str(oh), {})
                   objective_defs.append({
                       "hash": oh,
@@ -171,8 +155,7 @@ jobs:
                       "locationHash": obj.get("locationHash"),
                   })
               return {
-                  "hash": value.get("hash"),
-                  "name": dp(value).get("name"),
+                  "hash": value.get("hash"), "name": dp(value).get("name"),
                   "description": dp(value).get("description"),
                   "objectiveHashes": value.get("objectiveHashes", []),
                   "objectives": objective_defs,
@@ -195,26 +178,28 @@ jobs:
                       out["matchingRecords"].append(render_record(value))
 
           for value in items.values():
-              source_hashes = set((value.get("sourceData", {}) or {}).get("sourceHashes", []) or [])
+              name = dp(value).get("name", "")
+              source_data = value.get("sourceData", {}) or {}
+              source_hashes = set(source_data.get("sourceHashes", []) or [])
               item_type = value.get("itemTypeDisplayName", "") or ""
               plug = value.get("plug", {}) or {}
               category = plug.get("plugCategoryIdentifier", "") or ""
-              direct = "last wish" in text(value)
+              direct = name in EXACT_ITEM_NAMES or "last wish" in text(value) or "of the great hunt" in name.casefold()
               from_source = bool(source_hashes & matching_source_hashes)
               is_raid_mod = item_type.casefold() == "raid mod" and (
-                  direct or "last_wish" in category.casefold() or "lastwish" in category.casefold()
+                  direct or from_source or "last_wish" in category.casefold() or "lastwish" in category.casefold()
               )
-              if from_source or direct or is_raid_mod:
+              if direct or from_source or is_raid_mod:
+                  inv = value.get("inventory", {}) or {}
                   entry = {
-                      "hash": value.get("hash"),
-                      "name": dp(value).get("name"),
+                      "hash": value.get("hash"), "name": name,
                       "description": dp(value).get("description"),
                       "itemTypeDisplayName": item_type,
                       "itemType": value.get("itemType"),
                       "itemSubType": value.get("itemSubType"),
                       "classType": value.get("classType"),
-                      "tierTypeName": (value.get("inventory", {}) or {}).get("tierTypeName"),
-                      "recipeItemHash": (value.get("inventory", {}) or {}).get("recipeItemHash"),
+                      "tierTypeName": inv.get("tierTypeName"),
+                      "recipeItemHash": inv.get("recipeItemHash"),
                       "collectibleHash": value.get("collectibleHash"),
                       "sourceHashes": sorted(source_hashes),
                       "plugCategoryIdentifier": category,
@@ -226,30 +211,18 @@ jobs:
                       out["raidMods"].append(entry)
 
           for value in collectibles.values():
+              name = dp(value).get("name", "")
               source_hash = value.get("sourceHash") or 0
-              if source_hash in matching_source_hashes or "last wish" in text(value):
+              if source_hash in matching_source_hashes or name in EXACT_ITEM_NAMES or "last wish" in text(value):
                   out["collectibles"].append({
-                      "hash": value.get("hash"),
-                      "name": dp(value).get("name"),
+                      "hash": value.get("hash"), "name": name,
                       "description": dp(value).get("description"),
-                      "sourceHash": source_hash,
-                      "itemHash": value.get("itemHash"),
+                      "sourceHash": source_hash, "itemHash": value.get("itemHash"),
                   })
 
-          for value in lore.values():
-              t = text(value)
-              if "wish" in t and any(term in t for term in ["ahamkara", "riven", "dreaming city", "last wish"]):
-                  out["wishLore"].append({
-                      "hash": value.get("hash"),
-                      "name": dp(value).get("name"),
-                      "description": dp(value).get("description"),
-                  })
-
-          for key in [
-              "activities", "activityModifiers", "sourceDefinitions", "sealNodes",
-              "sealRecords", "matchingRecords", "lootItems", "raidMods", "collectibles", "wishLore"
-          ]:
-              out[key].sort(key=lambda x: ((x.get("name") or ""), x.get("hash") or 0))
+          for key in out:
+              if isinstance(out[key], list):
+                  out[key].sort(key=lambda x: ((x.get("name") or ""), x.get("hash") or 0))
 
           pathlib.Path("tmp").mkdir(exist_ok=True)
           pathlib.Path("tmp/last-wish-manifest-data.json").write_text(
