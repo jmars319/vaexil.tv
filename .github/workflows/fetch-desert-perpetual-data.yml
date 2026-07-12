@@ -28,6 +28,16 @@ jobs:
               "phase race", "cutthroat combat", "battalions", "token limit",
               "encounter challenges", "feature presentation", "network technician"
           ]
+          ITEM_NAMES = {
+              "Antedate", "Lance Ephemeral", "Intercalary", "Finite Maybe",
+              "The When and Where", "Opaque Hourglass", "Whirling Ovation",
+              "Cusp Sempiternal", "Starscape Null", "The Ever-Present",
+              "Collective Psyche", "Wayward Psyche"
+          }
+          ACTIVITY_MODIFIER_HASHES = {
+              249172590, 22295818, 3825969510, 1783825372,
+              1009404927, 3792281695, 1806775150,
+          }
 
           def read_json(url):
               req = urllib.request.Request(url, headers={"User-Agent": "Vaexil-guide-research/1.0"})
@@ -45,6 +55,8 @@ jobs:
           presentation = component("DestinyPresentationNodeDefinition")
           activities = component("DestinyActivityDefinition")
           modifiers = component("DestinyActivityModifierDefinition")
+          items = component("DestinyInventoryItemDefinition")
+          collectibles = component("DestinyCollectibleDefinition")
 
           def dp(v):
               return v.get("displayProperties", {}) or {}
@@ -58,18 +70,26 @@ jobs:
               "manifestVersion": manifest.get("version"),
               "activities": [],
               "modifiers": [],
+              "featLikeModifiers": [],
               "records": [],
               "presentationNodes": [],
               "namedObjectives": [],
+              "items": [],
+              "collectibles": [],
           }
 
           challenge_objective_hashes = set()
+          activity_modifier_hashes = set(ACTIVITY_MODIFIER_HASHES)
           for value in activities.values():
               if matches(value):
                   for challenge in value.get("challenges", []):
                       oh = challenge.get("objectiveHash")
                       if oh:
                           challenge_objective_hashes.add(oh)
+                  for mod in value.get("modifiers", []):
+                      mh = mod.get("activityModifierHash")
+                      if mh:
+                          activity_modifier_hashes.add(mh)
                   out["activities"].append({
                       "hash": value.get("hash"),
                       "name": dp(value).get("name"),
@@ -82,13 +102,20 @@ jobs:
                       "rewards": value.get("rewards", []),
                   })
 
+          seen_mods = set()
           for value in modifiers.values():
-              if matches(value):
-                  out["modifiers"].append({
-                      "hash": value.get("hash"),
-                      "name": dp(value).get("name"),
-                      "description": dp(value).get("description"),
-                  })
+              h = value.get("hash")
+              d = dp(value)
+              name = d.get("name") or ""
+              desc = d.get("description") or ""
+              text = f"{name} {desc}".casefold()
+              rendered = {"hash": h, "name": name, "description": desc}
+              if matches(value) or h in activity_modifier_hashes:
+                  if h not in seen_mods:
+                      seen_mods.add(h)
+                      out["modifiers"].append(rendered)
+              if "feat" in text or any(t in text for t in ["phase race", "token limit", "cutthroat", "battalion", "encounter challenge"]):
+                  out["featLikeModifiers"].append(rendered)
 
           for value in records.values():
               objective_defs = []
@@ -99,8 +126,9 @@ jobs:
                       "progressDescription": obj.get("progressDescription"),
                       "completionValue": obj.get("completionValue"),
                       "locationHash": obj.get("locationHash"),
+                      "displayProperties": obj.get("displayProperties"),
                   })
-              if matches(value, json.dumps(objective_defs)):
+              if matches(value, json.dumps(objective_defs)) or 3954661385 in value.get("parentNodeHashes", []):
                   out["records"].append({
                       "hash": value.get("hash"),
                       "name": dp(value).get("name"),
@@ -111,7 +139,7 @@ jobs:
                   })
 
           for value in presentation.values():
-              if matches(value):
+              if matches(value) or value.get("hash") == 3954661385:
                   out["presentationNodes"].append({
                       "hash": value.get("hash"),
                       "name": dp(value).get("name"),
@@ -130,7 +158,39 @@ jobs:
                   "displayProperties": obj.get("displayProperties"),
               })
 
-          for key in ["activities", "modifiers", "records", "presentationNodes"]:
+          collectible_names = set()
+          for value in collectibles.values():
+              name = dp(value).get("name") or ""
+              if name in ITEM_NAMES or any(prefix in name for prefix in ["Collective Psyche", "Wayward Psyche"]):
+                  collectible_names.add(name)
+                  out["collectibles"].append({
+                      "hash": value.get("hash"),
+                      "name": name,
+                      "description": dp(value).get("description"),
+                      "sourceHash": value.get("sourceHash"),
+                      "itemHash": value.get("itemHash"),
+                  })
+
+          for value in items.values():
+              name = dp(value).get("name") or ""
+              if name in ITEM_NAMES or name in collectible_names or any(prefix in name for prefix in ["Collective Psyche", "Wayward Psyche"]):
+                  inv = value.get("inventory", {}) or {}
+                  out["items"].append({
+                      "hash": value.get("hash"),
+                      "name": name,
+                      "description": dp(value).get("description"),
+                      "itemTypeDisplayName": value.get("itemTypeDisplayName"),
+                      "itemType": value.get("itemType"),
+                      "itemSubType": value.get("itemSubType"),
+                      "classType": value.get("classType"),
+                      "tierTypeName": inv.get("tierTypeName"),
+                      "collectibleHash": value.get("collectibleHash"),
+                      "sourceData": value.get("sourceData"),
+                      "traitHashes": value.get("traitHashes", []),
+                      "damageTypeHashes": value.get("damageTypeHashes", []),
+                  })
+
+          for key in ["activities", "modifiers", "featLikeModifiers", "records", "presentationNodes", "items", "collectibles"]:
               out[key].sort(key=lambda x: ((x.get("name") or ""), x.get("hash") or 0))
 
           pathlib.Path("tmp").mkdir(exist_ok=True)
