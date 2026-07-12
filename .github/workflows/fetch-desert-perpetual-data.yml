@@ -24,7 +24,9 @@ jobs:
           TERMS = [
               "desert perpetual", "iatros", "epoptes", "agraios", "koregos",
               "chronon", "diastole", "neomutation", "temporality", "worldline stability",
-              "variable elimination", "banishment", "temporal oculus", "atemporal"
+              "variable elimination", "banishment", "temporal oculus", "atemporal",
+              "phase race", "cutthroat combat", "battalions", "token limit",
+              "encounter challenges", "feature presentation", "network technician"
           ]
 
           def read_json(url):
@@ -58,10 +60,16 @@ jobs:
               "modifiers": [],
               "records": [],
               "presentationNodes": [],
+              "namedObjectives": [],
           }
 
+          challenge_objective_hashes = set()
           for value in activities.values():
               if matches(value):
+                  for challenge in value.get("challenges", []):
+                      oh = challenge.get("objectiveHash")
+                      if oh:
+                          challenge_objective_hashes.add(oh)
                   out["activities"].append({
                       "hash": value.get("hash"),
                       "name": dp(value).get("name"),
@@ -111,6 +119,16 @@ jobs:
                       "children": value.get("children", {}),
                       "parentNodeHashes": value.get("parentNodeHashes", []),
                   })
+
+          for oh in sorted(challenge_objective_hashes):
+              obj = objectives.get(str(oh), {})
+              out["namedObjectives"].append({
+                  "hash": oh,
+                  "progressDescription": obj.get("progressDescription"),
+                  "completionValue": obj.get("completionValue"),
+                  "locationHash": obj.get("locationHash"),
+                  "displayProperties": obj.get("displayProperties"),
+              })
 
           for key in ["activities", "modifiers", "records", "presentationNodes"]:
               out[key].sort(key=lambda x: ((x.get("name") or ""), x.get("hash") or 0))
