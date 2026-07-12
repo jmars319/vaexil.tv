@@ -1,0 +1,197 @@
+name: Fetch Desert Perpetual manifest data
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/fetch-desert-perpetual-data.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  fetch-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch current Bungie manifest data
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          import pathlib
+          import urllib.request
+
+          TERMS = [
+              "desert perpetual", "iatros", "epoptes", "agraios", "koregos",
+              "chronon", "diastole", "neomutation", "temporality", "worldline stability",
+              "variable elimination", "banishment", "temporal oculus"
+          ]
+
+          def read_json(url):
+              req = urllib.request.Request(url, headers={"User-Agent": "Vaexil-guide-research/1.0"})
+              with urllib.request.urlopen(req, timeout=300) as response:
+                  return json.load(response)
+
+          manifest = read_json("https://www.bungie.net/Platform/Destiny2/Manifest/")["Response"]
+          paths = manifest["jsonWorldComponentContentPaths"]["en"]
+
+          def component(name):
+              return read_json("https://www.bungie.net" + paths[name])
+
+          records = component("DestinyRecordDefinition")
+          objectives = component("DestinyObjectiveDefinition")
+          presentation = component("DestinyPresentationNodeDefinition")
+          activities = component("DestinyActivityDefinition")
+          modifiers = component("DestinyActivityModifierDefinition")
+          items = component("DestinyInventoryItemDefinition")
+          sources = component("DestinySourceDefinition")
+          collectibles = component("DestinyCollectibleDefinition")
+          traits = component("DestinyTraitDefinition")
+
+          def dp(v):
+              return v.get("displayProperties", {}) or {}
+
+          def matches(value, extra=''):
+              d = dp(value)
+              text = f"{d.get('name','')} {d.get('description','')} {extra}".casefold()
+              return any(term in text for term in TERMS)
+
+          out = {
+              "manifestVersion": manifest.get("version"),
+              "sources": [],
+              "activities": [],
+              "modifiers": [],
+              "records": [],
+              "presentationNodes": [],
+              "items": [],
+              "collectibles": [],
+              "traits": [],
+          }
+
+          matching_source_hashes = set()
+          for value in sources.values():
+              if matches(value):
+                  h = value.get("hash")
+                  matching_source_hashes.add(h)
+                  out["sources"].append({
+                      "hash": h,
+                      "name": dp(value).get("name"),
+                      "description": dp(value).get("description"),
+                      "category": value.get("category"),
+                  })
+
+          for value in activities.values():
+              if matches(value, json.dumps(value.get("activityLocationMappings", []))):
+                  out["activities"].append({
+                      "hash": value.get("hash"),
+                      "name": dp(value).get("name"),
+                      "description": dp(value).get("description"),
+                      "activityModeTypes": value.get("activityModeTypes", []),
+                      "activityLevel": value.get("activityLevel"),
+                      "recommendedLight": value.get("recommendedLight"),
+                      "modifiers": value.get("modifiers", []),
+                      "challenges": value.get("challenges", []),
+                      "rewards": value.get("rewards", []),
+                      "destinationHash": value.get("destinationHash"),
+                      "placeHash": value.get("placeHash"),
+                      "activityTypeHash": value.get("activityTypeHash"),
+                  })
+
+          for value in modifiers.values():
+              if matches(value):
+                  out["modifiers"].append({
+                      "hash": value.get("hash"),
+                      "name": dp(value).get("name"),
+                      "description": dp(value).get("description"),
+                  })
+
+          for value in records.values():
+              objectives_data = []
+              for oh in value.get("objectiveHashes", []):
+                  obj = objectives.get(str(oh), {})
+                  objectives_data.append({
+                      "hash": oh,
+                      "progressDescription": obj.get("progressDescription"),
+                      "completionValue": obj.get("completionValue"),
+                      "locationHash": obj.get("locationHash"),
+                  })
+              if matches(value, json.dumps(objectives_data)):
+                  out["records"].append({
+                      "hash": value.get("hash"),
+                      "name": dp(value).get("name"),
+                      "description": dp(value).get("description"),
+                      "objectiveHashes": value.get("objectiveHashes", []),
+                      "objectives": objectives_data,
+                      "parentNodeHashes": value.get("parentNodeHashes", []),
+                  })
+
+          for value in presentation.values():
+              if matches(value):
+                  out["presentationNodes"].append({
+                      "hash": value.get("hash"),
+                      "name": dp(value).get("name"),
+                      "description": dp(value).get("description"),
+                      "children": value.get("children", {}),
+                      "parentNodeHashes": value.get("parentNodeHashes", []),
+                  })
+
+          for value in items.values():
+              source_hashes = set((value.get("sourceData", {}) or {}).get("sourceHashes", []) or [])
+              plug = value.get("plug", {}) or {}
+              item_type = value.get("itemTypeDisplayName", "") or ""
+              category = plug.get("plugCategoryIdentifier", "") or ""
+              extra = f"{item_type} {category} " + json.dumps(value.get("setData", {}))
+              direct = matches(value, extra)
+              from_source = bool(source_hashes & matching_source_hashes)
+              maybe_mod = item_type.casefold() == "raid mod" and any(t in f"{dp(value).get('name','')} {dp(value).get('description','')} {category}".casefold() for t in ["tempor", "chron", "desert", "worldline", "oculus"])
+              if direct or from_source or maybe_mod:
+                  out["items"].append({
+                      "hash": value.get("hash"),
+                      "name": dp(value).get("name"),
+                      "description": dp(value).get("description"),
+                      "itemTypeDisplayName": item_type,
+                      "itemType": value.get("itemType"),
+                      "itemSubType": value.get("itemSubType"),
+                      "classType": value.get("classType"),
+                      "tierTypeName": (value.get("inventory", {}) or {}).get("tierTypeName"),
+                      "sourceHashes": sorted(source_hashes),
+                      "collectibleHash": value.get("collectibleHash"),
+                      "plugCategoryIdentifier": category,
+                      "traitHashes": value.get("traitHashes", []),
+                  })
+
+          for value in collectibles.values():
+              source_hash = value.get("sourceHash") or 0
+              if matches(value, str(source_hash)) or source_hash in matching_source_hashes:
+                  out["collectibles"].append({
+                      "hash": value.get("hash"),
+                      "name": dp(value).get("name"),
+                      "description": dp(value).get("description"),
+                      "sourceHash": source_hash,
+                      "itemHash": value.get("itemHash"),
+                  })
+
+          for value in traits.values():
+              if matches(value):
+                  out["traits"].append({
+                      "hash": value.get("hash"),
+                      "name": dp(value).get("name"),
+                      "description": dp(value).get("description"),
+                  })
+
+          for key in ["sources","activities","modifiers","records","presentationNodes","items","collectibles","traits"]:
+              out[key].sort(key=lambda x: ((x.get("name") or ""), x.get("hash") or 0))
+
+          pathlib.Path("tmp").mkdir(exist_ok=True)
+          pathlib.Path("tmp/desert-perpetual-manifest-data.json").write_text(
+              json.dumps(out, indent=2, ensure_ascii=False), encoding="utf-8"
+          )
+          print(json.dumps({k: len(v) if isinstance(v, list) else v for k,v in out.items()}, indent=2))
+          PY
+
+      - name: Upload data
+        uses: actions/upload-artifact@v4
+        with:
+          name: desert-perpetual-manifest-data
+          path: tmp/desert-perpetual-manifest-data.json
+          if-no-files-found: error
