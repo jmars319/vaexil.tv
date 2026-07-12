@@ -24,7 +24,7 @@ jobs:
           TERMS = [
               "desert perpetual", "iatros", "epoptes", "agraios", "koregos",
               "chronon", "diastole", "neomutation", "temporality", "worldline stability",
-              "variable elimination", "banishment", "temporal oculus"
+              "variable elimination", "banishment", "temporal oculus", "atemporal"
           ]
 
           def read_json(url):
@@ -43,45 +43,25 @@ jobs:
           presentation = component("DestinyPresentationNodeDefinition")
           activities = component("DestinyActivityDefinition")
           modifiers = component("DestinyActivityModifierDefinition")
-          items = component("DestinyInventoryItemDefinition")
-          sources = component("DestinySourceDefinition")
-          collectibles = component("DestinyCollectibleDefinition")
-          traits = component("DestinyTraitDefinition")
 
           def dp(v):
               return v.get("displayProperties", {}) or {}
 
-          def matches(value, extra=''):
+          def matches(value, extra=""):
               d = dp(value)
               text = f"{d.get('name','')} {d.get('description','')} {extra}".casefold()
               return any(term in text for term in TERMS)
 
           out = {
               "manifestVersion": manifest.get("version"),
-              "sources": [],
               "activities": [],
               "modifiers": [],
               "records": [],
               "presentationNodes": [],
-              "items": [],
-              "collectibles": [],
-              "traits": [],
           }
 
-          matching_source_hashes = set()
-          for value in sources.values():
-              if matches(value):
-                  h = value.get("hash")
-                  matching_source_hashes.add(h)
-                  out["sources"].append({
-                      "hash": h,
-                      "name": dp(value).get("name"),
-                      "description": dp(value).get("description"),
-                      "category": value.get("category"),
-                  })
-
           for value in activities.values():
-              if matches(value, json.dumps(value.get("activityLocationMappings", []))):
+              if matches(value):
                   out["activities"].append({
                       "hash": value.get("hash"),
                       "name": dp(value).get("name"),
@@ -92,9 +72,6 @@ jobs:
                       "modifiers": value.get("modifiers", []),
                       "challenges": value.get("challenges", []),
                       "rewards": value.get("rewards", []),
-                      "destinationHash": value.get("destinationHash"),
-                      "placeHash": value.get("placeHash"),
-                      "activityTypeHash": value.get("activityTypeHash"),
                   })
 
           for value in modifiers.values():
@@ -106,22 +83,22 @@ jobs:
                   })
 
           for value in records.values():
-              objectives_data = []
+              objective_defs = []
               for oh in value.get("objectiveHashes", []):
                   obj = objectives.get(str(oh), {})
-                  objectives_data.append({
+                  objective_defs.append({
                       "hash": oh,
                       "progressDescription": obj.get("progressDescription"),
                       "completionValue": obj.get("completionValue"),
                       "locationHash": obj.get("locationHash"),
                   })
-              if matches(value, json.dumps(objectives_data)):
+              if matches(value, json.dumps(objective_defs)):
                   out["records"].append({
                       "hash": value.get("hash"),
                       "name": dp(value).get("name"),
                       "description": dp(value).get("description"),
                       "objectiveHashes": value.get("objectiveHashes", []),
-                      "objectives": objectives_data,
+                      "objectives": objective_defs,
                       "parentNodeHashes": value.get("parentNodeHashes", []),
                   })
 
@@ -135,51 +112,7 @@ jobs:
                       "parentNodeHashes": value.get("parentNodeHashes", []),
                   })
 
-          for value in items.values():
-              source_hashes = set((value.get("sourceData", {}) or {}).get("sourceHashes", []) or [])
-              plug = value.get("plug", {}) or {}
-              item_type = value.get("itemTypeDisplayName", "") or ""
-              category = plug.get("plugCategoryIdentifier", "") or ""
-              extra = f"{item_type} {category} " + json.dumps(value.get("setData", {}))
-              direct = matches(value, extra)
-              from_source = bool(source_hashes & matching_source_hashes)
-              maybe_mod = item_type.casefold() == "raid mod" and any(t in f"{dp(value).get('name','')} {dp(value).get('description','')} {category}".casefold() for t in ["tempor", "chron", "desert", "worldline", "oculus"])
-              if direct or from_source or maybe_mod:
-                  out["items"].append({
-                      "hash": value.get("hash"),
-                      "name": dp(value).get("name"),
-                      "description": dp(value).get("description"),
-                      "itemTypeDisplayName": item_type,
-                      "itemType": value.get("itemType"),
-                      "itemSubType": value.get("itemSubType"),
-                      "classType": value.get("classType"),
-                      "tierTypeName": (value.get("inventory", {}) or {}).get("tierTypeName"),
-                      "sourceHashes": sorted(source_hashes),
-                      "collectibleHash": value.get("collectibleHash"),
-                      "plugCategoryIdentifier": category,
-                      "traitHashes": value.get("traitHashes", []),
-                  })
-
-          for value in collectibles.values():
-              source_hash = value.get("sourceHash") or 0
-              if matches(value, str(source_hash)) or source_hash in matching_source_hashes:
-                  out["collectibles"].append({
-                      "hash": value.get("hash"),
-                      "name": dp(value).get("name"),
-                      "description": dp(value).get("description"),
-                      "sourceHash": source_hash,
-                      "itemHash": value.get("itemHash"),
-                  })
-
-          for value in traits.values():
-              if matches(value):
-                  out["traits"].append({
-                      "hash": value.get("hash"),
-                      "name": dp(value).get("name"),
-                      "description": dp(value).get("description"),
-                  })
-
-          for key in ["sources","activities","modifiers","records","presentationNodes","items","collectibles","traits"]:
+          for key in ["activities", "modifiers", "records", "presentationNodes"]:
               out[key].sort(key=lambda x: ((x.get("name") or ""), x.get("hash") or 0))
 
           pathlib.Path("tmp").mkdir(exist_ok=True)
