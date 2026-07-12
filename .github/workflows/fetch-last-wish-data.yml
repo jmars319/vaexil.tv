@@ -24,15 +24,15 @@ jobs:
           EXACT_RECORD_NAMES = {
               "Summoning Ritual", "Which Witch", "Forever Fight", "Keep Out",
               "Strength of Memory", "Petra's Run", "Rivensbane",
-              "O Murderer Mine", "Coliseum Champion", "New Meta",
-              "Thunderstruck", "Sunburn", "The Night Owl", "Habitual Wisher",
-              "O Grave Robber Mine", "O Deepsight Mine",
+              "O Murderer Mine", "Coliseum Champion", "The New Meta",
+              "Thunderstruck", "Sunburn", "Night Owl", "Habitual Wisher",
+              "O Grave Robber Mine", "O Deepsight Mine", "Eyes, Mouth, Heart",
           }
           EXACT_ITEM_NAMES = {
               "Chattering Bone", "The Supremacy", "Transfiguration",
               "Apex Predator", "Age-Old Bond", "Nation of Beasts",
               "Techeun Force", "Tyranny of Heaven", "One Thousand Voices",
-              "Ethereal Key", "Glittering Key",
+              "Ethereal Key", "Glittering Key", "O Deepsight Mine",
           }
           TERMS = [
               "last wish", "riven of a thousand voices", "kalli", "shuro chi",
@@ -64,6 +64,7 @@ jobs:
           sources = component("DestinySourceDefinition")
           items = component("DestinyInventoryItemDefinition")
           collectibles = component("DestinyCollectibleDefinition")
+          vendors = component("DestinyVendorDefinition")
 
           def dp(value):
               return (value or {}).get("displayProperties", {}) or {}
@@ -77,6 +78,7 @@ jobs:
               "activities": [], "activityModifiers": [], "sourceDefinitions": [],
               "sealNodes": [], "sealRecords": [], "matchingRecords": [],
               "lootItems": [], "raidMods": [], "collectibles": [],
+              "specialItemDefinitions": {}, "vendorMatches": [],
           }
 
           matching_source_hashes = set()
@@ -186,7 +188,7 @@ jobs:
               category = plug.get("plugCategoryIdentifier", "") or ""
               direct = name in EXACT_ITEM_NAMES or "last wish" in text(value) or "of the great hunt" in name.casefold()
               from_source = bool(source_hashes & matching_source_hashes)
-              is_raid_mod = item_type.casefold() == "raid mod" and (
+              is_raid_mod = item_type.casefold() in {"raid mod", "last wish raid mod"} and (
                   direct or from_source or "last_wish" in category.casefold() or "lastwish" in category.casefold()
               )
               if direct or from_source or is_raid_mod:
@@ -209,6 +211,18 @@ jobs:
                   out["lootItems"].append(entry)
                   if is_raid_mod:
                       out["raidMods"].append(entry)
+                  if name in {"O Deepsight Mine", "Ethereal Key", "Glittering Key"}:
+                      out["specialItemDefinitions"].setdefault(name, []).append({
+                          "hash": value.get("hash"),
+                          "displayProperties": dp(value),
+                          "itemTypeDisplayName": item_type,
+                          "objectives": value.get("objectives"),
+                          "questlineItemHash": value.get("questlineItemHash"),
+                          "inventory": inv,
+                          "value": value.get("value"),
+                          "displaySource": value.get("displaySource"),
+                          "sockets": value.get("sockets"),
+                      })
 
           for value in collectibles.values():
               name = dp(value).get("name", "")
@@ -218,6 +232,19 @@ jobs:
                       "hash": value.get("hash"), "name": name,
                       "description": dp(value).get("description"),
                       "sourceHash": source_hash, "itemHash": value.get("itemHash"),
+                  })
+
+          special_hashes = {
+              x["hash"] for values in out["specialItemDefinitions"].values() for x in values
+          }
+          for value in vendors.values():
+              item_list = value.get("itemList", []) or []
+              matched = [x for x in item_list if x.get("itemHash") in special_hashes]
+              if matched or "hawthorne" in text(value):
+                  out["vendorMatches"].append({
+                      "hash": value.get("hash"), "name": dp(value).get("name"),
+                      "description": dp(value).get("description"),
+                      "matchedItems": matched,
                   })
 
           for key in out:
