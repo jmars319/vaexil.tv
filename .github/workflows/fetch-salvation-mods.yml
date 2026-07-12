@@ -1,0 +1,103 @@
+name: Fetch Salvation's Edge raid mods and seal records
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/fetch-salvation-mods.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  fetch-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch current Bungie manifest data
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          import pathlib
+          import urllib.request
+
+          def read_json(url):
+              req = urllib.request.Request(url, headers={"User-Agent": "Vaexil-guide-research/1.0"})
+              with urllib.request.urlopen(req, timeout=240) as response:
+                  return json.load(response)
+
+          manifest = read_json("https://www.bungie.net/Platform/Destiny2/Manifest/")["Response"]
+          paths = manifest["jsonWorldComponentContentPaths"]["en"]
+          def component(name):
+              return read_json("https://www.bungie.net" + paths[name])
+
+          records = component("DestinyRecordDefinition")
+          items = component("DestinyInventoryItemDefinition")
+          presentation = component("DestinyPresentationNodeDefinition")
+
+          node_hashes = {2657827258, 334829503}
+          out = {
+              "manifestVersion": manifest.get("version"),
+              "raidMods": [],
+              "sealRecords": [],
+              "presentationNodes": {},
+          }
+
+          for value in items.values():
+              dp = value.get("displayProperties", {})
+              name = dp.get("name", "")
+              desc = dp.get("description", "")
+              item_type = value.get("itemTypeDisplayName", "") or ""
+              plug = value.get("plug", {}) or {}
+              category = plug.get("plugCategoryIdentifier", "") or ""
+              text = f"{name} {desc} {item_type} {category}".casefold()
+              is_raid_mod = (
+                  item_type.casefold() == "raid mod"
+                  or "salvation's edge raid mod" in text
+                  or "salvations_edge" in category.casefold()
+                  or "salvation_edge" in category.casefold()
+              )
+              if is_raid_mod and name:
+                  out["raidMods"].append({
+                      "hash": value.get("hash"),
+                      "name": name,
+                      "description": desc,
+                      "itemTypeDisplayName": item_type,
+                      "plugCategoryIdentifier": category,
+                  })
+
+          for value in records.values():
+              parents = set(value.get("parentNodeHashes", []))
+              if parents & node_hashes:
+                  dp = value.get("displayProperties", {})
+                  out["sealRecords"].append({
+                      "hash": value.get("hash"),
+                      "name": dp.get("name", ""),
+                      "description": dp.get("description", ""),
+                      "parentNodeHashes": sorted(parents),
+                  })
+
+          for h in node_hashes:
+              node = presentation.get(str(h), {})
+              dp = node.get("displayProperties", {})
+              out["presentationNodes"][str(h)] = {
+                  "name": dp.get("name", ""),
+                  "description": dp.get("description", ""),
+                  "children": node.get("children", {}),
+              }
+
+          out["raidMods"].sort(key=lambda x: (x["name"], x["hash"] or 0))
+          out["sealRecords"].sort(key=lambda x: (x["name"], x["hash"] or 0))
+          pathlib.Path("tmp").mkdir(exist_ok=True)
+          pathlib.Path("tmp/salvation-mods-seal.json").write_text(
+              json.dumps(out, indent=2, ensure_ascii=False), encoding="utf-8"
+          )
+          print(json.dumps(out, indent=2, ensure_ascii=False))
+          PY
+
+      - name: Upload data
+        uses: actions/upload-artifact@v4
+        with:
+          name: salvation-mods-seal
+          path: tmp/salvation-mods-seal.json
+          if-no-files-found: error
