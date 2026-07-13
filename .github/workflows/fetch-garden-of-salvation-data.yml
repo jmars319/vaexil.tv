@@ -30,6 +30,13 @@ jobs:
               "Enlightened", "Inherent Perfection", "Lunar Fashion", "Divinity",
               "Divine Fragmentation", "Garden of Salvation", "Sacred Duty",
               "Ancient Defender", "Ancient Believer",
+              "Sacred Provenance", "Ancient Gospel", "Prophet of Doom", "Reckless Oracle",
+              "Accrued Redemption", "Zealot's Reward", "Omniscient Eye",
+              "Helm of Righteousness", "Mask of Righteousness", "Cowl of Righteousness",
+              "Gauntlets of Exaltation", "Grips of Exaltation", "Gloves of Exaltation",
+              "Plate of Transcendence", "Vest of Transcendence", "Robes of Transcendence",
+              "Greaves of Ascendancy", "Strides of Ascendancy", "Boots of Ascendancy",
+              "Temptation's Mark", "Cloak of Temptation", "Bond of Temptation",
           }
           TERMS = [
               "garden of salvation", "consecrated mind", "sanctified mind", "voltaic",
@@ -38,6 +45,7 @@ jobs:
               "repulsion theory", "relay rally", "stop hitting yourself", "inherent perfection",
               "deepsight", "sacred provenance", "ancient gospel", "prophet of doom",
               "reckless oracle", "accrued redemption", "zealot's reward", "omniscient eye",
+              "relay defender", "resistant tether", "voltaic ammo", "voltaic mote collector",
           ]
 
           def read_json(url):
@@ -68,9 +76,9 @@ jobs:
 
           out = {
               "manifestVersion": None,
+              "componentKeys": [],
               "activities": [],
               "activityModifiers": [],
-              "sourceDefinitions": [],
               "presentationNodes": [],
               "sealRecords": [],
               "matchingRecords": [],
@@ -84,25 +92,13 @@ jobs:
               manifest = read_json("https://www.bungie.net/Platform/Destiny2/Manifest/")["Response"]
               paths = manifest["jsonWorldComponentContentPaths"]["en"]
               out["manifestVersion"] = manifest.get("version")
+              out["componentKeys"] = sorted(paths.keys())
 
               def component(name):
                   print(f"Downloading {name}...", flush=True)
                   result = read_json("https://www.bungie.net" + paths[name])
                   print(f"Loaded {name}: {len(result)} rows", flush=True)
                   return result
-
-              garden_source_hashes = set()
-              sources = component("DestinySourceDefinition")
-              for value in sources.values():
-                  if "garden of salvation" in txt(value):
-                      h = value.get("hash")
-                      garden_source_hashes.add(h)
-                      out["sourceDefinitions"].append({
-                          "hash": h, "name": dp(value).get("name"),
-                          "description": dp(value).get("description"), "category": value.get("category"),
-                      })
-              del sources
-              gc.collect()
 
               activities = component("DestinyActivityDefinition")
               for value in activities.values():
@@ -178,25 +174,18 @@ jobs:
               del presentation, records, objectives
               gc.collect()
 
-              known_weapon_names = {
-                  "Sacred Provenance", "Ancient Gospel", "Prophet of Doom", "Reckless Oracle",
-                  "Accrued Redemption", "Zealot's Reward", "Omniscient Eye", "Divinity",
-              }
               items = component("DestinyInventoryItemDefinition")
               for value in items.values():
                   d = dp(value)
                   name = d.get("name", "")
-                  source_hashes = set(((value.get("sourceData") or {}).get("sourceHashes") or []))
                   item_type = value.get("itemTypeDisplayName", "") or ""
                   category = ((value.get("plug") or {}).get("plugCategoryIdentifier") or "")
                   item_text = txt(value, f"{item_type} {category}")
-                  from_garden = bool(source_hashes & garden_source_hashes)
-                  is_known = name in known_weapon_names
                   is_raid_mod = item_type.casefold() == "raid mod" and any(
-                      term in item_text for term in ["garden", "relay", "tether", "voltaic", "enlighten", "defender"]
+                      term in item_text for term in ["relay defender", "resistant tether", "voltaic ammo", "voltaic mote collector"]
                   )
                   is_quest = any(term in item_text for term in ["divine fragmentation", "divinity", "what's this", "core empowered"])
-                  if from_garden or is_known or term_match(value) or is_raid_mod:
+                  if name in EXACT_NAMES or term_match(value) or is_raid_mod:
                       rendered = {
                           "hash": value.get("hash"), "name": name,
                           "description": d.get("description"),
@@ -204,7 +193,7 @@ jobs:
                           "itemType": value.get("itemType"), "itemSubType": value.get("itemSubType"),
                           "classType": value.get("classType"),
                           "tierTypeName": (value.get("inventory", {}) or {}).get("tierTypeName"),
-                          "sourceHashes": sorted(source_hashes),
+                          "sourceHashes": ((value.get("sourceData") or {}).get("sourceHashes") or []),
                           "collectibleHash": value.get("collectibleHash"),
                           "traitHashes": value.get("traitHashes", []) or [],
                           "plugCategoryIdentifier": category,
@@ -217,18 +206,17 @@ jobs:
 
               collectibles = component("DestinyCollectibleDefinition")
               for value in collectibles.values():
-                  source_hash = value.get("sourceHash") or 0
-                  if source_hash in garden_source_hashes or term_match(value):
+                  if term_match(value):
                       out["collectibles"].append({
                           "hash": value.get("hash"), "name": dp(value).get("name"),
                           "description": dp(value).get("description"),
-                          "sourceHash": source_hash, "itemHash": value.get("itemHash"),
+                          "sourceHash": value.get("sourceHash"), "itemHash": value.get("itemHash"),
                       })
               del collectibles
               gc.collect()
 
               for value in out.values():
-                  if isinstance(value, list):
+                  if isinstance(value, list) and value and isinstance(value[0], dict):
                       value.sort(key=lambda x: ((x.get("name") or ""), x.get("hash") or 0))
 
           except Exception:
