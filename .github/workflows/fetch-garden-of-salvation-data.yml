@@ -17,9 +17,11 @@ jobs:
         shell: bash
         run: |
           python - <<'PY'
+          import gc
           import json
           import pathlib
           import time
+          import traceback
           import urllib.request
 
           EXACT_NAMES = {
@@ -52,21 +54,6 @@ jobs:
                       time.sleep(2 ** attempt)
               raise last
 
-          manifest = read_json("https://www.bungie.net/Platform/Destiny2/Manifest/")["Response"]
-          paths = manifest["jsonWorldComponentContentPaths"]["en"]
-
-          def component(name):
-              return read_json("https://www.bungie.net" + paths[name])
-
-          records = component("DestinyRecordDefinition")
-          objectives = component("DestinyObjectiveDefinition")
-          presentation = component("DestinyPresentationNodeDefinition")
-          activities = component("DestinyActivityDefinition")
-          modifiers = component("DestinyActivityModifierDefinition")
-          sources = component("DestinySourceDefinition")
-          items = component("DestinyInventoryItemDefinition")
-          collectibles = component("DestinyCollectibleDefinition")
-
           def dp(value):
               return (value or {}).get("displayProperties", {}) or {}
 
@@ -80,7 +67,7 @@ jobs:
               return name in EXACT_NAMES or any(term in text for term in TERMS)
 
           out = {
-              "manifestVersion": manifest.get("version"),
+              "manifestVersion": None,
               "activities": [],
               "activityModifiers": [],
               "sourceDefinitions": [],
@@ -93,148 +80,175 @@ jobs:
               "questItems": [],
           }
 
-          garden_source_hashes = set()
-          for value in sources.values():
-              if "garden of salvation" in txt(value):
-                  h = value.get("hash")
-                  garden_source_hashes.add(h)
-                  out["sourceDefinitions"].append({
-                      "hash": h,
-                      "name": dp(value).get("name"),
-                      "description": dp(value).get("description"),
-                      "category": value.get("category"),
-                  })
+          try:
+              manifest = read_json("https://www.bungie.net/Platform/Destiny2/Manifest/")["Response"]
+              paths = manifest["jsonWorldComponentContentPaths"]["en"]
+              out["manifestVersion"] = manifest.get("version")
 
-          for value in activities.values():
-              if "garden of salvation" in txt(value):
-                  out["activities"].append({
-                      "hash": value.get("hash"),
-                      "name": dp(value).get("name"),
-                      "description": dp(value).get("description"),
-                      "activityLevel": value.get("activityLevel"),
-                      "recommendedLight": value.get("recommendedLight"),
-                      "activityModeTypes": value.get("activityModeTypes", []),
-                      "modifiers": value.get("modifiers", []),
-                      "challenges": value.get("challenges", []) or [],
-                      "rewards": value.get("rewards", []) or [],
-                      "destinationHash": value.get("destinationHash"),
-                  })
+              def component(name):
+                  print(f"Downloading {name}...", flush=True)
+                  result = read_json("https://www.bungie.net" + paths[name])
+                  print(f"Loaded {name}: {len(result)} rows", flush=True)
+                  return result
 
-          for value in modifiers.values():
-              if term_match(value):
-                  out["activityModifiers"].append({
-                      "hash": value.get("hash"),
-                      "name": dp(value).get("name"),
-                      "description": dp(value).get("description"),
-                  })
+              garden_source_hashes = set()
+              sources = component("DestinySourceDefinition")
+              for value in sources.values():
+                  if "garden of salvation" in txt(value):
+                      h = value.get("hash")
+                      garden_source_hashes.add(h)
+                      out["sourceDefinitions"].append({
+                          "hash": h, "name": dp(value).get("name"),
+                          "description": dp(value).get("description"), "category": value.get("category"),
+                      })
+              del sources
+              gc.collect()
 
-          seal_record_hashes = set()
-          for value in presentation.values():
-              if term_match(value):
-                  children = value.get("children", {}) or {}
-                  for child in children.get("records", []) or []:
-                      h = child.get("recordHash")
-                      if h:
-                          seal_record_hashes.add(h)
-                  out["presentationNodes"].append({
-                      "hash": value.get("hash"),
-                      "name": dp(value).get("name"),
+              activities = component("DestinyActivityDefinition")
+              for value in activities.values():
+                  if "garden of salvation" in txt(value):
+                      out["activities"].append({
+                          "hash": value.get("hash"), "name": dp(value).get("name"),
+                          "description": dp(value).get("description"),
+                          "activityLevel": value.get("activityLevel"),
+                          "recommendedLight": value.get("recommendedLight"),
+                          "activityModeTypes": value.get("activityModeTypes", []),
+                          "modifiers": value.get("modifiers", []),
+                          "challenges": value.get("challenges", []) or [],
+                          "rewards": value.get("rewards", []) or [],
+                          "destinationHash": value.get("destinationHash"),
+                      })
+              del activities
+              gc.collect()
+
+              modifiers = component("DestinyActivityModifierDefinition")
+              for value in modifiers.values():
+                  if term_match(value):
+                      out["activityModifiers"].append({
+                          "hash": value.get("hash"), "name": dp(value).get("name"),
+                          "description": dp(value).get("description"),
+                      })
+              del modifiers
+              gc.collect()
+
+              objectives = component("DestinyObjectiveDefinition")
+              records = component("DestinyRecordDefinition")
+              presentation = component("DestinyPresentationNodeDefinition")
+
+              seal_record_hashes = set()
+              for value in presentation.values():
+                  if term_match(value):
+                      children = value.get("children", {}) or {}
+                      for child in children.get("records", []) or []:
+                          h = child.get("recordHash")
+                          if h:
+                              seal_record_hashes.add(h)
+                      out["presentationNodes"].append({
+                          "hash": value.get("hash"), "name": dp(value).get("name"),
+                          "description": dp(value).get("description"), "children": children,
+                          "parentNodeHashes": value.get("parentNodeHashes", []) or [],
+                      })
+
+              def render_record(value):
+                  objective_defs = []
+                  for oh in value.get("objectiveHashes", []) or []:
+                      obj = objectives.get(str(oh), {}) or {}
+                      objective_defs.append({
+                          "hash": oh, "progressDescription": obj.get("progressDescription"),
+                          "completionValue": obj.get("completionValue"),
+                          "locationHash": obj.get("locationHash"),
+                          "displayProperties": obj.get("displayProperties"),
+                      })
+                  return {
+                      "hash": value.get("hash"), "name": dp(value).get("name"),
                       "description": dp(value).get("description"),
-                      "children": children,
+                      "objectiveHashes": value.get("objectiveHashes", []) or [],
+                      "objectives": objective_defs,
                       "parentNodeHashes": value.get("parentNodeHashes", []) or [],
-                  })
-
-          def render_record(value):
-              objective_defs = []
-              for oh in value.get("objectiveHashes", []) or []:
-                  obj = objectives.get(str(oh), {}) or {}
-                  objective_defs.append({
-                      "hash": oh,
-                      "progressDescription": obj.get("progressDescription"),
-                      "completionValue": obj.get("completionValue"),
-                      "locationHash": obj.get("locationHash"),
-                      "displayProperties": obj.get("displayProperties"),
-                  })
-              return {
-                  "hash": value.get("hash"),
-                  "name": dp(value).get("name"),
-                  "description": dp(value).get("description"),
-                  "objectiveHashes": value.get("objectiveHashes", []) or [],
-                  "objectives": objective_defs,
-                  "parentNodeHashes": value.get("parentNodeHashes", []) or [],
-              }
-
-          for h in sorted(seal_record_hashes):
-              value = records.get(str(h), {}) or {}
-              if value:
-                  out["sealRecords"].append(render_record(value))
-
-          for value in records.values():
-              if term_match(value) or value.get("hash") in seal_record_hashes:
-                  out["matchingRecords"].append(render_record(value))
-
-          known_weapon_names = {
-              "Sacred Provenance", "Ancient Gospel", "Prophet of Doom", "Reckless Oracle",
-              "Accrued Redemption", "Zealot's Reward", "Omniscient Eye", "Divinity",
-          }
-
-          for value in items.values():
-              d = dp(value)
-              name = d.get("name", "")
-              source_hashes = set(((value.get("sourceData") or {}).get("sourceHashes") or []))
-              item_type = value.get("itemTypeDisplayName", "") or ""
-              category = ((value.get("plug") or {}).get("plugCategoryIdentifier") or "")
-              item_text = txt(value, f"{item_type} {category}")
-              from_garden = bool(source_hashes & garden_source_hashes)
-              is_known = name in known_weapon_names
-              is_raid_mod = item_type.casefold() == "raid mod" and any(
-                  term in item_text for term in ["garden", "relay", "tether", "voltaic", "enlighten", "defender"]
-              )
-              is_quest = any(term in item_text for term in ["divine fragmentation", "divinity", "what's this", "core empowered"])
-              if from_garden or is_known or term_match(value) or is_raid_mod:
-                  rendered = {
-                      "hash": value.get("hash"),
-                      "name": name,
-                      "description": d.get("description"),
-                      "itemTypeDisplayName": item_type,
-                      "itemType": value.get("itemType"),
-                      "itemSubType": value.get("itemSubType"),
-                      "classType": value.get("classType"),
-                      "tierTypeName": (value.get("inventory", {}) or {}).get("tierTypeName"),
-                      "sourceHashes": sorted(source_hashes),
-                      "collectibleHash": value.get("collectibleHash"),
-                      "traitHashes": value.get("traitHashes", []) or [],
-                      "plugCategoryIdentifier": category,
                   }
-                  (out["raidMods"] if is_raid_mod else out["lootItems"]).append(rendered)
-                  if is_quest:
-                      out["questItems"].append(rendered)
 
-          for value in collectibles.values():
-              source_hash = value.get("sourceHash") or 0
-              if source_hash in garden_source_hashes or term_match(value):
-                  out["collectibles"].append({
-                      "hash": value.get("hash"),
-                      "name": dp(value).get("name"),
-                      "description": dp(value).get("description"),
-                      "sourceHash": source_hash,
-                      "itemHash": value.get("itemHash"),
-                  })
+              for h in sorted(seal_record_hashes):
+                  value = records.get(str(h), {}) or {}
+                  if value:
+                      out["sealRecords"].append(render_record(value))
+              for value in records.values():
+                  if term_match(value) or value.get("hash") in seal_record_hashes:
+                      out["matchingRecords"].append(render_record(value))
 
-          for key, value in out.items():
-              if isinstance(value, list):
-                  value.sort(key=lambda x: ((x.get("name") or ""), x.get("hash") or 0))
+              del presentation, records, objectives
+              gc.collect()
 
-          pathlib.Path("tmp").mkdir(exist_ok=True)
-          pathlib.Path("tmp/garden-of-salvation-manifest-data.json").write_text(
-              json.dumps(out, indent=2, ensure_ascii=False), encoding="utf-8"
-          )
-          print(json.dumps({k: len(v) if isinstance(v, list) else v for k, v in out.items()}, indent=2))
+              known_weapon_names = {
+                  "Sacred Provenance", "Ancient Gospel", "Prophet of Doom", "Reckless Oracle",
+                  "Accrued Redemption", "Zealot's Reward", "Omniscient Eye", "Divinity",
+              }
+              items = component("DestinyInventoryItemDefinition")
+              for value in items.values():
+                  d = dp(value)
+                  name = d.get("name", "")
+                  source_hashes = set(((value.get("sourceData") or {}).get("sourceHashes") or []))
+                  item_type = value.get("itemTypeDisplayName", "") or ""
+                  category = ((value.get("plug") or {}).get("plugCategoryIdentifier") or "")
+                  item_text = txt(value, f"{item_type} {category}")
+                  from_garden = bool(source_hashes & garden_source_hashes)
+                  is_known = name in known_weapon_names
+                  is_raid_mod = item_type.casefold() == "raid mod" and any(
+                      term in item_text for term in ["garden", "relay", "tether", "voltaic", "enlighten", "defender"]
+                  )
+                  is_quest = any(term in item_text for term in ["divine fragmentation", "divinity", "what's this", "core empowered"])
+                  if from_garden or is_known or term_match(value) or is_raid_mod:
+                      rendered = {
+                          "hash": value.get("hash"), "name": name,
+                          "description": d.get("description"),
+                          "itemTypeDisplayName": item_type,
+                          "itemType": value.get("itemType"), "itemSubType": value.get("itemSubType"),
+                          "classType": value.get("classType"),
+                          "tierTypeName": (value.get("inventory", {}) or {}).get("tierTypeName"),
+                          "sourceHashes": sorted(source_hashes),
+                          "collectibleHash": value.get("collectibleHash"),
+                          "traitHashes": value.get("traitHashes", []) or [],
+                          "plugCategoryIdentifier": category,
+                      }
+                      (out["raidMods"] if is_raid_mod else out["lootItems"]).append(rendered)
+                      if is_quest:
+                          out["questItems"].append(rendered)
+              del items
+              gc.collect()
+
+              collectibles = component("DestinyCollectibleDefinition")
+              for value in collectibles.values():
+                  source_hash = value.get("sourceHash") or 0
+                  if source_hash in garden_source_hashes or term_match(value):
+                      out["collectibles"].append({
+                          "hash": value.get("hash"), "name": dp(value).get("name"),
+                          "description": dp(value).get("description"),
+                          "sourceHash": source_hash, "itemHash": value.get("itemHash"),
+                      })
+              del collectibles
+              gc.collect()
+
+              for value in out.values():
+                  if isinstance(value, list):
+                      value.sort(key=lambda x: ((x.get("name") or ""), x.get("hash") or 0))
+
+          except Exception:
+              pathlib.Path("tmp").mkdir(exist_ok=True)
+              pathlib.Path("tmp/error.txt").write_text(traceback.format_exc(), encoding="utf-8")
+              raise
+          finally:
+              pathlib.Path("tmp").mkdir(exist_ok=True)
+              pathlib.Path("tmp/garden-of-salvation-manifest-data.json").write_text(
+                  json.dumps(out, indent=2, ensure_ascii=False), encoding="utf-8"
+              )
+              print(json.dumps({k: len(v) if isinstance(v, list) else v for k, v in out.items()}, indent=2))
           PY
 
       - name: Upload data
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: garden-of-salvation-manifest-data
-          path: tmp/garden-of-salvation-manifest-data.json
-          if-no-files-found: error
+          path: |
+            tmp/garden-of-salvation-manifest-data.json
+            tmp/error.txt
+          if-no-files-found: warn
