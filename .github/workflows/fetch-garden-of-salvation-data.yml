@@ -19,6 +19,7 @@ jobs:
           python - <<'PY'
           import json
           import pathlib
+          import time
           import urllib.request
 
           EXACT_NAMES = {
@@ -38,9 +39,18 @@ jobs:
           ]
 
           def read_json(url):
-              req = urllib.request.Request(url, headers={"User-Agent": "Vaexil-guide-research/1.0"})
-              with urllib.request.urlopen(req, timeout=300) as response:
-                  return json.load(response)
+              last = None
+              for attempt in range(4):
+                  try:
+                      req = urllib.request.Request(url, headers={"User-Agent": "Vaexil-guide-research/1.0"})
+                      with urllib.request.urlopen(req, timeout=300) as response:
+                          return json.load(response)
+                  except Exception as exc:
+                      last = exc
+                      if attempt == 3:
+                          raise
+                      time.sleep(2 ** attempt)
+              raise last
 
           manifest = read_json("https://www.bungie.net/Platform/Destiny2/Manifest/")["Response"]
           paths = manifest["jsonWorldComponentContentPaths"]["en"]
@@ -56,12 +66,9 @@ jobs:
           sources = component("DestinySourceDefinition")
           items = component("DestinyInventoryItemDefinition")
           collectibles = component("DestinyCollectibleDefinition")
-          plugsets = component("DestinyPlugSetDefinition")
-          vendors = component("DestinyVendorDefinition")
-          quests = component("DestinyInventoryItemDefinition")
 
           def dp(value):
-              return value.get("displayProperties", {}) or {}
+              return (value or {}).get("displayProperties", {}) or {}
 
           def txt(value, extra=""):
               d = dp(value)
@@ -83,7 +90,6 @@ jobs:
               "lootItems": [],
               "raidMods": [],
               "collectibles": [],
-              "vendors": [],
               "questItems": [],
           }
 
@@ -99,14 +105,8 @@ jobs:
                       "category": value.get("category"),
                   })
 
-          garden_activity_hashes = set()
-          garden_challenge_objectives = set()
           for value in activities.values():
               if "garden of salvation" in txt(value):
-                  garden_activity_hashes.add(value.get("hash"))
-                  for ch in value.get("challenges", []):
-                      if ch.get("objectiveHash"):
-                          garden_challenge_objectives.add(ch["objectiveHash"])
                   out["activities"].append({
                       "hash": value.get("hash"),
                       "name": dp(value).get("name"),
@@ -115,8 +115,8 @@ jobs:
                       "recommendedLight": value.get("recommendedLight"),
                       "activityModeTypes": value.get("activityModeTypes", []),
                       "modifiers": value.get("modifiers", []),
-                      "challenges": value.get("challenges", []),
-                      "rewards": value.get("rewards", []),
+                      "challenges": value.get("challenges", []) or [],
+                      "rewards": value.get("rewards", []) or [],
                       "destinationHash": value.get("destinationHash"),
                   })
 
@@ -128,7 +128,6 @@ jobs:
                       "description": dp(value).get("description"),
                   })
 
-          # Locate Enlightened/Garden presentation nodes and collect directly-linked records.
           seal_record_hashes = set()
           for value in presentation.values():
               if term_match(value):
@@ -142,13 +141,13 @@ jobs:
                       "name": dp(value).get("name"),
                       "description": dp(value).get("description"),
                       "children": children,
-                      "parentNodeHashes": value.get("parentNodeHashes", []),
+                      "parentNodeHashes": value.get("parentNodeHashes", []) or [],
                   })
 
           def render_record(value):
               objective_defs = []
-              for oh in value.get("objectiveHashes", []):
-                  obj = objectives.get(str(oh), {})
+              for oh in value.get("objectiveHashes", []) or []:
+                  obj = objectives.get(str(oh), {}) or {}
                   objective_defs.append({
                       "hash": oh,
                       "progressDescription": obj.get("progressDescription"),
@@ -160,19 +159,18 @@ jobs:
                   "hash": value.get("hash"),
                   "name": dp(value).get("name"),
                   "description": dp(value).get("description"),
-                  "objectiveHashes": value.get("objectiveHashes", []),
+                  "objectiveHashes": value.get("objectiveHashes", []) or [],
                   "objectives": objective_defs,
-                  "parentNodeHashes": value.get("parentNodeHashes", []),
+                  "parentNodeHashes": value.get("parentNodeHashes", []) or [],
               }
 
           for h in sorted(seal_record_hashes):
-              value = records.get(str(h), {})
+              value = records.get(str(h), {}) or {}
               if value:
                   out["sealRecords"].append(render_record(value))
 
           for value in records.values():
-              extra = json.dumps(value.get("objectiveHashes", []))
-              if term_match(value, extra) or value.get("hash") in seal_record_hashes:
+              if term_match(value) or value.get("hash") in seal_record_hashes:
                   out["matchingRecords"].append(render_record(value))
 
           known_weapon_names = {
@@ -180,21 +178,17 @@ jobs:
               "Accrued Redemption", "Zealot's Reward", "Omniscient Eye", "Divinity",
           }
 
-          candidate_plug_hashes = set()
           for value in items.values():
               d = dp(value)
               name = d.get("name", "")
-              source_hashes = set((value.get("sourceData", {}) or {}).get("sourceHashes", []) or [])
+              source_hashes = set(((value.get("sourceData") or {}).get("sourceHashes") or []))
               item_type = value.get("itemTypeDisplayName", "") or ""
-              plug = value.get("plug", {}) or {}
-              category = plug.get("plugCategoryIdentifier", "") or ""
+              category = ((value.get("plug") or {}).get("plugCategoryIdentifier") or "")
               item_text = txt(value, f"{item_type} {category}")
               from_garden = bool(source_hashes & garden_source_hashes)
               is_known = name in known_weapon_names
-              is_raid_mod = item_type.casefold() == "raid mod" and (
-                  "garden" in item_text or "relay" in item_text or "tether" in item_text or
-                  "voltaic" in item_text or "enlighten" in item_text or "defender" in item_text or
-                  "resistant tether" in item_text
+              is_raid_mod = item_type.casefold() == "raid mod" and any(
+                  term in item_text for term in ["garden", "relay", "tether", "voltaic", "enlighten", "defender"]
               )
               is_quest = any(term in item_text for term in ["divine fragmentation", "divinity", "what's this", "core empowered"])
               if from_garden or is_known or term_match(value) or is_raid_mod:
@@ -209,13 +203,10 @@ jobs:
                       "tierTypeName": (value.get("inventory", {}) or {}).get("tierTypeName"),
                       "sourceHashes": sorted(source_hashes),
                       "collectibleHash": value.get("collectibleHash"),
-                      "traitHashes": value.get("traitHashes", []),
+                      "traitHashes": value.get("traitHashes", []) or [],
                       "plugCategoryIdentifier": category,
                   }
-                  if is_raid_mod:
-                      out["raidMods"].append(rendered)
-                  else:
-                      out["lootItems"].append(rendered)
+                  (out["raidMods"] if is_raid_mod else out["lootItems"]).append(rendered)
                   if is_quest:
                       out["questItems"].append(rendered)
 
@@ -230,17 +221,9 @@ jobs:
                       "itemHash": value.get("itemHash"),
                   })
 
-          for value in vendors.values():
-              if term_match(value):
-                  out["vendors"].append({
-                      "hash": value.get("hash"),
-                      "name": dp(value).get("name"),
-                      "description": dp(value).get("description"),
-                  })
-
-          for key in out:
-              if isinstance(out[key], list):
-                  out[key].sort(key=lambda x: ((x.get("name") or ""), x.get("hash") or 0))
+          for key, value in out.items():
+              if isinstance(value, list):
+                  value.sort(key=lambda x: ((x.get("name") or ""), x.get("hash") or 0))
 
           pathlib.Path("tmp").mkdir(exist_ok=True)
           pathlib.Path("tmp/garden-of-salvation-manifest-data.json").write_text(
