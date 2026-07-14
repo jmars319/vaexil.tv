@@ -1,0 +1,69 @@
+name: Fetch DSC mod details
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/fetch-dsc-mod-details.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  fetch-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch current Bungie item and perk definitions
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, pathlib, time, urllib.request
+
+          ITEM_HASHES = [817361141,1578165808,1362793604,2142852459,2399110176,2835258088]
+
+          def read_json(url):
+              last = None
+              for attempt in range(5):
+                  try:
+                      req = urllib.request.Request(url, headers={"User-Agent":"Vaexil-guide-research/1.0"})
+                      with urllib.request.urlopen(req, timeout=300) as response:
+                          return json.load(response)
+                  except Exception as exc:
+                      last = exc
+                      if attempt == 4: raise
+                      time.sleep(2 ** attempt)
+              raise last
+
+          manifest = read_json("https://www.bungie.net/Platform/Destiny2/Manifest/")["Response"]
+          paths = manifest["jsonWorldComponentContentPaths"]["en"]
+          def comp(name): return read_json("https://www.bungie.net" + paths[name])
+          items = comp("DestinyInventoryItemDefinition")
+          perks = comp("DestinySandboxPerkDefinition")
+          plugs = comp("DestinyPlugSetDefinition")
+
+          out = {"manifestVersion":manifest.get("version"),"items":[],"relatedPerks":[],"plugSets":[]}
+          perk_hashes=set(); plug_hashes=set()
+          for h in ITEM_HASHES:
+              v=items.get(str(h),{})
+              out["items"].append(v)
+              for p in v.get("perks",[]) or []:
+                  if p.get("perkHash"): perk_hashes.add(p["perkHash"])
+              for key in ["reusablePlugSetHash","randomizedPlugSetHash"]:
+                  ph=(v.get("plug",{}) or {}).get(key)
+                  if ph: plug_hashes.add(ph)
+              for s in (v.get("sockets",{}) or {}).get("socketEntries",[]) or []:
+                  for key in ["reusablePlugSetHash","randomizedPlugSetHash"]:
+                      ph=s.get(key)
+                      if ph: plug_hashes.add(ph)
+          for h in sorted(perk_hashes): out["relatedPerks"].append(perks.get(str(h),{}))
+          for h in sorted(plug_hashes): out["plugSets"].append(plugs.get(str(h),{}))
+          pathlib.Path("tmp").mkdir(exist_ok=True)
+          pathlib.Path("tmp/dsc-mod-details.json").write_text(json.dumps(out,indent=2,ensure_ascii=False),encoding="utf-8")
+          print(json.dumps({"items":len(out["items"]),"perks":len(out["relatedPerks"]),"plugSets":len(out["plugSets"])},indent=2))
+          PY
+      - name: Upload data
+        uses: actions/upload-artifact@v4
+        with:
+          name: dsc-mod-details
+          path: tmp/dsc-mod-details.json
+          if-no-files-found: error
