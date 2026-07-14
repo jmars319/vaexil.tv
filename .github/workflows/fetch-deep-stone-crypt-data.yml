@@ -1,0 +1,274 @@
+name: Fetch Deep Stone Crypt manifest data
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/fetch-deep-stone-crypt-data.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  fetch-data:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch current Bungie manifest data
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          import pathlib
+          import time
+          import traceback
+          import urllib.request
+
+          EXACT_NAMES = {
+              "Descendant", "Deep Stone Crypt",
+              "Red Rover", "Copies of Copies", "Of All Trades", "The Core Four",
+              "Resource Contention", "5 Seconds to Paradise", "Short Circuit", "Ready, Set, Go!",
+              "Not a Scratch", "Rock Bottom", "Crypt Security", "Atraks-1, Fallen Exo",
+              "Taniks, the Abomination", "Eyes of Tomorrow", "Cache of the Crypt",
+              "Trustee", "Heritage", "Succession", "Posterity", "Bequest", "Commemoration",
+              "Enhanced Operator Augment", "Enhanced Scanner Augment",
+              "Enhanced Suppressor Augment", "Herd Thinner",
+          }
+          TERMS = [
+              "deep stone crypt", "descendant", "crypt security", "atraks-1", "atraks",
+              "taniks", "morning star", "red rover", "copies of copies", "of all trades",
+              "the core four", "resource contention", "seconds to paradise", "short circuit",
+              "ready, set, go", "not a scratch", "rock bottom", "eyes of tomorrow",
+              "augment", "operator", "scanner", "suppressor", "replication", "frostbite",
+              "radiation", "cache of the crypt", "deepsight", "heritage", "succession",
+              "trustee", "posterity", "bequest", "commemoration",
+          ]
+
+          def read_json(url):
+              last = None
+              for attempt in range(5):
+                  try:
+                      req = urllib.request.Request(url, headers={"User-Agent": "Vaexil-guide-research/1.0"})
+                      with urllib.request.urlopen(req, timeout=300) as response:
+                          return json.load(response)
+                  except Exception as exc:
+                      last = exc
+                      if attempt == 4:
+                          raise
+                      time.sleep(2 ** attempt)
+              raise last
+
+          errors = []
+          manifest = read_json("https://www.bungie.net/Platform/Destiny2/Manifest/")["Response"]
+          paths = manifest["jsonWorldComponentContentPaths"]["en"]
+
+          def component(name):
+              try:
+                  return read_json("https://www.bungie.net" + paths[name])
+              except Exception:
+                  errors.append({"component": name, "traceback": traceback.format_exc()})
+                  return {}
+
+          records = component("DestinyRecordDefinition")
+          objectives = component("DestinyObjectiveDefinition")
+          presentation = component("DestinyPresentationNodeDefinition")
+          activities = component("DestinyActivityDefinition")
+          modifiers = component("DestinyActivityModifierDefinition")
+          sources = component("DestinySourceDefinition")
+          items = component("DestinyInventoryItemDefinition")
+          collectibles = component("DestinyCollectibleDefinition")
+          vendors = component("DestinyVendorDefinition")
+
+          def dp(value):
+              return (value or {}).get("displayProperties", {}) or {}
+
+          def txt(value, extra=""):
+              d = dp(value)
+              return f"{d.get('name','')} {d.get('description','')} {extra}".casefold()
+
+          def matches(value, extra=""):
+              name = dp(value).get("name", "")
+              hay = txt(value, extra)
+              return name in EXACT_NAMES or any(term in hay for term in TERMS)
+
+          def render_objective(h):
+              value = objectives.get(str(h), {})
+              return {
+                  "hash": h,
+                  "progressDescription": value.get("progressDescription"),
+                  "completionValue": value.get("completionValue"),
+                  "locationHash": value.get("locationHash"),
+                  "displayProperties": value.get("displayProperties"),
+              }
+
+          def render_record(value):
+              return {
+                  "hash": value.get("hash"),
+                  "name": dp(value).get("name"),
+                  "description": dp(value).get("description"),
+                  "objectiveHashes": value.get("objectiveHashes", []),
+                  "objectives": [render_objective(h) for h in value.get("objectiveHashes", [])],
+                  "parentNodeHashes": value.get("parentNodeHashes", []),
+              }
+
+          out = {
+              "manifestVersion": manifest.get("version"),
+              "componentCounts": {
+                  "records": len(records), "objectives": len(objectives),
+                  "presentation": len(presentation), "activities": len(activities),
+                  "modifiers": len(modifiers), "sources": len(sources),
+                  "items": len(items), "collectibles": len(collectibles), "vendors": len(vendors),
+              },
+              "errors": errors,
+              "activities": [], "modifiers": [], "sourceDefinitions": [],
+              "presentationNodes": [], "titleRecords": [], "matchingRecords": [],
+              "items": [], "raidMods": [], "collectibles": [], "vendors": [],
+          }
+
+          source_hashes = set()
+          activity_modifier_hashes = set()
+          for value in sources.values():
+              if "deep stone crypt" in txt(value):
+                  source_hashes.add(value.get("hash"))
+                  out["sourceDefinitions"].append({
+                      "hash": value.get("hash"), "name": dp(value).get("name"),
+                      "description": dp(value).get("description"), "category": value.get("category"),
+                  })
+
+          for value in activities.values():
+              if "deep stone crypt" in txt(value):
+                  for entry in value.get("modifiers", []):
+                      h = entry.get("activityModifierHash")
+                      if h:
+                          activity_modifier_hashes.add(h)
+                  out["activities"].append({
+                      "hash": value.get("hash"), "name": dp(value).get("name"),
+                      "description": dp(value).get("description"),
+                      "activityLevel": value.get("activityLevel"),
+                      "recommendedLight": value.get("recommendedLight"),
+                      "activityModeTypes": value.get("activityModeTypes", []),
+                      "modifiers": value.get("modifiers", []),
+                      "challenges": value.get("challenges", []),
+                      "challengeObjectives": [render_objective(ch.get("objectiveHash")) for ch in value.get("challenges", []) if ch.get("objectiveHash")],
+                      "rewards": value.get("rewards", []),
+                      "destinationHash": value.get("destinationHash"),
+                  })
+
+          for value in modifiers.values():
+              if value.get("hash") in activity_modifier_hashes or matches(value):
+                  out["modifiers"].append({
+                      "hash": value.get("hash"), "name": dp(value).get("name"),
+                      "description": dp(value).get("description"),
+                  })
+
+          nodes = {}
+          for key, value in presentation.items():
+              try:
+                  nodes[int(key)] = value
+              except Exception:
+                  pass
+
+          title_record_hashes = set()
+          seen_nodes = set()
+          def walk_node(h):
+              if not h or h in seen_nodes:
+                  return
+              seen_nodes.add(h)
+              value = nodes.get(h, {})
+              children = value.get("children", {}) or {}
+              for child in children.get("records", []) or []:
+                  rh = child.get("recordHash")
+                  if rh:
+                      title_record_hashes.add(rh)
+              for child in children.get("presentationNodes", []) or []:
+                  walk_node(child.get("presentationNodeHash"))
+
+          for value in presentation.values():
+              name = dp(value).get("name", "")
+              if name in {"Descendant", "Deep Stone Crypt"} or matches(value):
+                  out["presentationNodes"].append({
+                      "hash": value.get("hash"), "name": name,
+                      "description": dp(value).get("description"),
+                      "children": value.get("children", {}),
+                      "parentNodeHashes": value.get("parentNodeHashes", []),
+                  })
+                  if name in {"Descendant", "Deep Stone Crypt"}:
+                      walk_node(value.get("hash"))
+
+          for h in sorted(title_record_hashes):
+              value = records.get(str(h), {})
+              if value:
+                  out["titleRecords"].append(render_record(value))
+          for value in records.values():
+              if value.get("hash") in title_record_hashes or matches(value):
+                  out["matchingRecords"].append(render_record(value))
+
+          known_weapons = {"Trustee", "Heritage", "Succession", "Posterity", "Bequest", "Commemoration", "Eyes of Tomorrow"}
+          known_mods = {"Enhanced Operator Augment", "Enhanced Scanner Augment", "Enhanced Suppressor Augment", "Herd Thinner"}
+          for value in items.values():
+              name = dp(value).get("name", "")
+              item_type = value.get("itemTypeDisplayName", "") or ""
+              plug = value.get("plug", {}) or {}
+              category = plug.get("plugCategoryIdentifier", "") or ""
+              source_data = value.get("sourceData", {}) or {}
+              item_sources = set(source_data.get("sourceHashes", []) or [])
+              item_text = txt(value, f"{item_type} {category}")
+              from_raid = bool(item_sources & source_hashes)
+              is_mod = name in known_mods or (
+                  item_type.casefold() == "raid mod" and (
+                      "deep_stone" in category.casefold() or "deep stone crypt" in item_text or
+                      "operator augment" in item_text or "scanner augment" in item_text or
+                      "suppressor augment" in item_text or "herd thinner" in item_text
+                  )
+              )
+              if from_raid or name in known_weapons or matches(value) or is_mod:
+                  rendered = {
+                      "hash": value.get("hash"), "name": name,
+                      "description": dp(value).get("description"),
+                      "itemTypeDisplayName": item_type,
+                      "itemType": value.get("itemType"), "itemSubType": value.get("itemSubType"),
+                      "classType": value.get("classType"),
+                      "tierTypeName": (value.get("inventory", {}) or {}).get("tierTypeName"),
+                      "sourceHashes": sorted(item_sources),
+                      "collectibleHash": value.get("collectibleHash"),
+                      "plugCategoryIdentifier": category,
+                      "recipeItemHash": value.get("recipeItemHash"),
+                  }
+                  (out["raidMods"] if is_mod else out["items"]).append(rendered)
+
+          for value in collectibles.values():
+              source_hash = value.get("sourceHash") or 0
+              if source_hash in source_hashes or matches(value):
+                  out["collectibles"].append({
+                      "hash": value.get("hash"), "name": dp(value).get("name"),
+                      "description": dp(value).get("description"),
+                      "sourceHash": source_hash, "itemHash": value.get("itemHash"),
+                  })
+
+          for value in vendors.values():
+              if matches(value):
+                  out["vendors"].append({
+                      "hash": value.get("hash"), "name": dp(value).get("name"),
+                      "description": dp(value).get("description"),
+                  })
+
+          for key, values in list(out.items()):
+              if isinstance(values, list):
+                  dedup = {}
+                  for value in values:
+                      dedup[(value.get("hash"), value.get("name"))] = value
+                  out[key] = sorted(dedup.values(), key=lambda x: ((x.get("name") or ""), x.get("hash") or 0))
+
+          pathlib.Path("tmp").mkdir(exist_ok=True)
+          pathlib.Path("tmp/deep-stone-crypt-manifest-data.json").write_text(
+              json.dumps(out, indent=2, ensure_ascii=False), encoding="utf-8"
+          )
+          print(json.dumps({k: len(v) if isinstance(v, list) else v for k, v in out.items()}, indent=2))
+          PY
+
+      - name: Upload manifest data
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: deep-stone-crypt-manifest-data
+          path: tmp/deep-stone-crypt-manifest-data.json
+          if-no-files-found: error
