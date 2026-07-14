@@ -22,32 +22,22 @@ jobs:
           import time
           import urllib.request
 
-          CHALLENGE_NAMES = {
-              "The Grass Is Always Greener",
-              "The Grass is Always Greener",
-              "Devious Thievery",
-              "Gaze Amaze",
-              "Under Construction",
-              "Hands Off",
+          CHALLENGES = {
+              "The Grass Is Always Greener", "The Grass is Always Greener",
+              "Devious Thievery", "Gaze Amaze", "Under Construction", "Hands Off",
           }
-          KNOWN_ITEMS = {
-              "Touch of Malice",
-              "Touch of Malice Catalyst",
-              "Doom of Chelchis",
-              "Smite of Merain",
-              "Qullim's Terminus",
-              "Defiance of Yasmin",
-              "Midha's Reckoning",
-              "Zaouli's Bane",
+          ITEMS = {
+              "Touch of Malice", "Touch of Malice Catalyst",
+              "Doom of Chelchis", "Smite of Merain", "Qullim's Terminus",
+              "Defiance of Yasmin", "Midha's Reckoning", "Zaouli's Bane",
           }
           TERMS = [
               "king's fall", "kings fall", "kingslayer", "oryx", "warpriest",
-              "golgoroth", "daughters of oryx", "ir anuk", "ir halak",
-              "basilica", "annihilator totem", "deathsinger's power",
-              "brand of the initiate", "brand claimer", "aura of immortality",
+              "golgoroth", "daughters of oryx", "annihilator totem",
+              "deathsinger's power", "brand claimer", "aura of immortality",
               "the grass is always greener", "devious thievery", "gaze amaze",
-              "under construction", "hands off", "touch of malice",
-              "deepsight", "harrowed", "rune", "symbols of the king",
+              "under construction", "hands off", "touch of malice", "harrowed",
+              "deepsight", "rune",
           ]
 
           def read_json(url):
@@ -66,7 +56,6 @@ jobs:
 
           manifest = read_json("https://www.bungie.net/Platform/Destiny2/Manifest/")["Response"]
           paths = manifest["jsonWorldComponentContentPaths"]["en"]
-
           def component(name):
               return read_json("https://www.bungie.net" + paths[name])
 
@@ -78,232 +67,161 @@ jobs:
           sources = component("DestinySourceDefinition")
           items = component("DestinyInventoryItemDefinition")
           collectibles = component("DestinyCollectibleDefinition")
-          vendors = component("DestinyVendorDefinition")
-          plugsets = component("DestinyPlugSetDefinition")
 
           def dp(value):
               return (value or {}).get("displayProperties", {}) or {}
-
-          def text(value, extra=""):
+          def txt(value, extra=""):
               d = dp(value)
               return f"{d.get('name','')} {d.get('description','')} {extra}".casefold()
-
-          def term_match(value, extra=""):
+          def match(value, extra=""):
               name = dp(value).get("name", "")
-              haystack = text(value, extra)
-              return name in CHALLENGE_NAMES or name in KNOWN_ITEMS or any(term in haystack for term in TERMS)
-
-          def render_objective(h):
-              obj = objectives.get(str(h), {})
+              hay = txt(value, extra)
+              return name in CHALLENGES or name in ITEMS or any(term in hay for term in TERMS)
+          def objective(h):
+              value = objectives.get(str(h), {})
               return {
                   "hash": h,
-                  "progressDescription": obj.get("progressDescription"),
-                  "completionValue": obj.get("completionValue"),
-                  "locationHash": obj.get("locationHash"),
-                  "allowNegativeValue": obj.get("allowNegativeValue"),
-                  "allowValueChangeWhenCompleted": obj.get("allowValueChangeWhenCompleted"),
-                  "isCountingDownward": obj.get("isCountingDownward"),
-                  "displayProperties": obj.get("displayProperties"),
+                  "progressDescription": value.get("progressDescription"),
+                  "completionValue": value.get("completionValue"),
+                  "locationHash": value.get("locationHash"),
+                  "displayProperties": value.get("displayProperties"),
               }
-
-          def render_record(value):
+          def record(value):
               return {
                   "hash": value.get("hash"),
                   "name": dp(value).get("name"),
                   "description": dp(value).get("description"),
                   "objectiveHashes": value.get("objectiveHashes", []),
-                  "objectives": [render_objective(h) for h in value.get("objectiveHashes", [])],
+                  "objectives": [objective(h) for h in value.get("objectiveHashes", [])],
                   "parentNodeHashes": value.get("parentNodeHashes", []),
-                  "scope": value.get("scope"),
-                  "recordValueStyle": value.get("recordValueStyle"),
               }
 
           out = {
               "manifestVersion": manifest.get("version"),
-              "activities": [],
-              "activityModifiers": [],
-              "sourceDefinitions": [],
-              "presentationNodes": [],
-              "titleRecords": [],
-              "matchingRecords": [],
-              "activityChallengeObjectives": [],
-              "lootItems": [],
-              "raidMods": [],
-              "questAndCatalystItems": [],
-              "collectibles": [],
-              "vendors": [],
+              "activities": [], "modifiers": [], "sources": [],
+              "presentationNodes": [], "titleRecords": [], "matchingRecords": [],
+              "items": [], "raidMods": [], "collectibles": [],
           }
 
           source_hashes = set()
+          activity_modifier_hashes = set()
           for value in sources.values():
-              if "king's fall" in text(value) or "kings fall" in text(value):
-                  h = value.get("hash")
-                  source_hashes.add(h)
-                  out["sourceDefinitions"].append({
-                      "hash": h,
-                      "name": dp(value).get("name"),
-                      "description": dp(value).get("description"),
-                      "category": value.get("category"),
+              if "king's fall" in txt(value) or "kings fall" in txt(value):
+                  source_hashes.add(value.get("hash"))
+                  out["sources"].append({
+                      "hash": value.get("hash"), "name": dp(value).get("name"),
+                      "description": dp(value).get("description"), "category": value.get("category"),
                   })
 
-          activity_modifier_hashes = set()
-          challenge_objective_hashes = set()
           for value in activities.values():
-              if "king's fall" in text(value) or "kings fall" in text(value):
+              if "king's fall" in txt(value) or "kings fall" in txt(value):
                   for entry in value.get("modifiers", []):
                       h = entry.get("activityModifierHash")
                       if h:
                           activity_modifier_hashes.add(h)
-                  for challenge in value.get("challenges", []):
-                      h = challenge.get("objectiveHash")
-                      if h:
-                          challenge_objective_hashes.add(h)
                   out["activities"].append({
-                      "hash": value.get("hash"),
-                      "name": dp(value).get("name"),
+                      "hash": value.get("hash"), "name": dp(value).get("name"),
                       "description": dp(value).get("description"),
-                      "activityModeTypes": value.get("activityModeTypes", []),
                       "activityLevel": value.get("activityLevel"),
                       "recommendedLight": value.get("recommendedLight"),
-                      "selectionScreenDisplayProperties": value.get("selectionScreenDisplayProperties"),
+                      "activityModeTypes": value.get("activityModeTypes", []),
                       "modifiers": value.get("modifiers", []),
                       "challenges": value.get("challenges", []),
+                      "challengeObjectives": [objective(ch.get("objectiveHash")) for ch in value.get("challenges", []) if ch.get("objectiveHash")],
                       "rewards": value.get("rewards", []),
-                      "destinationHash": value.get("destinationHash"),
-                      "placeHash": value.get("placeHash"),
-                      "activityTypeHash": value.get("activityTypeHash"),
                   })
 
-          for h in sorted(challenge_objective_hashes):
-              out["activityChallengeObjectives"].append(render_objective(h))
-
           for value in modifiers.values():
-              if value.get("hash") in activity_modifier_hashes or term_match(value):
-                  out["activityModifiers"].append({
-                      "hash": value.get("hash"),
-                      "name": dp(value).get("name"),
+              if value.get("hash") in activity_modifier_hashes or match(value):
+                  out["modifiers"].append({
+                      "hash": value.get("hash"), "name": dp(value).get("name"),
                       "description": dp(value).get("description"),
                   })
 
-          # Find Kingslayer / King's Fall presentation nodes and recursively gather records.
-          node_by_hash = {int(k): v for k, v in presentation.items()}
-          record_hashes = set()
-          visited_nodes = set()
-
-          def walk_node(node_hash):
-              if not node_hash or node_hash in visited_nodes:
+          nodes = {int(k): v for k, v in presentation.items()}
+          rec_hashes = set()
+          seen = set()
+          def walk(h):
+              if not h or h in seen:
                   return
-              visited_nodes.add(node_hash)
-              node = node_by_hash.get(node_hash, {})
-              children = node.get("children", {}) or {}
+              seen.add(h)
+              value = nodes.get(h, {})
+              children = value.get("children", {}) or {}
               for child in children.get("records", []) or []:
-                  h = child.get("recordHash")
-                  if h:
-                      record_hashes.add(h)
+                  rh = child.get("recordHash")
+                  if rh:
+                      rec_hashes.add(rh)
               for child in children.get("presentationNodes", []) or []:
-                  walk_node(child.get("presentationNodeHash"))
+                  walk(child.get("presentationNodeHash"))
 
           for value in presentation.values():
               name = dp(value).get("name", "")
-              if name in {"Kingslayer", "King's Fall"} or term_match(value):
+              if name in {"Kingslayer", "King's Fall"} or match(value):
                   out["presentationNodes"].append({
-                      "hash": value.get("hash"),
-                      "name": name,
+                      "hash": value.get("hash"), "name": name,
                       "description": dp(value).get("description"),
                       "children": value.get("children", {}),
                       "parentNodeHashes": value.get("parentNodeHashes", []),
                   })
                   if name in {"Kingslayer", "King's Fall"}:
-                      walk_node(value.get("hash"))
+                      walk(value.get("hash"))
 
-          for h in sorted(record_hashes):
+          for h in sorted(rec_hashes):
               value = records.get(str(h), {})
               if value:
-                  out["titleRecords"].append(render_record(value))
-
+                  out["titleRecords"].append(record(value))
           for value in records.values():
-              extra = json.dumps([render_objective(h) for h in value.get("objectiveHashes", [])], ensure_ascii=False)
-              if value.get("hash") in record_hashes or term_match(value, extra):
-                  out["matchingRecords"].append(render_record(value))
+              if value.get("hash") in rec_hashes or match(value):
+                  out["matchingRecords"].append(record(value))
 
           for value in items.values():
-              d = dp(value)
-              name = d.get("name", "")
+              name = dp(value).get("name", "")
               item_type = value.get("itemTypeDisplayName", "") or ""
               plug = value.get("plug", {}) or {}
               category = plug.get("plugCategoryIdentifier", "") or ""
               source_data = value.get("sourceData", {}) or {}
-              item_source_hashes = set(source_data.get("sourceHashes", []) or [])
-              item_text = text(value, f"{item_type} {category} {json.dumps(value.get('crafting', {}))}")
-              from_raid = bool(item_source_hashes & source_hashes)
-              known = name in KNOWN_ITEMS
-              is_raid_mod = item_type.casefold() == "raid mod" and (
+              item_sources = set(source_data.get("sourceHashes", []) or [])
+              item_text = txt(value, f"{item_type} {category}")
+              from_raid = bool(item_sources & source_hashes)
+              is_mod = item_type.casefold() == "raid mod" and (
                   "kings_fall" in category.casefold() or "king's fall" in item_text or
-                  "brand" in item_text or "taken" in item_text or "rune" in item_text
+                  "brand" in item_text or "rune" in item_text or "taken" in item_text
               )
-              is_quest_or_catalyst = any(term in item_text for term in [
-                  "touch of malice", "catalyst", "pattern", "deepsight", "king's fall"
-              ]) and ("quest" in item_type.casefold() or "catalyst" in item_type.casefold() or name in KNOWN_ITEMS)
-              if from_raid or known or term_match(value) or is_raid_mod:
+              if from_raid or name in ITEMS or match(value) or is_mod:
                   rendered = {
-                      "hash": value.get("hash"),
-                      "name": name,
-                      "description": d.get("description"),
+                      "hash": value.get("hash"), "name": name,
+                      "description": dp(value).get("description"),
                       "itemTypeDisplayName": item_type,
-                      "itemType": value.get("itemType"),
-                      "itemSubType": value.get("itemSubType"),
+                      "itemType": value.get("itemType"), "itemSubType": value.get("itemSubType"),
                       "classType": value.get("classType"),
                       "tierTypeName": (value.get("inventory", {}) or {}).get("tierTypeName"),
-                      "sourceHashes": sorted(item_source_hashes),
+                      "sourceHashes": sorted(item_sources),
                       "collectibleHash": value.get("collectibleHash"),
-                      "traitHashes": value.get("traitHashes", []),
                       "plugCategoryIdentifier": category,
                       "recipeItemHash": value.get("recipeItemHash"),
-                      "crafting": value.get("crafting"),
-                      "quality": value.get("quality"),
-                      "sockets": value.get("sockets"),
                   }
-                  if is_raid_mod:
-                      out["raidMods"].append(rendered)
-                  else:
-                      out["lootItems"].append(rendered)
-                  if is_quest_or_catalyst:
-                      out["questAndCatalystItems"].append(rendered)
+                  (out["raidMods"] if is_mod else out["items"]).append(rendered)
 
           for value in collectibles.values():
               source_hash = value.get("sourceHash") or 0
-              if source_hash in source_hashes or term_match(value):
+              if source_hash in source_hashes or match(value):
                   out["collectibles"].append({
-                      "hash": value.get("hash"),
-                      "name": dp(value).get("name"),
+                      "hash": value.get("hash"), "name": dp(value).get("name"),
                       "description": dp(value).get("description"),
-                      "sourceHash": source_hash,
-                      "itemHash": value.get("itemHash"),
+                      "sourceHash": source_hash, "itemHash": value.get("itemHash"),
                   })
 
-          for value in vendors.values():
-              if term_match(value):
-                  out["vendors"].append({
-                      "hash": value.get("hash"),
-                      "name": dp(value).get("name"),
-                      "description": dp(value).get("description"),
-                      "itemList": value.get("itemList", []),
-                      "displayCategories": value.get("displayCategories", []),
-                  })
-
-          # De-duplicate lists by hash.
-          for key, values in list(out.items()):
-              if not isinstance(values, list):
-                  continue
-              dedup = {}
-              for value in values:
-                  h = value.get("hash")
-                  dedup[(h, value.get("name"))] = value
-              out[key] = sorted(dedup.values(), key=lambda x: ((x.get("name") or ""), x.get("hash") or 0))
+          for key in out:
+              if isinstance(out[key], list):
+                  dedup = {}
+                  for value in out[key]:
+                      dedup[(value.get("hash"), value.get("name"))] = value
+                  out[key] = sorted(dedup.values(), key=lambda x: ((x.get("name") or ""), x.get("hash") or 0))
 
           pathlib.Path("tmp").mkdir(exist_ok=True)
-          path = pathlib.Path("tmp/kings-fall-manifest-data.json")
-          path.write_text(json.dumps(out, indent=2, ensure_ascii=False), encoding="utf-8")
+          pathlib.Path("tmp/kings-fall-manifest-data.json").write_text(
+              json.dumps(out, indent=2, ensure_ascii=False), encoding="utf-8"
+          )
           print(json.dumps({k: len(v) if isinstance(v, list) else v for k, v in out.items()}, indent=2))
           PY
 
