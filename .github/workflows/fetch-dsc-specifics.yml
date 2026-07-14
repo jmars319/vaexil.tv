@@ -1,0 +1,144 @@
+name: Fetch Deep Stone Crypt specific details
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/fetch-dsc-specifics.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  fetch-details:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch specific definitions
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          import pathlib
+          import time
+          import urllib.request
+
+          def read_json(url):
+              last = None
+              for attempt in range(5):
+                  try:
+                      req = urllib.request.Request(url, headers={"User-Agent": "Vaexil-guide-research/1.0"})
+                      with urllib.request.urlopen(req, timeout=300) as response:
+                          return json.load(response)
+                  except Exception as exc:
+                      last = exc
+                      if attempt == 4:
+                          raise
+                      time.sleep(2 ** attempt)
+              raise last
+
+          manifest = read_json("https://www.bungie.net/Platform/Destiny2/Manifest/")["Response"]
+          paths = manifest["jsonWorldComponentContentPaths"]["en"]
+          def component(name):
+              return read_json("https://www.bungie.net" + paths[name])
+
+          items = component("DestinyInventoryItemDefinition")
+          records = component("DestinyRecordDefinition")
+          objectives = component("DestinyObjectiveDefinition")
+          presentation = component("DestinyPresentationNodeDefinition")
+          perks = component("DestinySandboxPerkDefinition")
+          vendors = component("DestinyVendorDefinition")
+
+          ITEM_HASHES = [
+              817361141, 1578165808, 1362793604, 2142852459,
+              2399110176, 2835258088,
+              1392919471, 4248569242, 2990047042, 3281285075, 3366545721, 4230965989,
+          ]
+          RECORD_PARENT_HASHES = {3788273704}
+          VENDOR_HASHES = [3307474199]
+
+          def compact_item(v):
+              return {
+                  "hash": v.get("hash"),
+                  "displayProperties": v.get("displayProperties"),
+                  "displaySource": v.get("displaySource"),
+                  "itemTypeDisplayName": v.get("itemTypeDisplayName"),
+                  "itemType": v.get("itemType"),
+                  "itemSubType": v.get("itemSubType"),
+                  "inventory": v.get("inventory"),
+                  "sourceData": v.get("sourceData"),
+                  "objectives": v.get("objectives"),
+                  "perks": v.get("perks"),
+                  "sockets": v.get("sockets"),
+                  "plug": v.get("plug"),
+                  "collectibleHash": v.get("collectibleHash"),
+                  "recipeItemHash": v.get("recipeItemHash"),
+                  "itemCategoryHashes": v.get("itemCategoryHashes"),
+              }
+
+          selected_items = {}
+          referenced_perk_hashes = set()
+          referenced_plug_hashes = set()
+          for h in ITEM_HASHES:
+              v = items.get(str(h), {})
+              selected_items[str(h)] = compact_item(v)
+              for p in v.get("perks", []) or []:
+                  if p.get("perkHash"):
+                      referenced_perk_hashes.add(p["perkHash"])
+              sockets = v.get("sockets", {}) or {}
+              for entry in sockets.get("socketEntries", []) or []:
+                  if entry.get("singleInitialItemHash"):
+                      referenced_plug_hashes.add(entry["singleInitialItemHash"])
+                  for plug_h in entry.get("reusablePlugItems", []) or []:
+                      if isinstance(plug_h, dict):
+                          plug_h = plug_h.get("plugItemHash")
+                      if plug_h:
+                          referenced_plug_hashes.add(plug_h)
+
+          related_records = []
+          for v in records.values():
+              if RECORD_PARENT_HASHES.intersection(set(v.get("parentNodeHashes", []) or [])) or v.get("hash") in {3159084201}:
+                  related_records.append(v)
+
+          related_nodes = {}
+          for h in RECORD_PARENT_HASHES:
+              related_nodes[str(h)] = presentation.get(str(h), {})
+
+          selected_vendors = {}
+          known_names = {"Trustee", "Heritage", "Succession", "Posterity", "Bequest", "Commemoration", "Eyes of Tomorrow"}
+          for h in VENDOR_HASHES:
+              v = vendors.get(str(h), {})
+              compact = {
+                  "hash": v.get("hash"),
+                  "displayProperties": v.get("displayProperties"),
+                  "categories": v.get("categories"),
+                  "itemList": [],
+              }
+              for entry in v.get("itemList", []) or []:
+                  ih = entry.get("itemHash")
+                  item = items.get(str(ih), {})
+                  name = (item.get("displayProperties", {}) or {}).get("name")
+                  if name in known_names or "Deepsight" in (name or "") or "Pattern" in (name or ""):
+                      compact["itemList"].append({"vendorEntry": entry, "item": compact_item(item)})
+              selected_vendors[str(h)] = compact
+
+          out = {
+              "manifestVersion": manifest.get("version"),
+              "items": selected_items,
+              "sandboxPerks": {str(h): perks.get(str(h), {}) for h in sorted(referenced_perk_hashes)},
+              "plugItems": {str(h): compact_item(items.get(str(h), {})) for h in sorted(referenced_plug_hashes)},
+              "relatedRecords": related_records,
+              "relatedNodes": related_nodes,
+              "vendors": selected_vendors,
+          }
+
+          pathlib.Path("tmp").mkdir(exist_ok=True)
+          pathlib.Path("tmp/dsc-specifics.json").write_text(json.dumps(out, indent=2, ensure_ascii=False), encoding="utf-8")
+          print(json.dumps({"items": len(selected_items), "perks": len(referenced_perk_hashes), "plugs": len(referenced_plug_hashes), "records": len(related_records)}, indent=2))
+          PY
+
+      - name: Upload details
+        uses: actions/upload-artifact@v4
+        with:
+          name: dsc-specifics
+          path: tmp/dsc-specifics.json
+          if-no-files-found: error
