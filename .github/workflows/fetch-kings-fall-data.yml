@@ -20,6 +20,7 @@ jobs:
           import json
           import pathlib
           import time
+          import traceback
           import urllib.request
 
           CHALLENGES = {
@@ -54,10 +55,16 @@ jobs:
                       time.sleep(2 ** attempt)
               raise last
 
+          errors = []
           manifest = read_json("https://www.bungie.net/Platform/Destiny2/Manifest/")["Response"]
           paths = manifest["jsonWorldComponentContentPaths"]["en"]
+
           def component(name):
-              return read_json("https://www.bungie.net" + paths[name])
+              try:
+                  return read_json("https://www.bungie.net" + paths[name])
+              except Exception:
+                  errors.append({"component": name, "traceback": traceback.format_exc()})
+                  return {}
 
           records = component("DestinyRecordDefinition")
           objectives = component("DestinyObjectiveDefinition")
@@ -98,6 +105,13 @@ jobs:
 
           out = {
               "manifestVersion": manifest.get("version"),
+              "componentCounts": {
+                  "records": len(records), "objectives": len(objectives),
+                  "presentation": len(presentation), "activities": len(activities),
+                  "modifiers": len(modifiers), "sources": len(sources),
+                  "items": len(items), "collectibles": len(collectibles),
+              },
+              "errors": errors,
               "activities": [], "modifiers": [], "sources": [],
               "presentationNodes": [], "titleRecords": [], "matchingRecords": [],
               "items": [], "raidMods": [], "collectibles": [],
@@ -138,7 +152,12 @@ jobs:
                       "description": dp(value).get("description"),
                   })
 
-          nodes = {int(k): v for k, v in presentation.items()}
+          nodes = {}
+          for k, value in presentation.items():
+              try:
+                  nodes[int(k)] = value
+              except Exception:
+                  pass
           rec_hashes = set()
           seen = set()
           def walk(h):
@@ -226,6 +245,7 @@ jobs:
           PY
 
       - name: Upload manifest data
+        if: always()
         uses: actions/upload-artifact@v4
         with:
           name: kings-fall-manifest-data
