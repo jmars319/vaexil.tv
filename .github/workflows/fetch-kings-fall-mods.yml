@@ -1,0 +1,54 @@
+name: Fetch King's Fall raid mods
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - ".github/workflows/fetch-kings-fall-mods.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  fetch-mods:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch exact raid mod definitions
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json, pathlib, urllib.request
+          names = {
+              "Mortal Medicine", "Old Gods' Boon", "Run for Your Life",
+              "Will of Light (Arc)", "Will of Light (Kinetic)",
+              "Will of Light (Solar)", "Will of Light (Stasis)",
+              "Will of Light (Void)",
+          }
+          def get(url):
+              req=urllib.request.Request(url,headers={"User-Agent":"Vaexil-guide-research/1.0"})
+              with urllib.request.urlopen(req,timeout=300) as r: return json.load(r)
+          manifest=get("https://www.bungie.net/Platform/Destiny2/Manifest/")["Response"]
+          path=manifest["jsonWorldComponentContentPaths"]["en"]["DestinyInventoryItemDefinition"]
+          items=get("https://www.bungie.net"+path)
+          out=[]
+          for value in items.values():
+              d=value.get("displayProperties",{}) or {}
+              if d.get("name") in names:
+                  out.append({
+                      "hash":value.get("hash"),
+                      "name":d.get("name"),
+                      "description":d.get("description"),
+                      "itemTypeDisplayName":value.get("itemTypeDisplayName"),
+                      "plugCategoryIdentifier":(value.get("plug",{}) or {}).get("plugCategoryIdentifier"),
+                  })
+          out.sort(key=lambda x:(x["name"],x["hash"]))
+          pathlib.Path("tmp").mkdir(exist_ok=True)
+          pathlib.Path("tmp/kings-fall-raid-mods.json").write_text(json.dumps(out,indent=2),encoding="utf-8")
+          print(json.dumps(out,indent=2))
+          PY
+      - name: Upload exact mod definitions
+        uses: actions/upload-artifact@v4
+        with:
+          name: kings-fall-raid-mods
+          path: tmp/kings-fall-raid-mods.json
+          if-no-files-found: error
