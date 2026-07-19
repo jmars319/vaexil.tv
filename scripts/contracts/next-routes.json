@@ -63,6 +63,20 @@
     ]
   },
   {
+    "route": "/api/destiny/fireteam-fashion",
+    "kind": "route",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "route": "/api/destiny/fireteam-roster",
+    "kind": "route",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
     "route": "/clips",
     "kind": "page",
     "methods": [
@@ -77,6 +91,13 @@
     ]
   },
   {
+    "route": "/downloads/guides/destiny2/raids/[raid]/[file]",
+    "kind": "route",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
     "route": "/favicon.ico",
     "kind": "metadata",
     "methods": [
@@ -85,6 +106,27 @@
   },
   {
     "route": "/guides",
+    "kind": "page",
+    "methods": [
+      "PAGE"
+    ]
+  },
+  {
+    "route": "/guides/destiny2",
+    "kind": "page",
+    "methods": [
+      "PAGE"
+    ]
+  },
+  {
+    "route": "/guides/destiny2/raids",
+    "kind": "page",
+    "methods": [
+      "PAGE"
+    ]
+  },
+  {
+    "route": "/guides/destiny2/raids/[...slug]",
     "kind": "page",
     "methods": [
       "PAGE"
@@ -274,6 +316,13 @@
   },
   {
     "route": "/terms",
+    "kind": "page",
+    "methods": [
+      "PAGE"
+    ]
+  },
+  {
+    "route": "/tools/destiny2/verity",
     "kind": "page",
     "methods": [
       "PAGE"

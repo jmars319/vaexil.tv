@@ -19,8 +19,34 @@
   },
   "forbiddenDeployPatterns": [".git/", ".env", ".env.local", ".env.production", "node_modules/", "test-results/", "playwright-report/", "coverage/", "*.map"],
   "routeMap": {
-    "publicRoutes": ["/", "/about", "/contact", "/guides", "/live", "/recon", "/schedule", "/suggest", "/privacy", "/terms"],
+    "publicRoutes": [
+      "/",
+      "/about",
+      "/contact",
+      "/guides",
+      "/live",
+      "/recon",
+      "/schedule",
+      "/suggest",
+      "/privacy",
+      "/terms"
+    ],
     "adminRoutes": ["/admin", "/admin/recon"],
+    "privatePreviewRoutes": [
+      "/guides/destiny2",
+      "/guides/destiny2/raids",
+      "/guides/destiny2/raids/salvations-edge",
+      "/guides/destiny2/raids/last-wish",
+      "/guides/destiny2/raids/desert-perpetual/normal",
+      "/guides/destiny2/raids/desert-perpetual/epic",
+      "/tools/destiny2/verity",
+      "/api/destiny/fireteam-fashion",
+      "/api/destiny/fireteam-roster",
+      "/downloads/guides/destiny2/raids/salvations-edge/salvations-edge-complete-guide.pdf",
+      "/downloads/guides/destiny2/raids/last-wish/last-wish-complete-guide.pdf",
+      "/downloads/guides/destiny2/raids/desert-perpetual-normal/desert-perpetual-normal-complete-guide.pdf",
+      "/downloads/guides/destiny2/raids/desert-perpetual-epic/desert-perpetual-epic-complete-guide.pdf"
+    ],
     "apiHealth": "",
     "driftChecks": ["next-app-routes", "public-nav", "footer-links", "sitemap"]
   },

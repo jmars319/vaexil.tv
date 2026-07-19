@@ -1,7 +1,9 @@
 import { siteConfig } from "@/lib/config";
+import { destinyRaidGuides } from "@/data/destiny-raid-guides";
+import { destinyGuidesArePublic } from "@/lib/destiny-guide-visibility";
 import type { MetadataRoute } from "next";
 
-const routes = [
+const baseRoutes = [
   "",
   "/live",
   "/schedule",
@@ -24,9 +26,19 @@ const routes = [
   "/terms",
 ];
 
-const contentRefreshDate = new Date("2026-05-09");
+const contentRefreshDate = new Date("2026-07-13");
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const routes = destinyGuidesArePublic()
+    ? [
+        ...baseRoutes,
+        "/guides/destiny2",
+        "/guides/destiny2/raids",
+        "/tools/destiny2/verity",
+        ...destinyRaidGuides.map((guide) => guide.href),
+      ]
+    : baseRoutes;
+
   return routes.map((route) => ({
     url: `${siteConfig.url}${route}`,
     lastModified: contentRefreshDate,
