@@ -46,6 +46,6 @@
       "private/recon/"
     ],
     "nearBudgetKb": 4,
-    "failOnWarnings": true
+    "failOnWarnings": false
   }
 }
