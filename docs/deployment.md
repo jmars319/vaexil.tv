@@ -32,6 +32,8 @@ R2_BUCKET="vaexil-recon-assets"
 SENDGRID_API_KEY=""
 SENDGRID_TO_EMAIL="vaexiltv@gmail.com"
 SENDGRID_FROM_EMAIL=""
+BUNGIE_API_KEY=""
+DESTINY_GUIDES_PUBLIC="false"
 NEXT_PUBLIC_SITE_URL="https://vaexil.tv"
 NEXT_PUBLIC_TWITCH_URL="https://www.twitch.tv/vaexil"
 NEXT_PUBLIC_YOUTUBE_URL="https://www.youtube.com/@Vaexil-Twitch"
@@ -47,6 +49,15 @@ storage.
 Contact form submissions are saved to the database even when SendGrid is not
 configured. Add `SENDGRID_API_KEY`, `SENDGRID_TO_EMAIL`, and a verified
 `SENDGRID_FROM_EMAIL` before relying on email delivery from production.
+
+Destiny 2 guide tools use `BUNGIE_API_KEY` on server-side API routes only. Do
+not expose the key as `NEXT_PUBLIC_*`, and rotate the Bungie app keys before
+production if they were ever shared in screenshots or chat.
+
+Destiny 2 guide pages, tools, API routes, and source-packet downloads stay
+private to signed-in admins while `DESTINY_GUIDES_PUBLIC` is unset or `false`.
+Set `DESTINY_GUIDES_PUBLIC=true` and redeploy only when the guide family is
+ready for public launch.
 
 Recon draft assets should use `RECON_ASSET_STORE=r2` in production so protected
 admin previews read from Cloudflare R2. The standard Vaexil target is
@@ -95,6 +106,7 @@ Confirm:
 - Admin can change the password after signing in.
 - Admin shows recent contact submissions and a light page-view snapshot.
 - Admin can verify and publish a test suggestion.
+- Admin shows Destiny guide preview links while the guide family is private.
 - `/admin/recon` is available after admin sign-in, protected Recon draft assets load through the admin asset route, and the same assets are not reachable without admin auth.
 - Security headers are present, including `strict-transport-security`, `x-frame-options`, and `x-content-type-options`.
 
@@ -102,6 +114,7 @@ Confirm:
 
 - Do not enable static export for this project. Server actions and the DB-backed pages require the Next.js server runtime.
 - Official guide content should be entered only after verification. The current Freelancer rows are verified seed data and replace the old fictional samples during DB seeding.
+- Destiny 2 guide source PDFs are kept outside `public/` and served through authenticated download routes until `DESTINY_GUIDES_PUBLIC=true`.
 - Recon draft maps are intentionally private to the app runtime and R2 `private/recon/` prefix. Do not put draft map assets under `public/`; only approved public map assets should move to `public/recon/`.
 - Changing any Vercel environment variable requires a new deployment before the change applies.
 - `ADMIN_PASSWORD` is the bootstrap/fallback password. In-app password changes are stored as hashes in the configured database.

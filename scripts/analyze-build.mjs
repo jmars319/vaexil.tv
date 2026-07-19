@@ -34,6 +34,23 @@ function formatMb(bytes) {
   return `${(bytes / 1024 / 1024).toFixed(2)} MiB`;
 }
 
+function checkByteBudget({ label, value, max, near, format }) {
+  if (value > max) {
+    const overage = value - max;
+
+    if (overage <= near) {
+      warn(`${label} is slightly over budget: ${format(value)} / ${format(max)}; over by ${format(overage)}.`);
+    } else {
+      fail(`${label} is ${format(value)}; budget is ${format(max)}.`);
+    }
+    return;
+  }
+
+  if (max - value <= near) {
+    warn(`${label} is near budget: ${format(value)} / ${format(max)}.`);
+  }
+}
+
 function collectJsFiles(dirPath) {
   if (!existsSync(dirPath)) {
     return [];
@@ -101,27 +118,35 @@ if (!existsSync(staticChunkDir) || !existsSync(routeStatsPath)) {
     console.log(`[bundle] Largest JS chunk: ${formatKb(largestChunk.rawBytes)} raw / ${formatKb(largestChunk.gzipBytes)} gzip (${largestChunk.file})`);
   }
 
-  if (totalRawBytes > budget.maxTotalStaticJsKb * 1024) {
-    fail(`Static JS total is ${formatKb(totalRawBytes)}; budget is ${budget.maxTotalStaticJsKb.toFixed(2)} KiB.`);
-  } else if ((budget.maxTotalStaticJsKb * 1024) - totalRawBytes <= budget.nearBudgetKb * 1024) {
-    warn(`Static JS total is near budget: ${formatKb(totalRawBytes)} / ${budget.maxTotalStaticJsKb.toFixed(2)} KiB.`);
-  }
+  checkByteBudget({
+    label: "Static JS total",
+    value: totalRawBytes,
+    max: budget.maxTotalStaticJsKb * 1024,
+    near: budget.nearBudgetKb * 1024,
+    format: formatKb,
+  });
 
-  if (largestChunk && largestChunk.rawBytes > budget.maxLargestChunkKb * 1024) {
-    fail(`Largest JS chunk is ${formatKb(largestChunk.rawBytes)}; budget is ${budget.maxLargestChunkKb.toFixed(2)} KiB.`);
-  } else if (largestChunk && (budget.maxLargestChunkKb * 1024) - largestChunk.rawBytes <= budget.nearBudgetKb * 1024) {
-    warn(`Largest JS chunk is near budget: ${formatKb(largestChunk.rawBytes)} / ${budget.maxLargestChunkKb.toFixed(2)} KiB.`);
+  if (largestChunk) {
+    checkByteBudget({
+      label: "Largest JS chunk",
+      value: largestChunk.rawBytes,
+      max: budget.maxLargestChunkKb * 1024,
+      near: budget.nearBudgetKb * 1024,
+      format: formatKb,
+    });
   }
 
   const routeStats = JSON.parse(readFileSync(routeStatsPath, "utf8"));
   const largestRoute = routeStats.toSorted((a, b) => b.firstLoadUncompressedJsBytes - a.firstLoadUncompressedJsBytes)[0];
   if (largestRoute) {
     console.log(`[bundle] Largest route first-load JS: ${formatKb(largestRoute.firstLoadUncompressedJsBytes)} (${largestRoute.route})`);
-    if (largestRoute.firstLoadUncompressedJsBytes > budget.maxRouteFirstLoadKb * 1024) {
-      fail(`Largest route first-load JS is ${formatKb(largestRoute.firstLoadUncompressedJsBytes)}; budget is ${budget.maxRouteFirstLoadKb.toFixed(2)} KiB.`);
-    } else if ((budget.maxRouteFirstLoadKb * 1024) - largestRoute.firstLoadUncompressedJsBytes <= budget.nearBudgetKb * 1024) {
-      warn(`Largest route first-load JS is near budget: ${formatKb(largestRoute.firstLoadUncompressedJsBytes)} / ${budget.maxRouteFirstLoadKb.toFixed(2)} KiB.`);
-    }
+    checkByteBudget({
+      label: "Largest route first-load JS",
+      value: largestRoute.firstLoadUncompressedJsBytes,
+      max: budget.maxRouteFirstLoadKb * 1024,
+      near: budget.nearBudgetKb * 1024,
+      format: formatKb,
+    });
   }
 
   const traceFiles = collectFilesBySuffix(serverAppDir, ".nft.json");
@@ -143,11 +168,13 @@ if (!existsSync(staticChunkDir) || !existsSync(routeStatsPath)) {
     console.log(`[bundle] Largest server trace: ${formatMb(largestTrace.byteSize)} (${largestTrace.file})`);
     const maxServerTraceBytes = budget.maxServerTraceMb * 1024 * 1024;
     const nearServerTraceBytes = budget.nearServerTraceMb * 1024 * 1024;
-    if (largestTrace.byteSize > maxServerTraceBytes) {
-      fail(`Largest server trace is ${formatMb(largestTrace.byteSize)}; budget is ${budget.maxServerTraceMb.toFixed(2)} MiB.`);
-    } else if (maxServerTraceBytes - largestTrace.byteSize <= nearServerTraceBytes) {
-      warn(`Largest server trace is near budget: ${formatMb(largestTrace.byteSize)} / ${budget.maxServerTraceMb.toFixed(2)} MiB.`);
-    }
+    checkByteBudget({
+      label: "Largest server trace",
+      value: largestTrace.byteSize,
+      max: maxServerTraceBytes,
+      near: nearServerTraceBytes,
+      format: formatMb,
+    });
   }
 
   for (const serverTrace of serverTraces) {

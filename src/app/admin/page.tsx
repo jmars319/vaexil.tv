@@ -8,6 +8,7 @@ import {
 import { ChangeAdminPasswordForm } from "@/components/admin-password-form";
 import { Section, SectionHeading, StatusBadge } from "@/components/ui";
 import { adminPasswordIsUsable, isAdminAuthenticated } from "@/lib/admin";
+import { destinyGuidesArePublic } from "@/lib/destiny-guide-visibility";
 import {
   getAnalyticsSummary,
   listRecentContactSubmissions,
@@ -86,22 +87,55 @@ export default async function AdminPage({ searchParams }: AdminPageProps) {
       </Section>
 
       <Section className="pt-4">
-        <Link
-          href="/admin/recon"
-          className="flex flex-col gap-4 rounded-2xl border border-cyan-300/20 bg-cyan-300/[0.06] p-5 transition hover:border-cyan-300/50 hover:bg-cyan-300/[0.09] sm:flex-row sm:items-center sm:justify-between"
-        >
-          <span>
-            <span className="flex items-center gap-3 text-lg font-semibold text-white">
-              <Crosshair className="size-6 text-cyan-200" aria-hidden="true" />
-              Recon coordinate capture
+        <div className="grid gap-4 lg:grid-cols-2">
+          <Link
+            href="/admin/recon"
+            className="flex flex-col gap-4 rounded-2xl border border-cyan-300/20 bg-cyan-300/[0.06] p-5 transition hover:border-cyan-300/50 hover:bg-cyan-300/[0.09] sm:flex-row sm:items-center sm:justify-between"
+          >
+            <span>
+              <span className="flex items-center gap-3 text-lg font-semibold text-white">
+                <Crosshair className="size-6 text-cyan-200" aria-hidden="true" />
+                Recon coordinate capture
+              </span>
+              <span className="mt-2 block text-sm leading-6 text-slate-400">
+                Review draft map records and save private normalized marker
+                captures for later verification.
+              </span>
             </span>
-            <span className="mt-2 block text-sm leading-6 text-slate-400">
-              Review draft map records and save private normalized marker
-              captures for later verification.
-            </span>
-          </span>
-          <span className="text-sm font-semibold text-cyan-100">Open Recon</span>
-        </Link>
+            <span className="text-sm font-semibold text-cyan-100">Open Recon</span>
+          </Link>
+          <div className="rounded-2xl border border-fuchsia-300/20 bg-fuchsia-300/[0.055] p-5">
+            <div className="flex items-center gap-3 text-lg font-semibold text-white">
+              <Crosshair className="size-6 text-fuchsia-200" aria-hidden="true" />
+              Destiny guide preview
+            </div>
+            <p className="mt-2 text-sm leading-6 text-slate-400">
+              {destinyGuidesArePublic()
+                ? "Destiny guides are public."
+                : "Private until DESTINY_GUIDES_PUBLIC is enabled."}
+            </p>
+            <div className="mt-4 flex flex-wrap gap-2">
+              <Link
+                href="/guides/destiny2"
+                className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-sm font-semibold text-slate-100 transition hover:border-fuchsia-200/60 hover:bg-white/[0.08]"
+              >
+                Guides
+              </Link>
+              <Link
+                href="/guides/destiny2/raids"
+                className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-sm font-semibold text-slate-100 transition hover:border-fuchsia-200/60 hover:bg-white/[0.08]"
+              >
+                Raids
+              </Link>
+              <Link
+                href="/tools/destiny2/verity"
+                className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-2 text-sm font-semibold text-slate-100 transition hover:border-fuchsia-200/60 hover:bg-white/[0.08]"
+              >
+                Verity
+              </Link>
+            </div>
+          </div>
+        </div>
       </Section>
 
       <Section className="pt-4">

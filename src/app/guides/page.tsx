@@ -1,5 +1,6 @@
 import { PrimaryLink, Section, SectionHeading } from "@/components/ui";
-import { BookOpenText, Boxes, Wrench } from "lucide-react";
+import { destinyGuidesArePublic } from "@/lib/destiny-guide-visibility";
+import { BookOpenText, Boxes, Crosshair, Wrench } from "lucide-react";
 import Link from "next/link";
 
 export const metadata = {
@@ -9,6 +10,17 @@ export const metadata = {
 };
 
 const guideCards = [
+  ...(destinyGuidesArePublic()
+    ? [
+        {
+          title: "Destiny 2 Raid Guides",
+          href: "/guides/destiny2/raids",
+          description:
+            "Raid references with encounter selectors, assignment boards, pull checklists, and deep encounter notes.",
+          icon: Crosshair,
+        },
+      ]
+    : []),
   {
     title: "Hitman Freelancer Free Items",
     href: "/guides/freelancer-free-items",
@@ -39,12 +51,12 @@ export default function GuidesPage() {
         <SectionHeading
           level={1}
           title="Guide archive"
-          description="A practical knowledge base for stream references. Official entries should stay narrow, searchable, and verified instead of becoming a pile of unreviewed notes."
+          description="A practical knowledge base for stream references, guides, and tools."
         />
       </Section>
 
       <Section className="pt-4">
-        <div className="grid gap-4 md:grid-cols-3">
+        <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
           {guideCards.map(({ title, href, description, icon: Icon }) => (
             <Link
               key={title}

@@ -6,12 +6,12 @@ Vaexil.tv is the creator hub for Vaexil. It collects stream references, guide ar
 
 This is an early production-ready build, not a placeholder. Public routes cover the home hub, guide landing pages, the verified Freelancer Free Items table, Hitman mods/setup notes, contact intake, suggestion submission, community suggestions with vote thresholds, and reserved VaexCore product cards. Admin routes are intentionally lightweight and password-protected for reviewing contact intake, checking light page-view analytics, and verifying, rejecting, or publishing guide suggestions.
 
-The Freelancer Free Items guide is seeded from a verified Vaexil source list. The mods/setup guide tracks the current SMF-based load order and marks known-bad mods separately. Future guide additions should still go through review before they become official site content.
+The Freelancer Free Items guide is seeded from a verified Vaexil source list. The Destiny 2 raid guide family starts with Salvation's Edge and The Desert Perpetual source packets reshaped into web-native raid references, but stays in signed-in admin preview until `DESTINY_GUIDES_PUBLIC=true`. The mods/setup guide tracks the current SMF-based load order and marks known-bad mods separately. Future guide additions should still go through review before they become official site content.
 
 ## What This Repo Contains
 
 - Public creator/stream hub
-- Guides and knowledge-base surfaces, including verified Freelancer item data and the current Hitman mod load order
+- Guides and knowledge-base surfaces, including verified Freelancer item data, private-preview Destiny 2 raid references, and the current Hitman mod load order
 - Recon, an experimental curated interactive map/guide foundation for games covered on stream
 - Public contact form for collaboration, promotion, stream, and VaexCore inquiries
 - Community suggestion form and voting flow
@@ -121,6 +121,8 @@ R2_BUCKET=""
 SENDGRID_API_KEY=""
 SENDGRID_TO_EMAIL="vaexiltv@gmail.com"
 SENDGRID_FROM_EMAIL=""
+BUNGIE_API_KEY=""
+DESTINY_GUIDES_PUBLIC="false"
 NEXT_PUBLIC_SITE_URL="https://vaexil.tv"
 NEXT_PUBLIC_TWITCH_URL="https://www.twitch.tv/vaexil"
 NEXT_PUBLIC_YOUTUBE_URL="https://www.youtube.com/@Vaexil-Twitch"
@@ -128,7 +130,7 @@ NEXT_PUBLIC_DISCORD_URL=""
 NEXT_PUBLIC_GITHUB_URL=""
 ```
 
-For production, set `LIBSQL_URL` and `LIBSQL_AUTH_TOKEN` to a hosted libSQL/Turso database. Set `RECON_ASSET_STORE=r2` plus the R2 variables when protected Recon draft assets should read from Cloudflare R2. New Vaexil protected assets should use `R2_PRIVATE_BUCKET=vaexil-tv-media-private` with `R2_RECON_KEY_PREFIX=recon/`; the old `R2_BUCKET=vaexil-recon-assets` value remains a fallback only until the standardized bucket is manually verified. Do not use the local file database on Vercel for persistent production data. Contact form submissions are recorded even if SendGrid is not configured; set `SENDGRID_API_KEY`, `SENDGRID_TO_EMAIL`, and a verified `SENDGRID_FROM_EMAIL` when email delivery should go live. `ADMIN_PASSWORD` is the bootstrap/fallback password; after signing in, the admin UI can replace it with a database-stored password hash.
+For production, set `LIBSQL_URL` and `LIBSQL_AUTH_TOKEN` to a hosted libSQL/Turso database. Set `RECON_ASSET_STORE=r2` plus the R2 variables when protected Recon draft assets should read from Cloudflare R2. New Vaexil protected assets should use `R2_PRIVATE_BUCKET=vaexil-tv-media-private` with `R2_RECON_KEY_PREFIX=recon/`; the old `R2_BUCKET=vaexil-recon-assets` value remains a fallback only until the standardized bucket is manually verified. Do not use the local file database on Vercel for persistent production data. Contact form submissions are recorded even if SendGrid is not configured; set `SENDGRID_API_KEY`, `SENDGRID_TO_EMAIL`, and a verified `SENDGRID_FROM_EMAIL` when email delivery should go live. Set `BUNGIE_API_KEY` when Destiny 2 guide tools should load Bungie profile, equipment, and fireteam data. Keep `DESTINY_GUIDES_PUBLIC=false` until the Destiny guide family should be public; signed-in admins can still preview it from `/admin`. `ADMIN_PASSWORD` is the bootstrap/fallback password; after signing in, the admin UI can replace it with a database-stored password hash.
 
 ## Data Workflow
 
@@ -160,4 +162,5 @@ See [docs/deployment.md](docs/deployment.md) for the full domain, DNS, environme
 - No full user accounts or OAuth. Admin auth is intentionally lightweight for v1.
 - Clips and schedule are reserved surfaces until real media or schedule data is ready.
 - Official guide rows must come from admin publishing, not automatic community vote thresholds.
+- Keep draft guide downloads out of `public/`; private source PDFs are served through authenticated download routes.
 - Admin password changes are stored as hashes in the configured database. Keep `ADMIN_SESSION_SECRET` set in production so sessions are not tied to the bootstrap password.
