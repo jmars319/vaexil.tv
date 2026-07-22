@@ -32,7 +32,7 @@ const sections = [
   {
     title: "Guides and suggestions",
     items: [
-      "Official guide entries are published only after Vaexil review. Pending, ready-for-review, and community suggestions are not official guide information.",
+      "Guide entries become official only after Vaexil review. Community suggestions and items awaiting review are not official guide information.",
       "Game data, mod information, stream notes, and tool links can change over time and should be checked against current source pages where accuracy matters.",
       "Submitting a suggestion gives Vaexil.tv permission to review, edit, reject, verify, or publish the information as site content.",
     ],

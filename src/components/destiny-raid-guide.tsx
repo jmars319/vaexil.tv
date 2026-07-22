@@ -100,7 +100,7 @@ function RaidDashboard({ guide }: { guide: RaidGuide }) {
           Raid dashboard
         </p>
         <h2 className="mt-2 text-3xl font-semibold tracking-tight text-white">
-          Overview and source packet
+          Overview and downloads
         </h2>
       </div>
       <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
@@ -111,7 +111,7 @@ function RaidDashboard({ guide }: { guide: RaidGuide }) {
           </article>
         ))}
         <article className="rounded-2xl border border-cyan-300/20 bg-cyan-300/[0.06] p-6">
-          <h3 className="text-xl font-semibold text-white">Source packet</h3>
+          <h3 className="text-xl font-semibold text-white">Downloadable guide</h3>
           <p className="mt-3 text-sm leading-6 text-slate-300">
             {guide.sourcePacket}
           </p>

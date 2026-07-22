@@ -12,7 +12,7 @@ const navigation = [
   { label: "Contact", href: "/contact" },
 ];
 
-const suiteLinks = [
+const relatedLinks = [
   {
     label: "JAMARQ Digital",
     href: "https://jamarq.digital",
@@ -21,7 +21,7 @@ const suiteLinks = [
   {
     label: "Tenra.dev",
     href: "https://tenra.dev",
-    description: "Software products, internal tools, and local-first systems.",
+    description: "Focused software products, local-first apps, and technical notes.",
   },
 ];
 
@@ -102,8 +102,8 @@ export function SiteFooter() {
             />
             <p className="mt-1 max-w-2xl">
               Stream links, independently written guides, Recon maps, and
-              community suggestions. Published guide entries have been
-              reviewed by Vaexil.
+              community suggestions. Guide entries are reviewed before they
+              appear on the site.
             </p>
           </div>
           <div>
@@ -124,10 +124,10 @@ export function SiteFooter() {
           </div>
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.25em] text-slate-500">
-              Suite
+              Related sites
             </p>
-            <nav className="mt-3 space-y-3" aria-label="Vaexil suite links">
-              {suiteLinks.map((item) => (
+            <nav className="mt-3 space-y-3" aria-label="Related JAMARQ websites">
+              {relatedLinks.map((item) => (
                 <a
                   key={item.href}
                   href={item.href}

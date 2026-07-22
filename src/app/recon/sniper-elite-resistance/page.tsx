@@ -13,8 +13,8 @@ export default async function SniperEliteResistanceReconPage() {
     gameSlug: "sniper-elite-resistance",
     title: "Sniper Elite: Resistance Recon",
     description:
-      "Interactive maps and location guides for Sniper Elite: Resistance. Only reviewed maps and notes are published.",
-    emptyTitle: "No Sniper Elite: Resistance maps are public yet",
+      "Interactive maps and location guides for Sniper Elite: Resistance. Only reviewed maps and notes are shown.",
+    emptyTitle: "No Sniper Elite: Resistance maps are available yet",
     emptyDescription:
       "There are no reviewed interactive maps available for this game right now.",
     sourceNote:

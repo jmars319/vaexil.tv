@@ -67,7 +67,7 @@ export function ReconMapViewer({
   categories,
   onCoordinateCapture,
   capturedCoordinate,
-  markerSummaryLabel = "published markers",
+  markerSummaryLabel = "map locations",
   emptyState = "No map asset is available yet.",
   className,
   viewerMode = "admin",

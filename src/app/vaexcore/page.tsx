@@ -19,7 +19,7 @@ export default function VaexCorePage() {
           <div className="relative mx-auto aspect-square w-full max-w-sm overflow-hidden rounded-2xl border border-white/10 bg-white/[0.035] shadow-[0_24px_90px_rgba(0,0,0,0.32)]">
             <Image
               src="/brand/vaexcore-suite.webp"
-              alt="VaexCore Suite neon logo"
+              alt="VaexCore logo"
               fill
               sizes="(min-width: 1024px) 384px, 90vw"
               className="object-cover"

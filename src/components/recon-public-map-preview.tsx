@@ -60,7 +60,7 @@ export function ReconPublicMapPreview({
   markers,
   categories,
   mapViews = [],
-  markerSummaryLabel = "published markers",
+  markerSummaryLabel = "map locations",
   emptyState,
   className,
   suggestionContext,

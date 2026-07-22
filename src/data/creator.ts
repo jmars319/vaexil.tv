@@ -86,6 +86,6 @@ export const startHereSections = [
   {
     title: "Community suggestions",
     body:
-      "Viewers can suggest additions or corrections. Submissions stay clearly separate from published guide information until they are reviewed.",
+      "Viewers can suggest additions or corrections. Suggestions stay separate from the guide information shown on the site until Vaexil reviews them.",
   },
 ];

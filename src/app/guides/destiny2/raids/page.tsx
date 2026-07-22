@@ -26,7 +26,7 @@ export default async function Destiny2RaidGuidesPage() {
         <SectionHeading
           level={1}
           title="Destiny 2 raid guides"
-          description="Raid references, source packets, and live pull tools for Destiny 2 fireteams."
+          description="Raid references, downloadable guides, and live pull tools for Destiny 2 fireteams."
         />
       </Section>
 

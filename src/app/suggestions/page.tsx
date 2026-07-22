@@ -34,7 +34,7 @@ export default async function SuggestionsPage() {
         {suggestions.length === 0 ? (
           <EmptyState
             title="No community suggestions yet"
-            description="Submitted suggestions will appear here as pending items. They do not become official guide entries until Vaexil reviews and publishes them."
+            description="Submitted suggestions appear here while they await review. They do not become official guide information until Vaexil approves them."
           />
         ) : (
           <div className="grid gap-4">

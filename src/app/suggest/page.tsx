@@ -17,7 +17,7 @@ export default function SuggestPage() {
         <SectionHeading
           level={1}
           title="Suggest an addition or correction"
-          description="Viewer notes are useful, but they do not become official guide entries automatically. Submissions remain separate from published guide information until Vaexil reviews them."
+          description="Viewer notes are useful, but they do not become official guide entries automatically. Suggestions remain separate from the guide information shown on the site until Vaexil reviews them."
         />
         <div className="mt-6">
           <SecondaryLink href="/suggestions">

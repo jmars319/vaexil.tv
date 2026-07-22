@@ -96,8 +96,8 @@ export default async function HitmanReconMapPage({
             title={map.title}
             description={
               map.subtitle
-                ? `${map.subtitle}. Published Recon markers only.`
-                : "Published Recon markers only."
+                ? `${map.subtitle}. Only reviewed locations are shown.`
+                : "Only reviewed locations are shown."
             }
           />
           <SecondaryLink href="/recon/hitman">HITMAN Recon</SecondaryLink>

@@ -81,7 +81,7 @@ export default async function ReconPage() {
               </p>
               <div className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/10 px-3 py-2 text-xs font-medium text-slate-300">
                 <MapIcon className="size-4 text-slate-500" aria-hidden="true" />
-                {mapCounts.get(game.id) || 0} public maps
+                {mapCounts.get(game.id) || 0} available maps
               </div>
             </Link>
           ))}
@@ -91,7 +91,7 @@ export default async function ReconPage() {
       {publicMapCount === 0 ? (
         <Section className="pt-4">
           <EmptyState
-            title="No interactive maps are published yet"
+            title="No interactive maps are available yet"
             description="Use the current Freelancer guide for verified locations, or submit a correction to help improve the references."
           />
         </Section>

@@ -147,7 +147,9 @@ export default function Home() {
               Maps and notes for the games covered on stream.
             </h2>
             <p className="mt-4 text-base leading-7 text-slate-300">
-              Recon combines interactive maps with concise location details and practical instructions. Published material is independently written and reviewed for Vaexil.
+              Recon combines interactive maps with concise location details and
+              practical instructions. Maps and guides are independently written
+              and reviewed for Vaexil.
             </p>
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <PrimaryLink href="/recon">Explore Recon</PrimaryLink>

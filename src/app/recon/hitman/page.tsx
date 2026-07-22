@@ -38,7 +38,7 @@ export default async function HitmanReconPage() {
           <SectionHeading
             level={1}
             title="HITMAN Recon"
-            description="Interactive maps and location guides for HITMAN. Only reviewed maps and notes are published."
+            description="Interactive maps and location guides for HITMAN. Only reviewed maps and notes are shown."
           />
           <div className="flex flex-col gap-3 sm:flex-row">
             <PrimaryLink href="/guides/freelancer-free-items">
@@ -55,7 +55,7 @@ export default async function HitmanReconPage() {
       <Section className="pt-4">
         {maps.length === 0 ? (
           <EmptyState
-            title="No HITMAN maps are public yet"
+            title="No HITMAN maps are available yet"
             description="Use the current Freelancer guide for verified item locations while no interactive maps are available."
           />
         ) : (

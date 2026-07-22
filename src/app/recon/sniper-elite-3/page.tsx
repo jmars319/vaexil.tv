@@ -13,8 +13,8 @@ export default async function SniperElite3ReconPage() {
     gameSlug: "sniper-elite-3",
     title: "Sniper Elite 3 Recon",
     description:
-      "Interactive maps and location guides for Sniper Elite 3. Only reviewed maps and notes are published.",
-    emptyTitle: "No Sniper Elite 3 maps are public yet",
+      "Interactive maps and location guides for Sniper Elite 3. Only reviewed maps and notes are shown.",
+    emptyTitle: "No Sniper Elite 3 maps are available yet",
     emptyDescription:
       "There are no reviewed interactive maps available for this game right now.",
     sourceNote:
