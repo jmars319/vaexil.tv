@@ -6,11 +6,9 @@ import Link from "next/link";
 const navigation = [
   { label: "Home", href: "/" },
   { label: "Live", href: "/live" },
-  { label: "Schedule", href: "/schedule" },
-  { label: "Clips", href: "/clips" },
   { label: "Guides", href: "/guides" },
   { label: "Recon", href: "/recon" },
-  { label: "VaexCore", href: "/vaexcore" },
+  { label: "Start Here", href: "/start-here" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -103,9 +101,9 @@ export function SiteFooter() {
               className="h-9 w-auto object-contain"
             />
             <p className="mt-1 max-w-2xl">
-              Stream references, community suggestions, and future VaexCore
-              product notes. Guide entries should be treated as official only
-              after admin verification and publishing.
+              Stream links, independently written guides, Recon maps, and
+              community suggestions. Published guide entries have been
+              reviewed by Vaexil.
             </p>
           </div>
           <div>
@@ -152,8 +150,8 @@ export function SiteFooter() {
               Connect
             </p>
             <p className="mt-3 text-xs leading-5 text-slate-500">
-              Contact goes through the site form, with stream and creator links
-              kept separate.
+              Use the contact form for collaborations, promotions, or stream
+              questions.
             </p>
             <Link
               href="/contact"

@@ -5,7 +5,7 @@ import { suggestionReadyVoteThreshold } from "@/lib/config";
 export const metadata = {
   title: "Suggest an Update",
   description:
-    "Submit Vaexil guide additions or corrections for community votes and admin review.",
+    "Submit Vaexil guide additions or corrections for community votes and review.",
 };
 
 export const runtime = "nodejs";
@@ -17,7 +17,7 @@ export default function SuggestPage() {
         <SectionHeading
           level={1}
           title="Suggest an addition or correction"
-          description="Viewer notes are useful, but they do not become official guide entries automatically. Submissions enter the pending queue and remain separate from published guide data until admin review."
+          description="Viewer notes are useful, but they do not become official guide entries automatically. Submissions remain separate from published guide information until Vaexil reviews them."
         />
         <div className="mt-6">
           <SecondaryLink href="/suggestions">

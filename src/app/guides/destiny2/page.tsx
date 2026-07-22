@@ -31,7 +31,7 @@ export default async function Destiny2GuidesPage() {
       </Section>
 
       <Section className="pt-4">
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="grid gap-4">
           <Link
             href="/guides/destiny2/raids"
             className="rounded-2xl border border-white/10 bg-white/[0.035] p-6 transition hover:border-cyan-300/40 hover:bg-white/[0.06]"
@@ -42,12 +42,6 @@ export default async function Destiny2GuidesPage() {
               selectors, assignment boards, checklists, and quick references.
             </p>
           </Link>
-          <div className="rounded-2xl border border-dashed border-white/15 bg-white/[0.025] p-6">
-            <h2 className="text-2xl font-semibold text-white">More guide families</h2>
-            <p className="mt-3 text-sm leading-6 text-slate-400">
-              Dungeons, builds, seasonal references, and tool pages can live here later.
-            </p>
-          </div>
         </div>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <PrimaryLink href="/guides/destiny2/raids">Open raid guides</PrimaryLink>

@@ -1,11 +1,8 @@
 import {
   BookOpenText,
-  CalendarDays,
-  Clapperboard,
   Compass,
   Map,
   Radio,
-  Sparkles,
 } from "lucide-react";
 
 export const hubCards = [
@@ -13,7 +10,7 @@ export const hubCards = [
     title: "Recon",
     href: "/recon",
     description:
-      "Private map work, reviewed sources, POI markers, and public-ready guide surfaces for games that need better reference maps.",
+      "Interactive maps, clear location notes, and independently written references for games covered on stream.",
     icon: Map,
   },
   {
@@ -27,15 +24,15 @@ export const hubCards = [
     title: "Live",
     href: "/live",
     description:
-      "The fastest route to the stream and the current live/offline context without burying viewers in platform links.",
+      "Watch Vaexil on Twitch and find the main channel links in one place.",
     icon: Radio,
   },
   {
-    title: "VaexCore",
-    href: "/vaexcore",
+    title: "Start Here",
+    href: "/start-here",
     description:
-      "The future creator-operations product family that supports the stream without replacing Vaexil as the identity.",
-    icon: Sparkles,
+      "A quick introduction to the stream, Recon maps, guides, and community suggestions.",
+    icon: Compass,
   },
 ];
 
@@ -44,45 +41,30 @@ export const continuityRoutes = [
     title: "Live",
     href: "/live",
     description:
-      "Watch live on Twitch and understand what kind of stream this is before jumping platforms.",
+      "Watch on Twitch and get a feel for the games, conversations, and guide work.",
     icon: Radio,
   },
   {
-    title: "Schedule",
-    href: "/schedule",
+    title: "Guides",
+    href: "/guides",
     description:
-      "A plain public schedule surface for planned streams, event windows, and future calendar integration.",
-    icon: CalendarDays,
+      "Find raid references, mod setup notes, and searchable game guides.",
+    icon: BookOpenText,
   },
   {
-    title: "Clips",
-    href: "/clips",
+    title: "Recon",
+    href: "/recon",
     description:
-      "A curated highlights surface for moments worth keeping after the feed moves on.",
-    icon: Clapperboard,
+      "Explore interactive maps and practical location notes.",
+    icon: Map,
   },
   {
     title: "Start Here",
     href: "/start-here",
     description:
-      "A new-viewer route that explains Vaexil, the stream, Recon, guides, suggestions, and VaexCore.",
+      "See what Vaexil.tv offers and choose where to begin.",
     icon: Compass,
   },
-];
-
-export const clipCategories = [
-  "Funny moments",
-  "Game discoveries",
-  "Guide-worthy finds",
-  "Good conversations",
-  "Technical rabbit holes",
-  "Quietly strange moments",
-];
-
-export const scheduleNotes = [
-  "Streams may move around life and energy.",
-  "This route is the future canonical schedule surface.",
-  "When calendar integration is ready, it should update this page instead of creating a competing schedule.",
 ];
 
 export const startHereSections = [
@@ -94,7 +76,7 @@ export const startHereSections = [
   {
     title: "Recon",
     body:
-      "Recon is the map and guide system. It keeps private research, source notes, markers, and public map pages organized without copying guide prose or game UI.",
+      "Recon brings independently authored maps, location notes, and practical references together for games covered on stream.",
   },
   {
     title: "Guides",
@@ -102,8 +84,8 @@ export const startHereSections = [
       "Guides are verified notes and references that should remain findable after a stream, mod setup, or viewer correction disappears into a feed.",
   },
   {
-    title: "VaexCore",
+    title: "Community suggestions",
     body:
-      "VaexCore is the future creator-operations layer for stream tooling, local controls, highlight review, and operational workflows.",
+      "Viewers can suggest additions or corrections. Submissions stay clearly separate from published guide information until they are reviewed.",
   },
 ];

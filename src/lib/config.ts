@@ -4,9 +4,9 @@ function normalizeUrl(value: string) {
 
 export const siteConfig = {
   name: "Vaexil.tv",
-  title: "Vaexil | Stream Hub, Guides, Recon Maps, and VaexCore",
+  title: "Vaexil | Stream Hub, Guides, and Recon Maps",
   description:
-    "Vaexil.tv is a stream and creative home base for Recon maps, guides, clips, schedule notes, suggestions, and future VaexCore creator-operations work.",
+    "Vaexil.tv is a home for reflective gaming, independently written guides, Recon maps, stream links, and community suggestions.",
   url: normalizeUrl(process.env.NEXT_PUBLIC_SITE_URL || "https://vaexil.tv"),
   links: {
     twitch: process.env.NEXT_PUBLIC_TWITCH_URL || "https://www.twitch.tv/vaexil",

@@ -6,14 +6,14 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Terms",
   description:
-    "Practical terms for using Vaexil.tv, guide pages, public suggestions, contact forms, and VaexCore product notes.",
+    "Practical terms for using Vaexil.tv, guide pages, community suggestions, and contact forms.",
   alternates: {
     canonical: `${siteConfig.url}/terms`,
   },
   openGraph: {
     title: "Terms | Vaexil.tv",
     description:
-      "Practical terms for using Vaexil.tv, guide pages, public suggestions, contact forms, and VaexCore product notes.",
+      "Practical terms for using Vaexil.tv, guide pages, community suggestions, and contact forms.",
     url: `${siteConfig.url}/terms`,
     siteName: "Vaexil.tv",
     type: "website",
@@ -24,7 +24,7 @@ const sections = [
   {
     title: "Website use",
     items: [
-      "This site provides stream references, guide notes, public suggestion workflows, contact paths, and future VaexCore product information.",
+      "This site provides stream references, guide notes, community suggestions, and contact options.",
       "You may browse public pages, submit suggestions, vote on community suggestions, and use the contact form for legitimate inquiries.",
       "Do not attempt to access admin-only areas, disrupt site operation, submit abusive content, spam forms, or manipulate votes.",
     ],
@@ -32,16 +32,16 @@ const sections = [
   {
     title: "Guides and suggestions",
     items: [
-      "Official guide entries are published only after admin review. Pending, ready-for-review, and community suggestions are not official guide data.",
+      "Official guide entries are published only after Vaexil review. Pending, ready-for-review, and community suggestions are not official guide information.",
       "Game data, mod information, stream notes, and tool links can change over time and should be checked against current source pages where accuracy matters.",
       "Submitting a suggestion gives Vaexil.tv permission to review, edit, reject, verify, or publish the information as site content.",
     ],
   },
   {
-    title: "VaexCore and product notes",
+    title: "Third-party links and software",
     items: [
-      "VaexCore pages may describe planned or future products and should not be treated as a guarantee of release timing, support, or availability.",
-      "Any downloadable software, source code, or third-party tool remains governed by its own license, release notes, and terms.",
+      "Any downloadable software, source code, or third-party tool is governed by its own license, release notes, and terms.",
+      "Links to other websites are provided for convenience and do not transfer responsibility for their content or availability to Vaexil.tv.",
       "No contact exchange creates a service, sponsorship, promotion, or product agreement unless separately confirmed in writing.",
     ],
   },
@@ -62,9 +62,9 @@ export default function TermsPage() {
         <SectionHeading
           level={1}
           title="Website terms"
-          description="These terms cover use of the public Vaexil.tv site, including guides, suggestions, contact forms, and future VaexCore product notes. Product-specific licenses or written agreements control where they apply."
+          description="These terms cover use of Vaexil.tv, including guides, community suggestions, and contact forms. Product-specific licenses or written agreements control where they apply."
         />
-        <p className="mt-4 text-sm text-slate-500">Last updated May 10, 2026.</p>
+        <p className="mt-4 text-sm text-slate-500">Last updated July 22, 2026.</p>
       </Section>
 
       <Section className="pt-4">
@@ -93,7 +93,7 @@ export default function TermsPage() {
             <Link href="/contact" className="text-cyan-200 hover:text-cyan-100">
               contact form
             </Link>
-            . That keeps requests in the reviewed site intake path.
+            .
           </p>
         </Panel>
       </Section>

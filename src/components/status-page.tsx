@@ -5,7 +5,7 @@ const STATUS_COPY = {
     code: "403",
     eyebrow: "Access denied",
     title: "This Vaexil.tv page is not available publicly.",
-    body: "The page may require a valid admin session or may be restricted to internal Recon workflow.",
+    body: "This page is restricted. Return home to continue browsing the public site.",
   },
   notFound: {
     code: "404",

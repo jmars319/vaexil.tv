@@ -9,7 +9,7 @@ const inquiryTypes = [
   "Collaboration",
   "Promotion",
   "Stream question",
-  "VaexCore",
+  "Guide feedback",
   "Other",
 ];
 
@@ -59,7 +59,7 @@ export function ContactForm() {
       setStatus("success");
       setMessage(
         payload.message ||
-          "Message recorded. Expect a reply when Vaexil contact intake is reviewed.",
+          "Message received. Expect a reply after Vaexil reviews it.",
       );
     } catch (error) {
       setStatus("error");
@@ -166,8 +166,8 @@ export function ContactForm() {
 
       <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <p className="max-w-2xl text-sm leading-6 text-slate-400">
-          Public contact runs through this form so requests keep enough context
-          to review cleanly.
+          Include relevant links, dates, or guide details so the request is easy
+          to understand.
         </p>
         <button
           type="submit"

@@ -4,7 +4,7 @@ import { startHereSections } from "@/data/creator";
 export const metadata = {
   title: "Start Here",
   description:
-    "A new-viewer starting point for Vaexil: stream, Recon, guides, suggestions, VaexCore, and where to go next.",
+    "A new-viewer starting point for Vaexil streams, Recon maps, guides, and community suggestions.",
 };
 
 export default function StartHerePage() {
@@ -14,7 +14,7 @@ export default function StartHerePage() {
         <SectionHeading
           level={1}
           title="Start here."
-          description="A short route for new viewers and returning people who want to know what Vaexil.tv is for."
+          description="A quick introduction for new viewers and returning visitors who want to see what Vaexil.tv offers."
         />
       </Section>
       <Section className="border-y border-white/10 bg-white/[0.025]">

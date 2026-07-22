@@ -37,7 +37,7 @@ export const reconCategories: ReconCategory[] = [
   {
     key: "free_freelancer_item",
     label: "Free Freelancer item",
-    description: "Free Freelancer item location after admin verification.",
+    description: "Reviewed free Freelancer item location.",
     defaultIconKey: "item",
     defaultVisible: true,
     applicableGames: [hitmanGame],
@@ -64,7 +64,7 @@ export const reconCategories: ReconCategory[] = [
   {
     key: "target_path_point",
     label: "Target path point",
-    description: "Future pathing point for connecting route lines.",
+    description: "Waypoint for connecting route lines.",
     defaultIconKey: "route-point",
     defaultVisible: false,
     applicableGames: [hitmanGame],

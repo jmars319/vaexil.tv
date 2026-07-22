@@ -254,7 +254,7 @@ export function ReconMapSuggestionForm({
             ) : (
               <Circle className="size-4 text-slate-500" aria-hidden="true" />
             )}
-            Pending admin review
+            Pending review
           </span>
           <SubmitButton disabled={!coordinate} />
         </div>

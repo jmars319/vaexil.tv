@@ -25,7 +25,7 @@ const fields = [
   {
     name: "mapName",
     label: "Map name",
-    placeholder: "Use draft text if this needs admin confirmation",
+    placeholder: "Use the map or location name if known",
   },
 ];
 
@@ -131,8 +131,8 @@ export function SuggestionForm({
       <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
         <p className="max-w-2xl text-sm leading-6 text-slate-400">
           Suggestions are saved as pending. {readyVoteThreshold} votes
-          marks them ready for review, but only an admin can verify and publish
-          them.
+          marks them ready for review. Vaexil reviews every suggestion before
+          publishing it.
         </p>
         <SubmitButton />
       </div>

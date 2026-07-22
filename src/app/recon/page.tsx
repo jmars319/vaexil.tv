@@ -13,7 +13,7 @@ import Link from "next/link";
 export const metadata = {
   title: "Recon",
   description:
-    "Vaexil-curated interactive maps, field notes, and guide layers for games covered on stream.",
+    "Vaexil-curated interactive maps, field notes, and location guides for games covered on stream.",
 };
 
 export const dynamic = "force-dynamic";
@@ -31,6 +31,10 @@ export default async function ReconPage() {
     ),
   );
   const mapCounts = new Map(mapCountEntries);
+  const publicMapCount = mapCountEntries.reduce(
+    (total, [, count]) => total + count,
+    0,
+  );
 
   return (
     <>
@@ -39,14 +43,13 @@ export default async function ReconPage() {
           <SectionHeading
             level={1}
             title="Recon"
-            description="Interactive maps, field notes, and guide layers for games covered on stream. Public Recon is curated static knowledge, not AI, prediction, or exposed draft source data."
+            description="Interactive maps, field notes, and practical location guides for games covered on stream."
           />
           <div className="rounded-2xl border border-cyan-300/20 bg-cyan-300/[0.06] p-5">
             <ShieldCheck className="size-6 text-cyan-200" aria-hidden="true" />
             <p className="mt-4 text-sm leading-6 text-slate-300">
-              Map pages stay hidden until their assets and marker data are
-              ready for public use. Private source-map drafts remain admin-only.
-              The current Freelancer guide remains the stable reference.
+              Only reviewed maps and location details appear here. The current
+              Freelancer guide is available now as a searchable reference.
             </p>
             <div className="mt-5 flex flex-col gap-3 sm:flex-row">
               <PrimaryLink href="/guides/freelancer-free-items">
@@ -85,12 +88,14 @@ export default async function ReconPage() {
         </div>
       </Section>
 
-      <Section className="pt-4">
-        <EmptyState
-          title="Public maps are still in production"
-          description="Recon launches with the public section, data model, private asset workflow, and admin coordinate capture. Individual map pages appear only after their assets and markers are reviewed and published."
-        />
-      </Section>
+      {publicMapCount === 0 ? (
+        <Section className="pt-4">
+          <EmptyState
+            title="No interactive maps are published yet"
+            description="Use the current Freelancer guide for verified locations, or submit a correction to help improve the references."
+          />
+        </Section>
+      ) : null}
     </>
   );
 }

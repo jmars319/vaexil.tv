@@ -2,8 +2,7 @@ import { PrimaryLink, Section, SectionHeading } from "@/components/ui";
 
 export const metadata = {
   title: "Tools Mentioned on Stream",
-  description:
-    "Placeholder area for tools and utilities mentioned on Vaexil streams.",
+  description: "Tools and utilities recommended during Vaexil streams.",
 };
 
 export default function StreamToolsPage() {
@@ -13,7 +12,7 @@ export default function StreamToolsPage() {
         <SectionHeading
           level={1}
           title="Tools mentioned on stream"
-          description="A future index for utilities, references, and workflow tools discussed live. The page is ready for real entries without inventing a tool list."
+          description="There are no reviewed tool recommendations here right now."
         />
       </Section>
       <Section className="pt-4">
@@ -22,9 +21,8 @@ export default function StreamToolsPage() {
             No stream tool entries yet
           </h2>
           <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-400">
-            Tool entries can be added later with source links, short notes, and
-            verification status. Until then, this page stays empty rather than
-            presenting fake recommendations.
+            If a tool mentioned on stream would be useful to others, send its
+            name and source link for consideration.
           </p>
           <div className="mt-6">
             <PrimaryLink href="/suggest">Suggest a stream tool</PrimaryLink>

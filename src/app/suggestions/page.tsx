@@ -8,7 +8,7 @@ import { ArrowUp, ExternalLink } from "lucide-react";
 export const metadata = {
   title: "Community Suggestions",
   description:
-    "Pending Vaexil guide suggestions with lightweight community voting before admin review.",
+    "Vaexil guide suggestions with community voting before publication.",
 };
 
 export const dynamic = "force-dynamic";
@@ -24,7 +24,7 @@ export default async function SuggestionsPage() {
           <SectionHeading
             level={1}
             title="Community suggestions"
-            description={`Vote on additions or corrections that should be reviewed. ${suggestionReadyVoteThreshold} votes marks a suggestion ready for review, but publishing still requires admin verification.`}
+            description={`Vote on additions or corrections that should be reviewed. ${suggestionReadyVoteThreshold} votes marks a suggestion ready for review, and Vaexil checks every entry before publication.`}
           />
           <PrimaryLink href="/suggest">Submit suggestion</PrimaryLink>
         </div>
@@ -34,7 +34,7 @@ export default async function SuggestionsPage() {
         {suggestions.length === 0 ? (
           <EmptyState
             title="No community suggestions yet"
-            description="Submitted suggestions will appear here as pending items. They will not become official guide entries until they are verified and published by an admin."
+            description="Submitted suggestions will appear here as pending items. They do not become official guide entries until Vaexil reviews and publishes them."
           />
         ) : (
           <div className="grid gap-4">

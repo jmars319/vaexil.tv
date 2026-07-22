@@ -139,7 +139,7 @@ export async function generateSniperEliteMapMetadata(
 
   return {
     title: `${map.title} Recon`,
-    description: `Vaexil Recon map layer for ${map.title}.`,
+    description: `Vaexil Recon map and location guide for ${map.title}.`,
   };
 }
 

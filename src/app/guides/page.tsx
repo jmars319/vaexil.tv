@@ -1,12 +1,12 @@
 import { PrimaryLink, Section, SectionHeading } from "@/components/ui";
 import { destinyGuidesArePublic } from "@/lib/destiny-guide-visibility";
-import { BookOpenText, Boxes, Crosshair, Wrench } from "lucide-react";
+import { BookOpenText, Crosshair, Wrench } from "lucide-react";
 import Link from "next/link";
 
 export const metadata = {
   title: "Guides",
   description:
-    "Vaexil guide hub for verified stream notes, setup references, and future tool documentation.",
+    "Vaexil guide hub for verified game references, raid notes, and mod setup information.",
 };
 
 const guideCards = [
@@ -34,13 +34,6 @@ const guideCards = [
     description:
       "Current SMF-based Hitman mod stack, load order, Nexus links, and confirmed problematic mods to avoid.",
     icon: Wrench,
-  },
-  {
-    title: "Tools mentioned on stream",
-    href: "/guides/stream-tools",
-    description:
-      "A future index for utilities discussed live, kept separate from official guide facts.",
-    icon: Boxes,
   },
 ];
 
@@ -90,21 +83,7 @@ export default function GuidesPage() {
         </div>
       </Section>
 
-      <Section id="stream-tools">
-        <div className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
-          <div>
-            <h2 className="text-2xl font-semibold text-white">
-              Tools mentioned on stream
-            </h2>
-            <p className="mt-3 text-sm leading-6 text-slate-400">
-              Future tools can be listed here with links, categories, and short
-              notes once they are intentionally selected.
-            </p>
-          </div>
-          <div className="rounded-2xl border border-dashed border-white/15 p-6 text-sm text-slate-400">
-            No stream tool entries yet.
-          </div>
-        </div>
+      <Section>
         <div className="mt-10">
           <PrimaryLink href="/suggest">Suggest a guide correction</PrimaryLink>
         </div>

@@ -1,10 +1,10 @@
-import { Section, SectionHeading } from "@/components/ui";
-import { clipCategories } from "@/data/creator";
+import { ExternalButton, Section, SectionHeading } from "@/components/ui";
+import { siteConfig } from "@/lib/config";
 
 export const metadata = {
   title: "Vaexil Clips and Highlights",
   description:
-    "Selected Vaexil clips and highlights surface for memorable stream moments, guide-worthy finds, and future curated video references.",
+    "Vaexil clips, highlights, and videos from the stream.",
 };
 
 export default function ClipsPage() {
@@ -14,19 +14,18 @@ export default function ClipsPage() {
         <SectionHeading
           level={1}
           title="Clips and highlights."
-          description="A curated place for stream moments worth keeping once real clips are selected. No fake media is published here."
+          description="Selected stream moments and longer videos will appear here when available."
         />
       </Section>
       <Section className="border-y border-white/10 bg-white/[0.025]">
-        <div className="grid gap-4 md:grid-cols-3">
-          {clipCategories.map((category) => (
-            <div key={category} className="rounded-2xl border border-white/10 bg-white/[0.035] p-5">
-              <h2 className="text-xl font-semibold text-white">{category}</h2>
-              <p className="mt-3 text-sm leading-6 text-slate-400">
-                Reserved for approved clips and highlights when real media is ready.
-              </p>
-            </div>
-          ))}
+        <div className="rounded-2xl border border-dashed border-white/15 bg-slate-950/45 p-8">
+          <h2 className="text-xl font-semibold text-white">No highlights are posted here yet.</h2>
+          <p className="mt-3 text-sm leading-6 text-slate-400">
+            Visit YouTube for available Vaexil videos.
+          </p>
+          <div className="mt-6">
+            <ExternalButton href={siteConfig.links.youtube}>Open YouTube</ExternalButton>
+          </div>
         </div>
       </Section>
     </>

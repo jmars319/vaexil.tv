@@ -81,7 +81,7 @@ export async function submitSuggestion(
   return {
     ok: true,
     message:
-      "Suggestion submitted. It is pending community votes and admin review.",
+      "Suggestion submitted. It is pending community votes and Vaexil review.",
   };
 }
 

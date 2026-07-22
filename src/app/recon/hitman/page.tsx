@@ -16,8 +16,7 @@ import { notFound } from "next/navigation";
 
 export const metadata = {
   title: "HITMAN Recon",
-  description:
-    "Vaexil Recon map and guide shell for HITMAN World of Assassination.",
+  description: "Vaexil Recon maps and location guides for HITMAN World of Assassination.",
 };
 
 export const dynamic = "force-dynamic";
@@ -39,7 +38,7 @@ export default async function HitmanReconPage() {
           <SectionHeading
             level={1}
             title="HITMAN Recon"
-            description="Curated interactive guide layers for HITMAN. Map pages stay hidden until their custom schematic maps and marker data are ready."
+            description="Interactive maps and location guides for HITMAN. Only reviewed maps and notes are published."
           />
           <div className="flex flex-col gap-3 sm:flex-row">
             <PrimaryLink href="/guides/freelancer-free-items">
@@ -57,7 +56,7 @@ export default async function HitmanReconPage() {
         {maps.length === 0 ? (
           <EmptyState
             title="No HITMAN maps are public yet"
-            description="Draft map records exist for internal coordinate capture, but public HITMAN map pages remain hidden until their Vaexil-authored map plates and markers are verified."
+            description="Use the current Freelancer guide for verified item locations while no interactive maps are available."
           />
         ) : (
           <div className="grid gap-4 md:grid-cols-2">
@@ -89,8 +88,8 @@ export default async function HitmanReconPage() {
         <div className="rounded-2xl border border-cyan-300/20 bg-cyan-300/[0.06] p-5">
           <ShieldCheck className="size-6 text-cyan-200" aria-hidden="true" />
           <p className="mt-4 text-sm leading-6 text-slate-300">
-            Recon does not use HITMAPS assets, API data, marker coordinates, or
-            copied guide text. Published entries must be Vaexil-curated.
+            Recon maps and notes are independently authored for Vaexil.
+            Third-party map art, coordinates, and guide text are not republished.
           </p>
         </div>
       </Section>

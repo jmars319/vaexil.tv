@@ -168,8 +168,7 @@ export function MarkerDetailPanel({
 
       {!hasStructuredDetail && marker.description ? (
         <p className="mt-3 text-xs leading-5 text-slate-500">
-          Structured guide detail has not been reviewed yet; showing the marker
-          description as fallback.
+          More detailed instructions are not available for this marker yet.
         </p>
       ) : null}
 

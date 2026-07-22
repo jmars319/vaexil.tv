@@ -33,9 +33,9 @@ const sections = [
   {
     title: "How it is used",
     items: [
-      "Contact details are used to review collaborations, promotions, stream questions, and VaexCore conversations.",
-      "Community suggestions and votes help prioritize guide review, but admin approval is required before anything becomes official.",
-      "Analytics help identify useful pages, broken routes, and performance issues.",
+      "Contact details are used to review collaborations, promotions, stream questions, and guide feedback.",
+      "Community suggestions and votes help prioritize guide review, but Vaexil approval is required before anything becomes official.",
+      "Analytics help identify useful pages, broken links, and performance issues.",
     ],
   },
   {
@@ -63,9 +63,9 @@ export default function PrivacyPage() {
         <SectionHeading
           level={1}
           title="Privacy and data handling"
-          description="This page describes the current Vaexil.tv site behavior. Public contact, guide suggestions, votes, and analytics are intentionally lightweight for this first production version."
+          description="This page explains how Vaexil.tv handles contact messages, guide suggestions, votes, and basic site analytics."
         />
-        <p className="mt-4 text-sm text-slate-500">Last updated May 9, 2026.</p>
+        <p className="mt-4 text-sm text-slate-500">Last updated July 22, 2026.</p>
       </Section>
 
       <Section className="pt-4">
@@ -94,8 +94,7 @@ export default function PrivacyPage() {
             <Link href="/contact" className="text-cyan-200 hover:text-cyan-100">
               contact form
             </Link>
-            . That keeps requests in the same reviewed intake path as the rest
-            of the site.
+            .
           </p>
         </Panel>
       </Section>

@@ -6,14 +6,14 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Contact",
   description:
-    "Contact Vaexil about collaborations, promotions, stream questions, or VaexCore conversations.",
+    "Contact Vaexil about collaborations, promotions, stream questions, or guide feedback.",
   alternates: {
     canonical: `${siteConfig.url}/contact`,
   },
   openGraph: {
     title: "Contact | Vaexil.tv",
     description:
-      "Contact Vaexil about collaborations, promotions, stream questions, or VaexCore conversations.",
+      "Contact Vaexil about collaborations, promotions, stream questions, or guide feedback.",
     url: `${siteConfig.url}/contact`,
     siteName: "Vaexil.tv",
     type: "website",
@@ -32,9 +32,9 @@ const contactPaths = [
       "For sponsorship, product, or campaign conversations with clear timing and scope.",
   },
   {
-    title: "VaexCore",
+    title: "Stream and guide questions",
     description:
-      "For future product questions, early interest, or tool ideas that belong in the VaexCore surface.",
+      "For questions about the stream, site guides, Recon maps, or a correction that needs more context.",
   },
 ];
 
@@ -45,7 +45,7 @@ export default function ContactPage() {
         <SectionHeading
           level={1}
           title="Contact Vaexil"
-          description="Use this form for collaborations, promotions, stream questions, and future VaexCore conversations. Public contact is form-based so every request arrives with enough context to review."
+          description="Use this form for collaborations, promotions, stream questions, and guide feedback. Include enough context for a useful reply."
         />
       </Section>
       <Section className="pt-4">

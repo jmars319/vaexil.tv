@@ -1,7 +1,7 @@
 import { ExternalButton, PrimaryExternalButton, PrimaryLink, SecondaryLink, Section } from "@/components/ui";
 import { continuityRoutes, hubCards } from "@/data/creator";
 import { siteConfig } from "@/lib/config";
-import { MessageCircle, Play, Radio, Sparkles } from "lucide-react";
+import { MessageCircle, Play, Radio } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -48,10 +48,10 @@ export default function Home() {
               className="h-auto w-full max-w-[22rem] object-contain drop-shadow-[0_0_34px_rgba(0,200,255,0.18)]"
             />
             <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-300 sm:text-xl">
-              Stream hub, guide archive, Recon maps, clips, schedule, suggestions, and VaexCore.
+              Reflective gaming, practical guides, and Recon maps made to stay useful after the stream ends.
             </p>
             <p className="mt-4 max-w-2xl text-base leading-7 text-slate-400">
-              A home base for reflective gaming, useful references, map work, and stream-adjacent systems that should survive after the live feed moves on.
+              Watch live, browse verified references, explore game maps, or help improve a guide with a correction.
             </p>
             <div className="mt-9 flex flex-col gap-3 sm:flex-row">
               <PrimaryExternalButton href={siteConfig.links.twitch}>
@@ -79,7 +79,7 @@ export default function Home() {
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-950/58 via-transparent to-slate-950/8" />
                 </div>
                 <div className="grid gap-3 p-5 sm:grid-cols-2">
-                  {["Recon map notes", "Guide corrections", "Clip queue", "VaexCore planning"].map((item) => (
+                  {["Recon maps and notes", "Verified guides", "Community corrections", "Stream links"].map((item) => (
                     <div key={item} className="rounded-xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-medium text-slate-200">
                       {item}
                     </div>
@@ -90,11 +90,11 @@ export default function Home() {
                 <Link href="/recon" className="rounded-xl border border-cyan-300/30 bg-cyan-300/10 p-4 text-sm font-semibold text-cyan-100">
                   Recon
                 </Link>
-                <Link href="/clips" className="rounded-xl border border-fuchsia-300/30 bg-fuchsia-300/10 p-4 text-sm font-semibold text-fuchsia-100">
-                  Clips
+                <Link href="/guides" className="rounded-xl border border-fuchsia-300/30 bg-fuchsia-300/10 p-4 text-sm font-semibold text-fuchsia-100">
+                  Guides
                 </Link>
-                <Link href="/schedule" className="rounded-xl border border-white/10 bg-white/[0.04] p-4 text-sm font-semibold text-slate-200">
-                  Schedule
+                <Link href="/suggestions" className="rounded-xl border border-white/10 bg-white/[0.04] p-4 text-sm font-semibold text-slate-200">
+                  Suggestions
                 </Link>
               </div>
             </div>
@@ -125,7 +125,7 @@ export default function Home() {
               The site should still work when the stream is offline.
             </h2>
             <p className="mt-4 text-base leading-7 text-slate-300">
-              Vaexil.tv connects the live channel to the things worth keeping: guides, maps, clips, schedule notes, suggestions, and tools that become part of the stream workflow.
+              Vaexil.tv keeps guides, maps, stream links, and community corrections easy to find between broadcasts.
             </p>
           </div>
           <div className="grid gap-4 sm:grid-cols-2">
@@ -144,10 +144,10 @@ export default function Home() {
         <div className="grid gap-8 lg:grid-cols-[1fr_0.9fr] lg:items-center">
           <div>
             <h2 className="text-3xl font-semibold tracking-tight text-white">
-              Recon is the first real expansion surface.
+              Maps and notes for the games covered on stream.
             </h2>
             <p className="mt-4 text-base leading-7 text-slate-300">
-              Maps, source notes, marker reviews, private/public asset states, and guide-friendly detail all live under Recon. The public route stays review-driven instead of copying third-party guide pages.
+              Recon combines interactive maps with concise location details and practical instructions. Published material is independently written and reviewed for Vaexil.
             </p>
             <div className="mt-7 flex flex-col gap-3 sm:flex-row">
               <PrimaryLink href="/recon">Explore Recon</PrimaryLink>
@@ -156,7 +156,7 @@ export default function Home() {
           </div>
           <div className="rounded-2xl border border-white/10 bg-white/[0.035] p-6">
             <div className="grid gap-3">
-              {["HITMAN: WOA drafts", "Sniper Elite 5 maps", "Sniper Elite: Resistance maps", "Private review assets"].map((item) => (
+              {["Interactive map controls", "Clear location notes", "Independent guide work", "Community corrections"].map((item) => (
                 <div key={item} className="rounded-xl border border-white/10 bg-slate-950/55 px-4 py-3 text-sm text-slate-300">
                   {item}
                 </div>
@@ -169,12 +169,12 @@ export default function Home() {
       <Section className="border-t border-white/10 bg-white/[0.025]">
         <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-center">
           <div>
-            <Sparkles className="size-8 text-cyan-200" aria-hidden="true" />
+            <Radio className="size-8 text-cyan-200" aria-hidden="true" />
             <h2 className="mt-5 text-3xl font-semibold tracking-tight text-white">
-              VaexCore stays adjacent, not confusing.
+              Keep up with Vaexil.
             </h2>
             <p className="mt-4 text-base leading-7 text-slate-300">
-              VaexCore is the future creator-operations family for stream tools, local controls, and review workflows. Vaexil remains the public creator home.
+              Watch live on Twitch, catch videos on YouTube, join the community, or get in touch directly.
             </p>
           </div>
           <div className="flex flex-wrap gap-3">

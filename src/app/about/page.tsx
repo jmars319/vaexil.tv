@@ -19,10 +19,14 @@ export default function AboutPage() {
       <Section className="border-y border-white/10 bg-white/[0.025]">
         <div className="max-w-3xl space-y-5 text-base leading-8 text-slate-300">
           <p>
-            Vaexil.tv is the home base for the parts of the stream that should not disappear into platform feeds: guides, Recon maps, suggestions, schedule notes, clips, and future VaexCore work.
+            Vaexil.tv keeps useful parts of the stream easy to find: guides,
+            Recon maps, community suggestions, and direct links to watch or get
+            in touch.
           </p>
           <p>
-            The site is intentionally separate from JAMARQ and Tenra. It can connect to technical work when the work supports the stream, but the public identity here stays creator-first.
+            Expect thoughtful games, quiet humor, close attention to atmosphere,
+            and the occasional technical side path when it helps explain how
+            something works.
           </p>
         </div>
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
