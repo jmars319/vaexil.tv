@@ -6,6 +6,17 @@ const root = dirname(fileURLToPath(import.meta.url));
 
 const nextConfig: NextConfig = {
   allowedDevOrigins: ["127.0.0.1"],
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "www.bungie.net",
+        port: "",
+        pathname: "/common/destiny2_content/icons/**",
+        search: "",
+      },
+    ],
+  },
   turbopack: {
     root,
   },

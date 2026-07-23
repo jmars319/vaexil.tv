@@ -12,6 +12,7 @@ The Freelancer Free Items guide is seeded from a verified Vaexil source list. Th
 
 - Public creator/stream hub
 - Guides and knowledge-base surfaces, including verified Freelancer item data, private-preview Destiny 2 raid references, and the current Hitman mod load order
+- A read-only Destiny 2 Armor Optimizer that reconstructs owned base rolls and calculates exact per-stat ceilings around Exotic and armor-set constraints
 - Recon, an experimental curated interactive map/guide foundation for games covered on stream
 - Public contact form for collaboration, promotion, stream, and VaexCore inquiries
 - Community suggestion form and voting flow
@@ -87,6 +88,7 @@ npm run build
 npm run doctor
 npm run verify
 npm run db:seed
+npm run update:destiny-armor-manifest
 npm run dev:start
 npm run dev:stop
 npm run dev:status
@@ -136,6 +138,11 @@ NEXT_PUBLIC_GITHUB_URL=""
 
 For production, set `LIBSQL_URL` and `LIBSQL_AUTH_TOKEN` to a hosted libSQL/Turso database. Set `RECON_ASSET_STORE=r2` plus the R2 variables when protected Recon draft assets should read from Cloudflare R2. New Vaexil protected assets should use `R2_PRIVATE_BUCKET=vaexil-tv-media-private` with `R2_RECON_KEY_PREFIX=recon/`; the old `R2_BUCKET=vaexil-recon-assets` value remains a fallback only until the standardized bucket is manually verified. Do not use the local file database on Vercel for persistent production data. Contact form submissions are recorded even if SendGrid is not configured; set `SENDGRID_API_KEY`, `SENDGRID_TO_EMAIL`, and a verified `SENDGRID_FROM_EMAIL` when email delivery should go live. Set `BUNGIE_API_KEY` when Destiny 2 guide tools should load Bungie profile, equipment, and fireteam data. The Armor Optimizer additionally requires the confidential Bungie OAuth client ID and secret, the registered callback URL, and an independent random session-encryption secret. OAuth tokens are stored only in an encrypted HTTP-only cookie. Keep `DESTINY_GUIDES_PUBLIC=false` until the Destiny guide family should be public; signed-in admins can still preview it from `/admin`. `ADMIN_PASSWORD` is the bootstrap/fallback password; after signing in, the admin UI can replace it with a database-stored password hash.
 
+The optimizer combines live Bungie profile components with the compact, generated
+`src/data/destiny-armor-manifest.json`. Refresh that file after Bungie manifest
+changes with `npm run update:destiny-armor-manifest`; the command requires
+`BUNGIE_API_KEY` and stores no credential in the generated output.
+
 ## Data Workflow
 
 Community guide suggestions follow this path:
@@ -163,7 +170,8 @@ See [docs/deployment.md](docs/deployment.md) for the full domain, DNS, environme
 
 - The current official Freelancer guide rows are verified seed data; keep future official additions reviewed before publishing.
 - Discord and GitHub links are configured later when final URLs exist.
-- No full user accounts or OAuth. Admin auth is intentionally lightweight for v1.
+- No full user accounts. Admin auth is intentionally lightweight; Bungie OAuth is
+  isolated to the read-only Armor Optimizer session.
 - Clips and schedule are reserved surfaces until real media or schedule data is ready.
 - Official guide rows must come from admin publishing, not automatic community vote thresholds.
 - Keep draft guide downloads out of `public/`; private source PDFs are served through authenticated download routes.

@@ -2,6 +2,7 @@ import { ArmorOptimizerConnection } from "@/components/armor-optimizer-connectio
 import { Section, SectionHeading, SecondaryLink } from "@/components/ui";
 import { destinyGuideRobots } from "@/lib/destiny-guide-visibility";
 import type { Metadata } from "next";
+import { Suspense } from "react";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -9,13 +10,22 @@ export const runtime = "nodejs";
 export const metadata: Metadata = {
   title: "Destiny 2 Armor Optimizer",
   description:
-    "Connect a Bungie account to import Destiny 2 armor and prepare exact peak-stat optimization on Vaexil.tv.",
+    "Search owned Destiny 2 armor for exact stat ceilings while preserving selected Exotics and armor-set bonuses.",
   robots: destinyGuideRobots(),
   alternates: { canonical: "https://vaexil.tv/tools/destiny2/armor-optimizer" },
 };
 
 type ArmorOptimizerPageProps = {
-  searchParams: Promise<{ bungie?: string }>;
+  searchParams: Promise<{
+    bungie?: string | string[];
+    class?: string | string[];
+    exotic?: string | string[];
+    set?: string | string[];
+    set2?: string | string[];
+    q?: string | string[];
+    view?: string | string[];
+    peak?: string | string[];
+  }>;
 };
 
 const oauthNotices: Record<string, string> = {
@@ -28,7 +38,19 @@ const oauthNotices: Record<string, string> = {
 export default async function ArmorOptimizerPage({
   searchParams,
 }: ArmorOptimizerPageProps) {
-  const { bungie } = await searchParams;
+  const params = await searchParams;
+  const getParam = (value: string | string[] | undefined) =>
+    Array.isArray(value) ? value[0] : value;
+  const bungie = getParam(params.bungie);
+  const selection = {
+    className: getParam(params.class),
+    exotic: getParam(params.exotic),
+    set: getParam(params.set),
+    set2: getParam(params.set2),
+    q: getParam(params.q),
+    view: getParam(params.view),
+    peak: getParam(params.peak),
+  };
 
   return (
     <>
@@ -40,7 +62,7 @@ export default async function ArmorOptimizerPage({
           <SectionHeading
             level={1}
             title="Armor Optimizer"
-            description="Import your live inventory first. Then Vaexil can rank the true highest stat peaks around the exotic and armor set bonuses you choose."
+            description="Choose your Exotic and armor-set bonuses first, then calculate the true highest base roll and modded ceiling for every stat from armor you own."
           />
         </div>
         <div className="mt-8 flex flex-wrap gap-3">
@@ -50,36 +72,24 @@ export default async function ArmorOptimizerPage({
       </Section>
 
       <Section className="pt-4">
-        <ArmorOptimizerConnection notice={bungie ? oauthNotices[bungie] : undefined} />
-      </Section>
-
-      <Section className="pt-2">
-        <div className="grid gap-4 lg:grid-cols-3">
-          {[
-            {
-              step: "01",
-              title: "Choose constraints",
-              body: "Select class, exotic, armor set bonuses, and any pieces that must stay in the build.",
-            },
-            {
-              step: "02",
-              title: "See real peaks",
-              body: "Calculate the absolute maximum for every stat before you spend time tuning target bars.",
-            },
-            {
-              step: "03",
-              title: "Allocate mods",
-              body: "Keep base armor stats visible and add or accept a suggested stat mod for each valid slot.",
-            },
-          ].map((item) => (
-            <article key={item.step} className="rounded-2xl border border-white/10 bg-white/[0.025] p-5">
-              <p className="font-mono text-xs text-cyan-200">{item.step}</p>
-              <h2 className="mt-3 text-lg font-semibold text-white">{item.title}</h2>
-              <p className="mt-2 text-sm leading-6 text-slate-400">{item.body}</p>
-            </article>
-          ))}
-        </div>
+        <Suspense fallback={<ArmorOptimizerLoading />}>
+          <ArmorOptimizerConnection
+            notice={bungie ? oauthNotices[bungie] : undefined}
+            selection={selection}
+          />
+        </Suspense>
       </Section>
     </>
+  );
+}
+
+function ArmorOptimizerLoading() {
+  return (
+    <div className="rounded-2xl border border-white/10 bg-white/[0.035] p-6 sm:p-8">
+      <div className="h-3 w-28 animate-pulse rounded-full bg-cyan-300/20" />
+      <div className="mt-5 h-8 w-64 max-w-full animate-pulse rounded-lg bg-white/10" />
+      <div className="mt-4 h-4 w-96 max-w-full animate-pulse rounded bg-white/[0.06]" />
+      <p className="sr-only">Loading Bungie armor inventory</p>
+    </div>
   );
 }

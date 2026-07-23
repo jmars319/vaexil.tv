@@ -3,6 +3,10 @@ import {
   type BungieInventorySummary,
 } from "@/lib/bungie-inventory";
 import {
+  ArmorInventoryWorkbench,
+  type ArmorWorkbenchSelection,
+} from "@/components/armor-inventory-workbench";
+import {
   BUNGIE_SESSION_COOKIE,
   unsealBungieSession,
 } from "@/lib/bungie-session";
@@ -52,7 +56,13 @@ async function getConnectionState(): Promise<ConnectionState> {
   }
 }
 
-export async function ArmorOptimizerConnection({ notice }: { notice?: string }) {
+export async function ArmorOptimizerConnection({
+  notice,
+  selection,
+}: {
+  notice?: string;
+  selection: ArmorWorkbenchSelection;
+}) {
   const state = await getConnectionState();
 
   if (state.status === "refresh") {
@@ -131,26 +141,29 @@ export async function ArmorOptimizerConnection({ notice }: { notice?: string }) 
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <InventoryMetric label="Vault" value={inventory.totals.vault} />
-        <InventoryMetric label="On characters" value={inventory.totals.characterInventory} />
-        <InventoryMetric label="Equipped" value={inventory.totals.equipped} />
-        <InventoryMetric label="Items with stats" value={inventory.totals.itemsWithStats} />
+        <InventoryMetric label="Armor pieces" value={inventory.totals.armor} />
+        <InventoryMetric label="Exotic rolls" value={inventory.totals.exotics} />
+        <InventoryMetric label="Owned armor sets" value={inventory.totals.armorSets} />
+        <InventoryMetric label="All instanced items" value={inventory.totals.instancedItems} />
       </div>
 
-      <div className="rounded-2xl border border-white/10 bg-white/[0.035] p-6">
-        <div className="flex items-center gap-2 text-sm font-semibold text-white">
-          <span className="text-cyan-200" aria-hidden="true">◆</span>
-          Import boundary ready
+      {inventory.armor.length > 0 ? (
+        <ArmorInventoryWorkbench
+          armor={inventory.armor}
+          armorSets={inventory.armorSets}
+          defaultClass={inventory.defaultClass}
+          selection={selection}
+        />
+      ) : (
+        <div className="rounded-2xl border border-amber-300/20 bg-amber-300/[0.07] p-6">
+          <h2 className="text-lg font-semibold text-amber-100">No armor instances found</h2>
+          <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-400">
+            Bungie returned the account inventory, but none of its instanced items
+            matched the five Destiny 2 armor buckets. Refresh after moving an armor
+            piece to a character or the vault.
+          </p>
         </div>
-        <p className="mt-3 max-w-3xl text-sm leading-6 text-slate-400">
-          Vaexil can now read the vault, character inventories, equipped gear, item
-          instances, stat components, and socket components needed by the optimizer.
-          Armor definition indexing and peak-stat search are the next calculation layer.
-        </p>
-        <p className="mt-4 text-xs font-medium uppercase tracking-[0.16em] text-slate-500">
-          {inventory.characters.length} characters · {inventory.totals.instancedItems} instanced items
-        </p>
-      </div>
+      )}
     </div>
   );
 }
