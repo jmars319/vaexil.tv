@@ -8,6 +8,7 @@ import {
   getArmorSlotFromDefinitionBucket,
   getArmorStatTotal,
 } from "../src/lib/armor-optimizer.ts";
+import { toggleArmorSetRequirement } from "../src/lib/armor-constraint-selection.ts";
 
 function stats(weapons, health = 0) {
   return {
@@ -81,6 +82,50 @@ assert.equal(
   getArmorSlotFromDefinitionBucket(138197802),
   null,
   "the current Vault container is not an armor definition slot",
+);
+
+assert.deepEqual(toggleArmorSetRequirement([], { setHash: 1, count: 2 }), [
+  { setHash: 1, count: 2 },
+]);
+assert.deepEqual(
+  toggleArmorSetRequirement([{ setHash: 1, count: 2 }], {
+    setHash: 1,
+    count: 2,
+  }),
+  [],
+);
+assert.deepEqual(
+  toggleArmorSetRequirement(
+    [
+      { setHash: 1, count: 2 },
+      { setHash: 2, count: 2 },
+    ],
+    { setHash: 3, count: 4 },
+  ),
+  [{ setHash: 3, count: 4 }],
+  "a 4-piece selection clears every 2-piece selection",
+);
+assert.deepEqual(
+  toggleArmorSetRequirement([{ setHash: 3, count: 4 }], {
+    setHash: 2,
+    count: 2,
+  }),
+  [{ setHash: 2, count: 2 }],
+  "a 2-piece selection clears an active 4-piece selection",
+);
+assert.deepEqual(
+  toggleArmorSetRequirement(
+    [
+      { setHash: 1, count: 2 },
+      { setHash: 2, count: 2 },
+    ],
+    { setHash: 3, count: 2 },
+  ),
+  [
+    { setHash: 2, count: 2 },
+    { setHash: 3, count: 2 },
+  ],
+  "a third 2-piece selection replaces the oldest one",
 );
 
 assert.equal(weaponsCeiling({ exotic: "any", sets: [] }).base, 230);

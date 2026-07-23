@@ -1,3 +1,4 @@
+import { ArmorConstraintPicker } from "@/components/armor-constraint-picker";
 import {
   ARMOR_SLOTS,
   ARMOR_STATS,
@@ -236,15 +237,6 @@ export function ArmorInventoryWorkbench({
         .map((id) => classArmor.find((piece) => piece.id === id))
         .filter((piece): piece is BungieArmorPiece => Boolean(piece))
     : [];
-  const selectedSetSummaries = setRequirements
-    .map((requirement) => ({
-      requirement,
-      set: armorSets.find((set) => set.hash === requirement.setHash),
-    }))
-    .filter(
-      (entry): entry is { requirement: ArmorSetRequirement; set: BungieArmorSetSummary } =>
-        Boolean(entry.set),
-    );
 
   return (
     <div className="space-y-6">
@@ -280,68 +272,35 @@ export function ArmorInventoryWorkbench({
           </nav>
         </div>
 
-        <form method="get" action={OPTIMIZER_PATH} className="mt-6 grid gap-4 lg:grid-cols-[1fr_1fr_1fr_auto] lg:items-end">
-          <input type="hidden" name="class" value={selection.className} />
-          <ConstraintSelect label="Exotic" name="exotic" defaultValue={selection.exotic}>
-            <option value="any">No Exotic requirement</option>
-            <option value="none">Legendary armor only</option>
-            {exoticOptions.map((piece) => (
-              <option key={piece.exoticKey} value={piece.exoticKey!}>
-                {piece.slot} · {piece.name}
-              </option>
-            ))}
-          </ConstraintSelect>
-          <ConstraintSelect label="Primary armor set" name="set" defaultValue={selection.set}>
-            <option value="">No set requirement</option>
-            {availableSets.flatMap((set) => {
-              const options = [
-                <option key={`${set.hash}:2`} value={`${set.hash}:2`}>
-                  2× {set.name} · {set.twoPiece?.name ?? "set bonus"}
-                </option>,
-              ];
-              if (set.ownedSlots.length >= 4) {
-                options.push(
-                  <option key={`${set.hash}:4`} value={`${set.hash}:4`}>
-                    4× {set.name} · {set.fourPiece?.name ?? "set bonus"}
-                  </option>,
-                );
-              }
-              return options;
-            })}
-          </ConstraintSelect>
-          <ConstraintSelect label="Second 2-piece set" name="set2" defaultValue={selection.set2}>
-            <option value="">No second set</option>
-            {availableSets.map((set) => (
-              <option key={set.hash} value={`${set.hash}:2`}>
-                2× {set.name} · {set.twoPiece?.name ?? "set bonus"}
-              </option>
-            ))}
-          </ConstraintSelect>
-          <button
-            type="submit"
-            className="inline-flex min-h-11 items-center justify-center rounded-xl bg-cyan-300 px-5 text-sm font-semibold text-slate-950 transition hover:bg-cyan-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-100"
-          >
-            Calculate peaks
-          </button>
-        </form>
-
-        {selectedSetSummaries.length > 0 ? (
-          <div className="mt-5 grid gap-3 lg:grid-cols-2">
-            {selectedSetSummaries.map(({ requirement, set }) => {
-              const perk = requirement.count === 4 ? set.fourPiece : set.twoPiece;
-              return (
-                <div key={`${set.hash}:${requirement.count}`} className="rounded-xl border border-fuchsia-300/15 bg-fuchsia-300/[0.06] p-4">
-                  <p className="text-sm font-semibold text-fuchsia-100">
-                    {requirement.count}× {set.name} · {perk?.name ?? "Set bonus"}
-                  </p>
-                  {perk?.description ? (
-                    <p className="mt-1 text-xs leading-5 text-slate-400">{perk.description}</p>
-                  ) : null}
-                </div>
-              );
-            })}
-          </div>
-        ) : null}
+        <ArmorConstraintPicker
+          className={selection.className}
+          initialExotic={selection.exotic}
+          initialSets={setRequirements}
+          exoticOptions={exoticOptions.map((piece) => ({
+            key: piece.exoticKey!,
+            name: piece.name,
+            slot: piece.slot,
+            iconUrl: piece.iconUrl,
+          }))}
+          setOptions={availableSets.map((set) => ({
+            hash: set.hash,
+            name: set.name,
+            ownedPieces: set.ownedPieces,
+            ownedSlotCount: set.ownedSlots.length,
+            twoPiece: set.twoPiece
+              ? {
+                  name: set.twoPiece.name,
+                  description: set.twoPiece.description,
+                }
+              : null,
+            fourPiece: set.fourPiece
+              ? {
+                  name: set.fourPiece.name,
+                  description: set.fourPiece.description,
+                }
+              : null,
+          }))}
+        />
       </section>
 
       <section aria-labelledby="stat-ceilings-heading">
@@ -497,31 +456,6 @@ export function ArmorInventoryWorkbench({
         ) : null}
       </section>
     </div>
-  );
-}
-
-function ConstraintSelect({
-  label,
-  name,
-  defaultValue,
-  children,
-}: {
-  label: string;
-  name: string;
-  defaultValue: string;
-  children: React.ReactNode;
-}) {
-  return (
-    <label className="block text-sm font-medium text-slate-300">
-      {label}
-      <select
-        name={name}
-        defaultValue={defaultValue}
-        className="mt-2 min-h-11 w-full rounded-xl border border-white/10 bg-slate-950/80 px-3 text-sm text-white focus:border-cyan-300/50 focus:outline-none"
-      >
-        {children}
-      </select>
-    </label>
   );
 }
 
