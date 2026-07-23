@@ -15,6 +15,14 @@ export const ARMOR_SLOTS = [
   "Class Item",
 ] as const;
 
+const ARMOR_SLOT_BY_DEFINITION_BUCKET = new Map<number, ArmorSlot>([
+  [3448274439, "Helmet"],
+  [3551918588, "Gauntlets"],
+  [14239492, "Chest Armor"],
+  [20886954, "Leg Armor"],
+  [1585787867, "Class Item"],
+]);
+
 export type ArmorStatKey = (typeof ARMOR_STATS)[number]["key"];
 export type ArmorSlot = (typeof ARMOR_SLOTS)[number];
 export type ArmorStats = Record<ArmorStatKey, number>;
@@ -83,6 +91,10 @@ export function addArmorInvestmentStats(
 
 export function getArmorStatTotal(stats: ArmorStats) {
   return ARMOR_STATS.reduce((total, stat) => total + stats[stat.key], 0);
+}
+
+export function getArmorSlotFromDefinitionBucket(bucketHash: number) {
+  return ARMOR_SLOT_BY_DEFINITION_BUCKET.get(bucketHash) ?? null;
 }
 
 function normalizeSetRequirements(requirements: ArmorSetRequirement[]) {

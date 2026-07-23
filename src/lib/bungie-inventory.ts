@@ -2,6 +2,7 @@ import {
   ARMOR_STATS,
   addArmorInvestmentStats,
   createEmptyArmorStats,
+  getArmorSlotFromDefinitionBucket,
   getArmorStatTotal,
   type ArmorSlot,
   type ArmorStats,
@@ -17,13 +18,6 @@ import {
 const BUNGIE_PLATFORM_ROOT = "https://www.bungie.net/Platform";
 
 const INVENTORY_COMPONENTS = [100, 102, 200, 201, 205, 300, 304, 305];
-const ARMOR_BUCKET_BY_HASH = new Map<number, ArmorSlot>([
-  [3448274439, "Helmet"],
-  [3551918588, "Gauntlets"],
-  [14239492, "Chest Armor"],
-  [20886954, "Leg Armor"],
-  [1585787867, "Class Item"],
-]);
 const BASE_STAT_SOCKET_INDICES = [6, 7, 8, 9];
 const EXOTIC_CLASS_ITEM_SOCKET_INDICES = [10, 11];
 const ITEM_STATE_LOCKED = 1;
@@ -364,13 +358,15 @@ function buildArmorInventory(
   for (const located of locatedItems) {
     const { item } = located;
     const instanceId = item.itemInstanceId;
-    const slot = item.bucketHash ? ARMOR_BUCKET_BY_HASH.get(item.bucketHash) : null;
-    if (!instanceId || !slot || seenInstances.has(instanceId)) {
+    if (!instanceId || seenInstances.has(instanceId)) {
       continue;
     }
 
     const definition = getDestinyArmorDefinition(item.itemHash);
-    if (!definition) {
+    const slot = definition
+      ? getArmorSlotFromDefinitionBucket(definition.bucketHash)
+      : null;
+    if (!definition || !slot) {
       continue;
     }
 

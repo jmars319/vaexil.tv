@@ -5,6 +5,7 @@ import {
   addArmorInvestmentStats,
   computeArmorStatCeilings,
   createEmptyArmorStats,
+  getArmorSlotFromDefinitionBucket,
   getArmorStatTotal,
 } from "../src/lib/armor-optimizer.ts";
 
@@ -71,6 +72,16 @@ assert.deepEqual(accumulated, {
   melee: 5,
 });
 assert.equal(getArmorStatTotal(accumulated), 42);
+assert.equal(getArmorSlotFromDefinitionBucket(3448274439), "Helmet");
+assert.equal(getArmorSlotFromDefinitionBucket(3551918588), "Gauntlets");
+assert.equal(getArmorSlotFromDefinitionBucket(14239492), "Chest Armor");
+assert.equal(getArmorSlotFromDefinitionBucket(20886954), "Leg Armor");
+assert.equal(getArmorSlotFromDefinitionBucket(1585787867), "Class Item");
+assert.equal(
+  getArmorSlotFromDefinitionBucket(138197802),
+  null,
+  "the current Vault container is not an armor definition slot",
+);
 
 assert.equal(weaponsCeiling({ exotic: "any", sets: [] }).base, 230);
 assert.equal(weaponsCeiling({ exotic: "any", sets: [] }).withMajorMods, 200);
