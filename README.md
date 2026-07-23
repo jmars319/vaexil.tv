@@ -122,6 +122,10 @@ SENDGRID_API_KEY=""
 SENDGRID_TO_EMAIL="vaexiltv@gmail.com"
 SENDGRID_FROM_EMAIL=""
 BUNGIE_API_KEY=""
+BUNGIE_OAUTH_CLIENT_ID=""
+BUNGIE_OAUTH_CLIENT_SECRET=""
+BUNGIE_OAUTH_SESSION_SECRET=""
+BUNGIE_OAUTH_REDIRECT_URI="https://vaexil.tv/api/auth/bungie/callback"
 DESTINY_GUIDES_PUBLIC="false"
 NEXT_PUBLIC_SITE_URL="https://vaexil.tv"
 NEXT_PUBLIC_TWITCH_URL="https://www.twitch.tv/vaexil"
@@ -130,7 +134,7 @@ NEXT_PUBLIC_DISCORD_URL=""
 NEXT_PUBLIC_GITHUB_URL=""
 ```
 
-For production, set `LIBSQL_URL` and `LIBSQL_AUTH_TOKEN` to a hosted libSQL/Turso database. Set `RECON_ASSET_STORE=r2` plus the R2 variables when protected Recon draft assets should read from Cloudflare R2. New Vaexil protected assets should use `R2_PRIVATE_BUCKET=vaexil-tv-media-private` with `R2_RECON_KEY_PREFIX=recon/`; the old `R2_BUCKET=vaexil-recon-assets` value remains a fallback only until the standardized bucket is manually verified. Do not use the local file database on Vercel for persistent production data. Contact form submissions are recorded even if SendGrid is not configured; set `SENDGRID_API_KEY`, `SENDGRID_TO_EMAIL`, and a verified `SENDGRID_FROM_EMAIL` when email delivery should go live. Set `BUNGIE_API_KEY` when Destiny 2 guide tools should load Bungie profile, equipment, and fireteam data. Keep `DESTINY_GUIDES_PUBLIC=false` until the Destiny guide family should be public; signed-in admins can still preview it from `/admin`. `ADMIN_PASSWORD` is the bootstrap/fallback password; after signing in, the admin UI can replace it with a database-stored password hash.
+For production, set `LIBSQL_URL` and `LIBSQL_AUTH_TOKEN` to a hosted libSQL/Turso database. Set `RECON_ASSET_STORE=r2` plus the R2 variables when protected Recon draft assets should read from Cloudflare R2. New Vaexil protected assets should use `R2_PRIVATE_BUCKET=vaexil-tv-media-private` with `R2_RECON_KEY_PREFIX=recon/`; the old `R2_BUCKET=vaexil-recon-assets` value remains a fallback only until the standardized bucket is manually verified. Do not use the local file database on Vercel for persistent production data. Contact form submissions are recorded even if SendGrid is not configured; set `SENDGRID_API_KEY`, `SENDGRID_TO_EMAIL`, and a verified `SENDGRID_FROM_EMAIL` when email delivery should go live. Set `BUNGIE_API_KEY` when Destiny 2 guide tools should load Bungie profile, equipment, and fireteam data. The Armor Optimizer additionally requires the confidential Bungie OAuth client ID and secret, the registered callback URL, and an independent random session-encryption secret. OAuth tokens are stored only in an encrypted HTTP-only cookie. Keep `DESTINY_GUIDES_PUBLIC=false` until the Destiny guide family should be public; signed-in admins can still preview it from `/admin`. `ADMIN_PASSWORD` is the bootstrap/fallback password; after signing in, the admin UI can replace it with a database-stored password hash.
 
 ## Data Workflow
 

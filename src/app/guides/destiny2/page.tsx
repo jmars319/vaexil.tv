@@ -33,6 +33,19 @@ export default async function Destiny2GuidesPage() {
       <Section className="pt-4">
         <div className="grid gap-4">
           <Link
+            href="/tools/destiny2/armor-optimizer"
+            className="rounded-2xl border border-cyan-300/20 bg-cyan-300/[0.055] p-6 transition hover:border-cyan-300/50 hover:bg-cyan-300/[0.08]"
+          >
+            <p className="text-xs font-semibold uppercase tracking-[0.16em] text-cyan-200">
+              New tool
+            </p>
+            <h2 className="mt-2 text-2xl font-semibold text-white">Armor Optimizer</h2>
+            <p className="mt-3 text-sm leading-6 text-slate-400">
+              Connect Bungie to import your vault and prepare exact peak-stat builds
+              around exotic choices and armor set bonuses.
+            </p>
+          </Link>
+          <Link
             href="/guides/destiny2/raids"
             className="rounded-2xl border border-white/10 bg-white/[0.035] p-6 transition hover:border-cyan-300/40 hover:bg-white/[0.06]"
           >

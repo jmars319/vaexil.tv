@@ -56,10 +56,45 @@
     ]
   },
   {
+    "route": "/api/auth/bungie/callback",
+    "kind": "route",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
+    "route": "/api/auth/bungie/logout",
+    "kind": "route",
+    "methods": [
+      "POST"
+    ]
+  },
+  {
+    "route": "/api/auth/bungie/refresh",
+    "kind": "route",
+    "methods": [
+      "POST"
+    ]
+  },
+  {
+    "route": "/api/auth/bungie/start",
+    "kind": "route",
+    "methods": [
+      "GET"
+    ]
+  },
+  {
     "route": "/api/contact",
     "kind": "route",
     "methods": [
       "POST"
+    ]
+  },
+  {
+    "route": "/api/destiny/armor-inventory",
+    "kind": "route",
+    "methods": [
+      "GET"
     ]
   },
   {
@@ -316,6 +351,13 @@
   },
   {
     "route": "/terms",
+    "kind": "page",
+    "methods": [
+      "PAGE"
+    ]
+  },
+  {
+    "route": "/tools/destiny2/armor-optimizer",
     "kind": "page",
     "methods": [
       "PAGE"

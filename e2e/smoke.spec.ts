@@ -274,7 +274,8 @@ test("admin Atlantic Wall public preview uses simplified published layout", asyn
     .click();
 
   const detail = page.locator('[data-testid="recon-marker-detail"]:visible');
-  await expect(detail).toContainText(/How to reach or complete/i);
+  await expect(detail).toContainText(/More detailed instructions are not available/i);
+  await expect(detail).not.toContainText(/How to reach or complete/i);
   await expect(detail).toContainText(/Placement confidence/i);
   await expect(detail).not.toContainText(/x 75\.20 \/ y 8\.40/i);
 });

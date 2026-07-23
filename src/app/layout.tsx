@@ -1,7 +1,5 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
-import { Analytics } from "@vercel/analytics/next";
-import { PageViewTracker } from "@/components/page-view-tracker";
 import { PageShell } from "@/components/shell";
 import { siteConfig } from "@/lib/config";
 import "./globals.css";
@@ -15,6 +13,8 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+const pageViewScript = `(()=>{if(window.__vaexilPageViews)return;window.__vaexilPageViews=1;let p="";const t=()=>{const n=location.pathname;if(n===p||navigator.doNotTrack==="1"||n.startsWith("/admin"))return;p=n;navigator.sendBeacon("/api/analytics/page-view",JSON.stringify({path:n,referrer:document.referrer||""}))};for(const n of ["pushState","replaceState"]){const r=history[n];history[n]=function(...e){const o=r.apply(this,e);queueMicrotask(t);return o}}addEventListener("popstate",t);t()})();`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -115,9 +115,8 @@ export default function RootLayout({
             dangerouslySetInnerHTML={{ __html: JSON.stringify(item) }}
           />
         ))}
-        <PageViewTracker />
+        <script dangerouslySetInnerHTML={{ __html: pageViewScript }} />
         <PageShell>{children}</PageShell>
-        <Analytics />
       </body>
     </html>
   );
