@@ -1,11 +1,17 @@
-export const ARMOR_STATS = [
-  { key: "weapons", label: "Weapons", hashes: [2996146975] },
-  { key: "health", label: "Health", hashes: [392767087] },
-  { key: "class", label: "Class", hashes: [1943323491, 2135857333] },
-  { key: "grenade", label: "Grenade", hashes: [1735777505] },
-  { key: "super", label: "Super", hashes: [144602215] },
-  { key: "melee", label: "Melee", hashes: [4244567218, 3493869314] },
-] as const;
+import {
+  ARMOR_STATS,
+  createEmptyArmorStats,
+  type ArmorStatKey,
+  type ArmorStats,
+} from "./armor-stat-definitions.ts";
+
+export {
+  ARMOR_STAT_TARGET_PARAMS,
+  ARMOR_STATS,
+  createEmptyArmorStats,
+  type ArmorStatKey,
+  type ArmorStats,
+} from "./armor-stat-definitions.ts";
 
 export const ARMOR_SLOTS = [
   "Helmet",
@@ -23,18 +29,7 @@ const ARMOR_SLOT_BY_DEFINITION_BUCKET = new Map<number, ArmorSlot>([
   [1585787867, "Class Item"],
 ]);
 
-export type ArmorStatKey = (typeof ARMOR_STATS)[number]["key"];
 export type ArmorSlot = (typeof ARMOR_SLOTS)[number];
-export type ArmorStats = Record<ArmorStatKey, number>;
-
-export const ARMOR_STAT_TARGET_PARAMS: Record<ArmorStatKey, string> = {
-  weapons: "targetWeapons",
-  health: "targetHealth",
-  class: "targetClass",
-  grenade: "targetGrenade",
-  super: "targetSuper",
-  melee: "targetMelee",
-};
 
 export type ArmorInvestmentStat = {
   statTypeHash: number;
@@ -68,6 +63,7 @@ export type ArmorStatCeiling = {
 };
 
 export type ArmorTargetBuild = ArmorStatCeiling & {
+  potential: number | null;
   baseStats: ArmorStats | null;
   finalStats: ArmorStats | null;
   modCounts: ArmorStats | null;
@@ -78,17 +74,6 @@ const STAT_KEY_BY_HASH = new Map<number, ArmorStatKey>(
     stat.hashes.map((hash) => [hash, stat.key] as const),
   ),
 );
-
-export function createEmptyArmorStats(): ArmorStats {
-  return {
-    weapons: 0,
-    health: 0,
-    class: 0,
-    grenade: 0,
-    super: 0,
-    melee: 0,
-  };
-}
 
 export function addArmorInvestmentStats(
   target: ArmorStats,
@@ -480,20 +465,28 @@ export function computeArmorTargetBuilds(
   targets: ArmorStats,
 ): ArmorTargetBuild[] {
   return ARMOR_STATS.map((stat) => {
+    const conditionalTargets = {
+      ...targets,
+      [stat.key]: 0,
+    };
     const result = maximizeStatWithTargets(
       pieces,
       stat.key,
       constraints,
-      targets,
+      conditionalTargets,
     );
+    const potential = result?.finalStats[stat.key] ?? null;
+    const meetsSelectedTarget =
+      potential !== null && potential >= targets[stat.key];
     return {
       stat: stat.key,
-      base: result?.baseStats[stat.key] ?? null,
-      withMajorMods: result?.finalStats[stat.key] ?? null,
-      baseStats: result?.baseStats ?? null,
-      finalStats: result?.finalStats ?? null,
-      modCounts: result?.modCounts ?? null,
-      itemIds: result?.itemIds ?? [],
+      potential,
+      base: meetsSelectedTarget ? result?.baseStats[stat.key] ?? null : null,
+      withMajorMods: meetsSelectedTarget ? potential : null,
+      baseStats: meetsSelectedTarget ? result?.baseStats ?? null : null,
+      finalStats: meetsSelectedTarget ? result?.finalStats ?? null : null,
+      modCounts: meetsSelectedTarget ? result?.modCounts ?? null : null,
+      itemIds: meetsSelectedTarget ? result?.itemIds ?? [] : [],
     };
   });
 }

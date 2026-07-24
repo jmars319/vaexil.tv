@@ -1,6 +1,5 @@
 import { ArmorBuildResults } from "@/components/armor-build-results";
 import { ArmorConstraintPicker } from "@/components/armor-constraint-picker";
-import { ArmorStatTargets } from "@/components/armor-stat-targets";
 import { createArmorBuildResults } from "@/lib/armor-build-results";
 import {
   ARMOR_SLOTS,
@@ -154,21 +153,18 @@ function getSetRequirements(selection: NormalizedSelection) {
 function buildOptimizerHref(
   selection: NormalizedSelection,
   className: string,
-  includeTargets = true,
 ) {
   const params = new URLSearchParams();
   params.set("class", className);
   if (selection.exotic !== "any") params.set("exotic", selection.exotic);
   if (selection.set) params.set("set", selection.set);
   if (selection.set2) params.set("set2", selection.set2);
-  if (includeTargets) {
-    for (const stat of ARMOR_STATS) {
-      if (selection.targets[stat.key] > 0) {
-        params.set(
-          ARMOR_STAT_TARGET_PARAMS[stat.key],
-          String(selection.targets[stat.key]),
-        );
-      }
+  for (const stat of ARMOR_STATS) {
+    if (selection.targets[stat.key] > 0) {
+      params.set(
+        ARMOR_STAT_TARGET_PARAMS[stat.key],
+        String(selection.targets[stat.key]),
+      );
     }
   }
   return `${OPTIMIZER_PATH}?${params.toString()}`;
@@ -229,15 +225,16 @@ export function ArmorInventoryWorkbench({
   );
   const availableSets = getAvailableSets(armorSets, classArmor);
   const setRequirements = getSetRequirements(selection);
+  const optimizerPieces = classArmor.map((piece) => ({
+    id: piece.id,
+    slot: piece.slot,
+    isExotic: piece.isExotic,
+    exoticKey: piece.exoticKey,
+    setHash: piece.setHash,
+    baseStats: piece.baseStats,
+  }));
   const builds = computeArmorTargetBuilds(
-    classArmor.map((piece) => ({
-      id: piece.id,
-      slot: piece.slot,
-      isExotic: piece.isExotic,
-      exoticKey: piece.exoticKey,
-      setHash: piece.setHash,
-      baseStats: piece.baseStats,
-    })),
+    optimizerPieces,
     {
       exotic: selection.exotic,
       sets: setRequirements,
@@ -285,9 +282,13 @@ export function ArmorInventoryWorkbench({
         </div>
 
         <ArmorConstraintPicker
+          key={buildOptimizerHref(selection, selection.className)}
           className={selection.className}
           initialExotic={selection.exotic}
           initialSets={setRequirements}
+          initialTargets={selection.targets}
+          initialMaximums={buildResults.maximums}
+          optimizerPieces={optimizerPieces}
           exoticOptions={exoticOptions.map((piece) => ({
             key: piece.exoticKey!,
             name: piece.name,
@@ -314,17 +315,7 @@ export function ArmorInventoryWorkbench({
                 }
               : null,
           }))}
-        >
-          <ArmorStatTargets
-            targets={selection.targets}
-            maximums={buildResults.maximums}
-            clearHref={buildOptimizerHref(
-              selection,
-              selection.className,
-              false,
-            )}
-          />
-        </ArmorConstraintPicker>
+        />
       </section>
 
       <ArmorBuildResults

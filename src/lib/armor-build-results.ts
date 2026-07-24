@@ -54,7 +54,7 @@ export function createArmorBuildResults(
   const usedPieces = new Map<string, ArmorBuildPieceSummary>();
   const results: ArmorBuildResultSummary[] = [];
   const maximums = Object.fromEntries(
-    builds.map((build) => [build.stat, build.withMajorMods]),
+    builds.map((build) => [build.stat, build.potential]),
   ) as ArmorStatMaximums;
 
   for (const build of builds) {

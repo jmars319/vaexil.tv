@@ -37,7 +37,8 @@
   "nearAssetBytes": 102400,
   "failOnWarnings": true,
   "bundleBudget": {
-    "maxTotalStaticJsKb": 760,
+    "maxTotalStaticJsKb": 767,
+    "maxWorkerJsKb": 22,
     "maxLargestChunkKb": 240,
     "maxRouteFirstLoadKb": 585,
     "maxServerTraceMb": 260,

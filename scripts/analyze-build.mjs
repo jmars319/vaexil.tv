@@ -85,6 +85,24 @@ function collectFilesBySuffix(dirPath, suffix) {
   return files;
 }
 
+function getWorkerChunkNames(chunks) {
+  const workerChunkNames = new Set();
+  const workerLoaderPattern = /["']static\/chunks\/(turbopack-worker-[^"']+\.js)["']\s*,\s*\[([^\]]*)\]/g;
+  const chunkPattern = /["']static\/chunks\/([^"']+\.js)["']/g;
+
+  for (const chunk of chunks) {
+    const source = readFileSync(path.join(root, chunk.file), "utf8");
+    for (const loaderMatch of source.matchAll(workerLoaderPattern)) {
+      workerChunkNames.add(loaderMatch[1]);
+      for (const dependencyMatch of loaderMatch[2].matchAll(chunkPattern)) {
+        workerChunkNames.add(dependencyMatch[1]);
+      }
+    }
+  }
+
+  return workerChunkNames;
+}
+
 function traceFileSize(tracePath, tracedFile) {
   try {
     return statSync(path.resolve(path.dirname(tracePath), tracedFile)).size;
@@ -108,23 +126,45 @@ if (!existsSync(staticChunkDir) || !existsSync(routeStatsPath)) {
       gzipBytes: gzipSync(source).length,
     };
   });
+  const workerChunkNames = getWorkerChunkNames(chunks);
+  const workerChunks = chunks.filter((chunk) =>
+    workerChunkNames.has(path.basename(chunk.file)),
+  );
+  const applicationChunks = chunks.filter(
+    (chunk) => !workerChunkNames.has(path.basename(chunk.file)),
+  );
 
-  const largestChunk = chunks.toSorted((a, b) => b.rawBytes - a.rawBytes)[0];
-  const totalRawBytes = chunks.reduce((sum, chunk) => sum + chunk.rawBytes, 0);
-  const totalGzipBytes = chunks.reduce((sum, chunk) => sum + chunk.gzipBytes, 0);
+  const largestChunk = applicationChunks.toSorted((a, b) => b.rawBytes - a.rawBytes)[0];
+  const totalRawBytes = applicationChunks.reduce((sum, chunk) => sum + chunk.rawBytes, 0);
+  const totalGzipBytes = applicationChunks.reduce((sum, chunk) => sum + chunk.gzipBytes, 0);
+  const workerRawBytes = workerChunks.reduce((sum, chunk) => sum + chunk.rawBytes, 0);
+  const workerGzipBytes = workerChunks.reduce((sum, chunk) => sum + chunk.gzipBytes, 0);
 
-  console.log(`[bundle] Static JS total: ${formatKb(totalRawBytes)} raw / ${formatKb(totalGzipBytes)} gzip`);
+  console.log(`[bundle] Application JS total: ${formatKb(totalRawBytes)} raw / ${formatKb(totalGzipBytes)} gzip`);
+  if (workerChunks.length > 0) {
+    console.log(`[bundle] Worker JS total: ${formatKb(workerRawBytes)} raw / ${formatKb(workerGzipBytes)} gzip`);
+  }
   if (largestChunk) {
     console.log(`[bundle] Largest JS chunk: ${formatKb(largestChunk.rawBytes)} raw / ${formatKb(largestChunk.gzipBytes)} gzip (${largestChunk.file})`);
   }
 
   checkByteBudget({
-    label: "Static JS total",
+    label: "Application JS total",
     value: totalRawBytes,
     max: budget.maxTotalStaticJsKb * 1024,
     near: budget.nearBudgetKb * 1024,
     format: formatKb,
   });
+
+  if (workerChunks.length > 0) {
+    checkByteBudget({
+      label: "Worker JS total",
+      value: workerRawBytes,
+      max: budget.maxWorkerJsKb * 1024,
+      near: budget.nearBudgetKb * 1024,
+      format: formatKb,
+    });
+  }
 
   if (largestChunk) {
     checkByteBudget({

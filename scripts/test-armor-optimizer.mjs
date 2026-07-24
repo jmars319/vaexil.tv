@@ -254,6 +254,28 @@ assert.equal(sharedHealthBuild.modCounts.weapons, 4);
 assert.equal(sharedHealthBuild.modCounts.super, 1);
 assert.equal(getArmorStatTotal(sharedHealthBuild.modCounts), 5);
 
+const conflictingTargets = {
+  ...createEmptyArmorStats(),
+  weapons: 200,
+  super: 110,
+};
+const conflictingBuilds = computeArmorTargetBuilds(
+  sharedModPieces,
+  { exotic: "any", sets: [] },
+  conflictingTargets,
+);
+const conflictingWeapons = conflictingBuilds.find(
+  (build) => build.stat === "weapons",
+);
+const conflictingSuper = conflictingBuilds.find(
+  (build) => build.stat === "super",
+);
+assert.equal(conflictingWeapons.potential, 190);
+assert.equal(conflictingWeapons.withMajorMods, null);
+assert.equal(conflictingSuper.potential, 100);
+assert.equal(conflictingSuper.withMajorMods, null);
+assert.ok(conflictingBuilds.every((build) => build.base === null));
+
 const impossibleTargets = {
   ...createEmptyArmorStats(),
   weapons: 200,

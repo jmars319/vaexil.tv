@@ -4,9 +4,18 @@ import {
   toggleArmorSetRequirement,
   type ArmorSetToggleRequirement,
 } from "@/lib/armor-constraint-selection";
-import type { ArmorSlot } from "@/lib/armor-optimizer";
+import { ArmorStatTargets } from "@/components/armor-stat-targets";
+import { useArmorLivePotentials } from "@/components/use-armor-live-potentials";
+import type { ArmorStatMaximums } from "@/lib/armor-build-results";
+import {
+  ARMOR_STAT_TARGET_PARAMS,
+  ARMOR_STATS,
+  createEmptyArmorStats,
+  type ArmorStatKey,
+  type ArmorStats,
+} from "@/lib/armor-stat-definitions";
+import type { ArmorSlot, OptimizerArmorPiece } from "@/lib/armor-optimizer";
 import Image from "next/image";
-import type { ReactNode } from "react";
 import { useDeferredValue, useMemo, useRef, useState } from "react";
 
 const OPTIMIZER_PATH = "/tools/destiny2/armor-optimizer";
@@ -39,7 +48,9 @@ type ArmorConstraintPickerProps = {
   setOptions: ArmorConstraintSetOption[];
   initialExotic: string;
   initialSets: ArmorSetToggleRequirement[];
-  children: ReactNode;
+  initialTargets: ArmorStats;
+  initialMaximums: ArmorStatMaximums;
+  optimizerPieces: OptimizerArmorPiece[];
 };
 
 export function ArmorConstraintPicker({
@@ -48,10 +59,14 @@ export function ArmorConstraintPicker({
   setOptions,
   initialExotic,
   initialSets,
-  children,
+  initialTargets,
+  initialMaximums,
+  optimizerPieces,
 }: ArmorConstraintPickerProps) {
   const [exotic, setExotic] = useState(initialExotic);
   const [sets, setSets] = useState(initialSets);
+  const [targets, setTargets] = useState(initialTargets);
+  const [resultsAreStale, setResultsAreStale] = useState(false);
   const [exoticSearch, setExoticSearch] = useState("");
   const [setSearch, setSetSearch] = useState("");
   const deferredExoticSearch = useDeferredValue(exoticSearch);
@@ -78,17 +93,74 @@ export function ArmorConstraintPicker({
   }, [deferredSetSearch, setOptions]);
   const primarySet = sets[0] ? `${sets[0].setHash}:${sets[0].count}` : "";
   const secondarySet = sets[1] ? `${sets[1].setHash}:${sets[1].count}` : "";
+  const livePotentials = useArmorLivePotentials({
+    pieces: optimizerPieces,
+    exotic,
+    sets,
+    targets,
+    initialMaximums,
+  });
+
+  function replaceOptimizerUrl(
+    nextExotic: string,
+    nextSets: ArmorSetToggleRequirement[],
+    nextTargets: ArmorStats,
+  ) {
+    const params = new URLSearchParams();
+    params.set("class", className);
+    if (nextExotic !== "any") params.set("exotic", nextExotic);
+    if (nextSets[0]) {
+      params.set("set", `${nextSets[0].setHash}:${nextSets[0].count}`);
+    }
+    if (nextSets[1]) {
+      params.set("set2", `${nextSets[1].setHash}:${nextSets[1].count}`);
+    }
+    for (const stat of ARMOR_STATS) {
+      if (nextTargets[stat.key] > 0) {
+        params.set(
+          ARMOR_STAT_TARGET_PARAMS[stat.key],
+          String(nextTargets[stat.key]),
+        );
+      }
+    }
+    window.history.replaceState(null, "", `${OPTIMIZER_PATH}?${params}`);
+  }
+
+  function markPreviewChanged(
+    nextExotic: string,
+    nextSets: ArmorSetToggleRequirement[],
+    nextTargets: ArmorStats,
+  ) {
+    setResultsAreStale(true);
+    replaceOptimizerUrl(nextExotic, nextSets, nextTargets);
+  }
 
   function selectExotic(value: string) {
     setExotic(value);
     setExoticSearch("");
+    markPreviewChanged(value, sets, targets);
     if (exoticDetailsRef.current) {
       exoticDetailsRef.current.open = false;
     }
   }
 
   function toggleSet(target: ArmorSetToggleRequirement) {
-    setSets((current) => toggleArmorSetRequirement(current, target));
+    const nextSets = toggleArmorSetRequirement(sets, target);
+    setSets(nextSets);
+    markPreviewChanged(exotic, nextSets, targets);
+  }
+
+  function changeTarget(stat: ArmorStatKey, value: number) {
+    if (targets[stat] === value) return;
+    const nextTargets = { ...targets, [stat]: value };
+    setTargets(nextTargets);
+    markPreviewChanged(exotic, sets, nextTargets);
+  }
+
+  function clearTargets() {
+    const nextTargets = createEmptyArmorStats();
+    setTargets(nextTargets);
+    markPreviewChanged(exotic, sets, nextTargets);
   }
 
   return (
@@ -218,7 +290,14 @@ export function ArmorConstraintPicker({
         </fieldset>
       </div>
 
-      {children}
+      <ArmorStatTargets
+        targets={targets}
+        maximums={livePotentials.maximums}
+        status={livePotentials.status}
+        resultsAreStale={resultsAreStale}
+        onChange={changeTarget}
+        onClear={clearTargets}
+      />
 
       <div className="flex flex-col gap-3 rounded-xl border border-white/10 bg-white/[0.025] p-3 sm:flex-row sm:items-center sm:justify-between">
         <SelectedConstraintSummary
@@ -231,7 +310,7 @@ export function ArmorConstraintPicker({
           type="submit"
           className="inline-flex min-h-11 shrink-0 items-center justify-center rounded-xl bg-cyan-300 px-5 text-sm font-semibold text-slate-950 transition hover:bg-cyan-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-100"
         >
-          Calculate builds
+          {resultsAreStale ? "Refresh exact builds" : "Calculate exact builds"}
         </button>
       </div>
     </form>
