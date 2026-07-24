@@ -10,7 +10,7 @@ export const runtime = "nodejs";
 export const metadata: Metadata = {
   title: "Destiny 2 Armor Optimizer",
   description:
-    "Search owned Destiny 2 armor for exact stat ceilings while preserving selected Exotics and armor-set bonuses.",
+    "Calculate exact Destiny 2 armor builds from owned gear while preserving selected Exotics and armor-set bonuses.",
   robots: destinyGuideRobots(),
   alternates: { canonical: "https://vaexil.tv/tools/destiny2/armor-optimizer" },
 };
@@ -22,9 +22,6 @@ type ArmorOptimizerPageProps = {
     exotic?: string | string[];
     set?: string | string[];
     set2?: string | string[];
-    q?: string | string[];
-    view?: string | string[];
-    peak?: string | string[];
   }>;
 };
 
@@ -47,9 +44,6 @@ export default async function ArmorOptimizerPage({
     exotic: getParam(params.exotic),
     set: getParam(params.set),
     set2: getParam(params.set2),
-    q: getParam(params.q),
-    view: getParam(params.view),
-    peak: getParam(params.peak),
   };
 
   return (
@@ -62,7 +56,7 @@ export default async function ArmorOptimizerPage({
           <SectionHeading
             level={1}
             title="Armor Optimizer"
-            description="Choose your Exotic and armor-set bonuses first, then calculate the true highest base roll and modded ceiling for every stat from armor you own."
+            description="Choose your Exotic and armor-set bonuses first, then inspect the exact armor pieces behind the highest achievable build for every stat."
           />
         </div>
         <div className="mt-8 flex flex-wrap gap-3">

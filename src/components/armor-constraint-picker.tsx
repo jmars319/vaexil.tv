@@ -20,6 +20,7 @@ export type ArmorConstraintExoticOption = {
 type ArmorConstraintSetPerk = {
   name: string;
   description: string;
+  iconUrl: string | null;
 };
 
 export type ArmorConstraintSetOption = {
@@ -225,7 +226,7 @@ export function ArmorConstraintPicker({
           type="submit"
           className="inline-flex min-h-11 shrink-0 items-center justify-center rounded-xl bg-cyan-300 px-5 text-sm font-semibold text-slate-950 transition hover:bg-cyan-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-100"
         >
-          Calculate peaks
+          Calculate builds
         </button>
       </div>
     </form>
@@ -344,12 +345,17 @@ function ArmorSetToggleCard({
         <SetCountButton
           count={2}
           perkName={option.twoPiece?.name ?? "Set bonus"}
+          description={option.twoPiece?.description ?? ""}
+          iconUrl={option.twoPiece?.iconUrl ?? null}
           selected={selectedCount === 2}
           onClick={() => onToggle({ setHash: option.hash, count: 2 })}
         />
         <SetCountButton
           count={4}
           perkName={option.fourPiece?.name ?? "Set bonus"}
+          description={option.fourPiece?.description ?? ""}
+          iconUrl={option.fourPiece?.iconUrl ?? null}
+          align="right"
           selected={selectedCount === 4}
           disabled={option.ownedSlotCount < 4 || !option.fourPiece}
           onClick={() => onToggle({ setHash: option.hash, count: 4 })}
@@ -362,32 +368,62 @@ function ArmorSetToggleCard({
 function SetCountButton({
   count,
   perkName,
+  description,
+  iconUrl,
+  align = "left",
   selected,
   disabled = false,
   onClick,
 }: {
   count: 2 | 4;
   perkName: string;
+  description: string;
+  iconUrl: string | null;
+  align?: "left" | "right";
   selected: boolean;
   disabled?: boolean;
   onClick: () => void;
 }) {
+  const buttonClassName =
+    "flex min-h-12 w-full items-center gap-2 rounded-md border px-2 py-1.5 text-left";
+
   return (
-    <button
-      type="button"
-      aria-pressed={selected}
-      disabled={disabled}
-      onClick={onClick}
-      title={disabled ? "You do not own this set in four different armor slots." : perkName}
-      className={
-        selected
-          ? "min-h-12 rounded-md border border-fuchsia-200/60 bg-fuchsia-300/15 px-2 py-1.5 text-left text-fuchsia-100"
-          : "min-h-12 rounded-md border border-white/[0.08] px-2 py-1.5 text-left text-slate-400 transition enabled:hover:border-fuchsia-300/30 enabled:hover:bg-white/[0.04] disabled:cursor-not-allowed disabled:opacity-35"
-      }
-    >
-      <span className="block text-[11px] font-semibold">{count}-piece</span>
-      <span className="mt-0.5 block truncate text-[9px] text-slate-500">{perkName}</span>
-    </button>
+    <div className="group/bonus relative min-w-0">
+      <button
+        type="button"
+        aria-pressed={selected}
+        disabled={disabled}
+        onClick={onClick}
+        className={`${buttonClassName} ${
+          selected
+            ? "border-fuchsia-200/60 bg-fuchsia-300/15 text-fuchsia-100"
+            : "border-white/[0.08] text-slate-400 transition enabled:hover:border-fuchsia-300/30 enabled:hover:bg-white/[0.04] disabled:cursor-not-allowed disabled:opacity-35"
+        }`}
+      >
+        {iconUrl ? (
+          <Image
+            src={iconUrl}
+            alt=""
+            width={22}
+            height={22}
+            className="size-[22px] shrink-0"
+          />
+        ) : null}
+        <span className="min-w-0">
+          <span className="block text-[11px] font-semibold">{count}-piece</span>
+          <span className="mt-0.5 block truncate text-[9px] text-slate-500">{perkName}</span>
+        </span>
+      </button>
+      {description && !disabled ? (
+        <span
+          role="tooltip"
+          className={`pointer-events-none absolute top-[calc(100%+0.4rem)] z-50 hidden w-72 max-w-[80vw] rounded-lg border border-fuchsia-200/20 bg-slate-950/95 p-3 text-left shadow-2xl group-hover/bonus:block group-focus-within/bonus:block ${align === "right" ? "right-0" : "left-0"}`}
+        >
+          <span className="block text-xs font-semibold text-fuchsia-100">{perkName}</span>
+          <span className="mt-1 block text-[11px] leading-5 text-slate-300">{description}</span>
+        </span>
+      ) : null}
+    </div>
   );
 }
 

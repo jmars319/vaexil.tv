@@ -7,6 +7,7 @@ import {
   createEmptyArmorStats,
   getArmorSlotFromDefinitionBucket,
   getArmorStatTotal,
+  getSuggestedMajorModCount,
 } from "../src/lib/armor-optimizer.ts";
 import { toggleArmorSetRequirement } from "../src/lib/armor-constraint-selection.ts";
 
@@ -73,6 +74,10 @@ assert.deepEqual(accumulated, {
   melee: 5,
 });
 assert.equal(getArmorStatTotal(accumulated), 42);
+assert.equal(getSuggestedMajorModCount(150, 200), 5);
+assert.equal(getSuggestedMajorModCount(180, 200), 2);
+assert.equal(getSuggestedMajorModCount(200, 200), 0);
+assert.equal(getSuggestedMajorModCount(230, 200), 0);
 assert.equal(getArmorSlotFromDefinitionBucket(3448274439), "Helmet");
 assert.equal(getArmorSlotFromDefinitionBucket(3551918588), "Gauntlets");
 assert.equal(getArmorSlotFromDefinitionBucket(14239492), "Chest Armor");

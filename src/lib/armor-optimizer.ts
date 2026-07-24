@@ -93,6 +93,10 @@ export function getArmorStatTotal(stats: ArmorStats) {
   return ARMOR_STATS.reduce((total, stat) => total + stats[stat.key], 0);
 }
 
+export function getSuggestedMajorModCount(base: number, withMajorMods: number) {
+  return Math.min(5, Math.max(0, Math.ceil((withMajorMods - base) / 10)));
+}
+
 export function getArmorSlotFromDefinitionBucket(bucketHash: number) {
   return ARMOR_SLOT_BY_DEFINITION_BUCKET.get(bucketHash) ?? null;
 }
