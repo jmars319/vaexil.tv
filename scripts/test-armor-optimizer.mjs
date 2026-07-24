@@ -4,6 +4,7 @@ import {
   ARMOR_STATS,
   addArmorInvestmentStats,
   computeArmorStatCeilings,
+  computeArmorTargetBuilds,
   createEmptyArmorStats,
   getArmorSlotFromDefinitionBucket,
   getArmorStatTotal,
@@ -30,6 +31,24 @@ function piece(id, slot, weapons, options = {}) {
     exoticKey: options.exoticKey ?? null,
     setHash: options.setHash ?? null,
     baseStats: stats(weapons),
+  };
+}
+
+function multiStatPiece(id, slot, values) {
+  return {
+    id,
+    slot,
+    isExotic: false,
+    exoticKey: null,
+    setHash: null,
+    baseStats: {
+      weapons: values.weapons ?? 0,
+      health: values.health ?? 0,
+      class: values.class ?? 0,
+      grenade: values.grenade ?? 0,
+      super: values.super ?? 0,
+      melee: values.melee ?? 0,
+    },
   };
 }
 
@@ -164,6 +183,89 @@ assert.equal(
   null,
 );
 assert.equal(weaponsCeiling({ exotic: "Helmet:Missing", sets: [] }).base, null);
+
+const targetChoicePieces = [
+  multiStatPiece("helmet-weapons", "Helmet", { weapons: 80 }),
+  multiStatPiece("helmet-health", "Helmet", { weapons: 20, health: 60 }),
+  multiStatPiece("arms-target", "Gauntlets", { weapons: 30, health: 10 }),
+  multiStatPiece("chest-target", "Chest Armor", { weapons: 30, health: 10 }),
+  multiStatPiece("legs-target", "Leg Armor", { weapons: 30, health: 10 }),
+  multiStatPiece("class-target", "Class Item", { weapons: 30, health: 10 }),
+];
+const noTargets = createEmptyArmorStats();
+const healthTarget = { ...noTargets, health: 100 };
+const unconstrainedWeapons = computeArmorTargetBuilds(
+  targetChoicePieces,
+  { exotic: "any", sets: [] },
+  noTargets,
+).find((build) => build.stat === "weapons");
+const healthConstrainedWeapons = computeArmorTargetBuilds(
+  targetChoicePieces,
+  { exotic: "any", sets: [] },
+  healthTarget,
+).find((build) => build.stat === "weapons");
+assert.equal(unconstrainedWeapons.withMajorMods, 200);
+assert.ok(unconstrainedWeapons.itemIds.includes("helmet-weapons"));
+assert.equal(healthConstrainedWeapons.withMajorMods, 190);
+assert.ok(healthConstrainedWeapons.itemIds.includes("helmet-health"));
+assert.ok(healthConstrainedWeapons.finalStats.health >= 100);
+
+const sharedModPieces = [
+  multiStatPiece("helmet-shared", "Helmet", {
+    weapons: 40,
+    health: 10,
+    super: 20,
+  }),
+  multiStatPiece("arms-shared", "Gauntlets", {
+    weapons: 30,
+    health: 10,
+    super: 20,
+  }),
+  multiStatPiece("chest-shared", "Chest Armor", {
+    weapons: 30,
+    health: 10,
+    super: 20,
+  }),
+  multiStatPiece("legs-shared", "Leg Armor", {
+    weapons: 30,
+    health: 10,
+    super: 15,
+  }),
+  multiStatPiece("class-shared", "Class Item", {
+    weapons: 30,
+    health: 10,
+    super: 15,
+  }),
+];
+const sharedTargets = {
+  ...createEmptyArmorStats(),
+  weapons: 200,
+  super: 100,
+};
+const sharedHealthBuild = computeArmorTargetBuilds(
+  sharedModPieces,
+  { exotic: "any", sets: [] },
+  sharedTargets,
+).find((build) => build.stat === "health");
+assert.equal(sharedHealthBuild.withMajorMods, 50);
+assert.equal(sharedHealthBuild.finalStats.weapons, 200);
+assert.equal(sharedHealthBuild.finalStats.super, 100);
+assert.equal(sharedHealthBuild.modCounts.weapons, 4);
+assert.equal(sharedHealthBuild.modCounts.super, 1);
+assert.equal(getArmorStatTotal(sharedHealthBuild.modCounts), 5);
+
+const impossibleTargets = {
+  ...createEmptyArmorStats(),
+  weapons: 200,
+  health: 200,
+};
+assert.ok(
+  computeArmorTargetBuilds(
+    sharedModPieces,
+    { exotic: "any", sets: [] },
+    impossibleTargets,
+  ).every((build) => build.base === null),
+);
 
 const manifest = JSON.parse(
   await readFile(

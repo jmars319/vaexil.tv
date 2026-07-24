@@ -1,13 +1,10 @@
 import {
-  ARMOR_STATS,
   ARMOR_SLOTS,
-  createEmptyArmorStats,
   getArmorStatTotal,
-  getSuggestedMajorModCount,
   type ArmorSlot,
-  type ArmorStatCeiling,
   type ArmorStatKey,
   type ArmorStats,
+  type ArmorTargetBuild,
 } from "@/lib/armor-optimizer";
 
 export type ArmorBuildPieceInput = {
@@ -35,64 +32,71 @@ export type ArmorBuildResultSummary = {
   moddedTotal: number;
   baseStats: ArmorStats;
   moddedStats: ArmorStats;
+  modCounts: ArmorStats;
   itemIds: string[];
-  suggestedModCount: number;
 };
+
+export type ArmorStatMaximums = Record<ArmorStatKey, number | null>;
 
 export type ArmorBuildResultsModel = {
   results: ArmorBuildResultSummary[];
   pieces: ArmorBuildPieceSummary[];
+  targets: ArmorStats;
+  maximums: ArmorStatMaximums;
 };
 
 export function createArmorBuildResults(
-  ceilings: ArmorStatCeiling[],
+  builds: ArmorTargetBuild[],
   armor: ArmorBuildPieceInput[],
+  targets: ArmorStats,
 ): ArmorBuildResultsModel {
   const armorById = new Map(armor.map((piece) => [piece.id, piece]));
   const usedPieces = new Map<string, ArmorBuildPieceSummary>();
   const results: ArmorBuildResultSummary[] = [];
+  const maximums = Object.fromEntries(
+    builds.map((build) => [build.stat, build.withMajorMods]),
+  ) as ArmorStatMaximums;
 
-  for (const ceiling of ceilings) {
-    if (ceiling.base === null || ceiling.withMajorMods === null) {
+  for (const build of builds) {
+    if (
+      build.base === null ||
+      build.withMajorMods === null ||
+      !build.baseStats ||
+      !build.finalStats ||
+      !build.modCounts
+    ) {
       continue;
     }
 
-    const pieces = ceiling.itemIds
+    const pieces = build.itemIds
       .map((id) => armorById.get(id))
       .filter((piece): piece is ArmorBuildPieceInput => Boolean(piece));
     if (pieces.length !== ARMOR_SLOTS.length) {
       continue;
     }
 
-    const baseStats = createEmptyArmorStats();
     for (const piece of pieces) {
       usedPieces.set(piece.id, piece);
-      for (const stat of ARMOR_STATS) {
-        baseStats[stat.key] += piece.baseStats[stat.key];
-      }
     }
 
-    const moddedStats = { ...baseStats };
-    moddedStats[ceiling.stat] = ceiling.withMajorMods;
     results.push({
-      id: ceiling.stat,
-      targetStat: ceiling.stat,
-      targetBase: ceiling.base,
-      targetWithMods: ceiling.withMajorMods,
-      baseTotal: getArmorStatTotal(baseStats),
-      moddedTotal: getArmorStatTotal(moddedStats),
-      baseStats,
-      moddedStats,
+      id: build.stat,
+      targetStat: build.stat,
+      targetBase: build.base,
+      targetWithMods: build.withMajorMods,
+      baseTotal: getArmorStatTotal(build.baseStats),
+      moddedTotal: getArmorStatTotal(build.finalStats),
+      baseStats: build.baseStats,
+      moddedStats: build.finalStats,
+      modCounts: build.modCounts,
       itemIds: pieces.map((piece) => piece.id),
-      suggestedModCount: getSuggestedMajorModCount(
-        ceiling.base,
-        ceiling.withMajorMods,
-      ),
     });
   }
 
   return {
     results,
     pieces: [...usedPieces.values()],
+    targets,
+    maximums,
   };
 }

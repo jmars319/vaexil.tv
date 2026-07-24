@@ -16,6 +16,9 @@ export function ArmorBuildResults({
   inputArmorCount,
 }: ArmorBuildResultsProps) {
   const pieceById = new Map(model.pieces.map((piece) => [piece.id, piece]));
+  const activeTargetCount = ARMOR_STATS.filter(
+    (stat) => model.targets[stat.key] > 0,
+  ).length;
 
   return (
     <section aria-labelledby="calculated-builds-heading">
@@ -28,17 +31,18 @@ export function ArmorBuildResults({
             id="calculated-builds-heading"
             className="mt-2 text-2xl font-semibold text-white"
           >
-            Calculated peak builds
+            Conditional peak builds
           </h2>
           <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-400">
-            Each result is the absolute peak for one stat under the selected
-            Exotic and armor-set constraints. Expand a result to inspect the
-            five armor instances and suggested stat mods.
+            Each result is the conditional maximum for one stat while meeting
+            every selected minimum, Exotic, and armor-set requirement. Expand
+            a result to inspect the five armor instances and shared mod plan.
           </p>
         </div>
         <div className="flex flex-wrap gap-2 text-xs">
           <ResultMetric label="Builds" value={model.results.length} />
           <ResultMetric label="Armor considered" value={inputArmorCount} />
+          <ResultMetric label="Active targets" value={activeTargetCount} />
           <ResultMetric label="Search" value="Exact" />
         </div>
       </div>
@@ -83,6 +87,7 @@ export function ArmorBuildResults({
                 key={result.id}
                 result={result}
                 pieces={getResultPieces(result, pieceById)}
+                targets={model.targets}
               />
             ))}
           </div>
@@ -96,7 +101,12 @@ export function ArmorBuildResults({
                 <span>Peak target</span>
                 {ARMOR_STATS.map((stat) => (
                   <span key={stat.key} className="text-center">
-                    {stat.label}
+                    <span className="block">{stat.label}</span>
+                    {model.targets[stat.key] > 0 ? (
+                      <span className="mt-0.5 block text-[9px] text-fuchsia-200">
+                        ≥ {model.targets[stat.key]}
+                      </span>
+                    ) : null}
                   </span>
                 ))}
                 <span className="text-right">Build total</span>
@@ -107,6 +117,7 @@ export function ArmorBuildResults({
                   key={result.id}
                   result={result}
                   pieces={getResultPieces(result, pieceById)}
+                  targets={model.targets}
                 />
               ))}
             </div>
@@ -116,8 +127,9 @@ export function ArmorBuildResults({
         <div className="mt-6 rounded-2xl border border-amber-300/20 bg-amber-300/[0.07] p-5">
           <h3 className="font-semibold text-amber-100">No valid builds</h3>
           <p className="mt-2 text-sm leading-6 text-slate-400">
-            The current Exotic and armor-set requirements cannot be completed
-            with the owned armor for this class.
+            The current stat targets, Exotic, and armor-set requirements cannot
+            be completed with the owned armor for this class. Lower a target or
+            relax an armor requirement and calculate again.
           </p>
         </div>
       )}
@@ -151,9 +163,11 @@ function getResultPieces(
 function BuildResultCard({
   result,
   pieces,
+  targets,
 }: {
   result: ArmorBuildResultSummary;
   pieces: ArmorBuildPieceSummary[];
+  targets: Record<ArmorStatKey, number>;
 }) {
   const target = getStatDefinition(result.targetStat);
   return (
@@ -199,10 +213,11 @@ function BuildResultCard({
         <BuildStatStrip
           stats={result.moddedStats}
           targetStat={result.targetStat}
+          targets={targets}
           className="mt-4"
         />
       </summary>
-      <BuildExpansion result={result} pieces={pieces} />
+      <BuildExpansion result={result} pieces={pieces} targets={targets} />
     </details>
   );
 }
@@ -210,9 +225,11 @@ function BuildResultCard({
 function BuildResultTableRow({
   result,
   pieces,
+  targets,
 }: {
   result: ArmorBuildResultSummary;
   pieces: ArmorBuildPieceSummary[];
+  targets: Record<ArmorStatKey, number>;
 }) {
   const target = getStatDefinition(result.targetStat);
   return (
@@ -246,7 +263,12 @@ function BuildResultTableRow({
           ⌄
         </span>
       </summary>
-      <BuildExpansion result={result} pieces={pieces} compact />
+      <BuildExpansion
+        result={result}
+        pieces={pieces}
+        targets={targets}
+        compact
+      />
     </details>
   );
 }
@@ -254,10 +276,12 @@ function BuildResultTableRow({
 function BuildStatStrip({
   stats,
   targetStat,
+  targets,
   className = "",
 }: {
   stats: Record<ArmorStatKey, number>;
   targetStat: ArmorStatKey;
+  targets: Record<ArmorStatKey, number>;
   className?: string;
 }) {
   return (
@@ -268,7 +292,9 @@ function BuildStatStrip({
           className={
             stat.key === targetStat
               ? "rounded-lg border border-cyan-300/20 bg-cyan-300/10 px-2 py-2 text-center"
-              : "rounded-lg border border-white/[0.06] bg-slate-950/35 px-2 py-2 text-center"
+              : targets[stat.key] > 0
+                ? "rounded-lg border border-fuchsia-300/20 bg-fuchsia-300/[0.07] px-2 py-2 text-center"
+                : "rounded-lg border border-white/[0.06] bg-slate-950/35 px-2 py-2 text-center"
           }
         >
           <p className="truncate text-[9px] font-semibold uppercase tracking-wide text-slate-600">
@@ -277,6 +303,11 @@ function BuildStatStrip({
           <p className={stat.key === targetStat ? "mt-0.5 font-mono text-sm font-semibold text-cyan-100" : "mt-0.5 font-mono text-sm font-semibold text-slate-300"}>
             {stats[stat.key]}
           </p>
+          {targets[stat.key] > 0 ? (
+            <p className="mt-0.5 text-[8px] font-semibold text-fuchsia-200">
+              min {targets[stat.key]}
+            </p>
+          ) : null}
         </div>
       ))}
     </div>
@@ -286,13 +317,15 @@ function BuildStatStrip({
 function BuildExpansion({
   result,
   pieces,
+  targets,
   compact = false,
 }: {
   result: ArmorBuildResultSummary;
   pieces: ArmorBuildPieceSummary[];
+  targets: Record<ArmorStatKey, number>;
   compact?: boolean;
 }) {
-  const target = getStatDefinition(result.targetStat);
+  const modAssignments = getModAssignments(result);
   return (
     <div className="border-t border-white/10 p-4 sm:p-5">
       <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
@@ -303,9 +336,9 @@ function BuildExpansion({
           </p>
         </div>
         <p className="text-xs text-cyan-200">
-          {result.suggestedModCount > 0
-            ? `Suggested: ${result.suggestedModCount}× +10 ${target.label} mod${result.suggestedModCount === 1 ? "" : "s"}`
-            : `No ${target.label} stat mods required`}
+          {modAssignments.length > 0
+            ? `Suggested: ${formatModPlan(result)}`
+            : "No stat mods required"}
         </p>
       </div>
 
@@ -314,7 +347,7 @@ function BuildExpansion({
           <BuildPieceCard
             key={piece.id}
             piece={piece}
-            suggestedMod={index < result.suggestedModCount ? target.label : null}
+            suggestedMod={modAssignments[index] ?? null}
           />
         ))}
       </div>
@@ -328,10 +361,31 @@ function BuildExpansion({
             Final total <strong className="ml-1 font-mono text-cyan-100">{result.moddedTotal}</strong>
           </span>
         </div>
-        <BuildStatStrip stats={result.moddedStats} targetStat={result.targetStat} />
+        <BuildStatStrip
+          stats={result.moddedStats}
+          targetStat={result.targetStat}
+          targets={targets}
+        />
       </div>
     </div>
   );
+}
+
+function getModAssignments(result: ArmorBuildResultSummary) {
+  return ARMOR_STATS.flatMap((stat) =>
+    Array.from(
+      { length: result.modCounts[stat.key] },
+      () => stat.label,
+    ),
+  );
+}
+
+function formatModPlan(result: ArmorBuildResultSummary) {
+  return ARMOR_STATS.flatMap((stat) =>
+    result.modCounts[stat.key] > 0
+      ? [`${result.modCounts[stat.key]}× +10 ${stat.label}`]
+      : [],
+  ).join(" · ");
 }
 
 function BuildPieceCard({

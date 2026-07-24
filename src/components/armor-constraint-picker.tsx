@@ -6,6 +6,7 @@ import {
 } from "@/lib/armor-constraint-selection";
 import type { ArmorSlot } from "@/lib/armor-optimizer";
 import Image from "next/image";
+import type { ReactNode } from "react";
 import { useDeferredValue, useMemo, useRef, useState } from "react";
 
 const OPTIMIZER_PATH = "/tools/destiny2/armor-optimizer";
@@ -38,6 +39,7 @@ type ArmorConstraintPickerProps = {
   setOptions: ArmorConstraintSetOption[];
   initialExotic: string;
   initialSets: ArmorSetToggleRequirement[];
+  children: ReactNode;
 };
 
 export function ArmorConstraintPicker({
@@ -46,6 +48,7 @@ export function ArmorConstraintPicker({
   setOptions,
   initialExotic,
   initialSets,
+  children,
 }: ArmorConstraintPickerProps) {
   const [exotic, setExotic] = useState(initialExotic);
   const [sets, setSets] = useState(initialSets);
@@ -214,6 +217,8 @@ export function ArmorConstraintPicker({
           </div>
         </fieldset>
       </div>
+
+      {children}
 
       <div className="flex flex-col gap-3 rounded-xl border border-white/10 bg-white/[0.025] p-3 sm:flex-row sm:items-center sm:justify-between">
         <SelectedConstraintSummary

@@ -22,6 +22,12 @@ type ArmorOptimizerPageProps = {
     exotic?: string | string[];
     set?: string | string[];
     set2?: string | string[];
+    targetWeapons?: string | string[];
+    targetHealth?: string | string[];
+    targetClass?: string | string[];
+    targetGrenade?: string | string[];
+    targetSuper?: string | string[];
+    targetMelee?: string | string[];
   }>;
 };
 
@@ -44,6 +50,14 @@ export default async function ArmorOptimizerPage({
     exotic: getParam(params.exotic),
     set: getParam(params.set),
     set2: getParam(params.set2),
+    targets: {
+      weapons: getParam(params.targetWeapons),
+      health: getParam(params.targetHealth),
+      class: getParam(params.targetClass),
+      grenade: getParam(params.targetGrenade),
+      super: getParam(params.targetSuper),
+      melee: getParam(params.targetMelee),
+    },
   };
 
   return (
@@ -56,7 +70,7 @@ export default async function ArmorOptimizerPage({
           <SectionHeading
             level={1}
             title="Armor Optimizer"
-            description="Choose your Exotic and armor-set bonuses first, then inspect the exact armor pieces behind the highest achievable build for every stat."
+            description="Choose armor bonuses, set minimum stat targets, and inspect the exact owned pieces behind every conditional maximum."
           />
         </div>
         <div className="mt-8 flex flex-wrap gap-3">

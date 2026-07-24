@@ -1,10 +1,16 @@
 import { ArmorBuildResults } from "@/components/armor-build-results";
 import { ArmorConstraintPicker } from "@/components/armor-constraint-picker";
+import { ArmorStatTargets } from "@/components/armor-stat-targets";
 import { createArmorBuildResults } from "@/lib/armor-build-results";
 import {
   ARMOR_SLOTS,
-  computeArmorStatCeilings,
+  ARMOR_STAT_TARGET_PARAMS,
+  ARMOR_STATS,
+  computeArmorTargetBuilds,
+  createEmptyArmorStats,
   type ArmorSetRequirement,
+  type ArmorStatKey,
+  type ArmorStats,
 } from "@/lib/armor-optimizer";
 import type {
   BungieArmorPiece,
@@ -18,6 +24,7 @@ export type ArmorWorkbenchSelection = {
   exotic?: string;
   set?: string;
   set2?: string;
+  targets?: Partial<Record<ArmorStatKey, string>>;
 };
 
 type NormalizedSelection = {
@@ -25,6 +32,7 @@ type NormalizedSelection = {
   exotic: string;
   set: string;
   set2: string;
+  targets: ArmorStats;
 };
 
 type ArmorInventoryWorkbenchProps = {
@@ -91,7 +99,15 @@ function normalizeSelection(
     set2 = "";
   }
 
-  return { className, exotic, set, set2 };
+  const targets = createEmptyArmorStats();
+  for (const stat of ARMOR_STATS) {
+    const value = Number(selection.targets?.[stat.key]);
+    targets[stat.key] = Number.isInteger(value)
+      ? Math.min(200, Math.max(0, value))
+      : 0;
+  }
+
+  return { className, exotic, set, set2, targets };
 }
 
 function normalizeSetValue(
@@ -135,12 +151,26 @@ function getSetRequirements(selection: NormalizedSelection) {
   return requirements;
 }
 
-function buildClassHref(selection: NormalizedSelection, className: string) {
+function buildOptimizerHref(
+  selection: NormalizedSelection,
+  className: string,
+  includeTargets = true,
+) {
   const params = new URLSearchParams();
   params.set("class", className);
   if (selection.exotic !== "any") params.set("exotic", selection.exotic);
   if (selection.set) params.set("set", selection.set);
   if (selection.set2) params.set("set2", selection.set2);
+  if (includeTargets) {
+    for (const stat of ARMOR_STATS) {
+      if (selection.targets[stat.key] > 0) {
+        params.set(
+          ARMOR_STAT_TARGET_PARAMS[stat.key],
+          String(selection.targets[stat.key]),
+        );
+      }
+    }
+  }
   return `${OPTIMIZER_PATH}?${params.toString()}`;
 }
 
@@ -199,7 +229,7 @@ export function ArmorInventoryWorkbench({
   );
   const availableSets = getAvailableSets(armorSets, classArmor);
   const setRequirements = getSetRequirements(selection);
-  const ceilings = computeArmorStatCeilings(
+  const builds = computeArmorTargetBuilds(
     classArmor.map((piece) => ({
       id: piece.id,
       slot: piece.slot,
@@ -212,8 +242,13 @@ export function ArmorInventoryWorkbench({
       exotic: selection.exotic,
       sets: setRequirements,
     },
+    selection.targets,
   );
-  const buildResults = createArmorBuildResults(ceilings, classArmor);
+  const buildResults = createArmorBuildResults(
+    builds,
+    classArmor,
+    selection.targets,
+  );
 
   return (
     <div className="space-y-10">
@@ -235,7 +270,7 @@ export function ArmorInventoryWorkbench({
             {classOptions.map((className) => (
               <a
                 key={className}
-                href={buildClassHref(selection, className)}
+                href={buildOptimizerHref(selection, className)}
                 aria-current={selection.className === className ? "page" : undefined}
                 className={
                   selection.className === className
@@ -279,7 +314,17 @@ export function ArmorInventoryWorkbench({
                 }
               : null,
           }))}
-        />
+        >
+          <ArmorStatTargets
+            targets={selection.targets}
+            maximums={buildResults.maximums}
+            clearHref={buildOptimizerHref(
+              selection,
+              selection.className,
+              false,
+            )}
+          />
+        </ArmorConstraintPicker>
       </section>
 
       <ArmorBuildResults
