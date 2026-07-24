@@ -164,31 +164,31 @@ export function ArmorConstraintPicker({
   }
 
   return (
-    <form method="get" action={OPTIMIZER_PATH} className="mt-6 space-y-5">
+    <form method="get" action={OPTIMIZER_PATH} className="mt-4 space-y-3">
       <input type="hidden" name="class" value={className} />
       <input type="hidden" name="exotic" value={exotic} />
       <input type="hidden" name="set" value={primarySet} />
       <input type="hidden" name="set2" value={secondarySet} />
 
-      <div className="grid gap-5 xl:grid-cols-[minmax(16rem,0.7fr)_minmax(0,1.5fr)]">
+      <div className="grid gap-3 lg:grid-cols-[minmax(16rem,0.7fr)_minmax(0,1.5fr)] xl:grid-cols-1">
         <fieldset className="min-w-0">
-          <legend className="text-sm font-semibold text-slate-200">Exotic requirement</legend>
+          <legend className="text-xs font-semibold text-slate-300">Exotic requirement</legend>
           <details
             ref={exoticDetailsRef}
             className="group mt-2 rounded-xl border border-white/10 bg-slate-950/45 open:border-amber-300/25"
           >
-            <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-3 rounded-xl px-3 py-2 outline-none focus-visible:ring-2 focus-visible:ring-amber-200/70 [&::-webkit-details-marker]:hidden">
+            <summary className="flex min-h-12 cursor-pointer list-none items-center justify-between gap-3 rounded-xl px-3 py-1.5 outline-none focus-visible:ring-2 focus-visible:ring-amber-200/70 [&::-webkit-details-marker]:hidden">
               <span className="flex min-w-0 items-center gap-3">
                 {selectedExotic?.iconUrl ? (
                   <Image
                     src={selectedExotic.iconUrl}
                     alt=""
-                    width={40}
-                    height={40}
-                    className="size-10 shrink-0 rounded-md border border-amber-300/20"
+                    width={36}
+                    height={36}
+                    className="size-9 shrink-0 rounded-md border border-amber-300/20"
                   />
                 ) : (
-                  <span className="flex size-10 shrink-0 items-center justify-center rounded-md border border-white/10 bg-white/[0.04] text-sm text-slate-500">
+                  <span className="flex size-9 shrink-0 items-center justify-center rounded-md border border-white/10 bg-white/[0.04] text-sm text-slate-500">
                     {exotic === "none" ? "Ø" : "✦"}
                   </span>
                 )}
@@ -250,10 +250,10 @@ export function ArmorConstraintPicker({
           </details>
         </fieldset>
 
-        <fieldset className="min-w-0 rounded-xl border border-white/10 bg-slate-950/30 p-3 sm:p-4">
-          <legend className="px-1 text-sm font-semibold text-slate-200">Armor-set bonuses</legend>
-          <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-            <p className="text-xs leading-5 text-slate-500">
+        <fieldset className="min-w-0 rounded-xl border border-white/10 bg-slate-950/30 p-3">
+          <legend className="px-1 text-xs font-semibold text-slate-300">Armor-set bonuses</legend>
+          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+            <p className="text-[11px] leading-4 text-slate-500">
               Choose one 4-piece bonus or up to two 2-piece bonuses. A third
               2-piece choice replaces the oldest one.
             </p>
@@ -264,14 +264,14 @@ export function ArmorConstraintPicker({
                 value={setSearch}
                 onChange={(event) => setSetSearch(event.target.value)}
                 placeholder="Search sets"
-                className="min-h-10 w-full rounded-lg border border-white/10 bg-slate-950/70 px-3 text-sm text-white placeholder:text-slate-600 focus:border-fuchsia-300/45 focus:outline-none sm:w-48"
+                className="min-h-9 w-full rounded-lg border border-white/10 bg-slate-950/70 px-3 text-xs text-white placeholder:text-slate-600 focus:border-fuchsia-300/45 focus:outline-none sm:w-40"
               />
             </label>
           </div>
 
-          <div className="mt-3 max-h-[28rem] overflow-y-auto pr-1">
+          <div className="mt-2 max-h-48 overflow-y-auto pr-1">
             {filteredSets.length > 0 ? (
-              <div className="grid gap-2 lg:grid-cols-2">
+              <div className="grid gap-1.5">
                 {filteredSets.map((option) => (
                   <ArmorSetToggleCard
                     key={option.hash}
@@ -299,7 +299,7 @@ export function ArmorConstraintPicker({
         onClear={clearTargets}
       />
 
-      <div className="flex flex-col gap-3 rounded-xl border border-white/10 bg-white/[0.025] p-3 sm:flex-row sm:items-center sm:justify-between">
+      <div className="flex flex-col gap-2 rounded-xl border border-white/10 bg-white/[0.025] p-2.5 sm:flex-row sm:items-center sm:justify-between">
         <SelectedConstraintSummary
           exotic={exotic}
           selectedExotic={selectedExotic}
@@ -308,7 +308,7 @@ export function ArmorConstraintPicker({
         />
         <button
           type="submit"
-          className="inline-flex min-h-11 shrink-0 items-center justify-center rounded-xl bg-cyan-300 px-5 text-sm font-semibold text-slate-950 transition hover:bg-cyan-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-100"
+          className="inline-flex min-h-10 shrink-0 items-center justify-center rounded-xl bg-cyan-300 px-4 text-xs font-semibold text-slate-950 transition hover:bg-cyan-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-100"
         >
           {resultsAreStale ? "Refresh exact builds" : "Calculate exact builds"}
         </button>
@@ -407,43 +407,45 @@ function ArmorSetToggleCard({
     <article
       className={
         selectedCount
-          ? "rounded-lg border border-fuchsia-200/45 bg-fuchsia-300/[0.08] p-3"
-          : "rounded-lg border border-white/[0.08] bg-white/[0.02] p-3"
+          ? "rounded-lg border border-fuchsia-200/45 bg-fuchsia-300/[0.08] p-2"
+          : "rounded-lg border border-white/[0.08] bg-white/[0.02] p-2"
       }
-      style={{ contentVisibility: "auto", containIntrinsicSize: "112px" }}
+      style={{ contentVisibility: "auto", containIntrinsicSize: "58px" }}
     >
-      <div className="flex items-start justify-between gap-2">
-        <div className="min-w-0">
-          <h3 className="truncate text-sm font-semibold text-white">{option.name}</h3>
-          <p className="mt-0.5 text-[10px] text-slate-600">
-            {option.ownedPieces} rolls · {option.ownedSlotCount} slots
-          </p>
+      <div className="grid gap-2 sm:grid-cols-[minmax(0,1fr)_minmax(13rem,0.9fr)] sm:items-center">
+        <div className="flex min-w-0 items-center justify-between gap-2">
+          <div className="min-w-0">
+            <h3 className="truncate text-xs font-semibold text-white">{option.name}</h3>
+            <p className="mt-0.5 text-[9px] text-slate-600">
+              {option.ownedPieces} rolls · {option.ownedSlotCount} slots
+            </p>
+          </div>
+          {selectedCount ? (
+            <span className="shrink-0 rounded-full bg-fuchsia-300/15 px-2 py-0.5 text-[9px] font-semibold text-fuchsia-100">
+              {selectedCount}×
+            </span>
+          ) : null}
         </div>
-        {selectedCount ? (
-          <span className="shrink-0 rounded-full bg-fuchsia-300/15 px-2 py-0.5 text-[10px] font-semibold text-fuchsia-100">
-            {selectedCount}-piece
-          </span>
-        ) : null}
-      </div>
-      <div className="mt-2 grid grid-cols-2 gap-2">
-        <SetCountButton
-          count={2}
-          perkName={option.twoPiece?.name ?? "Set bonus"}
-          description={option.twoPiece?.description ?? ""}
-          iconUrl={option.twoPiece?.iconUrl ?? null}
-          selected={selectedCount === 2}
-          onClick={() => onToggle({ setHash: option.hash, count: 2 })}
-        />
-        <SetCountButton
-          count={4}
-          perkName={option.fourPiece?.name ?? "Set bonus"}
-          description={option.fourPiece?.description ?? ""}
-          iconUrl={option.fourPiece?.iconUrl ?? null}
-          align="right"
-          selected={selectedCount === 4}
-          disabled={option.ownedSlotCount < 4 || !option.fourPiece}
-          onClick={() => onToggle({ setHash: option.hash, count: 4 })}
-        />
+        <div className="grid grid-cols-2 gap-1.5">
+          <SetCountButton
+            count={2}
+            perkName={option.twoPiece?.name ?? "Set bonus"}
+            description={option.twoPiece?.description ?? ""}
+            iconUrl={option.twoPiece?.iconUrl ?? null}
+            selected={selectedCount === 2}
+            onClick={() => onToggle({ setHash: option.hash, count: 2 })}
+          />
+          <SetCountButton
+            count={4}
+            perkName={option.fourPiece?.name ?? "Set bonus"}
+            description={option.fourPiece?.description ?? ""}
+            iconUrl={option.fourPiece?.iconUrl ?? null}
+            align="right"
+            selected={selectedCount === 4}
+            disabled={option.ownedSlotCount < 4 || !option.fourPiece}
+            onClick={() => onToggle({ setHash: option.hash, count: 4 })}
+          />
+        </div>
       </div>
     </article>
   );
@@ -469,7 +471,7 @@ function SetCountButton({
   onClick: () => void;
 }) {
   const buttonClassName =
-    "flex min-h-12 w-full items-center gap-2 rounded-md border px-2 py-1.5 text-left";
+    "flex min-h-9 w-full items-center gap-1.5 rounded-md border px-2 py-1 text-left";
 
   return (
     <div className="group/bonus relative min-w-0">
@@ -488,14 +490,14 @@ function SetCountButton({
           <Image
             src={iconUrl}
             alt=""
-            width={22}
-            height={22}
-            className="size-[22px] shrink-0"
+            width={18}
+            height={18}
+            className="size-[18px] shrink-0"
           />
         ) : null}
         <span className="min-w-0">
-          <span className="block text-[11px] font-semibold">{count}-piece</span>
-          <span className="mt-0.5 block truncate text-[9px] text-slate-500">{perkName}</span>
+          <span className="block text-[10px] font-semibold">{count}×</span>
+          <span className="block truncate text-[8px] text-slate-500">{perkName}</span>
         </span>
       </button>
       {description && !disabled ? (

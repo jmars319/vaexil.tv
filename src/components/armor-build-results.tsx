@@ -21,22 +21,24 @@ export function ArmorBuildResults({
   ).length;
 
   return (
-    <section aria-labelledby="calculated-builds-heading">
-      <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-200">
+    <section
+      aria-labelledby="calculated-builds-heading"
+      className="min-w-0 rounded-2xl border border-white/10 bg-white/[0.025] p-4"
+    >
+      <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
+        <div className="min-w-0">
+          <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-cyan-200">
             Exact owned-inventory results
           </p>
           <h2
             id="calculated-builds-heading"
-            className="mt-2 text-2xl font-semibold text-white"
+            className="mt-1 text-xl font-semibold text-white"
           >
             Conditional peak builds
           </h2>
-          <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-400">
-            Each result is the conditional maximum for one stat while meeting
-            every selected minimum, Exotic, and armor-set requirement. Expand
-            a result to inspect the five armor instances and shared mod plan.
+          <p className="mt-1 max-w-3xl text-xs leading-5 text-slate-500">
+            One exact peak per stat. Expand any result for its five armor
+            instances and shared mod plan.
           </p>
         </div>
         <div className="flex flex-wrap gap-2 text-xs">
@@ -48,7 +50,7 @@ export function ArmorBuildResults({
       </div>
 
       {model.results.length > 0 ? (
-        <div className="mt-6">
+        <div className="mt-3">
           <input
             id="armor-results-cards"
             className="peer/cards sr-only"
@@ -63,25 +65,25 @@ export function ArmorBuildResults({
             name="armor-results-view"
           />
           <div
-            className="inline-flex rounded-xl border border-white/10 bg-slate-950/45 p-1"
+            className="inline-flex rounded-lg border border-white/10 bg-slate-950/45 p-0.5"
             role="group"
             aria-label="Build result view"
           >
             <label
               htmlFor="armor-results-cards"
-              className="cursor-pointer rounded-lg px-4 py-2 text-sm font-semibold text-slate-400 transition hover:text-white peer-checked/cards:bg-cyan-300 peer-checked/cards:text-slate-950"
+              className="cursor-pointer rounded-md px-3 py-1.5 text-xs font-semibold text-slate-400 transition hover:text-white peer-checked/cards:bg-cyan-300 peer-checked/cards:text-slate-950"
             >
               Cards
             </label>
             <label
               htmlFor="armor-results-table"
-              className="cursor-pointer rounded-lg px-4 py-2 text-sm font-semibold text-slate-400 transition hover:text-white peer-checked/table:bg-cyan-300 peer-checked/table:text-slate-950"
+              className="cursor-pointer rounded-md px-3 py-1.5 text-xs font-semibold text-slate-400 transition hover:text-white peer-checked/table:bg-cyan-300 peer-checked/table:text-slate-950"
             >
               Table
             </label>
           </div>
 
-          <div className="mt-4 grid gap-3 lg:grid-cols-2 peer-checked/table:hidden">
+          <div className="mt-3 grid gap-2 lg:grid-cols-2 peer-checked/table:hidden">
             {model.results.map((result) => (
               <BuildResultCard
                 key={result.id}
@@ -92,7 +94,7 @@ export function ArmorBuildResults({
             ))}
           </div>
 
-          <div className="mt-4 hidden overflow-x-auto rounded-2xl border border-white/10 bg-white/[0.025] peer-checked/table:block">
+          <div className="mt-3 hidden overflow-x-auto rounded-xl border border-white/10 bg-white/[0.025] peer-checked/table:block">
             <div className="min-w-[58rem]">
               <div
                 className="grid grid-cols-[minmax(11rem,1.35fr)_repeat(6,minmax(4.4rem,0.55fr))_minmax(6.5rem,0.65fr)_2rem] gap-2 border-b border-white/10 px-4 py-3 text-[10px] font-semibold uppercase tracking-[0.12em] text-slate-600"
@@ -124,7 +126,7 @@ export function ArmorBuildResults({
           </div>
         </div>
       ) : (
-        <div className="mt-6 rounded-2xl border border-amber-300/20 bg-amber-300/[0.07] p-5">
+        <div className="mt-4 rounded-xl border border-amber-300/20 bg-amber-300/[0.07] p-4">
           <h3 className="font-semibold text-amber-100">No valid builds</h3>
           <p className="mt-2 text-sm leading-6 text-slate-400">
             The current stat targets, Exotic, and armor-set requirements cannot
@@ -145,7 +147,7 @@ function ResultMetric({
   value: number | string;
 }) {
   return (
-    <span className="rounded-full border border-white/10 bg-white/[0.035] px-3 py-1.5 text-slate-400">
+    <span className="rounded-full border border-white/10 bg-white/[0.035] px-2.5 py-1 text-slate-400">
       {label} <strong className="ml-1 font-mono text-slate-200">{value}</strong>
     </span>
   );
@@ -175,19 +177,19 @@ function BuildResultCard({
       name="armor-build-cards"
       className="group rounded-2xl border border-white/10 bg-white/[0.035] open:border-cyan-300/30 open:bg-cyan-300/[0.055] open:lg:col-span-2"
     >
-      <summary className="cursor-pointer list-none p-4 outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-cyan-200/70 [&::-webkit-details-marker]:hidden sm:p-5">
-        <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+      <summary className="cursor-pointer list-none p-3 outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-cyan-200/70 [&::-webkit-details-marker]:hidden">
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-start sm:justify-between">
           <div>
             <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-cyan-200">
               {target.label} peak
             </p>
-            <div className="mt-2 flex items-baseline gap-2">
-              <span className="font-mono text-3xl font-semibold text-white">
+            <div className="mt-1 flex items-baseline gap-1.5">
+              <span className="font-mono text-2xl font-semibold text-white">
                 {result.targetBase}
               </span>
               <span className="text-sm text-slate-600">base</span>
               <span className="text-slate-600" aria-hidden="true">→</span>
-              <span className="font-mono text-xl font-semibold text-cyan-200">
+              <span className="font-mono text-lg font-semibold text-cyan-200">
                 {result.targetWithMods}
               </span>
               <span className="text-xs text-slate-500">with mods</span>
@@ -195,7 +197,7 @@ function BuildResultCard({
           </div>
           <div className="flex items-center gap-3 sm:text-right">
             <div>
-              <p className="font-mono text-xl font-semibold text-white">
+              <p className="font-mono text-lg font-semibold text-white">
                 {result.moddedTotal}
               </p>
               <p className="text-[9px] uppercase tracking-[0.12em] text-slate-600">
@@ -214,7 +216,7 @@ function BuildResultCard({
           stats={result.moddedStats}
           targetStat={result.targetStat}
           targets={targets}
-          className="mt-4"
+          className="mt-2.5"
         />
       </summary>
       <BuildExpansion result={result} pieces={pieces} targets={targets} />
@@ -291,16 +293,16 @@ function BuildStatStrip({
           key={stat.key}
           className={
             stat.key === targetStat
-              ? "rounded-lg border border-cyan-300/20 bg-cyan-300/10 px-2 py-2 text-center"
+              ? "rounded-md border border-cyan-300/20 bg-cyan-300/10 px-1.5 py-1.5 text-center"
               : targets[stat.key] > 0
-                ? "rounded-lg border border-fuchsia-300/20 bg-fuchsia-300/[0.07] px-2 py-2 text-center"
-                : "rounded-lg border border-white/[0.06] bg-slate-950/35 px-2 py-2 text-center"
+                ? "rounded-md border border-fuchsia-300/20 bg-fuchsia-300/[0.07] px-1.5 py-1.5 text-center"
+                : "rounded-md border border-white/[0.06] bg-slate-950/35 px-1.5 py-1.5 text-center"
           }
         >
           <p className="truncate text-[9px] font-semibold uppercase tracking-wide text-slate-600">
             {stat.label}
           </p>
-          <p className={stat.key === targetStat ? "mt-0.5 font-mono text-sm font-semibold text-cyan-100" : "mt-0.5 font-mono text-sm font-semibold text-slate-300"}>
+          <p className={stat.key === targetStat ? "font-mono text-sm font-semibold text-cyan-100" : "font-mono text-sm font-semibold text-slate-300"}>
             {stats[stat.key]}
           </p>
           {targets[stat.key] > 0 ? (
@@ -327,7 +329,7 @@ function BuildExpansion({
 }) {
   const modAssignments = getModAssignments(result);
   return (
-    <div className="border-t border-white/10 p-4 sm:p-5">
+    <div className="border-t border-white/10 p-3 sm:p-4">
       <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
         <div>
           <h3 className="font-semibold text-white">Armor used</h3>

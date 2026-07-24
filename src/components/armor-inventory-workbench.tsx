@@ -248,22 +248,21 @@ export function ArmorInventoryWorkbench({
   );
 
   return (
-    <div className="space-y-10">
-      <section className="rounded-2xl border border-white/10 bg-white/[0.035] p-5 sm:p-7">
-        <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
-          <div>
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-cyan-200">
+    <div className="grid items-start gap-4 xl:grid-cols-[minmax(28rem,0.85fr)_minmax(0,1.55fr)]">
+      <section className="min-w-0 rounded-2xl border border-white/10 bg-white/[0.035] p-4 xl:sticky xl:top-20 xl:max-h-[calc(100vh-6rem)] xl:overflow-y-auto">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+          <div className="min-w-0">
+            <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-cyan-200">
               Build constraints
             </p>
-            <h2 className="mt-2 text-2xl font-semibold text-white">
-              Choose bonuses first
+            <h2 className="mt-1 text-xl font-semibold text-white">
+              Configure the build
             </h2>
-            <p className="mt-2 max-w-3xl text-sm leading-6 text-slate-400">
-              Pick an Exotic and up to two armor-set bonuses. Every result is
-              recalculated from the base rolls you actually own.
+            <p className="mt-1 text-xs leading-5 text-slate-500">
+              Bonuses, Exotic, and stat minimums constrain the exact search.
             </p>
           </div>
-          <nav aria-label="Guardian class" className="flex flex-wrap gap-2">
+          <nav aria-label="Guardian class" className="flex flex-wrap gap-1.5">
             {classOptions.map((className) => (
               <a
                 key={className}
@@ -271,8 +270,8 @@ export function ArmorInventoryWorkbench({
                 aria-current={selection.className === className ? "page" : undefined}
                 className={
                   selection.className === className
-                    ? "rounded-full bg-cyan-300 px-4 py-2 text-sm font-semibold text-slate-950"
-                    : "rounded-full border border-white/10 px-4 py-2 text-sm font-semibold text-slate-300 transition hover:border-cyan-300/40 hover:text-white"
+                    ? "rounded-full bg-cyan-300 px-3 py-1.5 text-xs font-semibold text-slate-950"
+                    : "rounded-full border border-white/10 px-3 py-1.5 text-xs font-semibold text-slate-300 transition hover:border-cyan-300/40 hover:text-white"
                 }
               >
                 {className}

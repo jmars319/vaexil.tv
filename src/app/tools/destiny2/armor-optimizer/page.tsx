@@ -1,5 +1,5 @@
 import { ArmorOptimizerConnection } from "@/components/armor-optimizer-connection";
-import { Section, SectionHeading, SecondaryLink } from "@/components/ui";
+import { Section, SecondaryLink } from "@/components/ui";
 import { destinyGuideRobots } from "@/lib/destiny-guide-visibility";
 import type { Metadata } from "next";
 import { Suspense } from "react";
@@ -62,24 +62,28 @@ export default async function ArmorOptimizerPage({
 
   return (
     <>
-      <Section className="pb-8 pt-16">
-        <p className="text-xs font-semibold uppercase tracking-[0.2em] text-cyan-200">
-          Vaexil Gaming · Destiny 2
-        </p>
-        <div className="mt-4">
-          <SectionHeading
-            level={1}
-            title="Armor Optimizer"
-            description="Choose armor bonuses, set minimum stat targets, and inspect the exact owned pieces behind every conditional maximum."
-          />
-        </div>
-        <div className="mt-8 flex flex-wrap gap-3">
-          <SecondaryLink href="/guides/destiny2">Destiny 2 guides</SecondaryLink>
-          <SecondaryLink href="/tools/destiny2/verity">Verity tool</SecondaryLink>
+      <Section className="pb-4 pt-10" style={{ maxWidth: "96rem" }}>
+        <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
+          <div className="max-w-4xl">
+            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-cyan-200">
+              Vaexil Gaming · Destiny 2
+            </p>
+            <h1 className="mt-2 text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+              Armor Optimizer
+            </h1>
+            <p className="mt-2 text-sm leading-6 text-slate-400">
+              Set bonuses and stat targets on the left. Compare exact builds
+              from your owned armor on the right.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-2">
+            <SecondaryLink href="/guides/destiny2">Destiny 2 guides</SecondaryLink>
+            <SecondaryLink href="/tools/destiny2/verity">Verity tool</SecondaryLink>
+          </div>
         </div>
       </Section>
 
-      <Section className="pt-4">
+      <Section className="pb-10 pt-2" style={{ maxWidth: "96rem" }}>
         <Suspense fallback={<ArmorOptimizerLoading />}>
           <ArmorOptimizerConnection
             notice={bungie ? oauthNotices[bungie] : undefined}

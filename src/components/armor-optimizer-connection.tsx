@@ -114,37 +114,40 @@ export async function ArmorOptimizerConnection({
 
   const { inventory } = state;
   return (
-    <div className="space-y-5">
-      <div className="rounded-2xl border border-emerald-300/20 bg-emerald-300/[0.07] p-6 sm:p-8">
-        <div className="flex flex-col gap-5 sm:flex-row sm:items-start sm:justify-between">
-          <div>
-            <div className="flex items-center gap-2 text-sm font-semibold text-emerald-100">
-              <span className="text-base" aria-hidden="true">●</span>
-              Bungie connected
+    <div className="space-y-4">
+      <div className="rounded-2xl border border-emerald-300/20 bg-emerald-300/[0.065] px-4 py-3 sm:px-5">
+        <div className="flex flex-col gap-4 xl:flex-row xl:items-center">
+          <div className="min-w-0 xl:w-64 xl:shrink-0">
+            <div className="flex items-center gap-2">
+              <span className="text-sm text-emerald-200" aria-hidden="true">●</span>
+              <h2 className="truncate text-base font-semibold text-white">
+                {inventory.guardian.displayName}
+              </h2>
+              <span className="shrink-0 text-[10px] font-semibold uppercase tracking-[0.12em] text-emerald-100">
+                Connected
+              </span>
             </div>
-            <h2 className="mt-3 text-2xl font-semibold text-white">
-              {inventory.guardian.displayName}
-            </h2>
-            <p className="mt-2 text-sm text-slate-400">
-              Read-only inventory imported {new Date(inventory.importedAt).toLocaleString()}.
+            <p className="mt-1 truncate text-[11px] text-slate-500">
+              Read-only import · {new Date(inventory.importedAt).toLocaleString()}
             </p>
           </div>
-          <form action="/api/auth/bungie/logout" method="post">
+
+          <div className="grid flex-1 grid-cols-2 gap-x-2 gap-y-2 sm:grid-cols-4">
+            <InventoryMetric label="Armor" value={inventory.totals.armor} />
+            <InventoryMetric label="Exotics" value={inventory.totals.exotics} />
+            <InventoryMetric label="Armor sets" value={inventory.totals.armorSets} />
+            <InventoryMetric label="All items" value={inventory.totals.instancedItems} />
+          </div>
+
+          <form action="/api/auth/bungie/logout" method="post" className="xl:ml-1">
             <button
               type="submit"
-              className="inline-flex min-h-10 items-center justify-center rounded-full border border-white/10 px-4 text-sm font-semibold text-slate-200 transition hover:border-rose-300/40 hover:text-rose-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-200/70"
+              className="inline-flex min-h-9 items-center justify-center rounded-full border border-white/10 px-3 text-xs font-semibold text-slate-300 transition hover:border-rose-300/40 hover:text-rose-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-rose-200/70"
             >
               Disconnect
             </button>
           </form>
         </div>
-      </div>
-
-      <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-        <InventoryMetric label="Armor pieces" value={inventory.totals.armor} />
-        <InventoryMetric label="Exotic rolls" value={inventory.totals.exotics} />
-        <InventoryMetric label="Owned armor sets" value={inventory.totals.armorSets} />
-        <InventoryMetric label="All instanced items" value={inventory.totals.instancedItems} />
       </div>
 
       {inventory.armor.length > 0 ? (
@@ -170,11 +173,11 @@ export async function ArmorOptimizerConnection({
 
 function InventoryMetric({ label, value }: { label: string; value: number }) {
   return (
-    <div className="rounded-2xl border border-white/10 bg-white/[0.035] p-5">
-      <p className="text-xs font-semibold uppercase tracking-[0.16em] text-slate-500">
+    <div className="rounded-lg border border-white/[0.08] bg-slate-950/25 px-3 py-2">
+      <p className="text-[9px] font-semibold uppercase tracking-[0.12em] text-slate-600">
         {label}
       </p>
-      <p className="mt-3 font-mono text-3xl font-semibold text-white">
+      <p className="mt-0.5 font-mono text-lg font-semibold leading-none text-slate-100">
         {value.toLocaleString()}
       </p>
     </div>

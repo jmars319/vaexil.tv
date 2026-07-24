@@ -32,19 +32,17 @@ export function ArmorStatTargets({
   ).length;
 
   return (
-    <fieldset className="rounded-xl border border-cyan-300/15 bg-cyan-300/[0.035] p-3 sm:p-4">
-      <legend className="px-1 text-sm font-semibold text-slate-200">
+    <fieldset className="rounded-xl border border-cyan-300/15 bg-cyan-300/[0.035] p-2.5">
+      <legend className="px-1 text-xs font-semibold text-slate-300">
         Stat targets
       </legend>
-      <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-        <div>
-          <p className="text-xs leading-5 text-slate-400">
-            Enter a minimum on the left. The number after the slash is the
-            exact potential with your owned armor, current bonuses, other
-            targets, and five shared +10 mods.
+      <div className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1">
+        <div className="flex flex-wrap items-center gap-x-2 gap-y-1">
+          <p className="text-[10px] text-slate-500">
+            Selected / potential · fixed 0–200 scale · five shared +10 mods
           </p>
           <p
-            className="mt-1 text-[10px] uppercase tracking-[0.12em] text-cyan-200"
+            className="text-[9px] font-semibold uppercase tracking-[0.1em] text-cyan-200"
             aria-live="polite"
           >
             {status === "updating"
@@ -62,14 +60,14 @@ export function ArmorStatTargets({
           <button
             type="button"
             onClick={onClear}
-            className="shrink-0 text-xs font-semibold text-slate-500 transition hover:text-white"
+            className="shrink-0 text-[10px] font-semibold text-slate-500 transition hover:text-white"
           >
             Clear targets
           </button>
         ) : null}
       </div>
 
-      <div className="mt-4 grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
+      <div className="mt-2.5 grid gap-1.5 sm:grid-cols-2">
         {ARMOR_STATS.map((stat) => (
           <StatTargetControl
             key={stat.key}
@@ -114,17 +112,17 @@ function StatTargetControl({
     <label
       className={
         abovePotential
-          ? "rounded-lg border border-amber-200/40 bg-amber-300/[0.07] p-3"
+          ? "rounded-lg border border-amber-200/40 bg-amber-300/[0.07] p-2"
           : target > 0
-            ? "rounded-lg border border-fuchsia-200/35 bg-fuchsia-300/[0.06] p-3"
-            : "rounded-lg border border-white/[0.07] bg-slate-950/30 p-3"
+            ? "rounded-lg border border-fuchsia-200/35 bg-fuchsia-300/[0.06] p-2"
+            : "rounded-lg border border-white/[0.07] bg-slate-950/30 p-2"
       }
     >
       <span className="flex items-center justify-between gap-3">
         <span className="text-xs font-semibold text-slate-200">
           {stat.label}
         </span>
-        <span className="flex items-baseline gap-1 rounded-md border border-white/10 bg-slate-950/70 px-2 py-1">
+        <span className="flex items-baseline gap-1 rounded-md border border-white/10 bg-slate-950/70 px-1.5 py-0.5">
           <input
             type="number"
             name={ARMOR_STAT_TARGET_PARAMS[stat.key]}
@@ -137,19 +135,19 @@ function StatTargetControl({
             aria-label={`${stat.label} minimum target`}
             aria-describedby={descriptionId}
             aria-invalid={abovePotential}
-            className="h-7 w-14 bg-transparent text-right font-mono text-base font-semibold text-fuchsia-100 focus:outline-none"
+            className="h-6 w-11 bg-transparent text-right font-mono text-sm font-semibold text-fuchsia-100 focus:outline-none"
           />
           <span className="text-xs text-slate-600" aria-hidden="true">
             /
           </span>
-          <span className="min-w-7 font-mono text-sm font-semibold text-cyan-100">
+          <span className="min-w-6 font-mono text-xs font-semibold text-cyan-100">
             {maximum ?? "—"}
           </span>
         </span>
       </span>
 
       <span
-        className="relative mt-3 block h-2 overflow-hidden rounded-full bg-slate-800"
+        className="relative mt-2 block h-1.5 overflow-hidden rounded-full bg-slate-800"
         aria-hidden="true"
         style={{
           backgroundImage:
@@ -178,12 +176,11 @@ function StatTargetControl({
         ) : null}
       </span>
 
-      <span className="mt-2 flex items-center justify-between gap-2 text-[9px] uppercase tracking-[0.08em]">
-        <span className="text-fuchsia-200">Selected {target}</span>
+      <span className="mt-1.5 flex items-center justify-between gap-2 text-[8px] uppercase tracking-[0.06em]">
+        <span className="text-fuchsia-200">Target {target}</span>
         <span className="text-cyan-200">
           {maximum === null ? "No valid potential" : `Potential ${maximum}`}
         </span>
-        <span className="text-slate-600">Cap {STAT_CAP}</span>
       </span>
       <span id={descriptionId} className="sr-only">
         {maximum === null
